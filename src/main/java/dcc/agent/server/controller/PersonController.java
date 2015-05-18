@@ -28,6 +28,8 @@ public class PersonController {
         return "output";
     }
 
+
+
     @RequestMapping(value = "/person/save", method = RequestMethod.POST)
     public View createPerson(@ModelAttribute Person person, ModelMap model) {
         if(StringUtils.hasText(person.getId())) {
@@ -35,12 +37,12 @@ public class PersonController {
         } else {
             personService.addPerson(person);
         }
-        return new RedirectView("/person");
+        return new RedirectView("person");
     }
 
     @RequestMapping(value = "/person/delete", method = RequestMethod.GET)
     public View deletePerson(@ModelAttribute Person person, ModelMap model) {
         personService.deletePerson(person);
-        return new RedirectView("/person");
+        return new RedirectView("person");
     }
 }
