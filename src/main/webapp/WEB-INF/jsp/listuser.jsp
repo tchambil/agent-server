@@ -112,7 +112,7 @@
                     <li class="divider"></li>
                     <li><a href="./">Users</a></li>
                     <li class="divider"></li>
-                    <li><a tabindex="-1" href="sign-in.html">Logout</a></li>
+                    <li><a tabindex="-1" href="sign-in.jsp">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -188,9 +188,9 @@
         </li>
         <li>
             <ul class="accounts-menu nav nav-list collapse">
-                <li><a href="sign-in.html"><span class="fa fa-caret-right"></span> Sign In</a></li>
-                <li><a href="sign-up.html"><span class="fa fa-caret-right"></span> Sign Up</a></li>
-                <li><a href="reset-password.html"><span class="fa fa-caret-right"></span> Reset Password</a></li>
+                <li><a href="/sign-in"><span class="fa fa-caret-right"></span> Sign In</a></li>
+                <li><a href="/sign-up"><span class="fa fa-caret-right"></span> Sign Up</a></li>
+                <li><a href="/resetpassword"><span class="fa fa-caret-right"></span> Reset Password</a></li>
             </ul>
         </li>
 

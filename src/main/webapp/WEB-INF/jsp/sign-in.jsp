@@ -9,12 +9,14 @@
     <meta name="author" content="">
 
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="/resource/css/bootstrap.css">
+    <link rel="stylesheet" href="/resource/css/font-awesome.css">
 
-    <script src="js/site/jquery-1.11.1.min.js" type="text/javascript"></script>
-    <link rel="stylesheet" type="text/css" href="css/theme.css">
-    <link rel="stylesheet" type="text/css" href="css/premium.css">
+    <script src="/resource/js/site/jquery-1.11.1.min.js" type="text/javascript"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="/resource/css/theme.css">
+    <link rel="stylesheet" type="text/css" href="/resource/css/premium.css">
 
 </head>
 <body class=" theme-blue">
@@ -89,25 +91,33 @@
 
 <div class="dialog">
     <div class="panel panel-default">
-        <p class="panel-heading no-collapse">Reset your password</p>
+        <p class="panel-heading no-collapse">Sign In</p>
 
         <div class="panel-body">
             <form>
                 <div class="form-group">
-                    <label>Email Address</label>
-                    <input type="text" class="form-controlspan12 form-control">
+                    <label>Username</label>
+                    <input type="text" class="form-control span12">
                 </div>
-                <a href="index.jsp" class="btn btn-primary pull-right">Reset Password</a>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-controlspan12 form-control">
+                </div>
+                <a href="index.jsp" class="btn btn-primary pull-right">Sign In</a>
+                <label class="remember-me"><input type="checkbox"> Remember me</label>
 
                 <div class="clearfix"></div>
             </form>
         </div>
     </div>
-    <a href="sign-in.html" style="font-size: .75em; margin-top: .25em;">Sign in to your account</a>
+    <p class="pull-right" style=""><a href="http://www.portnine.com" target="blank"
+                                      style="font-size: .75em; margin-top: .25em;">Design by Portnine</a></p>
+
+    <p><a href="resetpassword.jsp">Forgot your password?</a></p>
 </div>
 
 
-<script src="js/site/bootstrap.js"></script>
+<script src="/resource/js/site/bootstrap.js"></script>
 <script type="text/javascript">
     $("[rel=tooltip]").tooltip();
     $(function () {

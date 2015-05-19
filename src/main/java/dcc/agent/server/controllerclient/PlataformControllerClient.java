@@ -10,9 +10,34 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 public class PlataformControllerClient {
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String getdata(ModelMap model) {
         return "index";
 
+    }
+
+    @RequestMapping(value = "/resetpassword", method = RequestMethod.GET)
+    public String getrestpass(ModelMap modelMap)
+    {
+        return "resetpassword";
+    }
+
+    @RequestMapping(value = "/sign-in", method = RequestMethod.GET)
+    public String getsignin(ModelMap modelMap)
+    {
+     return "sign-in";
+    }
+
+    @RequestMapping (value = "/sign-up", method = RequestMethod.GET)
+    public String getsignup(ModelMap modelMap)
+    {
+        return "sign-up";
+    }
+
+    @RequestMapping (value = "/view", method = RequestMethod.GET)
+    public String getview(ModelMap modelMap)
+    {
+        return "view";
     }
 }

@@ -29,7 +29,7 @@
 </table>
 
 
-<script type="text/javascript" src="js/message.js"></script>
+<script type="text/javascript" src="/resource/js/message.js"></script>
 
 <textarea id="example2" class="example">
   digraph topology

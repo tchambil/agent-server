@@ -18,7 +18,6 @@ public class AgentProperties {
     public static final String Rabbitmq_Password = "159753";
     public static final String Rabbitmq_QueueName = "queue";
 
-
     public static final int appServerPort = AgentVariable.DEFAULT_APP_SERVER_PORT;
     public static final String agentServerName = getHostName().toString() + " [" + getHostAddress().toString() + "]";
     public static final String agentServerIP=getHostAddress().toString();
@@ -39,7 +38,7 @@ public class AgentProperties {
     ;
     public static final String mailConfirmUserCreate = Boolean.toString(User.DEFAULT_ADMIN_ONLY_USER_CREATE);
     ;
-    public static final String persistent_store_dir = "./persistent_store";
+    public static final String persistent_store_dir = "/resource/persistent_store";
     public static final String userAgentName = AgentVariable.DEFAULT_USER_AGENT_NAME;
     public static final String defaultWebPageRefreshInterval = Long
             .toString(AgentVariable.DEFAULT_DEFAULT_WEB_PAGE_REFRESH_INTERVAL);

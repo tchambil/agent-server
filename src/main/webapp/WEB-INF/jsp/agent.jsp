@@ -92,7 +92,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="" href="index.jsp"><span class="navbar-brand"><span
+        <a class="" href="/"><span class="navbar-brand"><span
                 class="fa fa-paper-plane"></span> Agent Server</span></a>
 
     </div>
@@ -111,7 +111,7 @@
                     <li class="divider"></li>
                     <li><a href="">Users</a></li>
                     <li class="divider"></li>
-                    <li><a tabindex="-1" href="sign-in.html">Logout</a></li>
+                    <li><a tabindex="-1" href="sign-in.jsp">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -129,7 +129,7 @@
                 class="fa fa-fw fa-dashboard"></i>Plataform<i class="fa fa-collapse"></i></a></li>
         <li>
             <ul class="dashboard-menu nav nav-list collapse in">
-                <li><a href="index.jsp"><span class="fa fa-caret-right"></span> Main</a></li>
+                <li><a href="/"><span class="fa fa-caret-right"></span> Main</a></li>
 
             </ul>
         </li>
@@ -188,9 +188,9 @@
         </li>
         <li>
             <ul class="accounts-menu nav nav-list collapse">
-                <li><a href="sign-in.html"><span class="fa fa-caret-right"></span> Sign In</a></li>
-                <li><a href="sign-up.html"><span class="fa fa-caret-right"></span> Sign Up</a></li>
-                <li><a href="reset-password.html"><span class="fa fa-caret-right"></span> Reset Password</a></li>
+                <li><a href="/sign-in"><span class="fa fa-caret-right"></span> Sign In</a></li>
+                <li><a href="/sign-up"><span class="fa fa-caret-right"></span> Sign Up</a></li>
+                <li><a href="/resetpassword"><span class="fa fa-caret-right"></span> Reset Password</a></li>
             </ul>
         </li>
 
