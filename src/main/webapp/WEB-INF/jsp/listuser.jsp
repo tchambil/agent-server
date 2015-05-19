@@ -9,13 +9,14 @@
     <meta name="author" content="">
 
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="/resource/css/bootstrap.css">
+    <link rel="stylesheet" href="/resource/css/font-awesome.css">
 
-    <script src="js/site/jquery-1.11.1.min.js" type="text/javascript"></script>
-    <script src="js/site/jquery.knob.js" type="text/javascript"></script>
-    <script src="../js/agent.js"></script>
-    <script src="../js/system.js"></script>
+    <script src="/resource/js/site/jquery-1.11.1.min.js" type="text/javascript"></script>
+
+    <script src="/resource/js/site/jquery.knob.js" type="text/javascript"></script>
+    <script src="/resource/js/user.js"></script>
+    <script src="/resource/js/system.js"></script>
     <script type="text/javascript">
         $(function () {
             $(".knob").knob();
@@ -23,8 +24,8 @@
     </script>
 
 
-    <link rel="stylesheet" type="text/css" href="css/theme.css">
-    <link rel="stylesheet" type="text/css" href="css/premium.css">
+    <link rel="stylesheet" type="text/css" href="/resource/css/theme.css">
+    <link rel="stylesheet" type="text/css" href="/resource/css/premium.css">
 
 </head>
 <body class=" theme-blue">
@@ -92,7 +93,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="" href="index.html"><span class="navbar-brand"><span
+        <a class="" href="/"><span class="navbar-brand"><span
                 class="fa fa-paper-plane"></span> Agent Server</span></a>
 
     </div>
@@ -129,7 +130,7 @@
                 class="fa fa-fw fa-dashboard"></i>Plataform<i class="fa fa-collapse"></i></a></li>
         <li>
             <ul class="dashboard-menu nav nav-list collapse in">
-                <li><a href="index.html"><span class="fa fa-caret-right"></span> Main</a></li>
+                <li><a href="/"><span class="fa fa-caret-right"></span> Main</a></li>
 
             </ul>
         </li>
@@ -139,8 +140,8 @@
         </li>
         <li>
             <ul class="users-menu nav nav-list collapse">
-                <li><a href="user.html"><span class="fa fa-caret-right"></span> User Profile</a></li>
-                <li><a href="listuser.html"><span class="fa fa-caret-right"></span> User List</a></li>
+                <li><a href="/users.do"><span class="fa fa-caret-right"></span> User Profile</a></li>
+                <li><a href="/listuser.do"><span class="fa fa-caret-right"></span> User List</a></li>
 
             </ul>
         </li>
@@ -151,9 +152,8 @@
         </li>
         <li>
             <ul class="legal-menu nav nav-list collapse">
-
-                <li><a href="agentdef.html"><span class="fa fa-caret-right"></span> Definitions</a></li>
-                <li><a href="listdef.html"><span class="fa fa-caret-right"></span> List</a></li>
+                <li><a href="definition.jsp"><span class="fa fa-caret-right"></span> Definitios</a></li>
+                <li><a href="listdefinition.jsp"><span class="fa fa-caret-right"></span> List</a></li>
             </ul>
         </li>
         <!--<Agents]-->
@@ -164,11 +164,8 @@
         </li>
         <li>
             <ul class="premium-menu nav nav-list collapse">
-                <li>
-                    <a href="agent.html"><span class="fa fa-caret-right"></span> Agent</a>
-
-                </li>
-                <li><a href="listagents.html"><span class="fa fa-caret-right"></span> List</a></li>
+                <li><a href="/agent.do"><span class="fa fa-caret-right"></span> Agent</a> </li>
+                <li><a href="/listagent.do"><span class="fa fa-caret-right"></span> List</a></li>
             </ul>
         </li>
         <!--<Groups]-->
@@ -209,148 +206,77 @@
 </div>
 
 <div class="content">
-<div class="stats">
-    <span   class="label label-danger">Status:</span> <span id="headerStatus">null</span>
-    <span>&nbsp;&nbsp;</span>
-    <span class="label label-success">Address IP:</span> <span id="headerIp">null</span>
-    <span>&nbsp;&nbsp;</span>
-    <span class="label label-info">Server:</span> <span id="headerServer">null</span>
-    <span>&nbsp;&nbsp;</span>
-</div>
 
-<div class="header">
-    <h1 class="page-title">Agents</h1>
-</div>
-<div class="main-content">
-<ul class="nav nav-tabs">
-    <li class="active"><a href="#home" data-toggle="tab">Register</a></li>
-    <li><a href="#advanced" data-toggle="tab">Result</a></li>
+    <div class="stats">
+        <span   class="label label-danger">Status:</span> <span id="headerStatus">null</span>
+        <span>&nbsp;&nbsp;</span>
+        <span class="label label-success">Address IP:</span> <span id="headerIp">null</span>
+        <span>&nbsp;&nbsp;</span>
+        <span class="label label-info">Server:</span> <span id="headerServer">null</span>
+        <span>&nbsp;&nbsp;</span>
+    </div>
+    <div class="header">
+        <h1 class="page-title">Users</h1>
+    </div>
+    <div class="main-content">
 
-</ul>
 
-<div class="row">
-<div id="myTabContent" class="tab-content">
+        <table id="idtablelist" class="table table-hover" >
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>Nick Name</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th style="width: 3.5em;"></th>
+            </tr>
+            </thead>
+            <tbody  id="idlisttable">
+            </tbody>
+        </table>
 
-<div class="tab-pane active in" id="home">
+        <ul class="pagination">
+            <li><a href="#">&laquo;</a></li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">&raquo;</a></li>
+        </ul>
 
-    <div class="col-md-3">
-        <div class="widget">
-            <ul class="cards list-group">
 
-                <li class="list-group-item">
-                    <p class="label label-warning header-label">General</p>
-                    <div class="form-group">
-                        <label>name</label>
-                        <input type="text" id="nameagentgeneral" class="form-control" value="cuonter"/>
-
+        <div class="modal small fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h3 id="myModalLabel">Delete Confirmation</h3>
                     </div>
-                </li>
-                <li class="list-group-item">
-
-                    <div class="form-group">
-
-                        <label>User</label>
-                        <select   id="DropUserGeneral" class="form-control">
-                            <option value="Test">Selection Item</option>
-                        </select>
-
+                    <div class="modal-body">
+                        <p class="error-text"><i class="fa fa-warning modal-icon"></i>Are you sure you want to delete
+                            the user?<br>This cannot be undone.</p>
                     </div>
-                    <div class="form-group">
-                        <label>Agent Definitions</label>
-                        <select  id="DropAgentGeneral" class="form-control">
-                            <option value="Test">Selection Item</option>
-                        </select>
-
+                    <div class="modal-footer">
+                        <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                        <button id="btnUserDelete" class="btn btn-danger" data-dismiss="modal">Delete</button>
                     </div>
-
-                </li>
-            </ul>
-            <button id="btnagentSdve" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
-            <a href="#myModal" data-toggle="modal" class="btn btn-danger">Delete</a>
-            <br/>      <br/>
-            <div id="idMessagsedAgent" class="alert alert-info">
-            </div>
-
-        </div>
-    </div><!-- finish col-md-3-->
-
-
-</div><!-- finish simple-->
-
-<div class="tab-pane fade" id="advanced">
-
-
-    <div class="col-md-3">
-        <div class="widget">
-            <ul class="cards list-group">
-                <li class="list-group-item">
-                    <p class="label label-warning header-label">General</p>
-                    <div class="form-group">
-                        <label>name</label>
-                        <input type="text" name="id" id="advancenamegeneral" class="form-control" value="cuonter"/>
-
-                    </div>
-                    <div class="form-group">
-                        <label>User</label>
-
-                        <select name="DropUsergeneral" id="advanceusergeneral" class="form-control">
-                            <option value="Test">User Test</option>
-                        </select>
-                    </div>
-
-                </li>
-                <li>
-
-                </li>
-
-            </ul>
-
-            <button id="btnadvanceSdve" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
-            <a href="#myModal" data-toggle="modal" class="btn btn-danger">Delete</a>
-            <br/>      <br/>
-            <div id="idMessagsesdUser" class="alert alert-success">
-            </div>
-
-        </div>
-    </div><!-- finish col-md-3-->
-
-</div>
-
-</div>
-</div>
-
-<div class="modal small fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h3 id="myModalLabel">Delete Confirmation</h3>
-            </div>
-            <div class="modal-body">
-
-                <p class="error-text"><i class="fa fa-warning modal-icon"></i>Are you sure you want to delete
-                    the Agent Definitions?</p>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cancel</button>
-                <button id="btndefinitionDelete" class="btn btn-danger" data-dismiss="modal">Delete</button>
+                </div>
             </div>
         </div>
+
+
+        <footer>
+            <hr>
+            <p class="pull-right">A <a href="http://www.portnine.com/bootstrap-themes" target="_blank">Free Bootstrap
+                Theme</a> by <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
+
+            <p>© 2015 <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
+        </footer>
     </div>
 </div>
-
-
-<footer>
-    <hr>
-    <p class="pull-right">A <a href="http://www.portnine.com/bootstrap-themes" target="_blank">Free Bootstrap
-        Theme</a> by <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
-
-    <p>© 2015 <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
-</footer>
-</div>
-</div>
-<script src="js/site/bootstrap.js"></script>
+<script src="/resource/js/site/bootstrap.js"></script>
 <script type="text/javascript">
     $("[rel=tooltip]").tooltip();
     $(function () {

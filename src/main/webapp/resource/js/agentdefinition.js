@@ -86,7 +86,7 @@ $(document).ready(function () {
                 "</td><td id="+item.user+">"+item.enabled+"</td>"+
                 //   "<td><input type='button' value='Button 1'  id="+item.id+" /></td>"+
 
-                "<td><a href='user.html'><i class='fa fa-pencil'></i></a>"+
+                "<td><a href='user.jsp'><i class='fa fa-pencil'></i></a>"+
                 "<a href='#myModal' role='button' data-toggle='modal' id="+item.user+"><i class='fa fa-trash-o'></i></a></td></tr>"
             $('#idlisttable').append(txt);
 

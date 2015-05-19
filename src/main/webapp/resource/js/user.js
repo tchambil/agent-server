@@ -17,7 +17,7 @@ $(document).ready(function () {
                 "</td><td id="+item.id+">"+item.email+"</td>"+
              //   "<td><input type='button' value='Button 1'  id="+item.id+" /></td>"+
 
-                "<td><a href='user.html'><i class='fa fa-pencil'></i></a>"+
+                "<td><a href='user.jsp'><i class='fa fa-pencil'></i></a>"+
                 "<a href='#myModal' role='button' data-toggle='modal' id="+item.id+"><i class='fa fa-trash-o'></i></a></td></tr>"
             $('#idlisttable').append(txt);
 
@@ -54,7 +54,7 @@ $(document).ready(function () {
                                 "</td><td>"+user.users[i].id+"</td>"+
                                 "</td><td>"+user.users[i].id+"</td>"+
                                 "</td><td>"+user.users[i].id+"</td>"+
-                                "<td><a href='user.html'><i class='fa fa-pencil'></i></a>"+
+                                "<td><a href='user.jsp'><i class='fa fa-pencil'></i></a>"+
                                    "<a href='#myModal' role='button' data-toggle='modal'><i class='fa fa-trash-o'></i></a></td></tr>"
                                 $('#idlisttable').append(txt);
                        }
@@ -69,7 +69,7 @@ $(document).ready(function () {
                     "</td><td>"+item.nick_name+"</td>"+
                     "</td><td>"+item.full_name+"</td>"+
                     "</td><td>"+item.email+"</td>"+
-                    "<td><a href='user.html'><i class='fa fa-pencil'></i></a>"+
+                    "<td><a href='user.jsp'><i class='fa fa-pencil'></i></a>"+
                     "<a href='#myModal' role='button' data-toggle='modal'><i class='fa fa-trash-o'></i></a></td></tr>"
                 $('#idlisttable').append(txt);
 

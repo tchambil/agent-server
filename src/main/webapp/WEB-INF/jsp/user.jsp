@@ -1,4 +1,4 @@
-<!doctype html>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -9,13 +9,13 @@
     <meta name="author" content="">
 
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="resource/css/bootstrap.css">
+    <link rel="stylesheet" href="resource/css/font-awesome.css">
 
-    <script src="js/site/jquery-1.11.1.min.js" type="text/javascript"></script>
-    <script src="js/site/jquery.knob.js" type="text/javascript"></script>
-    <script src="../js/user.js"></script>
-    <script src="../js/system.js"></script>
+    <script src="resource/js/site/jquery-1.11.1.min.js" type="text/javascript"></script>
+    <script src="resource/js/site/jquery.knob.js" type="text/javascript"></script>
+    <script src="resource/js/user.js"></script>
+    <script src="resource/js/system.js"></script>
     <script type="text/javascript">
         $(function () {
             $(".knob").knob();
@@ -23,8 +23,8 @@
     </script>
 
 
-    <link rel="stylesheet" type="text/css" href="css/theme.css">
-    <link rel="stylesheet" type="text/css" href="css/premium.css">
+    <link rel="stylesheet" type="text/css" href="resource/css/theme.css">
+    <link rel="stylesheet" type="text/css" href="resource/css/premium.css">
 
 </head>
 <body class=" theme-blue">
@@ -92,7 +92,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="" href="index.html"><span class="navbar-brand"><span
+        <a class="" href="/"><span class="navbar-brand"><span
                 class="fa fa-paper-plane"></span> Agent Server</span></a>
 
     </div>
@@ -129,7 +129,7 @@
                 class="fa fa-fw fa-dashboard"></i>Plataform<i class="fa fa-collapse"></i></a></li>
         <li>
             <ul class="dashboard-menu nav nav-list collapse in">
-                <li><a href="index.html"><span class="fa fa-caret-right"></span> Main</a></li>
+                <li><a href="/"><span class="fa fa-caret-right"></span> Main</a></li>
 
             </ul>
         </li>
@@ -139,8 +139,8 @@
         </li>
         <li>
             <ul class="users-menu nav nav-list collapse">
-                <li><a href="user.html"><span class="fa fa-caret-right"></span> User Profile</a></li>
-                <li><a href="listuser.html"><span class="fa fa-caret-right"></span> User List</a></li>
+                <li><a href="/users.do"><span class="fa fa-caret-right"></span> User Profile</a></li>
+                <li><a href="/listuser.do"><span class="fa fa-caret-right"></span> User List</a></li>
 
             </ul>
         </li>
@@ -151,8 +151,8 @@
         </li>
         <li>
             <ul class="legal-menu nav nav-list collapse">
-                <li><a href="agentdef.html"><span class="fa fa-caret-right"></span> Definitions</a></li>
-                <li><a href="listdef.html"><span class="fa fa-caret-right"></span> List</a></li>
+                <li><a href="definition.jsp"><span class="fa fa-caret-right"></span> Definitions</a></li>
+                <li><a href="listdefinition.jsp"><span class="fa fa-caret-right"></span> List</a></li>
             </ul>
         </li>
         <!--<Agents]-->
@@ -163,12 +163,8 @@
         </li>
         <li>
             <ul class="premium-menu nav nav-list collapse">
-
-                <li>
-                    <a href="agent.html"><span class="fa fa-caret-right"></span> Agent</a>
-
-                </li>
-                <li><a href="listagents.html.html"><span class="fa fa-caret-right"></span> List</a></li>
+                <li><a href="/agent.do"><span class="fa fa-caret-right"></span> Agent</a> </li>
+                <li><a href="/listagent.do"><span class="fa fa-caret-right"></span> List</a></li>
 
 
             </ul>
@@ -342,7 +338,7 @@
         </footer>
     </div>
 </div>
-<script src="js/site/bootstrap.js"></script>
+<script src="resource/js/site/bootstrap.js"></script>
 <script type="text/javascript">
     $("[rel=tooltip]").tooltip();
     $(function () {
