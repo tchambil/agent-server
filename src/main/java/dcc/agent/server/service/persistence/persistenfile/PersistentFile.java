@@ -19,6 +19,8 @@ package dcc.agent.server.service.persistence.persistenfile;
 import dcc.agent.server.service.util.DateUtils;
 import dcc.agent.server.service.util.ListMap;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -45,6 +47,9 @@ public class PersistentFile implements Iterable<String> {
     public RandomAccessFile file = null;
     public ListMap<String, PersistentTable> persistentTables;
 
+    @Autowired
+    private MongoTemplate mongoTemplate;
+
     public void close() throws IOException {
         if (file != null)
             file.close();
@@ -57,6 +62,7 @@ public class PersistentFile implements Iterable<String> {
 
     public void create(String path, String applicationName, String applicationFormatVersion, List<String> tableNames) throws FileNotFoundException, IOException, PersistentFileException {
         // Get number of tables
+
         int numTables = tableNames.size();
 
         // Delete any existing file
@@ -316,8 +322,28 @@ public class PersistentFile implements Iterable<String> {
             throw new PersistentFileException("No persistent file open");
         PersistentTable table = persistentTables.get(tableName);
         if (table == null)
+        {
             throw new PersistentFileException("Undefined table name: " + tableName);
+        }
 
+       /* Mongo mongo =new Mongo("localhost");
+        DB db=mongo.getDB("agentdb");
+        DBCollection collection;
+        if(db.collectionExists(tableName))
+        {
+            collection=db.getCollection(tableName);
+            log.info("created exists collection: "+ tableName);
+        }
+        else
+        {
+            DBObject options = BasicDBObjectBuilder.start().add("capped",true).add("size",2000000000l).get();
+            collection=db.createCollection(tableName,options);
+            log.info("create now collection:" +tableName );
+
+        }
+        BasicDBObject doc = new BasicDBObject(key, value);
+        collection.insert(doc);
+        */
         // Add the value to the table
         table.add(key, value);
     }

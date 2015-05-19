@@ -844,25 +844,15 @@ public class AgentServer {
             config = new AgentServerConfig(this);
         config.load();
 
-        // Initialize the web access configuration parameters
-        //  if (webAccessConfig == null)
-        //    webAccessConfig = new AgentServerWebAccessConfig(config);
-
-        // Initialize the web site access control lists
-        // if (webSiteAccessConfig == null)
-        //  webSiteAccessConfig = new WebSiteAccessConfig(this);
-        // webSiteAccessConfig.load();
-
-        // Initialize the web access manager
-        //  this.webAccessManager = new WebAccessManager(webAccessConfig, webSiteAccessConfig);
-
         // Initialize the web access manager
         this.mailAccessManager = new MailAccessManager(this);
         mailAccessManager.readConfig();
 
         // Optionally start scheduler
         if (start)
+        {
             agentScheduler.start();
+        }
 
     }
 
