@@ -152,8 +152,8 @@
         <li>
             <ul class="legal-menu nav nav-list collapse">
 
-                <li><a href="definition.jsp"><span class="fa fa-caret-right"></span> Definitions</a></li>
-                <li><a href="listdefinition.jsp"><span class="fa fa-caret-right"></span> List</a></li>
+                <li><a href="/definition.do"><span class="fa fa-caret-right"></span> Definitions</a></li>
+                <li><a href="/listdefinition.do"><span class="fa fa-caret-right"></span> List</a></li>
             </ul>
         </li>
         <!--<Agents]-->
