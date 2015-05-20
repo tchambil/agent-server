@@ -25,7 +25,8 @@ public class MessageReceive {
     System.out.println("[*] Waiting for messages. To exit press CTRL +C");
     QueueingConsumer consumer=new QueueingConsumer(channel);
     channel.basicConsume(Properties.Rabbitmq_QueueName,true,consumer);
-    while(true)
+
+        while(true)
     {
         //   Thread.sleep(500);
         QueueingConsumer.Delivery delivery=consumer.nextDelivery();

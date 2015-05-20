@@ -58,7 +58,6 @@ public class AgentServer {
     public NameValueList<User> users;
     public NameValueList<AgentDefinitionList> agentDefinitions;
     public NameValueList<AgentInstanceList> agentInstances;
-    // public AgentServerProperties agentServerProperties;
     public AgentProperties agentProperties;
     public AgentVariable agentVariable;
     public AgentServerWebAccessConfig webAccessConfig;
@@ -71,13 +70,10 @@ public class AgentServer {
 
     public AgentServer(AgentAppServer agentAppServer, boolean start) throws RuntimeException, AgentServerException, IOException, InterruptedException, PersistentFileException, ParseException, TokenizerException, ParserException {
         log.info("Creation of AgentServer object");
-
         // Link back to app server
         this.agentAppServer = agentAppServer;
-
         // Singleton access is now permitted
         singleton = this;
-
         // Start the agent server
         // start(start);
     }
@@ -97,10 +93,8 @@ public class AgentServer {
                 // No, so create an empty agent table for user
                 agentDefinitions.put(agentDefinition.user.id, new AgentDefinitionList());
             }
-
             // Get agent definition table for the user
             AgentDefinitionList usersAgentDefinitions = agentDefinitions.get(agentDefinition.user.id);
-
             // Store the new agent definition for the user
             usersAgentDefinitions.put(agentDefinition);
 

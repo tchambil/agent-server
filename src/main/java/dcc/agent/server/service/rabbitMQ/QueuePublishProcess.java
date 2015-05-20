@@ -3,6 +3,7 @@ package dcc.agent.server.service.rabbitMQ;
 /**
  * Created by teo on 20/05/15.
  */
+import org.apache.log4j.Logger;
 import org.springframework.amqp.core.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -14,7 +15,7 @@ import java.util.Random;
 
 @Component
 public class QueuePublishProcess {
-
+    protected static Logger logger = Logger.getLogger(QueuePublishProcess.class);
     public static final String QUEUE_NAME = "test.queue";
 
     @Autowired
@@ -24,9 +25,8 @@ public class QueuePublishProcess {
     private AmqpTemplate template;
 
     public static void main(String[] args) throws Exception {
-        ApplicationContext context = new ClassPathXmlApplicationContext("config_rabbitmq.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("WEB-INF/config_rabbitmq.xml");
         QueuePublishProcess publisher = context.getBean(QueuePublishProcess.class);
-        publisher.setup();
         publisher.publish();
     }
 
@@ -36,22 +36,23 @@ public class QueuePublishProcess {
 
         for (int i=1; i<=5; i++) {
             String queueName = "test.queue."+i;
-            Queue q = new Queue(queueName, durable, false, true);
-            admin.declareQueue(q);
-            BindingBuilder.bind(q).to(exchange).with(queueName);
-            System.out.println("Bounded queue " + queueName);
+            Queue newQueue= new Queue(queueName, durable, false, true);
+            admin.declareQueue(newQueue);
+            BindingBuilder.bind(newQueue).to(exchange).with(queueName);
+           logger.info("creating queue with name: " + queueName);
         }
     }
 
     private void publish() throws Exception {
+        setup();
         for (int i=0; i<10; i++) {
             try {
                 String sent = i + " Catch the rabbit! " + new Date();
                 String queueName = generateQueueName();
                 // write message
                 template.convertAndSend(queueName, sent );
-                System.out.println( "Msg Sent to " + queueName + " :  " + sent );
-                Thread.sleep(3000);
+                logger.info( "Msg Sent to " + queueName + " :  " + sent );
+                 Thread.sleep(3000);
             } catch (Exception e) {
                 e.printStackTrace();
             }

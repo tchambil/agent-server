@@ -40,7 +40,6 @@ public class AgentAppServer {
     public AgentAppServer(boolean start, ListMap<String, String> commandLineproperties) throws RuntimeException, AgentServerException, Exception {
         // Start the agent server.
         agentServer = new AgentServer(this);
-
         //  if (start)
         //  start();
     }
@@ -48,21 +47,18 @@ public class AgentAppServer {
     public void restart() throws Exception {
         // Shutdown first
         shutdown();
-
         // And then start up again
         start();
     }
 
     public void shutdown() throws Exception {
         stop();
-        // TODO: Should this do something else in addition to stop?
-    }
+       }
 
     public void start() throws Exception {
         log.info("Starting agent server");
         try {
-
-            // Start the agent server
+           // Start the agent server
             agentServer.start();
         } catch (Exception e) {
             log.info("Agent server start exception: " + e);
@@ -75,9 +71,6 @@ public class AgentAppServer {
     public void stop() throws Exception {
         log.info("Stopping agent server");
         try {
-            // Stop the embedded Jetty server
-
-
             // Stop the agent server
             agentServer.stop();
         } catch (Exception e) {

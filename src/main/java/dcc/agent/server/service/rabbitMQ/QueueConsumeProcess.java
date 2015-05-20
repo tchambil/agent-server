@@ -3,6 +3,7 @@ package dcc.agent.server.service.rabbitMQ;
 /**
  * Created by teo on 20/05/15.
  */
+
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageListener;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
@@ -20,7 +21,7 @@ public class QueueConsumeProcess implements MessageListener{
     private CachingConnectionFactory connectionFactory;
 
     public static void main(String[] argv) throws Exception {
-        ApplicationContext context = new ClassPathXmlApplicationContext("config_rabbitmq.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("WEB-INF/config_rabbitmq.xml");
         QueueConsumeProcess consumer = context.getBean(QueueConsumeProcess.class);
 
         consumer.consume();

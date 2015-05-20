@@ -208,7 +208,10 @@ public class AgentController {
 
     }
 
-    @RequestMapping(value = {"/users/{id}/agents/{name}/pause", "/users/{id}/agents/{name}/disable"}, method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = {"/users/{id}/agents/{name}/pause",
+                            "/users/{id}/agents/{name}/disable"},
+                            method = RequestMethod.PUT,
+                            produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public String putAgentpause_disable(@PathVariable String id, @PathVariable String name, HttpServletRequest request) throws Exception {
 
@@ -245,7 +248,10 @@ public class AgentController {
 
     }
 
-    @RequestMapping(value = {"/users/{id}/agents/{name}/resume", "/users/{id}/agents/{name}/enable"}, method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = {"/users/{id}/agents/{name}/resume",
+                            "/users/{id}/agents/{name}/enable"},
+                            method = RequestMethod.PUT,
+                            produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public String putAgentresume_enable(@PathVariable String id, @PathVariable String name, HttpServletRequest request) throws Exception {
 
@@ -279,7 +285,9 @@ public class AgentController {
 
     }
 
-    @RequestMapping(value = "/users/{id}/agents/{name}/run_script/{scriptName}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/users/{id}/agents/{name}/run_script/{scriptName}",
+                            method = RequestMethod.PUT,
+                            produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public String putAgentRun_script(@PathVariable String id, @PathVariable String name, @PathVariable String scriptName, HttpServletRequest request) throws Exception {
 
