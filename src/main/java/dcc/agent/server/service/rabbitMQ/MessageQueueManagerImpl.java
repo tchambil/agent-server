@@ -11,11 +11,12 @@ import org.springframework.amqp.core.Binding.DestinationType;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 
 
-
+@Service("messageQueueManager")
 public class MessageQueueManagerImpl implements MessageQueueManager{
     protected static Logger logger = Logger.getLogger(MessageQueueManagerImpl.class);
     @Autowired
@@ -29,6 +30,7 @@ public class MessageQueueManagerImpl implements MessageQueueManager{
 
     @Override
     public String createQueue(String queueName) {
+
         logger.info("creating queue with name: " + queueName);
 
         //create queue
