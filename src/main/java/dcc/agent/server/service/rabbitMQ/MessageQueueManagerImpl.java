@@ -11,20 +11,23 @@ import org.springframework.amqp.core.Binding.DestinationType;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 
 
-@Service("messageQueueManager")
+//@Service("messageQueueManager")
 public class MessageQueueManagerImpl implements MessageQueueManager{
     protected static Logger logger = Logger.getLogger(MessageQueueManagerImpl.class);
+
     @Autowired
     private AmqpAdmin admin;
+
     @Autowired
     private AmqpTemplate template;
+
     @Autowired
     private ConnectionFactory connectionFactory;
+
     @Autowired
     private SimpleMessageListenerContainer container;
 
@@ -56,6 +59,9 @@ public class MessageQueueManagerImpl implements MessageQueueManager{
 
     @Override
     public void onMessage(Message message) {
-         logger.info(new String(message.getBody()));
+            System.out.println("Received message: " + message);
+            System.out.println("Text: " + new String(message.getBody()));
+
+
     }
 }

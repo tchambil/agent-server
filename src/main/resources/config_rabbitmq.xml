@@ -1,0 +1,47 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+       xmlns:context="http://www.springframework.org/schema/context"
+          xsi:schemaLocation="http://www.springframework.org/schema/rabbit
+           http://www.springframework.org/schema/rabbit/spring-rabbit.xsd
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+
+    <context:component-scan base-package="dcc.agent.server" />
+    <context:annotation-config/>
+
+
+    <!-- Connection factory for connection establishment -->
+    <!--
+    <rabbit:connection-factory id="multiHost" virtual-host="/bar"
+    addresses="host1:1234,host2,host3:4567"
+    channel-cache-size="10"
+    username="user"
+    password="password" /> -->
+   <rabbit:connection-factory id="amqpConnectionFactory"
+                              host="192.168.50.19"
+                             username="agent"
+                              password="159753"/>
+
+    <rabbit:template id="amqpTemplate"
+                    connection-factory="amqpConnectionFactory"
+                    retry-template="retryTemplate"/>
+
+   <bean id="retryTemplate" class="org.springframework.retry.support.RetryTemplate">
+       <property name="backOffPolicy">
+           <bean class="org.springframework.retry.backoff.ExponentialBackOffPolicy">
+               <property name="initialInterval" value="500" />
+               <property name="multiplier" value="2" />
+               <property name="maxInterval" value="30000" />
+           </bean>
+       </property>
+   </bean>
+   <!-- Admin object for creation of queues-->
+  <rabbit:admin id="amqpAdmin" connection-factory="amqpConnectionFactory"/>
+
+
+
+</beans>
