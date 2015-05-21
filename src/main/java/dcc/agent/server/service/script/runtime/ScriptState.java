@@ -14,24 +14,19 @@
  * limitations under the License.
  */
 
-package dcc.agent.server.service.script.runtine;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-
+package dcc.agent.server.service.script.runtime;
 
 import dcc.agent.server.service.agentserver.AgentDefinition;
 import dcc.agent.server.service.agentserver.AgentInstance;
 import dcc.agent.server.service.agentserver.AgentServer;
 import dcc.agent.server.service.agentserver.User;
-import dcc.agent.server.service.script.intermediate.Node;
-import dcc.agent.server.service.script.intermediate.ScriptNode;
-import dcc.agent.server.service.script.intermediate.SymbolManager;
-import dcc.agent.server.service.script.intermediate.SymbolValues;
-import dcc.agent.server.service.script.intermediate.TypeNode;
+import dcc.agent.server.service.script.intermediate.*;
 import dcc.agent.server.service.script.runtime.value.NullValue;
 import dcc.agent.server.service.script.runtime.value.Value;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 public class ScriptState {
     public ScriptRuntime scriptRuntime;

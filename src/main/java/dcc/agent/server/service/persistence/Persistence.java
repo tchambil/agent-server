@@ -51,8 +51,9 @@ public class Persistence {
         try {
             // Get a new persistent file object
             if (file == null)
+            {
                 file = new PersistentFile();
-
+            }
             // Does our persistent file exists yet?
             if (checkForPersistenceFile()) {
                 // Yes, open it
@@ -160,6 +161,7 @@ public class Persistence {
                 String userJsonSource = file.get("users", userId);
                 log.info("Load all users");
                 agentServer.recreateUser(userJsonSource);
+                log.info("Loaded all users");
             }
         } catch (PersistentFileException e) {
             e.printStackTrace();

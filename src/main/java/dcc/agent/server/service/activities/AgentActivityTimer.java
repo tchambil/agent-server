@@ -16,20 +16,13 @@
 
 package dcc.agent.server.service.activities;
 
-import org.apache.log4j.Logger;
-import org.json.JSONException;
-
-
-import dcc.agent.server.service.agentserver.AgentInstance;
-import dcc.agent.server.service.agentserver.AgentServerException;
-import dcc.agent.server.service.agentserver.AgentTimer;
-import dcc.agent.server.service.agentserver.AgentTimerStatus;
+import dcc.agent.server.service.agentserver.*;
 import dcc.agent.server.service.agentserver.RuntimeException;
 import dcc.agent.server.service.scheduler.AgentScheduler;
 import dcc.agent.server.service.script.intermediate.SymbolException;
-import dcc.agent.server.service.script.parser.ParserException;
-import dcc.agent.server.service.script.parser.tokenizer.TokenizerException;
 import dcc.agent.server.service.script.runtime.value.Value;
+import org.apache.log4j.Logger;
+import org.json.JSONException;
 
 public class AgentActivityTimer extends AgentActivity {
     static final Logger log = Logger.getLogger(AgentActivityTimer.class);
@@ -44,10 +37,8 @@ public class AgentActivityTimer extends AgentActivity {
 
     public boolean performActivity() throws SymbolException, RuntimeException, AgentServerException, JSONException {
         startActivity();
-
         // Get current timer status
         AgentTimerStatus status = agent.timerStatus.get(timer.name);
-
         // If timer is now disabled, ignore this lingering hit
         if (status.enabled) {
             // Remember time of timer trigger
@@ -62,8 +53,7 @@ public class AgentActivityTimer extends AgentActivity {
                 // Run the timer's script
                 // TODO: Maybe skip this if timer is now disabled
                 Value returnValueNode = agent.runScriptString(timer.script);
-
-                // Record the script return value
+               // Record the script return value
                 status.scriptReturnValue = returnValueNode;
             } catch (RuntimeException e) {
                 gotException(e);
@@ -71,7 +61,6 @@ public class AgentActivityTimer extends AgentActivity {
             }
 
             log.info("Timer script completed - " + timer.script);
-
             // Reschedule the timer for its next interval, unless it is now marked as disabled
             if (status.enabled) {
                 // Create a new timer activity - time will be now plus timer interval

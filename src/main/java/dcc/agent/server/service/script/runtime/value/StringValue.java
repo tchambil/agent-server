@@ -30,7 +30,7 @@ import org.apache.log4j.Logger;
 import dcc.agent.server.service.agentserver.RuntimeException;
 import dcc.agent.server.service.script.intermediate.StringTypeNode;
 import dcc.agent.server.service.script.intermediate.TypeNode;
-import dcc.agent.server.service.script.runtine.ScriptState;
+import dcc.agent.server.service.script.runtime.ScriptState;
 import dcc.agent.server.service.util.JsonUtils;
 import dcc.agent.server.service.util.StringUtils;
 import dcc.agent.server.service.util.TextAnalyzer;

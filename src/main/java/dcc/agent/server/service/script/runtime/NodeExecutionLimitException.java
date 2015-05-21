@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package dcc.agent.server.service.script.runtine;
+package dcc.agent.server.service.script.runtime;
 
 import dcc.agent.server.service.agentserver.RuntimeException;
 

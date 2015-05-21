@@ -9,7 +9,7 @@ import dcc.agent.server.service.scheduler.AgentScheduler;
 import dcc.agent.server.service.script.intermediate.*;
 import dcc.agent.server.service.script.parser.ScriptParser;
 import dcc.agent.server.service.script.runtime.value.Value;
-import dcc.agent.server.service.script.runtine.ScriptRuntime;
+import dcc.agent.server.service.script.runtime.ScriptRuntime;
 import dcc.agent.server.service.util.DateUtils;
 import dcc.agent.server.service.util.JsonListMap;
 import dcc.agent.server.service.util.NameValue;
@@ -38,7 +38,7 @@ public class PlataformController {
 
     @RequestMapping(value = {"/status/start", "/status/start2"}, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public @ResponseBody String Start() throws Exception {
+    public String Start() throws Exception {
 
         AgentAppServer agentAppServer = new AgentAppServer();
         // Start the agent server.

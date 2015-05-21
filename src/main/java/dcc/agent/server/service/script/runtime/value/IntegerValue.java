@@ -22,7 +22,7 @@ import java.util.List;
 import dcc.agent.server.service.agentserver.RuntimeException;
 import dcc.agent.server.service.script.intermediate.IntegerTypeNode;
 import dcc.agent.server.service.script.intermediate.TypeNode;
-import dcc.agent.server.service.script.runtine.ScriptState;
+import dcc.agent.server.service.script.runtime.ScriptState;
 import dcc.agent.server.service.util.DateUtils;
 
 public class IntegerValue extends NumberValue {

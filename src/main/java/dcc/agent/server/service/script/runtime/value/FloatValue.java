@@ -16,13 +16,12 @@
 
 package dcc.agent.server.service.script.runtime.value;
 
-import java.util.List;
-
-
 import dcc.agent.server.service.agentserver.RuntimeException;
 import dcc.agent.server.service.script.intermediate.FloatTypeNode;
 import dcc.agent.server.service.script.intermediate.TypeNode;
-import dcc.agent.server.service.script.runtine.ScriptState;
+import dcc.agent.server.service.script.runtime.ScriptState;
+
+import java.util.List;
 
 public class FloatValue extends NumberValue {
     public static final double EPSILON = 0.0000001;

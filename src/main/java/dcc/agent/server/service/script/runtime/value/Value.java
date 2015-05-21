@@ -16,17 +16,16 @@
 
 package dcc.agent.server.service.script.runtime.value;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
-
 import dcc.agent.server.service.agentserver.AgentServerException;
 import dcc.agent.server.service.agentserver.RuntimeException;
 import dcc.agent.server.service.script.intermediate.ExpressionNode;
 import dcc.agent.server.service.script.intermediate.ObjectTypeNode;
 import dcc.agent.server.service.script.intermediate.TypeNode;
-import dcc.agent.server.service.script.runtine.ScriptState;
+import dcc.agent.server.service.script.runtime.ScriptState;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class Value extends ExpressionNode {
 

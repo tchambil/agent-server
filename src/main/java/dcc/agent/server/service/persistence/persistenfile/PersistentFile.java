@@ -229,8 +229,10 @@ public class PersistentFile implements Iterable<String> {
             byte[] keyBlockBuffer = new byte[BLOCK_SIZE];
             int numBytesRead = file.read(keyBlockBuffer);
             if (numBytesRead != BLOCK_SIZE)
+            {
+                log.info("Internal error: Incomplete key block size read of only " + numBytesRead + " bytes");
                 throw new PersistentFileException("Internal error: Incomplete key block size read of only " + numBytesRead + " bytes");
-
+            }
             // Decode the block
             String blockString = new String(keyBlockBuffer, "UTF-8");
             int blockStringLen = blockString.length();
@@ -257,6 +259,7 @@ public class PersistentFile implements Iterable<String> {
                         try {
                             blockPosition = Long.parseLong(nextBlockString);
                         } catch (NumberFormatException e) {
+                            log.info("Data corruption: Link pointer is not decimal: " + nextBlockString);
                             throw new PersistentFileException("Data corruption: Link pointer is not decimal: " + nextBlockString);
                         }
                         break;
@@ -273,8 +276,9 @@ public class PersistentFile implements Iterable<String> {
 
                     // Make sure we have the tab delimiter
                     if (keyBlockBuffer[i + keyBytesLen] != '\t')
+                    {log.info("Data corruption: Did not find tab delimiter after key at offset " + i + " in block at position " + blockPosition + " of table " + table.name);
                         throw new PersistentFileException("Data corruption: Did not find tab delimiter after key at offset " + i + " in block at position " + blockPosition + " of table " + table.name);
-
+                    }
                     // Scan the value position
                     int positionBytesLen = 0;
                     for (int j = i + keyBytesLen + 1; j < BLOCK_SIZE && keyBlockBuffer[j] != '\r'; j++) {
@@ -282,8 +286,9 @@ public class PersistentFile implements Iterable<String> {
 
                     }
 
-                    if (positionBytesLen != 12) {
-
+                    if (positionBytesLen != 12)
+                    {
+                         log.info("Data corruption: Link pointer is not 012 characters: " + new String(keyBlockBuffer, i + 1, positionBytesLen));
                         throw new PersistentFileException("Data corruption: Link pointer is not 012 characters: " + new String(keyBlockBuffer, i + 1, positionBytesLen));
                     }
                     // Scan the key value position
@@ -292,6 +297,7 @@ public class PersistentFile implements Iterable<String> {
                     try {
                         keyValuePosition = Long.parseLong(keyValuePositionString);
                     } catch (NumberFormatException e) {
+                        log.info("Data corruption: Link pointer is not decimal: " + keyValuePositionString);
                         throw new PersistentFileException("Data corruption: Link pointer is not decimal: " + keyValuePositionString);
                     }
 

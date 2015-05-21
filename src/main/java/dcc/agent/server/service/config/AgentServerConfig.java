@@ -22,7 +22,7 @@ import dcc.agent.server.service.agentserver.AgentServer;
 import dcc.agent.server.service.agentserver.AgentServerException;
 import dcc.agent.server.service.mailaccessmanager.MailAccessManager;
 import dcc.agent.server.service.persistence.persistenfile.PersistentFileException;
-import dcc.agent.server.service.script.runtine.ScriptState;
+import dcc.agent.server.service.script.runtime.ScriptState;
 import dcc.agent.server.service.util.JsonListMap;
 import dcc.agent.server.service.util.JsonUtils;
 import dcc.agent.server.service.util.ListMap;

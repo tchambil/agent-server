@@ -25,7 +25,7 @@ import dcc.agent.server.service.agentserver.RuntimeException;
 import dcc.agent.server.service.script.runtime.value.NullValue;
 import dcc.agent.server.service.script.runtime.value.StringValue;
 import dcc.agent.server.service.script.runtime.value.Value;
-import dcc.agent.server.service.script.runtine.ScriptState;
+import dcc.agent.server.service.script.runtime.ScriptState;
 
 public class NameReferenceNode extends ReferenceNode {
     public ExpressionNode node;

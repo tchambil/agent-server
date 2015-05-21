@@ -14,20 +14,18 @@
  * limitations under the License.
  */
 
-package dcc.agent.server.service.script.runtine;
-
-import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Arrays;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
+package dcc.agent.server.service.script.runtime;
 
 import dcc.agent.server.service.agentserver.AgentServerException;
 import dcc.agent.server.service.util.DateUtils;
 import dcc.agent.server.service.util.JsonListMap;
 import dcc.agent.server.service.util.JsonUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ExceptionInfo {
     public Exception exception;

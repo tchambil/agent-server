@@ -26,7 +26,7 @@ import dcc.agent.server.service.script.intermediate.DivideNode;
 import dcc.agent.server.service.script.intermediate.ListTypeNode;
 import dcc.agent.server.service.script.intermediate.ObjectTypeNode;
 import dcc.agent.server.service.script.intermediate.TypeNode;
-import dcc.agent.server.service.script.runtine.ScriptState;
+import dcc.agent.server.service.script.runtime.ScriptState;
 
 public class ListValue extends Value {
     public TypeNode type;

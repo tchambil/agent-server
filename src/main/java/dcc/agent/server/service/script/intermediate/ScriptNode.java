@@ -18,7 +18,7 @@ package dcc.agent.server.service.script.intermediate;
 
 import dcc.agent.server.service.agentserver.AgentServerException;
 import dcc.agent.server.service.script.runtime.value.Value;
-import dcc.agent.server.service.script.runtine.ScriptState;
+import dcc.agent.server.service.script.runtime.ScriptState;
 import dcc.agent.server.service.util.ListMap;
 
 import java.util.List;

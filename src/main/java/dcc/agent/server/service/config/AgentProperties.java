@@ -4,7 +4,7 @@ import dcc.agent.server.service.agentserver.AgentDefinition;
 import dcc.agent.server.service.agentserver.AgentInstance;
 import dcc.agent.server.service.agentserver.User;
 import dcc.agent.server.service.mailaccessmanager.MailAccessManager;
-import dcc.agent.server.service.script.runtine.ScriptState;
+import dcc.agent.server.service.script.runtime.ScriptState;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;

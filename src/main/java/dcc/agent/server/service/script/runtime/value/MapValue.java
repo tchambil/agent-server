@@ -29,7 +29,7 @@ import dcc.agent.server.service.script.intermediate.MapTypeNode;
 import dcc.agent.server.service.script.intermediate.ObjectTypeNode;
 import dcc.agent.server.service.script.intermediate.StringTypeNode;
 import dcc.agent.server.service.script.intermediate.TypeNode;
-import dcc.agent.server.service.script.runtine.ScriptState;
+import dcc.agent.server.service.script.runtime.ScriptState;
 import dcc.agent.server.service.util.JsonListMap;
 import dcc.agent.server.service.util.ListMap;
 

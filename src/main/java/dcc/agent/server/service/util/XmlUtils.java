@@ -16,27 +16,15 @@
 
 package dcc.agent.server.service.util;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
-
+import dcc.agent.server.service.agentserver.RuntimeException;
+import dcc.agent.server.service.script.intermediate.ObjectTypeNode;
+import dcc.agent.server.service.script.runtime.ScriptState;
+import dcc.agent.server.service.script.runtime.value.*;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-
-import dcc.agent.server.service.agentserver.RuntimeException;
-import dcc.agent.server.service.script.intermediate.ObjectTypeNode;
-import dcc.agent.server.service.script.runtime.value.FieldValue;
-import dcc.agent.server.service.script.runtime.value.ListValue;
-import dcc.agent.server.service.script.runtime.value.MapValue;
-import dcc.agent.server.service.script.runtime.value.NullValue;
-import dcc.agent.server.service.script.runtime.value.StringValue;
-import dcc.agent.server.service.script.runtime.value.Value;
-import dcc.agent.server.service.script.runtine.ScriptState;
+import java.util.*;
 
 // TODO: Add option for whether to throw errors or silently ignore/fix them
 

@@ -20,7 +20,7 @@ import dcc.agent.server.service.agentserver.RuntimeException;
 import dcc.agent.server.service.script.intermediate.StringTypeNode;
 import dcc.agent.server.service.script.intermediate.TypeNode;
 import dcc.agent.server.service.script.intermediate.WebTypeNode;
-import dcc.agent.server.service.script.runtine.ScriptState;
+import dcc.agent.server.service.script.runtime.ScriptState;
 
 import java.util.ArrayList;
 import java.util.List;

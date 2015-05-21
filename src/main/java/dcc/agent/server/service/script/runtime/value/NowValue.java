@@ -20,7 +20,7 @@ import java.util.List;
 
 
 import dcc.agent.server.service.agentserver.RuntimeException;
-import dcc.agent.server.service.script.runtine.ScriptState;
+import dcc.agent.server.service.script.runtime.ScriptState;
 
 public class NowValue extends Value {
 

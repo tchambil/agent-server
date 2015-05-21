@@ -16,28 +16,26 @@
 
 package dcc.agent.server.service.agentserver;
 
-import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import org.apache.log4j.Logger;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-
 import dcc.agent.server.service.notification.NotificationHistory;
 import dcc.agent.server.service.notification.NotificationInstance;
 import dcc.agent.server.service.script.intermediate.Symbol;
 import dcc.agent.server.service.script.intermediate.SymbolException;
 import dcc.agent.server.service.script.intermediate.SymbolManager;
 import dcc.agent.server.service.script.intermediate.SymbolValues;
+import dcc.agent.server.service.script.runtime.ExceptionInfo;
 import dcc.agent.server.service.script.runtime.value.Value;
-import dcc.agent.server.service.script.runtine.ExceptionInfo;
 import dcc.agent.server.service.util.DateUtils;
 import dcc.agent.server.service.util.JsonUtils;
 import dcc.agent.server.service.util.ListMap;
+import org.apache.log4j.Logger;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class AgentState {
     static final Logger log = Logger.getLogger(AgentState.class);

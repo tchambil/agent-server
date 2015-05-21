@@ -20,7 +20,7 @@ package dcc.agent.server.service.script.intermediate;
 import dcc.agent.server.service.agentserver.AgentServerException;
 import dcc.agent.server.service.agentserver.RuntimeException;
 import dcc.agent.server.service.script.runtime.value.Value;
-import dcc.agent.server.service.script.runtine.ScriptState;
+import dcc.agent.server.service.script.runtime.ScriptState;
 
 public class AssignmentNode extends ExpressionNode {
     public ReferenceNode variable;

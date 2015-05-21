@@ -30,9 +30,9 @@ import dcc.agent.server.service.script.runtime.value.FieldValue;
 import dcc.agent.server.service.script.runtime.value.MapValue;
 import dcc.agent.server.service.script.runtime.value.NullValue;
 import dcc.agent.server.service.script.runtime.value.Value;
-import dcc.agent.server.service.script.runtine.ExceptionInfo;
-import dcc.agent.server.service.script.runtine.ParsedScripts;
-import dcc.agent.server.service.script.runtine.ScriptRuntime;
+import dcc.agent.server.service.script.runtime.ExceptionInfo;
+import dcc.agent.server.service.script.runtime.ParsedScripts;
+import dcc.agent.server.service.script.runtime.ScriptRuntime;
 import dcc.agent.server.service.util.*;
 import org.apache.log4j.Logger;
 import org.json.JSONArray;
@@ -733,13 +733,14 @@ public class AgentInstance {
         return valueNode;
     }
 
-    public Value runScriptString(String script) throws AgentServerException {
+    public Value runScriptString(String script) throws AgentServerException
+    {
         return runScriptString(script, true);
     }
 
     public Value runScriptString(String script, boolean captureInputs) throws AgentServerException {
         try {
-            // Compile the script
+            // Compile the scriptD
             // TODO: Cache and reuse compiled scripts
             ScriptParser parser = new ScriptParser(this);
             ScriptNode scriptNode = parser.parseScriptString(script);
