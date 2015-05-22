@@ -17,10 +17,21 @@
 package dcc.agent.server.service.config;
 
 
-public class AgentServerWebAccessConfig {
+import dcc.agent.server.service.webaccessmanager.WebAccessConfig;
+
+public class AgentServerWebAccessConfig extends WebAccessConfig{
     public AgentServerConfig config;
 
-
+    public AgentServerWebAccessConfig(AgentServerConfig config){
+        super(config.getLong("minimum_web_access_interval"),
+                config.getLong("minimum_web_site_access_interval"),
+                config.getLong("default_web_page_refresh_interval"),
+                config.getLong("minimum_web_page_refresh_interval"),
+                config.get("user_agent_name"),
+                config.getBoolean("implicitly_deny_web_access"),
+                config.getBoolean("implicitly_deny_web_write_access"));
+        this.config = config;
+    }
     public boolean getImplicitlyDenyWebAccess() {
         return config.getBoolean("implicitly_deny_web_access");
     }

@@ -3,14 +3,14 @@ package dcc.agent.server.service.message;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
-import dcc.agent.server.service.config.AgentProperties;
+import dcc.agent.server.service.config.AgentServerProperties;
 
 /**
  * Created by teo on 28/04/15.
  */
 public class MessageSender {
 
-    public static AgentProperties Properties;
+    public static AgentServerProperties Properties;
     public void sender(String message, boolean state)throws Exception{
         state=true;
     ConnectionFactory factory = new ConnectionFactory();

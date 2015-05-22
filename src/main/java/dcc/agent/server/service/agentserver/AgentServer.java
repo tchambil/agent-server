@@ -17,7 +17,7 @@
 package dcc.agent.server.service.agentserver;
 
 import dcc.agent.server.service.appserver.AgentAppServer;
-import dcc.agent.server.service.config.AgentProperties;
+import dcc.agent.server.service.config.AgentServerProperties;
 import dcc.agent.server.service.config.AgentServerConfig;
 import dcc.agent.server.service.config.AgentServerWebAccessConfig;
 import dcc.agent.server.service.config.AgentVariable;
@@ -30,7 +30,11 @@ import dcc.agent.server.service.script.parser.ParserException;
 import dcc.agent.server.service.script.parser.tokenizer.TokenizerException;
 import dcc.agent.server.service.script.runtime.value.Value;
 import dcc.agent.server.service.util.DateUtils;
+import dcc.agent.server.service.util.ListMap;
 import dcc.agent.server.service.util.NameValueList;
+import dcc.agent.server.service.webaccessmanager.WebAccessManager;
+import dcc.agent.server.service.webaccessmanager.WebPage;
+import dcc.agent.server.service.webaccessmanager.WebSiteAccessConfig;
 import org.apache.log4j.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -58,10 +62,11 @@ public class AgentServer {
     public NameValueList<User> users;
     public NameValueList<AgentDefinitionList> agentDefinitions;
     public NameValueList<AgentInstanceList> agentInstances;
-    public AgentProperties agentProperties;
+    public AgentServerProperties agentServerProperties;
     public AgentVariable agentVariable;
     public AgentServerWebAccessConfig webAccessConfig;
-
+    public WebSiteAccessConfig webSiteAccessConfig;
+    public WebAccessManager webAccessManager;
     public MailAccessManager mailAccessManager;
 
     public AgentServer(AgentAppServer agentAppServer) throws RuntimeException, AgentServerException, IOException, InterruptedException, PersistentFileException, ParseException, TokenizerException, ParserException {
@@ -335,7 +340,7 @@ public class AgentServer {
         String triggerIntervalExpression = agentJson.optString("trigger_interval", AgentDefinition.DEFAULT_TRIGGER_INTERVAL_EXPRESSION);
         String reportingIntervalExpression = agentJson.optString("reporting_interval", AgentDefinition.DEFAULT_REPORTING_INTERVAL_EXPRESSION);
 
-        boolean publicOutput = agentJson.optBoolean("public_output", false);
+        boolean publicOutput = agentJson.optBoolean("public_output", true);
 
         int limitInstanceStatesStored = agentJson.optInt("limit_instance_states_stored", -1);
 
@@ -496,7 +501,7 @@ public class AgentServer {
         this.agentInstances = new NameValueList<AgentInstanceList>();
 
         // Initialize agent server properties
-        agentProperties = new AgentProperties();
+        agentServerProperties = new AgentServerProperties();
 
         // Initialize the agent scheduler, but keep it suspended for now
         if (agentScheduler == null)
@@ -516,6 +521,16 @@ public class AgentServer {
         if (config == null)
             config = new AgentServerConfig(this);
         config.load();
+        if (webAccessConfig == null)
+            webAccessConfig = new AgentServerWebAccessConfig(config);
+
+        // Initialize the web site access control lists
+        if (webSiteAccessConfig == null)
+            webSiteAccessConfig = new WebSiteAccessConfig(this);
+        webSiteAccessConfig.load();
+
+        // Initialize the web access manager
+        this.webAccessManager = new WebAccessManager(webAccessConfig, webSiteAccessConfig);
 
         // Initialize the web access manager
         this.mailAccessManager = new MailAccessManager(this);
@@ -550,6 +565,33 @@ public class AgentServer {
 
     public String getDefaultTriggerInterval() {
         return config.get("default_trigger_interval");
+    }
+
+
+
+    public void addWebSiteAccessControls(User user, JSONObject accessControlsJson) throws JSONException, AgentServerException{
+        webAccessManager.addWebSiteAccessControls(user.id, accessControlsJson);
+
+    }
+
+    public WebPage getWebPage(String userId, String url) {
+        return webAccessManager.getWebPage(userId, url);
+    }
+
+    public WebPage getWebPage(String userId, String url, boolean useCache, long refreshInterval, boolean wait){
+        return webAccessManager.getWebPage(userId, url, useCache, refreshInterval, wait);
+    }
+
+    public WebPage postUrl(String userId, String url, String data) {
+        return webAccessManager.postUrl(userId, url, data);
+    }
+
+    public WebPage postUrl(String userId, String url, String data, long refreshInterval, boolean wait){
+        return webAccessManager.postUrl(userId, url, data, refreshInterval, wait);
+    }
+
+    public ListMap<String, String> getWebSiteAccessControls(User user) throws JSONException, AgentServerException{
+        return webAccessManager.getWebSiteAccessControls(user);
     }
 
 

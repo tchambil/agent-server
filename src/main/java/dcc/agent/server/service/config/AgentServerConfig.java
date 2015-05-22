@@ -41,15 +41,15 @@ public class AgentServerConfig {
     public ListMap<String, String> config;
     public boolean batchUpdate;
     //public AgentServerProperties agentServerProperties;
-    public AgentProperties agentServerProperties;
+    public AgentServerProperties agentServerProperties;
 
     public AgentServerConfig(AgentServer agentServer)
             throws AgentServerException {
         this.agentServer = agentServer;
         this.config = new ListMap<String, String>();
         this.batchUpdate = false;
-        this.agentServerProperties = agentServer.agentProperties == null ? new AgentProperties()
-                : agentServer.agentProperties;
+        this.agentServerProperties = agentServer.agentServerProperties == null ? new AgentServerProperties()
+                : agentServer.agentServerProperties;
     }
 
     public void load() throws IOException, PersistentFileException,

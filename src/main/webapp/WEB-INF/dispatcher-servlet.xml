@@ -3,16 +3,18 @@
        xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
 	   http://www.springframework.org/schema/context
 	   http://www.springframework.org/schema/context/spring-context-3.2.xsd
 	   http://www.springframework.org/schema/mvc
-	   http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd ">
+	   http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
 
     <context:component-scan base-package="dcc.agent.server" />
     <import resource="config_rabbitmq.xml"/>
+    <import resource="classpath:app-properties.xml"/>
     <!-- Factory bean that creates the Mongo instance -->
     <bean id="mongo" class="org.springframework.data.mongodb.core.MongoFactoryBean">
         <property name="host" value="localhost" />
@@ -24,7 +26,17 @@
         <constructor-arg name="databaseName" value="agentdb" />
     </bean>
 
-    <!-- Use this post processor to translate any MongoExceptions thrown in @Repository annotated classes -->
+
+    <!--
+       <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+           <property name="locations">
+               <value>classpath:agentserver.properties</value>
+           </property>
+       </bean>
+       <bean id="dataSource" class="dcc.agent.server.service.config.AgentServerProperties">
+           <property name="teo" value="${valor.teo}"/>
+       </bean>
+         Use this post processor to translate any MongoExceptions thrown in @Repository annotated classes -->
     <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

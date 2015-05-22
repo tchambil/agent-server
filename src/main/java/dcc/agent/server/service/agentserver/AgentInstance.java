@@ -19,20 +19,19 @@ import dcc.agent.server.service.activities.AgentActivityNotification;
 import dcc.agent.server.service.activities.AgentActivityTriggerInputChanged;
 import dcc.agent.server.service.field.Field;
 import dcc.agent.server.service.goals.Goal;
-import dcc.agent.server.service.message.MessageSender;
 import dcc.agent.server.service.notification.*;
 import dcc.agent.server.service.scheduler.AgentScheduler;
 import dcc.agent.server.service.script.intermediate.*;
 import dcc.agent.server.service.script.parser.ParserException;
 import dcc.agent.server.service.script.parser.ScriptParser;
 import dcc.agent.server.service.script.parser.tokenizer.TokenizerException;
+import dcc.agent.server.service.script.runtime.ExceptionInfo;
+import dcc.agent.server.service.script.runtime.ParsedScripts;
+import dcc.agent.server.service.script.runtime.ScriptRuntime;
 import dcc.agent.server.service.script.runtime.value.FieldValue;
 import dcc.agent.server.service.script.runtime.value.MapValue;
 import dcc.agent.server.service.script.runtime.value.NullValue;
 import dcc.agent.server.service.script.runtime.value.Value;
-import dcc.agent.server.service.script.runtime.ExceptionInfo;
-import dcc.agent.server.service.script.runtime.ParsedScripts;
-import dcc.agent.server.service.script.runtime.ScriptRuntime;
 import dcc.agent.server.service.util.*;
 import org.apache.log4j.Logger;
 import org.json.JSONArray;
@@ -556,13 +555,14 @@ public class AgentInstance {
             if (field.compute != null) {
                 Value newValue = evaluateExpression(field.compute);
                 outputValues.put(symbolManager.get("outputs", field.symbol.name), newValue);
-
+                /*
                 MessageSender messageSender = new MessageSender ();
                 try {
                   messageSender.sender("Computed new output value for " + field.symbol.name + ": " + newValue.toJson(), false);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                */
                 log.info("Computed new output value for " + field.symbol.name + ": " + newValue.toJson());
             }
         }
@@ -665,7 +665,8 @@ public class AgentInstance {
         return runScript(scriptName, null, captureInputs);
     }
 
-    public Value runScript(String scriptName, List<Value> arguments) throws TokenizerException, ParserException, SymbolException, RuntimeException, JSONException, AgentServerException {
+    public Value runScript(String scriptName, List<Value> arguments) throws TokenizerException, ParserException, SymbolException, RuntimeException, JSONException, AgentServerException
+    {
         return runScript(scriptName, arguments, true);
     }
 

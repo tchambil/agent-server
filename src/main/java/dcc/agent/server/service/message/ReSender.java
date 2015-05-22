@@ -3,14 +3,14 @@ package dcc.agent.server.service.message;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
-import dcc.agent.server.service.config.AgentProperties;
+import dcc.agent.server.service.config.AgentServerProperties;
 
 import java.net.InetAddress;
 /**
  * Created by teo on 28/04/15.
  * */
 public class ReSender {
- public static AgentProperties Properties;
+ public static AgentServerProperties Properties;
  private final static String QUEUE_NAME="hello";
 
  public void sender(String message) throws Exception {

@@ -22,7 +22,7 @@ import dcc.agent.server.service.agentserver.AgentInstance;
 import dcc.agent.server.service.agentserver.AgentServer;
 import dcc.agent.server.service.agentserver.AgentServerException;
 import dcc.agent.server.service.agentserver.User;
-import dcc.agent.server.service.config.AgentProperties;
+import dcc.agent.server.service.config.AgentServerProperties;
 import dcc.agent.server.service.config.AgentServerConfig;
 import dcc.agent.server.service.mail.AgentMail;
 
@@ -44,7 +44,7 @@ public class MailNotification {
     public MailNotification(AgentServer agentServer) {
         this.agentServer = agentServer;
         //AgentServerProperties agentServerProperties = agentServer.config.agentServerProperties;
-        AgentProperties agentServerProperties = agentServer.config.agentServerProperties;
+        AgentServerProperties agentServerProperties = agentServer.config.agentServerProperties;
         mailServerHostName = agentServerProperties.mailServerHostName;
         mailServerUserName = agentServerProperties.mailServerUserName;
         mailServerUserPassword = agentServerProperties.mailServerUserPassword;

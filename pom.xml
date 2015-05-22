@@ -18,6 +18,12 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${springframework.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
             <version>${springframework.version}</version>
 
@@ -112,7 +118,19 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
+    <developers>
+        <developer>
+            <id>tchambil</id>
+            <name>Teofilo Chambilla</name>
+            <email>thambil@dcc.uchile.cl</email>
+            <url>http://tchambil.com</url>
+            <roles>
+                <role>developer</role>
+            </roles>
+        </developer>
+    </developers>
     <build>
         <plugins>
             <plugin>

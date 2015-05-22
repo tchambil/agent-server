@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Agent Server</title>
+    <title>Agent Server v1.0</title>
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -96,7 +96,7 @@
             <span class="icon-bar"></span>
         </button>
         <a class="" href="/"><span class="navbar-brand"><span
-                class="fa fa-paper-plane"></span> Agent Server</span></a>
+                class="fa fa-paper-plane"></span> Agent Server v1.0</span></a>
 
     </div>
 

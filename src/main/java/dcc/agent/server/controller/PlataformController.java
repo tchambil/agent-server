@@ -3,13 +3,13 @@ package dcc.agent.server.controller;
 import dcc.agent.server.service.agentserver.*;
 import dcc.agent.server.service.appserver.AgentAppServer;
 import dcc.agent.server.service.appserver.AgentAppServerShutdown;
-import dcc.agent.server.service.config.AgentProperties;
+import dcc.agent.server.service.config.AgentServerProperties;
 import dcc.agent.server.service.field.Field;
 import dcc.agent.server.service.scheduler.AgentScheduler;
 import dcc.agent.server.service.script.intermediate.*;
 import dcc.agent.server.service.script.parser.ScriptParser;
-import dcc.agent.server.service.script.runtime.value.Value;
 import dcc.agent.server.service.script.runtime.ScriptRuntime;
+import dcc.agent.server.service.script.runtime.value.Value;
 import dcc.agent.server.service.util.DateUtils;
 import dcc.agent.server.service.util.JsonListMap;
 import dcc.agent.server.service.util.NameValue;
@@ -31,6 +31,8 @@ public class PlataformController {
     static public Thread shutdownThread;
     protected static Logger logger = Logger.getLogger(PlataformController.class);
     public Utils util;
+
+
 
     public AgentServer getAgentServer() {
         return this.agentServer;
@@ -233,7 +235,7 @@ public class PlataformController {
     }
     @RequestMapping(value = "/status", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public String getStatus() throws JSONException, InterruptedException {
+    public String getStatus() throws JSONException, InterruptedException, AgentServerException {
 
         logger.info("Getting status info");
 
@@ -275,8 +277,9 @@ public class PlataformController {
                 num_active_agents += agentInstanceListNameValue.value.size();
             aboutJson.put("num_active_agents", num_active_agents);
         }
-        aboutJson.put("HostName", AgentProperties.agentServerHostName);
-        aboutJson.put("IP",AgentProperties.agentServerIP);
+        AgentServerProperties agentServerProperties =new AgentServerProperties();
+        aboutJson.put("HostName", agentServerProperties.agentServerHostName);
+        aboutJson.put("IP", agentServerProperties.agentServerName);
         return aboutJson.toString(4);
     }
 

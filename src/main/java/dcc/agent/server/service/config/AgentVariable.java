@@ -18,4 +18,7 @@ public class AgentVariable {
     public static final long DEFAULT_MINIMUM_WEB_SITE_ACCESS_INTERVAL = 60 * 1000;
     public static final boolean DEFAULT_IMPLICITLY_DENY_WEB_ACCESS = false;
     public static final boolean DEFAULT_IMPLICITLY_DENY_WEB_WRITE_ACCESS = true;
+
+
+
 }
