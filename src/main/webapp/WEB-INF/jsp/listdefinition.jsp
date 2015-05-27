@@ -179,7 +179,20 @@
         <li>
             <ul class="group-menu nav nav-list collapse">
                 <li>
-                    <a href="premium-profile.html"><span class="fa fa-caret-right"></span> Enhasasasanced Profile</a>
+                    <a href="/message.do"><span class="fa fa-caret-right"></span> message</a>
+                </li>
+            </ul>
+        </li>
+        <!--<TEST´s]-->
+        <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".group-test"
+                                                                        class="nav-header collapsed"
+                                                                        data-toggle="collapse">
+            <i class="fa fa-fw fa-globe"></i> Test<i class="fa fa-collapse"></i></a>
+        </li>
+        <li>
+            <ul class="group-test nav nav-list collapse">
+                <li>
+                    <a href="/testscript.do"><span class="fa fa-caret-right"></span> Scripts</a>
                 </li>
             </ul>
         </li>

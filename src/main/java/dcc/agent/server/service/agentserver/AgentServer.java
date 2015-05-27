@@ -22,6 +22,8 @@ import dcc.agent.server.service.config.AgentServerConfig;
 import dcc.agent.server.service.config.AgentServerWebAccessConfig;
 import dcc.agent.server.service.config.AgentVariable;
 import dcc.agent.server.service.mailaccessmanager.MailAccessManager;
+import dcc.agent.server.service.message.AgentMessage;
+import dcc.agent.server.service.message.AgentMessageList;
 import dcc.agent.server.service.persistence.Persistence;
 import dcc.agent.server.service.persistence.persistenfile.PersistentFileException;
 import dcc.agent.server.service.scheduler.AgentScheduler;
@@ -62,6 +64,7 @@ public class AgentServer {
     public NameValueList<User> users;
     public NameValueList<AgentDefinitionList> agentDefinitions;
     public NameValueList<AgentInstanceList> agentInstances;
+    public NameValueList<AgentMessageList> agentMessages;
     public AgentServerProperties agentServerProperties;
     public AgentVariable agentVariable;
     public AgentServerWebAccessConfig webAccessConfig;
@@ -72,7 +75,6 @@ public class AgentServer {
     public AgentServer(AgentAppServer agentAppServer) throws RuntimeException, AgentServerException, IOException, InterruptedException, PersistentFileException, ParseException, TokenizerException, ParserException {
         this(agentAppServer, true);
     }
-
     public AgentServer(AgentAppServer agentAppServer, boolean start) throws RuntimeException, AgentServerException, IOException, InterruptedException, PersistentFileException, ParseException, TokenizerException, ParserException {
         log.info("Creation of AgentServer object");
         // Link back to app server
@@ -82,7 +84,6 @@ public class AgentServer {
         // Start the agent server
         // start(start);
     }
-
     public static AgentServer getSingleton() throws AgentServerException, InterruptedException, IOException, PersistentFileException, ParseException, TokenizerException, ParserException {
         if (singleton == null)
             return (singleton = new AgentServer(null, false));
@@ -90,7 +91,6 @@ public class AgentServer {
         else
             return singleton;
     }
-
     public AgentDefinition addAgentDefinition(AgentDefinition agentDefinition) throws AgentServerException {
         if (agentDefinition != null) {
             // Check if the user has any agents yet
@@ -107,11 +107,9 @@ public class AgentServer {
             persistence.put(agentDefinition);
 
         }
-
         // Return the agent definition itself
         return agentDefinition;
     }
-
     public AgentDefinition addAgentDefinition(String agentJsonString) throws SymbolException, RuntimeException, AgentServerException {
         if (agentJsonString == null || agentJsonString.trim().length() == 0)
             agentJsonString = "{}";
@@ -121,11 +119,9 @@ public class AgentServer {
             throw new AgentServerException("JSON parsing exception: " + e.getMessage());
         }
     }
-
     public AgentDefinition addAgentDefinition(JSONObject agentJson) throws SymbolException, RuntimeException, AgentServerException {
         return addAgentDefinition(null, agentJson);
     }
-
     public AgentDefinition addAgentDefinition(User user, JSONObject agentJson) throws SymbolException, RuntimeException, AgentServerException {
         // Parse the JSON for the agent definition
         log.info("Parse the JSON for the agent definition");
@@ -134,6 +130,51 @@ public class AgentServer {
         addAgentDefinition(agentDefinition);
         // Return the new agent definition
         return agentDefinition;
+    }
+    public AgentMessage addAgentMessage(JSONObject agenJson) throws JSONException, AgentServerException {
+        return addAgentMessage(null,agenJson);
+    }
+    public AgentMessage addAgentMessage(AgentMessage agentMessage) throws AgentServerException, JSONException {
+      if(agentMessage!=null)
+      {
+       // Check if the user has any agents yet
+          if (!agentMessages.containsKey(agentMessage.user.id))
+          {
+              // No, so create an empty agent table for user
+              agentMessages.put(agentMessage.user.id, new AgentMessageList());
+          }
+          // Get agent message table for the user
+
+          AgentMessageList userAgentMessages=agentMessages.get(agentMessage.user.id);
+          // Store the new agent message for the user
+          userAgentMessages.put(agentMessage);
+          // Persist the new agent message
+          persistence.put(agentMessage);
+
+      }
+        return agentMessage;
+    }
+
+    public AgentMessage getAgentMessage(User user, String agentMessageConversationId)
+    {
+         AgentMessageList agenMap =agentMessages.get(user.id);
+        if(agenMap==null)
+        {
+            return null;
+        }
+        else
+        {
+            return agenMap.get(agentMessageConversationId);
+        }
+    }
+    public AgentMessage addAgentMessage(User user, JSONObject agentJson) throws AgentServerException, JSONException {
+        // Parse the JSON for the agent definition
+        log.info("Parse the JSON for the message");
+        AgentMessage agentMessage = AgentMessage.fromJson(this, user, agentJson);
+        // Add it to table of agent definitions
+        addAgentMessage(agentMessage);
+        // Return the new agent definition
+        return agentMessage;
     }
 
     public AgentDefinition getAgentDefinition(User user, String agentDefinitionName) {
@@ -499,7 +540,7 @@ public class AgentServer {
         this.users = new NameValueList<User>();
         this.agentDefinitions = new NameValueList<AgentDefinitionList>();
         this.agentInstances = new NameValueList<AgentInstanceList>();
-
+        this.agentMessages=new NameValueList<AgentMessageList>();
         // Initialize agent server properties
         agentServerProperties = new AgentServerProperties();
 

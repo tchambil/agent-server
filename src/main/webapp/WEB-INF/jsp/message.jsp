@@ -9,15 +9,15 @@
     <meta name="author" content="">
 
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="/resource/css/bootstrap.css">
+    <link rel="stylesheet" href="/resource/css/font-awesome.css">
 
 
-    <script src="js/site/jquery-1.11.1.min.js" type="text/javascript"></script>
-    <script src="../js/system.js"></script>
-    <script src="js/site/jquery.knob.js" type="text/javascript"></script>
-    <script type="text/javascript" src="js/site/vis.js"></script>
-    <link href="css/vis.css" rel="stylesheet" type="text/css" />
+    <script src="/resource/js/site/jquery-1.11.1.min.js" type="text/javascript"></script>
+    <script src="/resource/js/system.js"></script>
+    <script src="/resource/js/site/jquery.knob.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/resource/js/site/vis.js"></script>
+    <link href="/resource/css/vis.css" rel="stylesheet" type="text/css" />
 
     <script type="text/javascript">
         $(function () {
@@ -26,8 +26,8 @@
     </script>
 
 
-    <link rel="stylesheet" type="text/css" href="css/theme.css">
-    <link rel="stylesheet" type="text/css" href="css/premium.css">
+    <link rel="stylesheet" type="text/css" href="/resource/css/theme.css">
+    <link rel="stylesheet" type="text/css" href="/resource/css/premium.css">
 
 </head>
 <body class=" theme-blue"  onload="drawExample('example2')">
@@ -170,6 +170,7 @@
                 <li><a href="/listagent.do"><span class="fa fa-caret-right"></span> List</a></li>
             </ul>
         </li>
+
         <!--<Groups]-->
         <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".group-menu"
                                                                         class="nav-header collapsed"
@@ -180,7 +181,20 @@
         <li>
             <ul class="group-menu nav nav-list collapse">
                 <li>
-                    <a href="http://192.168.50.22:15672/#/"><span class="fa fa-caret-right"></span> RabbitMQ</a>
+                    <a href="http://localhost:15672/#/"><span class="fa fa-caret-right"></span> RabbitMQ</a>
+                </li>
+            </ul>
+        </li>
+        <!--<TEST´s]-->
+        <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".group-test"
+                                                                        class="nav-header collapsed"
+                                                                        data-toggle="collapse">
+            <i class="fa fa-fw fa-globe"></i> Test<i class="fa fa-collapse"></i></a>
+        </li>
+        <li>
+            <ul class="group-test nav nav-list collapse">
+                <li>
+                    <a href="/testscript.do"><span class="fa fa-caret-right"></span> Scripts</a>
                 </li>
             </ul>
         </li>
@@ -270,8 +284,8 @@
 
 
     </div>
-<script type="text/javascript" src="js/message.js"></script>
-<script src="js/site/bootstrap.js"></script>
+<script type="text/javascript" src="/resource/js/message.js"></script>
+<script src="/resource/js/site/bootstrap.js"></script>
 <script type="text/javascript">
     $("[rel=tooltip]").tooltip();
     $(function () {

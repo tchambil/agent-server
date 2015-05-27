@@ -15,7 +15,14 @@ public class DefinitionControllerClient {
     {
         return "definition";
     }
-@RequestMapping(value = "/listdefinition.do", method = RequestMethod.GET)
+    @RequestMapping(value = "/testscript.do", method = RequestMethod.GET)
+    public String getdefinitionscript(ModelMap modelMap)
+    {
+        return "testscript";
+    }
+
+
+    @RequestMapping(value = "/listdefinition.do", method = RequestMethod.GET)
     public String getlistdefinitios(ModelMap modelMap)
     {
         return "listdefinition";

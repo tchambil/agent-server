@@ -1,22 +1,16 @@
 package dcc.agent.server.controller;
 
-import dcc.agent.server.service.agentserver.AgentInstance;
-import dcc.agent.server.service.agentserver.OutputRecord;
-import dcc.agent.server.service.agentserver.ScriptDefinition;
-import dcc.agent.server.service.agentserver.AgentInstanceList;
-import dcc.agent.server.service.agentserver.AgentServer;
-import dcc.agent.server.service.agentserver.User;
+import dcc.agent.server.service.agentserver.*;
 import dcc.agent.server.service.appserver.AgentAppServerBadRequestException;
 import dcc.agent.server.service.appserver.AgentAppServerException;
+import dcc.agent.server.service.message.AgentMessage;
 import dcc.agent.server.service.notification.NotificationInstance;
 import dcc.agent.server.service.script.intermediate.SymbolValues;
 import dcc.agent.server.service.script.runtime.value.Value;
 import dcc.agent.server.service.script.runtime.ExceptionInfo;
-import dcc.agent.server.service.util.JsonUtils;
-import dcc.agent.server.service.util.Utils;
-import dcc.agent.server.service.util.JsonListMap;
-import dcc.agent.server.service.util.DateUtils;
+import dcc.agent.server.service.util.*;
 import org.apache.log4j.Logger;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONArray;
 import org.springframework.http.HttpStatus;
@@ -61,6 +55,56 @@ public class AgentController {
 
     }
 
+    @RequestMapping(value = "/users/{id}/message", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    public String postAgentDefinition(@PathVariable String id, HttpServletRequest request) throws Exception {
+        PlataformController plataform = new PlataformController();
+        agentServer = plataform.getAgentServer();
+        User user = agentServer.users.get(id);
+
+        JSONObject agentMessageson = util.getJsonRequest(request);
+        if (agentMessageson == null)
+            throw new AgentAppServerBadRequestException(
+                    "Invalid agent message JSON object");
+        logger.info("Adding new agent message for user: " + user.id);
+        // Parse and add the agent definition
+        AgentMessage agentMessage = agentServer.addAgentMessage(
+                user, agentMessageson);
+        // Done
+        JSONObject message = new JSONObject();
+        message.put("message", "Add was successful");
+        return message.toString();
+    }
+
+
+    @RequestMapping(value = "/users/{id}/message", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    public String getAgentMessagey (@PathVariable String id) throws JSONException {
+        PlataformController plataformController = new PlataformController();
+        agentServer = plataformController.getAgentServer();
+        User user = agentServer.users.get(id);
+
+        logger.info("Getting list of all agent message for user Id: " + user.id);
+
+        // Get all agents for this user
+        JSONArray agentMessageArrayJson = new JSONArray();
+        for (AgentMessage agentMessage : agentServer.agentMessages.get(user.id)) {
+            // Generate JSON for short summary of agent definition
+        logger.info("Getting list of all agent message for user Id: " + agentMessage.user.id);
+            JSONObject agentDefinitionJson = new JsonListMap();
+            agentDefinitionJson.put("user", agentMessage.user.id);
+            agentDefinitionJson.put("conversationId", agentMessage.conversationId);
+            agentDefinitionJson.put("sender", agentMessage.sender);
+            agentDefinitionJson.put("receiver", agentMessage.receiver);
+            agentDefinitionJson.put("replyTo", agentMessage.replyTo);
+
+            agentMessageArrayJson.put(agentDefinitionJson);
+        }
+        JSONObject agentMessageJson = new JSONObject();
+        agentMessageJson.put("agent_message", agentMessageArrayJson);
+        return agentMessageJson.toString();
+
+    }
     @RequestMapping(value = "/users/{id}/agents/{name}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public String putAgents(@PathVariable String id, @PathVariable String name, HttpServletRequest request) throws Exception {

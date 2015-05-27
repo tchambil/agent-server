@@ -119,7 +119,7 @@
 
     </div>
 </div>
-</div>
+
 
 
 <div class="sidebar-nav">
@@ -154,6 +154,7 @@
             <ul class="legal-menu nav nav-list collapse">
                 <li><a href="/definition.do"><span class="fa fa-caret-right"></span> Definitions</a></li>
                 <li><a href="/listdefinition.do"><span class="fa fa-caret-right"></span> List</a></li>
+                <li><a href="/definitionscript.do"><span class="fa fa-caret-right"></span> Script(run)</a></li>
             </ul>
         </li>
         <!--<Agents]-->
@@ -168,6 +169,7 @@
                 <li><a href="/listagent.do"><span class="fa fa-caret-right"></span> List</a></li>
             </ul>
         </li>
+
         <!--<Groups]-->
         <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".group-menu"
                                                                         class="nav-header collapsed"
@@ -178,7 +180,20 @@
         <li>
             <ul class="group-menu nav nav-list collapse">
                 <li>
-                    <a href="premium-profile.html"><span class="fa fa-caret-right"></span> Enhasasasanced Profile</a>
+                    <a href="/message.do"><span class="fa fa-caret-right"></span> message</a>
+                </li>
+            </ul>
+        </li>
+        <!--<TEST´s]-->
+        <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".group-test"
+                                                                        class="nav-header collapsed"
+                                                                        data-toggle="collapse">
+            <i class="fa fa-fw fa-globe"></i> Test<i class="fa fa-collapse"></i></a>
+        </li>
+        <li>
+            <ul class="group-test nav nav-list collapse">
+                <li>
+                    <a href="/testscript.do"><span class="fa fa-caret-right"></span> Scripts</a>
                 </li>
             </ul>
         </li>
@@ -214,7 +229,6 @@
         <span class="label label-info">Server:</span> <span id="headerServer">null</span>
         <span>&nbsp;&nbsp;</span>
     </div>
-
     <div class="header">
         <h1 class="page-title">Agent Definitions</h1>
     </div>
@@ -222,72 +236,440 @@
         <ul class="nav nav-tabs">
             <li class="active"><a href="#home" data-toggle="tab">Simple</a></li>
             <li><a href="#advanced" data-toggle="tab">Advanced</a></li>
+            <li><a href="#scrippre" data-toggle="tab">Predefined Script</a></li>
+            <li><a href="#scrip" data-toggle="tab">Write Your Script</a></li>
             <li><a href="#json" data-toggle="tab">JSON</a></li>
         </ul>
-
-        <div class="row">
-            <div id="myTabContent" class="tab-content">
-            <div class="tab-pane fade" id="json">
-            <div class="col-md-8">
-            <pre>
-                <div id="codejson">
-
-
-                </div>
-                        </pre>
-
-
-            </div>
-            </div>
-                <div class="tab-pane active in" id="home">
-
-                    <div class="col-md-3">
-                        <div class="widget">
-                            <ul class="cards list-group">
-                                <li class="list-group-item">
-                                    <p class="label label-warning header-label">General</p>
-                                    <div class="form-group">
-                                        <label>name</label>
-                                        <input type="text"  name="simple" id="namegeneral" class="form-control" value="cuonter"/>
-
-                                    </div>
-                                    <div class="form-group">
-                                        <label>User</label>
-                                        <select name="simple" id="DropUserGeneral" class="form-control">
-                                            <option value="Test">User Test</option>
-                                        </select>
-
-                                    </div>
-
-                                </li>
-                            </ul>
-                            <button id="btnsimpleSdve" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
-                            <a href="#myModal" data-toggle="modal" class="btn btn-danger">Delete</a>
-                            <br/>      <br/>
-                            <div id="idMessageAgent"   class="alert alert-success">
+    <div class="row">
+           <div id="myTabContent" class="tab-content">
+                    <div class="tab-pane fade" id="json">
+                        <div class="col-md-8">
+                        <pre>
+                            <div id="codejson">
                             </div>
-
+                         </pre>
                         </div>
-                    </div><!-- finish col-md-3-->
+                    </div><!-- finish simple-->
+                    <div class="tab-pane fade" id="scrippre">
+                        <div class="col-md-3">
+                            <div class="widget">
+                                <ul class="cards list-group">
+                                    <li class="list-group-item">
+                                        <p class="label label-warning header-label">General</p>
+                                        <div class="form-group">
+                                            <label>name</label>
+                                            <input type="text"  name="advance" id="scriptpgeneral" class="form-control" value="def1"/>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label>User</label>
+
+                                            <select name="advance" id="scriptpusergeneral" class="form-control">
+                                                <option value="Test">User Test</option>
+                                            </select>
+                                        </div>
+                                    </li>
+
+                                </ul>
+                                <button id="btnscripptSave" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
+                                <a href="#myModal" data-toggle="modal" class="btn btn-danger">Delete</a>
+                                <br/>      <br/>
+                                <div id="idMessagescripptdUser"   class="alert alert-success">
+                                </div>
+
+                            </div>
+                        </div><!-- finish col-md-3-->
+                        <div class="col-md-4">
+                            <div class="widget">
+                                <ul class="cards list-group">
+                                    <li class="list-group-item">
+                                        <p class="label label-primary header-label">menory</p>
+                                        <div class="form-group">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" value="">
+                                                    {"name": "p", "type": "int", "default_value": 123 }
+                                                </label>
+                                            </div>
+
+                                        </div>
+
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div><!-- finish col-md-3-->
+                        <div class="col-md-4">
+                            <div class="widget">
+                                <ul class="cards list-group">
+                                    <li class="list-group-item">
+                                        <p class="label label-primary header-label">scrips</p>
+                                        <div class="form-group">
+                                            <div class="form-group">
+                                                <label for="sel1">Select list:</label>
+                                                <select class="form-control" id="sel1">
+                                                    <option>{"name": "script1","script": "if (2 + 2 == 4) return 'Yes'; else return 'No';",  "public": true}</option>
+                                                    <option>{"name": "script2","script": "int sum; for (sum = 0, int i = 1; i <= 10; i++) sum += i;  return sum;",  "public": true}</option>
+                                                    <option>{"name": "script3","script": "string s; for (int i = 1; i <= 5; i++) s += ' ' + i;  return s;",  "public": true}</option>
+                                                    <option>{"name": "script4","script": "float sum; for (sum = 0.0, int j = 0, float f = 0.11; j < 7; j++, f++) sum += f * 0.11;  return sum;",  "public": true}</option>
+                                                    <option>{"name": "script5","script": "int sum = 0, int i = 0; for (;;){if (i > 10) break; sum += i++;}  return sum;",  "public": true}</option>
+                                                    <option>{"name": "script6","script": "int sum = 0, int i = 0; while (true){if (i > 10) break; sum += i++;}  return sum;",  "public": true}</option>
+                                                    <option>{"name": "script7","script": "int sum = 0, int i = 0; do {if (i > 10) break; sum += i++;} while (true);  return sum;",  "public": true}</option>
+                                                    <option>{"name": "script8","script": "return sqrt(2);",  "public": true}</option>
+                                                    <option>{"name": "script9","script":  "return 'abc'.length;",  "public": true}</option>
+                                                    <option>{"name": "script10","script": "list lst; lst.add('Hello'); lst.add('World');lst.add('The End'); return lst.toString;",  "public": true}</option>
+                                                    <option>{"name": "script11","script": "list lst; lst.add('Hello'); lst.add('World');lst.add('The End'); return lst.toString;",  "public": true}</option>
+                                                    <option>{"name": "script12","script": "int get_p(){return p;}",  "public": true}</option>
+                                                    <option>{"name": "script13","script": "web w; string s = w.get('http://twitter.com'); return w.statusCode;",  "public": true}</option>
+                                                     <option>{"name": "script14","script": "web w; string s = w.get('http://www.weather.com/weather/today/10022'); string city = s.between('<h1 id=\"twc_loc_head\">', ' <nobr>'); string weather = s.between('class=\"twc-col-1\">', '\\n'); return 'City: ' + city;",  "public": true}</option>
+                                               </select>
+                                            </div>
 
 
+                                        </div>
 
-                    <div class="col-md-3">
+                                    </li>
 
+                                </ul>
+                            </div>
+                        </div><!-- finish col-md-3-->
+
+                    </div><!-- finish simple-->
+
+                    <div class="tab-pane fade" id="scrip">
+
+                        <div class="col-md-3">
+                            <div class="widget">
+                                <ul class="cards list-group">
+                                    <li class="list-group-item">
+                                        <p class="label label-warning header-label">General</p>
+                                        <div class="form-group">
+                                            <label>name</label>
+                                            <input type="text"  name="advance" id="scriptgeneral" class="form-control" value="def1"/>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label>User</label>
+
+                                            <select name="advance" id="scriptusergeneral" class="form-control">
+                                                <option value="Test">User Test</option>
+                                            </select>
+                                        </div>
+
+                                    </li>
+                                </ul>
+                                <button id="btnscriptSave" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
+                                <a href="#myModal" data-toggle="modal" class="btn btn-danger">Delete</a>
+                                <br/>      <br/>
+                                <div id="idMessagescriptdUser"   class="alert alert-success">
+                                </div>
+
+                            </div>
+                        </div><!-- finish col-md-3-->
+                        <div class="col-md-3">
+                            <div class="widget">
+                                <ul class="cards list-group">
+                                    <li class="list-group-item">
+                                        <p class="label label-primary header-label">memory</p>
+                                        <div class="form-group">
+                                            <label>name</label>
+                                            <input type="text"name="advance"  id="scriptmenemory" class="form-control" value="p"/>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label>type</label>
+
+                                            <select   name="advance" id="scripttypenemory" class="form-control">
+                                                <option value="int">Int</option>
+                                                <option value="string">String</option>
+                                                <option value="list">list</option>
+                                                <option value="map">map</option>
+                                                <option value="web">web</option>
+                                                <option value="boolean">boolean</option>
+                                                <option value="float">float</option>
+
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>default_value</label>
+                                            <input type="text"name="advance"  id="scriptvalue" class="form-control" value="123"/>
+
+                                        </div>
+
+                                    </li>
+
+                                </ul>
+
+                            </div>
+                        </div><!-- finish col-md-3-->
+                        <div class="col-md-3">
+                            <div class="widget">
+                                <ul class="cards list-group">
+
+                                    <li class="list-group-item">
+                                        <p class="label label-primary header-label">scripts</p>
+                                        <div class="form-group">
+                                            <label>name</label>
+                                            <input type="text" name="advance" id="scriptsname" class="form-control" value="get_p"/>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label>public</label>
+                                            <select  name="advance"  id="scripttypeaccess" class="form-control">
+                                                <option value="string">true</option>
+                                                <option value="int">false</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>script</label>
+                                            <textarea class="form-control" id="scripttextarea"  placeholder="int get_p(){return p;}"></textarea>
+
+
+                                        </div>
+
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </div><!-- finish col-md-3-->
+                    </div><!-- finish simple-->
+                    <div class="tab-pane active in" id="home">
+
+                       <div class="col-md-3">
+                                <div class="widget">
+                                    <ul class="cards list-group">
+                                        <li class="list-group-item">
+                                            <p class="label label-warning header-label">General</p>
+                                            <div class="form-group">
+                                                <label>name</label>
+                                                <input type="text"  name="simple" id="namegeneral" class="form-control" value="cuonter"/>
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label>User</label>
+                                                <select name="simple" id="DropUserGeneral" class="form-control">
+                                                    <option value="Test">User Test</option>
+                                                </select>
+
+                                            </div>
+
+                                        </li>
+                                    </ul>
+                                    <button id="btnsimpleSdve" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
+                                    <a href="#myModal" data-toggle="modal" class="btn btn-danger">Delete</a>
+                                    <br/>      <br/>
+                                    <div id="idMessageAgent"   class="alert alert-success">
+                                    </div>
+
+                                </div>
+                            </div><!-- finish col-md-3-->
+
+                       <div class="col-md-3">
+
+                                <div class="widget">
+
+                                    <ul class="cards list-group">
+                                        <li class="list-group-item">
+                                            <p class="label label-primary header-label">memory</p>
+                                            <div class="form-group">
+                                                <label>name</label>
+                                                <input type="text" name="simple" id="simplenamenemory" class="form-control" value="counter"/>
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label>type</label>
+
+                                                <select  name="simple" id="simpletypenemory" class="form-control">
+                                                    <option value="int">Int</option>
+                                                    <option value="string">String</option>
+                                                    <option value="list">list</option>
+                                                    <option value="map">map</option>
+                                                    <option value="web">web</option>
+                                                    <option value="boolean">boolean</option>
+                                                    <option value="float">float</option>
+
+                                                </select>
+                                            </div>
+
+                                        </li>
+                                    </ul>
+
+
+                                </div>
+                            </div><!-- finish col-md-3-->
+
+                       <div class="col-md-3">
+                                <div class="widget">
+                                    <ul class="cards list-group">
+                                        <li class="list-group-item">
+                                            <p class="label label-primary header-label">timers</p>
+                                            <div class="form-group">
+                                                <label>name</label>
+                                                <input type="text"  name="simple" id="simplenametimers" class="form-control" value="count"/>
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label>interval</label>
+                                                <input type="text"  name="simple" id="simpleintervaltimers" class="form-control" value="seconds(3)"/>
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label>script</label>
+                                                <input type="text" name="simple" id="simplescripttimers" class="form-control" value="counter++;"/>
+
+                                            </div>
+
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div><!-- finish col-md-3-->
+
+                       <div class="col-md-3">
+                                <div class="widget">
+                                    <ul class="cards list-group">
+                                        <li class="list-group-item">
+                                            <p class="label label-primary header-label">outputs</p>
+                                            <div class="form-group">
+                                                <label>name</label>
+                                                <input type="text"  name="simple" id="simplenameoutputs" class="form-control" value="output1"/>
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label>type</label>
+
+                                                <select name="simple"  id="simpletypeoutputs" class="form-control">
+                                                    <option value="int">Int</option>
+                                                    <option value="string">String</option>
+                                                    <option value="list">list</option>
+                                                    <option value="map">map</option>
+                                                    <option value="web">web</option>
+                                                    <option value="boolean">boolean</option>
+                                                    <option value="float">float</option>
+
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>compute</label>
+                                                <input type="text" name="simple"  id="simplecomputeoutputs" class="form-control" value="counter"/>
+                                                \"Count is \" + counter
+                                            </div>
+
+                                        </li>
+
+                                    </ul>
+
+                                </div>
+                            </div><!-- finish col-md-3-->
+
+                    </div><!-- finish simple-->
+                    <div class="tab-pane fade" id="advanced">
+
+                        <div class="col-md-3">
+                            <div class="widget">
+                                <ul class="cards list-group">
+                                    <li class="list-group-item">
+                                        <p class="label label-warning header-label">General</p>
+                                        <div class="form-group">
+                                            <label>name</label>
+                                            <input type="text"  name="advance" id="advancenamegeneral" class="form-control" value="cuonter"/>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label>User</label>
+
+                                            <select name="advance" id="advanceusergeneral" class="form-control">
+                                                <option value="Test">User Test</option>
+                                            </select>
+                                        </div>
+
+                                    </li>
+                                </ul>
+                                <button id="btnadvanceSdve" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
+                                <a href="#myModal" data-toggle="modal" class="btn btn-danger">Delete</a>
+                                <br/>      <br/>
+                                <div id="idMessagsesdUser"   class="alert alert-success">
+                                </div>
+
+                            </div>
+                        </div><!-- finish col-md-3-->
+
+                        <div class="col-md-3">
                         <div class="widget">
-
                             <ul class="cards list-group">
                                 <li class="list-group-item">
-                                    <p class="label label-primary header-label">memory</p>
-                                    <div class="form-group">
+                                    <p class="label label-primary header-label">parameters input</p>
+                                   <div class="form-group">
                                         <label>name</label>
-                                        <input type="text" name="simple" id="simplenamenemory" class="form-control" value="counter"/>
+                                        <input type="text"  name="advance" id="parametersname" class="form-control" value="timer_interval_expression"/>
 
                                     </div>
                                     <div class="form-group">
                                         <label>type</label>
 
-                                        <select  name="simple" id="simpletypenemory" class="form-control">
+                                        <select  name="advance"  id="typeparameterinput" class="form-control">
+                                            <option value="int">Int</option>
+                                            <option value="string">String</option>
+                                            <option value="list">list</option>
+                                            <option value="map">map</option>
+                                            <option value="web">web</option>
+                                            <option value="boolean">boolean</option>
+                                            <option value="float">float</option>
+
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>default_value</label>
+                                        <input type="text"  name="advance" id="parametersdefault_value" class="form-control" value="seconds(3)"/>
+
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <p class="label label-primary header-label">parameters out</p>
+                                    <div class="form-group">
+                                        <label>name</label>
+                                        <input type="text"  name="advance"  id="parametersnameout" class="form-control" value="output_text"/>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label>type</label>
+
+
+                                        <select name="advance"   id="typeparameterout" class="form-control">
+
+                                            <option value="string">String</option>
+                                            <option value="int">Int</option>
+                                           <option value="list">list</option>
+                                            <option value="map">map</option>
+                                            <option value="web">web</option>
+                                            <option value="boolean">boolean</option>
+                                            <option value="float">float</option>
+
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>default_value</label>
+                                        <input type="text" name="advance" id="parametersdefault_valueout" class="form-control" value="The count is"/>
+
+                                    </div>
+                                </li>
+                               </ul>
+                        </div>
+                    </div><!-- finish col-md-3-->
+
+                        <div class="col-md-3">
+                        <div class="widget">
+                            <ul class="cards list-group">
+                                <li class="list-group-item">
+                                    <p class="label label-primary header-label">memory</p>
+                                    <div class="form-group">
+                                        <label>name</label>
+                                        <input type="text"name="advance"  id="advancenamenemory" class="form-control" value="counter"/>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label>type</label>
+
+                                        <select   name="advance" id="typenemory" class="form-control">
                                             <option value="int">Int</option>
                                             <option value="string">String</option>
                                             <option value="list">list</option>
@@ -300,54 +682,20 @@
                                     </div>
 
                                 </li>
-                            </ul>
-
-
-                        </div>
-                    </div><!-- finish col-md-3-->
-
-                    <div class="col-md-3">
-                        <div class="widget">
-                            <ul class="cards list-group">
-                                <li class="list-group-item">
-                                    <p class="label label-primary header-label">timers</p>
-                                    <div class="form-group">
-                                        <label>name</label>
-                                        <input type="text"  name="simple" id="simplenametimers" class="form-control" value="count"/>
-
-                                    </div>
-                                    <div class="form-group">
-                                        <label>interval</label>
-                                        <input type="text"  name="simple" id="simpleintervaltimers" class="form-control" value="seconds(3)"/>
-
-                                    </div>
-                                    <div class="form-group">
-                                        <label>script</label>
-                                        <input type="text" name="simple" id="simplescripttimers" class="form-control" value="counter++;"/>
-
-                                    </div>
-
-                                </li>
-                            </ul>
-                        </div>
-                    </div><!-- finish col-md-3-->
-
-                    <div class="col-md-3">
-                        <div class="widget">
-                            <ul class="cards list-group">
                                 <li class="list-group-item">
                                     <p class="label label-primary header-label">outputs</p>
                                     <div class="form-group">
                                         <label>name</label>
-                                        <input type="text"  name="simple" id="simplenameoutputs" class="form-control" value="output1"/>
+                                        <input type="text" name="advance" id="advancenameoutputs" class="form-control" value="output1"/>
 
                                     </div>
                                     <div class="form-group">
                                         <label>type</label>
 
-                                        <select name="simple"  id="simpletypeoutputs" class="form-control">
-                                            <option value="int">Int</option>
+
+                                        <select  name="advance"  id="typeoutputs" class="form-control">
                                             <option value="string">String</option>
+                                            <option value="int">Int</option>
                                             <option value="list">list</option>
                                             <option value="map">map</option>
                                             <option value="web">web</option>
@@ -358,8 +706,35 @@
                                     </div>
                                     <div class="form-group">
                                         <label>compute</label>
-                                        <input type="text" name="simple"  id="simplecomputeoutputs" class="form-control" value="counter"/>
-                                        \"Count is \" + counter
+                                        <input type="text" name="advance" id="advancecomputeoutputs" class="form-control" value="output_text + counter"/>
+
+                                    </div>
+
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div><!-- finish col-md-3-->
+
+                         <div class="col-md-3">
+                        <div class="widget">
+                            <ul class="cards list-group">
+                                <li class="list-group-item">
+                                    <p class="label label-primary header-label">timers</p>
+                                    <div class="form-group">
+                                        <label>name</label>
+                                        <input type="text" name="advance" id="advancenametimers" class="form-control" value="count"/>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label>interval</label>
+                                        <input type="text" name="advance" id="advanceintervaltimers" class="form-control" value="eval(timer_interval_expression)"/>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label>script</label>
+                                        <input type="text" name="advance"id="advancescripttimers" class="form-control" value="counter++;"/>
+
                                     </div>
 
                                 </li>
@@ -369,196 +744,12 @@
                         </div>
                     </div><!-- finish col-md-3-->
 
-                </div><!-- finish simple-->
-
-            <div class="tab-pane fade" id="advanced">
-                <div class="col-md-3">
-                    <div class="widget">
-                        <ul class="cards list-group">
-                            <li class="list-group-item">
-                                <p class="label label-warning header-label">General</p>
-                                <div class="form-group">
-                                    <label>name</label>
-                                    <input type="text"  name="advance" id="advancenamegeneral" class="form-control" value="cuonter"/>
-
-                                </div>
-                                <div class="form-group">
-                                    <label>User</label>
-
-                                    <select name="advance" id="advanceusergeneral" class="form-control">
-                                        <option value="Test">User Test</option>
-                                    </select>
-                                </div>
-
-                            </li>
-                        </ul>
-                        <button id="btnadvanceSdve" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
-                        <a href="#myModal" data-toggle="modal" class="btn btn-danger">Delete</a>
-                        <br/>      <br/>
-                        <div id="idMessagsesdUser"   class="alert alert-success">
-                        </div>
-
-                    </div>
-                </div><!-- finish col-md-3-->
-
-                <div class="col-md-3">
-                <div class="widget">
-                    <ul class="cards list-group">
-                        <li class="list-group-item">
-                            <p class="label label-primary header-label">parameters input</p>
-                           <div class="form-group">
-                                <label>name</label>
-                                <input type="text"  name="advance" id="parametersname" class="form-control" value="timer_interval_expression"/>
-
-                            </div>
-                            <div class="form-group">
-                                <label>type</label>
-
-                                <select  name="advance"  id="typeparameterinput" class="form-control">
-                                    <option value="int">Int</option>
-                                    <option value="string">String</option>
-                                    <option value="list">list</option>
-                                    <option value="map">map</option>
-                                    <option value="web">web</option>
-                                    <option value="boolean">boolean</option>
-                                    <option value="float">float</option>
-
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>default_value</label>
-                                <input type="text"  name="advance" id="parametersdefault_value" class="form-control" value="seconds(3)"/>
-
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <p class="label label-primary header-label">parameters out</p>
-                            <div class="form-group">
-                                <label>name</label>
-                                <input type="text"  name="advance"  id="parametersnameout" class="form-control" value="output_text"/>
-
-                            </div>
-                            <div class="form-group">
-                                <label>type</label>
-
-
-                                <select name="advance"   id="typeparameterout" class="form-control">
-
-                                    <option value="string">String</option>
-                                    <option value="int">Int</option>
-                                   <option value="list">list</option>
-                                    <option value="map">map</option>
-                                    <option value="web">web</option>
-                                    <option value="boolean">boolean</option>
-                                    <option value="float">float</option>
-
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>default_value</label>
-                                <input type="text" name="advance" id="parametersdefault_valueout" class="form-control" value="The count is"/>
-
-                            </div>
-                        </li>
-                       </ul>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="widget">
-                    <ul class="cards list-group">
-                        <li class="list-group-item">
-                            <p class="label label-primary header-label">memory</p>
-                            <div class="form-group">
-                                <label>name</label>
-                                <input type="text"name="advance"  id="advancenamenemory" class="form-control" value="counter"/>
-
-                            </div>
-                            <div class="form-group">
-                                <label>type</label>
-
-                                <select   name="advance" id="typenemory" class="form-control">
-                                    <option value="int">Int</option>
-                                    <option value="string">String</option>
-                                    <option value="list">list</option>
-                                    <option value="map">map</option>
-                                    <option value="web">web</option>
-                                    <option value="boolean">boolean</option>
-                                    <option value="float">float</option>
-
-                                </select>
-                            </div>
-
-                        </li>
-                        <li class="list-group-item">
-                            <p class="label label-primary header-label">outputs</p>
-                            <div class="form-group">
-                                <label>name</label>
-                                <input type="text" name="advance" id="advancenameoutputs" class="form-control" value="output1"/>
-
-                            </div>
-                            <div class="form-group">
-                                <label>type</label>
-
-
-                                <select  name="advance"  id="typeoutputs" class="form-control">
-                                    <option value="string">String</option>
-                                    <option value="int">Int</option>
-                                    <option value="list">list</option>
-                                    <option value="map">map</option>
-                                    <option value="web">web</option>
-                                    <option value="boolean">boolean</option>
-                                    <option value="float">float</option>
-
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>compute</label>
-                                <input type="text" name="advance" id="advancecomputeoutputs" class="form-control" value="output_text + counter"/>
-
-                            </div>
-
-                        </li>
-                    </ul>
-
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="widget">
-                    <ul class="cards list-group">
-                        <li class="list-group-item">
-                            <p class="label label-primary header-label">timers</p>
-                            <div class="form-group">
-                                <label>name</label>
-                                <input type="text" name="advance" id="advancenametimers" class="form-control" value="count"/>
-
-                            </div>
-                            <div class="form-group">
-                                <label>interval</label>
-                                <input type="text" name="advance" id="advanceintervaltimers" class="form-control" value="eval(timer_interval_expression)"/>
-
-                            </div>
-                            <div class="form-group">
-                                <label>script</label>
-                                <input type="text" name="advance"id="advancescripttimers" class="form-control" value="counter++;"/>
-
-                            </div>
-
-                        </li>
-
-                    </ul>
-
-                </div>
-            </div>
-
+                    </div><!-- finish advanced-->
 
             </div>
+    </div>
 
-            </div>
-        </div>
-
-        <div class="modal small fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    <div class="modal small fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
              aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -577,9 +768,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-
+    </div>
         <footer>
             <hr>
             <p class="pull-right">A <a href="http://www.portnine.com/bootstrap-themes" target="_blank">Free Bootstrap

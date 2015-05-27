@@ -33,7 +33,6 @@ public class PlataformController {
     public Utils util;
 
 
-
     public AgentServer getAgentServer() {
         return this.agentServer;
     }
@@ -349,10 +348,10 @@ public class PlataformController {
 
 
 
-    @RequestMapping(value = "/run", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/run", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public String getRun(HttpServletRequest request) throws Exception {
-
+        String resultString=null;
         try {
             BufferedReader reader = request.getReader();
             String scriptString = null;
@@ -379,15 +378,20 @@ public class PlataformController {
             ScriptNode scriptNode = parser.parseScriptString(scriptString);
             Value valueNode = scriptRuntime.runScript(scriptString,
                     scriptNode);
-            String resultString = valueNode.getStringValue();
+             resultString = valueNode.getStringValue();
             logger.info("Script result: " + resultString);
 
         } catch (Exception e) {
             logger.info("Run Exception: " + e);
         }
-        return null;
+        JSONObject message = new JSONObject();
+        message.put("message", resultString);
+        return message.toString();
 
     }
+
+
+
 
     @RequestMapping(value = "/status/restart", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)

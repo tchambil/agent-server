@@ -171,6 +171,7 @@
                 <li><a href="/listagent.do"><span class="fa fa-caret-right"></span> List</a></li>
             </ul>
         </li>
+
         <!--<Groups]-->
         <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".group-menu"
                                                                         class="nav-header collapsed"
@@ -181,7 +182,20 @@
         <li>
             <ul class="group-menu nav nav-list collapse">
                 <li>
-                    <a href="message.jsp"><span class="fa fa-caret-right"></span> RabbitMQ</a>
+                    <a href="/message.do"><span class="fa fa-caret-right"></span> RabbitMQ</a>
+                </li>
+            </ul>
+        </li>
+        <!--<TEST´s]-->
+        <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".group-test"
+                                                                        class="nav-header collapsed"
+                                                                        data-toggle="collapse">
+            <i class="fa fa-fw fa-globe"></i> Test<i class="fa fa-collapse"></i></a>
+        </li>
+        <li>
+            <ul class="group-test nav nav-list collapse">
+                <li>
+                    <a href="/testscript.do"><span class="fa fa-caret-right"></span> Scripts</a>
                 </li>
             </ul>
         </li>

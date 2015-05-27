@@ -13,13 +13,13 @@ public class UsersControllerClient {
 
     @RequestMapping(value = "users.do", method = RequestMethod.GET)
     public String getdata(ModelMap model) {
-        return "user";
+        return "/user";
 
     }
     @RequestMapping(value = "listuser.do", method = RequestMethod.GET)
     public String getListUser(ModelMap modelMap)
     {
-        return "listuser";
+        return "/listuser";
     }
 
 }
