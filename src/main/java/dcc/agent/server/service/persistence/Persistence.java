@@ -66,7 +66,7 @@ public class Persistence {
             } else {
                 // No, create a new persistent file for this agent server
                 List<String> tableNames = Arrays.asList("config", "users", "agentDefinitions", "agentInstances", "webaccess","message");
-                file.create(path, "Agent Server Stage 0", "0.1", tableNames);
+                file.create(path, "Agent Server", "1.0", tableNames);
 
                 // And open it
                 file.open(path);
@@ -163,9 +163,8 @@ public class Persistence {
             // Load all users
             for (String userId : file.iterable("users")) {
                 String userJsonSource = file.get("users", userId);
-                log.info("Load all users");
-                agentServer.recreateUser(userJsonSource);
-                log.info("Loaded all users");
+                      agentServer.recreateUser(userJsonSource);
+
             }
         } catch (PersistentFileException e) {
             e.printStackTrace();

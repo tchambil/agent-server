@@ -100,10 +100,10 @@
     <file url="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/appserver" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/config" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/delegate" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/field" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/goals" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/mail" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/message" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/notification" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/persistence" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/rabbitMQ" charset="UTF-8" />
