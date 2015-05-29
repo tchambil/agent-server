@@ -17,7 +17,7 @@
 package dcc.agent.server.service.persistence;
 
 import dcc.agent.server.service.agentserver.*;
-import dcc.agent.server.service.message.AgentMessage;
+import dcc.agent.server.service.delegate.AgentMessage;
 import dcc.agent.server.service.persistence.persistenfile.PersistentFile;
 import dcc.agent.server.service.persistence.persistenfile.PersistentFileException;
 import dcc.agent.server.service.script.intermediate.SymbolException;

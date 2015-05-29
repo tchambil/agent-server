@@ -17,13 +17,14 @@
 package dcc.agent.server.service.agentserver;
 
 import dcc.agent.server.service.appserver.AgentAppServer;
-import dcc.agent.server.service.config.AgentServerProperties;
 import dcc.agent.server.service.config.AgentServerConfig;
+import dcc.agent.server.service.config.AgentServerProperties;
 import dcc.agent.server.service.config.AgentServerWebAccessConfig;
 import dcc.agent.server.service.config.AgentVariable;
+import dcc.agent.server.service.delegate.AgentDelegate;
+import dcc.agent.server.service.delegate.AgentMessage;
+import dcc.agent.server.service.delegate.AgentMessageList;
 import dcc.agent.server.service.mailaccessmanager.MailAccessManager;
-import dcc.agent.server.service.message.AgentMessage;
-import dcc.agent.server.service.message.AgentMessageList;
 import dcc.agent.server.service.persistence.Persistence;
 import dcc.agent.server.service.persistence.persistenfile.PersistentFileException;
 import dcc.agent.server.service.scheduler.AgentScheduler;
@@ -51,7 +52,7 @@ import java.util.TreeMap;
 
 public class AgentServer {
     static final Logger log = Logger.getLogger(AgentServer.class);
-
+    public AgentDelegate agentDelegate;
     public AgentAppServer agentAppServer;
     public static AgentServer singleton = null;
     public List<String> fieldTypes =
@@ -134,6 +135,7 @@ public class AgentServer {
     public AgentMessage addAgentMessage(JSONObject agenJson) throws JSONException, AgentServerException {
         return addAgentMessage(null,agenJson);
     }
+
     public AgentMessage addAgentMessage(AgentMessage agentMessage) throws AgentServerException, JSONException {
       if(agentMessage!=null)
       {
@@ -173,10 +175,19 @@ public class AgentServer {
         AgentMessage agentMessage = AgentMessage.fromJson(this, user, agentJson);
         // Add it to table of agent definitions
         addAgentMessage(agentMessage);
+        DelegateAgentMessage(agentMessage);
         // Return the new agent definition
         return agentMessage;
     }
+public void DelegateAgentMessage(AgentMessage agentMessage) throws AgentServerException, JSONException {
+    if(agentMessage!=null)
+    {
+       // Prepara for delegate agent message
+        agentDelegate.readMessage(agentMessage);
 
+    }
+
+}
     public AgentDefinition getAgentDefinition(User user, String agentDefinitionName) {
         AgentDefinitionList agentMap = agentDefinitions.get(user.id);
         if (agentMap == null)

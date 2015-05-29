@@ -17314,7 +17314,7 @@ return /******/ (function(modules) { // webpackBootstrap
     }
 
     if (this.popupObj) {
-      // show popup message window
+      // show popup delegate window
       if (this.popupObj.id != previousPopupObjId) {
         if (this.popup === undefined) {
           this.popup = new Popup(this.frame, this.constants.tooltip);

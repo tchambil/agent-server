@@ -59,7 +59,7 @@ public class MessageQueueManagerImpl implements MessageQueueManager{
 
     @Override
     public void onMessage(Message message) {
-            System.out.println("Received message: " + message);
+            System.out.println("Received delegate: " + message);
             System.out.println("Text: " + new String(message.getBody()));
 
 

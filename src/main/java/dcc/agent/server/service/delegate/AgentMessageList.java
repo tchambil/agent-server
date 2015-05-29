@@ -1,4 +1,6 @@
-package dcc.agent.server.service.message;
+package dcc.agent.server.service.delegate;
+
+import dcc.agent.server.service.delegate.AgentMessage;
 
 import java.util.ArrayList;
 import java.util.Iterator;

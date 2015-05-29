@@ -3,7 +3,7 @@ package dcc.agent.server.controller;
 import dcc.agent.server.service.agentserver.*;
 import dcc.agent.server.service.appserver.AgentAppServerBadRequestException;
 import dcc.agent.server.service.appserver.AgentAppServerException;
-import dcc.agent.server.service.message.AgentMessage;
+import dcc.agent.server.service.delegate.AgentMessage;
 import dcc.agent.server.service.notification.NotificationInstance;
 import dcc.agent.server.service.script.intermediate.SymbolValues;
 import dcc.agent.server.service.script.runtime.value.Value;

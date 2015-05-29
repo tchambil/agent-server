@@ -1,4 +1,4 @@
-package dcc.agent.server.service.message;
+package dcc.agent.server.service.delegate;
 
 
 import dcc.agent.server.service.agentserver.AgentServer;

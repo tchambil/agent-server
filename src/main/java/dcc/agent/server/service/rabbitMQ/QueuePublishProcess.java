@@ -49,7 +49,7 @@ public class QueuePublishProcess {
             try {
                 String sent = i + " Catch the rabbit! " + new Date();
                 String queueName = generateQueueName();
-                // write message
+                // write delegate
                 template.convertAndSend(queueName, sent );
                 logger.info( "Msg Sent to " + queueName + " :  " + sent );
                  Thread.sleep(3000);
