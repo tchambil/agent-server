@@ -211,7 +211,7 @@
         </li>
 
         <!--<Help]-->
-        <li><a href="help.html" class="nav-header"><i class="fa fa-fw fa-question-circle"></i> Help</a>
+        <li><a href="/tutorial" class="nav-header"><i class="fa fa-fw fa-question-circle"></i> Tutorial</a>
 
         </li>
         <!--<Faq]-->

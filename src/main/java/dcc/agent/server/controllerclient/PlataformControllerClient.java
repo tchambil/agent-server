@@ -40,4 +40,10 @@ public class PlataformControllerClient {
     {
         return "view";
     }
+
+    @RequestMapping (value = "/tutorial", method = RequestMethod.GET)
+    public String gettutorial(ModelMap modelMap)
+    {
+        return "tutorial";
+    }
 }

@@ -15,9 +15,7 @@
     <link rel="stylesheet" href="../../resource/css/font-awesome.css">
 
     <script src="<c:url value="../../resource/js/site/jquery-1.11.1.min.js" />"></script>
-    <script src="<c:url value="../../resource/js/plataform.js"/>"></script>
-    <script src="<c:url value="../../resource/js/system.js"/>"></script>
-    <script src="<c:url value="../../resource/js/site/jquery.knob.js"/>"></script>
+     <script src="<c:url value="../../resource/js/site/jquery.knob.js"/>"></script>
 
     <script type="text/javascript">
         $(function () {

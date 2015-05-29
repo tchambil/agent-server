@@ -122,6 +122,7 @@
     <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/sign-in.jsp" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/sign-up.jsp" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/testscript.jsp" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/tutorial.jsp" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user.jsp" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/view.jsp" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/resource/css" charset="UTF-8" />
