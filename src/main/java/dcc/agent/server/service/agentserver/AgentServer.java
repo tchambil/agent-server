@@ -175,7 +175,7 @@ public class AgentServer {
         AgentMessage agentMessage = AgentMessage.fromJson(this, user, agentJson);
         // Add it to table of agent definitions
         addAgentMessage(agentMessage);
-        DelegateAgentMessage(agentMessage);
+       DelegateAgentMessage(agentMessage);
         // Return the new agent definition
         return agentMessage;
     }
@@ -552,6 +552,8 @@ public void DelegateAgentMessage(AgentMessage agentMessage) throws AgentServerEx
         this.agentDefinitions = new NameValueList<AgentDefinitionList>();
         this.agentInstances = new NameValueList<AgentInstanceList>();
         this.agentMessages=new NameValueList<AgentMessageList>();
+        this.agentDelegate=new AgentDelegate(this);
+
         // Initialize agent server properties
         agentServerProperties = new AgentServerProperties();
 
