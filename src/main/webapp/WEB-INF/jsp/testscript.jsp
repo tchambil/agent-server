@@ -177,7 +177,7 @@
         <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".group-menu"
                                                                         class="nav-header collapsed"
                                                                         data-toggle="collapse">
-            <i class="fa fa-fw fa-arrows-alt"></i> Groups<i class="fa fa-collapse"></i><span
+            <i class="fa fa-fw fa-arrows-alt"></i> Server Group<i class="fa fa-collapse"></i><span
                 class="label label-info">+0</span></a>
         </li>
         <li>
@@ -214,8 +214,24 @@
         </li>
 
         <!--<Help]-->
-        <li><a href="/tutorial" class="nav-header"><i class="fa fa-fw fa-question-circle"></i> Tutorial</a>
+        <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".group-tutorial"
+                                                                        class="nav-header collapsed"
+                                                                        data-toggle="collapse">
+            <i class="fa fa-fw fa-question-circle"></i> Tutorial<i class="fa fa-collapse"></i></a>
 
+        </li>
+        <li>
+            <ul class="group-tutorial nav nav-list collapse">
+                <li>
+                    <a href="/tutorial"><span class="fa fa-caret-right"></span> Simple</a>
+                </li>
+                <li>
+                    <a target="_blank" href="/resource/files/tutorial.txt" ><span class="fa fa-caret-right"></span> Intermediate</a>
+                </li>
+                <li>
+                    <a href="/tutorialintermediate"><span class="fa fa-caret-right"></span> Advanced</a>
+                </li>
+            </ul>
         </li>
         <!--<Faq]-->
         <li><a href="faq.html" class="nav-header"><i class="fa fa-fw fa-comment"></i> Faq</a>

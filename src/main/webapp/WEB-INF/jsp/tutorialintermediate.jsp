@@ -1,21 +1,23 @@
-<!doctype html>
-<html lang="en">
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<html>
+
 <head>
-    <meta charset="utf-8">
+    <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <title>Agent Server v1.0</title>
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="/resource/css/bootstrap.css">
-    <link rel="stylesheet" href="/resource/css/font-awesome.css">
 
-    <script src="/resource/js/site/jquery-1.11.1.min.js" type="text/javascript"></script>
-    <script src="/resource/js/site/jquery.knob.js" type="text/javascript"></script>
-    <script src="/resource/js/agent.js"></script>
-    <script src="/resource/js/system.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="../../resource/css/bootstrap.css">
+    <link rel="stylesheet" href="../../resource/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../../resource/css/shCoreEclipse.css">
+    <script src="<c:url value="../../resource/js/site/jquery-1.11.1.min.js" />"></script>
+    <script src="<c:url value="../../resource/js/site/jquery.knob.js"/>"></script>
+
+
     <script type="text/javascript">
         $(function () {
             $(".knob").knob();
@@ -23,10 +25,11 @@
     </script>
 
 
-    <link rel="stylesheet" type="text/css" href="/resource/css/theme.css">
-    <link rel="stylesheet" type="text/css" href="/resource/css/premium.css">
+    <link rel="stylesheet" type="text/css" href="../../resource/css/theme.css">
+    <link rel="stylesheet" type="text/css" href="../../resource/css/premium.css">
 
 </head>
+
 <body class=" theme-blue">
 
 <!-- Demo page code -->
@@ -139,9 +142,9 @@
         </li>
         <li>
             <ul class="users-menu nav nav-list collapse">
+
                 <li><a href="/users.do"><span class="fa fa-caret-right"></span> User Profile</a></li>
                 <li><a href="/listuser.do"><span class="fa fa-caret-right"></span> User List</a></li>
-
             </ul>
         </li>
 
@@ -151,7 +154,6 @@
         </li>
         <li>
             <ul class="legal-menu nav nav-list collapse">
-
                 <li><a href="/definition.do"><span class="fa fa-caret-right"></span> Definitions</a></li>
                 <li><a href="/listdefinition.do"><span class="fa fa-caret-right"></span> List</a></li>
             </ul>
@@ -164,21 +166,22 @@
         </li>
         <li>
             <ul class="premium-menu nav nav-list collapse">
-                <li><a href="/agent.do"><span class="fa fa-caret-right"></span> Agent</a> </li>
+                <li><a href="/agent.do"><span class="fa fa-caret-right"></span> Agent</a></li>
                 <li><a href="/listagent.do"><span class="fa fa-caret-right"></span> List</a></li>
             </ul>
         </li>
+
         <!--<Groups]-->
         <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".group-menu"
                                                                         class="nav-header collapsed"
                                                                         data-toggle="collapse">
-            <i class="fa fa-fw fa-arrows-alt"></i> Server Group<i class="fa fa-collapse"></i><span
+            <i class="fa fa-fw fa-arrows-alt"></i>Server Group<i class="fa fa-collapse"></i><span
                 class="label label-info">+0</span></a>
         </li>
         <li>
             <ul class="group-menu nav nav-list collapse">
                 <li>
-                    <a href="/message.do"><span class="fa fa-caret-right"></span> message</a>
+                    <a href="/message.do"><span class="fa fa-caret-right"></span> RabbitMQ</a>
                 </li>
             </ul>
         </li>
@@ -193,6 +196,7 @@
                 <li>
                     <a href="/testscript.do"><span class="fa fa-caret-right"></span> Scripts</a>
                 </li>
+
             </ul>
         </li>
         <!--<Account]-->
@@ -220,13 +224,14 @@
                     <a href="/tutorial"><span class="fa fa-caret-right"></span> Simple</a>
                 </li>
                 <li>
-                    <a target="_blank" href="/resource/files/tutorial.txt" ><span class="fa fa-caret-right"></span> Intermediate</a>
+                    <a href="/resource/files/tutorial.txt"><span class="fa fa-caret-right"></span> Intermediate</a>
                 </li>
                 <li>
                     <a href="/tutorialintermediate"><span class="fa fa-caret-right"></span> Advanced</a>
                 </li>
             </ul>
         </li>
+
         <!--<Faq]-->
         <li><a href="faq.html" class="nav-header"><i class="fa fa-fw fa-comment"></i> Faq</a>
         </li>
@@ -235,148 +240,32 @@
 </div>
 
 <div class="content">
-<div class="stats">
-    <span   class="label label-danger">Status:</span> <span id="headerStatus">null</span>
-    <span>&nbsp;&nbsp;</span>
-    <span class="label label-success">Address IP:</span> <span id="headerIp">null</span>
-    <span>&nbsp;&nbsp;</span>
-    <span class="label label-info">Server:</span> <span id="headerServer">null</span>
-    <span>&nbsp;&nbsp;</span>
-</div>
 
-<div class="header">
-    <h1 class="page-title">Agents</h1>
-</div>
-<div class="main-content">
-<ul class="nav nav-tabs">
-    <li class="active"><a href="#home" data-toggle="tab">Register</a></li>
-    <li><a href="#advanced" data-toggle="tab">Result</a></li>
-
-</ul>
-
-<div class="row">
-<div id="myTabContent" class="tab-content">
-
-<div class="tab-pane active in" id="home">
-
-    <div class="col-md-3">
-        <div class="widget">
-            <ul class="cards list-group">
-
-                <li class="list-group-item">
-                    <p class="label label-warning header-label">General</p>
-                    <div class="form-group">
-                        <label>name</label>
-                        <input type="text" id="nameagentgeneral" class="form-control" value="cuonter"/>
-
-                    </div>
-                </li>
-                <li class="list-group-item">
-
-                    <div class="form-group">
-
-                        <label>User</label>
-                        <select   id="DropUserGeneral" class="form-control">
-                            <option value="Test">Selection Item</option>
-                        </select>
-
-                    </div>
-                    <div class="form-group">
-                        <label>Agent Definitions</label>
-                        <select  id="DropAgentGeneral" class="form-control">
-                            <option value="Test">Selection Item</option>
-                        </select>
-
-                    </div>
-
-                </li>
-            </ul>
-            <button id="btnagentSdve" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
-            <a href="#myModal" data-toggle="modal" class="btn btn-danger">Delete</a>
-            <br/>      <br/>
-            <div id="idMessagsedAgent" class="alert alert-info">
-            </div>
-
-        </div>
-    </div><!-- finish col-md-3-->
-
-
-</div><!-- finish simple-->
-
-<div class="tab-pane fade" id="advanced">
-
-
-    <div class="col-md-3">
-        <div class="widget">
-            <ul class="cards list-group">
-                <li class="list-group-item">
-                    <p class="label label-warning header-label">General</p>
-                    <div class="form-group">
-                        <label>name</label>
-                        <input type="text" name="id" id="advancenamegeneral" class="form-control" value="cuonter"/>
-
-                    </div>
-                    <div class="form-group">
-                        <label>User</label>
-
-                        <select name="DropUsergeneral" id="advanceusergeneral" class="form-control">
-                            <option value="Test">User Test</option>
-                        </select>
-                    </div>
-
-                </li>
-                <li>
-
-                </li>
-
-            </ul>
-
-            <button id="btnadvanceSdve" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
-            <a href="#myModal" data-toggle="modal" class="btn btn-danger">Delete</a>
-            <br/>      <br/>
-            <div id="idMessagsesdUser" class="alert alert-success">
-            </div>
-
-        </div>
-    </div><!-- finish col-md-3-->
-
-</div>
-
-</div>
-</div>
-
-<div class="modal small fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h3 id="myModalLabel">Delete Confirmation</h3>
-            </div>
-            <div class="modal-body">
-
-                <p class="error-text"><i class="fa fa-warning modal-icon"></i>Are you sure you want to delete
-                    the Agent Definitions?</p>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cancel</button>
-                <button id="btndefinitionDelete" class="btn btn-danger" data-dismiss="modal">Delete</button>
-            </div>
-        </div>
+    <div class="header">
+        <h1 class="page-title">Tutorial for the Agent Server (v1.0)</h1>
     </div>
-</div>
+
+    <div class="main-content">
 
 
-<footer>
-    <hr>
-    <p class="pull-right">A <a href="http://www.portnine.com/bootstrap-themes" target="_blank">Free Bootstrap
-        Theme</a> by <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
 
-    <p>© 2015 <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
-</footer>
+
+
+    </div>
+
+    <footer>
+        <hr>
+        <p class="pull-right">A <a href="http://www.portnine.com/bootstrap-themes" target="_blank">Free
+            Bootstrap
+            Theme</a> by <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
+
+        <p>� 2015 <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
+    </footer>
+
+
 </div>
-</div>
-<script src="/resource/js/site/bootstrap.js"></script>
+<script src="<c:url value="../../resource/js/site/bootstrap.js"/>"></script>
+
 <script type="text/javascript">
     $("[rel=tooltip]").tooltip();
     $(function () {
@@ -385,7 +274,6 @@
         });
     });
 </script>
-
 
 </body>
 </html>

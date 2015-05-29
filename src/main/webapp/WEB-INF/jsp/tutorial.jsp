@@ -1,21 +1,22 @@
-
-
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
+
 <head>
-    <meta charset="utf-8">
+    <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <title>Agent Server v1.0</title>
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
 
+
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="../../resource/css/bootstrap.css">
     <link rel="stylesheet" href="../../resource/css/font-awesome.css">
-
+    <link rel="stylesheet" type="text/css" href="../../resource/css/shCoreEclipse.css">
     <script src="<c:url value="../../resource/js/site/jquery-1.11.1.min.js" />"></script>
-     <script src="<c:url value="../../resource/js/site/jquery.knob.js"/>"></script>
+    <script src="<c:url value="../../resource/js/site/jquery.knob.js"/>"></script>
+
 
     <script type="text/javascript">
         $(function () {
@@ -165,7 +166,7 @@
         </li>
         <li>
             <ul class="premium-menu nav nav-list collapse">
-                <li><a href="/agent.do"><span class="fa fa-caret-right"></span> Agent</a> </li>
+                <li><a href="/agent.do"><span class="fa fa-caret-right"></span> Agent</a></li>
                 <li><a href="/listagent.do"><span class="fa fa-caret-right"></span> List</a></li>
             </ul>
         </li>
@@ -174,7 +175,7 @@
         <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".group-menu"
                                                                         class="nav-header collapsed"
                                                                         data-toggle="collapse">
-            <i class="fa fa-fw fa-arrows-alt"></i> Groups<i class="fa fa-collapse"></i><span
+            <i class="fa fa-fw fa-arrows-alt"></i>Server Group<i class="fa fa-collapse"></i><span
                 class="label label-info">+0</span></a>
         </li>
         <li>
@@ -195,6 +196,7 @@
                 <li>
                     <a href="/testscript.do"><span class="fa fa-caret-right"></span> Scripts</a>
                 </li>
+
             </ul>
         </li>
         <!--<Account]-->
@@ -210,9 +212,26 @@
         </li>
 
         <!--<Help]-->
-        <li><a href="/tutorial" class="nav-header"><i class="fa fa-fw fa-question-circle"></i> Tutorial</a>
+        <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".group-tutorial"
+                                                                        class="nav-header collapsed"
+                                                                        data-toggle="collapse">
+            <i class="fa fa-fw fa-question-circle"></i> Tutorial<i class="fa fa-collapse"></i></a>
 
         </li>
+        <li>
+            <ul class="group-tutorial nav nav-list collapse">
+                <li>
+                    <a href="/tutorial"><span class="fa fa-caret-right"></span> Simple</a>
+                </li>
+                <li>
+                    <a target="_blank" href="/resource/files/tutorial.txt" ><span class="fa fa-caret-right"></span> Intermediate</a>
+                </li>
+                <li>
+                    <a href="/tutorialintermediate"><span class="fa fa-caret-right"></span> Advanced</a>
+                </li>
+            </ul>
+        </li>
+
         <!--<Faq]-->
         <li><a href="faq.html" class="nav-header"><i class="fa fa-fw fa-comment"></i> Faq</a>
         </li>
@@ -221,308 +240,210 @@
 </div>
 
 <div class="content">
-    <div class="stats">
-        <span   class="label label-danger">Status:</span> <span id="headerStatus">null</span>
-        <span>&nbsp;&nbsp;</span>
-        <span class="label label-success">Address IP:</span> <span id="headerIp">null</span>
-        <span>&nbsp;&nbsp;</span>
-        <span class="label label-info">Server:</span> <span id="headerServer">null</span>
-        <span>&nbsp;&nbsp;</span>
-    </div>
 
     <div class="header">
-        <h1 class="page-title">Plataform</h1>
+        <h1 class="page-title">Tutorial for the Agent Server (v1.0)</h1>
     </div>
 
     <div class="main-content">
+        <p class="definition">
 
-        <ul class="nav nav-tabs">
-            <li class="active">
-                <a href="#manage" data-toggle="tab">Manage</a>
-            </li>
-            <li>
-                <a href="#status" data-toggle="tab" id="btnstatus">Status</a>
-            </li>
-            <li>
-                <a href="#config" data-toggle="tab" id="btnconfig">Config</a>
-            </li>
-            <li>
-                <a href="#about" data-toggle="tab" id="putabout">About</a>
-            </li>
-        </ul>
+            Unless you are simply previewing the doc, please run through the installation process first, install.txt.
 
-        <div class="row">
+            The agent server supports a REST API that uses JSON as its primary information format.
 
-            <div class="col-md-4">
-                <br>
+            The curl command is probably the simplest and best way to experiment with the agent server.
 
-                <div id="myTabContent" class="tab-content">
-                    <div class="tab-pane active in" id="manage">
+            The tutorial command assumes you are using the bash shell (e.g., cygwin on Windows), or something
+            comparable.
+        </p>
 
-                        <div>
-                            <button id="getstart" class="btn btn-primary"><i class="fa fa-play"></i> Start</button>
-                            <button id="putpause" class="btn btn-primary"><i class="fa fa-pause"></i> Pause</button>
-                            <button id="putrestart" class="btn btn-primary"><i class="fa fa-refresh"></i> Resume
-                            </button>
-                            <a href="#myModal" data-toggle="modal" class="btn btn-danger"><i class="fa fa-stop"></i>
-                                Stop</a>
+        <h2>Create a new new user</h2>
+
+        <p class="label label-primary header-label">url_base: curl -X POST http://localhost:8080/users</p>
+
+        <div id="code1" class="syntaxhighlighter  jscript">
+            <table border="0" cellpadding="0" cellspacing="0">
+                <tbody>
+                <tr>
+                    <td class="gutter">
+                        <div class="line number1 index0 alt0">1</div>
+                        <div class="line number2 index1 alt1">2</div>
+                        <div class="line number3 index2 alt2">3</div>
+                        <div class="line number4 index3 alt3">4</div>
+                        <div class="line number5 index4 alt4">5</div>
+                        <div class="line number6 index5 alt5">6</div>
+                        <div class="line number7 index6 alt6">7</div>
+
+                    </td>
+                    <td class="code">
+                        <div class="container">
+                            <div class="line number1 index0 alt0"><code class="jscript plain">{</code></div>
+                            <div class="line number2 index1 alt1"><code class="jscript string">"display_name": "User
+                                Name",</code></div>
+                            <div class="line number3 index2 alt2"><code class="jscript string">"full_name": "User Full
+                                Name",</code></div>
+                            <div class="line number4 index3 alt3"><code class="jscript string">"email":
+                                "user@example.com", </code></div>
+                            <div class="line number5 index4 alt4"><code class="jscript string">"nick_name":
+                                "useraname",</code></div>
+                            <div class="line number6 index5 alt4"><code class="jscript string">"company": "Your
+                                organization" </code></div>
+                            <div class="line number7 index6 alt6"><code class="jscript plain">}</code></div>
                         </div>
-                        <br/>      <br/>
 
-                        <div id="idmessage"  class="alert alert-info">
-
-                        </div>
-
-                    </div>
-                    <div class="tab-pane fade" id="status">
-
-                        <ul class="cards compact list-group">
-                            <li class="list-group-item">
-                                <p class="title" > status</p>
-                                <span id="statusInput" class="text-warning" style="font-size: 1.5em; line-height: 1em;margin: 0px;">
-                                </span>
-                            </li>
-                            <li class="list-group-item">
-                                <p class="title" > since</p>
-                                <span id="sinceInput" class="text-warning" style="font-size: 1em; line-height: 1em;margin: 0px;">
-                                </span>
-                            </li>
-                            <li class="list-group-item">
-                                <p class="title" > num_registered_users</p>
-                                <span id="num_registered_usersInput" class="text-warning" style="font-size: 1.5em; line-height: 1em;margin: 0px;">
-                                </span>
-                            </li>
-                            <li class="list-group-item">
-                                <p class="title" > num_active_users</p>
-                                <span id="num_active_usersInput" class="text-warning" style="font-size: 1.5em; line-height: 1em;margin: 0px;">
-                                </span>
-                            </li>
-                            <li class="list-group-item">
-                                <p class="title" > num_registered_agents</p>
-                                <span id="num_registered_agentsInput" class="text-warning" style="font-size: 1.5em; line-height: 1em;margin: 0px;">
-                                </span>
-                            </li>
-                            <li class="list-group-item">
-                                <p class="title" > num_active_agents</p>
-                                <span id="num_active_agentsInput" class="text-warning" style="font-size: 1.5em; line-height: 1em;margin: 0px;">
-                                </span>
-                            </li>
-                        </ul>
-
-
-                    </div>
-
-                    <div class="tab-pane fade" id="config">
-
-                         <div class="cards compact list-group">
-                             <ul class="list-group">
-                                <li class="list-group-item">
-                                      <i class="fa fa-share">Plataform </i>
-                                     <span id="Plataformout" class="text-warning"> </span>
-                                </li>
-                                 <li class="list-group-item">
-                                     <i class="fa fa-share">description</i>
-                                     <span id="descriptionout" class="text-warning"> </span>
-                                 </li>
-                                 <li class="list-group-item">
-                                     <i class="fa fa-share">software </i>
-                                     <span id="softwareout" class="text-warning"> </span>
-                                 </li>
-                                 <li class="list-group-item">
-                                     <i class="fa fa-share">version </i>
-                                     <span id="versionout" class="text-warning"> </span>
-                                 </li>
-                                 <li class="list-group-item">
-                                     <i class="fa fa-share">website </i>
-                                     <span id="websiteout" class="text-warning"> </span>
-                                 </li>
-                                 <li class="list-group-item">
-                                     <i class="fa fa-share">admin_approve_user_create </i>
-                                     <span id="admin_approve_user_createout" class="text-warning"> </span>
-                                 </li>
-                                 <li class="list-group-item">
-                                     <i class="fa fa-share">mail_confirm_user_create </i>
-                                     <span id="mail_confirm_user_createout" class="text-warning"> </span>
-                                 </li>
-
-                                 <li class="list-group-item">
-                                     <i class="fa fa-share">contact </i>
-                                     <span id="contactout" class="text-warning"> </span>
-                                 </li>
-                                 <li class="list-group-item">
-                                     <i class="fa fa-share">user_agent_name </i>
-                                     <span id="user_agent_nameout" class="text-warning"> </span>
-                                 </li>
-                                 <li class="list-group-item">
-                                     <i class="fa fa-share">default_web_page_refresh_interval </i>
-                                     <span id="default_web_page_refresh_intervalout" class="text-warning"> </span>
-                                 </li>
-                                 <li class="list-group-item">
-                                     <i class="fa fa-share">minimum_web_page_refresh_interval </i>
-                                     <span id="minimum_web_page_refresh_intervalout" class="text-warning"> </span>
-                                 </li>
-                                 <li class="list-group-item">
-                                     <i class="fa fa-share">minimum_web_site_access_interval </i>
-                                     <span id="minimum_web_site_access_intervalout" class="text-warning"> </span>
-                                 </li>
-                                 <li class="list-group-item">
-                                     <i class="fa fa-share">execution_limit_level_1 </i>
-                                     <span id="minimum_web_access_intervalout" class="text-warning"> </span>
-                                 </li>
-                                 <li class="list-group-item">
-                                     <i class="fa fa-share">execution_limit_level_2 </i>
-                                     <span id="execution_limit_level_2out" class="text-warning"> </span>
-                                 </li>
-                                 <li class="list-group-item">
-                                     <i class="fa fa-share">execution_limit_level_3 </i>
-                                     <span id="execution_limit_level_3out" class="text-warning"> </span>
-                                 </li>
-                                 <li class="list-group-item">
-                                     <i class="fa fa-share">execution_limit_level_4 </i>
-                                     <span id="execution_limit_level_4out" class="text-warning"> </span>
-                                 </li>
-                                 <li class="list-group-item">
-                                     <i class="fa fa-share">execution_limit_default_level </i>
-                                     <span id="execution_limit_default_levelout" class="text-warning"> </span>
-                                 </li>
-                                 <li class="list-group-item">
-                                     <i class="fa fa-share">max_users </i>
-                                     <span id="max_usersout" class="text-warning"> </span>
-                                 </li>
-                                 <li class="list-group-item">
-                                     <i class="fa fa-share">max_instances </i>
-                                     <span id="max_instancesout" class="text-warning"> </span>
-                                 </li>
-                                 <li class="list-group-item">
-                                     <i class="fa fa-share">implicitly_deny_web_access </i>
-                                     <span id="implicitly_deny_web_accessout" class="text-warning"> </span>
-                                 </li>
-                                 <li class="list-group-item">
-                                     <i class="fa fa-share">implicitly_deny_web_write_access </i>
-                                     <span id="implicitly_deny_web_write_accessout" class="text-warning"> </span>
-                                 </li>
-                                 <li class="list-group-item">
-                                     <i class="fa fa-share">default_trigger_interval </i>
-                                     <span id="default_trigger_intervalout" class="text-warning"> </span>
-                                 </li>
-                                 <li class="list-group-item">
-                                     <i class="fa fa-share">default_reporting_interval </i>
-                                     <span id="default_reporting_intervalout" class="text-warning"> </span>
-                                 </li>
-                                 <li class="list-group-item">
-                                     <i class="fa fa-share">minimum_trigger_interval </i>
-                                     <span id="minimum_trigger_intervalout" class="text-warning"> </span>
-                                 </li>
-                                 <li class="list-group-item">
-                                     <i class="fa fa-share">minimum_reporting_interval </i>
-                                     <span id="minimum_reporting_intervalout" class="text-warning"> </span>
-                                 </li>
-                                 <li class="list-group-item">
-                                     <i class="fa fa-share">default_limit_instance_states_stored </i>
-                                     <span id="default_limit_instance_states_storedout" class="text-warning"> </span>
-                                 </li>
-                                 <li class="list-group-item">
-                                     <i class="fa fa-share">maximum_limit_instance_states_stored </i>
-                                     <span id="maximum_limit_instance_states_storedout" class="text-warning"> </span>
-                                 </li>
-                                 <li class="list-group-item">
-                                     <i class="fa fa-share">default_limit_instance_states_returned </i>
-                                     <span id="default_limit_instance_states_returnedout" class="text-warning"> </span>
-                                 </li>
-                                 <li class="list-group-item">
-                                     <i class="fa fa-share">maximum_limit_instance_states_returned </i>
-                                     <span id="maximum_limit_instance_states_returnedout" class="text-warning"> </span>
-                                 </li>
-                                 <li class="list-group-item">
-                                     <i class="fa fa-share">mail_access_enabled </i>
-                                     <span id="mail_access_enabledout" class="text-warning"> </span>
-                                 </li>
-                                 <li class="list-group-item">
-                                     <i class="fa fa-share">minimum_mail_access_interval </i>
-                                     <span id="minimum_mail_access_intervalout" class="text-warning"> </span>
-                                 </li>
-                                 <li class="list-group-item">
-                                     <i class="fa fa-share">minimum_host_mail_access_interval </i>
-                                     <span id="minimum_host_mail_access_intervalout" class="text-warning"> </span>
-                                 </li>
-                                 <li class="list-group-item">
-                                     <i class="fa fa-share">minimum_address_mail_access_interval </i>
-                                     <span id="minimum_address_mail_access_intervalout" class="text-warning"> </span>
-                                 </li>
-                             </ul>
-                         </div>
-
-                    </div>
-                    <div class="tab-pane fade" id="about" class="json">
-
-                        <ul class="cards compact list-group">
-                            <li class="list-group-item">
-                                <p class="title" > Plataform</p>
-                                <span id="PlataformInput" class="text-warning" style="font-size: 1.5em; line-height: 1em;margin: 0px;">
-                                </span>
-                            </li>
-                            <li class="list-group-item">
-                                <p class="title" > software</p>
-                                <span id="softwareInput" class="text-warning" style="font-size: 1.5em; line-height: 1em;margin: 0px;">
-                                </span>
-                            </li>
-                            <li class="list-group-item">
-                                <p class="title" > version</p>
-                                <span id="versionInput" class="text-warning" style="font-size: 1.5em; line-height: 1em;margin: 0px;">
-                                </span>
-                            </li>
-                            <li class="list-group-item">
-                                <p class="title" > description</p>
-                                <span id="descriptionInput" class="text-warning" style="font-size: 1.5em; line-height: 1em;margin: 0px;">
-                                </span>
-                            </li>
-                            <li class="list-group-item">
-                                <p class="title" > website</p>
-                                <span id="websiteInput" class="text-warning" style="font-size: 1.5em; line-height: 1em;margin: 0px;">
-                                </span>
-                            </li>
-                            <li class="list-group-item">
-                                <p class="title" > contact</p>
-                                <span id="contactInput" class="text-warning" style="font-size: 1.5em; line-height: 1em;margin: 0px;">
-                                </span>
-                            </li>
-                         </ul>
-
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="modal small fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                 aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">�</button>
-                            <h3 id="myModalLabel">Stop Confirmation</h3>
-                        </div>
-                        <div class="modal-body">
-
-                            <p class="error-text"><i class="fa fa-warning modal-icon"></i>Are you sure you want to Stop
-                                the Plataform?</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cancel</button>
-                            <button class="btn btn-danger" id="putstop" data-dismiss="modal">Stop</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </div>
-            <footer>
-                <hr>
-                <p class="pull-right">A <a href="http://www.portnine.com/bootstrap-themes" target="_blank">Free
-                    Bootstrap
-                    Theme</a> by <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
-
-                <p>� 2015 <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
-            </footer>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </div>
+        <h2>Create a new agent definition</h2>
+
+        <p>We went through all of that trouble creating a new user because agents are owned by or associated
+            with a specific user.</p>
+
+        <p>So, here's the command to create a simple "AgentDefinition_1" agent associated with the new user</p>
+
+        <p class="label label-primary header-label">url_base: curl -X POST
+            'http://localhost:8080/users/test-user-1/agent_definitions' -H Content-type:application/json -d</p>
+
+        <div id=cod2" class="syntaxhighlighter  jscript">
+            <table border="0" cellpadding="0" cellspacing="0">
+                <tbody>
+                <tr>
+                    <td class="gutter">
+                        <div class="line number1 index0 alt0">1</div>
+                        <div class="line number2 index1 alt1">2</div>
+                        <div class="line number3 index2 alt2">3</div>
+                        <div class="line number4 index3 alt3">4</div>
+                        <div class="line number5 index4 alt4">5</div>
+                        <div class="line number6 index5 alt5">6</div>
+                        <div class="line number7 index6 alt6">7</div>
+                        <div class="line number8 index7 alt7">8</div>
+                        <div class="line number9 index8 alt8">9</div>
+                        <div class="line number10 index9 alt9">10</div>
+                        <div class="line number11 index10 alt10">11</div>
+                        <div class="line number12 index11 alt11">12</div>
+                        <div class="line number13 index12 alt12">13</div>
+                        <div class="line number14 index13 alt13">14</div>
+                        <div class="line number15 index14 alt14">15</div>
+                        <div class="line number16 index15 alt15">16</div>
+                        <div class="line number17 index16 alt16">17</div>
+                        <div class="line number18 index17 alt17">18</div>
+                        <div class="line number19 index18 alt18">19</div>
+                        <div class="line number20 index19 alt19">20</div>
+                        <div class="line number21 index20 alt20">21</div>
+                        <div class="line number22 index21 alt21">22</div>
+                        <div class="line number23 index22 alt22">23</div>
+                    </td>
+                    <td class="code">
+                        <div class="container">
+                            <div class="line number1 index0 alt0"><code class="jscript plain">{</code></div>
+                            <div class="line number2 index1 alt1"><code class="jscript plain"> "name":
+                                "AgentDefinition_1",</code></div>
+                            <div class="line number3 index2 alt2"><code class="jscript plain"> "memory": [</code></div>
+                            <div class="line number4 index3 alt3"><code class="jscript plain"> {</code></div>
+                            <div class="line number5 index4 alt4"><code class="jscript plain"> "name":
+                                "counter",</code></div>
+                            <div class="line number6 index5 alt5"><code class="jscript plain"> "type": "int"</code></div>
+                            <div class="line number7 index6 alt6"><code class="jscript plain"> }</code></div>
+                            <div class="line number8 index7 alt7"><code class="jscript plain"> ],</code></div>
+                            <div class="line number9 index8 alt8"><code class="jscript plain"> "timers": [</code></div>
+                            <div class="line number10 index9 alt9"><code class="jscript plain"> {</code></div>
+                            <div class="line number11 index10 alt10"><code class="jscript plain"> "name": "count",</code></div>
+                            <div class="line number12 index11 alt11"><code class="jscript plain"> "interval": "seconds(3)",</code></div>
+                            <div class="line number13 index12 alt12"><code class="jscript plain"> "script":
+                                "counter++;"</code></div>
+                            <div class="line number14 index13 alt13"><code class="jscript plain"> }</code></div>
+                            <div class="line number15 index14 alt14"><code class="jscript plain"> ],</code></div>
+                            <div class="line number16 index15 alt15"><code class="jscript plain"> "outputs": [</code>
+                            </div>
+                            <div class="line number17 index16 alt16"><code class="jscript plain"> {</code></div>
+                            <div class="line number18 index17 alt17"><code class="jscript plain"> "name":
+                                "output1",</code></div>
+                            <div class="line number19 index18 alt18"><code class="jscript plain">"type": "string",</code>
+                            </div>
+                            <div class="line number20 index19 alt18"><code class="jscript plain"> "compute": "\"Count is
+                                \" + counter"</code></div>
+                            <div class="line number21 index20 alt19"><code class="jscript plain"> },</code></div>
+                            <div class="line number22 index21 alt21"><code class="jscript plain"> ]</code></div>
+                            <div class="line number23 index22 alt22"><code class="jscript plain">}</code></div>
+
+
+                        </div>
+
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Now instantiate the counter agent:</h2>
+
+        <p class="label label-primary header-label">url_base: curl -X POST 'http://localhost:8080/users/test-user-1/agents' -H Content-type:application/json -d' </p>
+
+        <div id="code3" class="syntaxhighlighter  jscript">
+            <table border="0" cellpadding="0" cellspacing="0">
+                <tbody>
+                <tr>
+                    <td class="gutter">
+                        <div class="line number1 index0 alt0">1</div>
+                        <div class="line number2 index1 alt1">2</div>
+                        <div class="line number3 index2 alt2">3</div>
+                        <div class="line number4 index3 alt3">4</div>
+
+
+                    </td>
+                    <td class="code">
+                        <div class="container">
+                            <div class="line number1 index0 alt0"><code class="jscript plain">{</code></div>
+                            <div class="line number2 index1 alt1"><code class="jscript plain"> "name": "Agent1",</code></div>
+                            <div class="line number3 index2 alt2"><code class="jscript plain"> "definition": "AgentDefinition_1"</code></div>
+                            <div class="line number4 index3 alt3"><code class="jscript plain">}</code></div>
+                        </div>
+
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Now instantiate the counter agent:</h2>
+
+        <p class="label label-primary header-label">url_base: curl 'http://localhost:8080/users/test-user-1/agents/agent1/output' </p>
+
+        <div id="code4" class="syntaxhighlighter  jscript">
+            <table border="0" cellpadding="0" cellspacing="0">
+                <tbody>
+                <tr>
+                    <td class="gutter">
+                        <div class="line number1 index0 alt0">1</div>
+
+                    </td>
+                    <td class="code">
+                        <div class="container">
+                            <div class="line number1 index0 alt0"><code class="jscript plain">{"output1": "Count is 23"}</code></div>
+
+                        </div>
+
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        Wait a few seconds and try that again..., Basically, the count increments every three seconds.
+
+    </div>
+
+    <footer>
+        <hr>
+        <p class="pull-right">A <a href="http://www.portnine.com/bootstrap-themes" target="_blank">Free
+            Bootstrap
+            Theme</a> by <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
+
+        <p>� 2015 <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
+    </footer>
+
 
 </div>
 <script src="<c:url value="../../resource/js/site/bootstrap.js"/>"></script>

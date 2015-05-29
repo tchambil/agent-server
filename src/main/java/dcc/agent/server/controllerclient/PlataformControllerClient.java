@@ -46,4 +46,10 @@ public class PlataformControllerClient {
     {
         return "tutorial";
     }
+
+    @RequestMapping (value = "/tutorialintermediate", method = RequestMethod.GET)
+    public String gettutorialintermediate(ModelMap modelMap)
+    {
+        return "tutorialintermediate";
+    }
 }
