@@ -230,7 +230,7 @@
             </ul>
         </li>
         <!--<Faq]-->
-        <li><a href="faq.html" class="nav-header"><i class="fa fa-fw fa-comment"></i> Faq</a>
+        <li><a href="/faq" class="nav-header"><i class="fa fa-fw fa-comment"></i> Faq</a>
         </li>
 
     </ul>

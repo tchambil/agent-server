@@ -52,4 +52,10 @@ public class PlataformControllerClient {
     {
         return "tutorialintermediate";
     }
+
+    @RequestMapping (value = "/faq", method = RequestMethod.GET)
+    public String getfaq(ModelMap modelMap)
+    {
+        return "faq";
+    }
 }

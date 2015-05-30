@@ -1,23 +1,22 @@
-<!doctype html>
-<html lang="en">
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<html>
+
 <head>
-    <meta charset="utf-8">
+    <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <title>Agent Server v1.0</title>
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
 
+
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="/resource/css/bootstrap.css">
-    <link rel="stylesheet" href="/resource/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../../resource/css/bootstrap.css">
+    <link rel="stylesheet" href="../../resource/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../../resource/css/shCoreEclipse.css">
+    <script src="<c:url value="../../resource/js/site/jquery-1.11.1.min.js" />"></script>
+    <script src="<c:url value="../../resource/js/site/jquery.knob.js"/>"></script>
 
-
-    <script src="/resource/js/site/jquery-1.11.1.min.js" type="text/javascript"></script>
-    <script src="/resource/js/system.js"></script>
-    <script src="/resource/js/site/jquery.knob.js" type="text/javascript"></script>
-    <script type="text/javascript" src="/resource/js/site/vis.js"></script>
-    <link href="/resource/css/vis.css" rel="stylesheet" type="text/css" />
 
     <script type="text/javascript">
         $(function () {
@@ -26,11 +25,12 @@
     </script>
 
 
-    <link rel="stylesheet" type="text/css" href="/resource/css/theme.css">
-    <link rel="stylesheet" type="text/css" href="/resource/css/premium.css">
+    <link rel="stylesheet" type="text/css" href="../../resource/css/theme.css">
+    <link rel="stylesheet" type="text/css" href="../../resource/css/premium.css">
 
 </head>
-<body class=" theme-blue"  onload="drawExample('example2')">
+
+<body class=" theme-blue">
 
 <!-- Demo page code -->
 
@@ -110,9 +110,9 @@
                 </a>
 
                 <ul class="dropdown-menu">
-                    <li><a href="./">My Account</a></li>
+                    <li><a href="">My Account</a></li>
                     <li class="divider"></li>
-                    <li><a href="./">Users</a></li>
+                    <li><a href="">Users</a></li>
                     <li class="divider"></li>
                     <li><a tabindex="-1" href="sign-in.jsp">Logout</a></li>
                 </ul>
@@ -142,9 +142,9 @@
         </li>
         <li>
             <ul class="users-menu nav nav-list collapse">
+
                 <li><a href="/users.do"><span class="fa fa-caret-right"></span> User Profile</a></li>
                 <li><a href="/listuser.do"><span class="fa fa-caret-right"></span> User List</a></li>
-
             </ul>
         </li>
 
@@ -166,7 +166,7 @@
         </li>
         <li>
             <ul class="premium-menu nav nav-list collapse">
-                <li><a href="/agent.do"><span class="fa fa-caret-right"></span> Agent</a> </li>
+                <li><a href="/agent.do"><span class="fa fa-caret-right"></span> Agent</a></li>
                 <li><a href="/listagent.do"><span class="fa fa-caret-right"></span> List</a></li>
             </ul>
         </li>
@@ -175,13 +175,13 @@
         <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".group-menu"
                                                                         class="nav-header collapsed"
                                                                         data-toggle="collapse">
-            <i class="fa fa-fw fa-arrows-alt"></i> Server Group<i class="fa fa-collapse"></i><span
+            <i class="fa fa-fw fa-arrows-alt"></i>Server Group<i class="fa fa-collapse"></i><span
                 class="label label-info">+0</span></a>
         </li>
         <li>
             <ul class="group-menu nav nav-list collapse">
                 <li>
-                    <a href="/message.do"><span class="fa fa-caret-right"></span> Message</a>
+                    <a href="/message.do"><span class="fa fa-caret-right"></span> RabbitMQ</a>
                 </li>
             </ul>
         </li>
@@ -196,6 +196,7 @@
                 <li>
                     <a href="/testscript.do"><span class="fa fa-caret-right"></span> Scripts</a>
                 </li>
+
             </ul>
         </li>
         <!--<Account]-->
@@ -223,13 +224,14 @@
                     <a href="/tutorial"><span class="fa fa-caret-right"></span> Simple</a>
                 </li>
                 <li>
-                    <a target="_blank" href="/resource/files/tutorial.txt" ><span class="fa fa-caret-right"></span> Intermediate</a>
+                    <a href="/resource/files/tutorial.txt"><span class="fa fa-caret-right"></span> Intermediate</a>
                 </li>
                 <li>
                     <a href="/tutorialintermediate"><span class="fa fa-caret-right"></span> Advanced</a>
                 </li>
             </ul>
         </li>
+
         <!--<Faq]-->
         <li><a href="/faq" class="nav-header"><i class="fa fa-fw fa-comment"></i> Faq</a>
         </li>
@@ -238,70 +240,32 @@
 </div>
 
 <div class="content">
-<div class="stats">
-    <span   class="label label-danger">Status:</span> <span id="headerStatus">null</span>
-    <span>&nbsp;&nbsp;</span>
-    <span class="label label-success">Address IP:</span> <span id="headerIp">null</span>
-    <span>&nbsp;&nbsp;</span>
-    <span class="label label-info">Server:</span> <span id="headerServer">null</span>
-    <span>&nbsp;&nbsp;</span>
-</div>
 
-<div class="header">
-    <h1 class="page-title">Message</h1>
-</div>
-
-<div class="main-content">
-    <div class="row">
-        <div class="col-md-8" >
-            <div id="mynetwork" ></div>
-        </div>
-        <div class="col-md-8">
-            <textarea id="data" class="example"></textarea>
-            <textarea id="example2" class="example">
-                digraph topology
-                {
-                node[shape=circle fontSize=12]
-                edge[length=170 fontSize=12]
-                "10.0.255.1" -> "10.0.255.3"[label=""];
-                "10.0.255.1" -> "10.0.255.2"[label=""];
-                "10.0.255.2" -> "10.0.255.3"[label=""];
-                "10.0.255.3" -> "10.0.255.4"[label=""];
-                "10.0.255.4" -> "10.0.255.1"[label=""];
-
-                }
-            </textarea>
-            </div>
+    <div class="header">
+        <h1 class="page-title">Faqs</h1>
     </div>
 
-    <div>
+    <div class="main-content">
+
+    We Are Working. . .
+
+
 
     </div>
 
-    <div>
-        <button id="draw">Draw</button>
-        <span id="error"></span>
+    <footer>
+        <hr>
+        <p class="pull-right">A <a href="http://www.portnine.com/bootstrap-themes" target="_blank">Free
+            Bootstrap
+            Theme</a> by <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
 
-    </div>
-
-
+        <p>� 2015 <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
+    </footer>
 
 
 </div>
-<footer>
-    <hr>
-    <p class="pull-right">A <a href="http://www.portnine.com/bootstrap-themes" target="_blank">Free
-        Bootstrap
-        Theme</a> by <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
+<script src="<c:url value="../../resource/js/site/bootstrap.js"/>"></script>
 
-    <p>© 2015 <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
-</footer>
-
-
-
-    </div>
-<script type="text/javascript" src="/resource/js/message.js"></script>
-<script src="/resource/js/site/bootstrap.js"></script>
 <script type="text/javascript">
     $("[rel=tooltip]").tooltip();
     $(function () {
@@ -310,7 +274,6 @@
         });
     });
 </script>
-
 
 </body>
 </html>

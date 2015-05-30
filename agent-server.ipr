@@ -27,15 +27,6 @@
             <element id="library" level="project" name="Maven: org.springframework:spring-tx:4.0.0.RELEASE" />
             <element id="library" level="project" name="Maven: org.springframework:spring-web:4.0.0.RELEASE" />
             <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:4.0.0.RELEASE" />
-            <element id="library" level="project" name="Maven: org.springframework.data:spring-data-mongodb:1.2.0.RELEASE" />
-            <element id="library" level="project" name="Maven: org.springframework.data:spring-data-commons:1.5.0.RELEASE" />
-            <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.1" />
-            <element id="library" level="project" name="Maven: org.slf4j:jcl-over-slf4j:1.7.1" />
-            <element id="library" level="project" name="Maven: org.mongodb:mongo-java-driver:2.10.1" />
-            <element id="library" level="project" name="Maven: com.rabbitmq:amqp-client:3.5.1" />
-            <element id="library" level="project" name="Maven: org.springframework.amqp:spring-rabbit:1.3.5.RELEASE" />
-            <element id="library" level="project" name="Maven: org.springframework.amqp:spring-amqp:1.3.5.RELEASE" />
-            <element id="library" level="project" name="Maven: org.springframework.retry:spring-retry:1.1.0.RELEASE" />
             <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-mapper-asl:1.4.2" />
             <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-core-asl:1.4.2" />
             <element id="library" level="project" name="Maven: org.json:json2:2.0" />
@@ -113,6 +104,7 @@
     <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/Reindex.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/agent.jsp" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/definition.jsp" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/faq.jsp" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/index.jsp" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/listagent.jsp" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/listdefinition.jsp" charset="UTF-8" />
@@ -323,17 +315,6 @@
         <root url="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-databind/2.0.0/jackson-databind-2.0.0-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.rabbitmq:amqp-client:3.5.1">
-      <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/rabbitmq/amqp-client/3.5.1/amqp-client-3.5.1.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/com/rabbitmq/amqp-client/3.5.1/amqp-client-3.5.1-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/rabbitmq/amqp-client/3.5.1/amqp-client-3.5.1-sources.jar!/" />
-      </SOURCES>
-    </library>
     <library name="Maven: com.sun.mail:javax.mail:1.5.0">
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/com/sun/mail/javax.mail/1.5.0/javax.mail-1.5.0.jar!/" />
@@ -508,94 +489,6 @@
       </JAVADOC>
       <SOURCES>
         <root url="jar://$MAVEN_REPOSITORY$/org/json/json2/2.0/json2-2.0-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: org.mongodb:mongo-java-driver:2.10.1">
-      <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/mongodb/mongo-java-driver/2.10.1/mongo-java-driver-2.10.1.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/org/mongodb/mongo-java-driver/2.10.1/mongo-java-driver-2.10.1-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/mongodb/mongo-java-driver/2.10.1/mongo-java-driver-2.10.1-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: org.slf4j:jcl-over-slf4j:1.7.1">
-      <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/jcl-over-slf4j/1.7.1/jcl-over-slf4j-1.7.1.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/jcl-over-slf4j/1.7.1/jcl-over-slf4j-1.7.1-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/jcl-over-slf4j/1.7.1/jcl-over-slf4j-1.7.1-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: org.slf4j:slf4j-api:1.7.1">
-      <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.7.1/slf4j-api-1.7.1.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.7.1/slf4j-api-1.7.1-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.7.1/slf4j-api-1.7.1-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: org.springframework.amqp:spring-amqp:1.3.5.RELEASE">
-      <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/springframework/amqp/spring-amqp/1.3.5.RELEASE/spring-amqp-1.3.5.RELEASE.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/org/springframework/amqp/spring-amqp/1.3.5.RELEASE/spring-amqp-1.3.5.RELEASE-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/springframework/amqp/spring-amqp/1.3.5.RELEASE/spring-amqp-1.3.5.RELEASE-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: org.springframework.amqp:spring-rabbit:1.3.5.RELEASE">
-      <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/springframework/amqp/spring-rabbit/1.3.5.RELEASE/spring-rabbit-1.3.5.RELEASE.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/org/springframework/amqp/spring-rabbit/1.3.5.RELEASE/spring-rabbit-1.3.5.RELEASE-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/springframework/amqp/spring-rabbit/1.3.5.RELEASE/spring-rabbit-1.3.5.RELEASE-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: org.springframework.data:spring-data-commons:1.5.0.RELEASE">
-      <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons/1.5.0.RELEASE/spring-data-commons-1.5.0.RELEASE.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons/1.5.0.RELEASE/spring-data-commons-1.5.0.RELEASE-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons/1.5.0.RELEASE/spring-data-commons-1.5.0.RELEASE-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: org.springframework.data:spring-data-mongodb:1.2.0.RELEASE">
-      <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-mongodb/1.2.0.RELEASE/spring-data-mongodb-1.2.0.RELEASE.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-mongodb/1.2.0.RELEASE/spring-data-mongodb-1.2.0.RELEASE-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-mongodb/1.2.0.RELEASE/spring-data-mongodb-1.2.0.RELEASE-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: org.springframework.retry:spring-retry:1.1.0.RELEASE">
-      <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/springframework/retry/spring-retry/1.1.0.RELEASE/spring-retry-1.1.0.RELEASE.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/org/springframework/retry/spring-retry/1.1.0.RELEASE/spring-retry-1.1.0.RELEASE-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/springframework/retry/spring-retry/1.1.0.RELEASE/spring-retry-1.1.0.RELEASE-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: org.springframework:spring-aop:4.1.1.RELEASE">
