@@ -339,7 +339,7 @@ public class AgentController {
         agentServer = plataform.getAgentServer();
         User user = agentServer.users.get(id);
         String agentName = name;
-        String menssage = "";
+        String message = "";
         // Capture and convert the arguments to be passed to the script
         List<Value> arguments = new ArrayList<Value>();
         String[] argumentStrings = request.getParameterValues("arg");
@@ -403,9 +403,9 @@ public class AgentController {
             JSONObject returnValueObject = new JSONObject();
             returnValueObject.put("return_value",
                     returnValue.toJsonObject());
-            menssage = returnValueObject.toString();
+            message = returnValueObject.toString();
         }
-        return menssage;
+        return message;
     }
 
     @RequestMapping(value = "/users/{id}/agents", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)

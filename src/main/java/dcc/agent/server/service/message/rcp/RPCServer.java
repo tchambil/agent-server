@@ -3,14 +3,8 @@ package dcc.agent.server.service.message.rcp;
 /**
  * Created by teo on 26/04/15.
  */
-import com.rabbitmq.client.ConnectionFactory;
-import com.rabbitmq.client.Connection;
-import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.QueueingConsumer;
-import com.rabbitmq.client.AMQP.BasicProperties;
-
 public class RPCServer {
-
+/*
     private static final String RPC_QUEUE_NAME = "rpc_queue";
 
 
@@ -85,5 +79,5 @@ public static int factorial(int n)
                 catch (Exception ignore) {}
             }
         }
-    }
+    }*/
 }

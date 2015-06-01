@@ -3,18 +3,11 @@ package dcc.agent.server.service.rabbitMQ;
 /**
  * Created by teo on 20/05/15.
  */
-import org.apache.log4j.Logger;
-import org.springframework.amqp.core.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
-
-import java.util.Date;
-import java.util.Random;
 
 @Component
 public class QueuePublishProcess {
+    /*
     protected static Logger logger = Logger.getLogger(QueuePublishProcess.class);
     public static final String QUEUE_NAME = "test.queue";
 
@@ -66,5 +59,5 @@ public class QueuePublishProcess {
         // so add 1 to make it inclusive
         int randomNum = rand.nextInt((5 - 1) + 1) + 1;
         return "test.queue."+randomNum ;
-    }
+    }*/
 }

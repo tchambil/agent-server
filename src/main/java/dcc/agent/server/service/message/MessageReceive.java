@@ -1,16 +1,10 @@
 package dcc.agent.server.service.message;
 
-import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.Connection;
-import com.rabbitmq.client.ConnectionFactory;
-import com.rabbitmq.client.QueueingConsumer;
-import dcc.agent.server.service.config.AgentServerProperties;
-
 /**
  * Created by teo on 28/04/15.
  */
 public class MessageReceive {
-    public static AgentServerProperties Properties;
+    /*public static AgentServerProperties Properties;
 
     public String receive()throws Exception
     {
@@ -34,5 +28,5 @@ public class MessageReceive {
         System.out.println("[x] Received '"+ message+"'");
         return message;
     }
-    }
+    }*/
 }

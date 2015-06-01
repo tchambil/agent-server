@@ -3,13 +3,8 @@ package dcc.agent.server.service.message.WorkQueues;
 /**
  * Created by teo on 26/04/15.
  */
-import com.rabbitmq.client.ConnectionFactory;
-import com.rabbitmq.client.Connection;
-import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.MessageProperties;
-
 public class NewTask {
-
+/*
     private static final String TASK_QUEUE_NAME = "task_queue";
 
     public static void mammmin(String[] argv) throws Exception {
@@ -48,5 +43,5 @@ public class NewTask {
             words.append(delimiter).append(strings[i]);
         }
         return words.toString();
-    }
+    }*/
 }

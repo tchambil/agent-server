@@ -1,12 +1,10 @@
 package dcc.agent.server.service.rabbitMQ;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
 /**
  * Created by teo on 20/05/15.
  */
 public class message {
+    /*
     public static void main (String[] args)
     {
         ApplicationContext applicationContext =new ClassPathXmlApplicationContext("rabbitmq.xml");
@@ -19,5 +17,5 @@ public class message {
             e.printStackTrace();
         }
 
-    }
+    }*/
 }

@@ -5,18 +5,9 @@ package dcc.agent.server.service.rabbitMQ;
  */
 
 
-import org.apache.log4j.Logger;
-import org.springframework.amqp.core.*;
-import org.springframework.amqp.core.Binding.DestinationType;
-import org.springframework.amqp.rabbit.connection.ConnectionFactory;
-import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.HashMap;
-
-
 //@Service("messageQueueManager")
-public class MessageQueueManagerImpl implements MessageQueueManager{
+public class MessageQueueManagerImpl implements MessageQueueManager
+{/*
     protected static Logger logger = Logger.getLogger(MessageQueueManagerImpl.class);
 
     @Autowired
@@ -63,5 +54,5 @@ public class MessageQueueManagerImpl implements MessageQueueManager{
             System.out.println("Text: " + new String(message.getBody()));
 
 
-    }
+    }*/
 }

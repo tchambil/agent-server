@@ -44,8 +44,8 @@ $(document).ready(function () {
 
         $(data.users).each(function(index,item) {
             {
-                $('#DropUserGeneral').append('<option value='+item.id+'>'+item.nick_name+'</option>');
-                $('#DropUserGeneral').append('<option value='+item.id+'>'+item.nick_name+'</option>');
+
+                $('#DropUserGeneral').append('<option value='+item.id+'>'+item.id+'</option>');
                    }
         });
 

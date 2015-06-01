@@ -8,12 +8,10 @@ import dcc.agent.server.service.field.Field;
 import dcc.agent.server.service.scheduler.AgentScheduler;
 import dcc.agent.server.service.script.intermediate.*;
 import dcc.agent.server.service.script.parser.ScriptParser;
+import dcc.agent.server.service.script.runtime.ExceptionInfo;
 import dcc.agent.server.service.script.runtime.ScriptRuntime;
 import dcc.agent.server.service.script.runtime.value.Value;
-import dcc.agent.server.service.util.DateUtils;
-import dcc.agent.server.service.util.JsonListMap;
-import dcc.agent.server.service.util.NameValue;
-import dcc.agent.server.service.util.Utils;
+import dcc.agent.server.service.util.*;
 import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,6 +22,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedReader;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 public class PlataformController {
@@ -117,46 +117,6 @@ public class PlataformController {
 
         return agentDefinitionsJson.toString();
     }
-    @RequestMapping(value = "/evaluate", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.OK)
-    public String getevaluate(HttpServletRequest request) throws JSONException
-    {  String resultString="";
-        try {
-            BufferedReader reader = request.getReader();
-            String expressionString = null;
-            try {
-                StringBuilder builder = new StringBuilder();
-                char[] buffer = new char[8192];
-                int read;
-                while ((read = reader.read(buffer, 0, buffer.length)) > 0) {
-                    builder.append(buffer, 0, read);
-                }
-                expressionString = builder.toString();
-            } catch (Exception e) {
-                logger.info("Exception reading expression text : " + e);
-            }
-
-            logger.info("Evaluating expression: " + expressionString);
-            AgentDefinition dummyAgentDefinition = new AgentDefinition(
-                    agentServer);
-            AgentInstance dummyAgentInstance = new AgentInstance(
-                    dummyAgentDefinition);
-            ScriptParser parser = new ScriptParser(dummyAgentInstance);
-            ScriptRuntime scriptRuntime = new ScriptRuntime(
-                    dummyAgentInstance);
-            ExpressionNode expressionNode = parser
-                    .parseExpressionString(expressionString);
-            Value valueNode = scriptRuntime.evaluateExpression(
-                    expressionString, expressionNode);
-             resultString = valueNode.getStringValue();
-
-
-        } catch (Exception e) {
-            logger.info("Evaluate Exception: " + e);
-        }
-        return resultString;
-
-    }
 
     @RequestMapping(value = "/agents", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
@@ -193,6 +153,79 @@ public class PlataformController {
         agentInstancesJson.put("agent_instances", agentInstancesArrayJson);
 
         return agentInstancesJson.toString();
+    }
+
+    @RequestMapping(value = "/agents/todo/{scriptName}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    public String getagenttask(@PathVariable String scriptName,HttpServletRequest request) throws Exception {
+        logger.info("Getting task of agent instances for all users");
+
+        String message="";
+        ScriptDefinition scriptDefinition=null;
+        AgentInstance agent=null;
+        User user=null;
+        JSONObject retunValueObject =new JSONObject();
+        // Capture and convert the arguments to be passed to the script
+        List<Value> arguments = new ArrayList<Value>();
+        String[] argumentStrings = request.getParameterValues("arg");
+        if (argumentStrings != null) {
+            int numArgs = argumentStrings.length;
+            for (int i = 0; i < numArgs; i++) {
+                String argumentString = argumentStrings[i];
+                Value argumentValue = JsonUtils.parseJson(argumentString);
+                arguments.add(argumentValue);
+            }
+        }
+
+        JSONArray agentInstancesArrayJson = new JSONArray();
+        // Get all user for plataform
+        for (NameValue<User> userIdValue: agentServer.users)
+        {
+            user =userIdValue.value;
+            //Get all agent Instance for Users
+            for(AgentInstance agentInstance:agentServer.agentInstances.get(user.id))
+            {
+                //Get all ScriptDefinitions por agentInstance
+                scriptDefinition =agentServer.agentInstances.get(user.id).get(agentInstance.name).agentDefinition.scripts.get(scriptName);
+                if(scriptDefinition ==null)
+                {
+                    AgentInstanceList agenMap =agentServer.agentInstances.get(user.id);
+                    agent=agenMap.get(agentInstance.name);
+                }
+
+            }
+        }
+
+         if(scriptDefinition.publicAccess && scriptDefinition ==null)
+            {
+               //Call the script
+                List<ExceptionInfo> exception =agent.exceptionHistory;
+                int numExceptions =exception.size();
+                Value retunValue=agent.runScript(scriptName, arguments);
+
+                //Check for exceptions
+                int numExceptionsAfter=exception.size();
+                if(numExceptions!=numExceptionsAfter)
+                {
+                    //handleException(400, exceptions.get(numExceptions).exception);
+                }
+                else
+                {
+                    retunValueObject.put("User ",user.id);
+                    retunValueObject.put("Agent Definition",agent.agentDefinition.name);
+                    retunValueObject.put("Agent ",retunValue.toJsonObject());
+                    retunValueObject.put("return_value",retunValue.toJsonObject());
+                    message= retunValueObject.toString();
+                }
+
+            }
+            else
+             {
+             retunValueObject.put("return_value","");
+             message= retunValueObject.toString();
+             }
+
+        return message;
     }
 
     @RequestMapping(value = "/field_types", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -282,8 +315,6 @@ public class PlataformController {
         return aboutJson.toString(4);
     }
 
-
-
     @RequestMapping(value = "/config", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public String putConfig(HttpServletRequest request) throws Exception {
@@ -346,6 +377,45 @@ public class PlataformController {
 
     }
 
+    @RequestMapping(value = "/evaluate", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    public String getevaluate(HttpServletRequest request) throws JSONException    {
+        String resultString="";
+        try {
+            BufferedReader reader = request.getReader();
+            String expressionString = null;
+            try {
+                StringBuilder builder = new StringBuilder();
+                char[] buffer = new char[8192];
+                int read;
+                while ((read = reader.read(buffer, 0, buffer.length)) > 0) {
+                    builder.append(buffer, 0, read);
+                }
+                expressionString = builder.toString();
+            } catch (Exception e) {
+                logger.info("Exception reading expression text : " + e);
+            }
+
+            logger.info("Evaluating expression: " + expressionString);
+            AgentDefinition dummyAgentDefinition = new AgentDefinition(
+                    agentServer);
+            AgentInstance dummyAgentInstance = new AgentInstance(
+                    dummyAgentDefinition);
+            ScriptParser parser = new ScriptParser(dummyAgentInstance);
+            ScriptRuntime scriptRuntime = new ScriptRuntime(
+                    dummyAgentInstance);
+            ExpressionNode expressionNode = parser
+                    .parseExpressionString(expressionString);
+            Value valueNode = scriptRuntime.evaluateExpression(expressionString, expressionNode);
+            resultString = valueNode.getStringValue();
+
+
+        } catch (Exception e) {
+            logger.info("Evaluate Exception: " + e);
+        }
+        return resultString;
+
+    }
 
 
     @RequestMapping(value = "/run", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -389,8 +459,6 @@ public class PlataformController {
         return message.toString();
 
     }
-
-
 
 
     @RequestMapping(value = "/status/restart", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)

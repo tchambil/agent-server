@@ -19,8 +19,6 @@ package dcc.agent.server.service.persistence.persistenfile;
 import dcc.agent.server.service.util.DateUtils;
 import dcc.agent.server.service.util.ListMap;
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoTemplate;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -47,8 +45,7 @@ public class PersistentFile implements Iterable<String> {
     public RandomAccessFile file = null;
     public ListMap<String, PersistentTable> persistentTables;
 
-    @Autowired
-    private MongoTemplate mongoTemplate;
+
 
     public void close() throws IOException {
         if (file != null)

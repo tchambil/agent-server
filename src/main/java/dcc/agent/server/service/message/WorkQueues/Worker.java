@@ -3,13 +3,8 @@ package dcc.agent.server.service.message.WorkQueues;
 /**
  * Created by teo on 26/04/15.
  */
-import com.rabbitmq.client.ConnectionFactory;
-import com.rabbitmq.client.Connection;
-import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.QueueingConsumer;
-
 public class Worker {
-
+/*
     private static final String TASK_QUEUE_NAME = "task_queue";
 
     public static void maimmn(String[] argv) throws Exception {
@@ -45,5 +40,5 @@ public class Worker {
         for (char ch: task.toCharArray()) {
             if (ch == '.') Thread.sleep(1000);
         }
-    }
+    }*/
 }

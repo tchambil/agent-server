@@ -3,16 +3,8 @@ package dcc.agent.server.service.message.rcp;
 /**
  * Created by teo on 26/04/15.
  */
-import com.rabbitmq.client.AMQP.BasicProperties;
-import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.Connection;
-import com.rabbitmq.client.ConnectionFactory;
-import com.rabbitmq.client.QueueingConsumer;
-
-import java.util.UUID;
-
 public class RPCClient {
-
+/*
     private Connection connection;
     private Channel channel;
     private String requestQueueName = "rpc_queue";
@@ -85,5 +77,5 @@ public class RPCClient {
                 catch (Exception ignore) {}
             }
         }
-    }
+    }*/
 }

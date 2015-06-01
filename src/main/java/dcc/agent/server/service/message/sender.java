@@ -1,15 +1,10 @@
 package dcc.agent.server.service.message;
 
-import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.Connection;
-import com.rabbitmq.client.ConnectionFactory;
-import dcc.agent.server.service.config.AgentServerProperties;
-
 /**
  * Created by teo on 25/04/15.
  */
 public class sender {
-
+/*
     public static AgentServerProperties Properties;
     public static void mainmmmm(String[] args) throws Exception {
         ConnectionFactory factory = new ConnectionFactory();
@@ -31,5 +26,5 @@ public class sender {
         channel.close();
         connection.close();
 
-    }
+    }*/
 }

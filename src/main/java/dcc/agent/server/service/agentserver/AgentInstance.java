@@ -853,6 +853,10 @@ public class AgentInstance {
         return categorySymbolValues.get("memory").get(symbolManager.get("memory", fieldName));
     }
 
+    public Value getScripts(String fieldName) throws SymbolException {
+        return categorySymbolValues.get("scripts").get(symbolManager.get("scripts", fieldName));
+    }
+
     public Value getOutput(String fieldName) throws SymbolException {
         return categorySymbolValues.get("outputs").get(symbolManager.get("outputs", fieldName));
     }
