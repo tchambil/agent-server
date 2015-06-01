@@ -8,10 +8,12 @@ import dcc.agent.server.service.field.Field;
 import dcc.agent.server.service.scheduler.AgentScheduler;
 import dcc.agent.server.service.script.intermediate.*;
 import dcc.agent.server.service.script.parser.ScriptParser;
-import dcc.agent.server.service.script.runtime.ExceptionInfo;
 import dcc.agent.server.service.script.runtime.ScriptRuntime;
 import dcc.agent.server.service.script.runtime.value.Value;
-import dcc.agent.server.service.util.*;
+import dcc.agent.server.service.util.DateUtils;
+import dcc.agent.server.service.util.JsonListMap;
+import dcc.agent.server.service.util.NameValue;
+import dcc.agent.server.service.util.Utils;
 import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,8 +24,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedReader;
-import java.util.ArrayList;
-import java.util.List;
 
 @RestController
 public class PlataformController {
@@ -57,14 +57,16 @@ public class PlataformController {
         JSONObject message = new JSONObject();
         message.put("status", agentScheduler == null ? "shutdown"
                 : agentScheduler.getStatus());
-       message.put("message", "Starting agent Server successful");
+        message.put("message", "Starting agent Server successful");
         return message.toString();
 
     }
 
-    @RequestMapping(value="/get",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/get", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public @ResponseBody String getmain() throws Exception    {
+    public
+    @ResponseBody
+    String getmain() throws Exception {
         JSONObject message = new JSONObject();
         message.put("message", "Welcome to Agent Server");
         return message.toString();
@@ -72,14 +74,18 @@ public class PlataformController {
 
     @RequestMapping(value = "/config", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public @ResponseBody String getConfig() throws JSONException {
+    public
+    @ResponseBody
+    String getConfig() throws JSONException {
         JSONObject configJson = agentServer.config.toJson();
         return configJson.toString();
     }
 
     @RequestMapping(value = "/about", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public @ResponseBody String getAbout() throws JSONException {
+    public
+    @ResponseBody
+    String getAbout() throws JSONException {
         JSONObject aboutJson = new JsonListMap();
         aboutJson.put("Plataform", agentServer.config.get("Plataform"));
         aboutJson.put("software", agentServer.config.get("software"));
@@ -136,7 +142,7 @@ public class PlataformController {
                         agentInstance.agentDefinition.name);
                 agentInstanceJson.put("description", agentInstance.description);
 
-                AgentInstance agent = agentServer.agentInstances.get( agentInstance.user.id).get(
+                AgentInstance agent = agentServer.agentInstances.get(agentInstance.user.id).get(
                         agentInstance.name);
                 SymbolValues outputValues = agent.categorySymbolValues
                         .get("outputs");
@@ -144,7 +150,7 @@ public class PlataformController {
 
                 for (Symbol outputSymbol : outputValues) {
                     String fieldName = outputSymbol.name;
-                    agentInstanceJson.put("Outputs",agent.getOutput(fieldName));
+                    agentInstanceJson.put("Outputs", agent.getOutput(fieldName));
                 }
                 agentInstancesArrayJson.put(agentInstanceJson);
             }
@@ -153,79 +159,6 @@ public class PlataformController {
         agentInstancesJson.put("agent_instances", agentInstancesArrayJson);
 
         return agentInstancesJson.toString();
-    }
-
-    @RequestMapping(value = "/agents/todo/{scriptName}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.OK)
-    public String getagenttask(@PathVariable String scriptName,HttpServletRequest request) throws Exception {
-        logger.info("Getting task of agent instances for all users");
-
-        String message="";
-        ScriptDefinition scriptDefinition=null;
-        AgentInstance agent=null;
-        User user=null;
-        JSONObject retunValueObject =new JSONObject();
-        // Capture and convert the arguments to be passed to the script
-        List<Value> arguments = new ArrayList<Value>();
-        String[] argumentStrings = request.getParameterValues("arg");
-        if (argumentStrings != null) {
-            int numArgs = argumentStrings.length;
-            for (int i = 0; i < numArgs; i++) {
-                String argumentString = argumentStrings[i];
-                Value argumentValue = JsonUtils.parseJson(argumentString);
-                arguments.add(argumentValue);
-            }
-        }
-
-        JSONArray agentInstancesArrayJson = new JSONArray();
-        // Get all user for plataform
-        for (NameValue<User> userIdValue: agentServer.users)
-        {
-            user =userIdValue.value;
-            //Get all agent Instance for Users
-            for(AgentInstance agentInstance:agentServer.agentInstances.get(user.id))
-            {
-                //Get all ScriptDefinitions por agentInstance
-                scriptDefinition =agentServer.agentInstances.get(user.id).get(agentInstance.name).agentDefinition.scripts.get(scriptName);
-                if(scriptDefinition ==null)
-                {
-                    AgentInstanceList agenMap =agentServer.agentInstances.get(user.id);
-                    agent=agenMap.get(agentInstance.name);
-                }
-
-            }
-        }
-
-         if(scriptDefinition.publicAccess && scriptDefinition ==null)
-            {
-               //Call the script
-                List<ExceptionInfo> exception =agent.exceptionHistory;
-                int numExceptions =exception.size();
-                Value retunValue=agent.runScript(scriptName, arguments);
-
-                //Check for exceptions
-                int numExceptionsAfter=exception.size();
-                if(numExceptions!=numExceptionsAfter)
-                {
-                    //handleException(400, exceptions.get(numExceptions).exception);
-                }
-                else
-                {
-                    retunValueObject.put("User ",user.id);
-                    retunValueObject.put("Agent Definition",agent.agentDefinition.name);
-                    retunValueObject.put("Agent ",retunValue.toJsonObject());
-                    retunValueObject.put("return_value",retunValue.toJsonObject());
-                    message= retunValueObject.toString();
-                }
-
-            }
-            else
-             {
-             retunValueObject.put("return_value","");
-             message= retunValueObject.toString();
-             }
-
-        return message;
     }
 
     @RequestMapping(value = "/field_types", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -246,6 +179,7 @@ public class PlataformController {
                             + e);
         }
     }
+
     @RequestMapping(value = "/status/pause", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public String putStatusPause() throws Exception {
@@ -265,6 +199,7 @@ public class PlataformController {
         return message.toString();
 
     }
+
     @RequestMapping(value = "/status", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public String getStatus() throws JSONException, InterruptedException, AgentServerException {
@@ -278,18 +213,16 @@ public class PlataformController {
         JSONObject aboutJson = new JsonListMap();
         AgentScheduler agentScheduler = AgentScheduler.singleton;
 
-        if((agentScheduler == null))
-        {
-             aboutJson.put("status","null");
-             aboutJson.put("since","null");
-             aboutJson.put("num_registered_users","null");
-             aboutJson.put("num_active_users","null");
-             aboutJson.put("num_active_users","null");
-             aboutJson.put("num_registered_agents","null");
-             aboutJson.put("num_active_agents","null");
+        if ((agentScheduler == null)) {
+            aboutJson.put("status", "null");
+            aboutJson.put("since", "null");
+            aboutJson.put("num_registered_users", "null");
+            aboutJson.put("num_active_users", "null");
+            aboutJson.put("num_active_users", "null");
+            aboutJson.put("num_registered_agents", "null");
+            aboutJson.put("num_active_agents", "null");
 
-        }
-        else {
+        } else {
             aboutJson.put("status", agentScheduler == null ? "shutdown"
                     : agentScheduler.getStatus());
 
@@ -309,7 +242,7 @@ public class PlataformController {
                 num_active_agents += agentInstanceListNameValue.value.size();
             aboutJson.put("num_active_agents", num_active_agents);
         }
-        AgentServerProperties agentServerProperties =new AgentServerProperties();
+        AgentServerProperties agentServerProperties = new AgentServerProperties();
         aboutJson.put("HostName", agentServerProperties.agentServerHostName);
         aboutJson.put("IP", agentServerProperties.agentServerName);
         return aboutJson.toString(4);
@@ -367,20 +300,19 @@ public class PlataformController {
 
         Thread.sleep(100);
         AgentScheduler agentScheduler = AgentScheduler.singleton;
-         JSONObject message = new JSONObject();
+        JSONObject message = new JSONObject();
         message.put("status", agentScheduler == null ? "shutdown"
                 : agentScheduler.getStatus());
         message.put("message", "Shutdown agent Server successful");
         return message.toString();
 
 
-
     }
 
     @RequestMapping(value = "/evaluate", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public String getevaluate(HttpServletRequest request) throws JSONException    {
-        String resultString="";
+    public String getevaluate(HttpServletRequest request) throws JSONException {
+        String resultString = "";
         try {
             BufferedReader reader = request.getReader();
             String expressionString = null;
@@ -421,7 +353,7 @@ public class PlataformController {
     @RequestMapping(value = "/run", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public String getRun(HttpServletRequest request) throws Exception {
-        String resultString=null;
+        String resultString = null;
         try {
             BufferedReader reader = request.getReader();
             String scriptString = null;
@@ -448,7 +380,7 @@ public class PlataformController {
             ScriptNode scriptNode = parser.parseScriptString(scriptString);
             Value valueNode = scriptRuntime.runScript(scriptString,
                     scriptNode);
-             resultString = valueNode.getStringValue();
+            resultString = valueNode.getStringValue();
             logger.info("Script result: " + resultString);
 
         } catch (Exception e) {
@@ -490,9 +422,6 @@ public class PlataformController {
         return message.toString();
 
 
-
-
-
     }
 
     @RequestMapping(value = "/status/resume", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -502,7 +431,6 @@ public class PlataformController {
         // Request the agent scheduler to resume
         AgentScheduler.singleton.resume();
         logger.info("Resume Agent server");
-
 
 
         Thread.sleep(100);
@@ -536,7 +464,9 @@ public class PlataformController {
 
     @RequestMapping(value = "/status/start", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public @ResponseBody String putStatusStart() throws Exception {
+    public
+    @ResponseBody
+    String putStatusStart() throws Exception {
         JSONObject message = new JSONObject();
         // Make sure scheduler is not already running
         if (AgentScheduler.singleton == null) {
@@ -559,7 +489,6 @@ public class PlataformController {
         logger.info("Shutting down agent server");
         AgentScheduler.singleton.shutdown();
         logger.info("Agent server shut down");
-
 
 
         Thread.sleep(100);
