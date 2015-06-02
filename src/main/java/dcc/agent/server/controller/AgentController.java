@@ -3,6 +3,7 @@ package dcc.agent.server.controller;
 import dcc.agent.server.service.agentserver.*;
 import dcc.agent.server.service.appserver.AgentAppServerBadRequestException;
 import dcc.agent.server.service.appserver.AgentAppServerException;
+import dcc.agent.server.service.config.AgentServerProperties;
 import dcc.agent.server.service.delegate.AgentMessage;
 import dcc.agent.server.service.notification.NotificationInstance;
 import dcc.agent.server.service.script.intermediate.Symbol;
@@ -27,6 +28,7 @@ import java.util.List;
 public class AgentController {
     protected static Logger logger = Logger.getLogger(AgentController.class);
     public AgentServer agentServer;
+    public AgentServerProperties agentServerProperties;
     public Utils util = new Utils();
 
 
@@ -783,21 +785,26 @@ public class AgentController {
     }
 
 
-    @RequestMapping(value = "/agents/{scriptName}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/agents/task", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public String getagenttask(@PathVariable String scriptName, HttpServletRequest request) throws Exception {
+    public String getagenttask(HttpServletRequest request) throws Exception {
         logger.info("Getting task of agent instances for all users");
-
         String message = "";
         ScriptDefinition scriptDefinition = null;
         AgentInstance agent = null;
+        JSONObject retunValueObject = new JSONObject();
 
         JSONObject agentMessageson = util.getJsonRequest(request);
-        if (agentMessageson == null)
-            throw new AgentAppServerBadRequestException(
-                    "Invalid agent message JSON object");
+         if (agentMessageson == null) {
+             throw new AgentAppServerBadRequestException(
+                     "Invalid agent message JSON object");
+         }
+        //Get User Id
+        User userId = agentServer.getUser(agentMessageson.optString("sender"));
+        //Get Script Name/TASK
+        AgentMessage agentMessage =agentServer.addAgentMessage(userId,agentMessageson);
+        String scriptName = agentMessage.content.toString();
 
-        JSONObject retunValueObject = new JSONObject();
         // Capture and convert the arguments to be passed to the script
         List<Value> arguments = new ArrayList<Value>();
         String[] argumentStrings = request.getParameterValues("arg");
@@ -809,8 +816,6 @@ public class AgentController {
                 arguments.add(argumentValue);
             }
         }
-
-        JSONArray agentInstancesArrayJson = new JSONArray();
         // Get all user for plataform
         for (NameValue<User> userIdValue : agentServer.users) {
             User user = userIdValue.value;
@@ -822,40 +827,42 @@ public class AgentController {
                     AgentInstanceList agenMap = agentServer.agentInstances.get(user.id);
                     agent = agenMap.get(agentInstance.name);
                 }
-
             }
         }
-        if (scriptDefinition == null) {
-
+        if (scriptDefinition == null)
+        {
+         AgentMessage agentMessageR=agentServer.addDelegateAgent(agentMessage);
+         retunValueObject.put("Server Web ", agentServerProperties.agentServerHostName);
+         retunValueObject.put("return_value: ", "Task delegate to " +agentMessageR.replyTo.toString());
+         retunValueObject.put("Status: ", agentMessageR.replyTo.toString());
+         message = retunValueObject.toString();
         } else {
             if (scriptDefinition.publicAccess) {
                 //Call the script
                 List<ExceptionInfo> exception = agent.exceptionHistory;
                 int numExceptions = exception.size();
                 Value retunValue = agent.runScript(scriptName, arguments);
-
                 //Check for exceptions
                 int numExceptionsAfter = exception.size();
                 if (numExceptions != numExceptionsAfter) {
                     //handleException(400, exceptions.get(numExceptions).exception);
                 } else {
+                    retunValueObject.put("Server Web ", agentServerProperties.agentServerHostName);
                     retunValueObject.put("User ", agent.user.id);
                     retunValueObject.put("Agent Definition", agent.agentDefinition.name);
                     retunValueObject.put("Agent ", agent.name);
                     retunValueObject.put("return_value", retunValue.toJsonObject());
                     message = retunValueObject.toString();
                 }
-
             } else {
                 retunValueObject.put("return_value", "");
                 message = retunValueObject.toString();
             }
         }
-
         return message;
     }
 
-    @RequestMapping(value = "/users/{id}/message", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/users/{id}/messagetest", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public String postAgentDefinition(@PathVariable String id, HttpServletRequest request) throws Exception {
         PlataformController plataform = new PlataformController();

@@ -175,17 +175,19 @@ public class AgentServer {
         AgentMessage agentMessage = AgentMessage.fromJson(this, user, agentJson);
         // Add it to table of agent definitions
         addAgentMessage(agentMessage);
-       DelegateAgentMessage(agentMessage);
+      // DelegateAgentMessage(agentMessage);
         // Return the new agent definition
         return agentMessage;
     }
-public void DelegateAgentMessage(AgentMessage agentMessage) throws AgentServerException, JSONException {
+public AgentMessage addDelegateAgent(AgentMessage agentMessage) throws AgentServerException, JSONException {
+
     if(agentMessage!=null)
     {
        // Prepara for delegate agent message
-        agentDelegate.readMessage(agentMessage);
+        return  agentDelegate.readMessage(agentMessage);
 
     }
+    return null;
 
 }
     public AgentDefinition getAgentDefinition(User user, String agentDefinitionName) {

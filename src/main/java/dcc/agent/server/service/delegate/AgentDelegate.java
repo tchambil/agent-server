@@ -38,17 +38,41 @@ public class AgentDelegate {
         }
         return response;
     }
-
-   public ResponseEntity<String> readMessage(AgentMessage agentMessage) throws JSONException, AgentServerException
-   {
-       String uri="http://"+ agentMessage.replyTo + "/users/test-user-1/message";
-       ResponseEntity<String> response=null;
-        if(agentMessage.sender.equals("0001"))
+    static public AgentMessage  doDelegate(AgentMessage agentMessage, String uri) throws AgentServerException, JSONException {
+        log.info("Initialize the agent delegate for send agent message");
+        // Initialize the agent delegate,
+        AgentMessage agentMessageR=null;
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<String> entity =new HttpEntity<String>(agentMessage.toString(),headers);
+        ResponseEntity<String> response=restTemplate.exchange(uri, HttpMethod.POST,entity,String.class);
+        if(response.getStatusCode()==HttpStatus.OK)
         {
-             response=doPost(agentMessage, uri);
-
+            agentMessage.replyTo="StatusCode: "+ response.getStatusCode().toString() + " Body: " +response.getBody()+"Headers: "+response.getHeaders();
+            log.info("successful send agent message and prepare save local");
+            agentMessageR=agentMessage;
         }
-        return response;
+        else
+        {
+            agentMessage.replyTo=response.getStatusCode().toString();
+            agentMessageR=agentMessage;
+        }
+        return agentMessageR;
+    }
+
+   public AgentMessage readMessage(AgentMessage agentMessage) throws JSONException, AgentServerException
+   {
+
+      AgentMessage agentMessageR=null;
+
+        if(!(agentMessage==null))
+        {
+            String uri="http://"+ agentMessage.replyTo + "/agents/task";
+            agentMessage.receiver=agentMessage.content.toString();
+            agentMessageR=doDelegate(agentMessage, uri);
+            }
+        return agentMessageR;
     }
 
     public JSONObject toJson(AgentMessage agentMessage) throws AgentServerException {
