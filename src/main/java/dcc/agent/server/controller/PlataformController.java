@@ -2,8 +2,11 @@ package dcc.agent.server.controller;
 
 import dcc.agent.server.service.agentserver.*;
 import dcc.agent.server.service.appserver.AgentAppServer;
+import dcc.agent.server.service.appserver.AgentAppServerBadRequestException;
 import dcc.agent.server.service.appserver.AgentAppServerShutdown;
 import dcc.agent.server.service.config.AgentServerProperties;
+import dcc.agent.server.service.delegate.ServerGroup;
+import dcc.agent.server.service.delegate.ServerGroupList;
 import dcc.agent.server.service.field.Field;
 import dcc.agent.server.service.scheduler.AgentScheduler;
 import dcc.agent.server.service.script.intermediate.*;
@@ -30,8 +33,7 @@ public class PlataformController {
     public static AgentServer agentServer;
     static public Thread shutdownThread;
     protected static Logger logger = Logger.getLogger(PlataformController.class);
-    public Utils util;
-
+    public Utils util = new Utils();
 
     public AgentServer getAgentServer() {
         return this.agentServer;
@@ -61,31 +63,63 @@ public class PlataformController {
         return message.toString();
 
     }
+    @RequestMapping(value = "/group", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public String postServerGroup(HttpServletRequest request) throws Exception {
+
+        JSONObject serverJson = util.getJsonRequest(request);
+        if (serverJson == null)
+            throw new AgentAppServerBadRequestException(
+                    "Invalid ServerGroup JSON object");
+
+        // Parse and add the Server Group
+        ServerGroup serverGroup =agentServer.addServerGroup(serverJson);
+         // Done
+        JSONObject message = new JSONObject();
+        message.put("message", "Add was successful");
+        return message.toString();
+    }
+
+
+    @RequestMapping(value = "/group", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    public String getServerGroup () throws JSONException {
+
+        JSONArray GroupArrayJson = new JSONArray();
+        // Get all serverGroup
+        for (NameValue<ServerGroupList> groupListNameValue : agentServer.serverGroups) {
+            // Get all  serverGroup
+            for (ServerGroup serverGroup : agentServer.serverGroups
+                    .get(groupListNameValue.name)) {
+                // Generate JSON for short summary of serverGroup
+                JSONObject groupJson = new JsonListMap();
+                groupJson.put("uri", serverGroup.uri);
+                groupJson.put("HostName", serverGroup.HostName);
+                groupJson.put("ServerIp",    serverGroup.ServerIp);
+                groupJson.put("ServerName",    serverGroup.ServerName);
+                GroupArrayJson.put(groupJson);
+            }
+        }
+        JSONObject groupJson = new JSONObject();
+        groupJson.put("ServerGroup", GroupArrayJson);
+
+        return groupJson.toString();
+
+    }
 
     @RequestMapping(value = "/get", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.OK)
-    public
-    @ResponseBody
-    String getmain() throws Exception {
+    public    @ResponseBody    String getmain() throws Exception {
         JSONObject message = new JSONObject();
         message.put("message", "Welcome to Agent Server");
         return message.toString();
     }
 
     @RequestMapping(value = "/config", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.OK)
-    public
-    @ResponseBody
-    String getConfig() throws JSONException {
+    public    @ResponseBody    String getConfig() throws JSONException {
         JSONObject configJson = agentServer.config.toJson();
         return configJson.toString();
     }
-
     @RequestMapping(value = "/about", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.OK)
-    public
-    @ResponseBody
-    String getAbout() throws JSONException {
+    public   @ResponseBody   String getAbout() throws JSONException {
         JSONObject aboutJson = new JsonListMap();
         aboutJson.put("Plataform", agentServer.config.get("Plataform"));
         aboutJson.put("software", agentServer.config.get("software"));
@@ -95,7 +129,6 @@ public class PlataformController {
         aboutJson.put("contact", agentServer.config.get("contact"));
         return aboutJson.toString();
     }
-
     @RequestMapping(value = "/agent_definitions", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public String getAgentDefinitions() throws JSONException {

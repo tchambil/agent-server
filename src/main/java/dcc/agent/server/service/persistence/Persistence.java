@@ -18,6 +18,7 @@ package dcc.agent.server.service.persistence;
 
 import dcc.agent.server.service.agentserver.*;
 import dcc.agent.server.service.delegate.AgentMessage;
+import dcc.agent.server.service.delegate.ServerGroup;
 import dcc.agent.server.service.persistence.persistenfile.PersistentFile;
 import dcc.agent.server.service.persistence.persistenfile.PersistentFileException;
 import dcc.agent.server.service.script.intermediate.SymbolException;
@@ -65,7 +66,7 @@ public class Persistence {
                 loadAllTables();
             } else {
                 // No, create a new persistent file for this agent server
-                List<String> tableNames = Arrays.asList("config", "users", "agentDefinitions", "agentInstances", "webaccess","message");
+                List<String> tableNames = Arrays.asList("config", "users", "agentDefinitions", "agentInstances", "webaccess","message","group");
                 file.create(path, "Agent Server", "1.0", tableNames);
 
                 // And open it
@@ -127,6 +128,10 @@ public class Persistence {
         put("users", user.id, user.toJson().toString());
     }
 
+    public void put(ServerGroup serverGroup) throws AgentServerException {
+        log.info("persistence ServerGroup");
+        put("group", serverGroup.HostName, serverGroup.toJson().toString());
+    }
     public void put(AgentDefinition agentDefinition) throws AgentServerException {
         put("agentDefinitions", agentDefinition.user.id + "|" + agentDefinition.name, agentDefinition.toJson().toString());
     }

@@ -745,9 +745,7 @@ public class AgentController {
     }
 
     @RequestMapping(value = "/users/{id}/agents/{name}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.OK)
-    public String deleteAgentName(@PathVariable String id, @PathVariable String name) throws Exception
-    {
+    public String deleteAgentName(@PathVariable String id, @PathVariable String name) throws Exception   {
         PlataformController plataform = new PlataformController();
         agentServer = plataform.getAgentServer();
         User user = agentServer.users.get(id);
@@ -786,7 +784,6 @@ public class AgentController {
 
 
     @RequestMapping(value = "/agents/task", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.OK)
     public String getagenttask(HttpServletRequest request) throws Exception {
         logger.info("Getting task of agent instances for all users");
         String message = "";
@@ -831,11 +828,10 @@ public class AgentController {
         }
         if (scriptDefinition == null)
         {
-         AgentMessage agentMessageR=agentServer.addDelegateAgent(agentMessage);
-         retunValueObject.put("Server Web ", agentServerProperties.agentServerHostName);
-         retunValueObject.put("return_value: ", "Task delegate to " +agentMessageR.replyTo.toString());
-         retunValueObject.put("Status: ", agentMessageR.replyTo.toString());
-         message = retunValueObject.toString();
+          retunValueObject.put("Status", "Task delegate to " +agentMessage.replyTo);
+          AgentMessage agentMessageR=agentServer.addDelegateAgent(agentMessage);
+          retunValueObject.put("Result",(agentMessageR.replyTo));
+          message = retunValueObject.toString();
         } else {
             if (scriptDefinition.publicAccess) {
                 //Call the script

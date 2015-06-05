@@ -49,7 +49,7 @@ public class AgentDelegate {
         ResponseEntity<String> response=restTemplate.exchange(uri, HttpMethod.POST,entity,String.class);
         if(response.getStatusCode()==HttpStatus.OK)
         {
-            agentMessage.replyTo="StatusCode: "+ response.getStatusCode().toString() + " Body: " +response.getBody()+"Headers: "+response.getHeaders();
+            agentMessage.replyTo=response.getBody();
             log.info("successful send agent message and prepare save local");
             agentMessageR=agentMessage;
         }

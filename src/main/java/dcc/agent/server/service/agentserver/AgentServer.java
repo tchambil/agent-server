@@ -21,9 +21,7 @@ import dcc.agent.server.service.config.AgentServerConfig;
 import dcc.agent.server.service.config.AgentServerProperties;
 import dcc.agent.server.service.config.AgentServerWebAccessConfig;
 import dcc.agent.server.service.config.AgentVariable;
-import dcc.agent.server.service.delegate.AgentDelegate;
-import dcc.agent.server.service.delegate.AgentMessage;
-import dcc.agent.server.service.delegate.AgentMessageList;
+import dcc.agent.server.service.delegate.*;
 import dcc.agent.server.service.mailaccessmanager.MailAccessManager;
 import dcc.agent.server.service.persistence.Persistence;
 import dcc.agent.server.service.persistence.persistenfile.PersistentFileException;
@@ -66,6 +64,7 @@ public class AgentServer {
     public NameValueList<AgentDefinitionList> agentDefinitions;
     public NameValueList<AgentInstanceList> agentInstances;
     public NameValueList<AgentMessageList> agentMessages;
+    public NameValueList<ServerGroupList> serverGroups;
     public AgentServerProperties agentServerProperties;
     public AgentVariable agentVariable;
     public AgentServerWebAccessConfig webAccessConfig;
@@ -135,7 +134,6 @@ public class AgentServer {
     public AgentMessage addAgentMessage(JSONObject agenJson) throws JSONException, AgentServerException {
         return addAgentMessage(null,agenJson);
     }
-
     public AgentMessage addAgentMessage(AgentMessage agentMessage) throws AgentServerException, JSONException {
       if(agentMessage!=null)
       {
@@ -156,9 +154,7 @@ public class AgentServer {
       }
         return agentMessage;
     }
-
-    public AgentMessage getAgentMessage(User user, String agentMessageConversationId)
-    {
+    public AgentMessage getAgentMessage(User user, String agentMessageConversationId)    {
          AgentMessageList agenMap =agentMessages.get(user.id);
         if(agenMap==null)
         {
@@ -179,7 +175,27 @@ public class AgentServer {
         // Return the new agent definition
         return agentMessage;
     }
-public AgentMessage addDelegateAgent(AgentMessage agentMessage) throws AgentServerException, JSONException {
+
+    public ServerGroup addServerGroup(ServerGroup serverGroup) throws AgentServerException {
+        if (serverGroup != null)
+        {
+            if(!serverGroups.containsKey(serverGroup.HostName))
+            {
+                serverGroups.put(serverGroup.HostName,new ServerGroupList());
+            }
+            ServerGroupList serverGroupList =serverGroups.get(serverGroup.HostName);
+            serverGroupList.put(serverGroup);
+            persistence.put(serverGroup);
+        }
+    return serverGroup;
+    }
+    public ServerGroup addServerGroup(JSONObject agentJson) throws AgentServerException {
+       log.info("Parse the JSON for the ServerGroup");
+        ServerGroup serverGroup=ServerGroup.fromJson(this, agentJson);
+        addServerGroup(serverGroup);
+        return serverGroup;
+    }
+    public AgentMessage addDelegateAgent(AgentMessage agentMessage) throws AgentServerException, JSONException {
 
     if(agentMessage!=null)
     {
@@ -197,7 +213,6 @@ public AgentMessage addDelegateAgent(AgentMessage agentMessage) throws AgentServ
         else
             return agentMap.get(agentDefinitionName);
     }
-
     public void clearAgentDefinitions(String userId) throws AgentServerException {
         // Check if the user has any agents yet
         if (!agentDefinitions.containsKey(userId))
@@ -210,7 +225,6 @@ public AgentMessage addDelegateAgent(AgentMessage agentMessage) throws AgentServ
         // Clear the user's agent list
         usersAgents.clear();
     }
-
     public void removeAgentDefinition(AgentDefinition agentDefinition) throws AgentServerException {
         String userId = agentDefinition.user.id;
         String agentName = agentDefinition.name;
@@ -229,7 +243,6 @@ public AgentMessage addDelegateAgent(AgentMessage agentMessage) throws AgentServ
         // Delete the named agent definition for the user
         usersAgents.remove(agentName);
     }
-
     public void removeAgentDefinition(String userId, String agentName) throws AgentServerException {
         // Check if the user has any agents yet
         if (!agentDefinitions.containsKey(userId))
@@ -245,7 +258,6 @@ public AgentMessage addDelegateAgent(AgentMessage agentMessage) throws AgentServ
         // Delete the named agent definition for the user
         usersAgents.remove(agentName);
     }
-
     public AgentInstance addAgentInstance(AgentInstance agentInstance) throws AgentServerException, SymbolException, JSONException {
         // Get instance list for the user
         AgentInstanceList agentInstanceList = agentInstances.get(agentInstance.user.id);
@@ -264,7 +276,6 @@ public AgentMessage addDelegateAgent(AgentMessage agentMessage) throws AgentServ
         // Return the agent instance
         return agentInstance;
     }
-
     public AgentInstance addAgentInstance(User user, JSONObject agentInstanceJson) throws AgentServerException, SymbolException, JSONException, TokenizerException, ParserException {
         // Get instance list for the user
         AgentInstance agentInstance = getAgentInstance(user, agentInstanceJson);
@@ -272,11 +283,9 @@ public AgentMessage addDelegateAgent(AgentMessage agentMessage) throws AgentServ
         // Return the agent instance
         return agentInstance;
     }
-
     public AgentInstance getAgentInstance(String userId, String agentInstanceName) {
         return getAgentInstance(getUser(userId), agentInstanceName);
     }
-
     public AgentInstance getAgentInstance(User user, String agentInstanceName) {
         AgentInstanceList agentMap = agentInstances.get(user.id);
         if (agentMap == null)
@@ -284,15 +293,12 @@ public AgentMessage addDelegateAgent(AgentMessage agentMessage) throws AgentServ
         else
             return agentMap.get(agentInstanceName);
     }
-
     public AgentInstance getAgentInstance(User user, AgentDefinition agentDefinition) throws RuntimeException, SymbolException, AgentServerException, JSONException, TokenizerException, ParserException {
         return getAgentInstance(user, agentDefinition, null, true);
     }
-
     public AgentInstance getAgentInstance(User user, AgentDefinition agentDefinition, SymbolValues parameters) throws RuntimeException, SymbolException, AgentServerException, JSONException, TokenizerException, ParserException {
         return getAgentInstance(user, agentDefinition, parameters, true);
     }
-
     public AgentInstance getAgentInstance(User user, AgentDefinition agentDefinition, SymbolValues parameters, boolean create) throws AgentServerException {
         // Get instance list for the user
         AgentInstanceList agentInstanceList = agentInstances.get(user.id);
@@ -305,7 +311,6 @@ public AgentMessage addDelegateAgent(AgentMessage agentMessage) throws AgentServ
         // Get the instance from the user's instance list (or add if it doesn't exist yet)
         return agentInstanceList.getAgentInstance(user, agentDefinition, parameters, create);
     }
-
     public AgentInstance getAgentInstance(String agentJsonString) throws SymbolException, RuntimeException, AgentServerException, TokenizerException, ParserException {
         if (agentJsonString == null || agentJsonString.trim().length() == 0)
             agentJsonString = "{}";
@@ -315,11 +320,9 @@ public AgentMessage addDelegateAgent(AgentMessage agentMessage) throws AgentServ
             throw new AgentServerException("JSON parsing exception: " + e.getMessage());
         }
     }
-
     public AgentInstance getAgentInstance(JSONObject agentJson) throws SymbolException, RuntimeException, AgentServerException, JSONException, TokenizerException, ParserException {
         return getAgentInstance(null, agentJson);
     }
-
     public AgentInstance getAgentInstance(User user, JSONObject agentJson) throws SymbolException, RuntimeException, AgentServerException, JSONException, TokenizerException, ParserException {
         // Parse the JSON for the agent instance
 
@@ -423,7 +426,6 @@ public AgentMessage addDelegateAgent(AgentMessage agentMessage) throws AgentServ
         // Return the created/shared agent instance
         return agentInstance;
     }
-
     public AgentInstance getAgentInstance(String userId, String agentInstanceName, String dataSourceName) {
         AgentInstanceList agentMap = agentInstances.get(userId);
         if (agentMap == null)
@@ -434,7 +436,6 @@ public AgentMessage addDelegateAgent(AgentMessage agentMessage) throws AgentServ
             return null;
         return agentInstance.getDataSourceInstance(dataSourceName);
     }
-
     public String getAgentInstanceName(String userId, String agentInstanceName, String dataSourceName) {
         AgentInstance dataSourceInstance = getAgentInstance(userId, agentInstanceName, dataSourceName);
         if (dataSourceInstance != null)
@@ -442,7 +443,6 @@ public AgentMessage addDelegateAgent(AgentMessage agentMessage) throws AgentServ
         else
             return null;
     }
-
     public AgentInstance getAgentInstance(User user, String agentInstanceName, String dataSourceName) {
         AgentInstanceList agentMap = agentInstances.get(user.id);
         if (agentMap == null)
@@ -453,7 +453,6 @@ public AgentMessage addDelegateAgent(AgentMessage agentMessage) throws AgentServ
             return null;
         return agentInstance.getDataSourceInstance(dataSourceName);
     }
-
     public void removeAgentInstance(AgentInstance agentInstance) throws AgentServerException {
         String userId = agentInstance.user.id;
         String agentName = agentInstance.name;
@@ -488,11 +487,9 @@ public AgentMessage addDelegateAgent(AgentMessage agentMessage) throws AgentServ
         // Delete the named agent definition for the user
         usersAgents.remove(agentName);
     }
-
     public User addUser(String userId) throws AgentServerException {
         return addUser(new User(userId));
     }
-
     public User addUser(User user) throws AgentServerException {
         // Add the new user
         users.add(user.id, user);
@@ -504,7 +501,6 @@ public AgentMessage addDelegateAgent(AgentMessage agentMessage) throws AgentServ
         // Return the new user
         return user;
     }
-
     public User getUser(String userId) {
         if (userId == null || userId.trim().length() == 0)
             return null;
@@ -515,32 +511,26 @@ public AgentMessage addDelegateAgent(AgentMessage agentMessage) throws AgentServ
             return user == null ? User.noUser : user;
         }
     }
-
     public void recreateUser(String userJsonSource) throws AgentServerException, JSONException {
 
         User newUser = User.fromJson(new JSONObject(userJsonSource));
         addUser(newUser);
     }
-
     public void recreateAgentDefinition(String agentDefinitionJsonSource) throws AgentServerException, JSONException, SymbolException {
         AgentDefinition newAgentDefinition = AgentDefinition.fromJson(this, agentDefinitionJsonSource);
         addAgentDefinition(newAgentDefinition);
     }
-
     public void recreateAgentInstance(String agentInstanceJsonSource) throws AgentServerException, JSONException, SymbolException, ParseException, TokenizerException, ParserException {
         AgentInstance newAgentInstance = AgentInstance.fromJson(this, agentInstanceJsonSource);
         addAgentInstance(newAgentInstance);
     }
-
     public void shutdown() throws Exception {
         stop();
         // TODO: Should this do something else in addition to stop?
     }
-
     public void start() throws AgentServerException, InterruptedException, IOException, PersistentFileException, ParseException, TokenizerException, ParserException {
         start(true);
     }
-
     public void start(boolean start) throws AgentServerException, InterruptedException, IOException, PersistentFileException, ParseException, TokenizerException, ParserException {
         // No-op if already started
 
@@ -554,6 +544,8 @@ public AgentMessage addDelegateAgent(AgentMessage agentMessage) throws AgentServ
         this.agentDefinitions = new NameValueList<AgentDefinitionList>();
         this.agentInstances = new NameValueList<AgentInstanceList>();
         this.agentMessages=new NameValueList<AgentMessageList>();
+        this.serverGroups=new NameValueList<ServerGroupList>();
+
         this.agentDelegate=new AgentDelegate(this);
 
         // Initialize agent server properties
@@ -599,7 +591,6 @@ public AgentMessage addDelegateAgent(AgentMessage agentMessage) throws AgentServ
         }
 
     }
-
     public void stop() throws AgentServerException, InterruptedException, IOException {
         // First shut down the agent scheduler and wait for it to fully stop
         agentScheduler.shutdown();
@@ -610,59 +601,43 @@ public AgentMessage addDelegateAgent(AgentMessage agentMessage) throws AgentServ
         // Indicate that the agent server is no longer running
         startTime = 0;
     }
-
     public String getStatus() {
         return agentScheduler.getStatus();
     }
-
     public String getDefaultReportingInterval() {
         return config.get("default_reporting_interval");
     }
-
     public String getDefaultTriggerInterval() {
         return config.get("default_trigger_interval");
     }
-
-
-
     public void addWebSiteAccessControls(User user, JSONObject accessControlsJson) throws JSONException, AgentServerException{
         webAccessManager.addWebSiteAccessControls(user.id, accessControlsJson);
 
     }
-
     public WebPage getWebPage(String userId, String url) {
         return webAccessManager.getWebPage(userId, url);
     }
-
     public WebPage getWebPage(String userId, String url, boolean useCache, long refreshInterval, boolean wait){
         return webAccessManager.getWebPage(userId, url, useCache, refreshInterval, wait);
     }
-
     public WebPage postUrl(String userId, String url, String data) {
         return webAccessManager.postUrl(userId, url, data);
     }
-
     public WebPage postUrl(String userId, String url, String data, long refreshInterval, boolean wait){
         return webAccessManager.postUrl(userId, url, data, refreshInterval, wait);
     }
-
     public ListMap<String, String> getWebSiteAccessControls(User user) throws JSONException, AgentServerException{
         return webAccessManager.getWebSiteAccessControls(user);
     }
-
-
     public String getAdminPassword() {
         return config.agentServerProperties.adminPassword;
     }
-
     public String getPersistentStorePath() {
         return agentVariable.persistent_store_dir + "/" + AgentVariable.DEFAULT_PERSISTENT_STORE_FILE_NAME;
     }
-
     public long getMinimumTriggerInterval() {
         return config.getLong("minimum_trigger_interval");
     }
-
     public long getMinimumReportingInterval() {
         return config.getLong("minimum_reporting_interval");
     }
