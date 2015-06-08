@@ -16,15 +16,14 @@
 
 package dcc.agent.server.service.agentserver;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
+import dcc.agent.server.service.util.JsonUtils;
+import dcc.agent.server.service.util.ShaUtils;
 import org.apache.log4j.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import dcc.agent.server.service.util.JsonUtils;
-import dcc.agent.server.service.util.ShaUtils;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class User {
     static final Logger log = Logger.getLogger(User.class);
@@ -143,7 +142,8 @@ public class User {
         agentServer.persistence.put(this);
     }
 
-    static public User fromJson(JSONObject userJson) throws AgentServerException {
+    static public User fromJson(JSONObject userJson)
+            throws AgentServerException {
         return fromJson(userJson, false);
     }
 

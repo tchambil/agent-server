@@ -57,7 +57,6 @@ public class AgentServer {
             Arrays.asList("string", "int", "float", "money", "option", "choice", "multi_choice", "date", "location", "text", "help");
     public long startTime = 0;
     public AgentScheduler agentScheduler;
-
     public Persistence persistence;
     public AgentServerConfig config;
     public NameValueList<User> users;
@@ -175,7 +174,6 @@ public class AgentServer {
         // Return the new agent definition
         return agentMessage;
     }
-
     public ServerGroup addServerGroup(ServerGroup serverGroup) throws AgentServerException {
         if (serverGroup != null)
         {
@@ -196,7 +194,6 @@ public class AgentServer {
         return serverGroup;
     }
     public AgentMessage addDelegateAgent(AgentMessage agentMessage) throws AgentServerException, JSONException {
-
     if(agentMessage!=null)
     {
        // Prepara for delegate agent message

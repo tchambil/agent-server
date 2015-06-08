@@ -3,8 +3,10 @@ package dcc.agent.server.controller;
 import dcc.agent.server.service.agentserver.*;
 import dcc.agent.server.service.appserver.AgentAppServerBadRequestException;
 import dcc.agent.server.service.appserver.AgentAppServerException;
+import dcc.agent.server.service.config.AgentServerConfig;
 import dcc.agent.server.service.config.AgentServerProperties;
 import dcc.agent.server.service.delegate.AgentMessage;
+import dcc.agent.server.service.delegate.AgentMessageList;
 import dcc.agent.server.service.notification.NotificationInstance;
 import dcc.agent.server.service.script.intermediate.Symbol;
 import dcc.agent.server.service.script.intermediate.SymbolValues;
@@ -67,7 +69,7 @@ public class AgentController {
         User user = agentServer.users.get(id);
         String agentName = name;
         JSONObject agentJson = util.getJsonRequest(request);
-        ;
+
 
         if (agentName == null)
             throw new AgentAppServerBadRequestException(
@@ -796,16 +798,40 @@ public class AgentController {
              throw new AgentAppServerBadRequestException(
                      "Invalid agent message JSON object");
          }
+        AgentServerConfig config = agentServer.config;
+        String conversationId = agentMessageson.optString("conversationId");
+        if (conversationId.equals(""))
+        {
+            conversationId = Integer.toString(agentServer.agentMessages.size());
+            agentMessageson.put("conversationId", config.agentServerProperties.agentServerName+"-"+ conversationId);
+        }
+
         //Get User Id
         User userId = agentServer.getUser(agentMessageson.optString("sender"));
+
+        logger.info("Check if named agent message already exists");
+        AgentMessageList messageMap=agentServer.agentMessages.get(userId.id);
+
+        if (messageMap == null) {
+            messageMap = new AgentMessageList();
+            agentServer.agentMessages.add(userId.id, messageMap);
+        }
+
+        if (messageMap.containsKey(agentMessageson.optString("conversationId")))
+        {
+            logger.info("Message already exists");
+        }
+
         //Get Script Name/TASK
         AgentMessage agentMessage =agentServer.addAgentMessage(userId,agentMessageson);
         String scriptName = agentMessage.content.toString();
 
+
         // Capture and convert the arguments to be passed to the script
         List<Value> arguments = new ArrayList<Value>();
         String[] argumentStrings = request.getParameterValues("arg");
-        if (argumentStrings != null) {
+        if (argumentStrings != null)
+        {
             int numArgs = argumentStrings.length;
             for (int i = 0; i < numArgs; i++) {
                 String argumentString = argumentStrings[i];
@@ -814,7 +840,8 @@ public class AgentController {
             }
         }
         // Get all user for plataform
-        for (NameValue<User> userIdValue : agentServer.users) {
+        for (NameValue<User> userIdValue : agentServer.users)
+        {
             User user = userIdValue.value;
             //Get all agent Instance for Users
             for (AgentInstance agentInstance : agentServer.agentInstances.get(user.id)) {

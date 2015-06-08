@@ -35,7 +35,9 @@ public class PlataformController {
     protected static Logger logger = Logger.getLogger(PlataformController.class);
     public Utils util = new Utils();
 
-    public AgentServer getAgentServer() {
+    public AgentServer getAgentServer()
+
+    {
         return this.agentServer;
     }
 

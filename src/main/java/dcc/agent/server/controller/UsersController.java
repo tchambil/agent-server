@@ -37,10 +37,13 @@ public class UsersController {
         else
             userJson.put("id", id);
         String password = request.getParameter("password");
-        if (password == null)
+        if (password == null) {
             password = userJson.optString("password");
-        else
+        }
+        else {
             userJson.put("password", password);
+        }
+
         String passwordHint = request.getParameter("password_hint");
         if (passwordHint == null)
             passwordHint = userJson.optString("password_hint");

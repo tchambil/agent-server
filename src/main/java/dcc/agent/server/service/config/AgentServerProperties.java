@@ -126,9 +126,10 @@ public void load() throws AgentServerException {
         appServerPort = portString == null || portString.trim().length() == 0 ? DEFAULT_APP_SERVER_PORT :
                 Integer.parseInt(portString);
 
-        agentServerName = getProperty("agent_server_name");
+      //  agentServerName = getProperty("agent_server_name");
         if (agentServerName == null || agentServerName.trim().length() == 0)
-            throw new AgentServerException("You must edit agentserver.properties (or set the agentserver_properties_path environment variable to point to another file) - agent_server_name is blank");
+        agentServerName=agentServerHostName;
+        //    throw new AgentServerException("You must edit agentserver.properties (or set the agentserver_properties_path environment variable to point to another file) - agent_server_name is blank");
         agentServerDescription = getProperty("agent_server_description");
         log.info("agentServerDescription: " + agentServerDescription);
         adminPassword = getProperty("admin_password");
