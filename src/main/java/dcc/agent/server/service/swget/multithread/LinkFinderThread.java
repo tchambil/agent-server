@@ -70,10 +70,13 @@ public class LinkFinderThread implements Runnable {
 				try {
 					HashSet<State> hs = NautiLODManager.getRegExpManager().getEpsilonReachableStates(starting_uri.getState());
 
-					NautiLODManager.printOnGUI("Handling URI_1 "+ starting_uri.getUrl() + "\n");
+                    System.out.println("Handling URI_1 "+ starting_uri.getUrl() + "\n");
+
 					for (State s : hs) {
+                        System.out.println("....Init for State: " +s);
 						to_expand.add(new URIData(starting_uri.getUrl(),starting_uri.getDepth(), s, starting_uri.getProvenanceAuthority(), starting_uri.getTypeOfLink()));
 					}
+
 
 					if (NautiLODManager.getRegExpManager()
 							.hasOutgoingTransition(starting_uri.getState())) {
@@ -83,14 +86,14 @@ public class LinkFinderThread implements Runnable {
 					}
 
 					for (URIData current : extracted) {
-
+                        System.out.println("....init for UriData: "+current.getUrl());
 						if (current != null
 								&& !NautiLODManager.containsNavigationalHistory(starting_uri.getUrl().toString(),starting_uri.getState())) {
 
 							to_expand.add(current);
 
 						}
-
+                        System.out.println("....finish for");
 					}
 
 				} catch (Exception e) {
@@ -143,10 +146,7 @@ public class LinkFinderThread implements Runnable {
 
 			System.out.println("\nTotal time="
 					+ ((System.currentTimeMillis() - t0)) + " ms");
-			NautiLODManager.printOnGUI("\nTotal time="
-					+ ((System.currentTimeMillis() - t0)) + " ms\n");
-
-			NautiLODManager.shutdown();
+		 NautiLODManager.shutdown();
 
 		}
 

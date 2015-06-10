@@ -1,0 +1,11 @@
+<rdf:RDF 
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:swget="http://inf.unibz.it/ontologies/2012/10/swget#">
+	<rdf:Description rdf:about="swget:TBL-cacm-iswc-coauthors3">
+		<swget:verbose>true</swget:verbose>
+		<swget:print>true</swget:print>
+		<swget:seed_uri><![CDATA[http://dblp.l3s.de/d2r/resource/authors/Tim_Berners-Lee]]></swget:seed_uri>
+		<swget:nav_expr> <![CDATA[(<foaf:maker>[ASK {?paper <http://swrc.ontoware.org/ontology#series> <http://dblp.l3s.de/d2r/resource/conferences/semweb>.}]/<foaf:maker>)<3-3>/<foaf:maker>[ASK {?paper <http://swrc.ontoware.org/ontology#journal> <http://dblp.l3s.de/d2r/resource/journals/cacm>.}]]]> </swget:nav_expr>
+		<swget:file>TBL-cacm-iswc-coauthors3.rdf</swget:file>
+	</rdf:Description>
+</rdf:RDF>

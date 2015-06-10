@@ -9,7 +9,7 @@ import com.hp.hpl.jena.rdf.model.impl.StatementImpl;
 import dcc.agent.server.service.swget.console.arguments.CommandOption;
 import dcc.agent.server.service.swget.console.arguments.NumericalOption;
 import dcc.agent.server.service.swget.console.arguments.StringOption;
-import dcc.agent.server.service.swget.gui.GUI;
+
 import dcc.agent.server.service.swget.nmpg.NamedMultiPointedGraph;
 import dcc.agent.server.service.swget.regExpression.RegExprManager;
 import dcc.agent.server.service.swget.regExpression.automaton.State;
@@ -39,7 +39,7 @@ public class Navigator implements NavigatorIF {
 	private final Map<String, Model> blank_node_models = Collections
 			.synchronizedMap(new HashMap<String, Model>());
 
-	private GUI gui;
+
 	private ExecutorService execService;
 	private RegExprManager reg_expr_manager;
 	private NetworkManager net_manager;
@@ -119,12 +119,7 @@ public class Navigator implements NavigatorIF {
 		 */
 		if (RECONSTRUCT) {
 			reconstruct();
-			if (gui != null)
-				gui.done(jobId, email, this.result_model, this.final_results);
-		} else {
-			this.result_model = partial_graph.write2Model();
-			if (gui != null)
-				gui.done(jobId, email, this.result_model, this.final_results);
+
 		}
 
 		if (WRITE_FILE)
@@ -505,17 +500,8 @@ public class Navigator implements NavigatorIF {
 					+ BUDGET);
 		System.out.println("reconstructGraph (-recon)=" + RECONSTRUCT);
 		System.out.println("--------------------------------------");
-		
-		printOnGUI("------------swget current configuration------------\n");
-		printOnGUI("#max threads (-t num)=" + NUM_THREAD+"\n");
-		printOnGUI("streamOutput (-stream)=" + STREAM_OUTPUT+"\n");
-		if (BUDGET == -1)
-			printOnGUI("budget #max deref (-b num)=unbounded\n");
-		else
-			printOnGUI("budget #max deref operations (-b num)="
-			+ BUDGET+"\n");
-		printOnGUI("reconstructGraph (-recon)=" + RECONSTRUCT+"\n");
-		printOnGUI("--------------------------------------\n");
+
+
 	}
 
 	/**
@@ -651,9 +637,8 @@ public class Navigator implements NavigatorIF {
 		return results;
 	}
 
-	@Override
-	public void setGUI(GUI gui, String jobId, String email) {
-		this.gui = gui;
+	public void setGUI( String jobId, String email) {
+
 		this.jobId=jobId;
 		this.email=email;
 	}
@@ -669,7 +654,7 @@ public class Navigator implements NavigatorIF {
 		closeExecution();
 		Collection<String> r = getFinalResults();
 		System.out.println("#res=" + r.size() + " #deref=" + getDerefCount());
-		printOnGUI("#res=" + r.size() + " #deref=" + getDerefCount()+"\n");
+
 		
 	}
 
@@ -695,7 +680,7 @@ public class Navigator implements NavigatorIF {
 		} catch (RejectedExecutionException e) {
 
 			// closeExecution();
-			System.out.println("");
+			System.out.println("ee" +e);
 			System.exit(0);
 		}
 
@@ -731,15 +716,13 @@ public class Navigator implements NavigatorIF {
 
 	}
 
-	@Override
+
+
+    @Override
 	public boolean isNotSaveModels() {
 		return NOT_SAVE_MODELS;
 	}
 
-	@Override
-	public synchronized void printOnGUI(String s) {
-		if(gui!=null) gui.printMessage(s);
-		
-	}
+
 
 }

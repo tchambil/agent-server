@@ -3,7 +3,7 @@ package dcc.agent.server.service.swget.rdf2prefuse.graph;
 /*   2:    */ 
 /*   3:    */
 
-import dcc.agent.server.service.swget.gui.SwgetGUI;
+
 import dcc.agent.server.service.swget.rdf2prefuse.Constants;
 import prefuse.Display;
 import prefuse.Visualization;
@@ -64,14 +64,14 @@ public class GraphDisplay
     private WheelZoomControl wzc;
     private ZoomToFitControl zfc;
     private NeighborHighlightControl nhc;
-    private SwgetGUI gui;
 
 
-    public GraphDisplay(Graph p_graph, SwgetGUI gui) {
+
+    public GraphDisplay(Graph p_graph ) {
 
         super(new Visualization());
 
-        this.gui = gui;
+
 
         initVisualization(p_graph);
 
@@ -441,10 +441,7 @@ public class GraphDisplay
 
         if (entered) {
 
-            this.gui.getURITextField().setText(uri);
 
-
-            this.gui.getURITextField().setText("");
 
         }
 

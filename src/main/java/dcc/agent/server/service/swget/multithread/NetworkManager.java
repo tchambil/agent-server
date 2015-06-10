@@ -31,7 +31,7 @@ public class NetworkManager {
 
 		} catch (MalformedURLException e1) {
 			System.err.println("Malformed URI:" + uri);
-			navigator.printOnGUI("\nMalformed URI:" + uri+"\n");
+
 		}
 		try {
 
@@ -40,7 +40,7 @@ public class NetworkManager {
 
 		} catch (Exception e) {
 			connection = null;
-			navigator.printOnGUI("\nI/O error in reading Jena model:" + uri+"\n");
+            System.err.println("\nI/O error in reading Jena model:" + uri+"\n");
 			// System.err.println("I/O error in reading Jena model:" + uri);
 			return model;
 
@@ -60,8 +60,7 @@ public class NetworkManager {
 			System.err
 					.println("Error (makeConnection) in opening connection with the URL:"
 							+ targetURL.toString());
-			navigator.printOnGUI("\nError (makeConnection) in opening connection with the URL:"
-					+ targetURL.toString()+"\n");
+
 		}
 
 		uc.setRequestProperty("Accept", "application/rdf+xml");
@@ -107,8 +106,7 @@ public class NetworkManager {
 
 					System.err.println("Error while reading Jena model:"
 							+ uc.getURL().toString());
-					navigator.printOnGUI("\nError while reading Jena model:"
-							+ uc.getURL().toString()+"\n");
+
 					// e.printStackTrace();
 					return m;
 				}

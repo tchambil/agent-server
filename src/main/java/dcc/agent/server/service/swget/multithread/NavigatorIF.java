@@ -1,6 +1,6 @@
 package dcc.agent.server.service.swget.multithread;
 
-import dcc.agent.server.service.swget.gui.GUI;
+import com.hp.hpl.jena.rdf.model.Model;
 import dcc.agent.server.service.swget.regExpression.RegExprManager;
 import dcc.agent.server.service.swget.regExpression.automaton.State;
 import dcc.agent.server.service.swget.utils.NavigationHistory;
@@ -8,14 +8,12 @@ import dcc.agent.server.service.swget.utils.URIData;
 
 import java.util.HashSet;
 
-import com.hp.hpl.jena.rdf.model.Model;
-
 public interface NavigatorIF {
 
 	/**
 	 * Marks this link as visited
 	 * 
-	 * @param link
+	 *
 	 */
 	public int getBUDGET();
 
@@ -41,9 +39,9 @@ public interface NavigatorIF {
 
 	public boolean isErrorUri(String link);
 
-	public void setGUI(GUI gui, String jobId, String email);
+
 	
-	public void printOnGUI(String s);
+
 
 	public Model getGraph();
 

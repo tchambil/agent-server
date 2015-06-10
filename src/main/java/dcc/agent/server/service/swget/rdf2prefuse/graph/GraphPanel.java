@@ -3,7 +3,6 @@ package dcc.agent.server.service.swget.rdf2prefuse.graph;
 /*   2:    */ 
 /*   3:    */
 
-import dcc.agent.server.service.swget.gui.SwgetGUI;
 import prefuse.action.filter.GraphDistanceFilter;
 
 import javax.swing.*;
@@ -19,7 +18,7 @@ import java.util.LinkedList;
 
 public class GraphPanel extends JPanel implements ChangeListener {
     private GraphDisplay m_display;
-    private SwgetGUI gui;
+
     private JSpinner m_spinner;
     private JPanel filterPanel = new JPanel(new FlowLayout());
     private JPanel uriSelectPanel = new JPanel(new FlowLayout());
@@ -30,16 +29,10 @@ public class GraphPanel extends JPanel implements ChangeListener {
     private RDFGraphConverter graphConv;
 
 
-    public GraphPanel(SwgetGUI gui) {
-
-        super(new BorderLayout());
-
-        this.gui = gui;
-
-    }
 
 
-    public GraphPanel(GraphDisplay p_display, RDFGraphConverter graphConverter, SwgetGUI gui) {
+
+    public GraphPanel(GraphDisplay p_display, RDFGraphConverter graphConverter) {
 
         super(new BorderLayout());
 
@@ -47,7 +40,7 @@ public class GraphPanel extends JPanel implements ChangeListener {
 
         this.m_display = p_display;
 
-        this.gui = gui;
+
 
         initPanel();
 
@@ -234,7 +227,7 @@ public class GraphPanel extends JPanel implements ChangeListener {
 
         this.m_display.getVisualization().run("draw");
 
-        this.gui.setNodeSizeValue("1");
+
 
     }
 
@@ -328,13 +321,9 @@ public class GraphPanel extends JPanel implements ChangeListener {
 
                 this.prevPred = newPred;
 
-                GraphPanel.this.refreshPanel(new GraphDisplay(GraphPanel.this.graphConv.prune(newPred), GraphPanel.this.gui));
+                GraphPanel.this.refreshPanel(new GraphDisplay(GraphPanel.this.graphConv.prune(newPred)));
 
-                GraphPanel.this.gui.setForceValue("-10");
 
-                GraphPanel.this.gui.setLabelSizeValue("20");
-
-                GraphPanel.this.gui.setNodeSizeValue("1");
 
             }
 
@@ -355,13 +344,9 @@ public class GraphPanel extends JPanel implements ChangeListener {
 
             String newUri = (String) cb.getSelectedItem();
 
-            GraphPanel.this.refreshPanel(new GraphDisplay(GraphPanel.this.graphConv.changeStartingURI(newUri), GraphPanel.this.gui));
+            GraphPanel.this.refreshPanel(new GraphDisplay(GraphPanel.this.graphConv.changeStartingURI(newUri)));
 
-            GraphPanel.this.gui.setForceValue("-10");
 
-            GraphPanel.this.gui.setLabelSizeValue("20");
-
-            GraphPanel.this.gui.setNodeSizeValue("1");
 
         }
 
