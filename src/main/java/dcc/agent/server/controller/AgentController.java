@@ -12,6 +12,8 @@ import dcc.agent.server.service.script.intermediate.Symbol;
 import dcc.agent.server.service.script.intermediate.SymbolValues;
 import dcc.agent.server.service.script.runtime.ExceptionInfo;
 import dcc.agent.server.service.script.runtime.value.Value;
+import dcc.agent.server.service.swget.multithread.Navigator;
+import dcc.agent.server.service.swget.regExpression.parser.ParseException;
 import dcc.agent.server.service.util.*;
 import org.apache.log4j.Logger;
 import org.json.JSONArray;
@@ -32,7 +34,7 @@ public class AgentController {
     public AgentServer agentServer;
     public AgentServerProperties agentServerProperties;
     public Utils util = new Utils();
-
+    private Navigator navigator;
 
     @RequestMapping(value = "/users/{id}/agents", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
@@ -932,6 +934,23 @@ public class AgentController {
         }
         JSONObject agentMessageJson = new JSONObject();
         agentMessageJson.put("agent_message", agentMessageArrayJson);
+        return agentMessageJson.toString();
+
+    }
+    @RequestMapping(value = "/swget", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    public String sgwet () throws JSONException, ParseException {
+        PlataformController plataformController = new PlataformController();
+        agentServer = plataformController.getAgentServer();
+        this.navigator = new Navigator();
+        String command =  "http://dblp.l3s.de/d2r/resource/authors/Tim_Berners-Lee -p  (<foaf:maker>[ASK {?paper <http://swrc.ontoware.org/ontology#series> <http://dblp.l3s.de/d2r/resource/conferences/semweb>.}]/<foaf:maker>)<3-3>/<foaf:maker>[ASK {?paper <http://swrc.ontoware.org/ontology#journal> <http://dblp.l3s.de/d2r/resource/journals/cacm>.}]  -f TBL-cacm-iswc-coauthors3.rdf -recon -print";
+
+       this.navigator.runCommand(command, "");
+
+
+
+        JSONObject agentMessageJson = new JSONObject();
+        agentMessageJson.put("agent_message", "probando");
         return agentMessageJson.toString();
 
     }

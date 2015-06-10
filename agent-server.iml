@@ -36,6 +36,21 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: org.apache.jena:jena-core:2.11.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.jena:jena-iri:1.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.6.4" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-log4j12:1.6.4" level="project" />
+    <orderEntry type="library" name="Maven: log4j:log4j:1.2.17" level="project" />
+    <orderEntry type="library" name="Maven: xerces:xercesImpl:2.11.0" level="project" />
+    <orderEntry type="library" name="Maven: xml-apis:xml-apis:1.4.01" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.jena:jena-arq:2.11.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpclient:4.0-alpha4" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpcore:4.0-beta1" level="project" />
+    <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.3" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:jcl-over-slf4j:1.6.4" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.jena:jena-sdb:1.4.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.jena:jena-tdb:1.0.0" level="project" />
+    <orderEntry type="library" name="Maven: de.sciss:prefuse-core:0.20" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context:4.0.0.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aop:4.1.1.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: aopalliance:aopalliance:1.0" level="project" />
@@ -55,10 +70,6 @@
     <orderEntry type="library" name="Maven: javax.mail:mail:1.4.5" level="project" />
     <orderEntry type="library" name="Maven: javax.activation:activation:1.1.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.0" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpclient:4.0-alpha4" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpcore:4.0-beta1" level="project" />
-    <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.3" level="project" />
-    <orderEntry type="library" name="Maven: log4j:log4j:1.2.17" level="project" />
     <orderEntry type="library" name="Maven: javax.servlet:jstl:1.2" level="project" />
     <orderEntry type="library" name="Maven: javax.servlet:javax.servlet-api:3.0.1" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.0.0" level="project" />

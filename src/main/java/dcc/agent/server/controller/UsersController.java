@@ -27,7 +27,6 @@ public class UsersController {
         // User can specify parameters in JSON or as query parameters
         // Query overrides JSON if query parameter is non-null
 
-
         PlataformController plataform = new PlataformController();
         agentServer = plataform.getAgentServer();
         JSONObject userJson = util.getJsonRequest(request);
@@ -243,7 +242,8 @@ public class UsersController {
     @RequestMapping(value = "/users", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public String getUsers() throws Exception {
-
+        PlataformController plataformController = new PlataformController();
+        agentServer = plataformController.getAgentServer();
         JSONArray usersArrayJson = new JSONArray();
         for (NameValue<User> userIdValue : agentServer.users) {
             User user = userIdValue.value;

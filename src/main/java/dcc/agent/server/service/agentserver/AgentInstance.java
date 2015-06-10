@@ -173,7 +173,7 @@ public class AgentInstance {
                         reportingIntervalExpression;
         this.publicOutput = publicOutput;
         this.limitInstanceStatesStored = limitInstanceStatesStored >= 0 ? limitInstanceStatesStored :
-                update ? limitInstanceStatesStored : agentServer.config.getDefaultLimitInstanceStatesStored();
+                update ? limitInstanceStatesStored :  agentServer.config==null ? DEFAULT_LIMIT_INSTANCE_STATES_STORED: agentServer.config.getDefaultLimitInstanceStatesStored();
         this.lastInputsChanged = 0;
         this.lastTriggerReady = 0;
         this.lastTriggered = 0;

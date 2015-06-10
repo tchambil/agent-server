@@ -508,18 +508,55 @@ public class AgentServer {
             return user == null ? User.noUser : user;
         }
     }
+    public User recreateUser(User user) throws AgentServerException {
+        // Add the new user
+        users.add(user.id, user);
+        log.info("Re-create Users: Add the new user");
+
+        // Return the new user
+        return user;
+    }
     public void recreateUser(String userJsonSource) throws AgentServerException, JSONException {
 
         User newUser = User.fromJson(new JSONObject(userJsonSource));
-        addUser(newUser);
+        recreateUser(newUser);
+    }
+    public AgentDefinition recreateAgentDefinition(AgentDefinition agentDefinition) throws AgentServerException {
+        if (agentDefinition != null) {
+            // Check if the user has any agents yet
+            if (!agentDefinitions.containsKey(agentDefinition.user.id)) {
+                // No, so create an empty agent table for user
+                agentDefinitions.put(agentDefinition.user.id, new AgentDefinitionList());
+            }
+            // Get agent definition table for the user
+            AgentDefinitionList usersAgentDefinitions = agentDefinitions.get(agentDefinition.user.id);
+            // Store the new agent definition for the user
+            usersAgentDefinitions.put(agentDefinition);
+         }
+        // Return the agent definition itself
+        return agentDefinition;
     }
     public void recreateAgentDefinition(String agentDefinitionJsonSource) throws AgentServerException, JSONException, SymbolException {
         AgentDefinition newAgentDefinition = AgentDefinition.fromJson(this, agentDefinitionJsonSource);
-        addAgentDefinition(newAgentDefinition);
+        recreateAgentDefinition(newAgentDefinition);
+    }
+    public AgentInstance recreateAgentInstance(AgentInstance agentInstance) throws AgentServerException, SymbolException, JSONException {
+        // Get instance list for the user
+        AgentInstanceList agentInstanceList = agentInstances.get(agentInstance.user.id);
+        if (agentInstanceList == null) {
+            // Need to do the initial creation of the instance list for this user
+            agentInstanceList = new AgentInstanceList();
+            agentInstances.put(agentInstance.user.id, agentInstanceList);
+        }
+
+        // Store the instance in the instance list for the user
+        agentInstanceList.put(agentInstance);
+          // Return the agent instance
+        return agentInstance;
     }
     public void recreateAgentInstance(String agentInstanceJsonSource) throws AgentServerException, JSONException, SymbolException, ParseException, TokenizerException, ParserException {
         AgentInstance newAgentInstance = AgentInstance.fromJson(this, agentInstanceJsonSource);
-        addAgentInstance(newAgentInstance);
+        recreateAgentInstance(newAgentInstance);
     }
     public void shutdown() throws Exception {
         stop();
@@ -555,6 +592,7 @@ public class AgentServer {
             agentScheduler.initialize();
 
         // Initialize persistence
+
 
         if (persistence == null) {
             persistence = new Persistence(this, getPersistentStorePath());
