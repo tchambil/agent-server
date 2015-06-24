@@ -279,7 +279,7 @@ public class PlataformController {
         }
         AgentServerProperties agentServerProperties = new AgentServerProperties();
         aboutJson.put("HostName", agentServerProperties.agentServerHostName);
-        aboutJson.put("IP", agentServerProperties.agentServerName);
+        aboutJson.put("IP", agentServerProperties.agentServerIP);
         return aboutJson.toString(4);
     }
 

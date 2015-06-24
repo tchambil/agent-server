@@ -1,0 +1,13 @@
+
+#mynetwork {
+    float: left;
+    width: 100%;
+    height: 500%;
+    padding: 0;
+    margin: 0;
+
+}
+
+textarea.example {
+    display: none;
+}

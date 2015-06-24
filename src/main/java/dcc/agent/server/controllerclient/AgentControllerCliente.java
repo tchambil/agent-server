@@ -30,4 +30,10 @@ public class AgentControllerCliente {
         return "message";
     }
 
+    @RequestMapping(value = "/swget.do", method = RequestMethod.GET)
+    public String swget(ModelMap modelMap)
+    {
+        return "swget";
+    }
+
 }

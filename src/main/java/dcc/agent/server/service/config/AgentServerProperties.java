@@ -23,16 +23,8 @@ public class AgentServerProperties {
 
 
     static final Logger log = Logger.getLogger(AgentServerProperties.class);
-    public static final String Rabbitmq_Username = "agent";
-    public static final String Rabbitmq_HostLocal = getHostAddress().toString();
-    public static final String Rabbitmq_HostPublic = "";
-    public static final String Rabbitmq_HostExtern="uchile.cloudapp.net";
-    public static final String Rabbitmq_Password = "159753";
-    public static final String Rabbitmq_QueueName = "queue";
-
     public static final String agentServerIP = getHostAddress();
     public static final String agentServerHostName=getHostName();
-
     public static final String DEFAULT_PROPERTIES_FILE_PATH = "agentserver.properties";
     public static final String ALTERNATE_PROPERTIES_FILE_PATH = "agentserver.properties";
     public String propertiesFilePath = DEFAULT_PROPERTIES_FILE_PATH;
