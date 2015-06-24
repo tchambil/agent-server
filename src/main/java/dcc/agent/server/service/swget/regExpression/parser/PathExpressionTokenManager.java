@@ -51,6 +51,7 @@ public class PathExpressionTokenManager implements PathExpressionConstants {
 
 		EOFLoop: for (;;) {
 			try {
+
 				curChar = input_stream.BeginToken();
 			} catch (java.io.IOException e) {
 				jjmatchedKind = 0;

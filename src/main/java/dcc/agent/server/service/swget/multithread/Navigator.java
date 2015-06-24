@@ -53,7 +53,7 @@ public class Navigator implements NavigatorIF {
 	private ThreadPoolExecutor threadGroup;
 	private int deref_count = 0;
 	private int to_deref = 1;
-	
+	static int count;
 	private String jobId;
 	private String email;
 
@@ -467,6 +467,8 @@ public class Navigator implements NavigatorIF {
 
 	@Override
 	public void queueLink(URIData link) throws Exception {
+        //count++;
+        //System.out.print("Cantidad:"+count);
 		startNewThread(link);
 	}
 
@@ -523,14 +525,13 @@ public class Navigator implements NavigatorIF {
 						.getIncomingTransition(up.getState());
 
 				for (Transition t : trans) {
-					if (t.getSymbol().getLanguageDescription().startsWith("[")
-							|| t.getSymbol().getLanguageDescription()
-									.startsWith("ACT[")
-							|| t.getSymbol().isNullSymbol()) {
+					if (t.getSymbol().getLanguageDescription().startsWith("[")|| t.getSymbol().getLanguageDescription().startsWith("ACT[")|| t.getSymbol().isNullSymbol())
+                    {
 						toCheck.add(new URIPair(up.getUrl(), t.getStartState()));
-					} else if (t.getSymbol().isWildcardSymbol()) {
-						Hashtable<String, HashSet<String>> nodes = partial_graph
-								.getIncomingNodes(up.getUrl());
+					}
+                    else if (t.getSymbol().isWildcardSymbol())
+                    {
+						Hashtable<String, HashSet<String>> nodes = partial_graph.getIncomingNodes(up.getUrl());
 						if (nodes != null)
 							for (String label : nodes.keySet()) {
 								for (String node : nodes.get(label)) {
@@ -548,10 +549,7 @@ public class Navigator implements NavigatorIF {
 
 							}
 					} else {
-						String pred = t
-								.getSymbol()
-								.getLanguageDescription()
-								.substring(
+						String pred = t.getSymbol().getLanguageDescription().substring(
 										1,
 										t.getSymbol().getLanguageDescription()
 												.length() - 1);
@@ -671,9 +669,8 @@ public class Navigator implements NavigatorIF {
 	 */
 	private void startNewThread(URIData link) throws Exception {
 		try {
-			if (BUDGET != -1)
-				execService.execute(new LinkFinderThread(link, this,
-						STREAM_OUTPUT, true));
+          	if (BUDGET != -1)
+				execService.execute(new LinkFinderThread(link, this,STREAM_OUTPUT, true));
 
 			execService.execute(new LinkFinderThread(link, this, STREAM_OUTPUT,
 					false));

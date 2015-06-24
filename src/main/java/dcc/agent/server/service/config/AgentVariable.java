@@ -4,7 +4,7 @@ public class AgentVariable {
     public static final String DEFAULT_PROPERTIES_FILE_PATH = "src/main/resources/agentserver.properties";
     public static final String ALTERNATE_PROPERTIES_FILE_PATH = "local-properties/agentserver.properties";
     public static String propertiesFilePath = DEFAULT_PROPERTIES_FILE_PATH;
-    public static final String DEFAULT_PERSISTENT_STORE_DIR = "/resource/files/persistent_store";
+    public static final String DEFAULT_PERSISTENT_STORE_DIR = "persistent_store";
     public static final String DEFAULT_PERSISTENT_STORE_FILE_NAME = "agentserver.pjson";
     public static final String DEFAULT_PERSISTENT_STORE_PATH =
             DEFAULT_PERSISTENT_STORE_DIR + "/" + DEFAULT_PERSISTENT_STORE_FILE_NAME;

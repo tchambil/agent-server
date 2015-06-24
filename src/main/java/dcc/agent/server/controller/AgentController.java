@@ -209,11 +209,7 @@ public class AgentController {
 
     }
 
-    @RequestMapping(value = {"/users/{id}/agents/{name}/pause",
-                            "/users/{id}/agents/{name}/disable"},
-                            method = RequestMethod.PUT,
-                            produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value = {"/users/{id}/agents/{name}/pause","/users/{id}/agents/{name}/disable"}, method = RequestMethod.PUT,  produces = MediaType.APPLICATION_JSON_VALUE)
     public String putAgentpause_disable(@PathVariable String id, @PathVariable String name, HttpServletRequest request) throws Exception {
 
         PlataformController plataform = new PlataformController();
@@ -249,11 +245,7 @@ public class AgentController {
 
     }
 
-    @RequestMapping(value = {"/users/{id}/agents/{name}/resume",
-                            "/users/{id}/agents/{name}/enable"},
-                            method = RequestMethod.PUT,
-                            produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value = {"/users/{id}/agents/{name}/resume", "/users/{id}/agents/{name}/enable"},  method = RequestMethod.PUT,    produces = MediaType.APPLICATION_JSON_VALUE)
     public String putAgentresume_enable(@PathVariable String id, @PathVariable String name, HttpServletRequest request) throws Exception {
 
         PlataformController plataform = new PlataformController();
@@ -286,10 +278,7 @@ public class AgentController {
 
     }
 
-    @RequestMapping(value = "/users/{id}/agents/{name}/run_script/{scriptName}",
-                            method = RequestMethod.PUT,
-                            produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value = "/users/{id}/agents/{name}/run_script/{scriptName}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     public String putAgentRun_script(@PathVariable String id, @PathVariable String name, @PathVariable String scriptName, HttpServletRequest request) throws Exception {
 
         PlataformController plataform = new PlataformController();
@@ -366,7 +355,6 @@ public class AgentController {
     }
 
     @RequestMapping(value = "/users/{id}/agents", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.OK)
     public String getAgents(@PathVariable String id) throws Exception {
         logger.info("Getting list of all agent instances for a user");
         PlataformController plataform = new PlataformController();
@@ -391,7 +379,6 @@ public class AgentController {
     }
 
     @RequestMapping(value = "/users/{id}/agents/{name}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.OK)
     public String getAgentName(@PathVariable String id, @PathVariable String name, HttpServletRequest request) throws Exception {
 
         PlataformController plataformController = new PlataformController();
@@ -786,7 +773,6 @@ public class AgentController {
         return message.toString();
     }
 
-
     @RequestMapping(value = "/agents/task", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public String getagenttask(HttpServletRequest request) throws Exception {
         logger.info("Getting task of agent instances for all users");
@@ -908,7 +894,6 @@ public class AgentController {
         return message.toString();
     }
 
-
     @RequestMapping(value = "/users/{id}/message", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public String getAgentMessagey (@PathVariable String id) throws JSONException {
@@ -943,14 +928,16 @@ public class AgentController {
         PlataformController plataformController = new PlataformController();
         agentServer = plataformController.getAgentServer();
         this.navigator = new Navigator();
-        String command =  "http://dblp.l3s.de/d2r/resource/authors/Tim_Berners-Lee -p  (<foaf:maker>[ASK {?paper <http://swrc.ontoware.org/ontology#series> <http://dblp.l3s.de/d2r/resource/conferences/semweb>.}]/<foaf:maker>)<3-3>/<foaf:maker>[ASK {?paper <http://swrc.ontoware.org/ontology#journal> <http://dblp.l3s.de/d2r/resource/journals/cacm>.}]  -f TBL-cacm-iswc-coauthors3.rdf -recon -print";
+       // String command =  "http://dblp.l3s.de/d2r/resource/authors/Tim_Berners-Lee -p  (<foaf:maker>[ASK {?paper <http://swrc.ontoware.org/ontology#series> <http://dblp.l3s.de/d2r/resource/conferences/semweb>.}]/<foaf:maker>)<1-1>/<foaf:maker>[ASK {?paper <http://swrc.ontoware.org/ontology#journal> <http://dblp.l3s.de/d2r/resource/journals/cacm>.}]  -f TBL-cacm-iswc-coauthors3.rdf -recon -print";
+        //String command ="http://dbpedia.org/resource/Italy -p dbpedia-owl:hometown[ASK {?ctx rdf:type dbpedia-owl:Person. ?ctx rdf:type dbpedia:MusicalArtist.}]/dbpedia-owl:birthPlace[ASK {?ctx dbpedia-owl:populationTotal ?pop. FILTER (?pop <15000).}]/owl:sameAs*";
 
-       this.navigator.runCommand(command, "");
-
-
+       String command ="http://dbpedia.org/resource/Tim_Berners-Lee -p (<http://dbpedia.org/property/influenced>[ASK {?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Scientist>}])* -t 5 -stream -noSaveModels";
+       // String command ="http://dbpedia.org/resource/Stanley_Kubrick -p (<http://dbpedia.org/ontology/director>/<http://dbpedia.org/ontology/director>)<6-6> -t 3";
+        //String command ="http://dblp.l3s.de/d2r/resource/authors/Giuseppe_Pirr%C3%B2 -p <http://xmlns.com/foaf/0.1/maker><2-2>/ACT[select ?n where {?x <http://xmlns.com/foaf/0.1/name> ?n}::sendEmail(antony_epis@hotmail.com)]";
+        this.navigator.runCommand(command, "");
 
         JSONObject agentMessageJson = new JSONObject();
-        agentMessageJson.put("agent_message", "probando");
+        agentMessageJson.put("command", command);
         return agentMessageJson.toString();
 
     }

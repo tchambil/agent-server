@@ -25,17 +25,21 @@ public class NetworkManager {
 
 		URLConnection connection = null;
 		try {
+
+
 			connection = makeConnection(new URL(uri));
+
 			connection.setReadTimeout(2000);
 			connection.setConnectTimeout(2000);
 
 		} catch (MalformedURLException e1) {
-			System.err.println("Malformed URI:" + uri);
+			System.err.println("Malformed URI:" + uri+"\n");
 
 		}
 		try {
 
 			connection.connect();
+
 			readInToModel(model, connection);
 
 		} catch (Exception e) {
@@ -81,6 +85,7 @@ public class NetworkManager {
 		{
 
 				m.read(in, "");
+
 							}
 
 		} catch (Exception e) 

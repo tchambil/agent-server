@@ -67,17 +67,17 @@ public class LinkFinderThread implements Runnable {
 
 		if (!NautiLODManager.containsNavigationalHistory(starting_uri.getUrl(),	starting_uri.getState())&& !NautiLODManager.isErrorUri(current_URI)) {
 			if (new ResourceImpl(current_URI).isResource()) {
-				try {
+				try
+                {
 					HashSet<State> hs = NautiLODManager.getRegExpManager().getEpsilonReachableStates(starting_uri.getState());
 
-                    System.out.println("Handling URI_1 "+ starting_uri.getUrl() + "\n");
+                   // System.out.println("Handling URI_1 "+ starting_uri.getUrl() + "\n");
 
-					for (State s : hs) {
-                        System.out.println("....Init for State: " +s);
+					for (State s : hs)
+                    {
+
 						to_expand.add(new URIData(starting_uri.getUrl(),starting_uri.getDepth(), s, starting_uri.getProvenanceAuthority(), starting_uri.getTypeOfLink()));
 					}
-
-
 					if (NautiLODManager.getRegExpManager()
 							.hasOutgoingTransition(starting_uri.getState())) {
 
@@ -85,23 +85,23 @@ public class LinkFinderThread implements Runnable {
 
 					}
 
-					for (URIData current : extracted) {
-                        System.out.println("....init for UriData: "+current.getUrl());
+					for (URIData current : extracted)
+                    {
+
 						if (current != null
 								&& !NautiLODManager.containsNavigationalHistory(starting_uri.getUrl().toString(),starting_uri.getState())) {
 
 							to_expand.add(current);
-
 						}
-                        System.out.println("....finish for");
+
 					}
 
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
-			NautiLODManager.addToNavHistory(starting_uri);
 
+			NautiLODManager.addToNavHistory(starting_uri);
 			/**
 			 * RESULTS
 			 */
@@ -129,7 +129,7 @@ public class LinkFinderThread implements Runnable {
 			for (URIData uri : to_expand) { 
 				try {
 					NautiLODManager.queueLink(uri);
-					System.out.println("Resultado : " + uri.getUrl());
+					 System.out.println("Resultado : " + uri.getUrl());
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -243,7 +243,8 @@ public class LinkFinderThread implements Runnable {
 				String queryString = "SELECT ?x WHERE " + "{ <"
 						+ uri_to_expand.getUrl().toString() + "> " + pred
 						+ "  ?x.}";
-
+                System.out.println("Query:"+queryString);
+                System.out.println("current_model:"+current_model);
 				Query query = QueryFactory.create(queryString);
 
 				QueryExecution qexec = QueryExecutionFactory.create(query,
@@ -299,7 +300,7 @@ public class LinkFinderThread implements Runnable {
 
 				queryString = "SELECT ?x WHERE { ?x " + pred + " <"
 						+ uri_to_expand.getUrl().toString() + "> .}";
-
+              //  System.out.println("query:"+queryString);
 				query = QueryFactory.create(queryString);
 
 				qexec = QueryExecutionFactory.create(query, current_model);
