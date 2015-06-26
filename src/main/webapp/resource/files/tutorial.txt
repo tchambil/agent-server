@@ -1004,7 +1004,7 @@ curl 'http://localhost:8080/users/test-user-1/agents/MyAgent-1/status&state=yes&
             "time": "Wed, 21 Mar 2012 18:24:40 -0400"
         },
         "parameters": {},
-        "time": "2012-03-21T18:24:41.133-0400"
+        "time": "2015-06-02T18:24:41.133-0400"
     }]
 }
 
@@ -1074,7 +1074,7 @@ curl 'http://localhost:8080/users/test-user-1/agents/Agent1_1/status&state=yes&c
         "notifications": [],
         "outputs": {"outCounter": 145},
         "parameters": {},
-        "time": "2012-03-21T18:25:08.134-0400"
+        "time": "2015-06-02T18:25:08.134-0400"
     }]
 }
 
@@ -1108,7 +1108,7 @@ curl 'http://localhost:8080/users/test-user-1/agents/Agent2_2/status&state=yes&c
         "notifications": [],
         "outputs": {"outStr": "-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-"},
         "parameters": {},
-        "time": "2012-03-21T18:25:16.808-0400"
+        "time": "2015-06-02T18:25:16.808-0400"
     }]
 }
 
@@ -1140,7 +1140,7 @@ curl 'http://localhost:8080/users/test-user-1/agents/Agent3_3/status&state=yes&c
         "notifications": [],
         "outputs": {"time": "Wed, 21 Mar 2012 18:25:23 -0400"},
         "parameters": {},
-        "time": "2012-03-21T18:25:25.058-0400"
+        "time": "2015-06-02T18:25:25.058-0400"
     }]
 }
 
@@ -1157,7 +1157,133 @@ curl 'http://localhost:8080/users/test-user-1/agents'
 
 continue . .  .
 
+more agentdefinitions
 
++++++++++++++++++++++++++++++++++++++++++
+{
+    "name": "definitions0",
+    "memory": [
+        {
+            "name": "counter",
+            "type": "int"
+        }
+    ],
+    "timers": [
+        {
+            "name": "count",
+            "interval": "seconds(4)",
+            "script": "counter++;"
+        }
+    ],
+    "outputs": [
+        {
+            "name": "output1",
+            "type": "int",
+            "compute": "counter"
+        }
+    ]
+}
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++
+{
+    "name": "definitions1,
+    "memory": [
+        {
+            "name": "s",
+            "type": "string"
+        }
+    ],
+    "timers": [
+        {
+            "name": "s",
+            "interval": "seconds(4)",
+            "script": "for (int i = 1; i <= 5; i++) s += ' ' + i;  return s;"
+        }
+    ],
+    "outputs": [
+        {
+            "name": "output1",
+            "type": "string",
+            "compute": "s"
+        }
+    ]
+}
+++++++++++++++++++++++++++++++++++++++++
+{
+ "name": "Definition2",
+ "timers": [{"name": "count", "interval": "seconds(1.5)"}],
+ "outputs": [{"name": "time", "type": "string", "compute": "now.toDate"}]
+}
++++++++++++++++++++++++++++++++++
+{
+    "name": "definitions3",
+    "memory": [
+        {
+            "name": "p",
+            "type": "int",
+            "default_value":1234
+        }
+    ],
+    "timers": [
+        {
+            "name": "get_p",
+            "interval": "seconds(4)",
+            "script": "int get_p(){return p;};"
+        }
+    ],
+    "outputs": [
+        {
+            "name": "output1",
+            "type": "int",
+            "compute": "get_p()"
+        }
+    ]
+}
+++++++++++++++++++++++++++++++++++++++++
+
+{
+    "name": "definitions2",
+    "memory": [
+        {
+            "name": "counter",
+            "type": "int"
+        }
+    ],
+    "timers": [
+        {
+            "name": "count",
+            "interval": "seconds(4)",
+            "script": "counter++;"
+        }
+    ],
+
+    "notifications": [
+        {
+            "name": "N0000000001",
+            "description": "TEST MESSAGE",
+            "type": "notify_only",
+            "condition": "",
+            "manual": false,
+            "enabled": true,
+            "timeout": "",
+            "suspend": false,
+            "details": [
+                {
+                    "nominal_length": 100,
+                    "max_length": 1000,
+                    "valid_regex": ".*",
+                    "default_value": "its Test Message",
+                    "description": "",
+                    "name": "test",
+                    "label": "",
+                    "type": "string"
+                }
+            ],
+            "scripts": []
+        }
+    ]
+}
++++++++++++++++++++++++++++++++++++++++++++++++++++++
 .
 
 

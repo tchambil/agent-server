@@ -36,7 +36,6 @@ public class ScriptRuntime {
     public Value evaluateExpression(String scriptName, ExpressionNode expressionNode) throws AgentServerException {
         // Create new state for the script execution
         ScriptState scriptState = new ScriptState(this, scriptName, expressionNode);
-
         // Evaluate the expression
         Value returnValueNode = null;
         try {
@@ -53,7 +52,6 @@ public class ScriptRuntime {
     public Value runScript(String scriptName, ScriptNode scriptNode) throws AgentServerException {
         return runScript(scriptName, scriptNode, new ArrayList<Value>());
     }
-
     public Value runScript(String scriptName, ScriptNode scriptNode, List<Value> argumentValues) throws AgentServerException {
         // Create new state for the script execution
         ScriptState scriptState = new ScriptState(this, scriptName, scriptNode);

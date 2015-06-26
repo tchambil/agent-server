@@ -16,8 +16,7 @@
 
 package dcc.agent.server.service.agentserver;
 
-import dcc.agent.server.service.field.Field;
-import dcc.agent.server.service.field.FieldList;
+import dcc.agent.server.service.field.*;
 import dcc.agent.server.service.goals.Goal;
 import dcc.agent.server.service.notification.NotificationDefinition;
 import dcc.agent.server.service.script.intermediate.*;
@@ -368,11 +367,9 @@ public class AgentDefinition {
             for (int i = 0; i < numOutputs; i++) {
                 // Get next output field definition
                 JSONObject outputJson = outputsJson.optJSONObject(i);
-
                 // Ignore empty field definitions
                 if (outputJson.length() == 0)
                     continue;
-
                 // Parse the output field definition
                 Field field = Field.fromJsonx(symbolManager.getSymbolTable("outputs"), outputJson);
 
@@ -382,7 +379,6 @@ public class AgentDefinition {
                 outputsList.add(field);
             }
         }
-
         // Parse 'scratchpad' fields
         FieldList scratchpad = null;
         if (agentJson.has("scratchpad")) {
@@ -396,7 +392,6 @@ public class AgentDefinition {
                 scratchpad.add(field);
             }
         }
-
         // Parse 'memory' fields
         FieldList memory = null;
         if (agentJson.has("memory")) {
@@ -410,9 +405,7 @@ public class AgentDefinition {
                 memory.add(field);
             }
         }
-
         // Parse 'goals'
-
         List<Goal> goalsList = null;
         if (agentJson.has("goals")) {
             JSONArray goalsJson = agentJson.optJSONArray("goals");

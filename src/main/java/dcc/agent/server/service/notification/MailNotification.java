@@ -92,7 +92,7 @@ public class MailNotification {
             else if (notificationType.equals("yes_no"))
                 message += "Accept by clicking on this link:\n\n\t" + responseUrl + "accept" +
                         "\n\nOr decline by checking on this link:\n\n\t" + responseUrl + "decline";
-            String messageTrailer1 = "\n\n----------\nFrom Agent Server - Message Id #";
+            String messageTrailer1 = "\n\n-------------------------------\nFrom Agent Server - Message Id #";
             String messageTrailer2 = "\n" +
                     "For support contact " + agentServerConfig.getContact() + "\n" +
                     "Or visit " + agentServerConfig.getWebsite() + "\n";

@@ -28,7 +28,7 @@ public class AgentMessage {
    public String sender;
     public String receiver;
     public String replyTo;
-    public String conversationId;
+    public String messageId;
     public String content;
     public String lenguaje;
     public String enconding;
@@ -37,8 +37,9 @@ public class AgentMessage {
     public String replyWith;
     public String inReplyTo;
     public String replyBy;
+    public String status;
     public Boolean update;
-    public Boolean check;
+    public Boolean delegate;
    public AgentServerProperties agentServerProperties;
 
     public AgentMessage( AgentServer agentServer,
@@ -46,7 +47,7 @@ public class AgentMessage {
                          String sender,
                         String receiver,
                         String replyTo,
-                        String conversationId,
+                        String messageId,
                         String content,
                         String lenguaje,
                         String enconding,
@@ -55,19 +56,20 @@ public class AgentMessage {
                         String replyWith,
                         String inReplyTo,
                         String replyBy,
+                        String status,
                         Boolean update,
-                        Boolean check
+                        Boolean delegate
                             )
 
     {
-    this.check=check;
+    this.delegate=delegate;
         this.update=update;
         this.user=user==null?User.noUser:user;
         this.agentServer = agentServer;
         this.sender=sender;
         this.receiver=receiver;
         this.replyTo=replyTo;
-        this.conversationId=conversationId;
+        this.messageId =messageId;
         this.content=content;
         this.lenguaje=lenguaje;
         this.enconding=enconding;
@@ -76,6 +78,7 @@ public class AgentMessage {
         this.replyWith=replyWith;
         this.inReplyTo=inReplyTo;
         this.replyBy=replyBy;
+        this.status=status;
 
 
 
@@ -96,7 +99,7 @@ public class AgentMessage {
           messageJson.put("sender", sender == null ? "" : sender);
           messageJson.put("receiver", receiver == null ? "": receiver);
           messageJson.put("replyTo", replyTo == null ? "" : replyTo);
-          messageJson.put("conversationId", conversationId == null ? "" : conversationId);
+          messageJson.put("messageId", messageId == null ? "" : messageId);
           messageJson.put("content", content == null ? "" : content);
           messageJson.put("lenguage", lenguaje == null ? "" : lenguaje);
           messageJson.put("encoding", enconding == null ? "" : enconding);
@@ -105,6 +108,8 @@ public class AgentMessage {
           messageJson.put("replyWith", replyWith == null ? "" : replyWith);
           messageJson.put("inReplyTo", inReplyTo == null ? "" : inReplyTo);
           messageJson.put("replyBy", replyBy == null ? "" : replyBy);
+          messageJson.put("status", replyBy == null ? "" : status);
+          messageJson.put("delegate", replyBy == null ? "" : delegate);
 
           return messageJson;
       }
@@ -128,9 +133,9 @@ public class AgentMessage {
         {
             this.replyTo=message.replyTo;
         }
-        if(message.conversationId!=null)
+        if(message.messageId !=null)
         {
-            this.conversationId=message.conversationId;
+            this.messageId =message.messageId;
         }
         if(message.content!=null)
         {
@@ -164,6 +169,12 @@ public class AgentMessage {
         if(message.replyBy!=null) {
             this.replyBy = message.replyBy;
         }
+        if(message.delegate!=null) {
+            this.delegate = message.delegate;
+        }
+        if(message.status!=null) {
+            this.status = message.status;
+        }
         agentServer.persistence.put(this);
     }
 
@@ -181,7 +192,7 @@ public class AgentMessage {
 
     static public AgentMessage fromJson(AgentServer agentServer, User user, JSONObject agentJson, boolean update) throws AgentServerException {
         log.info("If we have the user, ignore user from JSON");
-
+/*
         if(user==null)
         {
             String userId=agentJson.optString("user");
@@ -195,16 +206,18 @@ public class AgentMessage {
                 throw  new AgentServerException("Message user id does not exist: '"+userId+"'");
             }
         }
+ */
+
         // Parse the message sender
         String messageSender=agentJson.optString("sender",null);
-        if(!update &&(messageSender==null) || messageSender.trim().length()==0)
+        if((messageSender==null) || messageSender.trim().length()==0)
         {
             messageSender="";
         }
         // Parse the message receiver
         String messageReceiver=agentJson.optString("receiver",null);
         {
-            if(!update &&(messageReceiver==null)|| messageReceiver.trim().length()==0)
+            if((messageReceiver==null)|| messageReceiver.trim().length()==0)
             {
                 messageReceiver="";
             }
@@ -212,23 +225,24 @@ public class AgentMessage {
         // Parse the message replyTo
         String messageReplyTo=agentJson.optString("replyTo",null);
         {
-            if(!update &&(messageReplyTo==null)||messageReplyTo.trim().length()==0)
+            if((messageReplyTo==null)||messageReplyTo.trim().length()==0)
             {
                 messageReplyTo="";
             }
         }
-        //Parse the message conversationId
-        String messageConversationId=agentJson.optString("conversationId",null);
+        //Parse the message messageId
+        String messagemessageId=agentJson.optString("messageId",null);
         {
-            if(!update &&(messageConversationId==null) || messageConversationId.trim().length()==0)
+            if(!update &&(messagemessageId==null))
             {
-                messageConversationId="";
+
+                messagemessageId = agentServer.config.agentServerProperties.agentServerName+"-"+ Integer.toString(agentServer.agentMessages.size());
             }
         }
         //Parse the message content
         String messageContent=agentJson.optString("content",null);
         {
-            if(!update &&(messageContent==null) || messageContent.trim().length()==0)
+            if((messageContent==null) || messageContent.trim().length()==0)
             {
                 messageContent="";
             }
@@ -236,16 +250,15 @@ public class AgentMessage {
         //Parse the message lenguaje
         String messageLenguaje=agentJson.optString("lenguaje",null);
         {
-            if(!update &&(messageLenguaje==null) || messageLenguaje.trim().length()==0)
+            if((messageLenguaje==null) || messageLenguaje.trim().length()==0)
             {
                 messageLenguaje="";
             }
         }
-
         //Parse the message enconding
         String messageEnconding=agentJson.optString("enconding",null);
         {
-            if(!update &&(messageEnconding==null) || messageEnconding.trim().length()==0)
+            if((messageEnconding==null) || messageEnconding.trim().length()==0)
             {
                 messageEnconding="";
             }
@@ -253,7 +266,7 @@ public class AgentMessage {
         //Parse the message ontology
         String messageOntology=agentJson.optString("ontology",null);
         {
-            if(!update &&(messageOntology==null) || messageOntology.trim().length()==0)
+            if((messageOntology==null) || messageOntology.trim().length()==0)
             {
                 messageOntology="";
             }
@@ -261,25 +274,23 @@ public class AgentMessage {
         //Parse the message protocol
         String messageProtocol=agentJson.optString("protocol",null);
         {
-            if(!update &&(messageProtocol==null) || messageProtocol.trim().length()==0)
+            if((messageProtocol==null) || messageProtocol.trim().length()==0)
             {
                 messageProtocol="";
             }
         }
-
         //Parse the message replyWith
         String messageReplyWith=agentJson.optString("replyWith",null);
         {
-            if(!update &&(messageReplyWith==null) || messageReplyWith.trim().length()==0)
+            if((messageReplyWith==null) || messageReplyWith.trim().length()==0)
             {
                 messageReplyWith="";
             }
         }
-
         //Parse the message inReplyTo
         String messageInReplyTo=agentJson.optString("inReplyTo",null);
         {
-            if(!update &&(messageInReplyTo==null) || messageInReplyTo.trim().length()==0)
+            if((messageInReplyTo==null) || messageInReplyTo.trim().length()==0)
             {
                 messageInReplyTo="";
             }
@@ -288,21 +299,37 @@ public class AgentMessage {
         //Parse the message replyBy
         String messageReplyBy=agentJson.optString("replyBy",null);
         {
-            if(!update &&(messageReplyBy==null) || messageReplyBy.trim().length()==0)
+            if((messageReplyBy==null) || messageReplyBy.trim().length()==0)
             {
                 messageReplyBy="";
             }
         }
+        //Parse the message status
+        String messagestatus=agentJson.optString("status",null);
+        {
+            if(!update &&(messagestatus==null))
+            {
+                messagestatus="new";
+            }
+            else if(update &&(messagestatus==null))
+            {
+                messagestatus="update";
+            }
+        }
+
+        //Parse the message delegate
+        Boolean messagedelegate = agentJson.has("delegate") ? agentJson.optBoolean("delegate") : false;
+
         // Validate keys
 
         JsonUtils.validateKeys(agentJson, "Agent Message", new ArrayList<String>(Arrays.asList(
-                "user", "sender", "receiver", "replyTo", "conversationId",
+                "user", "sender", "receiver", "replyTo", "messageId",
                 "content", "lenguage", "encoding", "ontology",
-                "protocol", "replyWith", "inReplyTo", "replyBy")));
+                "protocol", "replyWith", "inReplyTo", "replyBy","status","delegate")));
 
-        AgentMessage agentMessage = new AgentMessage(agentServer,user,  messageSender, messageReceiver, messageReplyTo, messageConversationId,
+        AgentMessage agentMessage = new AgentMessage(agentServer,user,  messageSender, messageReceiver, messageReplyTo, messagemessageId,
                 messageContent, messageLenguaje, messageEnconding, messageOntology, messageProtocol, messageReplyWith, messageInReplyTo,
-                messageReplyBy, update, false);
+                messageReplyBy, messagestatus,update, messagedelegate);
 
         // Return the new agent instance
         return agentMessage;

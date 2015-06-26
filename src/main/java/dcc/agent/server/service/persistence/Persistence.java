@@ -52,8 +52,7 @@ public class Persistence {
     public void initialize() throws AgentServerException, ParseException, TokenizerException, ParserException {
         try {
             // Get a new persistent file object
-            if (file == null)
-            {
+            if (file == null) {
                 file = new PersistentFile();
             }
             // Does our persistent file exists yet?
@@ -66,7 +65,7 @@ public class Persistence {
                 loadAllTables();
             } else {
                 // No, create a new persistent file for this agent server
-                List<String> tableNames = Arrays.asList("config", "users", "agentDefinitions", "agentInstances", "webaccess","message","group");
+                List<String> tableNames = Arrays.asList("config", "users", "agentDefinitions", "agentInstances", "webaccess", "message", "group");
                 file.create(path, "Agent Server", "1.0", tableNames);
 
                 // And open it
@@ -132,6 +131,7 @@ public class Persistence {
         log.info("persistence ServerGroup");
         put("group", serverGroup.HostName, serverGroup.toJson().toString());
     }
+
     public void put(AgentDefinition agentDefinition) throws AgentServerException {
         put("agentDefinitions", agentDefinition.user.id + "|" + agentDefinition.name, agentDefinition.toJson().toString());
     }
@@ -141,8 +141,9 @@ public class Persistence {
     }
 
     public void put(AgentMessage agentMessage) throws JSONException, AgentServerException {
-        put("message",agentMessage.user.id, agentMessage.toJson().toString());
+        put("message", agentMessage.messageId, agentMessage.toJson().toString());
     }
+
     public void put(String tableName, String key, String value) throws AgentServerException {
         try {
             file.put(tableName, key, value);
@@ -159,6 +160,8 @@ public class Persistence {
         loadUsers();
         loadAgentDefinitions();
         loadAgentInstances();
+        loadAgentMessage();
+        loadgroup();
         // TODO: Status of the scheduler - is it suspended, when is it started?
         // TODO: What to do about pending activities - store/load them? Or, can they be ignored?
     }
@@ -168,7 +171,7 @@ public class Persistence {
             // Load all users
             for (String userId : file.iterable("users")) {
                 String userJsonSource = file.get("users", userId);
-                      agentServer.recreateUser(userJsonSource);
+                agentServer.recreateUser(userJsonSource);
 
             }
         } catch (PersistentFileException e) {
@@ -225,6 +228,40 @@ public class Persistence {
         } catch (SymbolException e) {
             e.printStackTrace();
             throw new AgentServerException("SymbolException loading agent instances from persistent store: " + e.getMessage());
+        }
+    }
+    public void loadAgentMessage() throws AgentServerException, ParseException, ParserException, TokenizerException {
+        try {
+            for (String messageId : file.iterable("message")) {
+                String messageJsonSource = file.get("message", messageId);
+                agentServer.recreateAgentMessage(messageJsonSource);
+            }
+        } catch (PersistentFileException e) {
+            e.printStackTrace();
+            throw new AgentServerException("PersistentFileException loading agentmessage: " + e.getMessage());
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new AgentServerException("IOException loading agentmessage from persistent store: " + e.getMessage());
+        } catch (JSONException e) {
+            e.printStackTrace();
+            throw new AgentServerException("JSONException loading agentmessage from persistent store: " + e.getMessage());
+        }
+    }
+    public void loadgroup() throws AgentServerException {
+        try {
+            for (String hostname : file.iterable("group")) {
+                String JsonSource = file.get("group", hostname);
+                agentServer.recreateServerGroup(JsonSource);
+            }
+        } catch (PersistentFileException e) {
+            e.printStackTrace();
+            throw new AgentServerException("PersistentFileException loading agentmessage: " + e.getMessage());
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new AgentServerException("IOException loading agentmessage from persistent store: " + e.getMessage());
+        } catch (JSONException e) {
+            e.printStackTrace();
+            throw new AgentServerException("JSONException loading agentmessage from persistent store: " + e.getMessage());
         }
     }
 }

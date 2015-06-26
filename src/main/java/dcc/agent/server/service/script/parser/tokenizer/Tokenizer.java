@@ -16,89 +16,7 @@
 
 package dcc.agent.server.service.script.parser.tokenizer;
 
-import dcc.agent.server.service.script.parser.tokenizer.token.AsteriskEqualOperatorToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.AsteriskOperatorToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.AtSignOperatorToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.BitwiseAndEqualOperatorToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.BitwiseAndOperatorToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.BitwiseOrEqualOperatorToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.BitwiseOrOperatorToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.BooleanKeywordToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.BreakKeywordToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.ByteKeywordToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.CaretOperatorToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.CaseKeywordToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.CatchKeywordToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.CharKeywordToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.ColonOperatorToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.CommaOperatorToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.ContinueKeywordToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.DateKeywordToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.DefaultKeywordToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.DoKeywordToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.DollarSignOperatorToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.DoubleKeywordToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.ElseKeywordToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.EqualOperatorToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.EqualsOperatorToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.ExclusiveOrEqualOperatorToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.FalseToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.FloatKeywordToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.FloatToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.ForKeywordToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.GreaterEqualsOperatorToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.GreaterGreaterGreaterOperatorToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.GreaterGreaterOperatorToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.GreaterOperatorToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.IdentifierToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.IfKeywordToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.IntKeywordToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.IntegerKeywordToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.IntegerToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.LeftBraceOperatorToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.LeftParenthesisOperatorToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.LeftSquareBracketOperatorToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.LessEqualsOperatorToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.LessLessOperatorToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.LessOperatorToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.ListKeywordToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.LogicalAndOperatorToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.LogicalNotOperatorToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.LogicalOrOperatorToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.LongKeywordToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.MapKeywordToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.MinusEqualOperatorToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.MinusMinusOperatorToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.MinusOperatorToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.MoneyKeywordToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.NotEqualsOperatorToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.NowKeywordToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.NullToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.ObjectKeywordToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.PercentSignOperatorToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.PeriodOperatorToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.PlusEqualOperatorToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.PlusOperatorToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.PlusPlusOperatorToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.PoundSignOperatorToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.QuestionMarkOperatorToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.ReturnKeywordToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.RightBraceOperatorToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.RightParenthesisOperatorToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.RightSquareBracketOperatorToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.SemicolonOperatorToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.ShortKeywordToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.SlashEqualOperatorToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.SlashOperatorToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.StringKeywordToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.StringToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.SwitchKeywordToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.ThrowKeywordToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.Token;
-import dcc.agent.server.service.script.parser.tokenizer.token.TrueToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.TryKeywordToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.WebKeywordToken;
-import dcc.agent.server.service.script.parser.tokenizer.token.WhileKeywordToken;
+import dcc.agent.server.service.script.parser.tokenizer.token.*;
 
 public class Tokenizer {
     public String s;
@@ -199,6 +117,8 @@ public class Tokenizer {
                     token = new ThrowKeywordToken();
                 else if (identifier.equals("new"))
                     token = new NewKeywordToken();
+                else if (identifier.equals("delegate"))
+                    token = new DelegateKeywordToken();
                 else
                     token = new IdentifierToken(identifier);
             } else if (czer.isDigit) {

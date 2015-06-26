@@ -16,26 +16,15 @@
 
 package dcc.agent.server.service.scheduler;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.log4j.Logger;
-
-
-import dcc.agent.server.service.activities.AgentActivity;
-import dcc.agent.server.service.activities.AgentActivityCondition;
-import dcc.agent.server.service.activities.AgentActivityRunScript;
-import dcc.agent.server.service.activities.AgentActivityThread;
-import dcc.agent.server.service.activities.AgentActivityTimer;
-import dcc.agent.server.service.agentserver.AgentCondition;
-import dcc.agent.server.service.agentserver.AgentInstance;
-import dcc.agent.server.service.agentserver.AgentInstanceList;
-import dcc.agent.server.service.agentserver.AgentServer;
-import dcc.agent.server.service.agentserver.AgentServerException;
-import dcc.agent.server.service.agentserver.AgentTimer;
+import dcc.agent.server.service.activities.*;
+import dcc.agent.server.service.agentserver.*;
 import dcc.agent.server.service.agentserver.RuntimeException;
 import dcc.agent.server.service.util.DateUtils;
 import dcc.agent.server.service.util.NameValue;
+import org.apache.log4j.Logger;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AgentScheduler implements Runnable {
     static final Logger log = Logger.getLogger(AgentScheduler.class);
@@ -99,6 +88,7 @@ public class AgentScheduler implements Runnable {
         log.info("AgentScheduler.run started");
         boolean noneAvailable = false;
         while (true) {
+
             if (requestShutdown) {
                 log.info("AgentScheduler.run shutdown requested");
                 break;

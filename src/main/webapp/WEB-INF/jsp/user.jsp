@@ -284,7 +284,7 @@
                             <div class="form-group">
                                 <label>Email</label>
                                 <input type="text" name="email" id="emailInput" class="form-control"
-                                       value="you@example.com"/>
+                                       value="antony_epis@hotmail.com"/>
 
                             </div>
 

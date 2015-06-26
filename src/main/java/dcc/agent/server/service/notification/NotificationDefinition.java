@@ -16,16 +16,6 @@
 
 package dcc.agent.server.service.notification;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import org.apache.log4j.Logger;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-
 import dcc.agent.server.service.agentserver.AgentServerException;
 import dcc.agent.server.service.agentserver.ScriptDefinition;
 import dcc.agent.server.service.field.Field;
@@ -36,6 +26,14 @@ import dcc.agent.server.service.util.JsonListMap;
 import dcc.agent.server.service.util.JsonUtils;
 import dcc.agent.server.service.util.NameValue;
 import dcc.agent.server.service.util.NameValueList;
+import org.apache.log4j.Logger;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 
 public class NotificationDefinition {
@@ -120,7 +118,7 @@ public class NotificationDefinition {
 
         // Validate keys
         JsonUtils.validateKeys(notificationDefinitionJson, "Notification definition", new ArrayList<String>(Arrays.asList(
-                "name", "description", "type", "condition", "manual", "enabled", "details", "scripts", "timeout")));
+                "name", "description", "type", "condition", "manual", "enabled", "details", "scripts", "timeout","suspend")));
 
         return new NotificationDefinition(name, description, type, condition, manual, enabled, details, scripts,
                 timeoutExpression, suspend);

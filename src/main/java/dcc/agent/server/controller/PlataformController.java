@@ -446,8 +446,6 @@ public class PlataformController {
         // Force the scheduler to start
         AgentScheduler agentScheduler = new AgentScheduler(agentServer);
         logger.info("Restart Agent server");
-
-
         Thread.sleep(100);
         AgentScheduler agentScheduler2 = AgentScheduler.singleton;
         JSONObject message = new JSONObject();

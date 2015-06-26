@@ -149,7 +149,7 @@ public class UsersController {
         return users;
     }
 
-    @RequestMapping(value = "/users/{id}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE, headers = "Content-Type=application/json")
+    @RequestMapping(value = "/users/{id}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public User putUser(@PathVariable String id, HttpServletRequest request) throws Exception {
         // Parse the user info JSON from posted entity

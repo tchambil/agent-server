@@ -82,7 +82,7 @@ public class AgentDelegate {
             messageJson.put("sender",  agentMessage.sender == null ? "" : agentMessage.sender);
             messageJson.put("receiver",  agentMessage.receiver == null ? "":  agentMessage.receiver);
             messageJson.put("replyTo",  agentMessage.replyTo == null ? "" :  agentMessage.replyTo);
-            messageJson.put("conversationId",  agentMessage.conversationId == null ? "" :  agentMessage.conversationId);
+            messageJson.put("messageId",  agentMessage.messageId == null ? "" :  agentMessage.messageId);
             messageJson.put("content",  agentMessage.content == null ? "" :  agentMessage.content);
             messageJson.put("lenguage",  agentMessage.lenguaje == null ? "" :  agentMessage.lenguaje);
             messageJson.put("encoding",  agentMessage.enconding == null ? "" :  agentMessage.enconding);

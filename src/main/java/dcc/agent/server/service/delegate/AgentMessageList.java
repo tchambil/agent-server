@@ -14,22 +14,22 @@ public class AgentMessageList implements  Iterable<AgentMessage>
     {
         agentMessages.add(agentMessage);
     }
-    public boolean containsKey(String agentMessageConversationId)
+    public boolean containsKey(String agentMessagemessagemessageId)
     {
         for(AgentMessage agentMessage:this)
         {
-            if(agentMessage.conversationId.equals(agentMessageConversationId))
+            if(agentMessage.messageId.equals(agentMessagemessagemessageId))
             {
                 return true;
             }
         }
         return false;
     }
-public AgentMessage get(String agentMessageConversationId )
+public AgentMessage get(String agentMessagemessagemessageId )
 {
     for(AgentMessage agentMessage:this)
     {
-        if(agentMessage.conversationId.equals(agentMessageConversationId))
+        if(agentMessage.messageId.equals(agentMessagemessagemessageId))
         {
             return agentMessage;
         }
@@ -48,9 +48,9 @@ public AgentMessage put(AgentMessage agentMessage)
     }
     return agentMessage;
 }
-    public void remove(String agentMessageConversationId)
+    public void remove(String agentMessagemessagemessageId)
     {
-        AgentMessage agentMessage=get(agentMessageConversationId);
+        AgentMessage agentMessage=get(agentMessagemessagemessageId);
         if(agentMessage!=null)
         {
             remove(agentMessage);

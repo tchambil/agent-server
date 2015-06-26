@@ -20,7 +20,6 @@ import dcc.agent.server.service.appserver.AgentAppServer;
 import dcc.agent.server.service.config.AgentServerConfig;
 import dcc.agent.server.service.config.AgentServerProperties;
 import dcc.agent.server.service.config.AgentServerWebAccessConfig;
-import dcc.agent.server.service.config.AgentVariable;
 import dcc.agent.server.service.delegate.*;
 import dcc.agent.server.service.mailaccessmanager.MailAccessManager;
 import dcc.agent.server.service.persistence.Persistence;
@@ -65,7 +64,6 @@ public class AgentServer {
     public NameValueList<AgentMessageList> agentMessages;
     public NameValueList<ServerGroupList> serverGroups;
     public AgentServerProperties agentServerProperties;
-    public AgentVariable agentVariable;
     public AgentServerWebAccessConfig webAccessConfig;
     public WebSiteAccessConfig webSiteAccessConfig;
     public WebAccessManager webAccessManager;
@@ -130,21 +128,21 @@ public class AgentServer {
         // Return the new agent definition
         return agentDefinition;
     }
-    public AgentMessage addAgentMessage(JSONObject agenJson) throws JSONException, AgentServerException {
+    public AgentMessage addAgentMessage(JSONObject agenJson) throws JSONException, AgentServerException, ParseException, ParserException, TokenizerException {
         return addAgentMessage(null,agenJson);
     }
     public AgentMessage addAgentMessage(AgentMessage agentMessage) throws AgentServerException, JSONException {
       if(agentMessage!=null)
       {
        // Check if the user has any agents yet
-          if (!agentMessages.containsKey(agentMessage.user.id))
+          if (!agentMessages.containsKey(agentMessage.messageId))
           {
               // No, so create an empty agent table for user
-              agentMessages.put(agentMessage.user.id, new AgentMessageList());
+              agentMessages.put(agentMessage.messageId, new AgentMessageList());
           }
           // Get agent message table for the user
 
-          AgentMessageList userAgentMessages=agentMessages.get(agentMessage.user.id);
+          AgentMessageList userAgentMessages=agentMessages.get(agentMessage.messageId);
           // Store the new agent message for the user
           userAgentMessages.put(agentMessage);
           // Persist the new agent message
@@ -164,10 +162,10 @@ public class AgentServer {
             return agenMap.get(agentMessageConversationId);
         }
     }
-    public AgentMessage addAgentMessage(User user, JSONObject agentJson) throws AgentServerException, JSONException {
+    public AgentMessage addAgentMessage(User user, JSONObject agentJson) throws AgentServerException, JSONException, ParseException, ParserException, TokenizerException {
         // Parse the JSON for the agent definition
         log.info("Parse the JSON for the message");
-        AgentMessage agentMessage = AgentMessage.fromJson(this, user, agentJson);
+        AgentMessage agentMessage = AgentMessage.fromJson(this, agentJson);
         // Add it to table of agent definitions
         addAgentMessage(agentMessage);
       // DelegateAgentMessage(agentMessage);
@@ -540,6 +538,46 @@ public class AgentServer {
         AgentDefinition newAgentDefinition = AgentDefinition.fromJson(this, agentDefinitionJsonSource);
         recreateAgentDefinition(newAgentDefinition);
     }
+    public void recreateAgentMessage(String agentMessage) throws AgentServerException, ParserException, ParseException, JSONException, TokenizerException {
+        AgentMessage newAgentMessage=AgentMessage.fromJson(this,agentMessage);
+        recreateAgentMessage(newAgentMessage);
+
+    }
+    public AgentMessage recreateAgentMessage(AgentMessage agentMessage) throws AgentServerException {
+        if (agentMessage != null) {
+            // Check if the plataform has any agent message yet
+            if (!agentMessages.containsKey(agentMessage.messageId)) {
+                // No, so create an empty agent message table for plataform
+                agentMessages.put(agentMessage.messageId, new AgentMessageList());
+            }
+            // Get agent message  table for the plataform
+            AgentMessageList AgentMessages = agentMessages.get(agentMessage.messageId);
+            // Store the new agentmessage
+            AgentMessages.put(agentMessage);
+        }
+        // Return the agent message  itself
+        return agentMessage;
+    }
+    public void recreateServerGroup(String serverGroup) throws JSONException, AgentServerException {
+        ServerGroup newServerGroup= ServerGroup.fromJson(this, serverGroup);
+        recreateServerGroup(newServerGroup);
+
+    }
+    public ServerGroup recreateServerGroup(ServerGroup serverGroup) throws AgentServerException {
+        if (serverGroup != null) {
+            // Check if the plataform has any server group yet
+            if (!serverGroups.containsKey(serverGroup.HostName)) {
+                // No, so create an empty server group table for plataform
+                serverGroups.put(serverGroup.HostName, new ServerGroupList());
+            }
+            // Get server group  table for the plataform
+            ServerGroupList AgentGroups = serverGroups.get(serverGroup.HostName);
+            // Store the new server group
+            AgentGroups.put(serverGroup);
+        }
+        // Return the server group itself
+        return serverGroup;
+    }
     public AgentInstance recreateAgentInstance(AgentInstance agentInstance) throws AgentServerException, SymbolException, JSONException {
         // Get instance list for the user
         AgentInstanceList agentInstanceList = agentInstances.get(agentInstance.user.id);
@@ -668,7 +706,7 @@ public class AgentServer {
         return config.agentServerProperties.adminPassword;
     }
     public String getPersistentStorePath() {
-        return agentVariable.persistent_store_dir + "/" + AgentVariable.DEFAULT_PERSISTENT_STORE_FILE_NAME;
+        return agentServerProperties.persistent_store_dir + "/" + agentServerProperties.DEFAULT_PERSISTENT_STORE_FILE_NAME;
     }
     public long getMinimumTriggerInterval() {
         return config.getLong("minimum_trigger_interval");
