@@ -17,6 +17,8 @@
 package dcc.agent.server.service.agentserver;
 
 import dcc.agent.server.service.appserver.AgentAppServer;
+import dcc.agent.server.service.communication.ACLMessage;
+import dcc.agent.server.service.communication.ACLMessageList;
 import dcc.agent.server.service.config.AgentServerConfig;
 import dcc.agent.server.service.config.AgentServerProperties;
 import dcc.agent.server.service.config.AgentServerWebAccessConfig;
@@ -61,7 +63,7 @@ public class AgentServer {
     public NameValueList<User> users;
     public NameValueList<AgentDefinitionList> agentDefinitions;
     public NameValueList<AgentInstanceList> agentInstances;
-    public NameValueList<AgentMessageList> agentMessages;
+    public NameValueList<ACLMessageList> agentMessages;
     public NameValueList<ServerGroupList> serverGroups;
     public AgentServerProperties agentServerProperties;
     public AgentServerWebAccessConfig webAccessConfig;
@@ -128,21 +130,21 @@ public class AgentServer {
         // Return the new agent definition
         return agentDefinition;
     }
-    public AgentMessage addAgentMessage(JSONObject agenJson) throws JSONException, AgentServerException, ParseException, ParserException, TokenizerException {
+    public ACLMessage addAgentMessage(JSONObject agenJson) throws JSONException, AgentServerException, ParseException, ParserException, TokenizerException {
         return addAgentMessage(null,agenJson);
     }
-    public AgentMessage addAgentMessage(AgentMessage agentMessage) throws AgentServerException, JSONException {
+    public ACLMessage addAgentMessage(ACLMessage agentMessage) throws AgentServerException, JSONException {
       if(agentMessage!=null)
       {
        // Check if the user has any agents yet
           if (!agentMessages.containsKey(agentMessage.messageId))
           {
               // No, so create an empty agent table for user
-              agentMessages.put(agentMessage.messageId, new AgentMessageList());
+              agentMessages.put(agentMessage.messageId, new ACLMessageList());
           }
           // Get agent message table for the user
 
-          AgentMessageList userAgentMessages=agentMessages.get(agentMessage.messageId);
+          ACLMessageList userAgentMessages=agentMessages.get(agentMessage.messageId);
           // Store the new agent message for the user
           userAgentMessages.put(agentMessage);
           // Persist the new agent message
@@ -151,8 +153,8 @@ public class AgentServer {
       }
         return agentMessage;
     }
-    public AgentMessage getAgentMessage(User user, String agentMessageConversationId)    {
-         AgentMessageList agenMap =agentMessages.get(user.id);
+    public ACLMessage getAgentMessage(User user, String agentMessageConversationId)    {
+         ACLMessageList agenMap =agentMessages.get(user.id);
         if(agenMap==null)
         {
             return null;
@@ -162,10 +164,11 @@ public class AgentServer {
             return agenMap.get(agentMessageConversationId);
         }
     }
-    public AgentMessage addAgentMessage(User user, JSONObject agentJson) throws AgentServerException, JSONException, ParseException, ParserException, TokenizerException {
+
+    public ACLMessage addAgentMessage(User user, JSONObject agentJson) throws AgentServerException, JSONException, ParseException, ParserException, TokenizerException {
         // Parse the JSON for the agent definition
         log.info("Parse the JSON for the message");
-        AgentMessage agentMessage = AgentMessage.fromJson(this, agentJson);
+        ACLMessage agentMessage = ACLMessage.fromJson(this, agentJson);
         // Add it to table of agent definitions
         addAgentMessage(agentMessage);
       // DelegateAgentMessage(agentMessage);
@@ -191,7 +194,7 @@ public class AgentServer {
         addServerGroup(serverGroup);
         return serverGroup;
     }
-    public AgentMessage addDelegateAgent(AgentMessage agentMessage) throws AgentServerException, JSONException {
+    public ACLMessage addDelegateAgent(ACLMessage agentMessage) throws AgentServerException, JSONException {
     if(agentMessage!=null)
     {
        // Prepara for delegate agent message
@@ -335,11 +338,29 @@ public class AgentServer {
         String agentInstanceName = agentJson.optString("name");
         if (agentInstanceName == null || agentInstanceName.trim().length() == 0)
             throw new AgentServerException("Agent instance name ('name') is missing");
+        // Parse the agent instance name
+
+        String agentHostName = agentJson.optString("host",null);
+       // if (agentHostName == null || agentHostName.trim().length() == 0)
+      //      throw new AgentServerException("Agent instance name ('host') is missing");
+        // Parse the agent instance addresses
+        String agentaddresses = agentJson.optString("addresses");
+        if (agentaddresses == null || agentaddresses.trim().length() == 0)
+                 throw new AgentServerException("Agent instance definition name ('addresses') is missing");
 
         // Parse the agent definition name
         String agentDefinitionName = agentJson.optString("definition");
         if (agentDefinitionName == null || agentDefinitionName.trim().length() == 0)
-            throw new AgentServerException("Agent instance definition name ('definition') is missing for user '" + user.id + "'");
+            throw new AgentServerException("Agent instance definition name ('definition') is missing ");
+
+        // Parse the agent type
+        String agentType = agentJson.optString("type");
+        if (agentType == null || agentType.trim().length() == 0)
+        {
+                agentType="local";
+
+        }
+
         String agentDescription = agentJson.optString("description");
         if (agentDescription == null || agentDescription.trim().length() == 0)
             agentDescription = "";
@@ -413,7 +434,7 @@ public class AgentServer {
             throw new AgentServerException("Unable to parse modified date ('" + modified + "') - " + e.getMessage());
         }
 
-        AgentInstance agentInstance = agentMap.put(user, agentDefinition, agentInstanceName, agentDescription, parameterValues, triggerIntervalExpression, reportingIntervalExpression, publicOutput, limitInstanceStatesStored, enabled, timeCreated, timeModified);
+        AgentInstance agentInstance = agentMap.put(user, agentDefinition, agentInstanceName,agentaddresses,agentHostName, agentType,agentDescription, parameterValues, triggerIntervalExpression, reportingIntervalExpression, publicOutput, limitInstanceStatesStored, enabled, timeCreated, timeModified);
 
         // Persist the new agent instance
         persistence.put(agentInstance);
@@ -539,19 +560,19 @@ public class AgentServer {
         recreateAgentDefinition(newAgentDefinition);
     }
     public void recreateAgentMessage(String agentMessage) throws AgentServerException, ParserException, ParseException, JSONException, TokenizerException {
-        AgentMessage newAgentMessage=AgentMessage.fromJson(this,agentMessage);
+        ACLMessage newAgentMessage= ACLMessage.fromJson(this, agentMessage);
         recreateAgentMessage(newAgentMessage);
 
     }
-    public AgentMessage recreateAgentMessage(AgentMessage agentMessage) throws AgentServerException {
+    public ACLMessage recreateAgentMessage(ACLMessage agentMessage) throws AgentServerException {
         if (agentMessage != null) {
             // Check if the plataform has any agent message yet
             if (!agentMessages.containsKey(agentMessage.messageId)) {
                 // No, so create an empty agent message table for plataform
-                agentMessages.put(agentMessage.messageId, new AgentMessageList());
+                agentMessages.put(agentMessage.messageId, new ACLMessageList());
             }
             // Get agent message  table for the plataform
-            AgentMessageList AgentMessages = agentMessages.get(agentMessage.messageId);
+            ACLMessageList AgentMessages = agentMessages.get(agentMessage.messageId);
             // Store the new agentmessage
             AgentMessages.put(agentMessage);
         }
@@ -615,7 +636,7 @@ public class AgentServer {
         this.users = new NameValueList<User>();
         this.agentDefinitions = new NameValueList<AgentDefinitionList>();
         this.agentInstances = new NameValueList<AgentInstanceList>();
-        this.agentMessages=new NameValueList<AgentMessageList>();
+        this.agentMessages=new NameValueList<ACLMessageList>();
         this.serverGroups=new NameValueList<ServerGroupList>();
 
         this.agentDelegate=new AgentDelegate(this);

@@ -302,6 +302,22 @@ public class PersistentFile implements Iterable<String> {
                     long entryPosition = blockPosition + i + keyBytesLen + 1;
 
                     // Add entry to internal table
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     PersistentEntry entry = new PersistentEntry(key, entryPosition, keyValuePosition);
                     table.entries.put(key, entry);
 

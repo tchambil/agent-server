@@ -72,7 +72,6 @@ public class PlataformController {
         if (serverJson == null)
             throw new AgentAppServerBadRequestException(
                     "Invalid ServerGroup JSON object");
-
         // Parse and add the Server Group
         ServerGroup serverGroup =agentServer.addServerGroup(serverJson);
          // Done
@@ -85,7 +84,6 @@ public class PlataformController {
     @RequestMapping(value = "/group", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public String getServerGroup () throws JSONException {
-
         JSONArray GroupArrayJson = new JSONArray();
         // Get all serverGroup
         for (NameValue<ServerGroupList> groupListNameValue : agentServer.serverGroups) {
@@ -94,18 +92,22 @@ public class PlataformController {
                     .get(groupListNameValue.name)) {
                 // Generate JSON for short summary of serverGroup
                 JSONObject groupJson = new JsonListMap();
-                groupJson.put("uri", serverGroup.uri);
+                groupJson.put("uri", serverGroup.Url);
                 groupJson.put("HostName", serverGroup.HostName);
                 groupJson.put("ServerIp",    serverGroup.ServerIp);
                 groupJson.put("ServerName",    serverGroup.ServerName);
+                // Output agents
+                JSONArray detailArrayJson = new JSONArray();
+                if (serverGroup.agentNames != null)
+                    for (Field field : serverGroup.agentNames)
+                        detailArrayJson.put(field.toJson());
+                groupJson.put("agentNames", detailArrayJson);
                 GroupArrayJson.put(groupJson);
             }
         }
         JSONObject groupJson = new JSONObject();
         groupJson.put("ServerGroup", GroupArrayJson);
-
         return groupJson.toString();
-
     }
 
     @RequestMapping(value = "/get", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)

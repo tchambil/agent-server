@@ -372,7 +372,8 @@ public class Robot {
       long expires = 0;
       if (expiresHeaders.length >= 1){
         expiresString = expiresHeaders[0].getValue();
-        expires = DateUtils.parseRfcString(expiresString);
+        expires=now;
+      //  expires = DateUtils.parseRfcString(expiresString);
       }
 
       long expiresDelta = expires - now;

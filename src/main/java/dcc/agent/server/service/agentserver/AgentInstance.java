@@ -54,6 +54,10 @@ public class AgentInstance {
     public long timeUpdated;
     public User user;
     public String name;
+    public String addresses;
+    public String host;
+    public String aid;
+    public String type;
     public String description;
     public AgentDefinition agentDefinition;
     public SymbolValues parameterValues;
@@ -120,17 +124,20 @@ public class AgentInstance {
     }
 
     public AgentInstance(User user, AgentDefinition agentDefinition, SymbolValues parameterValues) throws AgentServerException {
-        this(user, agentDefinition, null, null, parameterValues, null, null, false, -1, agentDefinition.enabled, -1, -1, null, false, false);
+        this(user, agentDefinition, null,null,null, null,null, parameterValues, null, null, false, -1, agentDefinition.enabled, -1, -1, null, false, false);
     }
 
     public AgentInstance(User user, AgentDefinition agentDefinition, SymbolValues parameterValues, boolean check) throws AgentServerException {
-        this(user, agentDefinition, null, null, parameterValues, null, null, false, -1, agentDefinition.enabled, -1, -1, null, false, check);
+        this(user, agentDefinition, null,null,null,null, null, parameterValues, null, null, false, -1, agentDefinition.enabled, -1, -1, null, false, check);
     }
 
     public AgentInstance(
             User user,
             AgentDefinition agentDefinition,
             String name,
+            String addresses,
+            String host,
+            String type,
             String description,
             SymbolValues parameterValues,
             String triggerIntervalExpression,
@@ -152,6 +159,10 @@ public class AgentInstance {
         this.agentServer = agentDefinition.agentServer;
         this.name = name == null ? (check ? "check__" + agentDefinition.name : agentDefinition.name + "_" + ++autoNameCounter) : name;
         this.description = description;
+        this.addresses=addresses;
+        this.host=host==null?(agentServer.config.agentServerProperties.agentServerHostName):host;
+        this.type=type;
+        aid = name + "@" + this.host;
         this.parameterValues = parameterValues == null && !update ? new SymbolValues("parameters") : parameterValues;
         this.dependentInstances = new ArrayList<AgentInstance>();
         this.dataSourceInstances = new HashMap<DataSourceReference, AgentInstance>();
@@ -789,11 +800,14 @@ public class AgentInstance {
             JSONObject agentJson = new JsonListMap();
             agentJson.put("user", user.id);
             agentJson.put("name", name);
-            agentJson.put("definition", agentDefinition.name);
+            agentJson.put("Addresses",addresses);
+            agentJson.put("host",host);
+            agentJson.put("aid", aid);
+            agentJson.put("type", type);
             agentJson.put("description", description == null ? "" : description);
+            agentJson.put("definition", agentDefinition.name);
             agentJson.put("instantiated", DateUtils.toRfcString(timeInstantiated));
             agentJson.put("updated", timeUpdated > 0 ? DateUtils.toRfcString(timeUpdated) : "");
-
             agentJson.put("trigger_interval", triggerIntervalExpression);
             agentJson.put("reporting_interval", reportingIntervalExpression);
             agentJson.put("public_output", publicOutput);
@@ -969,6 +983,23 @@ public class AgentInstance {
                 throw new AgentServerException("Agent instance '" + agentInstanceName + "' references agent definition '" + agentDefinitionName + "' which does not exist for user '" + user.id + "'");
         }
 
+        // Parse the agent instance name
+        String agentaddresses = agentJson.optString("addresses");
+        if (!update && (agentaddresses == null || agentaddresses.trim().length() == 0))
+            throw new AgentServerException("Agent instance name ('addresses') is missing");
+
+        // Parse the agent instance name
+        String agenthostName = agentJson.optString("host");
+        if (!update && (agenthostName == null || agenthostName.trim().length() == 0))
+            throw new AgentServerException("Agent instance name ('host') is missing");
+
+        // Parse the agent instance name
+        String agentType = agentJson.optString("type");
+        if (!update && (agentType == null || agentType.trim().length() == 0))
+        {
+            agentType="local";
+        }
+
         // Parse the agent instance description
         String agentDescription = agentJson.optString("description", null);
         if (!update && (agentDescription == null || agentDescription.trim().length() == 0))
@@ -1049,12 +1080,12 @@ public class AgentInstance {
 
         // Validate keys
         JsonUtils.validateKeys(agentJson, "Agent instance", new ArrayList<String>(Arrays.asList(
-                "user", "name", "definition", "description", "parameter_values", "trigger_interval", "reporting_interval",
+                "user", "name","addresses","host", "definition", "type","description", "parameter_values", "trigger_interval", "reporting_interval",
                 "enabled", "instantiated", "updated", "state",
                 "status", "inputs_changed", "triggered", "outputs_changed",
                 "public_output", "limit_instance_states_stored")));
 
-        AgentInstance agentInstance = new AgentInstance(user, agentDefinition, agentInstanceName, agentDescription, parameterValues, triggerInterval, reportingInterval, publicOutput, limitInstanceStatesStored, enabled, timeInstantiated, timeUpdated, state, update, false);
+        AgentInstance agentInstance = new AgentInstance(user, agentDefinition, agentInstanceName,agentaddresses, agenthostName,agentType,agentDescription, parameterValues, triggerInterval, reportingInterval, publicOutput, limitInstanceStatesStored, enabled, timeInstantiated, timeUpdated, state, update, false);
 
         // Return the new agent instance
         return agentInstance;

@@ -101,6 +101,11 @@
     <file url="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/activities" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/appserver" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/ACLMessage.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/ACLMessageList.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/Performative.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/Receiver.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/Sender.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/config" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/delegate" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/field" charset="UTF-8" />
@@ -108,7 +113,6 @@
     <file url="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/mail" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/notification" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/persistence" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/rabbitMQ" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/scheduler" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/util" charset="UTF-8" />

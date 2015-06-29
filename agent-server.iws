@@ -2,7 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2cf9c626-ec31-4eb5-ac64-d54f63553b96" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/ACLMessageList.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/delegate/MessageListener.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/delegate/MessageManager.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/Performative.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/Receiver.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/Sender.java" />
+      <change type="DELETED" beforePath="C:\AppServ\www\agent-server\src\main\java\dcc\agent\server\service\delegate\AgentMessageList.java" afterPath="" />
+      <change type="MOVED" beforePath="C:\AppServ\www\agent-server\src\main\java\dcc\agent\server\service\delegate\AgentMessage.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/ACLMessage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/AgentController.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/AgentController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/delegate/AgentDelegate.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/delegate/AgentDelegate.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentInstance.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentInstance.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentInstanceList.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentInstanceList.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/runtime/value/DelegateValue.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/runtime/value/DelegateValue.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/persistence/Persistence.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/persistence/Persistence.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/persistence/persistenfile/PersistentFile.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/persistence/persistenfile/PersistentFile.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/PlataformController.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/PlataformController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/webaccessmanager/Robot.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/webaccessmanager/Robot.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/runtime/ScriptState.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/runtime/ScriptState.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/delegate/ServerGroup.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/delegate/ServerGroup.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent-server.ipr" afterPath="$PROJECT_DIR$/agent-server.ipr" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent-server.iws" afterPath="$PROJECT_DIR$/agent-server.iws" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/agentserver.properties" afterPath="$PROJECT_DIR$/src/main/resources/agentserver.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resource/files/tutorial.txt" afterPath="$PROJECT_DIR$/src/main/webapp/resource/files/tutorial.txt" />
     </list>
     <ignored path="agent-server.iws" />
@@ -31,104 +53,71 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Robot.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/webaccessmanager/Robot.java">
+      <file leaf-file-name="MessageManager.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/delegate/MessageManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="501" max-vertical-offset="9299">
-              <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="306">
+              <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AgentInstance.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentInstance.java">
+      <file leaf-file-name="Receiver.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/Receiver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="8552" max-vertical-offset="22389">
-              <caret line="529" column="0" selection-start-line="529" selection-start-column="0" selection-end-line="529" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
+              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#18395#18410#0" expanded="true" />
-                <element signature="e#23968#23980#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlataformController.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/PlataformController.java">
+      <file leaf-file-name="Sender.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/Sender.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2733" max-vertical-offset="3689">
-              <caret line="411" column="0" selection-start-line="411" selection-start-column="0" selection-end-line="411" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.950783" vertical-offset="0" max-vertical-offset="646">
+              <caret line="25" column="21" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
               <folding>
-                <element signature="method#Start#0;class#PlataformController#0" expanded="false" />
-                <element signature="method#getAbout#0;class#PlataformController#0" expanded="false" />
-                <element signature="method#getAgentDefinitions#0;class#PlataformController#0" expanded="false" />
-                <element signature="method#getagents#0;class#PlataformController#0" expanded="false" />
-                <element signature="method#getFieldTypes#0;class#PlataformController#0" expanded="false" />
-                <element signature="method#putStatusPause#0;class#PlataformController#0" expanded="false" />
-                <element signature="method#getStatus#0;class#PlataformController#0" expanded="false" />
-                <element signature="method#putConfig#0;class#PlataformController#0" expanded="false" />
-                <element signature="method#putConfigRest#0;class#PlataformController#0" expanded="false" />
-                <element signature="method#putshutdown#0;class#PlataformController#0" expanded="false" />
-                <element signature="method#putStatusrestart#0;class#PlataformController#0" expanded="false" />
-                <element signature="method#putStatusresume#0;class#PlataformController#0" expanded="false" />
-                <element signature="method#putStatusShutdown#0;class#PlataformController#0" expanded="false" />
-                <element signature="method#putStatusStart#0;class#PlataformController#0" expanded="false" />
-                <element signature="method#putStatusStop#0;class#PlataformController#0" expanded="false" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#436#437#0" expanded="true" />
+                <element signature="e#470#471#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Tokenizer.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/parser/tokenizer/Tokenizer.java">
+      <file leaf-file-name="MessageListener.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/delegate/MessageListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1594" max-vertical-offset="6681">
-              <caret line="119" column="0" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="510">
+              <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ScriptParser.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/parser/ScriptParser.java">
+      <file leaf-file-name="AgentDelegate.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/delegate/AgentDelegate.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4144" max-vertical-offset="28067">
-              <caret line="419" column="46" selection-start-line="419" selection-start-column="46" selection-end-line="419" selection-end-column="46" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="458" max-vertical-offset="1751">
+              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ACLMessage.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/ACLMessage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="351" max-vertical-offset="5950">
+              <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
               <folding>
-                <element signature="e#20828#20843#0" expanded="true" />
+                <element signature="e#2311#2312#0" expanded="true" />
+                <element signature="e#2363#2364#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tutorial.txt" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/resource/files/tutorial.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.97774243" vertical-offset="21502" max-vertical-offset="22372">
-              <caret line="1301" column="63" selection-start-line="1301" selection-start-column="63" selection-end-line="1301" selection-end-column="63" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="testscrip.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/resource/js/testscrip.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="459" max-vertical-offset="1513">
-              <caret line="53" column="17" selection-start-line="53" selection-start-column="8" selection-end-line="53" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="testscript.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/testscript.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.1923075" vertical-offset="6171" max-vertical-offset="8041">
-              <caret line="374" column="56" selection-start-line="374" selection-start-column="56" selection-end-line="374" selection-end-column="80" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -146,21 +135,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/main/SwgetWebMainValeria.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/main/SwgetWebMain.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/rdf2prefuse/ExportableGraphic.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/rdf2prefuse/graph/HideDecoratorAction.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/rdf2prefuse/graph/HideNodeDecoratorAction.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/rdf2prefuse/graph/LabelLayout.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/rdf2prefuse/graph/LabelLayoutNode.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/rdf2prefuse/graph/MyHoverActionControl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/rdf2prefuse/graph/NodeColorAction.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/rdf2prefuse/graph/RDFGraphConverter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/rdf2prefuse/graph/EdgeColorAction.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/nmpg/NamedMultiPointedTree.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/actions/Action.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/actions/sendemail/SendEmailAction.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/console/arguments/CommandOption.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/main/runSWGET.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/gui/SwgetGUI.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/utils/Constants.java" />
@@ -177,26 +151,41 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/swget.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/config/AgentVariable.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/config/AgentServerProperties.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/delegate/AgentMessageList.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/persistence/Persistence.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/UsersController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/delegate/AgentMessage.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/AgentController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/agentserver.properties" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/activities/AgentActivityTimer.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/scheduler/AgentScheduler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/PlataformController.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/runtime/ScriptRuntime.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentDefinition.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/notification/NotificationDefinition.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/notification/MailNotification.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/runtime/value/DelegateValue.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/intermediate/DelegateTypeNode.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/parser/tokenizer/Tokenizer.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/parser/tokenizer/token/DelegateKeywordToken.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/agentserver.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/runtime/ScriptState.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/persistence/persistenfile/PersistentFile.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/webaccessmanager/Robot.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/runtime/value/DelegateValue.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/delegate/AgentMessage.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/delegate/AgentMessageList.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/delegate/ACLMessageList.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/delegate/Performative.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/delegate/AgentDelegate.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/delegate/MessageManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/delegate/MessageListener.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentDefinition.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/resource/files/tutorial.txt" />
+        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/delegate/ServerGroup.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/PlataformController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentInstanceList.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentInstance.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/AgentController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/delegate/ACLMessage.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/delegate/Receiver.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/delegate/Sender.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/ACLMessage.java" />
       </list>
     </option>
   </component>
@@ -278,7 +267,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -338,70 +326,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="agent-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="agent-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jsp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="agent-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="agent-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resource" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -479,7 +403,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
+              <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -501,7 +425,19 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webaccessmanager" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -648,8 +584,38 @@
               <option name="myItemId" value="script" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="parser" />
+              <option name="myItemId" value="agent-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="agent-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="notification" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -683,15 +649,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="script" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="parser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tokenizer" />
+              <option name="myItemId" value="delegate" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -725,53 +683,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="script" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="parser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tokenizer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="token" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="agent-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="agent-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="script" />
+              <option name="myItemId" value="communication" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -834,6 +746,7 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -869,6 +782,9 @@
     </option>
   </component>
   <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="dcc.agent.server.service.delegate" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\AppServ\www\agent-server\src\main\java\dcc\agent\server\service\swget\console\arguments" />
       <recent name="C:\AppServ\www\agent-server\src\main\java\dcc\agent\server\service\swget\actions\sendemail" />
@@ -1588,7 +1504,13 @@
       <workItem from="1434039466372" duration="11557000" />
       <workItem from="1434077953399" duration="15775000" />
       <workItem from="1434720022783" duration="606000" />
-      <workItem from="1435107188690" duration="75016000" />
+      <workItem from="1435107188690" duration="75114000" />
+      <workItem from="1435298360724" duration="4242000" />
+      <workItem from="1435325821791" duration="32009000" />
+      <workItem from="1435436494265" duration="13527000" />
+      <workItem from="1435509737226" duration="3547000" />
+      <workItem from="1435521778984" duration="22968000" />
+      <workItem from="1435558441461" duration="5198000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1431836573263</created>
@@ -1710,11 +1632,15 @@
       <created>1435297432227</created>
       <updated>1435297432227</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Refactory view">
+      <created>1435298112866</created>
+      <updated>1435298112866</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="538400000" />
+    <option name="totallyTimeSpent" value="619989000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1741,27 +1667,26 @@
     <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26837417" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.47104678" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32850778" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962137" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.48122868" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38864142" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962137" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962137" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.43095767" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962137" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23294243" sideWeight="0.49923897" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.422049" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19349681" sideWeight="0.49923897" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3496659" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24721603" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962137" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5634744" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23273942" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23294243" sideWeight="0.50076103" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38864142" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23294243" sideWeight="0.50076103" order="3" side_tool="true" content_ui="tabs" />
@@ -1771,6 +1696,7 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32962137" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -1881,55 +1807,43 @@
           <option name="timeStamp" value="144" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/AgentController.java</url>
-          <line>597</line>
-          <properties />
-          <option name="timeStamp" value="158" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentDefinition.java</url>
-          <line>320</line>
-          <properties />
-          <option name="timeStamp" value="165" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/AgentController.java</url>
-          <line>654</line>
-          <properties />
-          <option name="timeStamp" value="166" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/activities/AgentActivityNotification.java</url>
           <line>36</line>
           <properties />
           <option name="timeStamp" value="178" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/AgentController.java</url>
-          <line>54</line>
+          <url>file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/persistence/persistenfile/PersistentFile.java</url>
+          <line>307</line>
           <properties />
-          <option name="timeStamp" value="179" />
+          <option name="timeStamp" value="203" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java</url>
-          <line>415</line>
+          <url>file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/util/XmlUtils.java</url>
+          <line>427</line>
           <properties />
-          <option name="timeStamp" value="182" />
+          <option name="timeStamp" value="216" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentInstanceList.java</url>
-          <line>109</line>
+          <url>file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/util/XmlUtils.java</url>
+          <line>423</line>
           <properties />
-          <option name="timeStamp" value="183" />
+          <option name="timeStamp" value="217" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentInstance.java</url>
-          <line>529</line>
+          <url>file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/intermediate/AssignmentStatementNode.java</url>
+          <line>34</line>
           <properties />
-          <option name="timeStamp" value="190" />
+          <option name="timeStamp" value="224" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/intermediate/MethodReferenceNode.java</url>
+          <line>45</line>
+          <properties />
+          <option name="timeStamp" value="227" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="197" />
+      <option name="time" value="240" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -1937,522 +1851,412 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/parser/tokenizer/token/SemicolonOperatorToken.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/webaccessmanager/WebAccessException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="272">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.12230216" vertical-offset="0" max-vertical-offset="556">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/webaccessmanager/WebSite.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.0" vertical-offset="22" max-vertical-offset="833">
+          <caret line="48" column="30" selection-start-line="48" selection-start-column="30" selection-end-line="48" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/parser/tokenizer/token/KeywordToken.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/webaccessmanager/WebSiteAccessDeniedException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/parser/tokenizer/token/TypeKeywordToken.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/parser/tokenizer/token/StringKeywordToken.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/parser/tokenizer/token/OperatorToken.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/parser/tokenizer/token/AnyEqualOperatorToken.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/parser/tokenizer/token/EqualOperatorToken.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/parser/tokenizer/token/Token.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="272">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/parser/tokenizer/token/IdentifierToken.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
-          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding>
-            <element signature="e#813#814#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/parser/tokenizer/Characterizer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="973" max-vertical-offset="1513">
-          <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/parser/tokenizer/token/WebKeywordToken.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding>
-            <element signature="e#1007#1008#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/intermediate/Symbol.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="64" max-vertical-offset="544">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/intermediate/SymbolTable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="685" max-vertical-offset="1156">
-          <caret line="83" column="0" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
-          <folding>
-            <element signature="e#896#912#0" expanded="false" />
-            <element signature="e#961#962#0" expanded="false" />
-            <element signature="e#1009#1010#0" expanded="false" />
-            <element signature="e#1501#1502#0" expanded="false" />
-            <element signature="e#1539#1540#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/intermediate/StatementNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323">
-          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/intermediate/SymbolManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334" vertical-offset="1271" max-vertical-offset="1972">
-          <caret line="109" column="0" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
-          <folding>
-            <element signature="e#820#841#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/parser/tokenizer/TokenList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334" vertical-offset="489" max-vertical-offset="1547">
-          <caret line="61" column="0" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
-          <folding>
-            <element signature="e#1293#1300#0" expanded="true" />
-            <element signature="e#1609#1610#0" expanded="true" />
-            <element signature="e#1661#1662#0" expanded="true" />
-            <element signature="e#1686#1687#0" expanded="true" />
-            <element signature="e#1725#1726#0" expanded="true" />
-            <element signature="e#2178#2179#0" expanded="true" />
-            <element signature="e#2214#2215#0" expanded="true" />
-            <element signature="e#2246#2247#0" expanded="true" />
-            <element signature="e#2278#2279#0" expanded="true" />
-            <element signature="e#2323#2324#0" expanded="true" />
-            <element signature="e#2359#2360#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/runtime/ScriptRuntime.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="489" max-vertical-offset="986">
-          <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/intermediate/ScriptNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="736" max-vertical-offset="1207">
-          <caret line="83" column="0" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/intermediate/Node.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/intermediate/ExpressionNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="969">
-          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/intermediate/WebTypeNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="73" max-vertical-offset="544">
-          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding>
-            <element signature="e#1127#1128#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/intermediate/StringTypeNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding>
-            <element signature="e#991#992#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/intermediate/BlockStatementNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="421" max-vertical-offset="918">
-          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/intermediate/AssignmentStatementNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="28" max-vertical-offset="476">
-          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/intermediate/SymbolValues.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="633" max-vertical-offset="2482">
-          <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
-          <folding>
-            <element signature="e#1436#1451#0" expanded="true" />
-            <element signature="e#1556#1557#0" expanded="true" />
-            <element signature="e#1632#1633#0" expanded="true" />
-            <element signature="e#3255#3256#0" expanded="true" />
-            <element signature="e#3306#3307#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/intermediate/VariableReferenceNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="242" max-vertical-offset="2176">
-          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/runtime/value/Value.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4" max-vertical-offset="2601">
-          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding>
-            <element signature="e#1275#1276#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/intermediate/MethodReferenceNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="242" max-vertical-offset="697">
-          <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-          <folding>
-            <element signature="e#1636#1643#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/runtime/value/StringValue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="497" max-vertical-offset="11033">
-          <caret line="79" column="0" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
-          <folding>
-            <element signature="e#2549#2550#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/runtime/ScriptState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="926" max-vertical-offset="1428">
-          <caret line="87" column="0" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/runtime/value/WebValue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2775" max-vertical-offset="6545">
-          <caret line="197" column="0" selection-start-line="197" selection-start-column="0" selection-end-line="197" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4104" max-vertical-offset="4539">
-          <caret line="693" column="0" selection-start-line="693" selection-start-column="0" selection-end-line="693" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#AgentServer#1;class#AgentServer#0" expanded="false" />
-            <element signature="method#getSingleton#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#addAgentDefinition#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#addAgentDefinition#1;class#AgentServer#0" expanded="false" />
-            <element signature="method#addAgentMessage#1;class#AgentServer#0" expanded="false" />
-            <element signature="method#getAgentMessage#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#addAgentMessage#2;class#AgentServer#0" expanded="false" />
-            <element signature="method#addServerGroup#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#addServerGroup#1;class#AgentServer#0" expanded="false" />
-            <element signature="method#addDelegateAgent#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#getAgentDefinition#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#clearAgentDefinitions#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#removeAgentDefinition#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#removeAgentDefinition#1;class#AgentServer#0" expanded="false" />
-            <element signature="method#addAgentInstance#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#getAgentInstance#5;class#AgentServer#0" expanded="false" />
-            <element signature="method#getAgentInstance#8;class#AgentServer#0" expanded="false" />
-            <element signature="method#getAgentInstanceName#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#getAgentInstance#9;class#AgentServer#0" expanded="false" />
-            <element signature="method#removeAgentInstance#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#addUser#1;class#AgentServer#0" expanded="false" />
-            <element signature="method#getUser#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#recreateUser#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#recreateUser#1;class#AgentServer#0" expanded="false" />
-            <element signature="method#recreateAgentDefinition#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#recreateAgentDefinition#1;class#AgentServer#0" expanded="false" />
-            <element signature="method#recreateAgentMessage#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#recreateAgentMessage#1;class#AgentServer#0" expanded="false" />
-            <element signature="method#recreateServerGroup#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#recreateServerGroup#1;class#AgentServer#0" expanded="false" />
-            <element signature="method#recreateAgentInstance#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#recreateAgentInstance#1;class#AgentServer#0" expanded="false" />
-            <element signature="method#shutdown#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#start#1;class#AgentServer#0" expanded="false" />
-            <element signature="method#stop#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#addWebSiteAccessControls#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#postUrl#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#postUrl#1;class#AgentServer#0" expanded="false" />
-            <element signature="method#getWebSiteAccessControls#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#getPersistentStorePath#0;class#AgentServer#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/config/AgentServerConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="599" max-vertical-offset="4165">
-          <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/config/AgentServerWebAccessConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="208" max-vertical-offset="867">
-          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding>
-            <element signature="e#1508#1509#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.12230216" vertical-offset="0" max-vertical-offset="556">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/webaccessmanager/WebSiteAccessConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3972" max-vertical-offset="4420">
-          <caret line="270" column="0" selection-start-line="270" selection-start-column="0" selection-end-line="270" selection-end-column="0" />
+        <state vertical-scroll-proportion="-1.4676259" vertical-offset="918" max-vertical-offset="4420">
+          <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/util/JsonUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33264887" vertical-offset="1572" max-vertical-offset="2346">
+          <caret line="138" column="0" selection-start-line="138" selection-start-column="0" selection-end-line="138" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/util/NameValue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.38398358" vertical-offset="0" max-vertical-offset="487">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/util/NameValueList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.31622177" vertical-offset="1393" max-vertical-offset="2125">
+          <caret line="113" column="0" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
+          <folding>
+            <element signature="e#1812#1813#0" expanded="false" />
+            <element signature="e#1871#1872#0" expanded="false" />
+            <element signature="e#3868#3869#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.0.0.RELEASE/spring-webmvc-4.0.0.RELEASE.jar!/org/springframework/web/servlet/DispatcherServlet.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3518931" vertical-offset="1661" max-vertical-offset="2210">
+          <caret line="108" column="19" selection-start-line="108" selection-start-column="19" selection-end-line="108" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServerException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentTimer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33264887" vertical-offset="314" max-vertical-offset="1139">
+          <caret line="45" column="29" selection-start-line="45" selection-start-column="29" selection-end-line="45" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/goals/Goal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33264887" vertical-offset="127" max-vertical-offset="901">
+          <caret line="40" column="23" selection-start-line="40" selection-start-column="23" selection-end-line="40" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/field/Field.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33264887" vertical-offset="246" max-vertical-offset="2023">
+          <caret line="55" column="24" selection-start-line="55" selection-start-column="24" selection-end-line="55" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/ScriptDefinition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.20944558" vertical-offset="0" max-vertical-offset="1139">
+          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/field/FieldList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.20944558" vertical-offset="0" max-vertical-offset="850">
+          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/notification/NotificationDefinition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.7186859" vertical-offset="53" max-vertical-offset="2227">
+          <caret line="112" column="77" selection-start-line="112" selection-start-column="77" selection-end-line="112" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.69815195" vertical-offset="1479" max-vertical-offset="3995">
+          <caret line="140" column="50" selection-start-line="140" selection-start-column="50" selection-end-line="140" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentCondition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="1088">
+          <caret line="46" column="33" selection-start-line="46" selection-start-column="33" selection-end-line="46" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/runtime/ExceptionInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="986">
+          <caret line="52" column="32" selection-start-line="52" selection-start-column="32" selection-end-line="52" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/runtime/value/WebValue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2705" max-vertical-offset="6545">
+          <caret line="197" column="54" selection-start-line="197" selection-start-column="54" selection-end-line="197" selection-end-column="54" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/webaccessmanager/WebAccessManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1449" max-vertical-offset="2465">
-          <caret line="118" column="0" selection-start-line="118" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="370" max-vertical-offset="2465">
+          <caret line="58" column="5" selection-start-line="58" selection-start-column="5" selection-end-line="61" selection-end-column="38" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/webaccessmanager/WebSite.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentDefinition.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="310" max-vertical-offset="833">
-          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="4525" max-vertical-offset="11288">
+          <caret line="313" column="78" selection-start-line="313" selection-start-column="78" selection-end-line="313" selection-end-column="78" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/util/ListMap.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/config/AgentServerProperties.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="72" max-vertical-offset="2329">
-          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-          <folding>
-            <element signature="e#1452#1453#0" expanded="true" />
-            <element signature="e#1493#1494#0" expanded="true" />
-            <element signature="e#2798#2799#0" expanded="true" />
-            <element signature="e#2833#2834#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/log4j/log4j/1.2.17/log4j-1.2.17.jar!/org/apache/log4j/Hierarchy.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.96" vertical-offset="769" max-vertical-offset="1445">
-          <caret line="55" column="19" selection-start-line="55" selection-start-column="19" selection-end-line="55" selection-end-column="19" />
+        <state vertical-scroll-proportion="0.2777778" vertical-offset="0" max-vertical-offset="4437">
+          <caret line="26" column="50" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="50" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/log4j/log4j/1.2.17/log4j-1.2.17.jar!/org/apache/log4j/Category.class">
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_51/src.zip!/java/lang/Thread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.8" vertical-offset="2314" max-vertical-offset="2737">
-          <caret line="153" column="16" selection-start-line="153" selection-start-column="16" selection-end-line="153" selection-end-column="16" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="11404" max-vertical-offset="33456">
+          <caret line="743" column="0" selection-start-line="743" selection-start-column="0" selection-end-line="743" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/httpcomponents/httpclient/4.0-alpha4/httpclient-4.0-alpha4.jar!/org/apache/http/impl/client/DefaultHttpClient.class">
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_51/src.zip!/java/util/concurrent/ThreadPoolExecutor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.96" vertical-offset="21" max-vertical-offset="799">
-          <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="18323" max-vertical-offset="34527">
+          <caret line="1144" column="0" selection-start-line="1144" selection-start-column="0" selection-end-line="1144" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_51/src.zip!/java/lang/reflect/Method.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="9296" max-vertical-offset="12393">
+          <caret line="605" column="0" selection-start-line="605" selection-start-column="0" selection-end-line="605" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/webaccessmanager/Robot.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_51/jre/lib/rt.jar!/sun/reflect/DelegatingMethodAccessorImpl.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="501" max-vertical-offset="9299">
-          <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323">
+          <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_51/jre/lib/rt.jar!/sun/reflect/NativeMethodAccessorImpl.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
+          <caret line="17" column="43" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_51/jre/lib/rt.jar!/sun/misc/Unsafe.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="5249" max-vertical-offset="5695">
+          <caret line="327" column="23" selection-start-line="327" selection-start-column="23" selection-end-line="327" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.0.0.RELEASE/spring-webmvc-4.0.0.RELEASE.jar!/org/springframework/web/servlet/mvc/method/annotation/RequestMappingHandlerAdapter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="1717" max-vertical-offset="2210">
+          <caret line="110" column="57" selection-start-line="110" selection-start-column="57" selection-end-line="110" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resource/files/tutorial.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3015" max-vertical-offset="22627">
+          <caret line="199" column="0" selection-start-line="199" selection-start-column="0" selection-end-line="202" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/PlataformController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentDefinitionList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2741" max-vertical-offset="3689">
-          <caret line="411" column="0" selection-start-line="411" selection-start-column="0" selection-end-line="411" selection-end-column="0" />
-          <folding>
-            <element signature="method#Start#0;class#PlataformController#0" expanded="false" />
-            <element signature="method#getAbout#0;class#PlataformController#0" expanded="false" />
-            <element signature="method#getAgentDefinitions#0;class#PlataformController#0" expanded="false" />
-            <element signature="method#getagents#0;class#PlataformController#0" expanded="false" />
-            <element signature="method#getFieldTypes#0;class#PlataformController#0" expanded="false" />
-            <element signature="method#putStatusPause#0;class#PlataformController#0" expanded="false" />
-            <element signature="method#getStatus#0;class#PlataformController#0" expanded="false" />
-            <element signature="method#putConfig#0;class#PlataformController#0" expanded="false" />
-            <element signature="method#putConfigRest#0;class#PlataformController#0" expanded="false" />
-            <element signature="method#putshutdown#0;class#PlataformController#0" expanded="false" />
-            <element signature="method#putStatusrestart#0;class#PlataformController#0" expanded="false" />
-            <element signature="method#putStatusresume#0;class#PlataformController#0" expanded="false" />
-            <element signature="method#putStatusShutdown#0;class#PlataformController#0" expanded="false" />
-            <element signature="method#putStatusStart#0;class#PlataformController#0" expanded="false" />
-            <element signature="method#putStatusStop#0;class#PlataformController#0" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="1207">
+          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/parser/tokenizer/Tokenizer.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/intermediate/SymbolManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1594" max-vertical-offset="6681">
-          <caret line="119" column="0" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1972">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/intermediate/SymbolValues.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="109" max-vertical-offset="2414">
+          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/json/json2/2.0/json2-2.0.jar!/org/json/JSONObject.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.12" vertical-offset="50" max-vertical-offset="2584">
+          <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/persistence/Persistence.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1622" max-vertical-offset="3995">
+          <caret line="140" column="0" selection-start-line="140" selection-start-column="0" selection-end-line="140" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.0.0.RELEASE/spring-web-4.0.0.RELEASE-sources.jar!/org/springframework/web/method/support/InvocableHandlerMethod.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2982" max-vertical-offset="3910">
+          <caret line="213" column="0" selection-start-line="213" selection-start-column="0" selection-end-line="213" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/util/JsonListMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="704" max-vertical-offset="1071">
+          <caret line="72" column="0" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentInstanceList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.63271606" vertical-offset="984" max-vertical-offset="1989">
+          <caret line="108" column="29" selection-start-line="108" selection-start-column="29" selection-end-line="108" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/AgentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="14302" max-vertical-offset="16371">
+          <caret line="891" column="52" selection-start-line="891" selection-start-column="52" selection-end-line="891" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="610" max-vertical-offset="5933">
+          <caret line="168" column="49" selection-start-line="168" selection-start-column="49" selection-end-line="168" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/Performative.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
+          <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/delegate/MessageManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="306">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentInstance.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="8552" max-vertical-offset="22389">
-          <caret line="529" column="0" selection-start-line="529" selection-start-column="0" selection-end-line="529" selection-end-column="0" />
+        <state vertical-scroll-proportion="-0.24797407" vertical-offset="153" max-vertical-offset="19142">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="method#initCategorySymbolValues#0;class#AgentInstance#0" expanded="false" />
+            <element signature="method#captureDataSourceOutputValues#0;class#AgentInstance#0" expanded="false" />
+            <element signature="method#enable#0;class#AgentInstance#0" expanded="false" />
+            <element signature="method#disable#0;class#AgentInstance#0" expanded="false" />
+            <element signature="method#delete#0;class#AgentInstance#0" expanded="false" />
+            <element signature="method#captureState#0;class#AgentInstance#0" expanded="false" />
+            <element signature="method#instantiateInputDataSources#0;class#AgentInstance#0" expanded="false" />
+            <element signature="method#runScriptString#1;class#AgentInstance#0" expanded="false" />
+            <element signature="method#getCurrentState#0;class#AgentInstance#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/PlataformController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.004762" vertical-offset="7681" max-vertical-offset="8721">
+          <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/delegate/ServerGroupList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24285714" vertical-offset="0" max-vertical-offset="1241">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/delegate/ServerGroup.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8238095" vertical-offset="1028" max-vertical-offset="2329">
+          <caret line="109" column="0" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/Receiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#18395#18410#0" expanded="true" />
-            <element signature="e#23968#23980#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/parser/ScriptParser.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/delegate/AgentDelegate.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4144" max-vertical-offset="28067">
-          <caret line="419" column="46" selection-start-line="419" selection-start-column="46" selection-end-line="419" selection-end-column="46" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="458" max-vertical-offset="1751">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/delegate/MessageListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="510">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/ACLMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="351" max-vertical-offset="5950">
+          <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
           <folding>
-            <element signature="e#20828#20843#0" expanded="true" />
+            <element signature="e#2311#2312#0" expanded="true" />
+            <element signature="e#2363#2364#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/intermediate/MultiplyNode.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/Sender.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0063593" vertical-offset="81" max-vertical-offset="2363">
-          <caret line="65" column="57" selection-start-line="65" selection-start-column="57" selection-end-line="65" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_51/src.zip!/java/lang/String.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24960254" vertical-offset="15415" max-vertical-offset="51085">
-          <caret line="974" column="0" selection-start-line="974" selection-start-column="0" selection-end-line="974" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resource/js/testscrip.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="459" max-vertical-offset="1513">
-          <caret line="53" column="17" selection-start-line="53" selection-start-column="8" selection-end-line="53" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/testscript.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.1923075" vertical-offset="6171" max-vertical-offset="8041">
-          <caret line="374" column="56" selection-start-line="374" selection-start-column="56" selection-end-line="374" selection-end-column="80" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resource/files/tutorial.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.97774243" vertical-offset="21502" max-vertical-offset="22372">
-          <caret line="1301" column="63" selection-start-line="1301" selection-start-column="63" selection-end-line="1301" selection-end-column="63" />
-          <folding />
+        <state vertical-scroll-proportion="0.950783" vertical-offset="0" max-vertical-offset="646">
+          <caret line="25" column="21" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#436#437#0" expanded="true" />
+            <element signature="e#470#471#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

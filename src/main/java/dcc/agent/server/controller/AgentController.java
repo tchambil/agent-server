@@ -5,12 +5,15 @@ import dcc.agent.server.service.appserver.AgentAppServerBadRequestException;
 import dcc.agent.server.service.appserver.AgentAppServerException;
 import dcc.agent.server.service.config.AgentServerConfig;
 import dcc.agent.server.service.config.AgentServerProperties;
-import dcc.agent.server.service.delegate.AgentMessage;
-import dcc.agent.server.service.delegate.AgentMessageList;
+import dcc.agent.server.service.communication.ACLMessage;
+import dcc.agent.server.service.communication.ACLMessageList;
 import dcc.agent.server.service.notification.NotificationInstance;
+import dcc.agent.server.service.script.intermediate.ScriptNode;
 import dcc.agent.server.service.script.intermediate.Symbol;
 import dcc.agent.server.service.script.intermediate.SymbolValues;
+import dcc.agent.server.service.script.parser.ScriptParser;
 import dcc.agent.server.service.script.runtime.ExceptionInfo;
+import dcc.agent.server.service.script.runtime.ScriptRuntime;
 import dcc.agent.server.service.script.runtime.value.Value;
 import dcc.agent.server.service.swget.multithread.Navigator;
 import dcc.agent.server.service.swget.regExpression.parser.ParseException;
@@ -42,6 +45,7 @@ public class AgentController {
         logger.info("Create a running instance of new agent definition");
         PlataformController plataform = new PlataformController();
         agentServer = plataform.getAgentServer();
+
 
         User user = agentServer.users.get(id);
 
@@ -363,10 +367,14 @@ public class AgentController {
             JSONObject agentInstanceJson = new JsonListMap();
             agentInstanceJson.put("user", agentInstance.user.id);
             agentInstanceJson.put("name", agentInstance.name);
+            agentInstanceJson.put("Addresses",agentInstance.addresses);
+            agentInstanceJson.put("host", agentInstance.host);
+            agentInstanceJson.put("aid", agentInstance.aid);
+            agentInstanceJson.put("type", agentInstance.type);
             agentInstanceJson.put("definition", agentInstance.agentDefinition.name);
-            // TODO: Add the SHA for this instance
             agentInstanceJson.put("description", agentInstance.description);
-            agentInstancesArrayJson.put(agentInstanceJson);
+            agentInstanceJson.put("status", agentInstance.getStatus());
+                agentInstancesArrayJson.put(agentInstanceJson);
         }
         JSONObject agentInstancesJson = new JSONObject();
         agentInstancesJson.put("agent_instances", agentInstancesArrayJson);
@@ -793,10 +801,10 @@ public class AgentController {
         User userId = agentServer.getUser(agentMessageson.optString("sender"));
 
         logger.info("Check if named agent message already exists");
-        AgentMessageList messageMap=agentServer.agentMessages.get(userId.id);
+        ACLMessageList messageMap=agentServer.agentMessages.get(userId.id);
 
         if (messageMap == null) {
-            messageMap = new AgentMessageList();
+            messageMap = new ACLMessageList();
             agentServer.agentMessages.add(userId.id, messageMap);
         }
 
@@ -806,7 +814,7 @@ public class AgentController {
         }
 
         //Get Script Name/TASK
-        AgentMessage agentMessage =agentServer.addAgentMessage(userId,agentMessageson);
+        ACLMessage agentMessage =agentServer.addAgentMessage(userId,agentMessageson);
         String scriptName = agentMessage.content.toString();
 
 
@@ -839,7 +847,7 @@ public class AgentController {
         if (scriptDefinition == null)
         {
           retunValueObject.put("Status", "Task delegate to " +agentMessage.replyTo);
-          AgentMessage agentMessageR=agentServer.addDelegateAgent(agentMessage);
+          ACLMessage agentMessageR=agentServer.addDelegateAgent(agentMessage);
           retunValueObject.put("Result",(agentMessageR.replyTo));
           message = retunValueObject.toString();
         } else {
@@ -870,7 +878,7 @@ public class AgentController {
 
     @RequestMapping(value = "/users/message", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public String postAgentmessage(HttpServletRequest request) throws Exception {
+    public  String postAgentmessage(HttpServletRequest request) throws Exception {
         PlataformController plataform = new PlataformController();
         agentServer = plataform.getAgentServer();
 
@@ -880,26 +888,40 @@ public class AgentController {
                     "Invalid agent message JSON object");
 
         // Parse and add the agent definition
-        AgentMessage agentMessage = agentServer.addAgentMessage(
+
+        ACLMessage agentMessage = agentServer.addAgentMessage(
                 null, agentMessageson);
         // Done
-        JSONObject message = new JSONObject();
-        message.put("message", "Add was successful");
-        return message.toString();
+        AgentDefinition dummyAgentDefinition = new AgentDefinition(
+                agentServer);
+        AgentInstance dummyAgentInstance = new AgentInstance(
+                dummyAgentDefinition);
+        ScriptParser parser = new ScriptParser(dummyAgentInstance);
+        ScriptRuntime scriptRuntime = new ScriptRuntime(
+                dummyAgentInstance);
+        ScriptNode scriptNode = parser.parseScriptString(agentMessage.content);
+        Value valueNode = scriptRuntime.runScript(agentMessage.content,
+                scriptNode);
+        agentMessage.replyWith= valueNode.getStringValue();
+        agentMessage.replyBy=dummyAgentInstance.name;
+        agentMessage.update(agentServer, agentMessage);
+       // JSONObject message = new JSONObject();
+       // message.put("message", valueNode.getStringValue());
+        return agentMessage.toString();
     }
     @RequestMapping(value = "/users/message/{id}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public String putAgentmessage( @PathVariable String id,HttpServletRequest request) throws Exception {
         PlataformController plataform = new PlataformController();
         agentServer = plataform.getAgentServer();
-       AgentMessageList messageListNameValue = agentServer.agentMessages.get(id);
-       AgentMessage agentMessage = messageListNameValue.get(id);
+       ACLMessageList messageListNameValue = agentServer.agentMessages.get(id);
+       ACLMessage agentMessage = messageListNameValue.get(id);
        JSONObject agentMessageson = util.getJsonRequest(request);
         if (agentMessageson == null)
             throw new AgentAppServerBadRequestException(
                     "Invalid agent message JSON object");
         // Parse and add the agent definition
-        AgentMessage newagentMessage=AgentMessage.fromJson(agentServer, null, agentMessageson, true);
+        ACLMessage newagentMessage= ACLMessage.fromJson(agentServer, null, agentMessageson, true);
         agentMessage.update(agentServer, newagentMessage);
         // Done
         JSONObject message = new JSONObject();
@@ -913,15 +935,15 @@ public class AgentController {
         agentServer = plataformController.getAgentServer();
         JSONArray agentMessageArrayJson = new JSONArray();
         // Get all serverGroup
-        for (NameValue<AgentMessageList> messageListNameValue : agentServer.agentMessages) {
+        for (NameValue<ACLMessageList> messageListNameValue : agentServer.agentMessages) {
             // Get all  serverGroup
-            for (AgentMessage agentMessage : agentServer.agentMessages
+            for (ACLMessage agentMessage : agentServer.agentMessages
                     .get(messageListNameValue.name)) {
                 // Generate JSON for short summary of serverGroup
                 JSONObject messageJson = new JsonListMap();
                 messageJson.put("messageId", agentMessage.messageId);
                 messageJson.put("sender", agentMessage.sender);
-                messageJson.put("receiver", agentMessage.receiver);
+                messageJson.put("receiver", agentMessage.receivers);
                 messageJson.put("replyTo", agentMessage.replyTo);
                 messageJson.put("content", agentMessage.content);
                 messageJson.put("lenguage", agentMessage.lenguaje);

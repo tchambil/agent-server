@@ -2,6 +2,7 @@ package dcc.agent.server.service.delegate;
 
 import dcc.agent.server.service.agentserver.AgentServer;
 import dcc.agent.server.service.agentserver.AgentServerException;
+import dcc.agent.server.service.communication.ACLMessage;
 import dcc.agent.server.service.util.JsonListMap;
 import org.apache.log4j.Logger;
 import org.json.JSONException;
@@ -15,7 +16,7 @@ import org.springframework.web.client.RestTemplate;
 public class AgentDelegate {
     protected static Logger log = Logger.getLogger(AgentDelegate.class);
     public AgentServer agentServer;
-    public AgentMessage agentMessage;
+    public ACLMessage agentMessage;
 
     public AgentDelegate(AgentServer agentServer)
     {
@@ -23,13 +24,13 @@ public class AgentDelegate {
 
     }
 
-    static public ResponseEntity<String>  doPost(AgentMessage agentMessage, String uri) throws AgentServerException, JSONException {
+    static public ResponseEntity<String>  doPost(ACLMessage aclMessage, String uri) throws AgentServerException, JSONException {
         log.info("Initialize the agent delegate for send agent message");
         // Initialize the agent delegate,
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        HttpEntity<String> entity =new HttpEntity<String>(agentMessage.toString(),headers);
+        HttpEntity<String> entity =new HttpEntity<String>(aclMessage.toString(),headers);
         ResponseEntity<String> response=restTemplate.exchange(uri, HttpMethod.POST,entity,String.class);
         if(response.getStatusCode()==HttpStatus.OK)
         {
@@ -38,59 +39,59 @@ public class AgentDelegate {
         }
         return response;
     }
-    static public AgentMessage  doDelegate(AgentMessage agentMessage, String uri) throws AgentServerException, JSONException {
+    static public ACLMessage doDelegate(ACLMessage aclMessage, String uri) throws AgentServerException, JSONException {
         log.info("Initialize the agent delegate for send agent message");
         // Initialize the agent delegate,
-        AgentMessage agentMessageR=null;
+        ACLMessage agentMessageR=null;
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        HttpEntity<String> entity =new HttpEntity<String>(agentMessage.toString(),headers);
+        HttpEntity<String> entity =new HttpEntity<String>(aclMessage.toString(),headers);
         ResponseEntity<String> response=restTemplate.exchange(uri, HttpMethod.POST,entity,String.class);
         if(response.getStatusCode()==HttpStatus.OK)
         {
-            agentMessage.replyTo=response.getBody();
+            aclMessage.replyTo=response.getBody();
             log.info("successful send agent message and prepare save local");
-            agentMessageR=agentMessage;
+            agentMessageR= aclMessage;
         }
         else
         {
-            agentMessage.replyTo=response.getStatusCode().toString();
-            agentMessageR=agentMessage;
+            aclMessage.replyTo=response.getStatusCode().toString();
+            agentMessageR= aclMessage;
         }
         return agentMessageR;
     }
 
-   public AgentMessage readMessage(AgentMessage agentMessage) throws JSONException, AgentServerException
+   public ACLMessage readMessage(ACLMessage aclMessage) throws JSONException, AgentServerException
    {
 
-      AgentMessage agentMessageR=null;
+      ACLMessage agentMessageR=null;
 
-        if(!(agentMessage==null))
+        if(!(aclMessage ==null))
         {
-            String uri="http://"+ agentMessage.replyTo + "/agents/task";
-            agentMessage.receiver=agentMessage.content.toString();
-            agentMessageR=doDelegate(agentMessage, uri);
+            String uri="http://"+ aclMessage.replyTo + "/agents/task";
+            aclMessage.receivers= aclMessage.content.toString();
+            agentMessageR=doDelegate(aclMessage, uri);
             }
         return agentMessageR;
     }
 
-    public JSONObject toJson(AgentMessage agentMessage) throws AgentServerException {
+    public JSONObject toJson(ACLMessage aclMessage) throws AgentServerException {
         try {
             JSONObject messageJson = new JsonListMap();
-            messageJson.put("user",  agentMessage.user.id);
-            messageJson.put("sender",  agentMessage.sender == null ? "" : agentMessage.sender);
-            messageJson.put("receiver",  agentMessage.receiver == null ? "":  agentMessage.receiver);
-            messageJson.put("replyTo",  agentMessage.replyTo == null ? "" :  agentMessage.replyTo);
-            messageJson.put("messageId",  agentMessage.messageId == null ? "" :  agentMessage.messageId);
-            messageJson.put("content",  agentMessage.content == null ? "" :  agentMessage.content);
-            messageJson.put("lenguage",  agentMessage.lenguaje == null ? "" :  agentMessage.lenguaje);
-            messageJson.put("encoding",  agentMessage.enconding == null ? "" :  agentMessage.enconding);
-            messageJson.put("ontology",  agentMessage.ontology == null ? "" :  agentMessage.ontology);
-            messageJson.put("protocol",  agentMessage.protocol == null ? "" :  agentMessage.protocol);
-            messageJson.put("replyWith",  agentMessage.replyWith == null ? "" :  agentMessage.replyWith);
-            messageJson.put("inReplyTo",  agentMessage.inReplyTo == null ? "" :  agentMessage.inReplyTo);
-            messageJson.put("replyBy",  agentMessage.replyBy == null ? "" : agentMessage. replyBy);
+            messageJson.put("user",  aclMessage.user.id);
+            messageJson.put("sender",  aclMessage.sender == null ? "" : aclMessage.sender);
+            messageJson.put("receiver",  aclMessage.receivers == null ? "":  aclMessage.receivers);
+            messageJson.put("replyTo",  aclMessage.replyTo == null ? "" :  aclMessage.replyTo);
+            messageJson.put("messageId",  aclMessage.messageId == null ? "" :  aclMessage.messageId);
+            messageJson.put("content",  aclMessage.content == null ? "" :  aclMessage.content);
+            messageJson.put("lenguage",  aclMessage.lenguaje == null ? "" :  aclMessage.lenguaje);
+            messageJson.put("encoding",  aclMessage.enconding == null ? "" :  aclMessage.enconding);
+            messageJson.put("ontology",  aclMessage.ontology == null ? "" :  aclMessage.ontology);
+            messageJson.put("protocol",  aclMessage.protocol == null ? "" :  aclMessage.protocol);
+            messageJson.put("replyWith",  aclMessage.replyWith == null ? "" :  aclMessage.replyWith);
+            messageJson.put("inReplyTo",  aclMessage.inReplyTo == null ? "" :  aclMessage.inReplyTo);
+            messageJson.put("replyBy",  aclMessage.replyBy == null ? "" : aclMessage. replyBy);
 
             return messageJson;
         }

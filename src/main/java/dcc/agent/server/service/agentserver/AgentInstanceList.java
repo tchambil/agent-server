@@ -16,18 +16,15 @@
 
 package dcc.agent.server.service.agentserver;
 
-import java.lang.*;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
-import org.json.JSONException;
-
-
 import dcc.agent.server.service.script.intermediate.SymbolException;
 import dcc.agent.server.service.script.intermediate.SymbolValues;
 import dcc.agent.server.service.script.parser.ParserException;
 import dcc.agent.server.service.script.parser.tokenizer.TokenizerException;
+import org.json.JSONException;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class AgentInstanceList implements Iterable<AgentInstance> {
     List<AgentInstance> agentInstances = new ArrayList<AgentInstance>();
@@ -100,14 +97,14 @@ public class AgentInstanceList implements Iterable<AgentInstance> {
             return null;
     }
 
-    public AgentInstance put(User user, AgentDefinition agentDefinition, String agentInstanceName, String agentDescription, SymbolValues parameterValues, String triggerIntervalExpression, String reportingIntervalExpression, boolean publicOutput, int limitInstanceStatesStored, boolean enabled, long timeCreated, long timeModified) throws AgentServerException {
+    public AgentInstance put(User user, AgentDefinition agentDefinition, String agentInstanceName,String agentAddresses, String agentHostName,String agentType, String agentDescription, SymbolValues parameterValues, String triggerIntervalExpression, String reportingIntervalExpression, boolean publicOutput, int limitInstanceStatesStored, boolean enabled, long timeCreated, long timeModified) throws AgentServerException {
         // Make sure no existing instance with that name for the user
         for (AgentInstance agentInstance : agentInstances)
             if (agentInstance.name.equals(agentInstanceName))
                 throw new AgentServerException("Instance already exists with name '" + agentInstanceName + "' for user '" + user.id + "' - existing instance is for definition named '" + agentInstance.agentDefinition.name + "'; new instance is for definition named '" + agentDefinition.name + "'");
 
         // Create new instance
-        AgentInstance agentInstance = new AgentInstance(user, agentDefinition, agentInstanceName, agentDescription, parameterValues, triggerIntervalExpression, reportingIntervalExpression, publicOutput, limitInstanceStatesStored, enabled, timeCreated, timeModified, null, false, false);
+        AgentInstance agentInstance = new AgentInstance(user, agentDefinition, agentInstanceName,agentAddresses, agentHostName,agentType,agentDescription, parameterValues, triggerIntervalExpression, reportingIntervalExpression, publicOutput, limitInstanceStatesStored, enabled, timeCreated, timeModified, null, false, false);
         put(agentInstance);
         return agentInstance;
     }

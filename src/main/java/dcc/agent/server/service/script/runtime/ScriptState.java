@@ -44,10 +44,10 @@ public class ScriptState {
     ;
     public controlFlowChanges controlFlowChange;
     public static final int DEFAULT_EXECUTION_LEVEL = 2;
-    public static final int NODE_EXECUTION_LEVEL_1_LIMIT = 10;
-    public static final int NODE_EXECUTION_LEVEL_2_LIMIT = 100;
-    public static final int NODE_EXECUTION_LEVEL_3_LIMIT = 1000;
-    public static final int NODE_EXECUTION_LEVEL_4_LIMIT = 10000;
+    public static final int NODE_EXECUTION_LEVEL_1_LIMIT = 100;
+    public static final int NODE_EXECUTION_LEVEL_2_LIMIT = 1000;
+    public static final int NODE_EXECUTION_LEVEL_3_LIMIT = 10000;
+    public static final int NODE_EXECUTION_LEVEL_4_LIMIT = 100000;
     public static final List<String> nodeExecutionLevelKeys = Arrays.asList(
             "execution_limit_level_1", "execution_limit_level_2",
             "execution_limit_level_3", "execution_limit_level_4");

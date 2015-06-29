@@ -613,7 +613,6 @@ easily instantiate the agent without the bother of supplying any parameter value
 curl -X POST 'http://localhost:8080/users/test-user-1/agents' -H Content-type:application/json -d'
 {
  "name": "MyCounter-1",
- "definition": "Counter",
  "description": "Counter with default parameter values"
 }'
 
@@ -1284,6 +1283,43 @@ more agentdefinitions
     ]
 }
 +++++++++++++++++++++++++++++++++++++++++++++++++++++
-.
+TEST SCRIPT
++++++++++++++++++++++++++++++++++++++++++++++++++++++
+MESSAGE QUEUE
+{
+    "sender": "sdbpedia.cloudapp.net", /Name Agent Sender
+    "receiver": "sdbpedia.cloudapp.net",
+    "replyTo": "",
+    "content": "string s; for (int i = 1; i <= 50; i++) s += ' ' + i;  return s;",
+    "lenguage": "",
+    "encoding": "",
+    "ontology": "",
+    "protocol": "inform",
+    "replyWith": "",
+    "inReplyTo": "",
+    "replyBy": "",
+    "delegate": false
+}
+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+WEB
 
+web w; string s = w.get('http://twitter.com'); return w.statusCode;
+web w; return w.get('http://feeds.reuters.com/reuters/MostRead?format=xml').xml;
+web w; return w.get('http://www.newyorkfed.org/rss/feeds/fedfunds.xml').xml;
+web w; return w.get('http://www.newyorkfed.org/rss/feeds/fedfunds.xml').xml['rdf:RDF']['channel']['description'];
+web w; return w.get('http://www.newyorkfed.org/rss/feeds/fedfunds.xml').xml['rdf:RDF']['item']['description']['text_1'];
+web w; return w.get('http://www.newyorkfed.org/rss/feeds/fedfunds.xml').xml['rdf:RDF']['item']['cb:statistics']['cb:interestRate']['cb:value']['text_1'].float;
+
+Operations Basic
+if (2 + 2 == 4) return 'Yes'; else return 'No';</a></li>
+int sum; for (sum = 0, int i = 1; i <= 10; i++) sum += i;  return sum;
+
+string s; for (int i = 1; i <= 5; i++) s += ' ' + i;  return s;
+
+float sum; for (sum = 0.0, int j = 0, float f = 0.11; j < 7; j++, f++) sum += f * 0.11;  return sum;
+int sum = 0, int i = 0; for (;;){if (i > 10) break; sum += i++;}  return sum;
+int sum = 0, int i = 0; while (true){if (i > 10) break; sum += i++;}  return sum;
+int sum = 0, int i = 0; do {if (i > 10) break; sum += i++;} while (true);  return sum;
+
+return [2, 5, 3, 9].sum;
 

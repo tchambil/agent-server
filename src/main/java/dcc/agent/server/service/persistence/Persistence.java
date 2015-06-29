@@ -17,7 +17,7 @@
 package dcc.agent.server.service.persistence;
 
 import dcc.agent.server.service.agentserver.*;
-import dcc.agent.server.service.delegate.AgentMessage;
+import dcc.agent.server.service.communication.ACLMessage;
 import dcc.agent.server.service.delegate.ServerGroup;
 import dcc.agent.server.service.persistence.persistenfile.PersistentFile;
 import dcc.agent.server.service.persistence.persistenfile.PersistentFileException;
@@ -140,7 +140,7 @@ public class Persistence {
         put("agentInstances", agentInstance.user.id + "|" + agentInstance.name, agentInstance.toJson().toString());
     }
 
-    public void put(AgentMessage agentMessage) throws JSONException, AgentServerException {
+    public void put(ACLMessage agentMessage) throws JSONException, AgentServerException {
         put("message", agentMessage.messageId, agentMessage.toJson().toString());
     }
 

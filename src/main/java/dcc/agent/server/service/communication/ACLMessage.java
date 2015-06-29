@@ -1,4 +1,4 @@
-package dcc.agent.server.service.delegate;
+package dcc.agent.server.service.communication;
 
 
 import dcc.agent.server.service.agentserver.AgentServer;
@@ -14,6 +14,7 @@ import org.apache.log4j.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,12 +22,13 @@ import java.util.Arrays;
 /**
  * Created by teo on 27/05/15.
  */
-public class AgentMessage {
-    static final Logger log= Logger.getLogger(AgentMessage.class);
+public class ACLMessage implements Serializable{
+    static final Logger log= Logger.getLogger(ACLMessage.class);
+    private static final long serialVersionUID=1L;
     public AgentServer agentServer;
     public User user;
-   public String sender;
-    public String receiver;
+    public String sender;
+    public String receivers;
     public String replyTo;
     public String messageId;
     public String content;
@@ -40,34 +42,61 @@ public class AgentMessage {
     public String status;
     public Boolean update;
     public Boolean delegate;
+    public Performative performative;
    public AgentServerProperties agentServerProperties;
+    public ACLMessage(){
+        this(Performative.NOT_UNDERSTOOD);
+    }
+    public ACLMessage(Performative performative){
+        this.performative=performative;
+     }
+    public ACLMessage makeReply(Performative performative){
+        if(!canReplyTo()){
+            throw new IllegalArgumentException("There's no-one to receive the reply.");
+        }
+        ACLMessage reply =new ACLMessage(performative);
+        reply.receivers=(replyTo != null ? replyTo:sender);
+        reply.lenguaje=lenguaje;
+        reply.ontology=ontology;
+        reply.enconding=enconding;
+        reply.protocol=protocol;
+        reply.inReplyTo=replyWith;
+        reply.messageId=messageId;
+        return  reply;
+    }
 
-    public AgentMessage( AgentServer agentServer,
-                         User user,
-                         String sender,
-                        String receiver,
-                        String replyTo,
-                        String messageId,
-                        String content,
-                        String lenguaje,
-                        String enconding,
-                        String ontology,
-                        String protocol,
-                        String replyWith,
-                        String inReplyTo,
-                        String replyBy,
-                        String status,
-                        Boolean update,
-                        Boolean delegate
-                            )
+    private boolean canReplyTo() {
+        return sender!=null || replyTo!=null;
+    }
+
+    public ACLMessage(AgentServer agentServer,
+                     User user,
+                      Performative performative,
+                      String sender,
+                      String receivers,
+                      String replyTo,
+                      String messageId,
+                      String content,
+                      String lenguaje,
+                      String enconding,
+                      String ontology,
+                      String protocol,
+                      String replyWith,
+                      String inReplyTo,
+                      String replyBy,
+                      String status,
+                      Boolean update,
+                      Boolean delegate
+    )
 
     {
-    this.delegate=delegate;
+        this.performative=performative;
+        this.delegate=delegate;
         this.update=update;
         this.user=user==null?User.noUser:user;
         this.agentServer = agentServer;
         this.sender=sender;
-        this.receiver=receiver;
+        this.receivers=receivers;
         this.replyTo=replyTo;
         this.messageId =messageId;
         this.content=content;
@@ -97,7 +126,7 @@ public class AgentMessage {
           JSONObject messageJson = new JsonListMap();
           messageJson.put("user", user.id);
           messageJson.put("sender", sender == null ? "" : sender);
-          messageJson.put("receiver", receiver == null ? "": receiver);
+          messageJson.put("receiver", receivers == null ? "": receivers);
           messageJson.put("replyTo", replyTo == null ? "" : replyTo);
           messageJson.put("messageId", messageId == null ? "" : messageId);
           messageJson.put("content", content == null ? "" : content);
@@ -120,14 +149,14 @@ public class AgentMessage {
       }
     }
 
-    public void update(AgentServer agentServer, AgentMessage message) throws JSONException, AgentServerException {
+    public void update(AgentServer agentServer, ACLMessage message) throws JSONException, AgentServerException {
         if(message.sender!=null)
         {
             this.sender=message.sender;
         }
-        if(message.receiver!=null)
+        if(message.receivers!=null)
         {
-            this.receiver=message.receiver;
+            this.receivers=message.receivers;
         }
         if(message.replyTo!=null)
         {
@@ -178,41 +207,28 @@ public class AgentMessage {
         agentServer.persistence.put(this);
     }
 
-    static public AgentMessage fromJson(AgentServer agentServer, String agentJsonSource) throws AgentServerException, SymbolException, JSONException, ParseException, TokenizerException, ParserException {
+    static public ACLMessage fromJson(AgentServer agentServer, String agentJsonSource) throws AgentServerException, SymbolException, JSONException, ParseException, TokenizerException, ParserException {
         return fromJson(agentServer, null, new JSONObject(agentJsonSource), false);
     }
 
-    static public AgentMessage fromJson(AgentServer agentServer, User user, JSONObject agentJson) throws AgentServerException, SymbolException {
+    static public ACLMessage fromJson(AgentServer agentServer, User user, JSONObject agentJson) throws AgentServerException, SymbolException, JSONException {
         return fromJson(agentServer, user, agentJson, false);
     }
 
-    static public AgentMessage fromJson(AgentServer agentServer, JSONObject agentJson) throws AgentServerException, SymbolException, JSONException, ParseException, TokenizerException, ParserException {
+    static public ACLMessage fromJson(AgentServer agentServer, JSONObject agentJson) throws AgentServerException, SymbolException, JSONException, ParseException, TokenizerException, ParserException {
         return fromJson(agentServer, null, agentJson, false);
     }
 
-    static public AgentMessage fromJson(AgentServer agentServer, User user, JSONObject agentJson, boolean update) throws AgentServerException {
+    static synchronized public ACLMessage fromJson(AgentServer agentServer, User user, JSONObject agentJson, boolean update) throws AgentServerException, JSONException {
         log.info("If we have the user, ignore user from JSON");
-/*
-        if(user==null)
-        {
-            String userId=agentJson.optString("user");
-            if(userId==null || userId.trim().length()==0)
-            {
-                throw new AgentServerException("Message user id ('user') is missing");
-            }
-            user = agentServer.getUser(userId);
-            if(user==User.noUser)
-            {
-                throw  new AgentServerException("Message user id does not exist: '"+userId+"'");
-            }
-        }
- */
+        // Parse the message sender
+        Performative messageperformative=Performative.valueOf(agentJson.getString("performative").toUpperCase());
 
         // Parse the message sender
         String messageSender=agentJson.optString("sender",null);
         if((messageSender==null) || messageSender.trim().length()==0)
         {
-            messageSender="";
+            messageSender= "";
         }
         // Parse the message receiver
         String messageReceiver=agentJson.optString("receiver",null);
@@ -327,7 +343,7 @@ public class AgentMessage {
                 "content", "lenguage", "encoding", "ontology",
                 "protocol", "replyWith", "inReplyTo", "replyBy","status","delegate")));
 
-        AgentMessage agentMessage = new AgentMessage(agentServer,user,  messageSender, messageReceiver, messageReplyTo, messagemessageId,
+        ACLMessage agentMessage = new ACLMessage(agentServer,user,messageperformative, messageSender, messageReceiver, messageReplyTo, messagemessageId,
                 messageContent, messageLenguaje, messageEnconding, messageOntology, messageProtocol, messageReplyWith, messageInReplyTo,
                 messageReplyBy, messagestatus,update, messagedelegate);
 
