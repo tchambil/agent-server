@@ -1,8 +1,6 @@
 package dcc.agent.server.service.communication;
 
 import dcc.agent.server.service.agentserver.AgentServer;
-import dcc.agent.server.service.communication.ACLMessage;
-import dcc.agent.server.service.communication.Performative;
 import dcc.agent.server.service.delegate.AgentDelegate;
 
 /**
@@ -23,10 +21,7 @@ public class Sender extends AgentDelegate {
     }
     private void sendMsg() {
         ACLMessage msg = new ACLMessage(Performative.REQUEST);
-        msg.sender = aid;
-        msg.receivers=receivers;
-        msg.content = content;
-        msg.replyWith = System.currentTimeMillis() + "";
+
 
     }
 }

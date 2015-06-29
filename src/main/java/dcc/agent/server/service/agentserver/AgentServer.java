@@ -19,6 +19,7 @@ package dcc.agent.server.service.agentserver;
 import dcc.agent.server.service.appserver.AgentAppServer;
 import dcc.agent.server.service.communication.ACLMessage;
 import dcc.agent.server.service.communication.ACLMessageList;
+import dcc.agent.server.service.communication.MessageManager;
 import dcc.agent.server.service.config.AgentServerConfig;
 import dcc.agent.server.service.config.AgentServerProperties;
 import dcc.agent.server.service.config.AgentServerWebAccessConfig;
@@ -33,6 +34,7 @@ import dcc.agent.server.service.script.parser.tokenizer.TokenizerException;
 import dcc.agent.server.service.script.runtime.value.Value;
 import dcc.agent.server.service.util.DateUtils;
 import dcc.agent.server.service.util.ListMap;
+import dcc.agent.server.service.util.NameValue;
 import dcc.agent.server.service.util.NameValueList;
 import dcc.agent.server.service.webaccessmanager.WebAccessManager;
 import dcc.agent.server.service.webaccessmanager.WebPage;
@@ -66,6 +68,7 @@ public class AgentServer {
     public NameValueList<ACLMessageList> agentMessages;
     public NameValueList<ServerGroupList> serverGroups;
     public AgentServerProperties agentServerProperties;
+    public MessageManager messageManager;
     public AgentServerWebAccessConfig webAccessConfig;
     public WebSiteAccessConfig webSiteAccessConfig;
     public WebAccessManager webAccessManager;
@@ -133,7 +136,7 @@ public class AgentServer {
     public ACLMessage addAgentMessage(JSONObject agenJson) throws JSONException, AgentServerException, ParseException, ParserException, TokenizerException {
         return addAgentMessage(null,agenJson);
     }
-    public ACLMessage addAgentMessage(ACLMessage agentMessage) throws AgentServerException, JSONException {
+    public synchronized ACLMessage addAgentMessage(ACLMessage agentMessage) throws AgentServerException, JSONException {
       if(agentMessage!=null)
       {
        // Check if the user has any agents yet
@@ -165,13 +168,35 @@ public class AgentServer {
         }
     }
 
-    public ACLMessage addAgentMessage(User user, JSONObject agentJson) throws AgentServerException, JSONException, ParseException, ParserException, TokenizerException {
+     public synchronized ACLMessage receive(){
+          ACLMessage aclMessage =MessageManager.receive(this);
+          return aclMessage;
+      }
+
+    public synchronized ACLMessage receive(String messageId){
+        ACLMessage aclMessage =MessageManager.receive(this,messageId);
+        return aclMessage;
+    }
+    public void send(ACLMessage message) {
+        try {
+            MessageManager.send(this,message);
+        } catch (AgentServerException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+      public synchronized ACLMessage addAgentMessage(User user, JSONObject agentJson) throws AgentServerException, JSONException {
         // Parse the JSON for the agent definition
         log.info("Parse the JSON for the message");
         ACLMessage agentMessage = ACLMessage.fromJson(this, agentJson);
         // Add it to table of agent definitions
-        addAgentMessage(agentMessage);
-      // DelegateAgentMessage(agentMessage);
+        try {
+            addAgentMessage(agentMessage);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        // DelegateAgentMessage(agentMessage);
         // Return the new agent definition
         return agentMessage;
     }
@@ -280,6 +305,16 @@ public class AgentServer {
 
         // Return the agent instance
         return agentInstance;
+    }
+    public AgentInstance getAgentInstances(String AgentInstanceName){
+        AgentInstance newagentInstance = null;
+        for (NameValue<User> userIdValue : users)
+        {
+           User user = userIdValue.value;
+           newagentInstance = agentInstances.get(user.id).get(AgentInstanceName);
+            break;
+        }
+        return newagentInstance;
     }
     public AgentInstance getAgentInstance(String userId, String agentInstanceName) {
         return getAgentInstance(getUser(userId), agentInstanceName);

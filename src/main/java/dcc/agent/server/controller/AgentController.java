@@ -3,10 +3,10 @@ package dcc.agent.server.controller;
 import dcc.agent.server.service.agentserver.*;
 import dcc.agent.server.service.appserver.AgentAppServerBadRequestException;
 import dcc.agent.server.service.appserver.AgentAppServerException;
-import dcc.agent.server.service.config.AgentServerConfig;
-import dcc.agent.server.service.config.AgentServerProperties;
 import dcc.agent.server.service.communication.ACLMessage;
 import dcc.agent.server.service.communication.ACLMessageList;
+import dcc.agent.server.service.config.AgentServerConfig;
+import dcc.agent.server.service.config.AgentServerProperties;
 import dcc.agent.server.service.notification.NotificationInstance;
 import dcc.agent.server.service.script.intermediate.ScriptNode;
 import dcc.agent.server.service.script.intermediate.Symbol;
@@ -886,11 +886,10 @@ public class AgentController {
         if (agentMessageson == null)
             throw new AgentAppServerBadRequestException(
                     "Invalid agent message JSON object");
-
         // Parse and add the agent definition
-
         ACLMessage agentMessage = agentServer.addAgentMessage(
                 null, agentMessageson);
+        agentServer.send(agentMessage);
         // Done
         AgentDefinition dummyAgentDefinition = new AgentDefinition(
                 agentServer);

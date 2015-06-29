@@ -5,9 +5,6 @@ import dcc.agent.server.service.agentserver.AgentServer;
 import dcc.agent.server.service.agentserver.AgentServerException;
 import dcc.agent.server.service.agentserver.User;
 import dcc.agent.server.service.config.AgentServerProperties;
-import dcc.agent.server.service.script.intermediate.SymbolException;
-import dcc.agent.server.service.script.parser.ParserException;
-import dcc.agent.server.service.script.parser.tokenizer.TokenizerException;
 import dcc.agent.server.service.util.JsonListMap;
 import dcc.agent.server.service.util.JsonUtils;
 import org.apache.log4j.Logger;
@@ -15,7 +12,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -139,6 +135,7 @@ public class ACLMessage implements Serializable{
           messageJson.put("replyBy", replyBy == null ? "" : replyBy);
           messageJson.put("status", replyBy == null ? "" : status);
           messageJson.put("delegate", replyBy == null ? "" : delegate);
+          messageJson.put("performative", replyBy == null ? "" : performative);
 
           return messageJson;
       }
@@ -207,15 +204,15 @@ public class ACLMessage implements Serializable{
         agentServer.persistence.put(this);
     }
 
-    static public ACLMessage fromJson(AgentServer agentServer, String agentJsonSource) throws AgentServerException, SymbolException, JSONException, ParseException, TokenizerException, ParserException {
+    static public ACLMessage fromJson(AgentServer agentServer, String agentJsonSource) throws AgentServerException, JSONException {
         return fromJson(agentServer, null, new JSONObject(agentJsonSource), false);
     }
 
-    static public ACLMessage fromJson(AgentServer agentServer, User user, JSONObject agentJson) throws AgentServerException, SymbolException, JSONException {
+    static public ACLMessage fromJson(AgentServer agentServer, User user, JSONObject agentJson) throws AgentServerException, JSONException {
         return fromJson(agentServer, user, agentJson, false);
     }
 
-    static public ACLMessage fromJson(AgentServer agentServer, JSONObject agentJson) throws AgentServerException, SymbolException, JSONException, ParseException, TokenizerException, ParserException {
+    static public ACLMessage fromJson(AgentServer agentServer, JSONObject agentJson) throws AgentServerException, JSONException {
         return fromJson(agentServer, null, agentJson, false);
     }
 
@@ -341,7 +338,7 @@ public class ACLMessage implements Serializable{
         JsonUtils.validateKeys(agentJson, "Agent Message", new ArrayList<String>(Arrays.asList(
                 "user", "sender", "receiver", "replyTo", "messageId",
                 "content", "lenguage", "encoding", "ontology",
-                "protocol", "replyWith", "inReplyTo", "replyBy","status","delegate")));
+                "protocol", "replyWith", "inReplyTo", "replyBy","status","delegate","performative")));
 
         ACLMessage agentMessage = new ACLMessage(agentServer,user,messageperformative, messageSender, messageReceiver, messageReplyTo, messagemessageId,
                 messageContent, messageLenguaje, messageEnconding, messageOntology, messageProtocol, messageReplyWith, messageInReplyTo,

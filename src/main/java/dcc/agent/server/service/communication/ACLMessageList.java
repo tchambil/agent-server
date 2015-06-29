@@ -1,7 +1,5 @@
 package dcc.agent.server.service.communication;
 
-import dcc.agent.server.service.communication.ACLMessage;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -65,6 +63,7 @@ public ACLMessage put(ACLMessage aclMessage)
             aclMessages.remove(aclMessage);
         }
     }
+
 
 
     public int size()
