@@ -28,9 +28,25 @@
 
     <link rel="stylesheet" type="text/css" href="/resource/css/theme.css">
     <link rel="stylesheet" type="text/css" href="/resource/css/premium.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 
+    <style>
+        #mynetworkFA,
+        #mynetworkIO {
+            height: 500px;
+            width: 1000px;
+            border:1px solid lightgrey;
+        }
+
+        p {
+            max-width:700px;
+        }
+    </style>
+    <script src="/resource/js/message.js"></script>
+    <script src="/resource/js/site/googleAnalytics.js"></script>
 </head>
-<body class=" theme-blue"  onload="drawExample('example2')">
+<body class=" theme-blue" onload="draw()">
 
 <!-- Demo page code -->
 
@@ -252,55 +268,12 @@
 </div>
 
 <div class="main-content">
-    <div class="row">
-        <div class="col-md-8" >
-            <div id="mynetwork" ></div>
-        </div>
-        <div class="col-md-8">
-            <textarea id="data" class="example"></textarea>
-            <textarea id="example2" class="example">
-                digraph topology
-                {
-                node[shape=circle fontSize=12]
-                edge[length=170 fontSize=12]
-                "10.0.255.1" -> "10.0.255.3"[label=""];
-                "10.0.255.1" -> "10.0.255.2"[label=""];
-                "10.0.255.2" -> "10.0.255.3"[label=""];
-                "10.0.255.3" -> "10.0.255.4"[label=""];
-                "10.0.255.4" -> "10.0.255.1"[label=""];
-
-                }
-            </textarea>
-            </div>
-    </div>
-
-    <div>
-
-    </div>
-
-    <div>
-        <button id="draw">Draw</button>
-        <span id="error"></span>
-
-    </div>
-
-
+      <div id="mynetworkFA"></div>
 
 
 </div>
-<footer>
-    <hr>
-    <p class="pull-right">A <a href="http://www.portnine.com/bootstrap-themes" target="_blank">Free
-        Bootstrap
-        Theme</a> by <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
+  </div>
 
-    <p>© 2015 <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
-</footer>
-
-
-
-    </div>
-<script type="text/javascript" src="/resource/js/message.js"></script>
 <script src="/resource/js/site/bootstrap.js"></script>
 <script type="text/javascript">
     $("[rel=tooltip]").tooltip();

@@ -141,7 +141,7 @@ public class Persistence {
     }
 
     public void put(ACLMessage agentMessage) throws JSONException, AgentServerException {
-        put("message", agentMessage.messageId, agentMessage.toJson().toString());
+        put("message", agentMessage.conversationId, agentMessage.toJson().toString());
     }
 
     public void put(String tableName, String key, String value) throws AgentServerException {
@@ -155,7 +155,6 @@ public class Persistence {
             throw new AgentServerException("IOException reading persistent store: " + e.getMessage());
         }
     }
-
     public void loadAllTables() throws AgentServerException, ParseException, TokenizerException, ParserException {
         loadUsers();
         loadAgentDefinitions();

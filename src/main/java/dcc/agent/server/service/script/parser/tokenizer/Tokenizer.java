@@ -119,6 +119,8 @@ public class Tokenizer {
                     token = new NewKeywordToken();
                 else if (identifier.equals("delegate"))
                     token = new DelegateKeywordToken();
+                else if (identifier.equals("message"))
+                    token = new MessageKeywordToken();
                 else
                     token = new IdentifierToken(identifier);
             } else if (czer.isDigit) {

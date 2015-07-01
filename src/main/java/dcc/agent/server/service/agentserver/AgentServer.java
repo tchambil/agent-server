@@ -17,13 +17,13 @@
 package dcc.agent.server.service.agentserver;
 
 import dcc.agent.server.service.appserver.AgentAppServer;
-import dcc.agent.server.service.communication.ACLMessage;
-import dcc.agent.server.service.communication.ACLMessageList;
-import dcc.agent.server.service.communication.MessageManager;
+import dcc.agent.server.service.communication.*;
 import dcc.agent.server.service.config.AgentServerConfig;
 import dcc.agent.server.service.config.AgentServerProperties;
 import dcc.agent.server.service.config.AgentServerWebAccessConfig;
-import dcc.agent.server.service.delegate.*;
+import dcc.agent.server.service.delegate.AgentDelegate;
+import dcc.agent.server.service.delegate.ServerGroup;
+import dcc.agent.server.service.delegate.ServerGroupList;
 import dcc.agent.server.service.mailaccessmanager.MailAccessManager;
 import dcc.agent.server.service.persistence.Persistence;
 import dcc.agent.server.service.persistence.persistenfile.PersistentFileException;
@@ -68,7 +68,8 @@ public class AgentServer {
     public NameValueList<ACLMessageList> agentMessages;
     public NameValueList<ServerGroupList> serverGroups;
     public AgentServerProperties agentServerProperties;
-    public MessageManager messageManager;
+    public AgentReceiver agentreceiver;
+    public AgentSender agentsender;
     public AgentServerWebAccessConfig webAccessConfig;
     public WebSiteAccessConfig webSiteAccessConfig;
     public WebAccessManager webAccessManager;
@@ -140,14 +141,14 @@ public class AgentServer {
       if(agentMessage!=null)
       {
        // Check if the user has any agents yet
-          if (!agentMessages.containsKey(agentMessage.messageId))
+          if (!agentMessages.containsKey(agentMessage.conversationId))
           {
               // No, so create an empty agent table for user
-              agentMessages.put(agentMessage.messageId, new ACLMessageList());
+              agentMessages.put(agentMessage.conversationId, new ACLMessageList());
           }
           // Get agent message table for the user
 
-          ACLMessageList userAgentMessages=agentMessages.get(agentMessage.messageId);
+          ACLMessageList userAgentMessages=agentMessages.get(agentMessage.conversationId);
           // Store the new agent message for the user
           userAgentMessages.put(agentMessage);
           // Persist the new agent message
@@ -167,26 +168,48 @@ public class AgentServer {
             return agenMap.get(agentMessageConversationId);
         }
     }
-
-     public synchronized ACLMessage receive(){
-          ACLMessage aclMessage =MessageManager.receive(this);
-          return aclMessage;
+    public synchronized Boolean process(ACLMessage message, Boolean delivery){
+         try {
+            return AgentReceiver.onMessage(this,message, delivery);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (AgentServerException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public synchronized Boolean process(String messageId){
+        try {
+            return AgentReceiver.onMessage(this,messageId);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (AgentServerException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public synchronized ACLMessage receive(){
+          ACLMessage message =AgentReceiver.receive(this);
+          return message;
       }
-
+    public synchronized ACLMessage receive(AgentInstance agentInstance){
+        ACLMessage message =AgentReceiver.receive(this, agentInstance);
+        return message;
+    }
     public synchronized ACLMessage receive(String messageId){
-        ACLMessage aclMessage =MessageManager.receive(this,messageId);
+        ACLMessage aclMessage =AgentReceiver.receive(this,messageId);
         return aclMessage;
     }
     public void send(ACLMessage message) {
         try {
-            MessageManager.send(this,message);
+            AgentSender.send(this,message);
         } catch (AgentServerException e) {
             e.printStackTrace();
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
-      public synchronized ACLMessage addAgentMessage(User user, JSONObject agentJson) throws AgentServerException, JSONException {
+    public synchronized ACLMessage addAgentMessage(User user, JSONObject agentJson) throws AgentServerException, JSONException {
         // Parse the JSON for the agent definition
         log.info("Parse the JSON for the message");
         ACLMessage agentMessage = ACLMessage.fromJson(this, agentJson);
@@ -602,12 +625,12 @@ public class AgentServer {
     public ACLMessage recreateAgentMessage(ACLMessage agentMessage) throws AgentServerException {
         if (agentMessage != null) {
             // Check if the plataform has any agent message yet
-            if (!agentMessages.containsKey(agentMessage.messageId)) {
+            if (!agentMessages.containsKey(agentMessage.conversationId)) {
                 // No, so create an empty agent message table for plataform
-                agentMessages.put(agentMessage.messageId, new ACLMessageList());
+                agentMessages.put(agentMessage.conversationId, new ACLMessageList());
             }
             // Get agent message  table for the plataform
-            ACLMessageList AgentMessages = agentMessages.get(agentMessage.messageId);
+            ACLMessageList AgentMessages = agentMessages.get(agentMessage.conversationId);
             // Store the new agentmessage
             AgentMessages.put(agentMessage);
         }

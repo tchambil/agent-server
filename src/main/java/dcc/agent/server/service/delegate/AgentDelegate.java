@@ -83,16 +83,16 @@ public class AgentDelegate {
             messageJson.put("sender",  aclMessage.sender == null ? "" : aclMessage.sender);
             messageJson.put("receiver",  aclMessage.receivers == null ? "":  aclMessage.receivers);
             messageJson.put("replyTo",  aclMessage.replyTo == null ? "" :  aclMessage.replyTo);
-            messageJson.put("messageId",  aclMessage.messageId == null ? "" :  aclMessage.messageId);
+            messageJson.put("messageId",  aclMessage.conversationId == null ? "" :  aclMessage.conversationId);
             messageJson.put("content",  aclMessage.content == null ? "" :  aclMessage.content);
-            messageJson.put("lenguage",  aclMessage.lenguaje == null ? "" :  aclMessage.lenguaje);
+            messageJson.put("lenguage",  aclMessage.language == null ? "" :  aclMessage.language);
             messageJson.put("encoding",  aclMessage.enconding == null ? "" :  aclMessage.enconding);
             messageJson.put("ontology",  aclMessage.ontology == null ? "" :  aclMessage.ontology);
             messageJson.put("protocol",  aclMessage.protocol == null ? "" :  aclMessage.protocol);
             messageJson.put("replyWith",  aclMessage.replyWith == null ? "" :  aclMessage.replyWith);
             messageJson.put("inReplyTo",  aclMessage.inReplyTo == null ? "" :  aclMessage.inReplyTo);
             messageJson.put("replyBy",  aclMessage.replyBy == null ? "" : aclMessage. replyBy);
-
+            messageJson.put("performative",  aclMessage.replyBy == null ? "" : aclMessage.performative);
             return messageJson;
         }
         catch (JSONException e)

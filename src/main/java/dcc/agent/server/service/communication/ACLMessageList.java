@@ -18,7 +18,7 @@ public class ACLMessageList implements  Iterable<ACLMessage>
     {
         for(ACLMessage agentMessage:this)
         {
-            if(agentMessage.messageId.equals(aclMessageId))
+            if(agentMessage.conversationId.equals(aclMessageId))
             {
                 return true;
             }
@@ -29,7 +29,7 @@ public ACLMessage get(String aclMessageId )
 {
     for(ACLMessage aclMessage:this)
     {
-        if(aclMessage.messageId.equals(aclMessageId))
+        if(aclMessage.conversationId.equals(aclMessageId))
         {
             return aclMessage;
         }

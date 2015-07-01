@@ -156,6 +156,7 @@
                 <li><a href="/listdefinition.do"><span class="fa fa-caret-right"></span> List</a></li>
             </ul>
         </li>
+
         <!--<Agents]-->
         <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".premium-menu"
                                                                         class="nav-header collapsed"
@@ -259,7 +260,7 @@
 
 <div class="tab-pane active in" id="home">
 
-    <div class="col-md-3">
+    <div class="col-md-4">
         <div class="widget">
             <ul class="cards list-group">
 
@@ -268,6 +269,19 @@
                     <div class="form-group">
                         <label>name</label>
                         <input type="text" id="nameagentgeneral" class="form-control" value="cuonter"/>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label>type</label>
+                        <select   id="typeagent" class="form-control">
+                            <option value="local">local</option>
+                            <option value="remote">remote</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>addresses</label>
+                        <input type="text" id="addressesagent" class="form-control" value="http://sfreebase.cloudapp.net"/>
 
                     </div>
                 </li>

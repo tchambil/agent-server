@@ -876,7 +876,7 @@ public class AgentController {
         return message;
     }
 
-    @RequestMapping(value = "/users/message", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/acl", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public  String postAgentmessage(HttpServletRequest request) throws Exception {
         PlataformController plataform = new PlataformController();
@@ -898,8 +898,8 @@ public class AgentController {
         ScriptParser parser = new ScriptParser(dummyAgentInstance);
         ScriptRuntime scriptRuntime = new ScriptRuntime(
                 dummyAgentInstance);
-        ScriptNode scriptNode = parser.parseScriptString(agentMessage.content);
-        Value valueNode = scriptRuntime.runScript(agentMessage.content,
+        ScriptNode scriptNode = parser.parseScriptString(agentMessage.content.toString());
+        Value valueNode = scriptRuntime.runScript(agentMessage.content.toString(),
                 scriptNode);
         agentMessage.replyWith= valueNode.getStringValue();
         agentMessage.replyBy=dummyAgentInstance.name;
@@ -940,20 +940,22 @@ public class AgentController {
                     .get(messageListNameValue.name)) {
                 // Generate JSON for short summary of serverGroup
                 JSONObject messageJson = new JsonListMap();
-                messageJson.put("messageId", agentMessage.messageId);
+                messageJson.put("conversationId", agentMessage.conversationId);
                 messageJson.put("sender", agentMessage.sender);
                 messageJson.put("receiver", agentMessage.receivers);
                 messageJson.put("replyTo", agentMessage.replyTo);
                 messageJson.put("content", agentMessage.content);
-                messageJson.put("lenguage", agentMessage.lenguaje);
+                messageJson.put("language", agentMessage.language);
                 messageJson.put("encoding", agentMessage.enconding);
                 messageJson.put("ontology", agentMessage.ontology);
                 messageJson.put("protocol", agentMessage.protocol);
                 messageJson.put("replyWith", agentMessage.replyWith);
                 messageJson.put("inReplyTo", agentMessage.inReplyTo);
                 messageJson.put("replyBy", agentMessage.replyBy);
+                messageJson.put("performative", agentMessage.performative);
                 messageJson.put("status", agentMessage.status);
                 messageJson.put("delegate", agentMessage.delegate);
+
                 agentMessageArrayJson.put(messageJson);
             }
         }

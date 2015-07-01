@@ -16,15 +16,16 @@
 
 package dcc.agent.server.service.script.runtime.value;
 
-import java.util.List;
-
-
 import dcc.agent.server.service.agentserver.RuntimeException;
 import dcc.agent.server.service.script.intermediate.BooleanTypeNode;
 import dcc.agent.server.service.script.intermediate.TypeNode;
 import dcc.agent.server.service.script.runtime.ScriptState;
 
+import java.util.List;
+
 public class BooleanValue extends Value {
+
+
 
     static public BooleanValue create(boolean value) {
         if (value)

@@ -1278,10 +1278,23 @@ more agentdefinitions
                     "type": "string"
                 }
             ],
-            "scripts": []
+            "scripts": [
+            {
+            "name":"test",
+            "script":"string s; for (int i = 1; i <= 50; i++) s += ' ' + i;  return s;",
+            "public":"true",
+            "execution_level":"2"
+            }
+                    ]
         }
     ]
 }
+ String name = scriptJson.optString("name", "");
+        String parameters = scriptJson.optString("parameters", "");
+        String description = scriptJson.optString("description", "");
+        String script = scriptJson.optString("script", "");
+        int executionLevel = scriptJson.optInt("execution_level");
+        boolean publicAccess = scriptJson.optBoolean("public");
 +++++++++++++++++++++++++++++++++++++++++++++++++++++
 TEST SCRIPT
 +++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -1323,3 +1336,85 @@ int sum = 0, int i = 0; do {if (i > 10) break; sum += i++;} while (true);  retur
 
 return [2, 5, 3, 9].sum;
 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+{
+    "user": "Test-User",
+    "name": "HelloWorld2",
+    "description": "Test agent definition",
+    "outputs": [
+        {
+            "name": "field1",
+            "type": "string",
+            "default_value": "Hello World"
+        },
+        {
+            "name": "field2",
+            "type": "int",
+            "default_value": 123
+        },
+        {
+            "name": "field3",
+            "type": "float",
+            "default_value": 4.56
+        },
+        {
+            "name": "field4",
+            "type": "boolean",
+            "default_value": true
+        }
+    ],
+    "scripts": [
+        {
+            "name": "do_notify1",
+            "script": "notify('Not1');",
+            "public": true
+        },
+        {
+            "name": "do_notify2",
+            "script": "notifications.Not2.vendor='AbcCorp.';Not2.price=123.45;Not2.purchased=true;notify('Not2');",
+            "public": true
+        },
+        {
+            "name": "do_notify2a",
+            "script": "notifications.Not2.vendor='DeltaLtd.';Not2.price=250.75;Not2.purchased=false;notify('Not2');",
+            "public": true
+        }
+    ],
+    "notifications": [
+        {
+            "name": "Not1",
+            "type": "notify_only",
+            "manual": true
+        },
+        {
+            "name": "Not2",
+            "description": "Secondnotification",
+            "type": "yes_no",
+            "manual": true,
+            "timeout": "minutes(90)",
+            "scripts": [
+                {
+                    "name": "accept",
+                    "script": "return2+2;"
+                }
+            ],
+            "details": [
+                {
+                    "name": "vendor",
+                    "type": "string",
+                    "default_value": "N/A"
+                },
+                {
+                    "name": "price",
+                    "type": "float",
+                    "default_value": 0
+                },
+                {
+                    "name": "purchased",
+                    "type": "boolean",
+                    "default_value": false
+                }
+            ]
+        }
+    ]
+}
