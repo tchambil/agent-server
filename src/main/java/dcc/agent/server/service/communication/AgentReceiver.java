@@ -9,6 +9,7 @@ import dcc.agent.server.service.script.runtime.ExceptionInfo;
 import dcc.agent.server.service.script.runtime.ScriptRuntime;
 import dcc.agent.server.service.script.runtime.value.NullValue;
 import dcc.agent.server.service.script.runtime.value.Value;
+import dcc.agent.server.service.util.JsonUtils;
 import dcc.agent.server.service.util.NameValue;
 import org.apache.log4j.Logger;
 import org.json.JSONException;
@@ -94,7 +95,7 @@ public class AgentReceiver {
                     reply.setStatus("response");
                     reply.setInReplyTo(content);
                     reply.setReplyBy(message.getReceivers());
-                    reply.setContent(parseScript(agentServer,content));
+                    reply.setContent(parseScript(agentServer, content));
                 } else {
                     log.info("Agent " + message.getReceivers() + " - Unexpected request [" + content + "] received from " + message.getSender());
                     reply.setPerformative(Performative.REFUSE);
@@ -146,6 +147,57 @@ public class AgentReceiver {
         return send;
     }
 
+    public static Boolean onMessage(AgentServer agentServer, ACLMessage message, List<Value> arguments) throws Exception {
+        Boolean send = false;
+
+        List<Value> newarguments = new ArrayList<Value>();
+        if (arguments != null) {
+            // Get the function of the action to fetch
+            String scriptname = arguments.get(0).getStringValue();
+
+            int numArgs = arguments.size();
+            for (int i = 1; i < numArgs; i++) {
+                String argumentString = arguments.get(i).getStringValue();
+                Value argumentValue = JsonUtils.parseJson(argumentString);
+                newarguments.add(argumentValue);
+            }
+        }
+
+        if ((message != null) && (!delivery)) {
+            ACLMessage reply = message.createReply(agentServer);
+            if (message.getPerformative() == Performative.REQUEST) {
+                String content = message.getContent();
+                if ((content != null) && (content.indexOf("ping") != -1)) {
+                    log.info("Agent " + message.getReceivers() + " - Received PING Request from " + message.getSender());
+                    reply.setPerformative(Performative.INFORM);
+                    reply.setStatus("response");
+                    reply.setInReplyTo(content);
+                    reply.setReplyBy(message.getReceivers());
+                    reply.setContent("pong");
+                } else {
+                    log.info("Agent " + message.getReceivers() + " - Unexpected request [" + content + "] received from " + message.getSender());
+                    reply.setPerformative(Performative.REFUSE);
+                    reply.setContent("( UnexpectedContent (" + content + "))");
+                }
+            } else {
+                reply.setPerformative(Performative.NOT_UNDERSTOOD);
+                reply.setContent("( (Unexpected-act " + (message.getPerformative()) + ") )");
+            }
+            send = AgentSender.send(agentServer, reply);
+
+        } else if ((message != null) && (delivery)) {
+            {
+                Value value = delivery(agentServer, message);
+                if (value != null) {
+                    preparedelivery(agentServer, message, value);
+                }
+            }
+        } else {
+            return send;
+        }
+        return send;
+    }
+
     private static void preparedelivery(AgentServer agentServer, ACLMessage message, Value value) throws JSONException, AgentServerException {
         Boolean send = false;
         if (message != null) {
@@ -159,7 +211,7 @@ public class AgentReceiver {
             }
             AgentSender.send(agentServer, reply);
         }
-   }
+    }
 
     private static String parseScript(AgentServer agentServer, String scriptString) throws AgentServerException {
         String resultString = null;
@@ -182,7 +234,8 @@ public class AgentReceiver {
         }
         return resultString;
     }
- private static Value delivery(AgentServer agentServer, ACLMessage message) throws Exception {
+
+    private static Value delivery(AgentServer agentServer, ACLMessage message) throws Exception {
         AgentInstance agentName = getAid(agentServer, message);
         User user = agentName.user;
         List<Value> arguments = new ArrayList<Value>();

@@ -180,6 +180,19 @@ public class AgentServer {
          }
         return null;
     }
+    public synchronized Boolean process(ACLMessage message,List<Value> arguments){
+        try {
+            return AgentReceiver.onMessage(this,message,arguments);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (AgentServerException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public synchronized Boolean process(String messageId){
         try {
             return AgentReceiver.onMessageId(this,messageId);
@@ -194,6 +207,11 @@ public class AgentServer {
           ACLMessage message =AgentReceiver.receive(this);
           return message;
       }
+    public synchronized ACLMessage receive(List<Value> newarguments){
+        ACLMessage message =AgentReceiver.receive(this);
+        return message;
+    }
+
     public synchronized ACLMessage receive(AgentInstance agentInstance){
         ACLMessage message =AgentReceiver.receive(this, agentInstance);
         return message;
