@@ -22,8 +22,7 @@ public class ACLMessage implements Serializable{
     static final Logger log= Logger.getLogger(ACLMessage.class);
     private static final long serialVersionUID=1L;
     public AgentServer agentServer;
-    public User user;
-    public String sender;
+   public String sender;
     public String receivers;
     public String replyTo;
     public String conversationId;
@@ -52,7 +51,6 @@ public class ACLMessage implements Serializable{
     }
 
     public ACLMessage(AgentServer agentServer,
-                     User user,
                       Performative performative,
                       String sender,
                       String receivers,
@@ -75,7 +73,6 @@ public class ACLMessage implements Serializable{
         this.performative=performative;
         this.delegate=delegate;
         this.update=update;
-        this.user=user==null?User.noUser:user;
         this.agentServer = agentServer;
         this.sender=sender;
         this.receivers=receivers;
@@ -94,12 +91,13 @@ public class ACLMessage implements Serializable{
 
 
     }
-    public ACLMessage createReply() {
+    public ACLMessage createReply(AgentServer agentServer) throws JSONException, AgentServerException {
         if(!canReplyTo()){
             throw new IllegalArgumentException("There's no-one to receive the reply.");
         }
         ACLMessage m = new ACLMessage(getPerformative());
-        m.receivers=(replyTo != null ? replyTo:sender);
+       // m.receivers=((replyTo != null ||(!(replyTo.equals("")))) ? replyTo:sender);
+        m.receivers=(!(replyTo.equals("")) ? replyTo:sender);
         m.setReplyTo(getReplyTo());
         m.setlanguage(getlanguage());
         m.setOntology(getOntology());
@@ -107,6 +105,7 @@ public class ACLMessage implements Serializable{
         m.setInReplyTo(getReplyWith());
         m.setReplyWith(getReplyWith() + java.lang.System.currentTimeMillis());
         m.setconversationId(getconversationId());
+        updateMessage(agentServer, m.conversationId);
         return m;
     }
 
@@ -121,7 +120,6 @@ public class ACLMessage implements Serializable{
     public JSONObject toJson(boolean includeState, int stateCount) throws AgentServerException {
       try {
           JSONObject messageJson = new JsonListMap();
-          messageJson.put("user", user.id);
           messageJson.put("sender", sender == null ? "" : sender);
           messageJson.put("receiver", receivers == null ? "": receivers);
           messageJson.put("replyTo", replyTo == null ? "" : replyTo);
@@ -134,9 +132,9 @@ public class ACLMessage implements Serializable{
           messageJson.put("replyWith", replyWith == null ? "" : replyWith);
           messageJson.put("inReplyTo", inReplyTo == null ? "" : inReplyTo);
           messageJson.put("replyBy", replyBy == null ? "" : replyBy);
-          messageJson.put("status", replyBy == null ? "" : status);
-          messageJson.put("delegate", replyBy == null ? "" : delegate);
-          messageJson.put("performative", replyBy == null ? "" : performative);
+          messageJson.put("status", status == null ? "" : status);
+          messageJson.put("delegate", delegate == null ? "" : delegate);
+          messageJson.put("performative", performative == null ? "" : performative);
           return messageJson;
       }
       catch (JSONException e)
@@ -145,7 +143,13 @@ public class ACLMessage implements Serializable{
           throw new AgentServerException("JSON exception in Message.toJson -"+e.getMessage());
       }
     }
-
+    public void updateMessage(AgentServer agentServer, String messageId) throws AgentServerException, JSONException {
+        ACLMessageList messageListNameValue = agentServer.agentMessages.get(messageId);
+        ACLMessage agentMessage = messageListNameValue.get(messageId);
+        agentMessage.setStatus("read");
+        ACLMessage newagentMessage= ACLMessage.fromJson(agentServer, null, agentMessage.toJson(), true);
+        agentMessage.update(agentServer, newagentMessage);
+    }
     public void update(AgentServer agentServer, ACLMessage message) throws JSONException, AgentServerException {
         if(message.sender!=null)
         {
@@ -244,7 +248,7 @@ public class ACLMessage implements Serializable{
             }
         }
         //Parse the message messageId
-        String messagemessageId=agentJson.optString("messageId",null);
+        String messagemessageId=agentJson.optString("conversationId",null);
         {
             if(!update &&(messagemessageId==null))
             {
@@ -336,11 +340,11 @@ public class ACLMessage implements Serializable{
         // Validate keys
 
         JsonUtils.validateKeys(agentJson, "Agent Message", new ArrayList<String>(Arrays.asList(
-                "user", "sender", "receiver", "replyTo", "messageId",
-                "content", "lenguage", "encoding", "ontology",
+                 "sender", "receiver", "replyTo", "conversationId",
+                "content", "language", "encoding", "ontology",
                 "protocol", "replyWith", "inReplyTo", "replyBy","status","delegate","performative")));
 
-        ACLMessage agentMessage = new ACLMessage(agentServer,user,messageperformative, messageSender, messageReceiver, messageReplyTo, messagemessageId,
+        ACLMessage agentMessage = new ACLMessage(agentServer,messageperformative, messageSender, messageReceiver, messageReplyTo, messagemessageId,
                 messageContent, messageLenguaje, messageEnconding, messageOntology, messageProtocol, messageReplyWith, messageInReplyTo,
                 messageReplyBy, messagestatus,update, messagedelegate);
 

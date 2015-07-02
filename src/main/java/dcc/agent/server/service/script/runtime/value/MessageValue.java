@@ -107,7 +107,7 @@ public class MessageValue extends Value {
 
     public Boolean processMessage(ScriptState scriptState, ACLMessage message, Boolean delivery) throws RuntimeException {
         try {
-            process = scriptState.agentServer.process(message,delivery);
+            process = scriptState.agentServer.process(message);
             if (!process)
                 return false;
             else

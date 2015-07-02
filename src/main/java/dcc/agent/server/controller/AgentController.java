@@ -8,12 +8,9 @@ import dcc.agent.server.service.communication.ACLMessageList;
 import dcc.agent.server.service.config.AgentServerConfig;
 import dcc.agent.server.service.config.AgentServerProperties;
 import dcc.agent.server.service.notification.NotificationInstance;
-import dcc.agent.server.service.script.intermediate.ScriptNode;
 import dcc.agent.server.service.script.intermediate.Symbol;
 import dcc.agent.server.service.script.intermediate.SymbolValues;
-import dcc.agent.server.service.script.parser.ScriptParser;
 import dcc.agent.server.service.script.runtime.ExceptionInfo;
-import dcc.agent.server.service.script.runtime.ScriptRuntime;
 import dcc.agent.server.service.script.runtime.value.Value;
 import dcc.agent.server.service.swget.multithread.Navigator;
 import dcc.agent.server.service.swget.regExpression.parser.ParseException;
@@ -889,7 +886,8 @@ public class AgentController {
         // Parse and add the agent definition
         ACLMessage agentMessage = agentServer.addAgentMessage(
                 null, agentMessageson);
-        agentServer.send(agentMessage);
+
+        /*agentServer.send(agentMessage);
         // Done
         AgentDefinition dummyAgentDefinition = new AgentDefinition(
                 agentServer);
@@ -905,7 +903,8 @@ public class AgentController {
         agentMessage.replyBy=dummyAgentInstance.name;
         agentMessage.update(agentServer, agentMessage);
        // JSONObject message = new JSONObject();
-       // message.put("message", valueNode.getStringValue());
+       // message.put("message", valueNode.getStringValue());*/
+
         return agentMessage.toString();
     }
     @RequestMapping(value = "/users/message/{id}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)

@@ -79,8 +79,7 @@ public class AgentDelegate {
     public JSONObject toJson(ACLMessage aclMessage) throws AgentServerException {
         try {
             JSONObject messageJson = new JsonListMap();
-            messageJson.put("user",  aclMessage.user.id);
-            messageJson.put("sender",  aclMessage.sender == null ? "" : aclMessage.sender);
+             messageJson.put("sender",  aclMessage.sender == null ? "" : aclMessage.sender);
             messageJson.put("receiver",  aclMessage.receivers == null ? "":  aclMessage.receivers);
             messageJson.put("replyTo",  aclMessage.replyTo == null ? "" :  aclMessage.replyTo);
             messageJson.put("messageId",  aclMessage.conversationId == null ? "" :  aclMessage.conversationId);

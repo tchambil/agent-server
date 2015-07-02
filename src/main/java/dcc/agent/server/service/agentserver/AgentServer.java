@@ -168,19 +168,21 @@ public class AgentServer {
             return agenMap.get(agentMessageConversationId);
         }
     }
-    public synchronized Boolean process(ACLMessage message, Boolean delivery){
+    public synchronized Boolean process(ACLMessage message){
          try {
-            return AgentReceiver.onMessage(this,message, delivery);
+            return AgentReceiver.onMessage(this,message);
         } catch (JSONException e) {
             e.printStackTrace();
         } catch (AgentServerException e) {
             e.printStackTrace();
-        }
+        } catch (Exception e) {
+             e.printStackTrace();
+         }
         return null;
     }
     public synchronized Boolean process(String messageId){
         try {
-            return AgentReceiver.onMessage(this,messageId);
+            return AgentReceiver.onMessageId(this,messageId);
         } catch (JSONException e) {
             e.printStackTrace();
         } catch (AgentServerException e) {

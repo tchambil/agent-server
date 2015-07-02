@@ -7,8 +7,6 @@ import dcc.agent.server.service.script.intermediate.StringTypeNode;
 import dcc.agent.server.service.script.intermediate.TypeNode;
 import dcc.agent.server.service.script.runtime.ScriptState;
 import org.apache.log4j.Logger;
-import org.springframework.http.*;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,28 +46,7 @@ public class DelegateValue extends Value {
             return super.getNamedValue(scriptState, name);
         }
     }
-     static public ResponseEntity<String>  delegate(ScriptState scriptState,List<Value> arguments)  {
-        log.info("Initialize the agent delegate for send agent message");
-        // Initialize the agent delegate,
-         String server = arguments.get(0).getStringValue();
-         String script = arguments.get(1).getStringValue();
-         Integer iterator =arguments.get(2).getIntValue();
 
-         String newscript= "delegate d; string s = w.get('server','2','false');" ;
-
-        RestTemplate restTemplate = new RestTemplate();
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        HttpEntity<String> entity =new HttpEntity<String>(newscript.toString(),headers);
-        ResponseEntity<String> response=restTemplate.exchange(server, HttpMethod.POST,entity,String.class);
-         if(response.getStatusCode()==HttpStatus.OK)
-         {
-             log.info("successful send agent message and prepare save local");
-
-         }
-         return response;
-
-    }
 
     public Value getMethodValue(ScriptState scriptState, String name, List<Value> arguments) throws RuntimeException {
         int numArguments =arguments.size();
@@ -86,20 +63,14 @@ public class DelegateValue extends Value {
         }
         else if (name.equals("get")&&(numArguments>=1||numArguments<=4))
         {
-            return NullValue.one;
+           // delegate(scriptState, arguments);
 
         }
-        else if (name.equals("get")&&(numArguments==3))
-        {
-            delegate(scriptState, arguments);
-
-            return NullValue.one;
-
-        }
-        else
+         else
         {
             return super.getMethodValue(scriptState, name, arguments);
         }
+        return null;
     }
 
 }

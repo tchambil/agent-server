@@ -61,7 +61,7 @@ public class AgentSender {
     }
 
     static public Boolean send(AgentServer agentServer, ACLMessage message) throws AgentServerException, JSONException {
-        AgentInstance agentInstance = agentServer.getAgentInstances(message.sender);
+        AgentInstance agentInstance = agentServer.getAgentInstances(message.receivers);
         if (agentInstance.type.equals("remote")) {
            return sendRemote(message, agentInstance);
         } else {
