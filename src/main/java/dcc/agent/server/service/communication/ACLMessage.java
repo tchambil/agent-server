@@ -98,13 +98,15 @@ public class ACLMessage implements Serializable{
         ACLMessage m = new ACLMessage(getPerformative());
        // m.receivers=((replyTo != null ||(!(replyTo.equals("")))) ? replyTo:sender);
         m.receivers=(!(replyTo.equals("")) ? replyTo:sender);
+        m.setSender(getReceivers());
         m.setReplyTo(getReplyTo());
         m.setlanguage(getlanguage());
         m.setOntology(getOntology());
         m.setProtocol(getProtocol());
-        m.setInReplyTo(getReplyWith());
+        m.setInReplyTo(getInReplyTo());
         m.setReplyWith(getReplyWith() + java.lang.System.currentTimeMillis());
         m.setconversationId(getconversationId());
+        m.setDelegate(false);
         updateMessage(agentServer, m.conversationId);
         return m;
     }
@@ -250,7 +252,7 @@ public class ACLMessage implements Serializable{
         //Parse the message messageId
         String messagemessageId=agentJson.optString("conversationId",null);
         {
-            if(!update &&(messagemessageId==null))
+            if((messagemessageId==null)||messagemessageId.trim().length()==0)
             {
 
                 messagemessageId = agentServer.config.agentServerProperties.agentServerName+"-"+ Integer.toString(agentServer.agentMessages.size());

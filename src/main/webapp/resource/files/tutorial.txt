@@ -91,7 +91,7 @@ So, here's the command to create a simple "Hello World" agent associated with th
  
 curl -X POST 'http://localhost:8080/users/test-user-1/agent_definitions' -H Content-type:application/json -d'
 {
- "name": "HelloWorld",
+ "name": "definitions1",
  "outputs": [
   {
    "name": "output1",
@@ -185,6 +185,8 @@ curl 'http://localhost:8080/users/test-user-1/agent_definitions'
 
 {"agent_definitions": [{
     "user": "test-user-1",
+    "addresses": "http://sfreebase.cloudapp.net",
+    "type":"local",
     "name": "HelloWorld",
     "description": "Our first test of an agent definition"
 }]}
@@ -209,6 +211,8 @@ curl 'http://localhost:8080/users/test-user-1/agents'
 {"agent_instances": [{
     "user": "test-user-1",
     "name": "MyHelloWorld-1",
+    "addresses": "http://sfreebase.cloudapp.net",
+        "type":"local",
     "definition": "HelloWorld",
     "description": ""
 }]}
@@ -226,6 +230,8 @@ curl 'http://localhost:8080/users/test-user-1/agents'
 {"agent_instances": [{
     "user": "test-user-1",
     "name": "MyHelloWorld-1",
+    "addresses": "http://sfreebase.cloudapp.net",
+        "type":"local",
     "definition": "HelloWorld",
     "description": "Our first test instance of an agent definition"
 }]}
@@ -238,6 +244,8 @@ curl 'http://localhost:8080/users/test-user-1/agents/MyHelloWorld-1'
     "user": "test-user-1",
     "name": "MyHelloWorld-1",
     "definition": "HelloWorld",
+    "addresses": "http://sfreebase.cloudapp.net",
+        "type":"local",
     "description": "Our first test instance of an agent definition",
     "instantiated": "Tue, 20 Mar 2012 18:43:52 -0400",
     "updated": "Tue, 20 Mar 2012 18:43:58 -0400",
@@ -262,6 +270,8 @@ curl 'http://localhost:8080/users/test-user-1/agents/MyHelloWorld-1/status'
 {
     "user": "test-user-1",
     "name": "MyHelloWorld-1",
+    "addresses": "http://sfreebase.cloudapp.net",
+        "type":"local",
     "definition": "HelloWorld",
     "description": "Our first test instance of an agent definition",
     "instantiated": "Tue, 20 Mar 2012 18:43:52 -0400",
@@ -357,7 +367,9 @@ Now instantiate the counter agent:
 curl -X POST 'http://localhost:8080/users/test-user-1/agents' -H Content-type:application/json -d'
 {
  "name": "Agent1",
- "definition": "Counter"
+ "definition": "Counter",
+ "addresses": "http://sfreebase.cloudapp.net",
+     "type":"local"
 }'
 
 Now lets query what agents are running:
@@ -613,7 +625,9 @@ easily instantiate the agent without the bother of supplying any parameter value
 curl -X POST 'http://localhost:8080/users/test-user-1/agents' -H Content-type:application/json -d'
 {
  "name": "MyCounter-1",
- "description": "Counter with default parameter values"
+ "description": "Counter with default parameter values",
+ "addresses": "http://sfreebase.cloudapp.net",
+     "type":"local"
 }'
 
 And let's see if the output is what we would expect:
@@ -634,6 +648,8 @@ curl -X POST 'http://localhost:8080/users/test-user-1/agents' -H Content-type:ap
  "name": "MyCounter-2",
  "definition": "Counter",
  "description": "Counter with explicit time expression parameter, but default text",
+ "addresses": "http://sfreebase.cloudapp.net",
+     "type":"local",
  "parameter_values": {"timer_interval_expression": "minutes(0.1)"}
 }'
 
@@ -670,6 +686,8 @@ curl -X POST 'http://localhost:8080/users/test-user-1/agents' -H Content-type:ap
  "name": "MyCounter-3",
  "definition": "Counter",
  "description": "Counter with explicit time expression and output text parameters",
+ "addresses": "http://sfreebase.cloudapp.net",
+     "type":"local",
  "parameter_values": {"timer_interval_expression": "hours(0.000555)", "output_text": "Our count: "}
 }'
 
@@ -894,6 +912,8 @@ Instantiate the aggregating agent:
 curl -X POST 'http://localhost:8080/users/test-user-1/agents' -H Content-type:application/json -d'
 {
  "name": "MyAgent-1",
+ "addresses": "http://sfreebase.cloudapp.net",
+     "type":"local",
  "definition": "Agent",
  "public_output": true
 }'

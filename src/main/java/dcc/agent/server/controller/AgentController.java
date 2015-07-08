@@ -359,20 +359,37 @@ public class AgentController {
         User user = agentServer.users.get(id);
 
         JSONArray agentInstancesArrayJson = new JSONArray();
-        for (AgentInstance agentInstance : agentServer.agentInstances.get(user.id)) {
-            // Generate JSON for short summary of agent instance
-            JSONObject agentInstanceJson = new JsonListMap();
-            agentInstanceJson.put("user", agentInstance.user.id);
-            agentInstanceJson.put("name", agentInstance.name);
-            agentInstanceJson.put("Addresses",agentInstance.addresses);
-            agentInstanceJson.put("host", agentInstance.host);
-            agentInstanceJson.put("aid", agentInstance.aid);
-            agentInstanceJson.put("type", agentInstance.type);
-            agentInstanceJson.put("definition", agentInstance.agentDefinition.name);
-            agentInstanceJson.put("description", agentInstance.description);
-            agentInstanceJson.put("status", agentInstance.getStatus());
+
+            // Get all agents for this user
+            for (AgentInstance agentInstance : agentServer.agentInstances
+                    .get(user.id)) {
+                // Generate JSON for short summary of agent instance
+                JSONObject agentInstanceJson = new JsonListMap();
+                agentInstanceJson.put("user", agentInstance.user.id);
+                agentInstanceJson.put("name", agentInstance.name);
+                agentInstanceJson.put("Addresses",agentInstance.addresses);
+                agentInstanceJson.put("host", agentInstance.host);
+                agentInstanceJson.put("aid", agentInstance.aid);
+                agentInstanceJson.put("type", agentInstance.type);
+                agentInstanceJson.put("definition", agentInstance.agentDefinition.name);
+                agentInstanceJson.put("description", agentInstance.description);
+                agentInstanceJson.put("status", agentInstance.getStatus());
+
+                AgentInstance agent = agentServer.agentInstances.get(agentInstance.user.id).get(
+                        agentInstance.name);
+                SymbolValues outputValues = agent.categorySymbolValues
+                        .get("outputs");
+
+
+                for (Symbol outputSymbol : outputValues) {
+                    String fieldName = outputSymbol.name;
+                    agentInstanceJson.put("Outputs", agent.getOutput(fieldName));
+                }
                 agentInstancesArrayJson.put(agentInstanceJson);
-        }
+            }
+
+
+
         JSONObject agentInstancesJson = new JSONObject();
         agentInstancesJson.put("agent_instances", agentInstancesArrayJson);
 

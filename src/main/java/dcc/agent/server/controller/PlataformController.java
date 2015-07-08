@@ -364,12 +364,13 @@ public class PlataformController {
             } catch (Exception e) {
                 logger.info("Exception reading expression text : " + e);
             }
-
             logger.info("Evaluating expression: " + expressionString);
-            AgentDefinition dummyAgentDefinition = new AgentDefinition(
-                    agentServer);
-            AgentInstance dummyAgentInstance = new AgentInstance(
-                    dummyAgentDefinition);
+           // AgentDefinition dummyAgentDefinition = new AgentDefinition(
+          //          agentServer);
+           // AgentInstance dummyAgentInstance = new AgentInstance(
+           //         dummyAgentDefinition);
+            String agentaname="agent1";
+            AgentInstance dummyAgentInstance =getAgent(agentServer,agentaname);
             ScriptParser parser = new ScriptParser(dummyAgentInstance);
             ScriptRuntime scriptRuntime = new ScriptRuntime(
                     dummyAgentInstance);
@@ -386,7 +387,9 @@ public class PlataformController {
 
     }
 
-
+    private static AgentInstance getAgent(AgentServer agentServer, String value) {
+        return agentServer.getAgentInstances(value);
+    }
     @RequestMapping(value = "/run", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public String getRun(HttpServletRequest request) throws Exception {
@@ -407,15 +410,18 @@ public class PlataformController {
             }
 
             logger.info("Running script: " + scriptString);
-            AgentDefinition dummyAgentDefinition = new AgentDefinition(
+           /* AgentDefinition dummyAgentDefinition = new AgentDefinition(
                     agentServer);
             AgentInstance dummyAgentInstance = new AgentInstance(
-                    dummyAgentDefinition);
+                    dummyAgentDefinition);*/
+            String agentaname="agent1";
+            AgentInstance dummyAgentInstance =getAgent(agentServer,agentaname);
+
             ScriptParser parser = new ScriptParser(dummyAgentInstance);
             ScriptRuntime scriptRuntime = new ScriptRuntime(
                     dummyAgentInstance);
             ScriptNode scriptNode = parser.parseScriptString(scriptString);
-            Value valueNode = scriptRuntime.runScript(scriptString,
+                 Value valueNode = scriptRuntime.runScript(scriptString,
                     scriptNode);
             resultString = valueNode.getStringValue();
             logger.info("Script result: " + resultString);

@@ -60,8 +60,15 @@ public class AgentSender {
         return webService;
     }
 
-    static public Boolean send(AgentServer agentServer, ACLMessage message) throws AgentServerException, JSONException {
-        AgentInstance agentInstance = agentServer.getAgentInstances(message.receivers);
+    static public Boolean send(AgentServer agentServer, ACLMessage message, Boolean delegate) throws AgentServerException, JSONException {
+        AgentInstance agentInstance=null;
+        if ((delegate)&&(message.delegate.toString().equals("true"))){
+             agentInstance = agentServer.getAgentInstances(message.receivers);
+        }
+        else{
+             agentInstance = agentServer.getAgentInstances(message.sender);
+        }
+
         if (agentInstance.type.equals("remote")) {
            return sendRemote(message, agentInstance);
         } else {

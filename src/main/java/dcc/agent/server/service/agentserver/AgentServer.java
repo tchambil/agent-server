@@ -170,7 +170,7 @@ public class AgentServer {
     }
     public synchronized Boolean process(ACLMessage message){
          try {
-            return AgentReceiver.onMessage(this,message);
+            return AgentReceiver.prepareMessage(this,message);
         } catch (JSONException e) {
             e.printStackTrace();
         } catch (AgentServerException e) {
@@ -180,28 +180,10 @@ public class AgentServer {
          }
         return null;
     }
-    public synchronized Boolean process(ACLMessage message,List<Value> arguments){
-        try {
-            return AgentReceiver.onMessage(this,message,arguments);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        } catch (AgentServerException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+
 
     public synchronized Boolean process(String messageId){
-        try {
-            return AgentReceiver.onMessageId(this,messageId);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        } catch (AgentServerException e) {
-            e.printStackTrace();
-        }
-        return null;
+            return null;
     }
     public synchronized ACLMessage receive(){
           ACLMessage message =AgentReceiver.receive(this);
@@ -222,7 +204,7 @@ public class AgentServer {
     }
     public void send(ACLMessage message) {
         try {
-            AgentSender.send(this,message);
+            AgentSender.send(this,message,false);
         } catch (AgentServerException e) {
             e.printStackTrace();
         } catch (JSONException e) {
@@ -536,6 +518,25 @@ public class AgentServer {
             return dataSourceInstance.name;
         else
             return null;
+    }
+    public AgentInstance getAgentInstance(String scriptName,Boolean wait){
+        // Get all user for plataform
+        ScriptDefinition scriptDefinition = null;
+        AgentInstance agent = null;
+        for (NameValue<User> userIdValue : users)
+        {
+            User user = userIdValue.value;
+            //Get all agent Instance for Users
+            for (AgentInstance agentInstance : agentInstances.get(user.id)) {
+                //Get all ScriptDefinitions por agentInstance
+                scriptDefinition = agentInstances.get(user.id).get(agentInstance.name).agentDefinition.scripts.get(scriptName);
+                if (!(scriptDefinition == null)) {
+                    AgentInstanceList agenMap = agentInstances.get(user.id);
+                    agent = agenMap.get(agentInstance.name);
+                }
+            }
+        }
+        return agent;
     }
     public AgentInstance getAgentInstance(User user, String agentInstanceName, String dataSourceName) {
         AgentInstanceList agentMap = agentInstances.get(user.id);

@@ -248,7 +248,6 @@
     <div class="main-content">
         <p class="definition">
 
-            Unless you are simply previewing the doc, please run through the installation process first, install.txt.
 
             The agent server supports a REST API that uses JSON as its primary information format.
 

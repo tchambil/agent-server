@@ -105,7 +105,6 @@
     <file url="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/ACLMessageList.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/AgentReceiver.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/AgentSender.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/MessageManager.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/Performative.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/config" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/delegate" charset="UTF-8" />

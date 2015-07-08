@@ -495,8 +495,8 @@ public class AgentDefinition {
 
             // Output conditions
             JSONArray conditionsArrayJson = new JSONArray();
-            for (NameValue<AgentTimer> timerNameValue : timers)
-                timersArrayJson.put(timerNameValue.value.toJson());
+            for (NameValue<AgentCondition> conditionNameValue : conditions)
+                timersArrayJson.put(conditionNameValue.value.toJson());
             agentJson.put("conditions", conditionsArrayJson);
 
             // Output notifications

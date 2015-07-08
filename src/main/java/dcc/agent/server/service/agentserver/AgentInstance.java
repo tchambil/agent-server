@@ -38,6 +38,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.ParseException;
 import java.util.*;
 
@@ -160,7 +162,7 @@ public class AgentInstance {
         this.name = name == null ? (check ? "check__" + agentDefinition.name : agentDefinition.name + "_" + ++autoNameCounter) : name;
         this.description = description;
         this.addresses=addresses;
-        this.host=host==null?(agentServer.config.agentServerProperties.agentServerHostName):host;
+        this.host=(getAddresss(addresses));
         this.type=type;
         aid = name + "@" + this.host;
         this.parameterValues = parameterValues == null && !update ? new SymbolValues("parameters") : parameterValues;
@@ -231,7 +233,15 @@ public class AgentInstance {
             enable();
         log.info("Enabled for " + this.name + ": " + enabled);
     }
-
+    private static String getAddresss(String addresses) {
+        try {
+            if(addresses!=null)
+            return   (new URL(addresses.toString()).getHost());
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+    return null;
+    }
     public boolean equals(AgentDefinition otherAgentDefinition, SymbolValues otherParameterValues) {
         return (agentDefinition == otherAgentDefinition && parameterValues.equals(otherParameterValues));
     }

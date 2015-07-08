@@ -61,7 +61,8 @@ $(document).ready(function () {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
 
-            data:     '{ "name" : "'+ $('#nameagentgeneral').val()+'" , "definition" : "'+ $('#DropAgentGeneral').val()+'" }',
+
+            data:     '{ "name" : "'+ $('#nameagentgeneral').val()+'" , "definition" : "'+ $('#DropAgentGeneral').val()+'", "addresses" : "'+$('#addressesagent').val()+'", "type": "'+ $('#typeagent').val()+'"}',
             success: function (data) {
 
                 $('#idMessagsedAgent').empty();

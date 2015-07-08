@@ -278,7 +278,7 @@
                             <div class="form-group">
                                 <label>Full Name</label>
                                 <input type="text" name="full_name" id="full_nameInput" class="form-control"
-                                       value="Your Full Name"/>
+                                       value="Teofilo Chambilla Aquino"/>
 
                             </div>
                             <div class="form-group">
@@ -291,19 +291,19 @@
                             <div class="form-group">
                                 <label>nickname</label>
                                 <input type="text" name="nickname" id="nicknameInput" class="form-control"
-                                       value="Youri"/>
+                                       value="tchambil"/>
                             </div>
 
                             <div class="form-group">
                                 <label>company</label>
                                 <input type="text" name="company" id="companyInput" class="form-control"
-                                       value="Your company"/>
+                                       value="U Chile"/>
 
                             </div>
                             <div class="form-group">
                                 <label>interests</label>
                                 <input type="text" name="company" id="interestsInput" class="form-control"
-                                       value="Your interests"/>
+                                       value="Semantic Web"/>
 
                             </div>
                         </form>
