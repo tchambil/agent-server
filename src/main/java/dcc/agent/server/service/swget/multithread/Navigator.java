@@ -6,6 +6,7 @@ import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.impl.PropertyImpl;
 import com.hp.hpl.jena.rdf.model.impl.ResourceImpl;
 import com.hp.hpl.jena.rdf.model.impl.StatementImpl;
+import dcc.agent.server.service.script.runtime.ScriptState;
 import dcc.agent.server.service.swget.console.arguments.CommandOption;
 import dcc.agent.server.service.swget.console.arguments.NumericalOption;
 import dcc.agent.server.service.swget.console.arguments.StringOption;
@@ -601,7 +602,7 @@ public class Navigator implements NavigatorIF {
 	 * @throws ParseException
 	 * @throws TokenMgrError
 	 */
-	public String[] runCommand(String command, String comment)
+	public String[] runCommand(ScriptState scriptState,String command, String comment)
 			throws ParseException, TokenMgrError {
 		
 		LinkFinderThread.resetTimer();
@@ -721,5 +722,8 @@ public class Navigator implements NavigatorIF {
 	}
 
 
+    public synchronized void printOnGUI(String s) {
+         System.out.println(s);
 
+    }
 }

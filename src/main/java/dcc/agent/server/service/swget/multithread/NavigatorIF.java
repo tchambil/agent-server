@@ -70,7 +70,7 @@ public interface NavigatorIF {
 	public boolean containsNavigationalHistory(String uri, State state);
 
 	public void addVisitedTriple(String sbj, String pred, String obj);
-
+    public void printOnGUI(String s);
 	/**
 	 * Places the link in the queue
 	 * 

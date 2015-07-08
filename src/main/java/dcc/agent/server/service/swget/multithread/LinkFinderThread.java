@@ -72,7 +72,7 @@ public class LinkFinderThread implements Runnable {
 					HashSet<State> hs = NautiLODManager.getRegExpManager().getEpsilonReachableStates(starting_uri.getState());
 
                    // System.out.println("Handling URI_1 "+ starting_uri.getUrl() + "\n");
-
+                    NautiLODManager.printOnGUI("Handling URI_1 "+ starting_uri.getUrl() + "\n");
 					for (State s : hs)
                     {
 

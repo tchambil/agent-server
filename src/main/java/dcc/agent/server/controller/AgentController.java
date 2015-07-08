@@ -992,7 +992,7 @@ public class AgentController {
        String command ="http://dbpedia.org/resource/Tim_Berners-Lee -p (<http://dbpedia.org/property/influenced>[ASK {?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Scientist>}])* -t 5 -stream -noSaveModels";
        // String command ="http://dbpedia.org/resource/Stanley_Kubrick -p (<http://dbpedia.org/ontology/director>/<http://dbpedia.org/ontology/director>)<6-6> -t 3";
         //String command ="http://dblp.l3s.de/d2r/resource/authors/Giuseppe_Pirr%C3%B2 -p <http://xmlns.com/foaf/0.1/maker><2-2>/ACT[select ?n where {?x <http://xmlns.com/foaf/0.1/name> ?n}::sendEmail(antony_epis@hotmail.com)]";
-        this.navigator.runCommand(command, "");
+        //this.navigator.runCommand(command, "");
 
         JSONObject agentMessageJson = new JSONObject();
         agentMessageJson.put("command", command);
