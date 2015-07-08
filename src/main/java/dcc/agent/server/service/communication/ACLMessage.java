@@ -37,7 +37,11 @@ public class ACLMessage implements Serializable{
     public String status;
     public Boolean update;
     public Boolean delegate;
+    /** constant identifying the FIPA performative **/
+    public static final int ACCEPT_PROPOSAL = 0;
+
     public Performative performative;
+    public MethodHttp methodHttp;
     public AgentServerProperties agentServerProperties;
     public ACLMessage(){
         this(Performative.NOT_UNDERSTOOD);

@@ -20,15 +20,30 @@ public class AgentSender {
     static public Boolean sendRemote(ACLMessage message, AgentInstance agentInstance) throws AgentServerException {
         log.info("Initialize the aclmessage for send");
         // Initialize the agent send,
+
         String webService = getAddresss(agentInstance);
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<String> entity = new HttpEntity<String>(message.toJson().toString(), headers);
-        ResponseEntity<String> response = restTemplate.exchange(webService, HttpMethod.POST, entity, String.class);
-        if (response.getStatusCode() == HttpStatus.OK) {
-         return true;
+        if (message.performative.getMethod() == String.valueOf(HttpMethod.GET)) {
         }
+
+        else if (message.performative.getMethod() == String.valueOf(HttpMethod.POST)) {
+            ResponseEntity<String> response = restTemplate.exchange(webService, HttpMethod.POST, entity, String.class);
+            if (response.getStatusCode() == HttpStatus.OK) {
+                return true;
+            }
+        }
+
+        else if (message.performative.getMethod() == String.valueOf(HttpMethod.PUT)) {
+        }
+        else{
+            return false;
+        }
+
+
+
         return false;
     }
 
