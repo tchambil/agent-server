@@ -41,7 +41,7 @@ public class ACLMessage implements Serializable{
     public static final int ACCEPT_PROPOSAL = 0;
 
     public Performative performative;
-    public MethodHttp methodHttp;
+
     public AgentServerProperties agentServerProperties;
     public ACLMessage(){
         this(Performative.NOT_UNDERSTOOD);

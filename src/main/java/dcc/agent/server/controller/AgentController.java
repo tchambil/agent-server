@@ -43,7 +43,6 @@ public class AgentController {
         PlataformController plataform = new PlataformController();
         agentServer = plataform.getAgentServer();
 
-
         User user = agentServer.users.get(id);
 
         JSONObject agentInstanceJson = util.getJsonRequest(request);
@@ -903,24 +902,6 @@ public class AgentController {
         // Parse and add the agent definition
         ACLMessage agentMessage = agentServer.addAgentMessage(
                 null, agentMessageson);
-
-        /*agentServer.send(agentMessage);
-        // Done
-        AgentDefinition dummyAgentDefinition = new AgentDefinition(
-                agentServer);
-        AgentInstance dummyAgentInstance = new AgentInstance(
-                dummyAgentDefinition);
-        ScriptParser parser = new ScriptParser(dummyAgentInstance);
-        ScriptRuntime scriptRuntime = new ScriptRuntime(
-                dummyAgentInstance);
-        ScriptNode scriptNode = parser.parseScriptString(agentMessage.content.toString());
-        Value valueNode = scriptRuntime.runScript(agentMessage.content.toString(),
-                scriptNode);
-        agentMessage.replyWith= valueNode.getStringValue();
-        agentMessage.replyBy=dummyAgentInstance.name;
-        agentMessage.update(agentServer, agentMessage);
-       // JSONObject message = new JSONObject();
-       // message.put("message", valueNode.getStringValue());*/
 
         return agentMessage.toString();
     }
