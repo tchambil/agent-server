@@ -10,16 +10,24 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 public class DefinitionControllerClient {
-    @RequestMapping(value = "/definition.do", method = RequestMethod.GET)
-   public String getdefinition(ModelMap modelMap)
+    @RequestMapping(value = "/definitionsimple.do", method = RequestMethod.GET)
+   public String getdefinitionsimple(ModelMap modelMap)
     {
-        return "definition";
+        return "definitionsimple";
     }
-    @RequestMapping(value = "/testscript.do", method = RequestMethod.GET)
+
+    @RequestMapping(value = "/definitionadvanced.do", method = RequestMethod.GET)
+    public String getdefinitionadvanced(ModelMap modelMap)
+    {
+        return "definitionsadvanced";
+    }
+    @RequestMapping(value = "/definitionsjson.do", method = RequestMethod.GET)
     public String getdefinitionscript(ModelMap modelMap)
     {
-        return "testscript";
+        return "definitionjson";
     }
+
+
 
 
     @RequestMapping(value = "/listdefinition.do", method = RequestMethod.GET)

@@ -162,9 +162,10 @@
         </li>
         <li>
             <ul class="legal-menu nav nav-list collapse">
-                <li><a href="/definition.do"><span class="fa fa-caret-right"></span> Definitions</a></li>
+                <li><a href="/definitionsimple.do"><span class="fa fa-caret-right"></span> Simple</a></li>
+                <li><a href="/definitionadvanced.do"><span class="fa fa-caret-right"></span> Advanced</a></li>
+                <li><a href="/definitionsjson.do"><span class="fa fa-caret-right"></span> JSON</a></li>
                 <li><a href="/listdefinition.do"><span class="fa fa-caret-right"></span> List</a></li>
-                <li><a href="/definitionscript.do"><span class="fa fa-caret-right"></span> Script(run)</a></li>
             </ul>
         </li>
         <!--<Agents]-->
@@ -279,33 +280,18 @@
                             </div>
                             <div class="form-bottom">
                                 <div class="form-group">
-                                    <label> Email</label>
-                                    <input type="email" class="form-control" placeholder="Email">
+                                    <label>name</label>
+                                    <input type="text"  name="simple" id="namegeneral" class="form-control" value="cuonter"/>
                                 </div>
                                 <div class="form-group">
-                                    <label>First name</label>
+                                    <label>User</label>
 
-                                    <input type="text" name="form-first-name" placeholder="First name..."
-                                           class="form-first-name form-control" id="form-first-name">
-
-                                </div>
-                                <div class="form-group">
-                                    <label>Last name</label>
-
-                                    <input type="text" name="form-last-name" placeholder="Last name..."
-                                           class="form-last-name form-control" id="form-last-name">
+                                    <select name="simple" id="DropUserGeneral" class="form-control">
+                                        <option value="Test">User Test</option>
+                                    </select>
 
                                 </div>
-                                <div class="form-group">
 
-                                    <label>About</label>
-
-                                    <textarea name="form-about-yourself" placeholder="About yourself..."
-                                              class="form-about-yourself form-control"
-                                              id="form-about-yourself"></textarea>
-
-
-                                </div>
                             </div>
                         </fieldset>
                     </div>
@@ -320,23 +306,25 @@
                             </div>
                             <div class="form-bottom">
                                 <div class="form-group">
-                                    <label class="sr-only" for="form-email">Email</label>
-                                    <input type="text" name="form-email" placeholder="Email..."
-                                           class="form-email form-control" id="form-email">
+                                    <label>name</label>
+                                    <input type="text"name="advance"  id="simplenamenemory" class="form-control" value="p"/>
+
                                 </div>
                                 <div class="form-group">
-                                    <label class="sr-only" for="form-password">Password</label>
-                                    <input type="password" name="form-password" placeholder="Password..."
-                                           class="form-password form-control" id="form-password">
+                                    <label>type</label>
+
+                                    <select   name="advance" id="scripttypenemory" class="form-control">
+                                        <option value="int">Int</option>
+                                        <option value="string">String</option>
+                                        <option value="list">list</option>
+                                        <option value="map">map</option>
+                                        <option value="web">web</option>
+                                        <option value="boolean">boolean</option>
+                                        <option value="float">float</option>
+
+                                    </select>
                                 </div>
-                                <div class="form-group">
-                                    <label class="sr-only" for="form-repeat-password">Repeat password</label>
-                                    <input type="password" name="form-repeat-password"
-                                           placeholder="Repeat password..."
-                                           class="form-repeat-password form-control" id="form-repeat-password">
-                                </div>
-                                <button type="button" class="btn btn-previous">Previous</button>
-                                <button type="button" class="btn btn-next">Next</button>
+
                             </div>
                         </fieldset>
                     </div>
@@ -350,19 +338,19 @@
                             </div>
                             <div class="form-bottom">
                                 <div class="form-group">
-                                    <label class="sr-only" for="form-facebook">Facebook</label>
-                                    <input type="text" name="form-facebook" placeholder="Facebook..."
-                                           class="form-facebook form-control" id="form-facebook">
+                                    <label>name</label>
+                                    <input type="text"  name="simple" id="simplenametimers" class="form-control" value="count"/>
+
                                 </div>
                                 <div class="form-group">
-                                    <label class="sr-only" for="form-twitter">Twitter</label>
-                                    <input type="text" name="form-twitter" placeholder="Twitter..."
-                                           class="form-twitter form-control" id="form-twitter">
+                                    <label>interval</label>
+                                    <input type="text"  name="simple" id="simpleintervaltimers" class="form-control" value="seconds(3)"/>
+
                                 </div>
                                 <div class="form-group">
-                                    <label class="sr-only" for="form-google-plus">Google plus</label>
-                                    <input type="text" name="form-google-plus" placeholder="Google plus..."
-                                           class="form-google-plus form-control" id="form-google-plus">
+                                    <label>script</label>
+                                    <input type="text" name="simple" id="simplescripttimers" class="form-control" value="counter++;"/>
+
                                 </div>
 
                             </div>
@@ -378,29 +366,32 @@
                             </div>
                             <div class="form-bottom">
                                 <div class="form-group">
-                                    <label class="sr-only" for="form-facebook">Facebook</label>
-                                    <input type="text" name="form-facebook" placeholder="Facebook..."
-                                           class="form-facebook form-control" id="form-facebook1">
+                                    <label>name</label>
+                                    <input type="text"  name="simple" id="simplenameoutputs" class="form-control" value="output1"/>
+
                                 </div>
                                 <div class="form-group">
-                                    <label class="sr-only" for="form-twitter">Twitter</label>
-                                    <input type="text" name="form-twitter" placeholder="Twitter..."
-                                           class="form-twitter form-control" id="form-twitter1">
+                                    <label>type</label>
+
+                                    <select name="simple"  id="simpletypeoutputs" class="form-control">
+                                        <option value="int">Int</option>
+                                        <option value="string">String</option>
+                                        <option value="list">list</option>
+                                        <option value="map">map</option>
+                                        <option value="web">web</option>
+                                        <option value="boolean">boolean</option>
+                                        <option value="float">float</option>
+
+                                    </select>
                                 </div>
                                 <div class="form-group">
-                                    <label class="sr-only" for="form-google-plus">Google plus</label>
-                                    <input type="text" name="form-google-plus" placeholder="Google plus..."
-                                           class="form-google-plus form-control" id="form-google-plus1">
+                                    <label>compute</label>
+                                    <input type="text" name="simple"  id="simplecomputeoutputs" class="form-control" value="counter"/>
+
                                 </div>
 
                             </div>
                         </fieldset>
-                    </div>
-                    <div class="step well">
-
-                    </div>
-                    <div class="step well">
-
                     </div>
 
                     <button class="action back btn btn-info">Back</button>

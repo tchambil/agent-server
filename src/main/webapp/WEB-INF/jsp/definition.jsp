@@ -154,7 +154,7 @@
             <ul class="legal-menu nav nav-list collapse">
                 <li><a href="/definition.do"><span class="fa fa-caret-right"></span> Definitions</a></li>
                 <li><a href="/listdefinition.do"><span class="fa fa-caret-right"></span> List</a></li>
-                <li><a href="/definitionscript.do"><span class="fa fa-caret-right"></span> Script(run)</a></li>
+                <li><a href="/definitionsjson.do"><span class="fa fa-caret-right"></span> Script(run)</a></li>
             </ul>
         </li>
         <!--<Agents]-->
