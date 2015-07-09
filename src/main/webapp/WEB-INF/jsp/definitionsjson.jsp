@@ -1,10 +1,11 @@
 <%--
   Created by IntelliJ IDEA.
   User: teo
-  Date: 08/07/15
-  Time: 16:11
+  Date: 09/07/15
+  Time: 01:36
   To change this template use File | Settings | File Templates.
 --%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html lang="en">
@@ -262,170 +263,20 @@
     </div>
     <div class="main-content">
 
-
         <div id="myTabContent" class="tab-content">
             <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <div class="progress">
-                        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0"
-                             aria-valuemax="100"></div>
+
+                    <div class="col-md-8">
+                        <pre>
+
+                                    <textarea id="textjson"  class="form-control" rows="20"></textarea>
+
+ <button id="btnscripptSave" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
+                         </pre>
                     </div>
-
-                    <div class="step well">
-                        <fieldset>
-                            <div class="form-top">
-                                <div class="form-top-left">
-                                    <h1>General</h1>
-                                </div>
-                            </div>
-                            <div class="form-bottom">
-                                <div class="form-group">
-                                    <label>name</label>
-                                    <input type="text"  name="simple" id="namegeneral" class="form-control" value="cuonter"/>
-                                </div>
-                                <div class="form-group">
-                                    <label>Description</label>
-                                    <input type="text"  name="simple" id="descriptiongeneral" class="form-control" value="First definition"/>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>User</label>
-
-                                    <select name="simple" id="DropUserGeneral" class="form-control">
-                                        <option value="Test">User Test</option>
-                                    </select>
-
-                                </div>
-
-                            </div>
-                        </fieldset>
-                    </div>
-                    <div class="step well">
-                        <fieldset>
-                            <div class="form-top">
-                                <div class="form-top-left">
-                                    <h1>Memory</h1>
-
-                                </div>
-
-                            </div>
-                            <div class="form-bottom">
-                                <div class="form-group">
-                                    <label>name</label>
-                                    <input type="text" name="simple" id="simplenamenemory" class="form-control" value="counter"/>
-
-
-                                </div>
-                                <div class="form-group">
-                                    <label>type</label>
-
-
-                                    <select  name="simple" id="simpletypenemory" class="form-control">
-                                        <option value="int">Int</option>
-                                        <option value="string">String</option>
-                                        <option value="list">list</option>
-                                        <option value="map">map</option>
-                                        <option value="web">web</option>
-                                        <option value="boolean">boolean</option>
-                                        <option value="float">float</option>
-
-                                    </select>
-                                </div>
-
-                            </div>
-                        </fieldset>
-                    </div>
-                    <div class="step well">
-                        <fieldset>
-                            <div class="form-top">
-                                <div class="form-top-left">
-                                    <h1>Script</h1>
-                                </div>
-
-                            </div>
-                            <div class="form-bottom">
-                                <div class="form-group">
-                                    <label>name</label>
-                                    <input type="text"  name="simple" id="simplenametimers" class="form-control" value="count"/>
-
-                                </div>
-                                <div class="form-group">
-                                    <label>interval</label>
-                                    <input type="text"  name="simple" id="simpleintervaltimers" class="form-control" value="seconds(3)"/>
-
-                                </div>
-                                <div class="form-group">
-                                    <label>script</label>
-                                    <input type="text" name="simple" id="simplescripttimers" class="form-control" value="counter++;"/>
-
-                                </div>
-
-                            </div>
-                        </fieldset>
-                    </div>
-                    <div class="step well">
-                        <fieldset>
-                            <div class="form-top">
-                                <div class="form-top-left">
-                                    <h1>Output</h1>
-                                </div>
-
-                            </div>
-                            <div class="form-bottom">
-                                <div class="form-group">
-                                    <label>name</label>
-                                    <input type="text"  name="simple" id="simplenameoutputs" class="form-control" value="output1"/>
-
-                                </div>
-                                <div class="form-group">
-                                    <label>type</label>
-
-                                    <select name="simple"  id="simpletypeoutputs" class="form-control">
-                                        <option value="int">Int</option>
-                                        <option value="string">String</option>
-                                        <option value="list">list</option>
-                                        <option value="map">map</option>
-                                        <option value="web">web</option>
-                                        <option value="boolean">boolean</option>
-                                        <option value="float">float</option>
-
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>compute</label>
-                                    <input type="text" name="simple"  id="simplecomputeoutputs" class="form-control" value="counter"/>
-
-                                </div>
-
-                            </div>
-                        </fieldset>
-                    </div>
-
-                    <button class="action back btn btn-info"><i class="fa fa-backward"></i>Back</button>
-                    <button class="action next btn btn-info"><i class="fa fa-forward"></i>Next</button>
-                    <button id="btnsimpleSdve"  class="action submit btn btn-success"> <i class="fa fa-save"></i>Save</button>
-                    <button id="btnclean"  class="action submit btn btn-success"> <i class="fa fa-stop"></i>New</button>
-
-
-
-                    <div id="idMessageAgent" class="alert alert-info">
-                    </div>
-                </div>
             </div>
         </div>
-        <div id="myModal" class="modal fade">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <!-- dialog body -->
-                    <div class="modal-body">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        Add was successful !
-                    </div>
-                    <!-- dialog buttons -->
-                    <div class="modal-footer"><button type="button" class="btn btn-primary">OK</button></div>
-                </div>
-            </div>
-        </div>
+
 
         <footer>
             <hr>

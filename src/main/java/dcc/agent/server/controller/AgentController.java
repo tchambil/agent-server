@@ -271,7 +271,10 @@ public class AgentController {
         agent.enable();
 
         // Done
-        return agent.toString();
+        JSONObject message = new JSONObject();
+        message.put("message", "resume/enable agent instance");
+
+        return message.toString();
 
     }
     @RequestMapping(value = "/users/{id}/agents/{name}/run_script/{scriptName}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)

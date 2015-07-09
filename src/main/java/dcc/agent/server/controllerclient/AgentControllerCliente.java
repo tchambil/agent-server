@@ -14,7 +14,7 @@ public class AgentControllerCliente {
     @RequestMapping(value = "/agent.do",method = RequestMethod.GET)
     public String getagent(ModelMap modelMap)
        {
-           return "definitionsadvanced";
+           return "agent";
        }
 
     @RequestMapping(value = "/listagent.do",method = RequestMethod.GET)

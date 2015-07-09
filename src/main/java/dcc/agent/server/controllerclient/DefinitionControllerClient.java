@@ -24,7 +24,7 @@ public class DefinitionControllerClient {
     @RequestMapping(value = "/definitionsjson.do", method = RequestMethod.GET)
     public String getdefinitionscript(ModelMap modelMap)
     {
-        return "definitionjson";
+        return "definitionsjson";
     }
 
 

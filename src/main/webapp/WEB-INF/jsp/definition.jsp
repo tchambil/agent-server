@@ -260,10 +260,11 @@
            <div id="myTabContent" class="tab-content">
                     <div class="tab-pane fade" id="json">
                         <div class="col-md-8">
-                        <pre>
+
                             <div id="codejson">
+                                <textarea id="textjson"  class="form-control" rows="20"></textarea>
                             </div>
-                         </pre>
+
                         </div>
                     </div><!-- finish simple-->
                     <div class="tab-pane fade" id="scrippre">

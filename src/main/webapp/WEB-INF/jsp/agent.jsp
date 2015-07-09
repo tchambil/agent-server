@@ -165,7 +165,7 @@
         </li>
         <li>
             <ul class="premium-menu nav nav-list collapse">
-                <li><a href="/agent.do"><span class="fa fa-caret-right"></span> Agent</a> </li>
+                <li><a href="/agent.do"><span class="fa fa-caret-right"></span> Agent</a></li>
                 <li><a href="/listagent.do"><span class="fa fa-caret-right"></span> List</a></li>
             </ul>
         </li>
@@ -221,7 +221,8 @@
                     <a href="/tutorial"><span class="fa fa-caret-right"></span> Simple</a>
                 </li>
                 <li>
-                    <a target="_blank" href="/resource/files/tutorial.txt" ><span class="fa fa-caret-right"></span> Intermediate</a>
+                    <a target="_blank" href="/resource/files/tutorial.txt"><span class="fa fa-caret-right"></span>
+                        Intermediate</a>
                 </li>
                 <li>
                     <a href="/tutorialintermediate"><span class="fa fa-caret-right"></span> Advanced</a>
@@ -236,159 +237,112 @@
 </div>
 
 <div class="content">
-<div class="stats">
-    <span   class="label label-danger">Status:</span> <span id="headerStatus">null</span>
-    <span>&nbsp;&nbsp;</span>
-    <span class="label label-success">Address IP:</span> <span id="headerIp">null</span>
-    <span>&nbsp;&nbsp;</span>
-    <span class="label label-info">Server:</span> <span id="headerServer">null</span>
-    <span>&nbsp;&nbsp;</span>
-</div>
-
-<div class="header">
-    <h1 class="page-title">Agents</h1>
-</div>
-<div class="main-content">
-<ul class="nav nav-tabs">
-    <li class="active"><a href="#home" data-toggle="tab">Register</a></li>
-    <li><a href="#advanced" data-toggle="tab">Result</a></li>
-
-</ul>
-
-<div class="row">
-<div id="myTabContent" class="tab-content">
-
-<div class="tab-pane active in" id="home">
-
-    <div class="col-md-4">
-        <div class="widget">
-            <ul class="cards list-group">
-
-                <li class="list-group-item">
-                    <p class="label label-warning header-label">General</p>
-                    <div class="form-group">
-                        <label>name</label>
-                        <input type="text" id="nameagentgeneral" class="form-control" value="cuonter"/>
-
-                    </div>
-
-                    <div class="form-group">
-                        <label>type</label>
-                        <select   id="typeagent" class="form-control">
-                            <option value="local">local</option>
-                            <option value="remote">remote</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>addresses</label>
-                        <input type="text" id="addressesagent" class="form-control" value="http://sfreebase.cloudapp.net"/>
-
-                    </div>
-                </li>
-                <li class="list-group-item">
-
-                    <div class="form-group">
-
-                        <label>User</label>
-                        <select   id="DropUserGeneral" class="form-control">
-                            <option value="Test">Selection Item</option>
-                        </select>
-
-                    </div>
-                    <div class="form-group">
-                        <label>Agent Definitions</label>
-                        <select  id="DropAgentGeneral" class="form-control">
-                            <option value="Test">Selection Item</option>
-                        </select>
-
-                    </div>
-
-                </li>
-            </ul>
-            <button id="btnagentSdve" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
-            <a href="#myModal" data-toggle="modal" class="btn btn-danger">Delete</a>
-            <br/>      <br/>
-            <div id="idMessagsedAgent" class="alert alert-info">
-            </div>
-
-        </div>
-    </div><!-- finish col-md-3-->
-
-
-</div><!-- finish simple-->
-
-<div class="tab-pane fade" id="advanced">
-
-
-    <div class="col-md-3">
-        <div class="widget">
-            <ul class="cards list-group">
-                <li class="list-group-item">
-                    <p class="label label-warning header-label">General</p>
-                    <div class="form-group">
-                        <label>name</label>
-                        <input type="text" name="id" id="advancenamegeneral" class="form-control" value="cuonter"/>
-
-                    </div>
-                    <div class="form-group">
-                        <label>User</label>
-
-                        <select name="DropUsergeneral" id="advanceusergeneral" class="form-control">
-                            <option value="Test">User Test</option>
-                        </select>
-                    </div>
-
-                </li>
-                <li>
-
-                </li>
-
-            </ul>
-
-            <button id="btnadvanceSdve" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
-            <a href="#myModal" data-toggle="modal" class="btn btn-danger">Delete</a>
-            <br/>      <br/>
-            <div id="idMessagsesdUser" class="alert alert-success">
-            </div>
-
-        </div>
-    </div><!-- finish col-md-3-->
-
-</div>
-
-</div>
-</div>
-
-<div class="modal small fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h3 id="myModalLabel">Delete Confirmation</h3>
-            </div>
-            <div class="modal-body">
-
-                <p class="error-text"><i class="fa fa-warning modal-icon"></i>Are you sure you want to delete
-                    the Agent Definitions?</p>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cancel</button>
-                <button id="btndefinitionDelete" class="btn btn-danger" data-dismiss="modal">Delete</button>
-            </div>
-        </div>
+    <div class="stats">
+        <span class="label label-danger">Status:</span> <span id="headerStatus">null</span>
+        <span>&nbsp;&nbsp;</span>
+        <span class="label label-success">Address IP:</span> <span id="headerIp">null</span>
+        <span>&nbsp;&nbsp;</span>
+        <span class="label label-info">Server:</span> <span id="headerServer">null</span>
+        <span>&nbsp;&nbsp;</span>
     </div>
-</div>
+
+    <div class="header">
+        <h1 class="page-title">Agents</h1>
+    </div>
+    <div class="main-content">
+
+        <div id="myTabContent" class="tab-content">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="widget">
+                        <ul class="cards list-group">
+
+                            <li class="list-group-item">
+
+                                <div class="form-group">
+                                    <label>name</label>
+                                    <input type="text" id="nameagentgeneral" class="form-control" value="cuonter"/>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label>type</label>
+                                    <select id="typeagent" class="form-control">
+                                        <option value="local">local</option>
+                                        <option value="remote">remote</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>addresses</label>
+                                    <input type="text" id="addressesagent" class="form-control"
+                                           value="http://sfreebase.cloudapp.net"/>
+
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+
+                                <div class="form-group">
+
+                                    <label>User</label>
+                                    <select id="DropUserGeneral" class="form-control">
+                                        <option value="Test">Selection Item</option>
+                                    </select>
+
+                                </div>
+                                <div class="form-group">
+                                    <label>Agent Definitions</label>
+                                    <select id="DropAgentGeneral" class="form-control">
+                                        <option value="Test">Selection Item</option>
+                                    </select>
+
+                                </div>
+
+                            </li>
+                        </ul>
+                        <button id="getstart" class="btn btn-primary"><i class="fa fa-play"></i> Start</button>
+                        <button id="btnagentpause" class="btn btn-primary"><i class="fa fa-pause"></i> Pause</button>
+                        <button id="btnagentresume" class="btn btn-primary"><i class="fa fa-refresh"></i> Resume
+                        </button>
+
+                        <div id="idMessagsedAgent" class="alert alert-info">
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="modal small fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h3 id="myModalLabel">Delete Confirmation</h3>
+                    </div>
+                    <div class="modal-body">
+
+                        <p class="error-text"><i class="fa fa-warning modal-icon"></i>Are you sure you want to delete
+                            the Agent Instance?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                        <button id="btndefinitionDelete" class="btn btn-danger" data-dismiss="modal">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
-<footer>
-    <hr>
-    <p class="pull-right">A <a href="http://www.portnine.com/bootstrap-themes" target="_blank">Free Bootstrap
-        Theme</a> by <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
+        <footer>
+            <hr>
+            <p class="pull-right">A <a href="http://www.portnine.com/bootstrap-themes" target="_blank">Free Bootstrap
+                Theme</a> by <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
 
-    <p>© 2015 <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
-</footer>
-</div>
+            <p>© 2015 <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
+        </footer>
+    </div>
 </div>
 <script src="/resource/js/site/bootstrap.js"></script>
 <script type="text/javascript">
