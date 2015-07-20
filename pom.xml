@@ -53,7 +53,19 @@
             <version>0.20</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpcore</artifactId>
+            <version>4.4.1</version>
+        </dependency>
+
         <!-- dependecy spring -->
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
@@ -103,7 +115,11 @@
 
         <!-- dependecy others -->
 
-
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.4</version>
+        </dependency>
         <dependency><!-- jackson -->
             <groupId>org.codehaus.jackson</groupId>
             <artifactId>jackson-mapper-asl</artifactId><version>1.4.2</version>
@@ -130,11 +146,7 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.0</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>4.0-alpha4</version>
-        </dependency>
+
         <dependency>
                 <groupId>log4j</groupId>
                 <artifactId>log4j</artifactId>
@@ -162,6 +174,8 @@
             <version>7.0</version>
             <scope>provided</scope>
         </dependency>
+
+
 
 
     </dependencies>

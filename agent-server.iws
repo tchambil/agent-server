@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2cf9c626-ec31-4eb5-ac64-d54f63553b96" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\AppServ\www\agent-server\src\main\java\dcc\agent\server\service\swget\multithread\endpointArray.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent-server.iws" afterPath="$PROJECT_DIR$/agent-server.iws" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
     </list>
@@ -1268,7 +1267,7 @@
       <workItem from="1436901338174" duration="2538000" />
       <workItem from="1437083836731" duration="2421000" />
       <workItem from="1437350274262" duration="5170000" />
-      <workItem from="1437370210708" duration="16498000" />
+      <workItem from="1437370210708" duration="16516000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1431836573263</created>
@@ -1458,11 +1457,15 @@
       <created>1437429567027</created>
       <updated>1437429567027</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="update scripting, add functions delegate, message queue.">
+      <created>1437430012822</created>
+      <updated>1437430012822</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="893458000" />
+    <option name="totallyTimeSpent" value="893476000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
