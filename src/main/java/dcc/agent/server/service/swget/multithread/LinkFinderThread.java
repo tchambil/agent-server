@@ -26,7 +26,7 @@ public class LinkFinderThread implements Runnable {
 	private boolean fire_action;
 	private boolean stream_res = false;
 	private boolean withBudget = false;
-
+    private EndPoints endPoints;
 	private static long t0 = System.currentTimeMillis();
 	
 	public static void resetTimer(){
@@ -43,6 +43,7 @@ public class LinkFinderThread implements Runnable {
 		this.NautiLODManager = handler;
 		this.stream_res = stream_res;
 		this.withBudget = withBudget;
+
 	}
 
 	/**
@@ -152,6 +153,8 @@ public class LinkFinderThread implements Runnable {
 
 	}
 
+
+
 	/**
 	 * Extract outgoing links according to starting_uri (the URI associated to
 	 * the current thread)
@@ -159,6 +162,7 @@ public class LinkFinderThread implements Runnable {
 	 * @param uri_to_expand
 	 * @return
 	 */
+
     public ArrayList<URIData>extractLink(URIData uri_to_expand){
         ArrayList<URIData> links_to_expand = new ArrayList<URIData>();
         String current_URI = uri_to_expand.getUrl();
@@ -199,7 +203,7 @@ public class LinkFinderThread implements Runnable {
 
                 Query query = QueryFactory.create(queryString);
 
-                QueryExecution qexec = QueryExecutionFactory.sparqlService(Endpoints.dbpedia.getEndpoints(), query);
+                QueryExecution qexec = QueryExecutionFactory.sparqlService(endPoints.getEndpoint(uri_to_expand), query);
 
                 //QueryExecution qexec = QueryExecutionFactory.create(query,urrent_model);
 
@@ -256,7 +260,7 @@ public class LinkFinderThread implements Runnable {
                         + uri_to_expand.getUrl().toString() + "> .}";
                 //  System.out.println("query:"+queryString);
                 query = QueryFactory.create(queryString);
-                qexec = QueryExecutionFactory.sparqlService(Endpoints.dbpedia.getEndpoints(), query);
+                qexec = QueryExecutionFactory.sparqlService(endPoints.getEndpoint(uri_to_expand), query);
                 // qexec = QueryExecutionFactory.create(query, current_model);
 
                 results = qexec.execSelect();
@@ -632,9 +636,16 @@ public class LinkFinderThread implements Runnable {
 				String new_q = query.substring(1, query.length() - 1);
 				boolean resq = false;
 				try {
-                    String queryString = new_q.replaceAll("\\?ctx","<" + uri_to_expand.getUrl()+">" );
-                    Query queryask = QueryFactory.create(queryString);
-                    QueryExecution qexec = QueryExecutionFactory.sparqlService(Endpoints.dbpedia.getEndpoints(), queryask);
+
+                    if(new_q.indexOf("ctx")>1){
+                        new_q = new_q.replaceAll("\\?ctx","<" + uri_to_expand.getUrl()+">" );
+                    }
+                    else if  (new_q.indexOf("paper")>1){
+                        new_q= new_q.replaceAll("\\?paper","<" + uri_to_expand.getUrl()+">" );
+                    }
+
+                    Query queryask = QueryFactory.create(new_q);
+                    QueryExecution qexec = QueryExecutionFactory.sparqlService(endPoints.getEndpoint(uri_to_expand), queryask);
                     resq = qexec.execAsk();
 					qexec.close();
 				} catch (Exception e)
