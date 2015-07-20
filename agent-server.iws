@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2cf9c626-ec31-4eb5-ac64-d54f63553b96" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent-server.iws" afterPath="$PROJECT_DIR$/agent-server.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-    </list>
-    <list id="cc92e172-e73f-475d-a93b-08a7f7ea8901" name="Failed commit: Default" comment="update scripting, add functions delegate, message queue.">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent-server.ipr" afterPath="$PROJECT_DIR$/agent-server.ipr" />
     </list>
     <ignored path="agent-server.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -1267,7 +1263,7 @@
       <workItem from="1436901338174" duration="2538000" />
       <workItem from="1437083836731" duration="2421000" />
       <workItem from="1437350274262" duration="5170000" />
-      <workItem from="1437370210708" duration="16516000" />
+      <workItem from="1437370210708" duration="16549000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1431836573263</created>
@@ -1461,11 +1457,19 @@
       <created>1437430012822</created>
       <updated>1437430012822</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="update scripting, add functions delegate, message queue.">
+      <created>1437430031696</created>
+      <updated>1437430031696</updated>
+    </task>
+    <task id="LOCAL-00050" summary="update scripting, add functions delegate, message queue.">
+      <created>1437430052485</created>
+      <updated>1437430052486</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="893476000" />
+    <option name="totallyTimeSpent" value="893509000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
