@@ -26,7 +26,7 @@ public class LinkFinderThread implements Runnable {
 	private boolean fire_action;
 	private boolean stream_res = false;
 	private boolean withBudget = false;
-    private EndPoints endPoints;
+    private EndPointData endPoints;
 	private static long t0 = System.currentTimeMillis();
 	
 	public static void resetTimer(){

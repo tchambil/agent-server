@@ -7,7 +7,7 @@ import dcc.agent.server.service.swget.utils.URIData;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-public class EndPoints {
+public class EndPointData {
     public static String getEndpoint(URIData uriData) {
         {
             String current_URI = uriData.getUrl();
