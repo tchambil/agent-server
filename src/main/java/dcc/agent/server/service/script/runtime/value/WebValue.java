@@ -106,7 +106,7 @@ public class WebValue extends Value {
                 wait = arguments.get(3).getBooleanValue();
 
             // Fetch the specified web page
-            String s = fetchnatilod(scriptState, command, comment);
+            String s = fetchNatilod(scriptState, command, comment);
             if (s == null || s.length() == 0)
                 return NullValue.one;
             else
@@ -192,11 +192,12 @@ public class WebValue extends Value {
             return super.getMethodValue(scriptState, name, arguments);
     }
 
-    private String fetchnatilod(ScriptState scriptState, String command, String comment)  {
+    private String fetchNatilod(ScriptState scriptState, String command, String comment)  {
         this.navigator = new Navigator();
         try {
-            navigator.runCommand(scriptState, comment, command);
-            return "init";
+           String[] s= navigator.runCommand(scriptState,  command,comment);
+
+            return ("NautilodInit");
         } catch (ParseException e) {
             e.printStackTrace();
         }

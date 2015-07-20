@@ -17,6 +17,12 @@ public class AgentControllerCliente {
            return "agent";
        }
 
+    @RequestMapping(value = "/agentscript.do",method = RequestMethod.GET)
+    public String getagentscript(ModelMap modelMap)
+    {
+        return "agentscript";
+    }
+
     @RequestMapping(value = "/listagent.do",method = RequestMethod.GET)
     public String getagentlist(ModelMap modelMap)
     {
@@ -30,10 +36,10 @@ public class AgentControllerCliente {
         return "message";
     }
 
-    @RequestMapping(value = "/swget.do", method = RequestMethod.GET)
+    @RequestMapping(value = "/testscript.do", method = RequestMethod.GET)
     public String swget(ModelMap modelMap)
     {
-        return "swget";
+        return "testscript";
     }
 
 }

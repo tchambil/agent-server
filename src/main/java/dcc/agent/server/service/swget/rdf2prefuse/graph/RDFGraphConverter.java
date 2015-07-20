@@ -1,7 +1,5 @@
-/*   1:    */
 package dcc.agent.server.service.swget.rdf2prefuse.graph;
-/*   2:    */ 
-/*   3:    */
+
 
 import com.hp.hpl.jena.rdf.model.*;
 import dcc.agent.server.service.swget.rdf2prefuse.Converter;
@@ -14,57 +12,51 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 
 
-/*  18:    */ public class RDFGraphConverter
-/*  19:    */ extends Converter
-/*  20:    */ {
-    /*  21:    */   private Graph m_graph;
-    /*  22:    */   private ArrayList<String[]> m_edges;
-    /*  23:    */   private Hashtable<String, Boolean> predicates;
-    /*  24:    */   private Hashtable<String, Boolean> uris;
-    /*  25:    */   private String rootUri;
-    /*  26:    */   private Hashtable<String, Node> m_nodes;
-    /*  27: 52 */   private String uri = null;
+public class RDFGraphConverter
+        extends Converter {
+    private Graph m_graph;
+    private ArrayList<String[]> m_edges;
+    private Hashtable<String, Boolean> predicates;
+    private Hashtable<String, Boolean> uris;
+    private String rootUri;
+    private Hashtable<String, Node> m_nodes;
+    private String uri = null;
 
-    /*  28:    */
-/*  29:    */
-    public RDFGraphConverter(String p_RDFFile, String uri)
-/*  30:    */ {
-/*  31: 67 */
+
+    public RDFGraphConverter(String p_RDFFile, String uri) {
+
         super(p_RDFFile);
-/*  32: 68 */
+
         this.uri = uri;
-/*  33: 69 */
+
         for (int i = 0; i < Constants.namespaces_values.length; i++) {
-/*  34: 70 */
-            if (this.uri.startsWith(Constants.namespaces_values[i]))
-/*  35:    */ {
-/*  36: 71 */
+
+            if (this.uri.startsWith(Constants.namespaces_values[i])) {
+
                 this.uri =
-/*  37: 72 */           (Constants.namespaces_keys[i] + this.uri.substring(this.uri
-/*  38: 73 */.indexOf(Constants.namespaces_values[i]) +
-/*  39: 74 */           Constants.namespaces_values[i].length()));
-/*  40: 75 */
+                        (Constants.namespaces_keys[i] + this.uri.substring(this.uri
+                                .indexOf(Constants.namespaces_values[i]) +
+                                Constants.namespaces_values[i].length()));
+
                 break;
-/*  41:    */
+
             }
-/*  42:    */
+
         }
-/*  43: 78 */
+
         init();
-/*  44:    */
+
     }
 
-    /*  45:    */
-/*  46:    */
-    public RDFGraphConverter(String p_RDFFile)
-/*  47:    */ {
-/*  48: 82 */
+
+    public RDFGraphConverter(String p_RDFFile) {
+
         super(p_RDFFile);
-/*  49: 83 */
+
         this.uri = null;
-/*  50: 84 */
+
         init();
-/*  51:    */
+
     }
 
 

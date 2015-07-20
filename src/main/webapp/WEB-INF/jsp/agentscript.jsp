@@ -1,11 +1,10 @@
 <%--
   Created by IntelliJ IDEA.
   User: teo
-  Date: 08/07/15
-  Time: 22:33
+  Date: 09/07/15
+  Time: 15:11
   To change this template use File | Settings | File Templates.
 --%>
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html lang="en">
@@ -23,11 +22,8 @@
 
     <script src="/resource/js/site/jquery-1.11.1.min.js" type="text/javascript"></script>
     <script src="/resource/js/site/jquery.knob.js" type="text/javascript"></script>
-    <script src="/resource/js/user.js"></script>
+    <script src="/resource/js/agent.js"></script>
     <script src="/resource/js/system.js"></script>
-    <script src="/resource/js/agentdefinition.js"></script>
-    <script src="/resource/js/formagents.js"></script>
-
     <script type="text/javascript">
         $(function () {
             $(".knob").knob();
@@ -79,7 +75,6 @@
     });
 </script>
 
-
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
 <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -120,9 +115,9 @@
                 </a>
 
                 <ul class="dropdown-menu">
-                    <li><a href="../">My Account</a></li>
+                    <li><a href="">My Account</a></li>
                     <li class="divider"></li>
-                    <li><a href="../">Users</a></li>
+                    <li><a href="">Users</a></li>
                     <li class="divider"></li>
                     <li><a tabindex="-1" href="sign-in.jsp">Logout</a></li>
                 </ul>
@@ -130,6 +125,7 @@
         </ul>
 
     </div>
+</div>
 </div>
 
 
@@ -163,12 +159,12 @@
         </li>
         <li>
             <ul class="legal-menu nav nav-list collapse">
-                <li><a href="/definitionsimple.do"><span class="fa fa-caret-right"></span> Simple</a></li>
-                <li><a href="/definitionadvanced.do"><span class="fa fa-caret-right"></span> Advanced</a></li>
-                <li><a href="/definitionsjson.do"><span class="fa fa-caret-right"></span> JSON</a></li>
+
+                <li><a href="/definition.do"><span class="fa fa-caret-right"></span> Definitions</a></li>
                 <li><a href="/listdefinition.do"><span class="fa fa-caret-right"></span> List</a></li>
             </ul>
         </li>
+
         <!--<Agents]-->
         <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".premium-menu"
                                                                         class="nav-header collapsed"
@@ -182,7 +178,6 @@
                 <li><a href="/listagent.do"><span class="fa fa-caret-right"></span> List</a></li>
             </ul>
         </li>
-
         <!--<Groups]-->
         <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".group-menu"
                                                                         class="nav-header collapsed"
@@ -259,229 +254,90 @@
         <span class="label label-info">Server:</span> <span id="headerServer">null</span>
         <span>&nbsp;&nbsp;</span>
     </div>
+
     <div class="header">
-        <h1 class="page-title">Agent Definitions</h1>
+        <h1 class="page-title">Agents</h1>
     </div>
     <div class="main-content">
 
-
         <div id="myTabContent" class="tab-content">
             <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <div class="progress">
-                        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0"
-                             aria-valuemax="100"></div>
-                    </div>
+                <div class="col-md-8">
+                    <div class="widget">
+                        <ul class="cards list-group">
 
-                    <div class="step well">
-                        <fieldset>
-                            <div class="form-top">
-                                <div class="form-top-left">
-                                    <h1>General</h1>
-                                </div>
-                            </div>
-                            <div class="form-bottom">
+
+                            <li class="list-group-item">
                                 <div class="form-group">
-                                    <label>name</label>
-                                    <input type="text"  name="advance" id="advancenamegeneral" class="form-control" value="cuonter"/>
 
-                                </div>
-                                <div class="form-group">
-                                    <label>User</label>
-
-                                    <select name="advance" id="advanceusergeneral" class="form-control">
-                                        <option value="Test">User Test</option>
+                                    <label>Users</label>
+                                    <select id="DropUserGeneral" class="form-control">
+                                        <option value="Test">Selection Item</option>
                                     </select>
 
                                 </div>
-
-                            </div>
-                        </fieldset>
-                    </div>
-                    <div class="step well">
-                        <fieldset>
-                            <div class="form-top">
-                                <div class="form-top-left">
-                                    <h1>Memory</h1>
-
-                                </div>
-
-                            </div>
-                            <div class="form-bottom">
                                 <div class="form-group">
-                                    <label>name</label>
-
-                                    <input type="text"name="advance"  id="advancenamenemory" class="form-control" value="counter"/>
-
-                                </div>
-                                <div class="form-group">
-                                    <label>type</label>
-
-                                    <select   name="advance" id="typenemory" class="form-control">
-                                        <option value="int">Int</option>
-                                        <option value="string">String</option>
-                                        <option value="list">list</option>
-                                        <option value="map">map</option>
-                                        <option value="web">web</option>
-                                        <option value="boolean">boolean</option>
-                                        <option value="float">float</option>
-
+                                    <label>Agents</label>
+                                    <select id="Dropagent" class="form-control">
+                                        <option value="Test">Selection Item</option>
                                     </select>
+
+                                </div>
+                                <div class="form-group">
+                                    <label>Name script</label>
+                                    <input type="text" id="namescript" class="form-control" value="for"/>
+
                                 </div>
 
-                            </div>
-                        </fieldset>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="form-group">
+                                    <label><p><b>arguments</b></p></label>
+
+                                    <textarea id="scriptid" class="form-control" ></textarea>
+                                    <button id="startscript" class="btn btn-primary"><i class="fa fa-play"></i> Start</button>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="form-group">
+                                    <label><p><b>result:</b></p></label>
+                                    <div id="resultscript">
+                                    </div>
+                                </div>
+                            </li>
+
+                        </ul>
+
+
+
+
                     </div>
-                    <div class="step well">
-                        <fieldset>
-                            <div class="form-top">
-                                <div class="form-top-left">
-                                    <h1>Timers</h1>
-                                </div>
+                </div>
 
-                            </div>
-                            <div class="form-bottom">
-                                <div class="form-group">
-                                    <label>name</label>
-                                    <input type="text" name="advance" id="advancenametimers" class="form-control" value="count"/>
+            </div>
+        </div>
 
-                                </div>
-                                <div class="form-group">
-                                    <label>interval</label>
-                                    <input type="text" name="advance" id="advanceintervaltimers" class="form-control" value="eval(timer_interval_expression)"/>
-
-                                </div>
-                                <div class="form-group">
-                                    <label>script</label>
-                                    <input type="text" name="advance"id="advancescripttimers" class="form-control" value="counter++;"/>
-
-                                </div>
-
-                            </div>
-                        </fieldset>
+        <div class="modal small fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h3 id="myModalLabel">Delete Confirmation</h3>
                     </div>
-                    <div class="step well">
-                        <fieldset>
-                            <div class="form-top">
-                                <div class="form-top-left">
-                                    <h1>parameters input</h1>
-                                </div>
+                    <div class="modal-body">
 
-                            </div>
-                            <div class="form-bottom">
-                                <div class="form-group">
-                                    <label>name</label>
-                                    <input type="text"  name="advance" id="parametersname" class="form-control" value="timer_interval_expression"/>
-
-                                </div>
-                                <div class="form-group">
-                                    <label>type</label>
-
-                                    <select  name="advance"  id="typeparameterinput" class="form-control">
-                                        <option value="int">Int</option>
-                                        <option value="string">String</option>
-                                        <option value="list">list</option>
-                                        <option value="map">map</option>
-                                        <option value="web">web</option>
-                                        <option value="boolean">boolean</option>
-                                        <option value="float">float</option>
-
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>default_value</label>
-                                    <input type="text"  name="advance" id="parametersdefault_value" class="form-control" value="seconds(3)"/>
-
-                                </div>
-
-                            </div>
-                        </fieldset>
+                        <p class="error-text"><i class="fa fa-warning modal-icon"></i>Are you sure you want to delete
+                            the Agent Instance?</p>
                     </div>
-
-                    <div class="step well">
-                        <fieldset>
-                            <div class="form-top">
-                                <div class="form-top-left">
-                                    <h1>parameters out</h1>
-                                </div>
-
-                            </div>
-                            <div class="form-bottom">
-
-                                <div class="form-group">
-                                    <label>name</label>
-                                    <input type="text"  name="advance"  id="parametersnameout" class="form-control" value="output_text"/>
-
-                                </div>
-                                <div class="form-group">
-                                    <label>type</label>
-
-
-                                    <select name="advance"   id="typeparameterout" class="form-control">
-
-                                        <option value="string">String</option>
-                                        <option value="int">Int</option>
-                                        <option value="list">list</option>
-                                        <option value="map">map</option>
-                                        <option value="web">web</option>
-                                        <option value="boolean">boolean</option>
-                                        <option value="float">float</option>
-
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>default_value</label>
-                                    <input type="text" name="advance" id="parametersdefault_valueout" class="form-control" value="The count is"/>
-
-                                </div>
-                            </div>
-                        </fieldset>
+                    <div class="modal-footer">
+                        <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                        <button id="btndefinitionDelete" class="btn btn-danger" data-dismiss="modal">Delete</button>
                     </div>
-
-                    <div class="step well">
-                        <fieldset>
-                            <div class="form-top">
-                                <div class="form-top-left">
-                                    <h1>Output</h1>
-                                </div>
-
-                            </div>
-                            <div class="form-bottom">
-                                <div class="form-group">
-                                    <label>name</label>
-                                    <input type="text" name="advance" id="advancenameoutputs" class="form-control" value="output1"/>
-
-                                </div>
-                                <div class="form-group">
-                                    <label>type</label>
-
-                                    <select name="advance"  id="typeoutputs" class="form-control">
-                                        <option value="int">Int</option>
-                                        <option value="string">String</option>
-                                        <option value="list">list</option>
-                                        <option value="map">map</option>
-                                        <option value="web">web</option>
-                                        <option value="boolean">boolean</option>
-                                        <option value="float">float</option>
-
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>compute</label>
-                                    <input type="text" name="advance" id="advancecomputeoutputs" class="form-control" value="output_text + counter"/>
-
-                                </div>
-
-                            </div>
-                        </fieldset>
-                    </div>
-
-                    <button class="action back btn btn-info">Back</button>
-                    <button class="action next btn btn-info">Next</button>
-                    <button class="action submit btn btn-success">Submit</button>
                 </div>
             </div>
         </div>
+
 
         <footer>
             <hr>
@@ -492,10 +348,7 @@
         </footer>
     </div>
 </div>
-
-
 <script src="/resource/js/site/bootstrap.js"></script>
-
 <script type="text/javascript">
     $("[rel=tooltip]").tooltip();
     $(function () {
@@ -508,4 +361,3 @@
 
 </body>
 </html>
-

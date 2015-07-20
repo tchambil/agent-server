@@ -146,7 +146,7 @@ public class AgentController {
         User user = agentServer.users.get(id);
         String agentName = name;
 
-        String notificationNames = notificationName.length() >= 7 ? notificationName : null;
+        String notificationNames = notificationName;//.length() >= 7 ? notificationName : null;
 
         String responseParam = request.getParameter("response");
         String responseChoice = request.getParameter("response_choice");
@@ -679,7 +679,7 @@ public class AgentController {
         agentServer = plataform.getAgentServer();
         User user = agentServer.users.get(id);
         String agentName = name;
-        String notificationName = notificationNames.length() >= 7 ? notificationNames : null;
+        String notificationName = notificationNames;//.length() >= 7 ? notificationNames : null;
         String responseParam = request.getParameter("response");
         String responseChoice = request.getParameter("response_choice");
         String comment = request.getParameter("comment");
@@ -970,10 +970,11 @@ public class AgentController {
         PlataformController plataformController = new PlataformController();
         agentServer = plataformController.getAgentServer();
         this.navigator = new Navigator();
-       // String command =  "http://dblp.l3s.de/d2r/resource/authors/Tim_Berners-Lee -p  (<foaf:maker>[ASK {?paper <http://swrc.ontoware.org/ontology#series> <http://dblp.l3s.de/d2r/resource/conferences/semweb>.}]/<foaf:maker>)<1-1>/<foaf:maker>[ASK {?paper <http://swrc.ontoware.org/ontology#journal> <http://dblp.l3s.de/d2r/resource/journals/cacm>.}]  -f TBL-cacm-iswc-coauthors3.rdf -recon -print";
-        //String command ="http://dbpedia.org/resource/Italy -p dbpedia-owl:hometown[ASK {?ctx rdf:type dbpedia-owl:Person. ?ctx rdf:type dbpedia:MusicalArtist.}]/dbpedia-owl:birthPlace[ASK {?ctx dbpedia-owl:populationTotal ?pop. FILTER (?pop <15000).}]/owl:sameAs*";
+         //String command ="http://dbpedia.org/resource/Italy -p dbpedia-owl:hometown[ASK {?ctx rdf:type dbpedia-owl:Person. ?ctx rdf:type dbpedia:MusicalArtist.}]/dbpedia-owl:birthPlace[ASK {?ctx dbpedia-owl:populationTotal ?pop. FILTER (?pop <15000).}]/owl:sameAs*";
+        String command = "http://dbpedia.org/resource/Italy -p <dbpedia-owl:hometown>[ASK {?person <rdf:type> <dbpedia-owl:Person>. ?person <rdf:type> <dbpedia:MusicalArtist>.}]/<dbpedia-owl:birthPlace>[ASK {?town <dbpedia-owl:populationTotal> ?pop. FILTER (?pop <15000).}]/<owl:sameAs>";
+     // String command =  "http://dblp.l3s.de/d2r/resource/authors/Tim_Berners-Lee -p  (<foaf:maker>[ASK {?paper <http://swrc.ontoware.org/ontology#series> <http://dblp.l3s.de/d2r/resource/conferences/semweb>.}]/<foaf:maker>)<1-1>/<foaf:maker>[ASK {?paper <http://swrc.ontoware.org/ontology#journal> <http://dblp.l3s.de/d2r/resource/journals/cacm>.}]  -f TBL-cacm-iswc-coauthors3.rdf -recon -print";
 
-       String command ="http://dbpedia.org/resource/Tim_Berners-Lee -p (<http://dbpedia.org/property/influenced>[ASK {?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Scientist>}])* -t 5 -stream -noSaveModels";
+        String command2 ="http://dbpedia.org/resource/Tim_Berners-Lee -p (<http://dbpedia.org/property/influenced>[ASK {?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Scientist>}])* -t 5 -stream -noSaveModels";
        // String command ="http://dbpedia.org/resource/Stanley_Kubrick -p (<http://dbpedia.org/ontology/director>/<http://dbpedia.org/ontology/director>)<6-6> -t 3";
         //String command ="http://dblp.l3s.de/d2r/resource/authors/Giuseppe_Pirr%C3%B2 -p <http://xmlns.com/foaf/0.1/maker><2-2>/ACT[select ?n where {?x <http://xmlns.com/foaf/0.1/name> ?n}::sendEmail(antony_epis@hotmail.com)]";
         //this.navigator.runCommand(command, "");

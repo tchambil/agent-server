@@ -171,6 +171,7 @@
         <li>
             <ul class="premium-menu nav nav-list collapse">
                 <li><a href="/agent.do"><span class="fa fa-caret-right"></span> Agent</a> </li>
+                <li><a href="/agentscript.do"><span class="fa fa-caret-right"></span> AgentScript</a></li>
                 <li><a href="/listagent.do"><span class="fa fa-caret-right"></span> List</a></li>
             </ul>
         </li>

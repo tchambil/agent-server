@@ -1,7 +1,4 @@
-/*   1:    */
 package dcc.agent.server.service.swget.rdf2prefuse.graph;
-/*   2:    */ 
-/*   3:    */
 
 
 import dcc.agent.server.service.swget.rdf2prefuse.Constants;
@@ -66,11 +63,9 @@ public class GraphDisplay
     private NeighborHighlightControl nhc;
 
 
-
-    public GraphDisplay(Graph p_graph ) {
+    public GraphDisplay(Graph p_graph) {
 
         super(new Visualization());
-
 
 
         initVisualization(p_graph);
@@ -440,7 +435,6 @@ public class GraphDisplay
     protected void fireHoverStateChanged(String uri, boolean entered) {
 
         if (entered) {
-
 
 
         }

@@ -51,7 +51,51 @@ $(document).ready(function () {
 
 
     });
+    $('#DropUserGeneral').click(function () {
+        $.ajax({
+            type: 'GET',
+            url: '../users/'+ $('#DropUserGeneral').val()+'/agents/',
+            // url: '../users/test-user-1/agents/Agent-1/',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
 
+            success: function (data) {
+                $('#Dropagent').empty();
+
+                $(data.agent_instances).each(function(index,item) {
+
+                    $('#Dropagent').append('<option value='+item.name+'>'+item.name+'</option>');
+
+
+                });
+
+            },
+            error: function (err) {
+                $('#Dropagent').empty();
+            }
+        }); //-- END of Ajax
+    });
+
+    $('#startscript').click(function () {
+        $.ajax({
+///users/{id}/agents/{name}/run_script/{scriptName}
+
+
+            type: 'PUT',
+            url: '../users/'+ $('#DropUserGeneral').val()+'/agents/'+ $('#Dropagent').val()+'/run_script/'+ $('#namescript').val()+'?'+$('#scriptid').val(),
+            contentType: "application/json; charset=utf-8",
+             success: function (data) {
+
+                $('#resultscript').empty();
+                $('#resultscript').append(JSON.stringify(data, null, "\t"));
+            },
+            error: function (err) {
+
+                $('#resultscript').empty();
+                $('#resultscript').append(JSON.stringify(err, null, 2));
+            }
+        }); //-- END of Ajax
+    });
 
     $('#getstart').click(function () {
         $.ajax({

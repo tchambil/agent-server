@@ -16,10 +16,7 @@ public class EdgeColorAction
         this.m_vis = p_vis;
 
     }
-
-
     public int getColor(VisualItem p_item) {
-
         int retval = Constants.EDGE_DEFAULT_COLOR;
 
         if (this.m_vis.isInGroup(p_item, Visualization.SEARCH_ITEMS)) {

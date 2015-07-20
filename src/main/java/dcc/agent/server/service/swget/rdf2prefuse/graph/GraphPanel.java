@@ -1,7 +1,5 @@
-/*   1:    */
 package dcc.agent.server.service.swget.rdf2prefuse.graph;
-/*   2:    */ 
-/*   3:    */
+
 
 import prefuse.action.filter.GraphDistanceFilter;
 
@@ -29,9 +27,6 @@ public class GraphPanel extends JPanel implements ChangeListener {
     private RDFGraphConverter graphConv;
 
 
-
-
-
     public GraphPanel(GraphDisplay p_display, RDFGraphConverter graphConverter) {
 
         super(new BorderLayout());
@@ -39,7 +34,6 @@ public class GraphPanel extends JPanel implements ChangeListener {
         this.graphConv = graphConverter;
 
         this.m_display = p_display;
-
 
 
         initPanel();
@@ -228,7 +222,6 @@ public class GraphPanel extends JPanel implements ChangeListener {
         this.m_display.getVisualization().run("draw");
 
 
-
     }
 
 
@@ -324,7 +317,6 @@ public class GraphPanel extends JPanel implements ChangeListener {
                 GraphPanel.this.refreshPanel(new GraphDisplay(GraphPanel.this.graphConv.prune(newPred)));
 
 
-
             }
 
         }
@@ -345,7 +337,6 @@ public class GraphPanel extends JPanel implements ChangeListener {
             String newUri = (String) cb.getSelectedItem();
 
             GraphPanel.this.refreshPanel(new GraphDisplay(GraphPanel.this.graphConv.changeStartingURI(newUri)));
-
 
 
         }

@@ -723,7 +723,9 @@ public class Navigator implements NavigatorIF {
 
 
     public synchronized void printOnGUI(String s) {
-         System.out.println(s);
+         //System.out.println(s);
+
+        final_results.add(s);
 
     }
 }

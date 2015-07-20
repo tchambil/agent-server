@@ -1,7 +1,5 @@
-/*  1:   */
 package dcc.agent.server.service.swget.rdf2prefuse.graph;
-/*  2:   */ 
-/*  3:   */
+
 
 import dcc.agent.server.service.swget.rdf2prefuse.Constants;
 import prefuse.Visualization;
