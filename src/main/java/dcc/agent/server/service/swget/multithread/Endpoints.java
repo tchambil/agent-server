@@ -1,15 +1,13 @@
 package dcc.agent.server.service.swget.multithread;
 
+/**
+ * Created by teo on 20/07/15.
+ */
 import dcc.agent.server.service.swget.utils.URIData;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-
-/**
- * Created by teo on 16/07/15.
- */
-public class EndPoints
-{
+public class EndPoints {
     public static String getEndpoint(URIData uriData) {
         {
             String current_URI = uriData.getUrl();
@@ -39,7 +37,6 @@ public class EndPoints
             return  null;
         }
     }
-
     public static final String[] endpointArray={
             "http://www.rdfabout.com/sparql",
             "http://purl.org/openbibliosets/iucrsparql",
@@ -363,5 +360,4 @@ public class EndPoints
             "http://dbmi-icode-01.dbmi.pitt.edu/linkedSPLs/sparql",
             "http://zbw.eu/beta/sparql/stw"
     };
-
 }
