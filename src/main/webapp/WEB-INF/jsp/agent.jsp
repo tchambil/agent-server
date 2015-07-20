@@ -262,7 +262,7 @@
 
                                 <div class="form-group">
                                     <label>name</label>
-                                    <input type="text" id="nameagentgeneral" class="form-control" value="cuonter"/>
+                                    <input type="text" id="nameagentgeneral" class="form-control" value="agent1"/>
 
                                 </div>
 

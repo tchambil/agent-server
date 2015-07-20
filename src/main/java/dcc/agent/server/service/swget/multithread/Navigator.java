@@ -6,11 +6,11 @@ import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.impl.PropertyImpl;
 import com.hp.hpl.jena.rdf.model.impl.ResourceImpl;
 import com.hp.hpl.jena.rdf.model.impl.StatementImpl;
+import dcc.agent.server.service.config.AgentServerProperties;
 import dcc.agent.server.service.script.runtime.ScriptState;
 import dcc.agent.server.service.swget.console.arguments.CommandOption;
 import dcc.agent.server.service.swget.console.arguments.NumericalOption;
 import dcc.agent.server.service.swget.console.arguments.StringOption;
-
 import dcc.agent.server.service.swget.nmpg.NamedMultiPointedGraph;
 import dcc.agent.server.service.swget.regExpression.RegExprManager;
 import dcc.agent.server.service.swget.regExpression.automaton.State;
@@ -57,7 +57,7 @@ public class Navigator implements NavigatorIF {
 	static int count;
 	private String jobId;
 	private String email;
-
+    private AgentServerProperties config;
 	/*
 	 * The following variables handle the options
 	 */
@@ -70,7 +70,7 @@ public class Navigator implements NavigatorIF {
 	private boolean STREAM_OUTPUT = false;
 	private boolean NOT_SAVE_MODELS = false;
 	private String OUTPUT_FILE = "output_swget.rdf";
-	private String DIRECTORY = "." + File.separator;
+	private String DIRECTORY = config.DEFAULT_PERSISTENT_STORE_DIR + File.separator;
 	private String INPUT_REGEX = "";
 	private String SEED = "";
 	private String COMMENT = "";

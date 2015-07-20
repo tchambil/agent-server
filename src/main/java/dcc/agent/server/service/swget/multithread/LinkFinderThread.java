@@ -81,7 +81,7 @@ public class LinkFinderThread implements Runnable {
 					if (NautiLODManager.getRegExpManager()
 							.hasOutgoingTransition(starting_uri.getState())) {
 
-						extracted = extractLinks(starting_uri);
+						extracted = extractLink(starting_uri);
 
 					}
 
