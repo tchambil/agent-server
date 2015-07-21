@@ -1,6 +1,7 @@
 package dcc.agent.server.service.swget.regExpression.automaton;
 
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 
@@ -749,6 +750,23 @@ public class StateMachine {
 
 		return m_acceptingStates.containsElement(st);
 	}
+    public ArrayList Query(){
+        ArrayList<String> nlist = new ArrayList<String>();
+        String Q="";
+        for (int i = 0; i < m_stateTransitions.getSize(); i++) {
+            Transition pDelta = (Transition) m_stateTransitions.elementAt(i);
+            if (!(pDelta.getSymbol().isNullSymbol()))
+            {
+                Q = Q + " " + pDelta.getSymbol().getLanguageDescription();
+            }
+            else if (!(Q.trim().equals(""))){
+                nlist.add(Q.trim());
+                Q="";
+            }
+        }
+        return nlist;
+
+    }
 
 	public void printMachine(PrintStream out) {
 		out.print("Q = ( ");

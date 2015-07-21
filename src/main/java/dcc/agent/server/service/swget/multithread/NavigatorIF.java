@@ -77,8 +77,9 @@ public interface NavigatorIF {
 	 * @param link
 	 * @throws Exception
 	 */
-	public void queueLink(URIData link) throws Exception;
 
+	public void queueLink(URIData link) throws Exception;
+    public void printAutomata();
 	/**
 	 * Returns the number of visited links
 	 * 

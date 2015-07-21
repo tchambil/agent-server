@@ -6,6 +6,10 @@ import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.impl.PropertyImpl;
 import com.hp.hpl.jena.rdf.model.impl.ResourceImpl;
 import com.hp.hpl.jena.rdf.model.impl.StatementImpl;
+import dcc.agent.server.service.agentserver.AgentServerException;
+import dcc.agent.server.service.communication.ACLMessage;
+import dcc.agent.server.service.communication.AgentSender;
+import dcc.agent.server.service.communication.Performative;
 import dcc.agent.server.service.config.AgentServerProperties;
 import dcc.agent.server.service.script.runtime.ScriptState;
 import dcc.agent.server.service.swget.console.arguments.CommandOption;
@@ -22,6 +26,7 @@ import dcc.agent.server.service.swget.utils.Constants;
 import dcc.agent.server.service.swget.utils.NavigationHistory;
 import dcc.agent.server.service.swget.utils.URIData;
 import dcc.agent.server.service.swget.utils.URIPair;
+import org.json.JSONException;
 
 import java.io.*;
 import java.util.*;
@@ -43,11 +48,12 @@ public class Navigator implements NavigatorIF {
 
 	private ExecutorService execService;
 	private RegExprManager reg_expr_manager;
+    private RegExprManager reg_expr_manager0;
 	private NetworkManager net_manager;
 	private HashSet<String> final_results;
 	private HashSet<String> already_printed;
 	private HashSet<String> error_uris;
-
+    private ArrayList List_Query;
 	private NavigationHistory nav_history;
 	private NamedMultiPointedGraph partial_graph;
 	private Model result_model;
@@ -61,7 +67,7 @@ public class Navigator implements NavigatorIF {
 	/*
 	 * The following variables handle the options
 	 */
-
+    private ScriptState scriptState;
 	private int BUDGET = -1;
 	private int NUM_THREAD = 5;// default value
 	private boolean VERBOSE = false;
@@ -91,9 +97,13 @@ public class Navigator implements NavigatorIF {
 	}
 
 	public synchronized void addResult(String res) {
-		final_results.add(res);
+
+        constructNewQuery(res);
+        writeResult(res);
+        final_results.add(res);
 		partial_graph.setAsEndingNode(res);
 	}
+
 
 	public synchronized void addToNavHistory(URIData current_lookup_pair) {
 		nav_history.add(current_lookup_pair.getUrl().toString(),
@@ -113,6 +123,100 @@ public class Navigator implements NavigatorIF {
 		partial_graph.addEdge(sbj, obj, pred);
 
 	}
+
+    @Override
+    public void printAutomata(){
+
+        StateMachine automaton = reg_expr_manager.pMachine;
+
+        String f_automaton = this.OUTPUT_FILE.substring(0,
+                OUTPUT_FILE.lastIndexOf("."))
+                + "_automaton.txt";
+
+        PrintWriter automps = null;
+
+        try {
+            automps = new PrintWriter(new OutputStreamWriter(
+                    new FileOutputStream(f_automaton), "UTF-8"));
+        } catch (FileNotFoundException e2) {
+            e2.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+        automps.println(SEED + " " + Constants.REG_EXPR_PREDICATE + " "
+                + this.INPUT_REGEX);
+        automps.println(COMMENT);
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        PrintStream ps = new PrintStream(baos);
+        automaton.printMachine(ps);
+        String content = null;
+        try {
+            content = baos.toString("UTF-8");
+        } catch (UnsupportedEncodingException e2) {
+            e2.printStackTrace();
+        }
+        automps.println(content);
+        automps.flush();
+        automps.close();
+    }
+    public void writeResult(String rest){
+        NavigationHistory nh = nav_history;
+
+        String f_automaton = this.OUTPUT_FILE.substring(0,
+                OUTPUT_FILE.lastIndexOf("persistent_store"))
+                + "_automatoninitial.txt";
+
+        String f_history = this.OUTPUT_FILE.substring(0,
+                OUTPUT_FILE.lastIndexOf("persistent_store"))
+                + rest.substring(rest.lastIndexOf("/"),rest.length()-1)+"_hystory.txt";
+
+        StateMachine automaton = reg_expr_manager.pMachine;
+        PrintWriter history = null;
+        try {
+            history = new PrintWriter(new OutputStreamWriter(
+                    new FileOutputStream(f_history), "UTF-8"));
+        } catch (FileNotFoundException e1) {
+            e1.printStackTrace();
+
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+        HashSet<String> states = new HashSet<String>();
+
+        BufferedReader br = null;
+
+        try {
+            br = new BufferedReader(new FileReader(f_automaton));
+            String line = br.readLine();
+            line = br.readLine();
+            line = br.readLine();
+            StringTokenizer st = new StringTokenizer(line, " )(");
+            st.nextToken();
+            st.nextToken();
+            while (st.hasMoreTokens()) {
+                states.add(st.nextToken());
+            }
+        } catch (FileNotFoundException e1) {
+            e1.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        for (String state : states) {
+            State st = automaton.getState(state);
+            history.print(st.getID());
+            HashSet<String> uris = nh.containsState(st);
+
+            history.print(uris.toString() + "\n");
+        }
+
+        history.flush();
+        history.close();
+
+    }
 
 	private void closeExecution() {
 		/*
@@ -142,8 +246,8 @@ public class Navigator implements NavigatorIF {
 		StateMachine automaton = reg_expr_manager.pMachine;
 
 		String f_automaton = this.OUTPUT_FILE.substring(0,
-				OUTPUT_FILE.lastIndexOf("."))
-				+ "_automaton.txt";
+				OUTPUT_FILE.lastIndexOf("persistent_store"))
+				+ "_automatoninitial.txt";
 
 		PrintWriter automps = null;
 
@@ -174,7 +278,7 @@ public class Navigator implements NavigatorIF {
 		automps.close();
 
 		String f_history = this.OUTPUT_FILE.substring(0,
-				OUTPUT_FILE.lastIndexOf("."))
+				OUTPUT_FILE.lastIndexOf("persistent_store"))
 				+ "_hystory.txt";
 
 		PrintWriter history = null;
@@ -592,7 +696,48 @@ public class Navigator implements NavigatorIF {
 			result_model.add(st);
 		}
 	}
+    /**
+     * @param command
+     *  @throws ParseException
+     * */
+    private String reconstructcommand(String command) throws ParseException {
 
+        CommandOption[] optionss = getArguments(getTokenizedInput(command));
+        reg_expr_manager0 = new RegExprManager(INPUT_REGEX);
+        reg_expr_manager0.buildAutomaton();
+        StateMachine automaton = reg_expr_manager0.pMachine;
+        List_Query= automaton.Query();
+        String new_command=optionss[0].toString()+" -p "+ List_Query.get(0).toString();
+        return new_command;
+    }
+    private void constructNewQuery(String res){
+        String newcommand="";
+       if(List_Query.size()==1){
+            newcommand=res + " -p " + List_Query.get(0).toString();
+           }
+        if(List_Query.size()==2){
+            newcommand=res + " -p " + List_Query.get(1).toString();;
+        }
+        if(List_Query.size()==3){
+            newcommand=res + " -p " + List_Query.get(1).toString()+"/"+ List_Query.get(2).toString();
+        }
+
+        try {
+            ACLMessage aclMessage =new ACLMessage();
+            aclMessage.setContent("web w; return w.nautilod('"+ newcommand +"').xml;");
+            aclMessage.setPerformative(Performative.REQUEST);
+            aclMessage.setReceivers(scriptState.agentInstance.name);
+            aclMessage.setSender(scriptState.agentInstance.name);
+            aclMessage.agentServer=scriptState.agentServer;
+            aclMessage.setDelegate(true);
+            aclMessage.setStatus("new");
+             AgentSender.send(scriptState.agentServer, aclMessage, true);
+        } catch (AgentServerException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
 	/**
 	 * The entry point of the program
 	 * 
@@ -604,11 +749,14 @@ public class Navigator implements NavigatorIF {
 	 */
 	public String[] runCommand(ScriptState scriptState,String command, String comment)
 			throws ParseException, TokenMgrError {
-		
+        this.scriptState=scriptState;
+
+        String new_command= reconstructcommand(command);
+
 		LinkFinderThread.resetTimer();
 
 		String[] results = new String[2];
-		CommandOption[] options = getArguments(getTokenizedInput(command));
+		CommandOption[] options = getArguments(getTokenizedInput(new_command));
 		this.COMMENT = comment;
 
 		reg_expr_manager = new RegExprManager(INPUT_REGEX);

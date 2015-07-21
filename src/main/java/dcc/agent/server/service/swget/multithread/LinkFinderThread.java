@@ -58,7 +58,6 @@ public class LinkFinderThread implements Runnable {
 	private void expandExpression(URIData starting_uri) {
 
 		NautiLODManager.decToDeref();
-
 		String current_URI = starting_uri.getUrl().toString();
 
 		// TRANSFORM TO 303 URI
@@ -73,7 +72,8 @@ public class LinkFinderThread implements Runnable {
 					HashSet<State> hs = NautiLODManager.getRegExpManager().getEpsilonReachableStates(starting_uri.getState());
 
                     System.out.println("Handling URI_1 "+ starting_uri.getUrl() + "\n");
-                    //NautiLODManager.printOnGUI("Handling URI_1 "+ starting_uri.getUrl() + "\n");
+                    System.out.println("> "+ NautiLODManager.getToDeref() + "\n");
+
 					for (State s : hs)
                     {
 
@@ -202,7 +202,7 @@ public class LinkFinderThread implements Runnable {
                         + "  ?x.}";
 
                 Query query = QueryFactory.create(queryString);
-
+System.out.println(queryString);
                 QueryExecution qexec = QueryExecutionFactory.sparqlService(endPoints.getEndpoint(uri_to_expand), query);
 
                 //QueryExecution qexec = QueryExecutionFactory.create(query,urrent_model);
@@ -262,7 +262,7 @@ public class LinkFinderThread implements Runnable {
                 query = QueryFactory.create(queryString);
                 qexec = QueryExecutionFactory.sparqlService(endPoints.getEndpoint(uri_to_expand), query);
                 // qexec = QueryExecutionFactory.create(query, current_model);
-
+                System.out.println(queryString);
                 results = qexec.execSelect();
 
                 for (; results.hasNext();) {
@@ -643,7 +643,7 @@ public class LinkFinderThread implements Runnable {
                     else if  (new_q.indexOf("paper")>1){
                         new_q= new_q.replaceAll("\\?paper","<" + uri_to_expand.getUrl()+">" );
                     }
-
+                    System.out.println(new_q);
                     Query queryask = QueryFactory.create(new_q);
                     QueryExecution qexec = QueryExecutionFactory.sparqlService(endPoints.getEndpoint(uri_to_expand), queryask);
                     resq = qexec.execAsk();
