@@ -39,9 +39,7 @@ public class ACLMessage implements Serializable{
     public Boolean delegate;
     /** constant identifying the FIPA performative **/
     public static final int ACCEPT_PROPOSAL = 0;
-
     public Performative performative;
-
     public AgentServerProperties agentServerProperties;
     public ACLMessage(){
         this(Performative.NOT_UNDERSTOOD);
@@ -49,11 +47,9 @@ public class ACLMessage implements Serializable{
     public ACLMessage(Performative performative){
         this.performative=performative;
      }
-
     private boolean canReplyTo() {
         return sender!=null || replyTo!=null;
     }
-
     public ACLMessage(AgentServer agentServer,
                       Performative performative,
                       String sender,
@@ -72,8 +68,7 @@ public class ACLMessage implements Serializable{
                       Boolean update,
                       Boolean delegate
     )
-
-    {
+   {
         this.performative=performative;
         this.delegate=delegate;
         this.update=update;
@@ -91,9 +86,6 @@ public class ACLMessage implements Serializable{
         this.inReplyTo=inReplyTo;
         this.replyBy=replyBy;
         this.status=status;
-
-
-
     }
     public ACLMessage createReply(AgentServer agentServer) throws JSONException, AgentServerException {
         if(!canReplyTo()){
@@ -114,15 +106,12 @@ public class ACLMessage implements Serializable{
         updateMessage(agentServer, m.conversationId);
         return m;
     }
-
    public JSONObject toJson() throws AgentServerException {
         return toJson(true);
     }
-
     public JSONObject toJson(boolean includeState) throws AgentServerException {
         return toJson(includeState, -1);
     }
-
     public JSONObject toJson(boolean includeState, int stateCount) throws AgentServerException {
       try {
           JSONObject messageJson = new JsonListMap();
@@ -213,19 +202,15 @@ public class ACLMessage implements Serializable{
         }
         agentServer.persistence.put(this);
     }
-
     static public ACLMessage fromJson(AgentServer agentServer, String agentJsonSource) throws AgentServerException, JSONException {
         return fromJson(agentServer, null, new JSONObject(agentJsonSource), false);
     }
-
     static public ACLMessage fromJson(AgentServer agentServer, User user, JSONObject agentJson) throws AgentServerException, JSONException {
         return fromJson(agentServer, user, agentJson, false);
     }
-
     static public ACLMessage fromJson(AgentServer agentServer, JSONObject agentJson) throws AgentServerException, JSONException {
         return fromJson(agentServer, null, agentJson, false);
     }
-
     static synchronized public ACLMessage fromJson(AgentServer agentServer, User user, JSONObject agentJson, boolean update) throws AgentServerException, JSONException {
         log.info("If we have the user, ignore user from JSON");
         // Parse the message sender
@@ -357,7 +342,6 @@ public class ACLMessage implements Serializable{
         // Return the new agent instance
         return agentMessage;
     }
-
     public void setContent(String content) {
         if (content != null) {
             this.content = new StringBuffer(content);
@@ -366,8 +350,6 @@ public class ACLMessage implements Serializable{
             this.content = null;
         }
     }
-
-
     public String getSender() {
         return sender;
     }
@@ -383,19 +365,15 @@ public class ACLMessage implements Serializable{
     public String getReplyTo() {
         return replyTo;
     }
-
     public void setReplyTo(String replyTo) {
         this.replyTo = replyTo;
     }
-
     public String getconversationId() {
         return conversationId;
     }
-
     public void setconversationId(String conversationId) {
         this.conversationId = conversationId;
     }
-
     private byte[] byteSequenceContent = null;
     public String getContent() {
         if(content != null)
@@ -405,75 +383,57 @@ public class ACLMessage implements Serializable{
         else
             return null;
       }
-
     public String getlanguage() {
         return language;
     }
-
     public void setlanguage(String language) {
         this.language = language;
     }
-
     public String getEnconding() {
         return enconding;
     }
-
     public void setEnconding(String enconding) {
         this.enconding = enconding;
     }
-
     public String getOntology() {
         return ontology;
     }
-
     public void setOntology(String ontology) {
         this.ontology = ontology;
     }
-
     public String getProtocol() {
         return protocol;
     }
-
     public void setProtocol(String protocol) {
         this.protocol = protocol;
     }
-
     public String getReplyWith() {
         return replyWith;
     }
-
     public void setReplyWith(String replyWith) {
         this.replyWith = replyWith;
     }
-
     public String getInReplyTo() {
         return inReplyTo;
     }
-
     public void setInReplyTo(String inReplyTo) {
         this.inReplyTo = inReplyTo;
     }
-
     public String getReplyBy() {
         return replyBy;
     }
-
     public void setReplyBy(String replyBy) {
         this.replyBy = replyBy;
     }
-
     public String getStatus() {
         return status;
     }
-
     public void setStatus(String status) {
         this.status = status;
     }
-
     public Boolean getUpdate() {
         return update;
     }
-
     public void setUpdate(Boolean update) {
         this.update = update;
     }
@@ -486,7 +446,6 @@ public class ACLMessage implements Serializable{
     public Boolean getDelegate() {
         return delegate;
     }
-
     public void setDelegate(Boolean delegate) {
         this.delegate = delegate;
     }
@@ -499,9 +458,4 @@ public class ACLMessage implements Serializable{
             return "[AgentMessage: Unable to output AgentMessage as string - " + e.getMessage();
         }
     }
-
-
-
-
-
 }
