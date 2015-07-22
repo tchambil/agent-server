@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2cf9c626-ec31-4eb5-ac64-d54f63553b96" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentMessage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentInstance.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentInstance.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/AgentReceiver.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/AgentReceiver.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/scheduler/AgentScheduler.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/scheduler/AgentScheduler.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/runtime/value/MessageValue.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/runtime/value/MessageValue.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/Navigator.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/Navigator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/Performative.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/Performative.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent-server.iws" afterPath="$PROJECT_DIR$/agent-server.iws" />
     </list>
     <ignored path="agent-server.iws" />
@@ -41,8 +35,8 @@
       <file leaf-file-name="MessageValue.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/runtime/value/MessageValue.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4903846" vertical-offset="969" max-vertical-offset="2720">
-              <caret line="85" column="0" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.44423077" vertical-offset="1350" max-vertical-offset="2176">
+              <caret line="106" column="2" selection-start-line="106" selection-start-column="2" selection-end-line="106" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -51,8 +45,8 @@
       <file leaf-file-name="AgentServer.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="692" max-vertical-offset="2227">
-              <caret line="195" column="0" selection-start-line="195" selection-start-column="0" selection-end-line="195" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="576" max-vertical-offset="2414">
+              <caret line="182" column="0" selection-start-line="182" selection-start-column="0" selection-end-line="182" selection-end-column="0" />
               <folding>
                 <element signature="method#AgentServer#1;class#AgentServer#0" expanded="false" />
                 <element signature="method#getSingleton#0;class#AgentServer#0" expanded="false" />
@@ -61,7 +55,6 @@
                 <element signature="method#addAgentDefinition#3;class#AgentServer#0" expanded="false" />
                 <element signature="method#addAgentMessage#1;class#AgentServer#0" expanded="false" />
                 <element signature="method#getAgentMessage#0;class#AgentServer#0" expanded="false" />
-                <element signature="method#process#0;class#AgentServer#0" expanded="false" />
                 <element signature="method#receive#1;class#AgentServer#0" expanded="false" />
                 <element signature="method#send#0;class#AgentServer#0" expanded="false" />
                 <element signature="method#addAgentMessage#2;class#AgentServer#0" expanded="false" />
@@ -230,12 +223,12 @@
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/AgentSender.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/Performative.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/activities/AgentActivityMessage.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentMessage.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentInstance.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/activities/AgentActivityMessageQueue.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/scheduler/AgentScheduler.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/AgentReceiver.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/runtime/value/MessageValue.java" />
       </list>
     </option>
@@ -1610,7 +1603,7 @@
       <workItem from="1437083836731" duration="2421000" />
       <workItem from="1437350274262" duration="5170000" />
       <workItem from="1437370210708" duration="22877000" />
-      <workItem from="1437453380387" duration="42443000" />
+      <workItem from="1437453380387" duration="42748000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1431836573263</created>
@@ -1828,11 +1821,15 @@
       <created>1437490887607</created>
       <updated>1437490887607</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="update scripting, add functions delegate, message queue.">
+      <created>1437549554317</created>
+      <updated>1437549554317</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="942280000" />
+    <option name="totallyTimeSpent" value="942585000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1856,10 +1853,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.389755" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.389755" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32850778" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -2028,12 +2025,6 @@
           <line>5</line>
           <properties />
           <option name="timeStamp" value="382" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/runtime/value/MessageValue.java</url>
-          <line>154</line>
-          <properties />
-          <option name="timeStamp" value="431" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/AgentReceiver.java</url>
@@ -2502,10 +2493,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/ACLMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="6974" max-vertical-offset="7463">
+          <caret line="494" column="0" selection-start-line="494" selection-start-column="0" selection-end-line="494" selection-end-column="0" />
+          <folding>
+            <element signature="e#3918#3919#0" expanded="true" />
+            <element signature="e#3953#3954#0" expanded="true" />
+            <element signature="e#4035#4036#0" expanded="true" />
+            <element signature="e#4082#4083#0" expanded="true" />
+            <element signature="e#13618#13619#0" expanded="true" />
+            <element signature="e#13650#13651#0" expanded="true" />
+            <element signature="e#15416#15417#0" expanded="true" />
+            <element signature="e#15445#15446#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="692" max-vertical-offset="2227">
-          <caret line="195" column="0" selection-start-line="195" selection-start-column="0" selection-end-line="195" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="576" max-vertical-offset="2414">
+          <caret line="182" column="0" selection-start-line="182" selection-start-column="0" selection-end-line="182" selection-end-column="0" />
           <folding>
             <element signature="method#AgentServer#1;class#AgentServer#0" expanded="false" />
             <element signature="method#getSingleton#0;class#AgentServer#0" expanded="false" />
@@ -2514,7 +2522,6 @@
             <element signature="method#addAgentDefinition#3;class#AgentServer#0" expanded="false" />
             <element signature="method#addAgentMessage#1;class#AgentServer#0" expanded="false" />
             <element signature="method#getAgentMessage#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#process#0;class#AgentServer#0" expanded="false" />
             <element signature="method#receive#1;class#AgentServer#0" expanded="false" />
             <element signature="method#send#0;class#AgentServer#0" expanded="false" />
             <element signature="method#addAgentMessage#2;class#AgentServer#0" expanded="false" />
@@ -2562,27 +2569,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/ACLMessage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="6974" max-vertical-offset="7463">
-          <caret line="494" column="0" selection-start-line="494" selection-start-column="0" selection-end-line="494" selection-end-column="0" />
-          <folding>
-            <element signature="e#3918#3919#0" expanded="true" />
-            <element signature="e#3953#3954#0" expanded="true" />
-            <element signature="e#4035#4036#0" expanded="true" />
-            <element signature="e#4082#4083#0" expanded="true" />
-            <element signature="e#13618#13619#0" expanded="true" />
-            <element signature="e#13650#13651#0" expanded="true" />
-            <element signature="e#15416#15417#0" expanded="true" />
-            <element signature="e#15445#15446#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/runtime/value/MessageValue.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4903846" vertical-offset="969" max-vertical-offset="2720">
-          <caret line="85" column="0" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.44423077" vertical-offset="1350" max-vertical-offset="2176">
+          <caret line="106" column="2" selection-start-line="106" selection-start-column="2" selection-end-line="106" selection-end-column="2" />
           <folding />
         </state>
       </provider>

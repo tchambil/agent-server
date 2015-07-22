@@ -94,47 +94,15 @@ public class MessageValue extends Value {
         }
     }
 
-    public void processMessage(ScriptState scriptState, ACLMessage message) {
-        process = scriptState.agentServer.process(message);
-    }
-
-    public Boolean processMessage(ScriptState scriptState, String messageId) throws RuntimeException {
+    public void processMessage(ScriptState scriptState, ACLMessage message) throws RuntimeException {
         try {
-            process = scriptState.agentServer.process(messageId);
-            if (!process)
-                return false;
-            else
-                return process;
-        } catch (Exception e) {
+            scriptState.agentServer.processMessage(message);
+       } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException("message process exception: " + e);
         }
-    }
 
-    public String fetchMessage(ScriptState scriptState, AgentInstance agentInstance) throws RuntimeException {
-        try {
-            message = scriptState.agentServer.receive(agentInstance.name);
-            if (message == null)
-                return null;
-            else
-                return message.toString();
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new RuntimeException("message GET exception: " + e);
-        }
-    }
 
-    public String fetchMessage(ScriptState scriptState, String messageId) throws RuntimeException {
-        try {
-            message = scriptState.agentServer.receive(messageId);
-            if (message == null)
-                return null;
-            else
-                return message.toString();
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new RuntimeException("message GET exception: " + e);
-        }
     }
 
     public String fetchMessageAll(ScriptState scriptState) throws RuntimeException {

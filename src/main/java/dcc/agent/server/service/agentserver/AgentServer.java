@@ -168,9 +168,9 @@ public class AgentServer {
             return agenMap.get(agentMessageConversationId);
         }
     }
-    public synchronized Boolean process(ACLMessage message){
+    public synchronized void processMessage(ACLMessage message){
          try {
-            return AgentReceiver.prepareMessage(this,message);
+            AgentReceiver.prepareMessage(this,message);
         } catch (JSONException e) {
             e.printStackTrace();
         } catch (AgentServerException e) {
@@ -178,11 +178,9 @@ public class AgentServer {
         } catch (Exception e) {
              e.printStackTrace();
          }
-        return null;
+
     }
-    public synchronized Boolean process(String messageId){
-            return null;
-    }
+
     public synchronized ACLMessage receive(){
           ACLMessage message =AgentReceiver.receive(this);
           return message;
