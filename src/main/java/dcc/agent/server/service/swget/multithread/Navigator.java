@@ -726,8 +726,8 @@ public class Navigator implements NavigatorIF {
             ACLMessage aclMessage =new ACLMessage();
             aclMessage.setContent("web w; return w.nautilod('"+ newcommand +"').xml;");
             aclMessage.setPerformative(Performative.REQUEST);
-            aclMessage.setReceivers(scriptState.agentInstance.name);
-            aclMessage.setSender(scriptState.agentInstance.name);
+            aclMessage.setReceivers("agent1");
+            aclMessage.setSender("agent2");
             aclMessage.agentServer=scriptState.agentServer;
             aclMessage.setDelegate(true);
             aclMessage.setStatus("new");

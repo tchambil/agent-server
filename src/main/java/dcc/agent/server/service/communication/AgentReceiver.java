@@ -141,7 +141,7 @@ public class AgentReceiver {
         if (message != null) {
             String content = message.getContent();
             if (content != null) {
-                ScriptNode scriptNode = parseNode(agentServer, content);
+                ScriptNode scriptNode = parseNode(agentServer, message);
                 if (scriptNode.blockNode.localVariables.size() > 0) {
                     if (scriptNode.blockNode.localVariables.get(0).type instanceof DelegateTypeNode) {
                         delegate = true;
@@ -156,12 +156,12 @@ public class AgentReceiver {
         return null;
     }
 
-    private static ScriptNode parseNode(AgentServer agentServer, String scriptString) {
-        String agentaname = "agent1";
-        AgentInstance dummyAgentInstance = getAgent(agentServer, agentaname);
-        ScriptParser parser = new ScriptParser(dummyAgentInstance);
+    private static ScriptNode parseNode(AgentServer agentServer, ACLMessage message) {
+
         try {
-            ScriptNode scriptNode = parser.parseScriptString(scriptString);
+            AgentInstance dummyAgentInstance = getAgent(agentServer, message.getSender().toString());
+            ScriptParser parser = new ScriptParser(dummyAgentInstance);
+            ScriptNode scriptNode = parser.parseScriptString( message.getContent());
             return scriptNode;
         } catch (TokenizerException e) {
             e.printStackTrace();
@@ -230,16 +230,17 @@ public class AgentReceiver {
     }
 
     static public synchronized ACLMessage receive(AgentServer agentServer, AgentInstance agent) {
-        ACLMessage message = null;
+
         for (NameValue<ACLMessageList> messageListNameValue : agentServer.agentMessages) {
             for (ACLMessage agentMessage : agentServer.agentMessages.get(messageListNameValue.name)) {
                 if ((agentMessage.getReceivers().equals(agent.name)) && (agentMessage.getStatus().equals("new"))) {
-                    message = agentMessage;
-                    break;
+
+                    return  agentMessage;
+
                 }
             }
         }
-        return message;
+        return null;
     }
 
     static public synchronized ACLMessage receive(AgentServer agentServer, String messageId) {

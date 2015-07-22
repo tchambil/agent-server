@@ -47,7 +47,8 @@ public class MessageValue extends Value {
             if (message == null)
                 return NullValue.one;
             else {
-                boolean processMessage = processMessage(scriptState, message, false);
+                boolean processMessage = true;
+                processMessage(scriptState, message);
                 if (!processMessage) {
                     return NullValue.one;
                 } else {
@@ -58,7 +59,8 @@ public class MessageValue extends Value {
             if (message == null)
                 return NullValue.one;
             else {
-                boolean processMessage = processMessage(scriptState, message,true);
+                boolean processMessage = true;
+                processMessage(scriptState, message);
                 if (!processMessage) {
                     return NullValue.one;
                 } else {
@@ -72,50 +74,28 @@ public class MessageValue extends Value {
 
     public Value getMethodValue(ScriptState scriptState, String name, List<Value> arguments) throws RuntimeException {
         int numArguments = arguments.size();
-        if (name.equals("length") || name.equals("size") && numArguments == 0) {
-            return new IntegerValue(0);
-        } else if (name.equals("add") || name.equals("put") || name.equals("set") && numArguments == 2) {
-            return TrueValue.one;
-        } else if (name.equals("clear") && numArguments == 0) {
-            return NullValue.one;
-        } else if (name.equals("get") && (numArguments >= 1 || numArguments <= 4)) {
+        if (name.equals("read") && (numArguments >= 1 || numArguments <= 4)) {
             // Get the status message
             String status = arguments.get(0).getStringValue();
-
-            //  message.get("all")
-            // Fetch the specified web page
-            String s = fetchMessage(scriptState);
-            if (s == null || s.length() == 0)
+            String rmessage = null;
+            if (status.equals("all")) {
+                rmessage = fetchMessageAll(scriptState);
+            } else if (status.equals("only")) {
+                rmessage = fetchMessageOnly(scriptState);
+            }
+            if (rmessage == null || rmessage.length() == 0) {
                 return NullValue.one;
-            else
-                return new StringValue(s);
-        } else if (name.equals("all") && (numArguments >= 1 || numArguments <= 4)) {
-            // Get the status message
-            String status = arguments.get(0).getStringValue();
-
-            //  message.get("all")
-            // Fetch the specified web page
-            String message = fetchMessage(scriptState);
-            if (message == null || message.length() == 0)
-                return NullValue.one;
-            else
-                return new StringValue(message);
+            } else {
+                processMessage(scriptState, message);
+                return new StringValue(rmessage);
+            }
         } else {
             return super.getMethodValue(scriptState, name, arguments);
         }
     }
 
-    public Boolean processMessage(ScriptState scriptState, ACLMessage message, Boolean delivery) throws RuntimeException {
-        try {
-            process = scriptState.agentServer.process(message);
-            if (!process)
-                return false;
-            else
-                return process;
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new RuntimeException("message process exception: " + e);
-        }
+    public void processMessage(ScriptState scriptState, ACLMessage message) {
+        process = scriptState.agentServer.process(message);
     }
 
     public Boolean processMessage(ScriptState scriptState, String messageId) throws RuntimeException {
@@ -157,9 +137,23 @@ public class MessageValue extends Value {
         }
     }
 
-    public String fetchMessage(ScriptState scriptState) throws RuntimeException {
+    public String fetchMessageAll(ScriptState scriptState) throws RuntimeException {
         try {
             message = scriptState.agentServer.receive();
+            if (message == null)
+                return null;
+            else
+                return message.toString();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("message GET exception: " + e);
+        }
+    }
+
+    public String fetchMessageOnly(ScriptState scriptState) throws RuntimeException {
+        try {
+            AgentInstance agent = scriptState.agentInstance;
+            message = scriptState.agentServer.receive(agent);
             if (message == null)
                 return null;
             else

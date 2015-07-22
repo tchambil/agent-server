@@ -260,6 +260,7 @@ public class AgentScheduler implements Runnable {
             // Now schedule all timers and conditions for this agent
             log.info("scheduleTimersAndConditions for " + agent.name);
             scheduleTimersAndConditions(agent);
+
         }
     }
 

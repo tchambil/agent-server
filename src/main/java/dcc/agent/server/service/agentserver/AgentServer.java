@@ -180,8 +180,6 @@ public class AgentServer {
          }
         return null;
     }
-
-
     public synchronized Boolean process(String messageId){
             return null;
     }
@@ -193,7 +191,6 @@ public class AgentServer {
         ACLMessage message =AgentReceiver.receive(this);
         return message;
     }
-
     public synchronized ACLMessage receive(AgentInstance agentInstance){
         ACLMessage message =AgentReceiver.receive(this, agentInstance);
         return message;

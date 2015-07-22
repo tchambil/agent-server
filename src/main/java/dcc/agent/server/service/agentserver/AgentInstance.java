@@ -485,6 +485,7 @@ public class AgentInstance {
 
         // Capture current output values of all data sources specified as inputs
         captureDataSourceOutputValues();
+//see for new message
 
         // Set default value for each scratchpad field
         SymbolValues scratchpadValues = categorySymbolValues.get("scratchpad");
@@ -576,14 +577,7 @@ public class AgentInstance {
             if (field.compute != null) {
                 Value newValue = evaluateExpression(field.compute);
                 outputValues.put(symbolManager.get("outputs", field.symbol.name), newValue);
-                /*
-                MessageSender messageSender = new MessageSender ();
-                try {
-                  messageSender.sender("Computed new output value for " + field.symbol.name + ": " + newValue.toJson(), false);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                */
+
                 log.info("Computed new output value for " + field.symbol.name + ": " + newValue.toJson());
             }
         }
@@ -1238,6 +1232,10 @@ public class AgentInstance {
         return null;
     }
 
+    public void recive(){
+
+    }
+
     public String getStatus() {
         NotificationInstance pendingNotification = getPendingNotification();
         if (exceptionHistory.size() > 0 && exceptionHistory.get(exceptionHistory.size() - 1).time > lastDismissedExceptionTime)
@@ -1254,7 +1252,6 @@ public class AgentInstance {
         else
             return "disabled";
     }
-
     public void queueNotify(String notificationName) throws AgentServerException {
         NotificationInstance notificationInstance = notifications.get(notificationName);
         if (notificationInstance == null)
