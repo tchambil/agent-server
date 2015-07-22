@@ -50,10 +50,8 @@ public class AgentReceiver {
         }
         return send;
     }
-
-    public static Boolean onMessage(AgentServer agentServer, ACLMessage message, Boolean process) throws Exception {
-        Boolean send = false;
-        if ((message != null)) {
+    public static void onMessage(AgentServer agentServer, ACLMessage message) throws Exception {
+       if ((message != null)) {
             ACLMessage reply = message.createReply(agentServer);
             if (message.getPerformative() == Performative.REQUEST) {
                 String content = message.getContent();
@@ -63,13 +61,12 @@ public class AgentReceiver {
                     reply.setStatus("response");
                     reply.setInReplyTo(content);
                     reply.setReplyBy(message.getReceivers());
-                    Value value = parseScript(agentServer, content);
+                    Value value = parseScript(agentServer, content, message);
                     if (value != NullValue.one) {
                         reply.setContent(value.getStringValue());
                     } else {
                         reply.setContent("nothing result");
                     }
-
                 } else {
                     log.info("Agent " + message.getReceivers() + " - Unexpected request [" + content + "] received from " + message.getSender());
                     reply.setPerformative(Performative.REFUSE);
@@ -79,12 +76,9 @@ public class AgentReceiver {
                 reply.setPerformative(Performative.NOT_UNDERSTOOD);
                 reply.setContent("( (Unexpected-act " + (message.getPerformative()) + ") )");
             }
-            send = AgentSender.send(agentServer, reply,false);
+             AgentSender.send(agentServer, reply,false);
         }
-
-        return send;
     }
-
     public static Boolean onMessageDelegate(AgentServer agentServer, ACLMessage message, Boolean stringResult) throws Exception {
         Boolean send = false;
         Value resultValue = NullValue.one;
@@ -100,7 +94,7 @@ public class AgentReceiver {
                     reply.setInReplyTo(content);
                     reply.setReplyBy(message.getReceivers());
                     {
-                        resultValue = parseScript(agentServer, content);
+                        resultValue = parseScript(agentServer, content,message);
                         if (resultValue != NullValue.one) {
                             if (resultValue.toString().equals(message.getReceivers())) {
                                 message.setContent(message.getContent().replace("result", "evalue"));
@@ -135,7 +129,6 @@ public class AgentReceiver {
         }
         return null;
     }
-
     public static Boolean prepareMessage(AgentServer agentServer, ACLMessage message) throws Exception {
         Boolean delegate = false;
         if (message != null) {
@@ -149,13 +142,12 @@ public class AgentReceiver {
 
                     }
                 }
-                return onMessage(agentServer, message, true);
+                onMessage(agentServer, message);
             }
 
         }
         return null;
     }
-
     private static ScriptNode parseNode(AgentServer agentServer, ACLMessage message) {
 
         try {
@@ -170,7 +162,6 @@ public class AgentReceiver {
         }
         return null;
     }
-
     private static void delegate(AgentServer agentServer, ACLMessage message, Value value) throws JSONException, AgentServerException {
         if (message != null) {
             ACLMessage newreply = message.createReply(agentServer);
@@ -189,14 +180,12 @@ public class AgentReceiver {
             AgentSender.send(agentServer, newreply,true);
         }
     }
-
-    private static Value parseScript(AgentServer agentServer, String scriptString) throws AgentServerException {
+    private static Value parseScript(AgentServer agentServer, String scriptString, ACLMessage message) throws AgentServerException {
         Value value = null;
         if ((scriptString.indexOf("ping") != -1)) {
             return new StringValue("pong");
         }
-        String agentaname = "agent1";
-        AgentInstance dummyAgentInstance = getAgent(agentServer, agentaname);
+        AgentInstance dummyAgentInstance = getAgent(agentServer, message.getReceivers().toString());
         ScriptParser parser = new ScriptParser(dummyAgentInstance);
         ScriptRuntime scriptRuntime = new ScriptRuntime(dummyAgentInstance);
         try {
@@ -210,12 +199,9 @@ public class AgentReceiver {
         }
         return NullValue.one;
     }
-
-
     private static AgentInstance getAgent(AgentServer agentServer, String value) {
         return agentServer.getAgentInstances(value);
     }
-
     static public synchronized ACLMessage receive(AgentServer agentServer) {
         ACLMessage message = null;
         for (NameValue<ACLMessageList> messageListNameValue : agentServer.agentMessages) {

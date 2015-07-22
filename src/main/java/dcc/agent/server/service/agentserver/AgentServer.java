@@ -170,7 +170,7 @@ public class AgentServer {
     }
     public synchronized void processMessage(ACLMessage message){
          try {
-            AgentReceiver.prepareMessage(this,message);
+            AgentReceiver.onMessage(this,message);
         } catch (JSONException e) {
             e.printStackTrace();
         } catch (AgentServerException e) {
