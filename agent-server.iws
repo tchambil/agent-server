@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2cf9c626-ec31-4eb5-ac64-d54f63553b96" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/AgentReceiver.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/AgentReceiver.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/runtime/value/MessageValue.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/runtime/value/MessageValue.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/AgentSender.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/AgentSender.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent-server.iws" afterPath="$PROJECT_DIR$/agent-server.iws" />
     </list>
     <ignored path="agent-server.iws" />
@@ -36,8 +35,8 @@
       <file leaf-file-name="MessageValue.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/runtime/value/MessageValue.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1238" max-vertical-offset="2176">
-              <caret line="99" column="45" selection-start-line="99" selection-start-column="45" selection-end-line="99" selection-end-column="45" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1248" max-vertical-offset="2176">
+              <caret line="99" column="44" selection-start-line="99" selection-start-column="44" selection-end-line="99" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -46,19 +45,17 @@
       <file leaf-file-name="AgentServer.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="528" max-vertical-offset="2414">
-              <caret line="172" column="31" selection-start-line="172" selection-start-column="31" selection-end-line="172" selection-end-column="31" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1321" max-vertical-offset="2958">
+              <caret line="208" column="35" selection-start-line="208" selection-start-column="35" selection-end-line="208" selection-end-column="35" />
               <folding>
                 <element signature="method#AgentServer#1;class#AgentServer#0" expanded="false" />
                 <element signature="method#getSingleton#0;class#AgentServer#0" expanded="false" />
                 <element signature="method#addAgentDefinition#0;class#AgentServer#0" expanded="false" />
                 <element signature="method#addAgentDefinition#1;class#AgentServer#0" expanded="false" />
                 <element signature="method#addAgentDefinition#3;class#AgentServer#0" expanded="false" />
-                <element signature="method#addAgentMessage#1;class#AgentServer#0" expanded="false" />
                 <element signature="method#getAgentMessage#0;class#AgentServer#0" expanded="false" />
                 <element signature="method#receive#1;class#AgentServer#0" expanded="false" />
                 <element signature="method#send#0;class#AgentServer#0" expanded="false" />
-                <element signature="method#addAgentMessage#2;class#AgentServer#0" expanded="false" />
                 <element signature="method#addServerGroup#0;class#AgentServer#0" expanded="false" />
                 <element signature="method#addServerGroup#1;class#AgentServer#0" expanded="false" />
                 <element signature="method#addDelegateAgent#0;class#AgentServer#0" expanded="false" />
@@ -107,14 +104,23 @@
       <file leaf-file-name="AgentReceiver.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/AgentReceiver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.13653846" vertical-offset="1527" max-vertical-offset="2652">
-              <caret line="182" column="25" selection-start-line="182" selection-start-column="25" selection-end-line="182" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.29423076" vertical-offset="0" max-vertical-offset="3213">
+              <caret line="23" column="41" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
               <folding>
-                <element signature="method#onMessage#0;class#AgentReceiver#0" expanded="false" />
                 <element signature="method#prepareMessage#0;class#AgentReceiver#0" expanded="false" />
                 <element signature="method#parseNode#0;class#AgentReceiver#0" expanded="false" />
                 <element signature="method#delegate#0;class#AgentReceiver#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AgentSender.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/AgentSender.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="109" max-vertical-offset="1411">
+              <caret line="33" column="66" selection-start-line="33" selection-start-column="66" selection-end-line="33" selection-end-column="66" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -173,7 +179,6 @@
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/regExpression/automaton/StateMachine.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/LinkFinderThread.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/Navigator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/AgentSender.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/Performative.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/activities/AgentActivityMessage.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentMessage.java" />
@@ -182,6 +187,7 @@
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/scheduler/AgentScheduler.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/runtime/value/MessageValue.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/AgentSender.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/AgentReceiver.java" />
       </list>
     </option>
@@ -501,48 +507,6 @@
               <option name="myItemId" value="script" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="runtime" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="value" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="agent-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="agent-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="script" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -609,6 +573,40 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="mail" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="agent-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="agent-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="communication" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1556,7 +1554,7 @@
       <workItem from="1437083836731" duration="2421000" />
       <workItem from="1437350274262" duration="5170000" />
       <workItem from="1437370210708" duration="22877000" />
-      <workItem from="1437453380387" duration="44489000" />
+      <workItem from="1437453380387" duration="46198000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1431836573263</created>
@@ -1782,11 +1780,15 @@
       <created>1437549887210</created>
       <updated>1437549887210</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="optimizing message queue.">
+      <created>1437551595779</created>
+      <updated>1437551595779</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="944326000" />
+    <option name="totallyTimeSpent" value="946035000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1810,10 +1812,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.389755" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.389755" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32850778" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1980,12 +1982,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/AgentReceiver.java</url>
-          <line>221</line>
+          <line>55</line>
           <properties />
-          <option name="timeStamp" value="432" />
+          <option name="timeStamp" value="433" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="433" />
+      <option name="time" value="434" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -1993,19 +1995,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/LinkFinderThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.838558" vertical-offset="0" max-vertical-offset="14059">
-          <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
-          <folding>
-            <element signature="e#4917#4926#0" expanded="false" />
-            <element signature="e#19729#19738#0" expanded="false" />
-            <element signature="e#25308#25309#0" expanded="false" />
-            <element signature="e#25345#25346#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.7.0_51/src.zip!/java/lang/String.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3322884" vertical-offset="44923" max-vertical-offset="51119">
@@ -2399,16 +2388,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/runtime/value/StringValue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31346154" vertical-offset="483" max-vertical-offset="11033">
-          <caret line="79" column="0" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
-          <folding>
-            <element signature="e#2549#2550#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/util/NameValueList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.31346154" vertical-offset="1452" max-vertical-offset="2091">
@@ -2419,46 +2398,59 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/parser/ScriptParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3326923" vertical-offset="116" max-vertical-offset="28067">
+          <caret line="165" column="11" selection-start-line="165" selection-start-column="11" selection-end-line="165" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/runtime/ScriptRuntime.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.29423076" vertical-offset="0" max-vertical-offset="986">
+          <caret line="31" column="11" selection-start-line="31" selection-start-column="11" selection-end-line="31" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/runtime/value/StringValue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="58" max-vertical-offset="10999">
+          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/ACLMessage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37884617" vertical-offset="6943" max-vertical-offset="7463">
-          <caret line="494" column="0" selection-start-line="494" selection-start-column="0" selection-end-line="494" selection-end-column="0" />
-          <folding>
-            <element signature="e#3918#3919#0" expanded="false" />
-            <element signature="e#3953#3954#0" expanded="false" />
-            <element signature="e#4035#4036#0" expanded="false" />
-            <element signature="e#4082#4083#0" expanded="false" />
-            <element signature="e#13618#13619#0" expanded="false" />
-            <element signature="e#13650#13651#0" expanded="false" />
-            <element signature="e#15416#15417#0" expanded="false" />
-            <element signature="e#15445#15446#0" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="-3.1083844" vertical-offset="5022" max-vertical-offset="7327">
+          <caret line="228" column="42" selection-start-line="228" selection-start-column="42" selection-end-line="228" selection-end-column="42" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/runtime/value/MessageValue.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1238" max-vertical-offset="2176">
-          <caret line="99" column="45" selection-start-line="99" selection-start-column="45" selection-end-line="99" selection-end-column="45" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1248" max-vertical-offset="2176">
+          <caret line="99" column="44" selection-start-line="99" selection-start-column="44" selection-end-line="99" selection-end-column="44" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="528" max-vertical-offset="2414">
-          <caret line="172" column="31" selection-start-line="172" selection-start-column="31" selection-end-line="172" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1321" max-vertical-offset="2958">
+          <caret line="208" column="35" selection-start-line="208" selection-start-column="35" selection-end-line="208" selection-end-column="35" />
           <folding>
             <element signature="method#AgentServer#1;class#AgentServer#0" expanded="false" />
             <element signature="method#getSingleton#0;class#AgentServer#0" expanded="false" />
             <element signature="method#addAgentDefinition#0;class#AgentServer#0" expanded="false" />
             <element signature="method#addAgentDefinition#1;class#AgentServer#0" expanded="false" />
             <element signature="method#addAgentDefinition#3;class#AgentServer#0" expanded="false" />
-            <element signature="method#addAgentMessage#1;class#AgentServer#0" expanded="false" />
             <element signature="method#getAgentMessage#0;class#AgentServer#0" expanded="false" />
             <element signature="method#receive#1;class#AgentServer#0" expanded="false" />
             <element signature="method#send#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#addAgentMessage#2;class#AgentServer#0" expanded="false" />
             <element signature="method#addServerGroup#0;class#AgentServer#0" expanded="false" />
             <element signature="method#addServerGroup#1;class#AgentServer#0" expanded="false" />
             <element signature="method#addDelegateAgent#0;class#AgentServer#0" expanded="false" />
@@ -2503,28 +2495,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/parser/ScriptParser.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/AgentSender.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3326923" vertical-offset="116" max-vertical-offset="28067">
-          <caret line="165" column="11" selection-start-line="165" selection-start-column="11" selection-end-line="165" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/runtime/ScriptRuntime.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29423076" vertical-offset="0" max-vertical-offset="986">
-          <caret line="31" column="11" selection-start-line="31" selection-start-column="11" selection-end-line="31" selection-end-column="11" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="109" max-vertical-offset="1411">
+          <caret line="33" column="66" selection-start-line="33" selection-start-column="66" selection-end-line="33" selection-end-column="66" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/AgentReceiver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13653846" vertical-offset="1527" max-vertical-offset="2652">
-          <caret line="182" column="25" selection-start-line="182" selection-start-column="25" selection-end-line="182" selection-end-column="25" />
+        <state vertical-scroll-proportion="0.29423076" vertical-offset="0" max-vertical-offset="3213">
+          <caret line="23" column="41" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
           <folding>
-            <element signature="method#onMessage#0;class#AgentReceiver#0" expanded="false" />
             <element signature="method#prepareMessage#0;class#AgentReceiver#0" expanded="false" />
             <element signature="method#parseNode#0;class#AgentReceiver#0" expanded="false" />
             <element signature="method#delegate#0;class#AgentReceiver#0" expanded="false" />
