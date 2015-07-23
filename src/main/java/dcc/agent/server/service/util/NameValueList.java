@@ -16,13 +16,9 @@
 
 package dcc.agent.server.service.util;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
 import dcc.agent.server.service.agentserver.AgentServerException;
+
+import java.util.*;
 
 public class NameValueList<T> implements Iterable<NameValue<T>> {
     public List<NameValue<T>> nameValueList = new ArrayList<NameValue<T>>();
@@ -82,6 +78,7 @@ public class NameValueList<T> implements Iterable<NameValue<T>> {
     }
 
     public T get(String stringName) {
+
         NameValue<T> nameValue = nameValueMap.get(stringName);
         if (nameValue == null)
             return null;

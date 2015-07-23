@@ -1,4 +1,4 @@
-package dcc.agent.server.service.delegate;
+package dcc.agent.server.service.groups;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -8,29 +8,27 @@ import java.util.List;
  * Created by teo on 01/06/15.
  */
 public class ServerGroupList implements Iterable<ServerGroup>{
-
     List<ServerGroup> serverGroups=new ArrayList<ServerGroup>();
     public void add(ServerGroup serverGroup)
     {
         serverGroups.add(serverGroup);
     }
-    public boolean containsKey(String serverHostName)
+    public boolean containsKey(String GroupName)
     {
         for(ServerGroup serverGroup:this)
         {
-            if(serverGroup.HostName.equals(serverHostName))
+            if(serverGroup.name.equals(GroupName))
             {
                 return true;
             }
         }
         return false;
     }
-
-    public ServerGroup get(String serverHostName )
+    public ServerGroup get(String GroupName )
     {
         for(ServerGroup serverGroup:this)
         {
-            if(serverGroup.HostName.equals(serverHostName))
+            if(serverGroup.name.equals(GroupName))
             {
                 return serverGroup;
             }
@@ -51,9 +49,9 @@ public class ServerGroupList implements Iterable<ServerGroup>{
         return serverGroup;
     }
 
-    public void remove(String serverHostName)
+    public void remove(String GroupName)
     {
-        ServerGroup serverGroup=get(serverHostName);
+        ServerGroup serverGroup=get(GroupName);
         if(serverGroup!=null)
         {
             remove(serverGroup);
@@ -74,7 +72,4 @@ public class ServerGroupList implements Iterable<ServerGroup>{
     public Iterator<ServerGroup> iterator() {
         return serverGroups.iterator();
     }
-
-
-
 }

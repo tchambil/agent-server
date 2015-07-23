@@ -164,7 +164,7 @@ public class AgentInstance {
         this.addresses=addresses;
         this.host=(getAddresss(addresses));
         this.type=type;
-        aid = name + "@" + this.host;
+        this.aid = name + "@" + this.host;
         this.parameterValues = parameterValues == null && !update ? new SymbolValues("parameters") : parameterValues;
         this.dependentInstances = new ArrayList<AgentInstance>();
         this.dataSourceInstances = new HashMap<DataSourceReference, AgentInstance>();
@@ -804,7 +804,7 @@ public class AgentInstance {
             JSONObject agentJson = new JsonListMap();
             agentJson.put("user", user.id);
             agentJson.put("name", name);
-            agentJson.put("Addresses",addresses);
+            agentJson.put("addresses",addresses);
             agentJson.put("host",host);
             agentJson.put("aid", aid);
             agentJson.put("type", type);
@@ -1084,7 +1084,7 @@ public class AgentInstance {
 
         // Validate keys
         JsonUtils.validateKeys(agentJson, "Agent instance", new ArrayList<String>(Arrays.asList(
-                "user", "name","addresses","host", "definition", "type","description", "parameter_values", "trigger_interval", "reporting_interval",
+                "user", "aid","name","addresses","host", "definition", "type","description", "parameter_values", "trigger_interval", "reporting_interval",
                 "enabled", "instantiated", "updated", "state",
                 "status", "inputs_changed", "triggered", "outputs_changed",
                 "public_output", "limit_instance_states_stored")));

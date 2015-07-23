@@ -18,7 +18,8 @@ package dcc.agent.server.service.persistence;
 
 import dcc.agent.server.service.agentserver.*;
 import dcc.agent.server.service.communication.ACLMessage;
-import dcc.agent.server.service.delegate.ServerGroup;
+import dcc.agent.server.service.groups.GroupAgentInstance;
+import dcc.agent.server.service.groups.ServerGroup;
 import dcc.agent.server.service.persistence.persistenfile.PersistentFile;
 import dcc.agent.server.service.persistence.persistenfile.PersistentFileException;
 import dcc.agent.server.service.script.intermediate.SymbolException;
@@ -129,8 +130,13 @@ public class Persistence {
 
     public void put(ServerGroup serverGroup) throws AgentServerException {
         log.info("persistence ServerGroup");
-        put("group", serverGroup.HostName, serverGroup.toJson().toString());
+        put("group", serverGroup.name, serverGroup.toJson().toString());
     }
+    public void put(GroupAgentInstance groupAgent) throws AgentServerException {
+        log.info("persistence group Agent");
+        put("group", groupAgent.id, groupAgent.toJson().toString());
+    }
+
 
     public void put(AgentDefinition agentDefinition) throws AgentServerException {
         put("agentDefinitions", agentDefinition.user.id + "|" + agentDefinition.name, agentDefinition.toJson().toString());

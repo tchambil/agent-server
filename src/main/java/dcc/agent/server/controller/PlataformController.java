@@ -3,10 +3,12 @@ package dcc.agent.server.controller;
 import dcc.agent.server.service.agentserver.*;
 import dcc.agent.server.service.appserver.AgentAppServer;
 import dcc.agent.server.service.appserver.AgentAppServerBadRequestException;
+import dcc.agent.server.service.appserver.AgentAppServerException;
 import dcc.agent.server.service.appserver.AgentAppServerShutdown;
 import dcc.agent.server.service.config.AgentServerProperties;
-import dcc.agent.server.service.delegate.ServerGroup;
-import dcc.agent.server.service.delegate.ServerGroupList;
+import dcc.agent.server.service.groups.GroupAgentInstance;
+import dcc.agent.server.service.groups.ServerGroup;
+import dcc.agent.server.service.groups.ServerGroupList;
 import dcc.agent.server.service.field.Field;
 import dcc.agent.server.service.scheduler.AgentScheduler;
 import dcc.agent.server.service.script.intermediate.*;
@@ -26,6 +28,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedReader;
 
 @RestController
@@ -52,8 +55,6 @@ public class PlataformController {
         logger.info("- - - - - - - - - - - - - - - - - - - - - - - - - - -  - - - ");
         logger.info("- - - - - - - - Starting agent Server successful - - - - - - ");
         logger.info("- - - - - - - - - - - - - - - - - - - - - - - - - - -- - - - ");
-
-
         AgentScheduler agentScheduler = AgentScheduler.singleton;
         logger.info("Starting Agent server");
         // Sleep a little to assure status reflects any recent operation
@@ -65,21 +66,65 @@ public class PlataformController {
         return message.toString();
 
     }
-    @RequestMapping(value = "/group", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public String postServerGroup(HttpServletRequest request) throws Exception {
+    @RequestMapping(value = "/users/{id}/group/{name}", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public String postServerGroup(@PathVariable String id,@PathVariable String name,HttpServletRequest request) throws Exception {
+        User user = agentServer.users.get(id);
 
+        if (name == null) {
+            throw new AgentAppServerBadRequestException("Missing group name path parameter");
+        }
+        if (name.trim().length() == 0) {
+            throw new AgentAppServerBadRequestException("Empty group name path parameter");
+        }
+        if (!agentServer.serverGroups.get(user.id).containsKey(name)) {
+            throw new AgentAppServerException(HttpServletResponse.SC_FOUND, "No group with that name for that user");
+        }
+        ServerGroupList serverGroupL =agentServer.serverGroups.get(user.id);
+        ServerGroup serverGroup = serverGroupL.get(name);
+        JSONObject serverJson = util.getJsonRequest(request);
+        if (serverJson == null)
+            throw new AgentAppServerBadRequestException(
+                    "Invalid ServerGroup JSON object");
+        String agentInstanceName = serverJson.optString("agentInstance");
+        if (agentInstanceName == null)
+            throw new AgentAppServerBadRequestException(
+                    "Missing agent instance name path parameter");
+        if (agentInstanceName.trim().length() == 0)
+            throw new AgentAppServerBadRequestException(
+                    "Empty agent instance name path parameter");
+        if (!agentServer.agentInstances.get(user.id).containsKey(
+                agentInstanceName))
+            throw new AgentAppServerBadRequestException(
+                    "No agent definition with that name for that user");
+
+        AgentInstance agentInstance = agentServer.getAgentInstance(user,
+                agentInstanceName);
+        if (agentInstance == null)
+            throw new AgentAppServerBadRequestException(
+                    "No agent instance named '" + agentInstanceName
+                            + " for user '" + user.id + "'");
+
+        // Parse and add the Server Group
+        GroupAgentInstance groupAgentInstance =agentServer.addGroupAgentInstance(serverGroup,agentInstance,serverJson);
+        // Done
+        JSONObject message = new JSONObject();
+        message.put("Group Agent", "Add was successful");
+        return message.toString();
+    }
+    @RequestMapping(value = "/users/{id}/group", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public String postServerGroup(@PathVariable String id,HttpServletRequest request) throws Exception {
+        User user = agentServer.users.get(id);
         JSONObject serverJson = util.getJsonRequest(request);
         if (serverJson == null)
             throw new AgentAppServerBadRequestException(
                     "Invalid ServerGroup JSON object");
         // Parse and add the Server Group
-        ServerGroup serverGroup =agentServer.addServerGroup(serverJson);
+        ServerGroup serverGroup =agentServer.addServerGroup(user,serverJson);
          // Done
         JSONObject message = new JSONObject();
         message.put("message", "Add was successful");
         return message.toString();
     }
-
 
     @RequestMapping(value = "/group", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
@@ -92,16 +137,9 @@ public class PlataformController {
                     .get(groupListNameValue.name)) {
                 // Generate JSON for short summary of serverGroup
                 JSONObject groupJson = new JsonListMap();
-                groupJson.put("uri", serverGroup.Url);
-                groupJson.put("HostName", serverGroup.HostName);
-                groupJson.put("ServerIp",    serverGroup.ServerIp);
-                groupJson.put("ServerName",    serverGroup.ServerName);
-                // Output agents
-                JSONArray detailArrayJson = new JSONArray();
-                if (serverGroup.agentNames != null)
-                    for (Field field : serverGroup.agentNames)
-                        detailArrayJson.put(field.toJson());
-                groupJson.put("agentNames", detailArrayJson);
+                groupJson.put("name", serverGroup.name);
+                groupJson.put("description", serverGroup.description);
+                groupJson.put("type",    serverGroup.type);
                 GroupArrayJson.put(groupJson);
             }
         }

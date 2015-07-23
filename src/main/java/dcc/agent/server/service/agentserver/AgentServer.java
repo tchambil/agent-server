@@ -22,8 +22,10 @@ import dcc.agent.server.service.config.AgentServerConfig;
 import dcc.agent.server.service.config.AgentServerProperties;
 import dcc.agent.server.service.config.AgentServerWebAccessConfig;
 import dcc.agent.server.service.delegate.AgentDelegate;
-import dcc.agent.server.service.delegate.ServerGroup;
-import dcc.agent.server.service.delegate.ServerGroupList;
+import dcc.agent.server.service.groups.GroupAgentInstance;
+import dcc.agent.server.service.groups.GroupAgentInstanceList;
+import dcc.agent.server.service.groups.ServerGroup;
+import dcc.agent.server.service.groups.ServerGroupList;
 import dcc.agent.server.service.mailaccessmanager.MailAccessManager;
 import dcc.agent.server.service.persistence.Persistence;
 import dcc.agent.server.service.persistence.persistenfile.PersistentFileException;
@@ -67,6 +69,7 @@ public class AgentServer {
     public NameValueList<AgentInstanceList> agentInstances;
     public NameValueList<ACLMessageList> agentMessages;
     public NameValueList<ServerGroupList> serverGroups;
+    public NameValueList<GroupAgentInstanceList> groupAgents;
     public AgentServerProperties agentServerProperties;
     public AgentReceiver agentreceiver;
     public AgentSender agentsender;
@@ -170,7 +173,7 @@ public class AgentServer {
     }
     public synchronized void processMessage(ACLMessage message){
          try {
-            AgentReceiver.onMessage(this,message);
+            AgentReceiver.onMessage(this, message);
         } catch (JSONException e) {
             e.printStackTrace();
         } catch (AgentServerException e) {
@@ -180,7 +183,6 @@ public class AgentServer {
          }
 
     }
-
     public synchronized ACLMessage receive(){
           ACLMessage message =AgentReceiver.receive(this);
           return message;
@@ -223,21 +225,40 @@ public class AgentServer {
     public ServerGroup addServerGroup(ServerGroup serverGroup) throws AgentServerException {
         if (serverGroup != null)
         {
-            if(!serverGroups.containsKey(serverGroup.HostName))
+            if(!serverGroups.containsKey(serverGroup.user.id))
             {
-                serverGroups.put(serverGroup.HostName,new ServerGroupList());
+                serverGroups.put(serverGroup.user.id,new ServerGroupList());
             }
-            ServerGroupList serverGroupList =serverGroups.get(serverGroup.HostName);
+            ServerGroupList serverGroupList =serverGroups.get(serverGroup.user.id);
             serverGroupList.put(serverGroup);
             persistence.put(serverGroup);
         }
     return serverGroup;
     }
-    public ServerGroup addServerGroup(JSONObject agentJson) throws AgentServerException {
+    public GroupAgentInstance addGroupAgentInstance(GroupAgentInstance GroupAgent) throws AgentServerException {
+        if (GroupAgent != null)
+        {
+            if(!groupAgents.containsKey(GroupAgent.group.name))
+            {
+                groupAgents.put(GroupAgent.group.name,new GroupAgentInstanceList());
+            }
+            GroupAgentInstanceList groupAgentInstanceList =groupAgents.get(GroupAgent.group.name);
+            groupAgentInstanceList.put(GroupAgent);
+            persistence.put(GroupAgent);
+        }
+        return GroupAgent;
+    }
+    public ServerGroup addServerGroup(User user,JSONObject agentJson) throws AgentServerException {
        log.info("Parse the JSON for the ServerGroup");
-        ServerGroup serverGroup=ServerGroup.fromJson(this, agentJson);
+        ServerGroup serverGroup=ServerGroup.fromJson(this, user,agentJson);
         addServerGroup(serverGroup);
         return serverGroup;
+    }
+    public GroupAgentInstance addGroupAgentInstance(ServerGroup group,AgentInstance agentInstance,JSONObject agentJson) throws AgentServerException {
+        log.info("Parse the JSON for the GroupAgentInstance");
+        GroupAgentInstance groupAgent =GroupAgentInstance.fromJson(this, group,agentInstance,agentJson);
+        addGroupAgentInstance(groupAgent);
+        return groupAgent;
     }
     public ACLMessage addDelegateAgent(ACLMessage agentMessage) throws AgentServerException, JSONException {
     if(agentMessage!=null)
@@ -654,19 +675,19 @@ public class AgentServer {
         return agentMessage;
     }
     public void recreateServerGroup(String serverGroup) throws JSONException, AgentServerException {
-        ServerGroup newServerGroup= ServerGroup.fromJson(this, serverGroup);
+        ServerGroup newServerGroup= ServerGroup.fromJson(this,serverGroup);
         recreateServerGroup(newServerGroup);
 
     }
     public ServerGroup recreateServerGroup(ServerGroup serverGroup) throws AgentServerException {
         if (serverGroup != null) {
             // Check if the plataform has any server group yet
-            if (!serverGroups.containsKey(serverGroup.HostName)) {
+            if (!serverGroups.containsKey(serverGroup.name)) {
                 // No, so create an empty server group table for plataform
-                serverGroups.put(serverGroup.HostName, new ServerGroupList());
+                serverGroups.put(serverGroup.name, new ServerGroupList());
             }
             // Get server group  table for the plataform
-            ServerGroupList AgentGroups = serverGroups.get(serverGroup.HostName);
+            ServerGroupList AgentGroups = serverGroups.get(serverGroup.name);
             // Store the new server group
             AgentGroups.put(serverGroup);
         }
