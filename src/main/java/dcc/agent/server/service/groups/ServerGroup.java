@@ -99,7 +99,7 @@ public class ServerGroup {
         if (!update && (ServerType == null) || ServerType.trim().length() == 0) {
             ServerType = "";
         }
-        JsonUtils.validateKeys(serverJson, "Server Group", new ArrayList<String>(Arrays.asList("user","name", "description", "type")));
+        JsonUtils.validateKeys(serverJson, "Server Group", new ArrayList<String>(Arrays.asList("creator","name", "description", "type")));
         ServerGroup serverGroup = new ServerGroup(agentServer, user, ServerName, ServerDescription, ServerType, false);
         return serverGroup;
     }

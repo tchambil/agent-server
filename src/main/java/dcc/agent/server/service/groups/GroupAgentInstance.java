@@ -63,7 +63,9 @@ public class GroupAgentInstance {
             throw new AgentServerException("JSON exception in Message.toJson" + e.getMessage());
         }
     }
-
+    static public GroupAgentInstance fromJson(AgentServer agentServer, String agentJsonSource) throws JSONException, AgentServerException {
+        return fromJson(agentServer, null, null,new JSONObject(agentJsonSource),  false);
+    }
     static public GroupAgentInstance fromJson(AgentServer agentServer, ServerGroup group,AgentInstance agentInstance, String agentJson) throws JSONException, AgentServerException {
         return fromJson(agentServer, group,agentInstance, new JSONObject(agentJson), false);
     }
@@ -71,21 +73,19 @@ public class GroupAgentInstance {
         return fromJson(agentServer, group,agentInstance,agentJson, false);
     }
     static public GroupAgentInstance fromJson(AgentServer agentServer, ServerGroup group,AgentInstance agentInstance, JSONObject agentJson,  Boolean update) throws AgentServerException {
-        log.info("If we have the user, ignore user from JSON");
-
-        // If we have the group, ignore group from JSON
+        log.info("If we have the group, ignore group from JSON");
         if (group == null) {
             String groupname = agentJson.optString("group");
             if (groupname == null || groupname.trim().length() == 0)
                 throw new AgentServerException("group name is missing");
-
+              group = agentServer.getServerGroup(groupname);
         }
         // If we have the agentInstance, ignore agentInstance from JSON
         if (agentInstance == null) {
             String agentInstancename = agentJson.optString("agentInstance");
             if (agentInstancename == null || agentInstancename.trim().length() == 0)
                 throw new AgentServerException(" agentInstance is missing");
-
+            agentInstance = agentServer.getAgentInstanceId(agentInstancename);
         }
         // Parse the state
         String ServerState= agentJson.optString("state", null);

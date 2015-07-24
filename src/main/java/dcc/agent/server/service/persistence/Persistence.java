@@ -66,7 +66,7 @@ public class Persistence {
                 loadAllTables();
             } else {
                 // No, create a new persistent file for this agent server
-                List<String> tableNames = Arrays.asList("config", "users", "agentDefinitions", "agentInstances", "webaccess", "message", "group");
+                List<String> tableNames = Arrays.asList("config", "users", "agentDefinitions", "agentInstances", "webaccess", "message", "group","groupagent");
                 file.create(path, "Agent Server", "1.0", tableNames);
 
                 // And open it
@@ -130,11 +130,11 @@ public class Persistence {
 
     public void put(ServerGroup serverGroup) throws AgentServerException {
         log.info("persistence ServerGroup");
-        put("group", serverGroup.name, serverGroup.toJson().toString());
+        put("group", serverGroup.user.id + "|"+ serverGroup.name, serverGroup.toJson().toString());
     }
     public void put(GroupAgentInstance groupAgent) throws AgentServerException {
         log.info("persistence group Agent");
-        put("group", groupAgent.id, groupAgent.toJson().toString());
+        put("groupagent", groupAgent.group.name + "|"+groupAgent.id, groupAgent.toJson().toString());
     }
 
 
@@ -167,6 +167,7 @@ public class Persistence {
         loadAgentInstances();
         loadAgentMessage();
         loadgroup();
+        loadgroupAgent();
         // TODO: Status of the scheduler - is it suspended, when is it started?
         // TODO: What to do about pending activities - store/load them? Or, can they be ignored?
     }
@@ -254,9 +255,26 @@ public class Persistence {
     }
     public void loadgroup() throws AgentServerException {
         try {
-            for (String hostname : file.iterable("group")) {
-                String JsonSource = file.get("group", hostname);
+            for (String name : file.iterable("group")) {
+                String JsonSource = file.get("group", name);
                 agentServer.recreateServerGroup(JsonSource);
+            }
+        } catch (PersistentFileException e) {
+            e.printStackTrace();
+            throw new AgentServerException("PersistentFileException loading agentmessage: " + e.getMessage());
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new AgentServerException("IOException loading agentmessage from persistent store: " + e.getMessage());
+        } catch (JSONException e) {
+            e.printStackTrace();
+            throw new AgentServerException("JSONException loading agentmessage from persistent store: " + e.getMessage());
+        }
+    }
+    public void loadgroupAgent() throws AgentServerException {
+        try {
+            for (String id : file.iterable("groupagent")) {
+                String JsonSource = file.get("groupagent", id);
+                agentServer.recreateGroupAgent(JsonSource);
             }
         } catch (PersistentFileException e) {
             e.printStackTrace();

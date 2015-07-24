@@ -7,6 +7,7 @@ import dcc.agent.server.service.appserver.AgentAppServerException;
 import dcc.agent.server.service.appserver.AgentAppServerShutdown;
 import dcc.agent.server.service.config.AgentServerProperties;
 import dcc.agent.server.service.groups.GroupAgentInstance;
+import dcc.agent.server.service.groups.GroupAgentInstanceList;
 import dcc.agent.server.service.groups.ServerGroup;
 import dcc.agent.server.service.groups.ServerGroupList;
 import dcc.agent.server.service.field.Field;
@@ -95,7 +96,7 @@ public class PlataformController {
         if (!agentServer.agentInstances.get(user.id).containsKey(
                 agentInstanceName))
             throw new AgentAppServerBadRequestException(
-                    "No agent definition with that name for that user");
+                    "No agent instance with that name for that user");
 
         AgentInstance agentInstance = agentServer.getAgentInstance(user,
                 agentInstanceName);
@@ -111,6 +112,29 @@ public class PlataformController {
         message.put("Group Agent", "Add was successful");
         return message.toString();
     }
+    @RequestMapping(value = "/users/{id}/group/{name}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public String getAgents(@PathVariable String id, @PathVariable String name) throws Exception {
+        logger.info("Getting list of all agents for a group");
+         User user = agentServer.users.get(id);
+        ServerGroupList groupMap = agentServer.serverGroups.get(user.id);
+        ServerGroup group = groupMap.get(name);
+        JSONArray GroupArrayJson = new JSONArray();
+        // Get all agents for this user
+        for (NameValue<GroupAgentInstanceList> ListNameValue : agentServer.groupAgents) {
+            for (GroupAgentInstance groupAgent : agentServer.groupAgents.get(ListNameValue.name)){
+                if(group.name.equals(groupAgent.group.name)){
+                   JSONObject groupJson = new JsonListMap();
+                   groupJson.put("group", groupAgent.group.name);
+                    groupJson.put("agentInstance", groupAgent.agentInstance.aid);
+                    groupJson.put("state", groupAgent.state);
+                   groupJson.put("instantiated", DateUtils.toRfcString(groupAgent.timeInstantiated));
+                    groupJson.put("updated", groupAgent.timeUpdated > 0 ? DateUtils.toRfcString(groupAgent.timeUpdated) : "");
+                    GroupArrayJson.put(groupJson);
+                }
+            }
+        }
+        return GroupArrayJson.toString(4);
+    }
     @RequestMapping(value = "/users/{id}/group", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public String postServerGroup(@PathVariable String id,HttpServletRequest request) throws Exception {
         User user = agentServer.users.get(id);
@@ -125,7 +149,6 @@ public class PlataformController {
         message.put("message", "Add was successful");
         return message.toString();
     }
-
     @RequestMapping(value = "/group", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public String getServerGroup () throws JSONException {
@@ -140,6 +163,7 @@ public class PlataformController {
                 groupJson.put("name", serverGroup.name);
                 groupJson.put("description", serverGroup.description);
                 groupJson.put("type",    serverGroup.type);
+                groupJson.put("creator",serverGroup.user.id);
                 GroupArrayJson.put(groupJson);
             }
         }
@@ -147,7 +171,6 @@ public class PlataformController {
         groupJson.put("ServerGroup", GroupArrayJson);
         return groupJson.toString();
     }
-
     @RequestMapping(value = "/get", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public    @ResponseBody    String getmain() throws Exception {
         JSONObject message = new JSONObject();
@@ -221,8 +244,6 @@ public class PlataformController {
                         agentInstance.name);
                 SymbolValues outputValues = agent.categorySymbolValues
                         .get("outputs");
-
-
                 for (Symbol outputSymbol : outputValues) {
                     String fieldName = outputSymbol.name;
                     agentInstanceJson.put("Outputs", agent.getOutput(fieldName));

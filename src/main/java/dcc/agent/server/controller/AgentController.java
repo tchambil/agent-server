@@ -670,7 +670,6 @@ public class AgentController {
         // Return the wrapped list
         return wrapperJson.toString();
     }
-
     @RequestMapping(value = "/users/{id}/agents/{name}/notifications/{notificationNames}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public String getAgentsinstanceNotificationsName(@PathVariable String id, @PathVariable String name, @PathVariable String notificationNames, HttpServletRequest request) throws Exception {
@@ -754,7 +753,6 @@ public class AgentController {
         }
         return message;
     }
-
     @RequestMapping(value = "/users/{id}/agents/{name}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
     public String deleteAgentName(@PathVariable String id, @PathVariable String name) throws Exception   {
         PlataformController plataform = new PlataformController();
@@ -891,7 +889,6 @@ public class AgentController {
         }
         return message;
     }
-
     @RequestMapping(value = "/acl", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public  String postAgentmessage(HttpServletRequest request) throws Exception {
