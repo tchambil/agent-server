@@ -100,6 +100,7 @@ public class Navigator implements NavigatorIF {
 
         constructNewQuery(res);
         writeResult(res);
+
         final_results.add(res);
 		partial_graph.setAsEndingNode(res);
 	}
@@ -127,10 +128,11 @@ public class Navigator implements NavigatorIF {
     @Override
     public void printAutomata(){
 
-        StateMachine automaton = reg_expr_manager.pMachine;
+        StateMachine automaton = reg_expr_manager0.pMachine;
+
 
         String f_automaton = this.OUTPUT_FILE.substring(0,
-                OUTPUT_FILE.lastIndexOf("."))
+                OUTPUT_FILE.lastIndexOf("persistent_store"))
                 + "_automaton.txt";
 
         PrintWriter automps = null;
@@ -170,7 +172,7 @@ public class Navigator implements NavigatorIF {
 
         String f_history = this.OUTPUT_FILE.substring(0,
                 OUTPUT_FILE.lastIndexOf("persistent_store"))
-                + rest.substring(rest.lastIndexOf("/"),rest.length()-1)+"_hystory.txt";
+                + rest.substring(rest.lastIndexOf("/"),rest.length())+".txt";
 
         StateMachine automaton = reg_expr_manager.pMachine;
         PrintWriter history = null;
@@ -342,8 +344,7 @@ public class Navigator implements NavigatorIF {
 	/**
 	 * COMMAND OPTIONS
 	 */
-
-	private CommandOption[] getArguments(LinkedList<String> args) {
+private CommandOption[] getArguments(LinkedList<String> args) {
 
 		if (args == null) {
 			return null;
@@ -476,49 +477,39 @@ public class Navigator implements NavigatorIF {
 		return null;
 
 	}
-
 	public synchronized int getDerefCount() {
 		return deref_count;
 	}
-
 	@Override
 	public synchronized Model getExistingBlankModel(String link) {
 		return blank_node_models.get(link);
 	}
-
 	@Override
 	public synchronized Model getExistingModel(String link) {
 		return uri_model_table.get(link);
 	}
-
 	public synchronized HashSet<String> getFinalResults() {
 		return final_results;
 	}
-
 	@Override
 	public Model getGraph() {
 		return result_model;
 	}
-
 	@Override
 	public NavigationHistory getNavigationHistory() {
 		return nav_history;
 	}
-
 	public synchronized NetworkManager getNetWorkManager() {
 		return net_manager;
 	}
-
 	public synchronized RegExprManager getRegExpManager() {
 		return reg_expr_manager;
 	}
-
 	@Override
 	public synchronized int getToDeref() {
 		// TODO Auto-generated method stub
 		return to_deref;
 	}
-
 	/**
 	 * Tokenizes the input from the console
 	 * 
@@ -541,14 +532,12 @@ public class Navigator implements NavigatorIF {
 		}
 		return args;
 	}
-
 	/**
 	 * Increment the number of dereferenced URIs
 	 */
 	public synchronized void incrementDerefCOunt() {
 		deref_count++;
 	}
-
 	/**
 	 * Increment the number of URIs still to be dereferenced
 	 */
@@ -558,7 +547,6 @@ public class Navigator implements NavigatorIF {
 		to_deref = to_deref + value;
 
 	}
-
 	/**
 	 * Starts the evaluation of the expression
 	 * 
@@ -569,14 +557,12 @@ public class Navigator implements NavigatorIF {
 
 		startNewThread(new URIData(SEED, reg_expr_manager.pMachine.getInitial()));
 	}
-
 	@Override
 	public void queueLink(URIData link) throws Exception {
         //count++;
         //System.out.print("Cantidad:"+count);
 		startNewThread(link);
 	}
-
 	/**
 	 * Returns the value of the curent budget (in terms of dereferecing
 	 * operations)
@@ -584,14 +570,12 @@ public class Navigator implements NavigatorIF {
 	public synchronized int getBUDGET() {
 		return BUDGET;
 	}
-
 	/**
 	 * Decrements the budget
 	 */
 	public synchronized void decBUDGET() {
 		BUDGET--;
 	}
-
 	/**
 	 * Prints the configuration for the current command
 	 */
@@ -705,24 +689,49 @@ public class Navigator implements NavigatorIF {
         CommandOption[] optionss = getArguments(getTokenizedInput(command));
         reg_expr_manager0 = new RegExprManager(INPUT_REGEX);
         reg_expr_manager0.buildAutomaton();
+
         StateMachine automaton = reg_expr_manager0.pMachine;
+        printAutomata();
         List_Query= automaton.Query();
-        String new_command=optionss[0].toString()+" -p "+ List_Query.get(0).toString();
-        return new_command;
+        if (List_Query.size()>0) {
+            String new_command = optionss[0].toString() + " -p " + List_Query.get(0).toString();
+            return new_command;
+        }
+        return null;
     }
     private void constructNewQuery(String res){
-        String newcommand="";
-       if(List_Query.size()==1){
+        String newcommand=null;
+
+        for (int i = 0; i < List_Query.size() ; i++) {
+
+        }
+        if(List_Query.size()==0){
+            newcommand=null;
+        }
+        else if(List_Query.size()==1){
             newcommand=res + " -p " + List_Query.get(0).toString();
            }
-        if(List_Query.size()==2){
+        else if(List_Query.size()==2){
             newcommand=res + " -p " + List_Query.get(1).toString();;
         }
-        if(List_Query.size()==3){
+        else if(List_Query.size()==3){
             newcommand=res + " -p " + List_Query.get(1).toString()+"/"+ List_Query.get(2).toString();
         }
-
+        else if(List_Query.size()==4){
+            newcommand=res + " -p " + List_Query.get(1).toString()+"/"+ List_Query.get(2).toString()+"/"+ List_Query.get(3).toString();
+        }
+        else if(List_Query.size()==5){
+            newcommand=res + " -p " + List_Query.get(1).toString()+"/"+ List_Query.get(2).toString()+"/"+ List_Query.get(3).toString()+"/"+ List_Query.get(4).toString();
+        }
+        else if(List_Query.size()==6){
+            newcommand=res + " -p " + List_Query.get(1).toString()+"/"+ List_Query.get(2).toString()+"/"+ List_Query.get(3).toString()+"/"+ List_Query.get(4).toString()+"/"+ List_Query.get(5).toString();
+        }
+        else if(List_Query.size()==7){
+            newcommand=res + " -p " + List_Query.get(1).toString()+"/"+ List_Query.get(2).toString()+"/"+ List_Query.get(3).toString()+"/"+ List_Query.get(4).toString()+"/"+ List_Query.get(5).toString()+"/"+ List_Query.get(6).toString();
+        }
         try {
+            if(newcommand!=null)
+            {
             ACLMessage aclMessage =new ACLMessage();
             aclMessage.setContent("web w; return w.nautilod('"+ newcommand +"').xml;");
             aclMessage.setPerformative(Performative.REQUEST);
@@ -732,6 +741,7 @@ public class Navigator implements NavigatorIF {
             aclMessage.setDelegate(true);
             aclMessage.setStatus("new");
              AgentSender.send(scriptState.agentServer, aclMessage, true);
+            }
         } catch (AgentServerException e) {
             e.printStackTrace();
         } catch (JSONException e) {
@@ -752,9 +762,10 @@ public class Navigator implements NavigatorIF {
         this.scriptState=scriptState;
 
         String new_command= reconstructcommand(command);
-
+        if(new_command==null){
+            new_command=command;
+        }
 		LinkFinderThread.resetTimer();
-
 		String[] results = new String[2];
 		CommandOption[] options = getArguments(getTokenizedInput(new_command));
 		this.COMMENT = comment;
