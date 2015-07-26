@@ -19,15 +19,15 @@ public class EndPointData {
                 tempUrl = new URL(current_URI);
                 String host = tempUrl.getHost();
                 if (host.equals("dblp.l3s.de")) {
-                    return Endpoint.DBLP.getEndpoints();
+                    return Endpoint.DBLP.getSparql();
                 } else if (host.equals("dbpedia.org")) {
-                    return Endpoint.DBPEDIA.getEndpoints();
+                    return Endpoint.DBPEDIA.getSparql();
                 } else if (host.equals("sws.geonames.org")) {
-                    return Endpoint.GEONAMES.getEndpoints();
+                    return Endpoint.GEONAMES.getSparql();
                 } else if (host.equals("rdf.freebase.com")) {
-                    return Endpoint.FREEBASE.getEndpoints();
+                    return Endpoint.FREEBASE.getSparql();
                 } else if (host.equals("yago-knowledge.org")) {
-                    return Endpoint.YAGO.getEndpoints();
+                    return Endpoint.YAGO.getSparql();
                 } else {
                     return null;
                 }

@@ -29,6 +29,8 @@ import dcc.agent.server.service.swget.utils.URIPair;
 import org.json.JSONException;
 
 import java.io.*;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.*;
 import java.util.concurrent.*;
 
@@ -80,7 +82,7 @@ public class Navigator implements NavigatorIF {
 	private String INPUT_REGEX = "";
 	private String SEED = "";
 	private String COMMENT = "";
-
+    private boolean AgentEnable;
 	public Navigator() {
 		net_manager = new NetworkManager(this);
 		final_results = new HashSet<String>();
@@ -680,6 +682,40 @@ private CommandOption[] getArguments(LinkedList<String> args) {
 			result_model.add(st);
 		}
 	}
+    private boolean AgentEnable(URIData uriData){
+        {
+            String current_URI = uriData.getUrl();
+            if (current_URI.toString().contains("#")) {
+                current_URI = current_URI.substring(0, current_URI.indexOf("#"));
+            }
+            try {
+                URL tempUrl = null;
+                tempUrl = new URL(current_URI);
+                String host = tempUrl.getHost();
+                if(scriptState.agentInstance.addresses.equals(host)){
+
+                }
+
+
+                if (host.equals("dblp.l3s.de")) {
+                    return true;
+                } else if (host.equals("dbpedia.org")) {
+                    return true;
+                } else if (host.equals("sws.geonames.org")) {
+                    return true;
+                } else if (host.equals("rdf.freebase.com")) {
+                    return true;
+                } else if (host.equals("yago-knowledge.org")) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+            return false;
+        }
+    }
     /**
      * @param command
      *  @throws ParseException
@@ -692,6 +728,7 @@ private CommandOption[] getArguments(LinkedList<String> args) {
 
         StateMachine automaton = reg_expr_manager0.pMachine;
         printAutomata();
+
         List_Query= automaton.Query();
         if (List_Query.size()>0) {
             String new_command = optionss[0].toString() + " -p " + List_Query.get(0).toString();
@@ -735,7 +772,7 @@ private CommandOption[] getArguments(LinkedList<String> args) {
             ACLMessage aclMessage =new ACLMessage();
             aclMessage.setContent("web w; return w.nautilod('"+ newcommand +"').xml;");
             aclMessage.setPerformative(Performative.REQUEST);
-            aclMessage.setReceivers("agent1");
+            aclMessage.setReceivers(scriptState.agentInstance.name);
             aclMessage.setSender("agent2");
             aclMessage.agentServer=scriptState.agentServer;
             aclMessage.setDelegate(true);

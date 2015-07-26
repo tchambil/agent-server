@@ -5,19 +5,27 @@ package dcc.agent.server.service.swget.multithread;
  */
 public enum Endpoint {
 
-    DBPEDIA("http://dbpedia.org/sparql"),
-    DBLP("http://dblp.l3s.de/d2r/sparql"),
-    FREEBASE("http://freebases.cloudapp.net/sparql"),
-    YAGO("http://lod2.openlinksw.com/sparql"),
-    GEONAMES("http://geonames.cloudapp.net/sparql"),
-    dblprkbexplorer("http://dblp.rkbexplorer.com/sparql/") ;
-    private String url;
-    private Endpoint(String url) {
-        this.url=url;
-    }
-    public String getEndpoints(){
-        return  url;
-    }
+    DBPEDIA("http://dbpedia.org/sparql","dbpedia.org","http://dbpedias.cloudapp.net"),
+    DBLP("http://dblp.l3s.de/d2r/sparql","dblp.l3s.de","http://dblps.cloudapp.net"),
+    FREEBASE("http://freebases.cloudapp.net/sparql","rdf.freebase.com","http://freebases.cloudapp.net"),
+    YAGO("http://lod2.openlinksw.com/sparql","yago-knowledge.org","http://yagos.cloudapp.net"),
+    GEONAMES("http://geonames.cloudapp.net/sparql","sws.geonames.org","http://geonames.cloudapp.net");
 
-
+    private String sparql;
+    private String graph;
+    private String host;
+    private Endpoint(String sparql,String graph,String host) {
+        this.sparql=sparql;
+        this.graph=graph;
+        this.host=host;
+    }
+    public String getSparql(){
+        return  sparql;
+    }
+    public String getGraph(){
+        return  graph;
+    }
+    public String getHost(){
+        return  host;
+    }
 }
