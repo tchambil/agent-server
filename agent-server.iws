@@ -2,11 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2cf9c626-ec31-4eb5-ac64-d54f63553b96" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/AgentController.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/AgentController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/delegate/AgentDelegate.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/delegate/AgentDelegate.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/AgentReceiver.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/AgentReceiver.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/AgentSender.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/AgentSender.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/Navigator.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/Navigator.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent-server.iws" afterPath="$PROJECT_DIR$/agent-server.iws" />
     </list>
@@ -36,99 +31,53 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Navigator.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Navigator.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/Navigator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="11617" max-vertical-offset="14569">
-              <caret line="782" column="37" selection-start-line="782" selection-start-column="37" selection-end-line="782" selection-end-column="37" />
+            <state vertical-scroll-proportion="-3.1235697" vertical-offset="14047" max-vertical-offset="14637">
+              <caret line="824" column="0" selection-start-line="824" selection-start-column="0" selection-end-line="824" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#6928#6936#0" expanded="true" />
-                <element signature="e#10084#10092#0" expanded="true" />
-                <element signature="e#11261#11262#0" expanded="true" />
-                <element signature="e#11287#11288#0" expanded="true" />
-                <element signature="e#11341#11342#0" expanded="true" />
-                <element signature="e#11392#11393#0" expanded="true" />
-                <element signature="e#11627#11642#0" expanded="true" />
-                <element signature="e#16260#16261#0" expanded="true" />
-                <element signature="e#16294#16295#0" expanded="true" />
-                <element signature="e#16376#16377#0" expanded="true" />
-                <element signature="e#16426#16427#0" expanded="true" />
-                <element signature="e#16503#16504#0" expanded="true" />
-                <element signature="e#16551#16552#0" expanded="true" />
-                <element signature="e#16612#16613#0" expanded="true" />
-                <element signature="e#16648#16649#0" expanded="true" />
-                <element signature="e#16693#16694#0" expanded="true" />
-                <element signature="e#16728#16729#0" expanded="true" />
-                <element signature="e#16797#16798#0" expanded="true" />
-                <element signature="e#16831#16832#0" expanded="true" />
-                <element signature="e#16893#16894#0" expanded="true" />
-                <element signature="e#16927#16928#0" expanded="true" />
+                <element signature="e#6889#6897#0" expanded="true" />
+                <element signature="e#10045#10053#0" expanded="true" />
+                <element signature="e#11222#11223#0" expanded="true" />
+                <element signature="e#11248#11249#0" expanded="true" />
+                <element signature="e#11302#11303#0" expanded="true" />
+                <element signature="e#11353#11354#0" expanded="true" />
+                <element signature="e#11588#11603#0" expanded="true" />
+                <element signature="e#16221#16222#0" expanded="true" />
+                <element signature="e#16255#16256#0" expanded="true" />
+                <element signature="e#16337#16338#0" expanded="true" />
+                <element signature="e#16387#16388#0" expanded="true" />
+                <element signature="e#16464#16465#0" expanded="true" />
+                <element signature="e#16512#16513#0" expanded="true" />
+                <element signature="e#16573#16574#0" expanded="true" />
+                <element signature="e#16609#16610#0" expanded="true" />
+                <element signature="e#16654#16655#0" expanded="true" />
+                <element signature="e#16689#16690#0" expanded="true" />
+                <element signature="e#16758#16759#0" expanded="true" />
+                <element signature="e#16792#16793#0" expanded="true" />
+                <element signature="e#16854#16855#0" expanded="true" />
+                <element signature="e#16888#16889#0" expanded="true" />
+                <element signature="e#16949#16950#0" expanded="true" />
                 <element signature="e#16988#16989#0" expanded="true" />
-                <element signature="e#17027#17028#0" expanded="true" />
-                <element signature="e#17516#17524#0" expanded="true" />
-                <element signature="e#17825#17826#0" expanded="true" />
-                <element signature="e#17854#17855#0" expanded="true" />
-                <element signature="e#18668#18669#0" expanded="true" />
-                <element signature="e#18697#18698#0" expanded="true" />
-                <element signature="e#18786#18787#0" expanded="true" />
-                <element signature="e#18810#18811#0" expanded="true" />
+                <element signature="e#17477#17485#0" expanded="true" />
+                <element signature="e#17786#17787#0" expanded="true" />
+                <element signature="e#17815#17816#0" expanded="true" />
+                <element signature="e#18629#18630#0" expanded="true" />
+                <element signature="e#18658#18659#0" expanded="true" />
+                <element signature="e#18747#18748#0" expanded="true" />
+                <element signature="e#18771#18772#0" expanded="true" />
                 <element signature="method#reconstruct#0;class#Navigator#0" expanded="false" />
-                <element signature="e#19694#19703#0" expanded="true" />
-                <element signature="e#29047#29048#0" expanded="true" />
-                <element signature="e#29089#29090#0" expanded="true" />
-                <element signature="e#29854#29855#0" expanded="true" />
-                <element signature="e#29892#29893#0" expanded="true" />
-                <element signature="e#30199#30200#0" expanded="true" />
-                <element signature="e#30240#30241#0" expanded="true" />
-                <element signature="e#30458#30459#0" expanded="true" />
-                <element signature="e#30496#30497#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AgentDelegate.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/delegate/AgentDelegate.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="36" max-vertical-offset="561">
-              <caret line="29" column="23" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AgentReceiver.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/AgentReceiver.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="6.9130435" vertical-offset="1518" max-vertical-offset="6766">
-              <caret line="281" column="17" selection-start-line="281" selection-start-column="17" selection-end-line="281" selection-end-column="17" />
-              <folding>
-                <element signature="method#onMessageDelegate#0;class#AgentReceiver#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Performative.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/Performative.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="850">
-              <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="29" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AgentSender.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/AgentSender.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="551" max-vertical-offset="1190">
-              <caret line="102" column="13" selection-start-line="102" selection-start-column="13" selection-end-line="102" selection-end-column="13" />
-              <folding>
-                <element signature="method#getAddresss#0;class#AgentSender#0" expanded="false" />
-                <element signature="method#send#0;class#AgentSender#0" expanded="false" />
-                <element signature="method#send#1;class#AgentSender#0" expanded="false" />
+                <element signature="e#19655#19664#0" expanded="true" />
+                <element signature="e#29312#29313#0" expanded="true" />
+                <element signature="e#29354#29355#0" expanded="true" />
+                <element signature="e#30119#30120#0" expanded="true" />
+                <element signature="e#30157#30158#0" expanded="true" />
+                <element signature="e#30464#30465#0" expanded="true" />
+                <element signature="e#30505#30506#0" expanded="true" />
+                <element signature="e#30723#30724#0" expanded="true" />
+                <element signature="e#30761#30762#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -194,10 +143,10 @@
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/EndPointData.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/AgentController.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/Navigator.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/delegate/AgentDelegate.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/AgentSender.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/AgentReceiver.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/Navigator.java" />
       </list>
     </option>
   </component>
@@ -1494,7 +1443,7 @@
       <workItem from="1437453380387" duration="84645000" />
       <workItem from="1437697857711" duration="15457000" />
       <workItem from="1437837626500" duration="9157000" />
-      <workItem from="1437941730102" duration="14547000" />
+      <workItem from="1437941730102" duration="15855000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1431836573263</created>
@@ -1748,11 +1697,15 @@
       <created>1437951943432</created>
       <updated>1437951943432</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="optimizing message queue.">
+      <created>1437968492581</created>
+      <updated>1437968492581</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1023643000" />
+    <option name="totallyTimeSpent" value="1024951000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1776,10 +1729,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18430035" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18430035" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32850778" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1949,12 +1902,6 @@
           <line>260</line>
           <properties />
           <option name="timeStamp" value="480" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/Navigator.java</url>
-          <line>804</line>
-          <properties />
-          <option name="timeStamp" value="483" />
         </line-breakpoint>
       </breakpoints>
       <option name="time" value="484" />
@@ -2344,64 +2291,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/Navigator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="11617" max-vertical-offset="14569">
-          <caret line="782" column="37" selection-start-line="782" selection-start-column="37" selection-end-line="782" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#6928#6936#0" expanded="true" />
-            <element signature="e#10084#10092#0" expanded="true" />
-            <element signature="e#11261#11262#0" expanded="true" />
-            <element signature="e#11287#11288#0" expanded="true" />
-            <element signature="e#11341#11342#0" expanded="true" />
-            <element signature="e#11392#11393#0" expanded="true" />
-            <element signature="e#11627#11642#0" expanded="true" />
-            <element signature="e#16260#16261#0" expanded="true" />
-            <element signature="e#16294#16295#0" expanded="true" />
-            <element signature="e#16376#16377#0" expanded="true" />
-            <element signature="e#16426#16427#0" expanded="true" />
-            <element signature="e#16503#16504#0" expanded="true" />
-            <element signature="e#16551#16552#0" expanded="true" />
-            <element signature="e#16612#16613#0" expanded="true" />
-            <element signature="e#16648#16649#0" expanded="true" />
-            <element signature="e#16693#16694#0" expanded="true" />
-            <element signature="e#16728#16729#0" expanded="true" />
-            <element signature="e#16797#16798#0" expanded="true" />
-            <element signature="e#16831#16832#0" expanded="true" />
-            <element signature="e#16893#16894#0" expanded="true" />
-            <element signature="e#16927#16928#0" expanded="true" />
-            <element signature="e#16988#16989#0" expanded="true" />
-            <element signature="e#17027#17028#0" expanded="true" />
-            <element signature="e#17516#17524#0" expanded="true" />
-            <element signature="e#17825#17826#0" expanded="true" />
-            <element signature="e#17854#17855#0" expanded="true" />
-            <element signature="e#18668#18669#0" expanded="true" />
-            <element signature="e#18697#18698#0" expanded="true" />
-            <element signature="e#18786#18787#0" expanded="true" />
-            <element signature="e#18810#18811#0" expanded="true" />
-            <element signature="method#reconstruct#0;class#Navigator#0" expanded="false" />
-            <element signature="e#19694#19703#0" expanded="true" />
-            <element signature="e#29047#29048#0" expanded="true" />
-            <element signature="e#29089#29090#0" expanded="true" />
-            <element signature="e#29854#29855#0" expanded="true" />
-            <element signature="e#29892#29893#0" expanded="true" />
-            <element signature="e#30199#30200#0" expanded="true" />
-            <element signature="e#30240#30241#0" expanded="true" />
-            <element signature="e#30458#30459#0" expanded="true" />
-            <element signature="e#30496#30497#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/delegate/AgentDelegate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="36" max-vertical-offset="561">
-          <caret line="29" column="23" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6696035" vertical-offset="2535" max-vertical-offset="11339">
@@ -2419,7 +2308,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/Performative.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="850">
+        <state vertical-scroll-proportion="0.075555556" vertical-offset="102" max-vertical-offset="850">
           <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="29" selection-end-column="34" />
           <folding />
         </state>
@@ -2427,7 +2316,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/AgentSender.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="551" max-vertical-offset="1190">
+        <state vertical-scroll-proportion="1.2677345" vertical-offset="398" max-vertical-offset="1190">
           <caret line="102" column="13" selection-start-line="102" selection-start-column="13" selection-end-line="102" selection-end-column="13" />
           <folding>
             <element signature="method#getAddresss#0;class#AgentSender#0" expanded="false" />
@@ -2439,10 +2328,68 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/AgentReceiver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="6.9130435" vertical-offset="1518" max-vertical-offset="6766">
-          <caret line="281" column="17" selection-start-line="281" selection-start-column="17" selection-end-line="281" selection-end-column="17" />
+        <state vertical-scroll-proportion="-3.784897" vertical-offset="2640" max-vertical-offset="6766">
+          <caret line="72" column="61" selection-start-line="72" selection-start-column="55" selection-end-line="72" selection-end-column="61" />
           <folding>
             <element signature="method#onMessageDelegate#0;class#AgentReceiver#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/delegate/AgentDelegate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3318078" vertical-offset="42" max-vertical-offset="561">
+          <caret line="19" column="23" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/Navigator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.1235697" vertical-offset="14047" max-vertical-offset="14637">
+          <caret line="824" column="0" selection-start-line="824" selection-start-column="0" selection-end-line="824" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#6889#6897#0" expanded="true" />
+            <element signature="e#10045#10053#0" expanded="true" />
+            <element signature="e#11222#11223#0" expanded="true" />
+            <element signature="e#11248#11249#0" expanded="true" />
+            <element signature="e#11302#11303#0" expanded="true" />
+            <element signature="e#11353#11354#0" expanded="true" />
+            <element signature="e#11588#11603#0" expanded="true" />
+            <element signature="e#16221#16222#0" expanded="true" />
+            <element signature="e#16255#16256#0" expanded="true" />
+            <element signature="e#16337#16338#0" expanded="true" />
+            <element signature="e#16387#16388#0" expanded="true" />
+            <element signature="e#16464#16465#0" expanded="true" />
+            <element signature="e#16512#16513#0" expanded="true" />
+            <element signature="e#16573#16574#0" expanded="true" />
+            <element signature="e#16609#16610#0" expanded="true" />
+            <element signature="e#16654#16655#0" expanded="true" />
+            <element signature="e#16689#16690#0" expanded="true" />
+            <element signature="e#16758#16759#0" expanded="true" />
+            <element signature="e#16792#16793#0" expanded="true" />
+            <element signature="e#16854#16855#0" expanded="true" />
+            <element signature="e#16888#16889#0" expanded="true" />
+            <element signature="e#16949#16950#0" expanded="true" />
+            <element signature="e#16988#16989#0" expanded="true" />
+            <element signature="e#17477#17485#0" expanded="true" />
+            <element signature="e#17786#17787#0" expanded="true" />
+            <element signature="e#17815#17816#0" expanded="true" />
+            <element signature="e#18629#18630#0" expanded="true" />
+            <element signature="e#18658#18659#0" expanded="true" />
+            <element signature="e#18747#18748#0" expanded="true" />
+            <element signature="e#18771#18772#0" expanded="true" />
+            <element signature="method#reconstruct#0;class#Navigator#0" expanded="false" />
+            <element signature="e#19655#19664#0" expanded="true" />
+            <element signature="e#29312#29313#0" expanded="true" />
+            <element signature="e#29354#29355#0" expanded="true" />
+            <element signature="e#30119#30120#0" expanded="true" />
+            <element signature="e#30157#30158#0" expanded="true" />
+            <element signature="e#30464#30465#0" expanded="true" />
+            <element signature="e#30505#30506#0" expanded="true" />
+            <element signature="e#30723#30724#0" expanded="true" />
+            <element signature="e#30761#30762#0" expanded="true" />
           </folding>
         </state>
       </provider>

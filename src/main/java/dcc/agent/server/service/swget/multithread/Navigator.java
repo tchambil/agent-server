@@ -82,7 +82,7 @@ public class Navigator implements NavigatorIF {
     private String SEED = "";
     private String COMMENT = "";
 
-    private String enableEndpoint=null;
+
     private Boolean enableAgent=false;
     public Navigator() {
         net_manager = new NetworkManager(this);
@@ -699,7 +699,7 @@ public class Navigator implements NavigatorIF {
         }
     }
 
-    private void EnableEndPoint(URIData uriData) {
+    private String EnableEndPoint(URIData uriData) {
         {
             String current_URI = uriData.getUrl();
             if (current_URI.toString().contains("#")) {
@@ -710,24 +710,30 @@ public class Navigator implements NavigatorIF {
                 String host = tempUrl.getHost();
                 for (Endpoint endpoint : Endpoint.values()) {
                     if (endpoint.getGraph().equals(host)) {
-                        enableEndpoint = endpoint.getHost();
+                        return endpoint.getHost();
                     }
                 }
 
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
+            return null;
 
         }
     }
 
-    private void EnableAgent(URIData uriData) {
-         String address = scriptState.agentInstance.addresses.toString();
-        if (enableEndpoint != null) {
-            if (enableEndpoint.equals(address)) {
-                enableAgent = true;
+    private boolean EnableAgent(URIData uriData) {
+        String enableEndpoint =EnableEndPoint(uriData);
+       if (enableEndpoint != null) {
+            String address = scriptState.agentInstance.addresses.toString();
+            if(address!=null || address.equals("")|| address.length()==0){
+                if (enableEndpoint.trim().equals(address.trim())) {
+                    return true;
+                }
             }
+            return false;
         }
+        return false;
     }
 
     /**
@@ -735,7 +741,6 @@ public class Navigator implements NavigatorIF {
      * @throws ParseException
      */
     private String reconstructcommand(String command) throws ParseException {
-
         CommandOption[] optionss = getArguments(getTokenizedInput(command));
         reg_expr_manager0 = new RegExprManager(INPUT_REGEX);
         reg_expr_manager0.buildAutomaton();
@@ -777,10 +782,11 @@ public class Navigator implements NavigatorIF {
             if (newcommand != null) {
 
                 AgentInstance agentS = scriptState.agentServer.getAgentInstance(scriptState.agentInstance.name,true);
-
                 AgentInstance agentR=scriptState.agentServer.getAgentInstanceAddress(res,"");
+                 if (agentR!=null && agentS!=null){
+                    AgentDelegate.doNautiLOD(scriptState, agentS, agentR, newcommand);
+                }
 
-                AgentDelegate.doNautiLOD(scriptState, agentS, agentR, newcommand);
             }
         } catch (AgentServerException e) {
             e.printStackTrace();
@@ -801,7 +807,6 @@ public class Navigator implements NavigatorIF {
     public String[] runCommand(ScriptState scriptState, String command, String comment)
             throws ParseException, TokenMgrError {
         this.scriptState = scriptState;
-
         String new_command = reconstructcommand(command);
         if (new_command == null) {
             new_command = command;
@@ -810,7 +815,6 @@ public class Navigator implements NavigatorIF {
         String[] results = new String[2];
         CommandOption[] options = getArguments(getTokenizedInput(new_command));
         this.COMMENT = comment;
-
         reg_expr_manager = new RegExprManager(INPUT_REGEX);
         reg_expr_manager.buildAutomaton();
 
