@@ -37,11 +37,9 @@ public class AgentSender {
         }
 
     }
-
     static public void sendlocal(AgentServer agentServer, ACLMessage message) throws AgentServerException, JSONException {
         ACLMessage newmessage = agentServer.addAgentMessage(null, message.toJson());
     }
-
     private static String getAddresss(AgentInstance agentInstance) {
         String webService = null;
         URL tempUrl = null;
@@ -67,20 +65,46 @@ public class AgentSender {
             }
         }
     }
-
     static public void send(AgentServer agentServer, ACLMessage message, Boolean delegate) throws AgentServerException, JSONException {
         AgentInstance agentInstance=null;
         if ((delegate)&&(message.delegate.toString().equals("true"))){
-             agentInstance = agentServer.getAgentInstances(message.receivers);
+             agentInstance = agentServer.getAgentInstanceId(message.receivers);
         }
         else{
-             agentInstance = agentServer.getAgentInstances(message.sender);
+             agentInstance = agentServer.getAgentInstanceId(message.sender);
         }
 
         if (agentInstance.type.equals("remote")) {
             sendRemote(message, agentInstance);
         } else {
             sendlocal(agentServer, message);
+        }
+    }
+    public static void onMessage(AgentServer agentServer, ACLMessage message) throws Exception {
+        if ((message != null)) {
+            ACLMessage reply = message.createReply(agentServer);
+            if (message.getPerformative() == Performative.REQUEST) {
+                String content = message.getContent();
+                if (content != null) {
+                    log.info("Agent " + message.getReceivers() + " - Received Request from " + message.getSender());
+                    reply.setPerformative(Performative.INFORM);
+                    reply.setStatus("response");
+                    reply.setInReplyTo(content);
+                    reply.setReplyBy(message.getReceivers());
+
+                    if  (true){
+                        reply.setContent("Nothing Result or Unexpected request");
+                    }
+                } else {
+                    log.info("Agent " + message.getReceivers() + " - Unexpected request [" + content + "] received from " + message.getSender());
+                    reply.setPerformative(Performative.REFUSE);
+                    reply.setContent("( UnexpectedContent (" + content + "))");
+                }
+            } else {
+                reply.setPerformative(Performative.NOT_UNDERSTOOD);
+                reply.setContent("( (Unexpected-act " + (message.getPerformative()) + ") )");
+            }
+            AgentSender.send(agentServer, reply);
         }
     }
 }

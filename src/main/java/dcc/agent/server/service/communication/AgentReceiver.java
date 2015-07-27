@@ -73,7 +73,216 @@ public class AgentReceiver {
                     reply.setPerformative(Performative.REFUSE);
                     reply.setContent("( UnexpectedContent (" + content + "))");
                 }
-            } else {
+            }
+            else if(message.getPerformative() == Performative.CONFIRM){
+                String content = message.getContent();
+                if (content != null){}
+                else {
+                    log.info("Agent " + message.getReceivers() + " - Unexpected request [" + content + "] received from " + message.getSender());
+                    reply.setPerformative(Performative.REFUSE);
+                    reply.setContent("( UnexpectedContent (" + content + "))");
+                }
+            }
+            else if(message.getPerformative() == Performative. ACCEPT_PROPOSAL ){
+                String content = message.getContent();
+                if (content != null){}
+                else {
+                    log.info("Agent " + message.getReceivers() + " - Unexpected request [" + content + "] received from " + message.getSender());
+                    reply.setPerformative(Performative.REFUSE);
+                    reply.setContent("( UnexpectedContent (" + content + "))");
+                }
+            }
+            else if(message.getPerformative() == Performative.AGREE ){
+                String content = message.getContent();
+                if (content != null){}
+                else {
+                    log.info("Agent " + message.getReceivers() + " - Unexpected request [" + content + "] received from " + message.getSender());
+                    reply.setPerformative(Performative.REFUSE);
+                    reply.setContent("( UnexpectedContent (" + content + "))");
+                }
+            }
+            else if(message.getPerformative() == Performative.CANCEL ){
+                String content = message.getContent();
+                if (content != null){}
+                else {
+                    log.info("Agent " + message.getReceivers() + " - Unexpected request [" + content + "] received from " + message.getSender());
+                    reply.setPerformative(Performative.REFUSE);
+                    reply.setContent("( UnexpectedContent (" + content + "))");
+                }
+            }
+            else if(message.getPerformative() == Performative. CALL_FOR_PROPOSAL ){
+                String content = message.getContent();
+                if (content != null){}
+                else {
+                    log.info("Agent " + message.getReceivers() + " - Unexpected request [" + content + "] received from " + message.getSender());
+                    reply.setPerformative(Performative.REFUSE);
+                    reply.setContent("( UnexpectedContent (" + content + "))");
+                }
+            }
+            else if(message.getPerformative() == Performative.CONFIRM ){
+                String content = message.getContent();
+                if (content != null){}
+                else {
+                    log.info("Agent " + message.getReceivers() + " - Unexpected request [" + content + "] received from " + message.getSender());
+                    reply.setPerformative(Performative.REFUSE);
+                    reply.setContent("( UnexpectedContent (" + content + "))");
+                }
+            }
+            else if(message.getPerformative() == Performative.DISCONFIRM ){
+                String content = message.getContent();
+                if (content != null){}
+                else {
+                    log.info("Agent " + message.getReceivers() + " - Unexpected request [" + content + "] received from " + message.getSender());
+                    reply.setPerformative(Performative.REFUSE);
+                    reply.setContent("( UnexpectedContent (" + content + "))");
+                }
+            }
+            else if(message.getPerformative() == Performative. FAILURE ){
+                String content = message.getContent();
+                if (content != null){}
+                else {
+                    log.info("Agent " + message.getReceivers() + " - Unexpected request [" + content + "] received from " + message.getSender());
+                    reply.setPerformative(Performative.REFUSE);
+                    reply.setContent("( UnexpectedContent (" + content + "))");
+                }
+            }
+            else if(message.getPerformative() == Performative. INFORM ){
+                String content = message.getContent();
+                if (content != null){}
+                else {
+                    log.info("Agent " + message.getReceivers() + " - Unexpected request [" + content + "] received from " + message.getSender());
+                    reply.setPerformative(Performative.REFUSE);
+                    reply.setContent("( UnexpectedContent (" + content + "))");
+                }
+            }
+            else if(message.getPerformative() == Performative.INFORM_IF){
+                String content = message.getContent();
+                if (content != null){}
+                else {
+                    log.info("Agent " + message.getReceivers() + " - Unexpected request [" + content + "] received from " + message.getSender());
+                    reply.setPerformative(Performative.REFUSE);
+                    reply.setContent("( UnexpectedContent (" + content + "))");
+                }
+            }
+            else if(message.getPerformative() == Performative. INFORM_REF ){
+                String content = message.getContent();
+                if (content != null){}
+                else {
+                    log.info("Agent " + message.getReceivers() + " - Unexpected request [" + content + "] received from " + message.getSender());
+                    reply.setPerformative(Performative.REFUSE);
+                    reply.setContent("( UnexpectedContent (" + content + "))");
+                }
+            }
+            else if(message.getPerformative() == Performative. NOT_UNDERSTOOD ){
+                String content = message.getContent();
+                if (content != null){}
+                else {
+                    log.info("Agent " + message.getReceivers() + " - Unexpected request [" + content + "] received from " + message.getSender());
+                    reply.setPerformative(Performative.REFUSE);
+                    reply.setContent("( UnexpectedContent (" + content + "))");
+                }
+            }
+            else if(message.getPerformative() == Performative.PROPAGATE ){
+                String content = message.getContent();
+                if (content != null){}
+                else {
+                    log.info("Agent " + message.getReceivers() + " - Unexpected request [" + content + "] received from " + message.getSender());
+                    reply.setPerformative(Performative.REFUSE);
+                    reply.setContent("( UnexpectedContent (" + content + "))");
+                }
+            }
+            else if(message.getPerformative() == Performative.PROPOSE ){
+                String content = message.getContent();
+                if (content != null){}
+                else {
+                    log.info("Agent " + message.getReceivers() + " - Unexpected request [" + content + "] received from " + message.getSender());
+                    reply.setPerformative(Performative.REFUSE);
+                    reply.setContent("( UnexpectedContent (" + content + "))");
+                }
+            }
+            else if(message.getPerformative() == Performative.PROXY ){
+                String content = message.getContent();
+                if (content != null){}
+                else {
+                    log.info("Agent " + message.getReceivers() + " - Unexpected request [" + content + "] received from " + message.getSender());
+                    reply.setPerformative(Performative.REFUSE);
+                    reply.setContent("( UnexpectedContent (" + content + "))");
+                }
+            }
+            else if(message.getPerformative() == Performative.QUERY_IF){
+                String content = message.getContent();
+                if (content != null){}
+                else {
+                    log.info("Agent " + message.getReceivers() + " - Unexpected request [" + content + "] received from " + message.getSender());
+                    reply.setPerformative(Performative.REFUSE);
+                    reply.setContent("( UnexpectedContent (" + content + "))");
+                }
+            }
+            else if(message.getPerformative() == Performative.QUERY_REF ){
+                String content = message.getContent();
+                if (content != null){}
+                else {
+                    log.info("Agent " + message.getReceivers() + " - Unexpected request [" + content + "] received from " + message.getSender());
+                    reply.setPerformative(Performative.REFUSE);
+                    reply.setContent("( UnexpectedContent (" + content + "))");
+                }
+            }
+            else if(message.getPerformative() == Performative.REFUSE ){
+                String content = message.getContent();
+                if (content != null){}
+                else {
+                    log.info("Agent " + message.getReceivers() + " - Unexpected request [" + content + "] received from " + message.getSender());
+                    reply.setPerformative(Performative.REFUSE);
+                    reply.setContent("( UnexpectedContent (" + content + "))");
+                }
+            }
+            else if(message.getPerformative() == Performative.REJECT_PROPOSAL ){
+                String content = message.getContent();
+                if (content != null){}
+                else {
+                    log.info("Agent " + message.getReceivers() + " - Unexpected request [" + content + "] received from " + message.getSender());
+                    reply.setPerformative(Performative.REFUSE);
+                    reply.setContent("( UnexpectedContent (" + content + "))");
+                }
+            }
+            else if(message.getPerformative() == Performative. REQUEST ){
+                String content = message.getContent();
+                if (content != null){}
+                else {
+                    log.info("Agent " + message.getReceivers() + " - Unexpected request [" + content + "] received from " + message.getSender());
+                    reply.setPerformative(Performative.REFUSE);
+                    reply.setContent("( UnexpectedContent (" + content + "))");
+                }
+            }
+            else if(message.getPerformative() == Performative.REQUEST_WHEN ){
+                String content = message.getContent();
+                if (content != null){}
+                else {
+                    log.info("Agent " + message.getReceivers() + " - Unexpected request [" + content + "] received from " + message.getSender());
+                    reply.setPerformative(Performative.REFUSE);
+                    reply.setContent("( UnexpectedContent (" + content + "))");
+                }
+            }
+            else if(message.getPerformative() == Performative.REQUEST_WHENEVER ){
+                String content = message.getContent();
+                if (content != null){}
+                else {
+                    log.info("Agent " + message.getReceivers() + " - Unexpected request [" + content + "] received from " + message.getSender());
+                    reply.setPerformative(Performative.REFUSE);
+                    reply.setContent("( UnexpectedContent (" + content + "))");
+                }
+            }
+            else if(message.getPerformative() == Performative.SUBSCRIBE ){
+                String content = message.getContent();
+                if (content != null){}
+                else {
+                    log.info("Agent " + message.getReceivers() + " - Unexpected request [" + content + "] received from " + message.getSender());
+                    reply.setPerformative(Performative.REFUSE);
+                    reply.setContent("( UnexpectedContent (" + content + "))");
+                }
+            }
+
+            else {
                 reply.setPerformative(Performative.NOT_UNDERSTOOD);
                 reply.setContent("( (Unexpected-act " + (message.getPerformative()) + ") )");
             }

@@ -285,15 +285,7 @@ public class AgentServer {
         return groupAgent;
     }
 
-    public ACLMessage addDelegateAgent(ACLMessage agentMessage) throws AgentServerException, JSONException {
-        if (agentMessage != null) {
-            // Prepara for delegate agent message
-            return agentDelegate.readMessage(agentMessage);
 
-        }
-        return null;
-
-    }
 
     public AgentDefinition getAgentDefinition(User user, String agentDefinitionName) {
         AgentDefinitionList agentMap = agentDefinitions.get(user.id);
@@ -384,6 +376,19 @@ public class AgentServer {
             for (AgentInstance agentInstance : this.agentInstances
                     .get(userAgentInstances.name)) {
                 if (agentInstance.aid.equals(AgentId)) {
+                    newagentInstance = agentInstance;
+                    break;
+                }
+            }
+        }
+        return newagentInstance;
+    }
+    public AgentInstance getAgentInstanceAddress(String host, String id) {
+        AgentInstance newagentInstance = null;
+        for (NameValue<AgentInstanceList> userAgentInstances : this.agentInstances) {
+            for (AgentInstance agentInstance : this.agentInstances
+                    .get(userAgentInstances.name)) {
+                if (agentInstance.addresses.equals(host)) {
                     newagentInstance = agentInstance;
                     break;
                 }
@@ -569,7 +574,6 @@ public class AgentServer {
         // Return the created/shared agent instance
         return agentInstance;
     }
-
     public AgentInstance getAgentInstance(String userId, String agentInstanceName, String dataSourceName) {
         AgentInstanceList agentMap = agentInstances.get(userId);
         if (agentMap == null)
@@ -580,7 +584,6 @@ public class AgentServer {
             return null;
         return agentInstance.getDataSourceInstance(dataSourceName);
     }
-
     public String getAgentInstanceName(String userId, String agentInstanceName, String dataSourceName) {
         AgentInstance dataSourceInstance = getAgentInstance(userId, agentInstanceName, dataSourceName);
         if (dataSourceInstance != null)
@@ -588,7 +591,6 @@ public class AgentServer {
         else
             return null;
     }
-
     public AgentInstance getAgentInstance(String scriptName, Boolean wait) {
         // Get all user for plataform
         ScriptDefinition scriptDefinition = null;
@@ -607,7 +609,6 @@ public class AgentServer {
         }
         return agent;
     }
-
     public AgentInstance getAgentInstance(User user, String agentInstanceName, String dataSourceName) {
         AgentInstanceList agentMap = agentInstances.get(user.id);
         if (agentMap == null)
@@ -618,7 +619,6 @@ public class AgentServer {
             return null;
         return agentInstance.getDataSourceInstance(dataSourceName);
     }
-
     public void removeAgentInstance(AgentInstance agentInstance) throws AgentServerException {
         String userId = agentInstance.user.id;
         String agentName = agentInstance.name;
@@ -653,11 +653,9 @@ public class AgentServer {
         // Delete the named agent definition for the user
         usersAgents.remove(agentName);
     }
-
     public User addUser(String userId) throws AgentServerException {
         return addUser(new User(userId));
     }
-
     public User addUser(User user) throws AgentServerException {
         // Add the new user
         users.add(user.id, user);
@@ -669,7 +667,6 @@ public class AgentServer {
         // Return the new user
         return user;
     }
-
     public User getUser(String userId) {
         if (userId == null || userId.trim().length() == 0)
             return null;
@@ -680,7 +677,6 @@ public class AgentServer {
             return user == null ? User.noUser : user;
         }
     }
-
     public User recreateUser(User user) throws AgentServerException {
         // Add the new user
         users.add(user.id, user);
@@ -827,7 +823,7 @@ public class AgentServer {
         this.serverGroups = new NameValueList<ServerGroupList>();
         this.groupAgents = new NameValueList<GroupAgentInstanceList>();
 
-        this.agentDelegate = new AgentDelegate(this);
+
 
         // Initialize agent server properties
         agentServerProperties = new AgentServerProperties();

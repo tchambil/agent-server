@@ -861,7 +861,7 @@ public class AgentController {
         if (scriptDefinition == null)
         {
           retunValueObject.put("Status", "Task delegate to " +agentMessage.replyTo);
-          ACLMessage agentMessageR=agentServer.addDelegateAgent(agentMessage);
+          ACLMessage agentMessageR=(agentMessage);
           retunValueObject.put("Result",(agentMessageR.replyTo));
           message = retunValueObject.toString();
         } else {
