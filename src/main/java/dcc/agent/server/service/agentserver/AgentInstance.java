@@ -720,7 +720,7 @@ public class AgentInstance {
 
         // Run the compiled script
         scriptStatus.put(scriptName, "running");
-        Value valueNode = scriptRuntime.runScript(scriptName, scriptNode, arguments);
+        Value valueNode = scriptRuntime.runScript(scriptName, scriptNode, arguments,null);
         scriptStatus.put(scriptName, "ran");
 
         // Record the script return value, if any
@@ -766,7 +766,7 @@ public class AgentInstance {
                 captureDataSourceOutputValues();
 
             // Run the compiled script
-            Value valueNode = scriptRuntime.runScript(script, scriptNode);
+            Value valueNode = scriptRuntime.runScript(script, scriptNode,null);
 
             // Capture state
             captureState();

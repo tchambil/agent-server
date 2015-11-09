@@ -65,6 +65,7 @@ public class Navigator implements NavigatorIF {
     private String jobId;
     private String email;
     private AgentServerProperties config;
+    private String newcommand=null;
     /*
      * The following variables handle the options
      */
@@ -102,7 +103,7 @@ public class Navigator implements NavigatorIF {
     public synchronized void addResult(String res) {
 
         constructNewQuery(res);
-        writeResult(res);
+     //   writeResult(res);
 
         final_results.add(res);
         partial_graph.setAsEndingNode(res);
@@ -135,7 +136,7 @@ public class Navigator implements NavigatorIF {
 
 
         String f_automaton = this.OUTPUT_FILE.substring(0,
-                OUTPUT_FILE.lastIndexOf("persistent_store"))
+                OUTPUT_FILE.lastIndexOf("."))
                 + "_automaton.txt";
 
         PrintWriter automps = null;
@@ -252,8 +253,10 @@ public class Navigator implements NavigatorIF {
         StateMachine automaton = reg_expr_manager.pMachine;
 
         String f_automaton = this.OUTPUT_FILE.substring(0,
-                OUTPUT_FILE.lastIndexOf("persistent_store"))
+                OUTPUT_FILE.lastIndexOf("."))
                 + "_automatoninitial.txt";
+
+
 
         PrintWriter automps = null;
 
@@ -284,7 +287,7 @@ public class Navigator implements NavigatorIF {
         automps.close();
 
         String f_history = this.OUTPUT_FILE.substring(0,
-                OUTPUT_FILE.lastIndexOf("persistent_store"))
+                OUTPUT_FILE.lastIndexOf("."))
                 + "_hystory.txt";
 
         PrintWriter history = null;
@@ -699,9 +702,9 @@ public class Navigator implements NavigatorIF {
         }
     }
 
-    private String EnableEndPoint(URIData uriData) {
+    private String EnableEndPoint(String uri_start) {
         {
-            String current_URI = uriData.getUrl();
+            String current_URI = uri_start;
             if (current_URI.toString().contains("#")) {
                 current_URI = current_URI.substring(0, current_URI.indexOf("#"));
             }
@@ -722,11 +725,11 @@ public class Navigator implements NavigatorIF {
         }
     }
 
-    private boolean EnableAgent(URIData uriData) {
-        String enableEndpoint =EnableEndPoint(uriData);
+    private boolean EnableAgent(String uri_start) {
+        String enableEndpoint =EnableEndPoint(uri_start);
        if (enableEndpoint != null) {
             String address = scriptState.agentInstance.addresses.toString();
-            if(address!=null || address.equals("")|| address.length()==0){
+            if(address!=null || (!address.equals(""))|| address.length()>0){
                 if (enableEndpoint.trim().equals(address.trim())) {
                     return true;
                 }
@@ -755,9 +758,12 @@ public class Navigator implements NavigatorIF {
         }
         return null;
     }
-
+    @Override
+    public String getCommand(){
+    return newcommand;
+    }
     private void constructNewQuery(String res) {
-        String newcommand = null;
+
         for (int i = 0; i < List_Query.size(); i++) {
 
         }
@@ -781,20 +787,20 @@ public class Navigator implements NavigatorIF {
         try {
             if (newcommand != null) {
 
-                AgentInstance agentS = scriptState.agentServer.getAgentInstance(scriptState.agentInstance.name,true);
-                AgentInstance agentR=scriptState.agentServer.getAgentInstanceAddress(res,"");
+                AgentInstance agentS = scriptState.agentServer.getAgentInstanceId(scriptState.agentInstance.aid);
+                AgentInstance agentR=scriptState.agentServer.getAgentInstanceAddress(EnableEndPoint(res), "");
                  if (agentR!=null && agentS!=null){
-                    AgentDelegate.doNautiLOD(scriptState, agentS, agentR, newcommand);
+                    AgentDelegate.doNautiLOD(scriptState, agentS, agentR, newcommand + " -f "+res.substring(res.lastIndexOf("/")+1, res.length())+".rdf",COMMENT);
                 }
-
             }
+
+
         } catch (AgentServerException e) {
             e.printStackTrace();
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
-
     /**
      * The entry point of the program
      *
@@ -807,13 +813,24 @@ public class Navigator implements NavigatorIF {
     public String[] runCommand(ScriptState scriptState, String command, String comment)
             throws ParseException, TokenMgrError {
         this.scriptState = scriptState;
+
         String new_command = reconstructcommand(command);
+        OUTPUT_FILE="output_swget.rdf";
         if (new_command == null) {
             new_command = command;
         }
         LinkFinderThread.resetTimer();
         String[] results = new String[2];
         CommandOption[] options = getArguments(getTokenizedInput(new_command));
+
+        if(!(EnableAgent(options[0].toString()))){
+                results[0]="Endpoint or Agent not is Now Available!‏";
+                    return results;
+        }
+        else{
+           results [0]="nautiLOD in process";
+        }
+
         this.COMMENT = comment;
         reg_expr_manager = new RegExprManager(INPUT_REGEX);
         reg_expr_manager.buildAutomaton();
@@ -852,14 +869,14 @@ public class Navigator implements NavigatorIF {
      */
 
     public synchronized void shutdown() {
-
         execService.shutdownNow();
         closeExecution();
         Collection<String> r = getFinalResults();
+        if(r.size()>0){
+        AgentDelegate.doNautiLOD(scriptState, r );
+        }
         System.out.println("#res=" + r.size() + " #deref=" + getDerefCount());
-
-
-    }
+}
 
     @Override
     public int size() {

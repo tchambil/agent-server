@@ -277,6 +277,7 @@ public class AgentController {
         return message.toString();
 
     }
+
     @RequestMapping(value = "/users/{id}/agents/{name}/run_script/{scriptName}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     public String putAgentRun_script(@PathVariable String id, @PathVariable String name, @PathVariable String scriptName, HttpServletRequest request) throws Exception {
 
@@ -614,7 +615,6 @@ public class AgentController {
     }
 
     @RequestMapping(value = "/users/{id}/agents/{name}/notifications", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.OK)
     public String getAgentsinstanceNotifications(@PathVariable String id, @PathVariable String name) throws Exception {
         PlataformController plataformController = new PlataformController();
         agentServer = plataformController.getAgentServer();
@@ -670,8 +670,8 @@ public class AgentController {
         // Return the wrapped list
         return wrapperJson.toString();
     }
+
     @RequestMapping(value = "/users/{id}/agents/{name}/notifications/{notificationNames}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.OK)
     public String getAgentsinstanceNotificationsName(@PathVariable String id, @PathVariable String name, @PathVariable String notificationNames, HttpServletRequest request) throws Exception {
 
         PlataformController plataform = new PlataformController();
@@ -753,6 +753,7 @@ public class AgentController {
         }
         return message;
     }
+
     @RequestMapping(value = "/users/{id}/agents/{name}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
     public String deleteAgentName(@PathVariable String id, @PathVariable String name) throws Exception   {
         PlataformController plataform = new PlataformController();
@@ -790,6 +791,7 @@ public class AgentController {
         message.put("message", "Deleting agent instance");
         return message.toString();
     }
+
     @RequestMapping(value = "/agents/task", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public String getagenttask(HttpServletRequest request) throws Exception {
         logger.info("Getting task of agent instances for all users");
@@ -889,9 +891,9 @@ public class AgentController {
         }
         return message;
     }
+
     @RequestMapping(value = "/acl", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.OK)
-    public  String postAgentmessage(HttpServletRequest request) throws Exception {
+     public  String postAgentmessage(HttpServletRequest request) throws Exception {
         PlataformController plataform = new PlataformController();
         agentServer = plataform.getAgentServer();
 
@@ -905,8 +907,8 @@ public class AgentController {
 
         return agentMessage.toString();
     }
+
     @RequestMapping(value = "/users/message/{id}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.OK)
     public String putAgentmessage( @PathVariable String id,HttpServletRequest request) throws Exception {
         PlataformController plataform = new PlataformController();
         agentServer = plataform.getAgentServer();
@@ -924,8 +926,8 @@ public class AgentController {
         message.put("message", "update was successful");
         return message.toString();
     }
+
     @RequestMapping(value = "/users/message", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.OK)
     public String getAgentMessagey () throws JSONException {
         PlataformController plataformController = new PlataformController();
         agentServer = plataformController.getAgentServer();
@@ -961,8 +963,8 @@ public class AgentController {
         return agentMessageJson.toString();
 
     }
+
     @RequestMapping(value = "/swget", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.OK)
     public String sgwet () throws JSONException, ParseException {
         PlataformController plataformController = new PlataformController();
         agentServer = plataformController.getAgentServer();

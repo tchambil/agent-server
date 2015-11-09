@@ -30,7 +30,7 @@ public interface NavigatorIF {
 	public void decToDeref();
 
 	public int getToDeref();
-
+public String getCommand();
 	public void addVisitedModel(String link, Model model);
 
 	public void addBlankModel(String link, Model model);

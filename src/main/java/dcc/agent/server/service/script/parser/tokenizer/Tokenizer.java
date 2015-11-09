@@ -121,6 +121,8 @@ public class Tokenizer {
                     token = new DelegateKeywordToken();
                 else if (identifier.equals("message"))
                     token = new MessageKeywordToken();
+                else if (identifier.equals("nautilod"))
+                    token = new NautiLODKeywordToken();
                 else
                     token = new IdentifierToken(identifier);
             } else if (czer.isDigit) {

@@ -60,7 +60,7 @@ public class AgentActivityTimer extends AgentActivity {
                 return false;
             }
 
-            log.info("Timer script completed - " + timer.script);
+            //log.info("Timer script completed - " + timer.script);
             // Reschedule the timer for its next interval, unless it is now marked as disabled
             if (status.enabled) {
                 // Create a new timer activity - time will be now plus timer interval

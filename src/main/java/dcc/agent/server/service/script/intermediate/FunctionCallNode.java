@@ -16,17 +16,16 @@
 
 package dcc.agent.server.service.script.intermediate;
 
-import java.util.ArrayList;
-import java.util.List;
-
-
 import dcc.agent.server.service.agentserver.AgentServerException;
 import dcc.agent.server.service.agentserver.RuntimeException;
+import dcc.agent.server.service.script.runtime.ScriptState;
 import dcc.agent.server.service.script.runtime.value.FloatValue;
 import dcc.agent.server.service.script.runtime.value.IntegerValue;
 import dcc.agent.server.service.script.runtime.value.NullValue;
 import dcc.agent.server.service.script.runtime.value.Value;
-import dcc.agent.server.service.script.runtime.ScriptState;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class FunctionCallNode extends ExpressionNode {
     public String functionName;
@@ -178,7 +177,7 @@ public class FunctionCallNode extends ExpressionNode {
             }
             ScriptNode scriptNode = scriptState.get(functionName, argumentTypes);
             if (scriptNode != null) {
-                Value valueNode = scriptState.scriptRuntime.runScript(functionName, scriptNode, argumentValues);
+                Value valueNode = scriptState.scriptRuntime.runScript(functionName, scriptNode, argumentValues,null);
                 return valueNode;
             } else
                 throw new RuntimeException("Unknown function: " + functionName + " with " + numArgs + " arguments");

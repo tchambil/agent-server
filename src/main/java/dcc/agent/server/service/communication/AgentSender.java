@@ -17,9 +17,10 @@ import java.net.URL;
 public class AgentSender {
     static final Logger log = Logger.getLogger(AgentSender.class);
 
-    static public void sendRemote(ACLMessage message, AgentInstance agentInstance) throws AgentServerException {
+    static public void sendRemote(AgentServer agentServer,ACLMessage message) throws AgentServerException {
         log.info("Initialize the aclmessage for send");
         // Initialize the agent send,
+        AgentInstance agentInstance = agentServer.getAgentInstanceId(message.receivers);
         String webService = getAddresss(agentInstance);
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
@@ -55,10 +56,10 @@ public class AgentSender {
         return webService;
     }
     static public void send(AgentServer agentServer, ACLMessage message) throws AgentServerException, JSONException {
-        AgentInstance agentInstance = agentServer.getAgentInstances(message.receivers);
+        AgentInstance agentInstance = agentServer.getAgentInstanceId(message.receivers);
         if (agentInstance != null) {
             if (agentInstance.type.equals("remote")) {
-                 sendRemote(message, agentInstance);
+                 sendRemote(agentServer,message);
             }
             else{
                  sendlocal(agentServer, message);
@@ -66,18 +67,14 @@ public class AgentSender {
         }
     }
     static public void send(AgentServer agentServer, ACLMessage message, Boolean delegate) throws AgentServerException, JSONException {
-        AgentInstance agentInstance=null;
-        if ((delegate)&&(message.delegate.toString().equals("true"))){
-             agentInstance = agentServer.getAgentInstanceId(message.receivers);
-        }
-        else{
-             agentInstance = agentServer.getAgentInstanceId(message.sender);
-        }
-
-        if (agentInstance.type.equals("remote")) {
-            sendRemote(message, agentInstance);
-        } else {
-            sendlocal(agentServer, message);
+        AgentInstance agentInstance = agentServer.getAgentInstanceId(message.receivers);
+        if (agentInstance != null) {
+            if (agentInstance.type.equals("remote")) {
+                sendRemote(agentServer,message);
+            }
+            else{
+                sendlocal(agentServer, message);
+            }
         }
     }
     public static void onMessage(AgentServer agentServer, ACLMessage message) throws Exception {

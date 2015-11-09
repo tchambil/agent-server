@@ -22,7 +22,6 @@ import dcc.agent.server.service.script.intermediate.TypeNode;
 import dcc.agent.server.service.script.intermediate.WebTypeNode;
 import dcc.agent.server.service.script.runtime.ScriptState;
 import dcc.agent.server.service.swget.multithread.Navigator;
-import dcc.agent.server.service.swget.regExpression.parser.ParseException;
 import dcc.agent.server.service.webaccessmanager.WebAccessException;
 import dcc.agent.server.service.webaccessmanager.WebPage;
 
@@ -80,39 +79,14 @@ public class WebValue extends Value {
             // TODO
             // TODO: Find out what this Java return value is really all about
             return TrueValue.one;
-        } else if (name.equals("clear") && numArguments == 0){
+        } else if (name.equals("clear") && numArguments == 0) {
             // TODO
 
             // No return value
             return NullValue.one;
             // TODO: Add "contains"
-        } else if (name.equals("nautilod") && (numArguments >= 1 || numArguments <= 4)){
-            // Get the URL of the web page to fetch
-            String command = arguments.get(0).getStringValue();
-            String comment = null;
-            // Get the optional useCache flag
-            boolean useCache = true;
-            if (numArguments >= 2)
-               comment = arguments.get(1).getStringValue();
-
-            // Get the optional page refresh interval
-            long refreshInterval = -1;
-            if (numArguments >= 3)
-                refreshInterval = arguments.get(2).getLongValue();
-
-            // Get the optional wait flag
-            boolean wait = this.wait;
-            if (numArguments >= 4)
-                wait = arguments.get(3).getBooleanValue();
-
-            // Fetch the specified web page
-            String s = fetchNatilod(scriptState, command, comment);
-            if (s == null || s.length() == 0)
-                return NullValue.one;
-            else
-                return new StringValue(s);
-
-        } else if (name.equals("get") && (numArguments >= 1 || numArguments <= 4)){
+        }
+        else if (name.equals("get") && (numArguments >= 1 || numArguments <= 4)){
             // Get the URL of the web page to fetch
             String url = arguments.get(0).getStringValue();
 
@@ -192,20 +166,7 @@ public class WebValue extends Value {
             return super.getMethodValue(scriptState, name, arguments);
     }
 
-    private String fetchNatilod(ScriptState scriptState, String command, String comment)  {
-        this.navigator = new Navigator();
-        try {
-           String[] s= navigator.runCommand(scriptState,  command,comment);
-
-            return ("NautilodInit");
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        return null;
-    }
-
-    public Value getSubscriptedValue(ScriptState scriptState, List<Value> subscriptValues) throws RuntimeException {
+     public Value getSubscriptedValue(ScriptState scriptState, List<Value> subscriptValues) throws RuntimeException {
         int numSubscripts = subscriptValues.size();
         if (numSubscripts == 1){
             // Fetch element with that key

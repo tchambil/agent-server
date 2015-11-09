@@ -5,6 +5,7 @@ import dcc.agent.server.service.agentserver.AgentServer;
 import dcc.agent.server.service.agentserver.AgentServerException;
 import dcc.agent.server.service.script.intermediate.DelegateTypeNode;
 import dcc.agent.server.service.script.intermediate.ScriptNode;
+import dcc.agent.server.service.script.intermediate.WebTypeNode;
 import dcc.agent.server.service.script.parser.ParserException;
 import dcc.agent.server.service.script.parser.ScriptParser;
 import dcc.agent.server.service.script.parser.tokenizer.TokenizerException;
@@ -62,8 +63,9 @@ public class AgentReceiver {
                     reply.setStatus("response");
                     reply.setInReplyTo(content);
                     reply.setReplyBy(message.getReceivers());
-                    Value value = parseScript(agentServer, content, message);
-                    if (value != NullValue.one) {
+                    //String parser= parseMessage(agentServer,message);
+                    Value value=  parseScript(agentServer, content, message);
+                     if (value != NullValue.one) {
                         reply.setContent(value.getStringValue());
                     } else {
                         reply.setContent("Nothing Result or Unexpected request");
@@ -73,7 +75,15 @@ public class AgentReceiver {
                     reply.setPerformative(Performative.REFUSE);
                     reply.setContent("( UnexpectedContent (" + content + "))");
                 }
+                AgentSender.send(agentServer, reply);
             }
+            else {
+                reply.setPerformative(Performative.NOT_UNDERSTOOD);
+                reply.setContent("( (Unexpected-act " + (message.getPerformative()) + ") )");
+            //    AgentSender.send(agentServer, reply);
+            }
+
+            /*
             else if(message.getPerformative() == Performative.CONFIRM){
                 String content = message.getContent();
                 if (content != null){}
@@ -281,12 +291,8 @@ public class AgentReceiver {
                     reply.setContent("( UnexpectedContent (" + content + "))");
                 }
             }
+*/
 
-            else {
-                reply.setPerformative(Performative.NOT_UNDERSTOOD);
-                reply.setContent("( (Unexpected-act " + (message.getPerformative()) + ") )");
-            }
-            AgentSender.send(agentServer, reply);
         }
     }
 
@@ -336,6 +342,23 @@ public class AgentReceiver {
                 delegate(agentServer, message, resultValue);
             }
             return send;
+        }
+        return null;
+    }
+
+    public static String parseMessage(AgentServer agentServer, ACLMessage message) throws Exception {
+          if (message != null) {
+            String content = message.getContent();
+            if (content != null) {
+                ScriptNode scriptNode = parseNode(agentServer, message);
+                if (scriptNode.blockNode.localVariables.size() > 0) {
+                if (scriptNode.blockNode.localVariables.get(0).type instanceof WebTypeNode) {
+                    return scriptNode.functionName;
+                }
+                }
+
+            }
+
         }
         return null;
     }
@@ -404,7 +427,7 @@ public class AgentReceiver {
         ScriptRuntime scriptRuntime = new ScriptRuntime(dummyAgentInstance);
         try {
             ScriptNode scriptNode = parser.parseScriptString(scriptString);
-            Value valueNode = scriptRuntime.runScript(scriptString, scriptNode);
+            Value valueNode = scriptRuntime.runScript(scriptString, scriptNode,message);
             return valueNode;
         } catch (TokenizerException e) {
             e.printStackTrace();
@@ -415,7 +438,7 @@ public class AgentReceiver {
     }
 
     private static AgentInstance getAgent(AgentServer agentServer, String value) {
-        return agentServer.getAgentInstances(value);
+        return agentServer.getAgentInstanceId(value);
     }
 
     static public synchronized ACLMessage receive(AgentServer agentServer) {
@@ -435,7 +458,7 @@ public class AgentReceiver {
 
         for (NameValue<ACLMessageList> messageListNameValue : agentServer.agentMessages) {
             for (ACLMessage agentMessage : agentServer.agentMessages.get(messageListNameValue.name)) {
-                if ((agentMessage.getReceivers().equals(agent.name)) && (agentMessage.getStatus().equals("new"))) {
+                if (((agentMessage.getReceivers().equals(agent.name))||(agentMessage.getReceivers().equals(agent.aid)) )&& (agentMessage.getStatus().equals("new"))) {
 
                     return agentMessage;
 

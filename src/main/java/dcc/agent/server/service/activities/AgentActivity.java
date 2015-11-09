@@ -69,9 +69,9 @@ public class AgentActivity {
 
     public void startActivity() {
         status = StatusTypes.RUNNING;
-        log.info("- - - - - - - - - - - - - --- - -");
-        log.info("- - - - New Starting activity - - - - " + description);
-        log.info("- - - - - - - - - - -- - - -  - -");
+       // log.info("- - - - - - - - - - - - - --- - -");
+     //   log.info("- - - - New Starting activity - - - - " + description);
+       // log.info("- - - - - - - - - - -- - - -  - -");
     }
 
     public void gotException(Exception e) {
@@ -86,8 +86,8 @@ public class AgentActivity {
         endTime = System.currentTimeMillis();
         status = StatusTypes.COMPLETED;
 
-        log.info("--->>>>Finished activity <<<<---" + description + " status: " + status
-                + " in " + (endTime - startTime) + " ms.");
+        //log.info("--->>>>Finished activity <<<<---" + description + " status: " + status
+          //      + " in " + (endTime - startTime) + " ms.");
 
         // TODO - Should state capture be done at this point?
     }

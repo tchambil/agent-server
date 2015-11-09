@@ -481,7 +481,7 @@ public class PlataformController {
                     dummyAgentInstance);
             ScriptNode scriptNode = parser.parseScriptString(scriptString);
                  Value valueNode = scriptRuntime.runScript(scriptString,
-                    scriptNode);
+                    scriptNode,null);
             resultString = valueNode.getStringValue();
             logger.info("Script result: " + resultString);
 

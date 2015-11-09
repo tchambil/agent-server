@@ -140,7 +140,7 @@ public class LinkFinderThread implements Runnable {
          * Termination condition
          */
         if (NautiLODManager.getActiveThreadCount() == 1
-                && NautiLODManager.getToDeref() <= 0) {
+                && NautiLODManager.getToDeref() <= 0 && NautiLODManager.getCommand()==null) {
 
             System.out.println("\nTotal time="
                     + ((System.currentTimeMillis() - t0)) + " ms");
@@ -200,9 +200,9 @@ public class LinkFinderThread implements Runnable {
                 Query query = QueryFactory.create(queryString);
                 System.out.println(queryString);
                 QueryExecution qexec = QueryExecutionFactory.sparqlService(endPoints.getEndpoint(uri_to_expand), query);
-
+                results = qexec.execSelect();
                 //QueryExecution qexec = QueryExecutionFactory.create(query,urrent_model);
-                try {
+                /*try {
                     try {
                         results = qexec.execSelect();
                     } catch (QueryExecException e) {
@@ -211,7 +211,7 @@ public class LinkFinderThread implements Runnable {
                 } finally {
                     qexec.close();
                 }
-
+*/
                 for (; results.hasNext(); ) {
                     QuerySolution soln = results.next();
 
@@ -261,6 +261,8 @@ public class LinkFinderThread implements Runnable {
                 queryString = "SELECT ?x WHERE { ?x " + pred + " <"  + uri_to_expand.getUrl().toString() + "> .}";
                            query = QueryFactory.create(queryString);
                 qexec = QueryExecutionFactory.sparqlService(endPoints.getEndpoint(uri_to_expand), query);
+                results = qexec.execSelect();
+                /*
                                      try {
                     try {
                         System.out.println(queryString);
@@ -271,7 +273,7 @@ public class LinkFinderThread implements Runnable {
                 } finally {
                     qexec.close();
                 }
-
+*/
                 for (; results.hasNext(); ) {
                     QuerySolution soln = results.next();
 
