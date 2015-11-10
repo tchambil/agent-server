@@ -185,7 +185,7 @@
         <li>
             <ul class="group-menu nav nav-list collapse">
                 <li>
-                    <a href="/message.do"><span class="fa fa-caret-right"></span> RabbitMQ</a>
+                    <a href="/nautilod.do"><span class="fa fa-caret-right"></span> RabbitMQ</a>
                 </li>
             </ul>
         </li>
