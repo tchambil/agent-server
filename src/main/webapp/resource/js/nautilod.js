@@ -13,7 +13,7 @@ function jsonNautilod(data)
     '{"sender": "'+ $('#agentini').val()+'",'+
     '"receiver": "'+$('#agentini').val()+'",'+
     '"replyTo": "'+ $('#PutTo').val()+'",'+
-    '"content": "nautilod n; return n.get('+"'"+ $('#expressionNau').val()+"'"+').xml;",'+
+    '"content": "nautilod n; return n.get('+"'"+ $('#expressionNau').val()+').xml;",'+
     '"language": "",'+
     '"encoding": "",'+
     '"ontology": "0",'+
