@@ -7,9 +7,11 @@
 # Requirements
 + Apache Tomcat 7+
 + Java SE Development Kit (JDK) 7
+
 # Download 
 + War distribution of AgentServer is [available for download](https://github.com/tchambil/agent-server/blob/master/target/agent-server-1.0.war)
-+
+
+
 # For start agent: 
 
 http://localhost:8080/index.html 
