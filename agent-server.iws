@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2cf9c626-ec31-4eb5-ac64-d54f63553b96" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent-server.iws" afterPath="$PROJECT_DIR$/agent-server.iws" />
-    </list>
+    <list default="true" id="2cf9c626-ec31-4eb5-ac64-d54f63553b96" name="Default" comment="" />
     <ignored path="agent-server.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -1079,7 +1077,7 @@
       <workItem from="1446586444039" duration="3800000" />
       <workItem from="1447061159059" duration="714000" />
       <workItem from="1447109774798" duration="2580000" />
-      <workItem from="1447158953165" duration="15567000" />
+      <workItem from="1447158953165" duration="16195000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1431836573263</created>
@@ -1373,7 +1371,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1134640000" />
+    <option name="totallyTimeSpent" value="1135268000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
