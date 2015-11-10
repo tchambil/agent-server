@@ -51,9 +51,53 @@ $(document).ready(function () {
 
 
     });
+    $('#DropUserGeneral').click(function () {
+        $.ajax({
+            type: 'GET',
+            url: '../users/'+ $('#DropUserGeneral').val()+'/agents/',
+            // url: '../users/test-user-1/agents/Agent-1/',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+
+            success: function (data) {
+                $('#Dropagent').empty();
+
+                $(data.agent_instances).each(function(index,item) {
+
+                    $('#Dropagent').append('<option value='+item.name+'>'+item.name+'</option>');
 
 
-    $('#btnagentSdve').click(function () {
+                });
+
+            },
+            error: function (err) {
+                $('#Dropagent').empty();
+            }
+        }); //-- END of Ajax
+    });
+
+    $('#startscript').click(function () {
+        $.ajax({
+///users/{id}/agents/{name}/run_script/{scriptName}
+
+
+            type: 'PUT',
+            url: '../users/'+ $('#DropUserGeneral').val()+'/agents/'+ $('#Dropagent').val()+'/run_script/'+ $('#namescript').val()+'?'+$('#scriptid').val(),
+            contentType: "application/json; charset=utf-8",
+             success: function (data) {
+
+                $('#resultscript').empty();
+                $('#resultscript').append(JSON.stringify(data, null, "\t"));
+            },
+            error: function (err) {
+
+                $('#resultscript').empty();
+                $('#resultscript').append(JSON.stringify(err, null, 2));
+            }
+        }); //-- END of Ajax
+    });
+
+    $('#getstart').click(function () {
         $.ajax({
 
             type: 'POST',
@@ -61,7 +105,8 @@ $(document).ready(function () {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
 
-            data:     '{ "name" : "'+ $('#nameagentgeneral').val()+'" , "definition" : "'+ $('#DropAgentGeneral').val()+'" }',
+
+            data:     '{ "name" : "'+ $('#nameagentgeneral').val()+'" , "definition" : "'+ $('#DropAgentGeneral').val()+'", "addresses" : "'+$('#addressesagent').val()+'", "type": "'+ $('#typeagent').val()+'"}',
             success: function (data) {
 
                 $('#idMessagsedAgent').empty();
@@ -78,7 +123,7 @@ $(document).ready(function () {
     $('#btngetagentall').click(function () {
         $.ajax({
             type: 'GET',
-            url: '../users/test-user-1/agents/',
+            url: '../users/'+ $('#DropUserGeneral').val()+'/agents/',
             // url: '../users/test-user-1/agents/Agent-1/',
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -114,18 +159,18 @@ $(document).ready(function () {
     $('#btnagentpause').click(function () {
         $.ajax({
             type: 'PUT',
-            url: '../users/test-user-1/agents/Agent-1/pause',
+            url: '../users/'+ $('#DropUserGeneral').val()+'/agents/'+ $('#nameagentgeneral').val()+'/pause',
             // url: '../users/test-user-1/agents/Agent-1/',
             contentType: "application/json; charset=utf-8",
             dataType: "json",
 
             success: function (data) {
-                $('#txtagent').empty();
-                $('#txtagent').append(JSON.stringify(data, null, "\t"));
+                $('#idMessagsedAgent').empty();
+                $('#idMessagsedAgent').append(JSON.stringify(data, null, "\t"));
             },
             error: function (err) {
-                $('#txtagent').empty();
-                $('#txtagent').append(JSON.stringify(err, null, 2));
+                $('#idMessagsedAgent').empty();
+                $('#idMessagsedAgent').append(JSON.stringify(err, null, 2));
             }
         }); //-- END of Ajax
     });
@@ -133,18 +178,18 @@ $(document).ready(function () {
     $('#btnagentdisable').click(function () {
         $.ajax({
             type: 'PUT',
-            url: '../users/test-user-1/agents/Agent-1/disable',
+            url: '../users/'+ $('#DropUserGeneral').val()+'/agents/'+ $('#nameagentgeneral').val()+'/disable',
             // url: '../users/test-user-1/agents/Agent-1/',
             contentType: "application/json; charset=utf-8",
             dataType: "json",
 
             success: function (data) {
-                $('#txtagent').empty();
-                $('#txtagent').append(JSON.stringify(data, null, "\t"));
+                $('#idMessagsedAgent').empty();
+                $('#idMessagsedAgent').append(JSON.stringify(data, null, "\t"));
             },
             error: function (err) {
-                $('#txtagent').empty();
-                $('#txtagent').append(JSON.stringify(err, null, 2));
+                $('#idMessagsedAgent').empty();
+                $('#idMessagsedAgent').append(JSON.stringify(err, null, 2));
             }
         }); //-- END of Ajax
     });
@@ -152,18 +197,18 @@ $(document).ready(function () {
     $('#btnagentresume').click(function () {
         $.ajax({
             type: 'PUT',
-            url: '../users/test-user-1/agents/Agent-1/resume',
+            url: '../users/'+ $('#DropUserGeneral').val()+'/agents/'+ $('#nameagentgeneral').val()+'/resume',
             // url: '../users/test-user-1/agents/Agent-1/',
             contentType: "application/json; charset=utf-8",
             dataType: "json",
 
             success: function (data) {
-                $('#txtagent').empty();
-                $('#txtagent').append(JSON.stringify(data, null, "\t"));
+                $('#idMessagsedAgent').empty();
+                $('#idMessagsedAgent').append(JSON.stringify(data, null, "\t"));
             },
             error: function (err) {
-                $('#txtagent').empty();
-                $('#txtagent').append(JSON.stringify(err, null, 2));
+                $('#idMessagsedAgent').empty();
+                $('#idMessagsedAgent').append(JSON.stringify(err, null, 2));
             }
         }); //-- END of Ajax
     });
@@ -171,54 +216,54 @@ $(document).ready(function () {
     $('#btnagentenable').click(function () {
         $.ajax({
             type: 'PUT',
-            url: '../users/test-user-1/agents/Agent-1/enable',
+            url: '../users/'+ $('#DropUserGeneral').val()+'/agents/'+ $('#nameagentgeneral').val()+'/enable',
             // url: '../users/test-user-1/agents/Agent-1/',
             contentType: "application/json; charset=utf-8",
             dataType: "json",
 
             success: function (data) {
-                $('#txtagent').empty();
-                $('#txtagent').append(JSON.stringify(data, null, "\t"));
+                $('#idMessagsedAgent').empty();
+                $('#idMessagsedAgent').append(JSON.stringify(data, null, "\t"));
             },
             error: function (err) {
-                $('#txtagent').empty();
-                $('#txtagent').append(JSON.stringify(err, null, 2));
+                $('#idMessagsedAgent').empty();
+                $('#idMessagsedAgent').append(JSON.stringify(err, null, 2));
             }
         }); //-- END of Ajax
     });
     $('#btnagentstatus').click(function () {
         $.ajax({
             type: 'GET',
-            url: '../users/test-user-1/agents/Agent-1/status?state=yes&count=2',
+            url: '../users/'+ $('#DropUserGeneral').val()+'/agents/'+ $('#nameagentgeneral').val()+'/status?state=yes&count=2',
             // url: '../users/test-user-1/agents/Agent-1/',
             contentType: "application/json; charset=utf-8",
             dataType: "json",
 
             success: function (data) {
-                $('#txtagent').empty();
-                $('#txtagent').append(JSON.stringify(data, null, "\t"));
+                $('#idMessagsedAgent').empty();
+                $('#idMessagsedAgent').append(JSON.stringify(data, null, "\t"));
             },
             error: function (err) {
-                $('#txtagent').empty();
-                $('#txtagent').append(JSON.stringify(err, null, 2));
+                $('#idMessagsedAgent').empty();
+                $('#idMessagsedAgent').append(JSON.stringify(err, null, 2));
             }
         }); //-- END of Ajax
     });
     $('#btnagentoutput').click(function () {
         $.ajax({
             type: 'GET',
-            url: '../users/test-user-1/agents/Agent-1/output',
+            url: '../users/'+ $('#DropUserGeneral').val()+'/agents/'+ $('#nameagentgeneral').val()+'/output',
             // url: '../users/test-user-1/agents/Agent-1/',
             contentType: "application/json; charset=utf-8",
             dataType: "json",
 
             success: function (data) {
-                $('#txtagent').empty();
-                $('#txtagent').append(JSON.stringify(data, null, "\t"));
+                $('#idMessagsedAgent').empty();
+                $('#idMessagsedAgent').append(JSON.stringify(data, null, "\t"));
             },
             error: function (err) {
-                $('#txtagent').empty();
-                $('#txtagent').append(JSON.stringify(err, null, 2));
+                $('#idMessagsedAgent').empty();
+                $('#idMessagsedAgent').append(JSON.stringify(err, null, 2));
             }
         }); //-- END of Ajax
     });

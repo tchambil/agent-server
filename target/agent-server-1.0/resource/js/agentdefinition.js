@@ -1,6 +1,8 @@
 /**
  * Created by teo on 22/04/15.
  */
+
+
 function jsonadvance(data) {
 
 }
@@ -8,7 +10,8 @@ function jsonSimple(data)
 {
     var json =
         '{ "name" : "'+ $('#namegeneral').val()+'",'+
-        ' "memory" : [ {'+
+         '"description" : "'+ $('#descriptiongeneral').val()+'",'+
+       ' "memory" : [ {'+
         '       "name" : '+'"'+ $('#simplenamenemory').val()+'",'+
         '       "type" : '+'"'+ $('#simpletypenemory').val()+'"'+
         '      } ], "timers" : [  {'+
@@ -115,7 +118,9 @@ $(document).ready(function () {
     });
 
 
-
+    $("#btnclean").click(function (e) {
+        $('#btnsimpleSdve').attr("disabled", false);
+    });
     $("#btnsimpleSdve").click(function (e) {
         $.ajax({
             type: "POST",
@@ -126,6 +131,9 @@ $(document).ready(function () {
             success: function (data, status, jqXHR) {
                 $('#idMessageAgent').empty();
                 $('#idMessageAgent').append(data.message);
+                $('#btnsimpleSdve').attr("disabled", true);
+
+
             },
 
             error: function (jqXHR, status) {
@@ -135,17 +143,7 @@ $(document).ready(function () {
             }
         });
     });
-    $('#btndefinitionDelete').click(function ()
-    {
-      //  $.ajax({
-         //   success: function ()
-         //   {
 
-
-          //  }
-
-       // });
-    });
     $('#btndefinition').click(function () {
         $.ajax({
             type: 'POST',

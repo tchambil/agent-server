@@ -1,61 +1,79 @@
-
-var network = null;
-var data = null;
-
-var btnDraw = document.getElementById('draw');
-var txtData = document.getElementById('data');
-var txtError = document.getElementById('error');
-btnDraw.onclick = draw;
-
-// resize the network when window resizes
-window.onresize = function () {
-    network.redraw()
-};
-
-function destroy() {
-    if (network !== null) {
-        network.destroy();
-        network = null;
-    }
-}
-
-// parse and draw the data
-function draw () {
-    destroy();
-    try {
-        txtError.innerHTML = '';
-
-        // Provide a string with data in DOT language
-        data = {
-            dot: txtData.value
-        };
-
-        // create a network
-        var container = document.getElementById('mynetwork');
-        var options = {};
-        network = new vis.Network(container, data, options);
-    }
-    catch (err) {
-        // set the cursor at the position where the error occurred
-        var match = /\(char (.*)\)/.exec(err);
-        if (match) {
-            var pos = Number(match[1]);
-            if(txtData.setSelectionRange) {
-                txtData.focus();
-                txtData.setSelectionRange(pos, pos);
+function draw() {
+    /*
+     * Example for FontAwesome
+     */
+    var optionsFA = {
+        groups: {
+            users: {
+                shape: 'icon',
+                icon: {
+                    face: 'FontAwesome',
+                    code: '\uf007',
+                    size: 50,
+                    color: '#57169a'
+                }
             }
         }
+    };
 
-        // show an error message
-        txtError.innerHTML =  err.toString();
-    }
-}
+    // create an array with nodes
+    var nodesFA = [{
+        id: 1,
+        label: 'agent_1',
+        group: 'users'
+    }, {
+        id: 2,
+        label: 'agent_2',
+        group: 'users'
+    }, {
+        id: 3,
+        label: 'agent_3',
+        group: 'users'
+    }, {
+        id: 4,
+        label: 'agent_4',
+        group: 'users'
+    }, {
+        id: 5,
+        label: 'agent_5',
+        group: 'users'
 
-/**
- * Draw an example
- * @param {String} id HTML id of the textarea containing the example code
- */
-function drawExample(id) {
-    txtData.value = document.getElementById(id).value;
-    draw();
+    }];
+
+    // create an array with edges
+    var edges = [{
+        from: 1,
+        to: 3
+    }, {
+        from: 2,
+        to: 4
+    }, {
+        from: 2,
+        to: 1
+    }, {
+        from: 3,
+        to: 5
+    }, {
+        from: 4,
+        to: 5
+    },
+         {
+            from: 2,
+            to: 4
+        },
+        {
+            from: 2,
+            to: 4
+        }
+    ];
+
+    // create a network
+    var containerFA = document.getElementById('mynetworkFA');
+    var dataFA = {
+        nodes: nodesFA,
+        edges: edges
+    };
+
+    var networkFA = new vis.Network(containerFA, dataFA, optionsFA);
+
 }

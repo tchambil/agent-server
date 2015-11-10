@@ -154,7 +154,7 @@
             <ul class="legal-menu nav nav-list collapse">
                 <li><a href="/definition.do"><span class="fa fa-caret-right"></span> Definitions</a></li>
                 <li><a href="/listdefinition.do"><span class="fa fa-caret-right"></span> List</a></li>
-                <li><a href="/definitionscript.do"><span class="fa fa-caret-right"></span> Script(run)</a></li>
+                <li><a href="/definitionsjson.do"><span class="fa fa-caret-right"></span> Script(run)</a></li>
             </ul>
         </li>
         <!--<Agents]-->
@@ -166,6 +166,7 @@
         <li>
             <ul class="premium-menu nav nav-list collapse">
                 <li><a href="/agent.do"><span class="fa fa-caret-right"></span> Agent</a> </li>
+                <li><a href="/agentscript.do"><span class="fa fa-caret-right"></span> AgentScript</a></li>
                 <li><a href="/listagent.do"><span class="fa fa-caret-right"></span> List</a></li>
             </ul>
         </li>
@@ -260,10 +261,11 @@
            <div id="myTabContent" class="tab-content">
                     <div class="tab-pane fade" id="json">
                         <div class="col-md-8">
-                        <pre>
+
                             <div id="codejson">
+                                <textarea id="textjson"  class="form-control" rows="20"></textarea>
                             </div>
-                         </pre>
+
                         </div>
                     </div><!-- finish simple-->
                     <div class="tab-pane fade" id="scrippre">

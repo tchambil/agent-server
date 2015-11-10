@@ -155,7 +155,9 @@
         </li>
         <li>
             <ul class="legal-menu nav nav-list collapse">
-                <li><a href="/definition.do"><span class="fa fa-caret-right"></span> Definitions</a></li>
+                <li><a href="/definitionsimple.do"><span class="fa fa-caret-right"></span> Simple</a></li>
+                <li><a href="/definitionadvanced.do"><span class="fa fa-caret-right"></span> Advanced</a></li>
+                <li><a href="/definitionsjson.do"><span class="fa fa-caret-right"></span> JSON</a></li>
                 <li><a href="/listdefinition.do"><span class="fa fa-caret-right"></span> List</a></li>
             </ul>
         </li>
@@ -168,6 +170,7 @@
         <li>
             <ul class="premium-menu nav nav-list collapse">
                 <li><a href="/agent.do"><span class="fa fa-caret-right"></span> Agent</a> </li>
+                <li><a href="/agentscript.do"><span class="fa fa-caret-right"></span> AgentScript</a></li>
                 <li><a href="/listagent.do"><span class="fa fa-caret-right"></span> List</a></li>
             </ul>
         </li>

@@ -1,4 +1,4 @@
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -151,7 +151,9 @@
         </li>
         <li>
             <ul class="legal-menu nav nav-list collapse">
-                <li><a href="/definition.do"><span class="fa fa-caret-right"></span> Definitions</a></li>
+                <li><a href="/definitionsimple.do"><span class="fa fa-caret-right"></span> Simple</a></li>
+                <li><a href="/definitionadvanced.do"><span class="fa fa-caret-right"></span> Advanced</a></li>
+                <li><a href="/definitionsjson.do"><span class="fa fa-caret-right"></span> JSON</a></li>
                 <li><a href="/listdefinition.do"><span class="fa fa-caret-right"></span> List</a></li>
             </ul>
         </li>
@@ -163,7 +165,8 @@
         </li>
         <li>
             <ul class="premium-menu nav nav-list collapse">
-                <li><a href="/agent.do"><span class="fa fa-caret-right"></span> Agent</a> </li>
+                <li><a href="/agent.do"><span class="fa fa-caret-right"></span> Agent</a></li>
+                <li><a href="/agentscript.do"><span class="fa fa-caret-right"></span> AgentScript</a></li>
                 <li><a href="/listagent.do"><span class="fa fa-caret-right"></span> List</a></li>
 
 
@@ -221,7 +224,8 @@
                     <a href="/tutorial"><span class="fa fa-caret-right"></span> Simple</a>
                 </li>
                 <li>
-                    <a target="_blank" href="/resource/files/tutorial.txt" ><span class="fa fa-caret-right"></span> Intermediate</a>
+                    <a target="_blank" href="/resource/files/tutorial.txt"><span class="fa fa-caret-right"></span>
+                        Intermediate</a>
                 </li>
                 <li>
                     <a href="/tutorialintermediate"><span class="fa fa-caret-right"></span> Advanced</a>
@@ -237,7 +241,7 @@
 
 <div class="content">
     <div class="stats">
-        <span   class="label label-danger">Status:</span> <span id="headerStatus">null</span>
+        <span class="label label-danger">Status:</span> <span id="headerStatus">null</span>
         <span>&nbsp;&nbsp;</span>
         <span class="label label-success">Address IP:</span> <span id="headerIp">null</span>
         <span>&nbsp;&nbsp;</span>
@@ -250,20 +254,13 @@
     </div>
     <div class="main-content">
 
-        <ul class="nav nav-tabs">
-            <li class="active"><a href="#home" data-toggle="tab">Profile</a></li>
-            <li><a href="#profile" data-toggle="tab">Password</a></li>
+        <div id="myTabContent" class="tab-content">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="widget">
 
-        </ul>
-
-        <div class="row">
-            <div class="col-md-4">
-                <br>
-
-                <div id="myTabContent" class="tab-content">
-
-                    <div class="tab-pane active in" id="home">
-                        <form id="tab">
+                        <ul class="cards list-group">
+                            <li class="list-group-item">
                             <div class="form-group">
                                 <label>Id</label>
                                 <input type="text" name="id" id="idInput" class="form-control" value="test-user-1"/>
@@ -278,62 +275,47 @@
                             <div class="form-group">
                                 <label>Full Name</label>
                                 <input type="text" name="full_name" id="full_nameInput" class="form-control"
-                                       value="Your Full Name"/>
+                                       value="Teofilo Chambilla Aquino"/>
 
                             </div>
                             <div class="form-group">
                                 <label>Email</label>
                                 <input type="text" name="email" id="emailInput" class="form-control"
-                                       value="you@example.com"/>
+                                       value="antony_epis@hotmail.com"/>
 
                             </div>
-
                             <div class="form-group">
                                 <label>nickname</label>
                                 <input type="text" name="nickname" id="nicknameInput" class="form-control"
-                                       value="Youri"/>
+                                       value="tchambil"/>
                             </div>
-
                             <div class="form-group">
                                 <label>company</label>
                                 <input type="text" name="company" id="companyInput" class="form-control"
-                                       value="Your company"/>
+                                       value="U Chile"/>
 
                             </div>
                             <div class="form-group">
                                 <label>interests</label>
                                 <input type="text" name="company" id="interestsInput" class="form-control"
-                                       value="Your interests"/>
+                                       value="Semantic Web"/>
 
                             </div>
-                        </form>
+                            </li>
+                        </ul>
                         <div class="btn-toolbar list-toolbar">
                             <button id="btnUserSave" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
                             <a href="#myModal" data-toggle="modal" class="btn btn-danger">Delete</a>
-                            <br/>      <br/>
+                            <br/> <br/>
 
-                            <div id="idMessageUser" class="alert alert-success">
+                            <div id="idMessageUser" class="alert alert-info">
 
                             </div>
                         </div>
                     </div>
 
-                    <div class="tab-pane fade" id="profile">
-
-                        <form id="tab2">
-                            <div class="form-group">
-                                <label>New Password</label>
-                                <input type="password" class="form-control">
-                            </div>
-                            <div>
-                                <button class="btn btn-primary">Update</button>
-                            </div>
-                        </form>
-                    </div>
                 </div>
-
-
-            </div>
+   </div>
         </div>
 
         <div class="modal small fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
