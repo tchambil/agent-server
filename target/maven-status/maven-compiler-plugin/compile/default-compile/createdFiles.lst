@@ -58,6 +58,7 @@ dcc\agent\server\service\script\runtime\value\DelegateValue.class
 dcc\agent\server\service\script\intermediate\LogicalOperatorNode.class
 dcc\agent\server\service\script\parser\tokenizer\TokenList.class
 dcc\agent\server\service\webaccessmanager\WebPage.class
+dcc\agent\server\service\script\runtime\value\NautiLODValue.class
 dcc\agent\server\service\field\MapField.class
 dcc\agent\server\service\swget\utils\Constants.class
 dcc\agent\server\service\webaccessmanager\WebSite.class
@@ -140,6 +141,7 @@ dcc\agent\server\service\webaccessmanager\InvalidUrlException.class
 dcc\agent\server\service\script\parser\tokenizer\token\LessOperatorToken.class
 dcc\agent\server\service\swget\regExpression\automaton\Set.class
 dcc\agent\server\service\script\intermediate\StatementNode.class
+dcc\agent\server\service\groups\ServerGroupList.class
 dcc\agent\server\service\script\intermediate\FieldNode.class
 dcc\agent\server\service\persistence\persistenfile\PersistentEntry.class
 dcc\agent\server\service\persistence\persistenfile\PersistentTable.class
@@ -189,10 +191,12 @@ dcc\agent\server\service\script\intermediate\TypeNode.class
 dcc\agent\server\service\script\intermediate\Node.class
 dcc\agent\server\service\script\runtime\value\MessageValue.class
 dcc\agent\server\service\swget\utils\NavigationHistory.class
+dcc\agent\server\service\groups\GroupAgentInstance.class
 dcc\agent\server\service\script\parser\tokenizer\token\SlashOperatorToken.class
 dcc\agent\server\service\field\StringField.class
 dcc\agent\server\service\swget\rdf2prefuse\graph\GraphDisplay$1.class
 dcc\agent\server\service\script\intermediate\ConditionNode.class
+dcc\agent\server\controllerclient\NautiLODControllerCliente.class
 dcc\agent\server\controllerclient\DefinitionControllerClient.class
 dcc\agent\server\service\communication\AgentSender.class
 dcc\agent\server\service\script\intermediate\CharTypeNode.class
@@ -200,6 +204,7 @@ dcc\agent\server\service\agentserver\AgentTimer.class
 dcc\agent\server\service\agentserver\AgentInstance.class
 dcc\agent\server\service\swget\actions\sendemail\SendEmailAction.class
 dcc\agent\server\service\webaccessmanager\WebAccessConfig.class
+dcc\agent\server\service\groups\GroupAgentInstanceList.class
 dcc\agent\server\service\swget\rdf2prefuse\graph\HideNodeDecoratorAction.class
 dcc\agent\server\service\script\intermediate\ReferenceNode.class
 dcc\agent\server\service\script\parser\tokenizer\token\StringKeywordToken.class
@@ -236,6 +241,7 @@ dcc\agent\server\service\persistence\persistenfile\PersistentTableKeyIterator.cl
 dcc\agent\server\service\script\intermediate\SubscriptedReferenceNode.class
 dcc\agent\server\service\swget\actions\AbstractAction.class
 dcc\agent\server\service\script\parser\tokenizer\token\OperatorToken.class
+dcc\agent\server\service\script\parser\tokenizer\token\NautiLODKeywordToken.class
 dcc\agent\server\service\swget\multithread\EndPointData.class
 dcc\agent\server\service\notification\NotificationInstance.class
 dcc\agent\server\service\config\AgentServerWebAccessConfig.class
@@ -295,6 +301,7 @@ dcc\agent\server\service\script\parser\tokenizer\token\StringToken.class
 dcc\agent\server\service\script\intermediate\FloatNumberNode.class
 dcc\agent\server\service\util\XmlUtils.class
 dcc\agent\server\service\swget\nmpg\NamedMultiPointedGraphAbstract.class
+dcc\agent\server\service\groups\ServerGroup.class
 dcc\agent\server\service\script\parser\tokenizer\token\IntKeywordToken.class
 dcc\agent\server\service\webaccessmanager\WebSiteAccessConfig.class
 dcc\agent\server\service\swget\nmpg\NamedMultiPointedTree.class
@@ -310,6 +317,7 @@ dcc\agent\server\service\swget\regExpression\parser\PathExpressionTokenManager.c
 dcc\agent\server\service\communication\ACLMessage.class
 dcc\agent\server\service\config\AgentProperties.class
 dcc\agent\server\service\script\parser\tokenizer\token\NullToken.class
+dcc\agent\server\service\script\intermediate\NautiLODTypeNode.class
 dcc\agent\server\service\util\Utils.class
 dcc\agent\server\service\swget\nmpg\NamedMultiPointedGraph.class
 dcc\agent\server\service\script\intermediate\MoneyTypeNode.class

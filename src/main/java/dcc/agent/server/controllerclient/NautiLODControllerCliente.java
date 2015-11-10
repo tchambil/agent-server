@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 public class NautiLODControllerCliente {
-    @RequestMapping(value = "/nautilod", method = RequestMethod.GET)
+    @RequestMapping(value = "/nautilod.do", method = RequestMethod.GET)
     public String getdata(ModelMap model) {
         return "nautilod";
 
