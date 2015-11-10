@@ -1079,7 +1079,7 @@
       <workItem from="1446586444039" duration="3800000" />
       <workItem from="1447061159059" duration="714000" />
       <workItem from="1447109774798" duration="2580000" />
-      <workItem from="1447158953165" duration="15023000" />
+      <workItem from="1447158953165" duration="15035000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1431836573263</created>
@@ -1361,11 +1361,15 @@
       <created>1447181357351</created>
       <updated>1447181357351</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="add functions for nautilod distributed">
+      <created>1447182144618</created>
+      <updated>1447182144618</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1134096000" />
+    <option name="totallyTimeSpent" value="1134108000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
