@@ -893,7 +893,8 @@ public class AgentController {
     }
 
     @RequestMapping(value = "/acl", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-     public  String postAgentmessage(HttpServletRequest request) throws Exception {
+    @ResponseBody
+     public  String postAgentmessage(HttpServletRequest request,HttpServletResponse response) throws Exception {
         PlataformController plataform = new PlataformController();
         agentServer = plataform.getAgentServer();
 
@@ -904,6 +905,10 @@ public class AgentController {
         // Parse and add the agent definition
         ACLMessage agentMessage = agentServer.addAgentMessage(
                 null, agentMessageson);
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
+        response.setHeader("Access-Control-Max-Age", "3600");
+        response.setHeader("Access-Control-Allow-Headers", "x-requested-with");
 
         return agentMessage.toString();
     }

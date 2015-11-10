@@ -54,6 +54,8 @@
             <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.0.0" />
             <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.0.0" />
             <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.0.0" />
+            <element id="library" level="project" name="Maven: com.thetransactioncompany:cors-filter:2.1.2" />
+            <element id="library" level="project" name="Maven: com.thetransactioncompany:java-property-utils:1.9.1" />
           </element>
         </element>
         <element id="javaee-facet-resources" facet="agent-server/web/Web" />
@@ -341,6 +343,28 @@
       </JAVADOC>
       <SOURCES>
         <root url="jar://$MAVEN_REPOSITORY$/com/sun/mail/javax.mail/1.5.0/javax.mail-1.5.0-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: com.thetransactioncompany:cors-filter:2.1.2">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/thetransactioncompany/cors-filter/2.1.2/cors-filter-2.1.2.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/com/thetransactioncompany/cors-filter/2.1.2/cors-filter-2.1.2-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/thetransactioncompany/cors-filter/2.1.2/cors-filter-2.1.2-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: com.thetransactioncompany:java-property-utils:1.9.1">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/thetransactioncompany/java-property-utils/1.9.1/java-property-utils-1.9.1.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/com/thetransactioncompany/java-property-utils/1.9.1/java-property-utils-1.9.1-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/thetransactioncompany/java-property-utils/1.9.1/java-property-utils-1.9.1-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: commons-codec:commons-codec:1.9">
