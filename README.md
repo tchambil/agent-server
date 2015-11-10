@@ -1,17 +1,16 @@
-# Introduction to agent at web servers: 
+# A Flexible and Scalable Platform for Multi-Agent Systems: 
 ---
-*AgentServer*
+*Plataform Agent Server*
 ---
-The proyect is contribute and improve ["Agent-Server-Stage-0"](http://basetechnology.blogspot.com/2012_03_01_archive.html), with framework "spring boot" (http://projects.spring.io/spring-boot/) and run directly from RESTFUL. 
-
-Our work is implement the comunication between web servers with message queue of high concurrency. For the  delegation of tasks between web servers.
-
-Actually we are working in the implement of RabbitMQ broker.
-
-For install:
-execute from terminal: java -jar agent-rest-1.0.jar
-
-For start agent:
+ Plataform Agent Server, is a Web application agents and is made with a REST API features. It includes new features such as messaging management following the Agent Communication Language (ACL) specified by FIPA, delegation of tasks between agents, new features in the scripting language for the Semantic Web support.
+ Agent Server is an extension of ["Agent-Server-Stage-0"](http://basetechnology.blogspot.com/2012_03_01_archive.html)
+# Requirements
++ Apache Tomcat 7+
++ Java SE Development Kit (JDK) 7
+# Download 
++ War distribution of AgentServer is [available for download](https://github.com/tchambil/agent-server/blob/master/target/agent-server-1.0.war)
++
+# For start agent: 
 
 http://localhost:8080/index.html 
 ```shell
@@ -36,12 +35,4 @@ Steps for run:
 ->For add agents with button "add agent" 
 ->For get all agents with button "get all"
 -> . . . .
- 
-```
-# Requirements
-+ - RabbitMQ server (installation instructions below). RabbitMQ is an AMQP server. The server is freely available at http://www.rabbitmq.com/download.html. You can download it manually.
-
- 
-
-
 ```
