@@ -70,8 +70,8 @@ public class LinkFinderThread implements Runnable {
                 try {
                     HashSet<State> hs = NautiLODManager.getRegExpManager().getEpsilonReachableStates(starting_uri.getState());
 
-                    System.out.println("Handling URI_1 " + starting_uri.getUrl() + "\n");
-                    System.out.println("> " + NautiLODManager.getToDeref() + "\n");
+                   //System.out.println("Handling URI_1 " + starting_uri.getUrl() + "\n");
+                    //System.out.println("> " + NautiLODManager.getToDeref() + "\n");
 
                     for (State s : hs) {
 
@@ -106,12 +106,12 @@ public class LinkFinderThread implements Runnable {
             if (NautiLODManager.getRegExpManager().isFinal(
                     starting_uri.getState())) {
                 String res = starting_uri.getUrl().toString();
-
+                System.out.println("RESSSSSSSSSSSSSSSSSSSSSSSSSSSSS "+ res);
                 // if streaming is active
                 if (stream_res) {
                     if (!NautiLODManager.getAlreadyPrintedResults().contains(
                             res)) {
-                        System.out.println("@res" + ": " + res);
+                        System.out.println("@reshhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh" + ": " + res);
 
                         NautiLODManager.addToAlreadyPrintedResult(res);
                     }
@@ -127,7 +127,12 @@ public class LinkFinderThread implements Runnable {
             for (URIData uri : to_expand) {
                 try {
                     NautiLODManager.queueLink(uri);
-                    // System.out.println("Resultado : " + uri.getUrl());
+
+                    if(NautiLODManager.EnableEndPoints(uri.getUrl().toString()))
+                    {
+                        System.out.println("Resultado : " + uri.getUrl());
+                    }
+
                 } catch (Exception e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
@@ -162,31 +167,24 @@ public class LinkFinderThread implements Runnable {
     public ArrayList<URIData> extractLink(URIData uri_to_expand) {
         ArrayList<URIData> links_to_expand = new ArrayList<URIData>();
         String current_URI = uri_to_expand.getUrl();
-
         // TRANSFORM TO 303 URI
         if (current_URI.toString().contains("#")) {
             current_URI = current_URI.substring(0, current_URI.indexOf("#"));
 
         }
         // *** HANDLE ACTIONS
-
         LinkedList<String> actions = NautiLODManager.getRegExpManager()
                 .getActions(uri_to_expand.getState());
 
         links_to_expand.addAll(handleActions(actions, uri_to_expand));
-
         // *** HANDLE TESTS
-
         LinkedList<String> tests = NautiLODManager.getRegExpManager()
                 .getTriggers(uri_to_expand.getState());
 
         links_to_expand.addAll(handleTests(tests, uri_to_expand));
         //Extraction data from endpoint directy
-        {
-
-            LinkedList<Transition> trans = NautiLODManager.getRegExpManager()
+        {       LinkedList<Transition> trans = NautiLODManager.getRegExpManager()
                     .getOutgoingTransition(uri_to_expand.getState());
-
             String pred;
             ResultSet results = null;
             for (Transition t : trans) {
@@ -201,25 +199,12 @@ public class LinkFinderThread implements Runnable {
                 System.out.println(queryString);
                 QueryExecution qexec = QueryExecutionFactory.sparqlService(endPoints.getEndpoint(uri_to_expand), query);
                 results = qexec.execSelect();
-                //QueryExecution qexec = QueryExecutionFactory.create(query,urrent_model);
-                /*try {
-                    try {
-                        results = qexec.execSelect();
-                    } catch (QueryExecException e) {
-                        System.err.println("Error: \n" + queryString + "\n\r"+ e);
-                    }
-                } finally {
-                    qexec.close();
-                }
-*/
-                for (; results.hasNext(); ) {
+               for (; results.hasNext(); ) {
                     QuerySolution soln = results.next();
-
                     RDFNode in_node = soln.get("x"); // "x" is a variable in the
                     // query
                     URIData new_pair = null;
                     String u = null;
-
                     // If you need to test the thing returned
                     if (in_node.isResource()) {
                         Resource res_node = (Resource) in_node;
@@ -238,8 +223,7 @@ public class LinkFinderThread implements Runnable {
                                 uri_to_expand.getTypeOfLink());
 
                         links_to_expand.add(new_pair);
-                        NautiLODManager.addVisitedTriple(uri_to_expand.getUrl()
-                                .toString(), pred.substring(1,
+                        NautiLODManager.addVisitedTriple(uri_to_expand.getUrl().toString(), pred.substring(1,
                                 pred.length() - 1), u);
                     }
                     if (in_node.isLiteral()) {
@@ -251,8 +235,7 @@ public class LinkFinderThread implements Runnable {
                                 uri_to_expand.getTypeOfLink());
 
                         links_to_expand.add(new_pair);
-                        NautiLODManager.addVisitedTriple(uri_to_expand.getUrl()
-                                .toString(), pred.substring(1,
+                        NautiLODManager.addVisitedTriple(uri_to_expand.getUrl().toString(), pred.substring(1,
                                 pred.length() - 1), in_node.toString());
                     }
 
@@ -262,28 +245,11 @@ public class LinkFinderThread implements Runnable {
                            query = QueryFactory.create(queryString);
                 qexec = QueryExecutionFactory.sparqlService(endPoints.getEndpoint(uri_to_expand), query);
                 results = qexec.execSelect();
-                /*
-                                     try {
-                    try {
-                        System.out.println(queryString);
-                        results = qexec.execSelect();
-                    } catch (QueryExecException e) {
-                        System.err.println("Error: \n" + queryString + "\n\r"+ e);
-                    }
-                } finally {
-                    qexec.close();
-                }
-*/
-                for (; results.hasNext(); ) {
+               for (; results.hasNext(); ) {
                     QuerySolution soln = results.next();
-
                     RDFNode out_node = soln.get("x"); // "x" is a variable in
-                    // the
-                    // query
-                    URIData new_pair = null;
+                   URIData new_pair = null;
                     String u;
-
-                    // If you need to test the thing returned
                     if (out_node.isResource()) {
                         Resource res_node = (Resource) out_node;
 
@@ -294,7 +260,6 @@ public class LinkFinderThread implements Runnable {
                         } else {
                             u = res_node.getURI();
                         }
-
                         new_pair = new URIData(u, uri_to_expand.getDepth(),
                                 NautiLODManager.getRegExpManager().getNext(
                                         uri_to_expand.getState(), pred),
@@ -302,8 +267,7 @@ public class LinkFinderThread implements Runnable {
                                 uri_to_expand.getTypeOfLink());
 
                         links_to_expand.add(new_pair);
-                        NautiLODManager.addVisitedTriple(uri_to_expand.getUrl()
-                                .toString(), pred.substring(1,
+                        NautiLODManager.addVisitedTriple(uri_to_expand.getUrl().toString(), pred.substring(1,
                                 pred.length() - 1), u);
                     }
                     if (out_node.isLiteral()) {
@@ -314,8 +278,7 @@ public class LinkFinderThread implements Runnable {
                                 uri_to_expand.getProvenanceAuthority(),
                                 uri_to_expand.getTypeOfLink());
 
-                        NautiLODManager.addVisitedTriple(uri_to_expand.getUrl()
-                                .toString(), pred.substring(1,
+                        NautiLODManager.addVisitedTriple(uri_to_expand.getUrl().toString(), pred.substring(1,
                                 pred.length() - 1), out_node.toString());
                     }
 
@@ -324,8 +287,6 @@ public class LinkFinderThread implements Runnable {
 
         }
         return links_to_expand;
-
-
     }
 
     public ArrayList<URIData> extractLinks(URIData uri_to_expand) {
@@ -503,8 +464,7 @@ public class LinkFinderThread implements Runnable {
                                 uri_to_expand.getTypeOfLink());
 
                         links_to_expand.add(new_pair);
-                        NautiLODManager.addVisitedTriple(uri_to_expand.getUrl()
-                                .toString(), pred.substring(1,
+                        NautiLODManager.addVisitedTriple(uri_to_expand.getUrl().toString(), pred.substring(1,
                                 pred.length() - 1), u);
                     }
                     if (out_node.isLiteral()) {
@@ -514,8 +474,7 @@ public class LinkFinderThread implements Runnable {
                                         uri_to_expand.getState(), pred),
                                 uri_to_expand.getProvenanceAuthority(),
                                 uri_to_expand.getTypeOfLink());
-                        NautiLODManager.addVisitedTriple(uri_to_expand.getUrl()
-                                .toString(), pred.substring(1,
+                        NautiLODManager.addVisitedTriple(uri_to_expand.getUrl().toString(), pred.substring(1,
                                 pred.length() - 1), out_node.toString());
                     }
 

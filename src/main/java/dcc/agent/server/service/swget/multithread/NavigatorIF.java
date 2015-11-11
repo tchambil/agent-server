@@ -26,7 +26,7 @@ public interface NavigatorIF {
 	public void incToDeref(int value);
 
 	public boolean isNotSaveModels();
-
+    public boolean EnableEndPoints(String s);
 	public void decToDeref();
 
 	public int getToDeref();

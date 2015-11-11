@@ -102,7 +102,7 @@ public class Navigator implements NavigatorIF {
 
     public synchronized void addResult(String res) {
 
-        constructNewQuery(res);
+       // constructNewQuery(res);
      //   writeResult(res);
 
         final_results.add(res);
@@ -701,7 +701,25 @@ public class Navigator implements NavigatorIF {
             result_model.add(st);
         }
     }
+    public boolean EnableEndPoints(String uri_start){
+        String current_URI = uri_start;
+        if (current_URI.toString().contains("#")) {
+            current_URI = current_URI.substring(0, current_URI.indexOf("#"));
+        }
+        try {
+            URL tempUrl = new URL(current_URI);
+            String host = tempUrl.getHost();
+            for (Endpoint endpoint : Endpoint.values()) {
+                if (endpoint.getGraph().equals(host)) {
+                    return true;
+                }
+            }
 
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
     private String EnableEndPoint(String uri_start) {
         {
             String current_URI = uri_start;
@@ -810,11 +828,13 @@ public class Navigator implements NavigatorIF {
      * @throws ParseException
      * @throws TokenMgrError
      */
+
     public String[] runCommand(ScriptState scriptState, String command, String comment)
             throws ParseException, TokenMgrError {
         this.scriptState = scriptState;
 
-        String new_command = reconstructcommand(command);
+       // String new_command = reconstructcommand(command);
+        String new_command = command;
         OUTPUT_FILE="output_swget.rdf";
         if (new_command == null) {
             new_command = command;
@@ -873,8 +893,9 @@ public class Navigator implements NavigatorIF {
         closeExecution();
         Collection<String> r = getFinalResults();
         if(r.size()>0){
-        AgentDelegate.doNautiLOD(scriptState, r );
+        //AgentDelegate.doNautiLOD(scriptState, r );
         }
+        System.out.println(r);
         System.out.println("#res=" + r.size() + " #deref=" + getDerefCount());
 }
 

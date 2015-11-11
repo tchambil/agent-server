@@ -97,7 +97,7 @@ public class MessageValue extends Value {
     public void processMessage(ScriptState scriptState, ACLMessage message) throws RuntimeException {
         try {
 
-            scriptState.agentServer.processMessage(message);
+            scriptState.agentServer.processMessage(scriptState,message);
        } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException("message process exception: " + e);

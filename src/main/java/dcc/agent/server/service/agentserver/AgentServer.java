@@ -36,6 +36,7 @@ import dcc.agent.server.service.scheduler.AgentScheduler;
 import dcc.agent.server.service.script.intermediate.*;
 import dcc.agent.server.service.script.parser.ParserException;
 import dcc.agent.server.service.script.parser.tokenizer.TokenizerException;
+import dcc.agent.server.service.script.runtime.ScriptState;
 import dcc.agent.server.service.script.runtime.value.Value;
 import dcc.agent.server.service.util.DateUtils;
 import dcc.agent.server.service.util.ListMap;
@@ -179,9 +180,10 @@ public class AgentServer {
         }
     }
 
-    public synchronized void processMessage(ACLMessage message) {
+    public synchronized void processMessage(ScriptState scriptState,ACLMessage message) {
         try {
-            AgentReceiver.onMessage(this, message);
+            AgentReceiver.onMessage( scriptState, message);
+
         } catch (JSONException e) {
             e.printStackTrace();
         } catch (AgentServerException e) {

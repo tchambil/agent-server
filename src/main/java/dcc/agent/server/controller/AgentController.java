@@ -897,7 +897,6 @@ public class AgentController {
      public  String postAgentmessage(HttpServletRequest request,HttpServletResponse response) throws Exception {
         PlataformController plataform = new PlataformController();
         agentServer = plataform.getAgentServer();
-
         JSONObject agentMessageson = util.getJsonRequest(request);
         if (agentMessageson == null)
             throw new AgentAppServerBadRequestException(
@@ -909,7 +908,6 @@ public class AgentController {
         response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
         response.setHeader("Access-Control-Max-Age", "3600");
         response.setHeader("Access-Control-Allow-Headers", "x-requested-with");
-
         return agentMessage.toString();
     }
 
