@@ -13,6 +13,7 @@ C:\AppServ\www\agent-server\src\main\java\dcc\agent\server\service\webaccessmana
 C:\AppServ\www\agent-server\src\main\java\dcc\agent\server\controller\AgentdefinitionsController.java
 C:\AppServ\www\agent-server\src\main\java\dcc\agent\server\service\notification\NotificationRecord.java
 C:\AppServ\www\agent-server\src\main\java\dcc\agent\server\service\swget\regExpression\automaton\RegExpUnion.java
+C:\AppServ\www\agent-server\src\main\java\dcc\agent\server\controller\NautilodController.java
 C:\AppServ\www\agent-server\src\main\java\dcc\agent\server\service\script\parser\tokenizer\token\AnyEqualOperatorToken.java
 C:\AppServ\www\agent-server\src\main\java\dcc\agent\server\service\agentserver\Outputs.java
 C:\AppServ\www\agent-server\src\main\java\dcc\agent\server\service\script\parser\tokenizer\token\ReturnKeywordToken.java
