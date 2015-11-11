@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2cf9c626-ec31-4eb5-ac64-d54f63553b96" name="Default" comment="" />
+    <list default="true" id="2cf9c626-ec31-4eb5-ac64-d54f63553b96" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent-server.iws" afterPath="$PROJECT_DIR$/agent-server.iws" />
+    </list>
     <ignored path="agent-server.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -34,135 +36,30 @@
       <file leaf-file-name="Navigator.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/Navigator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.25096524" vertical-offset="7520" max-vertical-offset="11390">
-              <caret line="749" column="0" selection-start-line="749" selection-start-column="0" selection-end-line="749" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.3818722" vertical-offset="2718" max-vertical-offset="7038">
+              <caret line="175" column="13" selection-start-line="175" selection-start-column="13" selection-end-line="175" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#printAutomata#0;class#Navigator#0" expanded="false" />
-                <element signature="method#writeResult#0;class#Navigator#0" expanded="false" />
                 <element signature="method#closeExecution#0;class#Navigator#0" expanded="false" />
-                <element signature="e#11219#11220#0" expanded="true" />
-                <element signature="e#11245#11246#0" expanded="true" />
-                <element signature="e#16946#16947#0" expanded="true" />
-                <element signature="e#16985#16986#0" expanded="true" />
+                <element signature="e#10140#10141#0" expanded="true" />
+                <element signature="e#10166#10167#0" expanded="true" />
+                <element signature="method#getArguments#0;class#Navigator#0" expanded="false" />
+                <element signature="e#15491#15492#0" expanded="true" />
+                <element signature="e#15527#15528#0" expanded="true" />
+                <element signature="e#15867#15868#0" expanded="true" />
+                <element signature="e#15906#15907#0" expanded="true" />
+                <element signature="method#getTokenizedInput#0;class#Navigator#0" expanded="false" />
                 <element signature="method#reconstruct#0;class#Navigator#0" expanded="false" />
-                <element signature="e#26004#26005#0" expanded="true" />
-                <element signature="e#26033#26034#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Endpoint.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/Endpoint.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="128" max-vertical-offset="561">
-              <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-              <folding>
-                <element signature="e#993#994#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StringOption.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/console/arguments/StringOption.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="493">
-              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-              <folding>
-                <element signature="e#356#357#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AgentReceiver.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/AgentReceiver.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="621" max-vertical-offset="1955">
-              <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
-              <folding>
-                <element signature="method#onMessageDelegate#0;class#AgentReceiver#0" expanded="false" />
-                <element signature="method#parseMessage#0;class#AgentReceiver#0" expanded="false" />
-                <element signature="method#parseNode#0;class#AgentReceiver#0" expanded="false" />
-                <element signature="method#delegate#0;class#AgentReceiver#0" expanded="false" />
-                <element signature="method#parseScript#0;class#AgentReceiver#0" expanded="false" />
-                <element signature="method#receive#0;class#AgentReceiver#0" expanded="false" />
-                <element signature="method#receive#1;class#AgentReceiver#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LinkFinderThread.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/LinkFinderThread.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="196" max-vertical-offset="5151">
-              <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-              <folding>
-                <element signature="e#1294#1295#0" expanded="true" />
-                <element signature="e#5948#5957#0" expanded="true" />
-                <element signature="method#extractLinks#0;class#LinkFinderThread#0" expanded="false" />
-                <element signature="method#handleBlanks#0;class#LinkFinderThread#0" expanded="false" />
-                <element signature="method#handleTests#0;class#LinkFinderThread#0" expanded="false" />
-                <element signature="method#handleActions#0;class#LinkFinderThread#0" expanded="false" />
-                <element signature="e#31640#31641#0" expanded="true" />
-                <element signature="e#31686#31687#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RegExprManager.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/regExpression/RegExprManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1165" max-vertical-offset="1598">
-              <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StateMachine.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/regExpression/automaton/StateMachine.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="12487" max-vertical-offset="13719">
-              <caret line="750" column="0" selection-start-line="750" selection-start-column="0" selection-end-line="750" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Set.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/regExpression/automaton/Set.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="281" max-vertical-offset="1496">
-              <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-              <folding>
-                <element signature="e#722#723#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="State.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/regExpression/automaton/State.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="230" max-vertical-offset="663">
-              <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="URIData.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/utils/URIData.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="587" max-vertical-offset="1139">
-              <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-              <folding>
-                <element signature="e#903#904#0" expanded="true" />
+                <element signature="method#EnableEndPoints#0;class#Navigator#0" expanded="false" />
+                <element signature="method#EnableEndPoint#0;class#Navigator#0" expanded="false" />
+                <element signature="method#EnableAgent#0;class#Navigator#0" expanded="false" />
+                <element signature="docComment;method#reconstructcommand#0;class#Navigator#0" expanded="false" />
+                <element signature="method#reconstructcommand#0;class#Navigator#0" expanded="false" />
+                <element signature="e#24921#24922#0" expanded="true" />
+                <element signature="e#24950#24951#0" expanded="true" />
+                <element signature="method#constructNewQuery#0;class#Navigator#0" expanded="false" />
+                <element signature="method#runCommand#0;class#Navigator#0" expanded="false" />
+                <element signature="method#startNewThread#0;class#Navigator#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -194,7 +91,6 @@
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/groups/ServerGroup.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/persistence/Persistence.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/groups/GroupAgentInstance.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/Endpoint.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/EndPointData.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/activities/AgentActivityTimer.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/activities/AgentActivity.java" />
@@ -230,8 +126,9 @@
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/AgentReceiver.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/NautilodController.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/NavigatorIF.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/Navigator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/Endpoint.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/LinkFinderThread.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/Navigator.java" />
       </list>
     </option>
   </component>
@@ -1477,7 +1374,7 @@
       <workItem from="1447109774798" duration="2580000" />
       <workItem from="1447158953165" duration="22543000" />
       <workItem from="1447212059927" duration="6879000" />
-      <workItem from="1447234797038" duration="20260000" />
+      <workItem from="1447234797038" duration="27237000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1431836573263</created>
@@ -1771,11 +1668,15 @@
       <created>1447263032770</created>
       <updated>1447263032770</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="add functions for nautilod distributed">
+      <created>1447286085247</created>
+      <updated>1447286085247</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1168755000" />
+    <option name="totallyTimeSpent" value="1175732000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1818,10 +1719,10 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18710022" sideWeight="0.49759614" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.005567929" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34632516" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21937639" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.48663697" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39420936" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17910448" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38530067" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17910448" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -1977,18 +1878,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/Navigator.java</url>
-          <line>805</line>
+          <line>764</line>
           <properties />
           <option name="timeStamp" value="571" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/Navigator.java</url>
-          <line>836</line>
-          <properties />
-          <option name="timeStamp" value="575" />
-        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="576" />
+      <option name="time" value="583" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -1996,35 +1891,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/intermediate/SymbolValues.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="157" max-vertical-offset="2448">
-          <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-          <folding>
-            <element signature="e#1436#1451#0" expanded="true" />
-            <element signature="e#1556#1557#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/DataSourceReferenceList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="116" max-vertical-offset="425">
-          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding>
-            <element signature="e#1276#1277#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/log4j/log4j/1.2.17/log4j-1.2.17.jar!/org/apache/log4j/Priority.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.92" vertical-offset="667" max-vertical-offset="1377">
-          <caret line="46" column="19" selection-start-line="46" selection-start-column="19" selection-end-line="46" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/log4j/log4j/1.2.17/log4j-1.2.17.jar!/org/apache/log4j/spi/LoggingEvent.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.6" vertical-offset="658" max-vertical-offset="1649">
@@ -2245,42 +2111,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/jena/jena-arq/2.11.0/jena-arq-2.11.0-sources.jar!/com/hp/hpl/jena/query/QueryFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="146" max-vertical-offset="3128">
-          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-          <folding>
-            <element signature="e#1511#1512#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/EndPointData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="197" max-vertical-offset="6222">
-          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/jena/jena-arq/2.11.0/jena-arq-2.11.0-sources.jar!/com/hp/hpl/jena/query/QueryExecutionFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="6487" max-vertical-offset="10030">
-          <caret line="422" column="0" selection-start-line="422" selection-start-column="0" selection-end-line="422" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/regExpression/automaton/Transition.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="724" max-vertical-offset="1173">
-          <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
-          <folding>
-            <element signature="e#1226#1227#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/apache/jena/jena-arq/2.11.0/jena-arq-2.11.0-sources.jar!/com/hp/hpl/jena/sparql/engine/binding/BindingFactory.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="299" max-vertical-offset="867">
@@ -2347,54 +2177,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/utils/URIData.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/Endpoint.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="588" max-vertical-offset="1173">
-          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.4896074" vertical-offset="26" max-vertical-offset="561">
+          <caret line="14" column="25" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
           <folding>
-            <element signature="e#903#904#0" expanded="true" />
+            <element signature="e#970#971#0" expanded="false" />
+            <element signature="e#998#999#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/regExpression/automaton/State.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/console/arguments/StringOption.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="230" max-vertical-offset="663">
-          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/regExpression/automaton/Set.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="281" max-vertical-offset="1496">
-          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.5288684" vertical-offset="60" max-vertical-offset="493">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding>
-            <element signature="e#722#723#0" expanded="true" />
+            <element signature="e#356#357#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/regExpression/automaton/StateMachine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="12487" max-vertical-offset="13719">
-          <caret line="750" column="0" selection-start-line="750" selection-start-column="0" selection-end-line="750" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/regExpression/RegExprManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1165" max-vertical-offset="1598">
-          <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/AgentReceiver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="621" max-vertical-offset="1955">
-          <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+        <state vertical-scroll-proportion="3.4157045" vertical-offset="0" max-vertical-offset="1955">
+          <caret line="167" column="0" selection-start-line="167" selection-start-column="0" selection-end-line="167" selection-end-column="0" />
           <folding>
             <element signature="method#onMessageDelegate#0;class#AgentReceiver#0" expanded="false" />
             <element signature="method#parseMessage#0;class#AgentReceiver#0" expanded="false" />
@@ -2407,59 +2214,161 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/jena/jena-arq/2.11.0/jena-arq-2.11.0-sources.jar!/com/hp/hpl/jena/query/QueryFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="117" max-vertical-offset="3179">
+          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+          <folding>
+            <element signature="e#1511#1512#0" expanded="false" />
+            <element signature="e#1817#1818#0" expanded="false" />
+            <element signature="e#1874#1875#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/jena/jena-arq/2.11.0/jena-arq-2.11.0-sources.jar!/com/hp/hpl/jena/query/Query.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="1103" max-vertical-offset="13821">
+          <caret line="118" column="0" selection-start-line="118" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
+          <folding>
+            <element signature="e#4587#4588#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/regExpression/automaton/State.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="213" max-vertical-offset="663">
+          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/regExpression/automaton/Set.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="253" max-vertical-offset="1496">
+          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding>
+            <element signature="e#722#723#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/regExpression/automaton/StateMachine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="12459" max-vertical-offset="13719">
+          <caret line="750" column="0" selection-start-line="750" selection-start-column="0" selection-end-line="750" selection-end-column="0" />
+          <folding>
+            <element signature="e#13652#13664#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/regExpression/automaton/Transition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.40697673" vertical-offset="657" max-vertical-offset="1173">
+          <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+          <folding>
+            <element signature="e#1226#1227#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/regExpression/RegExprManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.67054266" vertical-offset="1082" max-vertical-offset="1598">
+          <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/utils/NavigationHistory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8236434" vertical-offset="0" max-vertical-offset="1513">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/jena/jena-arq/2.11.0/jena-arq-2.11.0-sources.jar!/com/hp/hpl/jena/query/QueryExecutionFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="9501" max-vertical-offset="10030">
+          <caret line="610" column="0" selection-start-line="610" selection-start-column="0" selection-end-line="610" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/EndPointData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="219" max-vertical-offset="6222">
+          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/utils/URIData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34108528" vertical-offset="657" max-vertical-offset="1173">
+          <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+          <folding>
+            <element signature="e#884#885#0" expanded="true" />
+            <element signature="e#903#904#0" expanded="true" />
+            <element signature="e#1007#1008#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_51/src.zip!/java/io/PrintWriter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="287" max-vertical-offset="17034">
+          <caret line="55" column="13" selection-start-line="55" selection-start-column="13" selection-end-line="55" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/LinkFinderThread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="196" max-vertical-offset="5151">
-          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.76937985" vertical-offset="4465" max-vertical-offset="4981">
+          <caret line="779" column="0" selection-start-line="779" selection-start-column="0" selection-end-line="779" selection-end-column="0" />
           <folding>
-            <element signature="e#1294#1295#0" expanded="true" />
-            <element signature="e#5948#5957#0" expanded="true" />
+            <element signature="e#5940#5949#0" expanded="true" />
             <element signature="method#extractLinks#0;class#LinkFinderThread#0" expanded="false" />
             <element signature="method#handleBlanks#0;class#LinkFinderThread#0" expanded="false" />
             <element signature="method#handleTests#0;class#LinkFinderThread#0" expanded="false" />
+            <element signature="e#23507#23516#0" expanded="true" />
             <element signature="method#handleActions#0;class#LinkFinderThread#0" expanded="false" />
-            <element signature="e#31640#31641#0" expanded="true" />
-            <element signature="e#31686#31687#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/console/arguments/StringOption.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="62" max-vertical-offset="493">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding>
-            <element signature="e#356#357#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/Endpoint.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="128" max-vertical-offset="561">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding>
-            <element signature="e#993#994#0" expanded="true" />
+            <element signature="e#25320#25329#0" expanded="true" />
+            <element signature="e#31586#31587#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/Navigator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25096524" vertical-offset="7520" max-vertical-offset="11390">
-          <caret line="749" column="0" selection-start-line="749" selection-start-column="0" selection-end-line="749" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.3818722" vertical-offset="2718" max-vertical-offset="7038">
+          <caret line="175" column="13" selection-start-line="175" selection-start-column="13" selection-end-line="175" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#printAutomata#0;class#Navigator#0" expanded="false" />
-            <element signature="method#writeResult#0;class#Navigator#0" expanded="false" />
             <element signature="method#closeExecution#0;class#Navigator#0" expanded="false" />
-            <element signature="e#11219#11220#0" expanded="true" />
-            <element signature="e#11245#11246#0" expanded="true" />
-            <element signature="e#16946#16947#0" expanded="true" />
-            <element signature="e#16985#16986#0" expanded="true" />
+            <element signature="e#10140#10141#0" expanded="true" />
+            <element signature="e#10166#10167#0" expanded="true" />
+            <element signature="method#getArguments#0;class#Navigator#0" expanded="false" />
+            <element signature="e#15491#15492#0" expanded="true" />
+            <element signature="e#15527#15528#0" expanded="true" />
+            <element signature="e#15867#15868#0" expanded="true" />
+            <element signature="e#15906#15907#0" expanded="true" />
+            <element signature="method#getTokenizedInput#0;class#Navigator#0" expanded="false" />
             <element signature="method#reconstruct#0;class#Navigator#0" expanded="false" />
-            <element signature="e#26004#26005#0" expanded="true" />
-            <element signature="e#26033#26034#0" expanded="true" />
+            <element signature="method#EnableEndPoints#0;class#Navigator#0" expanded="false" />
+            <element signature="method#EnableEndPoint#0;class#Navigator#0" expanded="false" />
+            <element signature="method#EnableAgent#0;class#Navigator#0" expanded="false" />
+            <element signature="docComment;method#reconstructcommand#0;class#Navigator#0" expanded="false" />
+            <element signature="method#reconstructcommand#0;class#Navigator#0" expanded="false" />
+            <element signature="e#24921#24922#0" expanded="true" />
+            <element signature="e#24950#24951#0" expanded="true" />
+            <element signature="method#constructNewQuery#0;class#Navigator#0" expanded="false" />
+            <element signature="method#runCommand#0;class#Navigator#0" expanded="false" />
+            <element signature="method#startNewThread#0;class#Navigator#0" expanded="false" />
           </folding>
         </state>
       </provider>
