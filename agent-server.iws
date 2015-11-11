@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2cf9c626-ec31-4eb5-ac64-d54f63553b96" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/NautilodController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/AgentController.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/AgentController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/AgentReceiver.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/AgentReceiver.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/LinkFinderThread.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/LinkFinderThread.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/runtime/value/MessageValue.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/runtime/value/MessageValue.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/Navigator.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/Navigator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/NavigatorIF.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/NavigatorIF.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent-server.iws" afterPath="$PROJECT_DIR$/agent-server.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resource/js/nautilod.js" afterPath="$PROJECT_DIR$/src/main/webapp/resource/js/nautilod.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/nautilod.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/nautilod.jsp" />
     </list>
     <ignored path="agent-server.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -43,11 +34,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Navigator.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Navigator.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/Navigator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.642857" vertical-offset="3882" max-vertical-offset="9146">
-              <caret line="585" column="0" selection-start-line="585" selection-start-column="0" selection-end-line="585" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.33163264" vertical-offset="7520" max-vertical-offset="11390">
+              <caret line="749" column="0" selection-start-line="749" selection-start-column="0" selection-end-line="749" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#printAutomata#0;class#Navigator#0" expanded="false" />
@@ -55,7 +46,6 @@
                 <element signature="method#closeExecution#0;class#Navigator#0" expanded="false" />
                 <element signature="e#11219#11220#0" expanded="true" />
                 <element signature="e#11245#11246#0" expanded="true" />
-                <element signature="method#getArguments#0;class#Navigator#0" expanded="false" />
                 <element signature="e#16946#16947#0" expanded="true" />
                 <element signature="e#16985#16986#0" expanded="true" />
                 <element signature="method#reconstruct#0;class#Navigator#0" expanded="false" />
@@ -66,19 +56,62 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LinkFinderThread.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Endpoint.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/Endpoint.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="128" max-vertical-offset="561">
+              <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+              <folding>
+                <element signature="e#993#994#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StringOption.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/console/arguments/StringOption.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="493">
+              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+              <folding>
+                <element signature="e#356#357#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AgentReceiver.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/AgentReceiver.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="621" max-vertical-offset="1955">
+              <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+              <folding>
+                <element signature="method#onMessageDelegate#0;class#AgentReceiver#0" expanded="false" />
+                <element signature="method#parseMessage#0;class#AgentReceiver#0" expanded="false" />
+                <element signature="method#parseNode#0;class#AgentReceiver#0" expanded="false" />
+                <element signature="method#delegate#0;class#AgentReceiver#0" expanded="false" />
+                <element signature="method#parseScript#0;class#AgentReceiver#0" expanded="false" />
+                <element signature="method#receive#0;class#AgentReceiver#0" expanded="false" />
+                <element signature="method#receive#1;class#AgentReceiver#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LinkFinderThread.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/LinkFinderThread.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="2.6275394" vertical-offset="1454" max-vertical-offset="5389">
-              <caret line="169" column="0" selection-start-line="169" selection-start-column="0" selection-end-line="169" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="196" max-vertical-offset="5151">
+              <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
               <folding>
-                <element signature="e#6113#6122#0" expanded="true" />
+                <element signature="e#1294#1295#0" expanded="true" />
+                <element signature="e#5948#5957#0" expanded="true" />
                 <element signature="method#extractLinks#0;class#LinkFinderThread#0" expanded="false" />
                 <element signature="method#handleBlanks#0;class#LinkFinderThread#0" expanded="false" />
                 <element signature="method#handleTests#0;class#LinkFinderThread#0" expanded="false" />
                 <element signature="method#handleActions#0;class#LinkFinderThread#0" expanded="false" />
-                <element signature="e#31809#31810#0" expanded="true" />
-                <element signature="e#31855#31856#0" expanded="true" />
+                <element signature="e#31640#31641#0" expanded="true" />
+                <element signature="e#31686#31687#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -133,18 +166,6 @@
               <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
               <folding>
                 <element signature="e#903#904#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NavigatorIF.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/NavigatorIF.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.0" vertical-offset="308" max-vertical-offset="1615">
-              <caret line="28" column="19" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
-              <folding>
-                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -1459,7 +1480,7 @@
       <workItem from="1447109774798" duration="2580000" />
       <workItem from="1447158953165" duration="22543000" />
       <workItem from="1447212059927" duration="6879000" />
-      <workItem from="1447234797038" duration="17260000" />
+      <workItem from="1447234797038" duration="20002000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1431836573263</created>
@@ -1749,11 +1770,15 @@
       <created>1447182156371</created>
       <updated>1447182156371</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="add functions for nautilod distributed">
+      <created>1447263032770</created>
+      <updated>1447263032770</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1165755000" />
+    <option name="totallyTimeSpent" value="1168497000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1780,7 +1805,7 @@
     <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.47550112" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.47550112" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32850778" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1799,7 +1824,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34632516" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.48663697" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.48663697" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17910448" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38530067" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17910448" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -1959,8 +1984,14 @@
           <properties />
           <option name="timeStamp" value="571" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/Navigator.java</url>
+          <line>836</line>
+          <properties />
+          <option name="timeStamp" value="575" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="575" />
+      <option name="time" value="576" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -2139,16 +2170,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/console/arguments/StringOption.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="62" max-vertical-offset="493">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding>
-            <element signature="e#356#357#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/regExpression/automaton/Element.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1513">
@@ -2295,22 +2316,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/AgentReceiver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1199" max-vertical-offset="1955">
-          <caret line="97" column="0" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
-          <folding>
-            <element signature="method#onMessageDelegate#0;class#AgentReceiver#0" expanded="false" />
-            <element signature="method#parseMessage#0;class#AgentReceiver#0" expanded="false" />
-            <element signature="method#parseNode#0;class#AgentReceiver#0" expanded="false" />
-            <element signature="method#delegate#0;class#AgentReceiver#0" expanded="false" />
-            <element signature="method#parseScript#0;class#AgentReceiver#0" expanded="false" />
-            <element signature="method#receive#0;class#AgentReceiver#0" expanded="false" />
-            <element signature="method#receive#1;class#AgentReceiver#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2155" max-vertical-offset="14705">
@@ -2331,14 +2336,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5543071" vertical-offset="163" max-vertical-offset="697">
           <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/Endpoint.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.15917604" vertical-offset="0" max-vertical-offset="534">
-          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
           <folding />
         </state>
       </provider>
@@ -2397,10 +2394,63 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/communication/AgentReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="621" max-vertical-offset="1955">
+          <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+          <folding>
+            <element signature="method#onMessageDelegate#0;class#AgentReceiver#0" expanded="false" />
+            <element signature="method#parseMessage#0;class#AgentReceiver#0" expanded="false" />
+            <element signature="method#parseNode#0;class#AgentReceiver#0" expanded="false" />
+            <element signature="method#delegate#0;class#AgentReceiver#0" expanded="false" />
+            <element signature="method#parseScript#0;class#AgentReceiver#0" expanded="false" />
+            <element signature="method#receive#0;class#AgentReceiver#0" expanded="false" />
+            <element signature="method#receive#1;class#AgentReceiver#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/LinkFinderThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="196" max-vertical-offset="5151">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding>
+            <element signature="e#1294#1295#0" expanded="true" />
+            <element signature="e#5948#5957#0" expanded="true" />
+            <element signature="method#extractLinks#0;class#LinkFinderThread#0" expanded="false" />
+            <element signature="method#handleBlanks#0;class#LinkFinderThread#0" expanded="false" />
+            <element signature="method#handleTests#0;class#LinkFinderThread#0" expanded="false" />
+            <element signature="method#handleActions#0;class#LinkFinderThread#0" expanded="false" />
+            <element signature="e#31640#31641#0" expanded="true" />
+            <element signature="e#31686#31687#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/console/arguments/StringOption.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="62" max-vertical-offset="493">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding>
+            <element signature="e#356#357#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/Endpoint.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="128" max-vertical-offset="561">
+          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding>
+            <element signature="e#993#994#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/Navigator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.642857" vertical-offset="3882" max-vertical-offset="9146">
-          <caret line="585" column="0" selection-start-line="585" selection-start-column="0" selection-end-line="585" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.33163264" vertical-offset="7520" max-vertical-offset="11390">
+          <caret line="749" column="0" selection-start-line="749" selection-start-column="0" selection-end-line="749" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#printAutomata#0;class#Navigator#0" expanded="false" />
@@ -2408,28 +2458,11 @@
             <element signature="method#closeExecution#0;class#Navigator#0" expanded="false" />
             <element signature="e#11219#11220#0" expanded="true" />
             <element signature="e#11245#11246#0" expanded="true" />
-            <element signature="method#getArguments#0;class#Navigator#0" expanded="false" />
             <element signature="e#16946#16947#0" expanded="true" />
             <element signature="e#16985#16986#0" expanded="true" />
             <element signature="method#reconstruct#0;class#Navigator#0" expanded="false" />
             <element signature="e#26004#26005#0" expanded="true" />
             <element signature="e#26033#26034#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/LinkFinderThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.6275394" vertical-offset="1454" max-vertical-offset="5389">
-          <caret line="169" column="0" selection-start-line="169" selection-start-column="0" selection-end-line="169" selection-end-column="0" />
-          <folding>
-            <element signature="e#6113#6122#0" expanded="true" />
-            <element signature="method#extractLinks#0;class#LinkFinderThread#0" expanded="false" />
-            <element signature="method#handleBlanks#0;class#LinkFinderThread#0" expanded="false" />
-            <element signature="method#handleTests#0;class#LinkFinderThread#0" expanded="false" />
-            <element signature="method#handleActions#0;class#LinkFinderThread#0" expanded="false" />
-            <element signature="e#31809#31810#0" expanded="true" />
-            <element signature="e#31855#31856#0" expanded="true" />
           </folding>
         </state>
       </provider>

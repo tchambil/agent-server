@@ -180,12 +180,7 @@
 
                             </div>
                             <div class="form-bottom">
-                                <div class="form-group">
-                                    <label>Init Agent</label>
-                                    <input type="text"  name="simple" id="agentini" class="form-control" value="Agentdb@dbpedia.cloudapp.net"/>
-                                </div>
-
-                                <div class="form-group">
+                                  <div class="form-group">
                                     <label>Seed URI</label>
                                     <input type="text"  name="simple" id="seeuri" class="form-control" value="http://dbpedia.org/resource/Tim_Berners-Lee"/>
 

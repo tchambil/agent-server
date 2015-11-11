@@ -35,7 +35,7 @@ $(document).ready(function () {
     $("#btnsimpleSdve").click(function (e) {
         $.ajax({
             type: "POST",
-            url: 'http://dbpedias.cloudapp.net/acl',
+            url: '/acl',
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             data: jsonNautilod(),
