@@ -9,7 +9,7 @@ public enum Endpoint {
     DBLP("http://dblp.l3s.de/d2r/sparql","dblp.l3s.de","http://dblps.cloudapp.net"),
     FREEBASE("http://freebases.cloudapp.net/sparql","rdf.freebase.com","http://freebases.cloudapp.net"),
     YAGO("http://lod2.openlinksw.com/sparql","yago-knowledge.org","http://yagos.cloudapp.net"),
-    GEONAMES("http://geonames.cloudapp.net/sparql","sws.geonames.org","http://geonames.cloudapp.net");
+    GEONAMES("http://geonames.cloudapp.net:8890/sparql","sws.geonames.org","http://geonames.cloudapp.net");
 
     private String sparql;
     private String graph;

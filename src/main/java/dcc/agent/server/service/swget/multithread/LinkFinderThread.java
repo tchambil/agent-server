@@ -73,26 +73,18 @@ public class LinkFinderThread implements Runnable {
                     }
                     if (NautiLODManager.getRegExpManager()
                             .hasOutgoingTransition(starting_uri.getState())) {
-
                         extracted = extractLink(starting_uri);
-
                     }
-
                     for (URIData current : extracted) {
-
                         if (current != null
                                 && !NautiLODManager.containsNavigationalHistory(starting_uri.getUrl().toString(), starting_uri.getState())) {
-
                             to_expand.add(current);
                         }
-
                     }
-
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
-
             NautiLODManager.addToNavHistory(starting_uri);
             /**
              * RESULTS
@@ -596,7 +588,7 @@ public class LinkFinderThread implements Runnable {
                     } else if (new_q.indexOf("paper") > 1) {
                         new_q = new_q.replaceAll("\\?paper", "<" + uri_to_expand.getUrl() + ">");
                     }
-                    System.out.println(new_q);
+
                     Query queryask = QueryFactory.create(new_q);
                     QueryExecution qexec = QueryExecutionFactory.sparqlService(endPoints.getEndpoint(uri_to_expand), queryask);
                     resq = qexec.execAsk();

@@ -168,18 +168,10 @@ public class Navigator implements NavigatorIF {
         automps.close();
     }
 
-    public void writeResult(String rest) {
-        NavigationHistory nh = nav_history;
-
-        String f_automaton = this.OUTPUT_FILE.substring(0,
-                OUTPUT_FILE.lastIndexOf("persistent_store"))
-                + "_automatoninitial.txt";
-
+    public void writeResult(Collection<String> result) {
         String f_history = this.OUTPUT_FILE.substring(0,
-                OUTPUT_FILE.lastIndexOf("persistent_store"))
-                + rest.substring(rest.lastIndexOf("/"), rest.length()) + ".txt";
-
-        StateMachine automaton = reg_expr_manager.pMachine;
+                OUTPUT_FILE.lastIndexOf("."))
+                + "Final.txt";
         PrintWriter history = null;
         try {
             history = new PrintWriter(new OutputStreamWriter(
@@ -190,36 +182,9 @@ public class Navigator implements NavigatorIF {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-
-        HashSet<String> states = new HashSet<String>();
-
-        BufferedReader br = null;
-
-        try {
-            br = new BufferedReader(new FileReader(f_automaton));
-            String line = br.readLine();
-            line = br.readLine();
-            line = br.readLine();
-            StringTokenizer st = new StringTokenizer(line, " )(");
-            st.nextToken();
-            st.nextToken();
-            while (st.hasMoreTokens()) {
-                states.add(st.nextToken());
-            }
-        } catch (FileNotFoundException e1) {
-            e1.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        for (String r : result) {
+            history.print(r + "\n");
         }
-
-        for (String state : states) {
-            State st = automaton.getState(state);
-            history.print(st.getID());
-            HashSet<String> uris = nh.containsState(st);
-
-            history.print(uris.toString() + "\n");
-        }
-
         history.flush();
         history.close();
 
@@ -326,7 +291,7 @@ public class Navigator implements NavigatorIF {
             State st = automaton.getState(state);
             history.print(st.getID());
             HashSet<String> uris = nh.containsState(st);
-
+            System.out.println("Imprimir History" + uris.toString());
             history.print(uris.toString() + "\n");
         }
 
@@ -564,7 +529,6 @@ public class Navigator implements NavigatorIF {
         // TODO Auto-generated method stub
 
         to_deref = to_deref + value;
-
     }
 
     /**
@@ -577,7 +541,6 @@ public class Navigator implements NavigatorIF {
 
         startNewThread(new URIData(SEED, reg_expr_manager.pMachine.getInitial()));
     }
-
     @Override
     public void queueLink(URIData link) throws Exception {
         //count++;
@@ -742,7 +705,6 @@ public class Navigator implements NavigatorIF {
 
         }
     }
-
     private boolean EnableAgent(String uri_start) {
         String enableEndpoint =EnableEndPoint(uri_start);
        if (enableEndpoint != null) {
@@ -756,7 +718,6 @@ public class Navigator implements NavigatorIF {
         }
         return false;
     }
-
     /**
      * @param command
      * @throws ParseException
@@ -843,13 +804,13 @@ public class Navigator implements NavigatorIF {
         String[] results = new String[2];
         CommandOption[] options = getArguments(getTokenizedInput(new_command));
 
-        if(!(EnableAgent(options[0].toString()))){
+        /*if(!(EnableAgent(options[0].toString()))){
                 results[0]="Endpoint or Agent not is Now Available!‏";
                     return results;
         }
         else{
            results [0]="nautiLOD in process";
-        }
+        }*/
 
         this.COMMENT = comment;
         reg_expr_manager = new RegExprManager(INPUT_REGEX);
@@ -896,6 +857,8 @@ public class Navigator implements NavigatorIF {
         //AgentDelegate.doNautiLOD(scriptState, r );
         }
         System.out.println(r);
+        writeResult(r);
+
         System.out.println("#res=" + r.size() + " #deref=" + getDerefCount());
 }
 
