@@ -750,7 +750,7 @@ public class StateMachine {
 
 		return m_acceptingStates.containsElement(st);
 	}
-    public ArrayList Query(){
+    public ArrayList Expression(){
         ArrayList<String> nlist = new ArrayList<String>();
         String Q="";
         for (int i = 0; i < m_stateTransitions.getSize(); i++) {
@@ -758,10 +758,13 @@ public class StateMachine {
             if (!(pDelta.getSymbol().isNullSymbol()))
             {
                 Q = Q + " " + pDelta.getSymbol().getLanguageDescription();
+
             }
-            else if (!(Q.trim().equals(""))){
-                nlist.add(Q.trim());
-                Q="";
+            if ((pDelta.getSymbol().getLanguageDescription().equals("<http://www.w3.org/2002/07/owl#sameAs>"))|| i==m_stateTransitions.getSize()-1){
+                if (!(Q.trim().equals(""))){
+                    nlist.add(Q.trim());
+                    Q="";
+                }
             }
         }
         return nlist;

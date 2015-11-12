@@ -54,7 +54,7 @@ public class Navigator implements NavigatorIF {
     private HashSet<String> final_results;
     private HashSet<String> already_printed;
     private HashSet<String> error_uris;
-    private ArrayList List_Query;
+    private ArrayList List_Expression;
     private NavigationHistory nav_history;
     private NamedMultiPointedGraph partial_graph;
     private Model result_model;
@@ -291,7 +291,6 @@ public class Navigator implements NavigatorIF {
             State st = automaton.getState(state);
             history.print(st.getID());
             HashSet<String> uris = nh.containsState(st);
-            System.out.println("Imprimir History" + uris.toString());
             history.print(uris.toString() + "\n");
         }
 
@@ -321,31 +320,23 @@ public class Navigator implements NavigatorIF {
         if (args == null) {
             return null;
         }
-
         LinkedList<CommandOption> arguments = new LinkedList<CommandOption>();
-
         try {
             String[] argmts = new String[args.size()];
             args.toArray(argmts);
-
             arguments.add(new StringOption(Constants.SEED, argmts[0]));
             this.SEED = argmts[0];
             partial_graph.setAsStartingNode(SEED);
-
             for (int argp = 1; argp < argmts.length; argp++) {
                 if (argmts[argp].equals(Constants.BUDGET)) {
                     argp++;
                     if (argp < argmts.length) {
                         this.BUDGET = Integer.parseInt(argmts[argp].trim());
-
                         arguments.add(new NumericalOption(Constants.BUDGET,
                                 BUDGET));
-
                         STREAM_OUTPUT = true;
                         already_printed = new HashSet<String>();
-
                     }
-
                 } else if (argmts[argp].equals(Constants.WRITE_OUTPUT_FILE)) {
                     argp++;
                     if (argp < argmts.length) {
@@ -354,7 +345,6 @@ public class Navigator implements NavigatorIF {
                             OUTPUT_FILE = OUTPUT_FILE + ".rdf";
                         System.out.println(OUTPUT_FILE);
                         WRITE_FILE = true;
-
                         arguments.add(new StringOption(
                                 Constants.WRITE_OUTPUT_FILE, OUTPUT_FILE));
                     }
@@ -368,68 +358,46 @@ public class Navigator implements NavigatorIF {
                         arguments.add(new StringOption(Constants.DIRECTORY,
                                 DIRECTORY));
                     }
-
                 } else if (argmts[argp].equals(Constants.STREAM_OUTPUT)) {
                     STREAM_OUTPUT = true;
                     already_printed = new HashSet<String>();
-
                 } else if (argmts[argp].equals(Constants.NUM_THREADS)) {
                     argp++;
                     if (argp < argmts.length)
-
                         this.NUM_THREAD = Integer.parseInt(argmts[argp].trim());
-
                     arguments.add(new NumericalOption(Constants.NUM_THREADS,
                             NUM_THREAD));
                 }
-
                 // FILTER PREDICATES
                 else if (argmts[argp].equals(Constants.REG_EXPR_PREDICATE)) {
                     argp++;
-
                     this.INPUT_REGEX = "";
-
-                    while (argp < argmts.length
+                   while (argp < argmts.length
                             && argmts[argp].charAt(0) != '-') {
                         INPUT_REGEX = INPUT_REGEX + argmts[argp] + " ";
                         argp++;
                     }
                     argp--;
-
                     for (int i = 0; i < Constants.namespaces_keys.length; i++) {
-
                         INPUT_REGEX = INPUT_REGEX.replaceAll(
                                 Constants.namespaces_keys[i],
                                 Constants.namespaces_values[i]);
-
                     }
-
                     arguments.add(new StringOption(
                             Constants.REG_EXPR_PREDICATE, INPUT_REGEX));
-
                 } else if (argmts[argp].equals(Constants.VERBOSE)) {
-
                     arguments.add(new StringOption(Constants.VERBOSE,
                             Constants.VERBOSE));
-
                     this.VERBOSE = true;
-
                 } else if (argmts[argp].equals(Constants.RECONSTRUCT)) {
-
                     arguments.add(new StringOption(Constants.RECONSTRUCT,
                             Constants.RECONSTRUCT));
-
                     this.RECONSTRUCT = true;
-
                 } else if (argmts[argp].equals(Constants.NOT_SAVE_MODELS)) {
-
                     arguments.add(new StringOption(Constants.NOT_SAVE_MODELS,
                             Constants.NOT_SAVE_MODELS));
-
                     this.NOT_SAVE_MODELS = true;
-
                 } else if (argmts[argp].equals(Constants.NOT_SAVE_MODELS)) {
-
                     arguments.add(new StringOption(Constants.NOT_SAVE_MODELS,
                             Constants.NOT_SAVE_MODELS));
                 }
@@ -498,6 +466,8 @@ public class Navigator implements NavigatorIF {
      * @param input
      * @return
      */
+
+
     private LinkedList<String> getTokenizedInput(String input) {
         String[] tokens = null;
         try {
@@ -516,8 +486,39 @@ public class Navigator implements NavigatorIF {
     }
 
     /**
-     * Increment the number of dereferenced URIs
+     * Tokenizes the input from the console
+     *
+     * @param input
+     * @return
      */
+
+    private LinkedList<String> getTokenQuery(String input) {
+        String[] tokens = null;
+        try {
+            tokens = input.split("<http://www.w3.org/2002/07/owl#sameAs>");
+        } catch (NullPointerException e) {
+
+        }
+        LinkedList<String> args = new LinkedList<String>();
+
+        for (int i = 0; i < tokens.length; i++) {
+            if (!tokens[i].equals("")) {
+                if (i==tokens.length-1){
+                    args.add(tokens[i]);
+                }
+               else{
+                    args.add(tokens[i]+"<http://www.w3.org/2002/07/owl#sameAs>");
+
+                }
+
+            }
+        }
+        return args;
+    }
+
+        /**
+         * Increment the number of dereferenced URIs
+         */
     public synchronized void incrementDerefCOunt() {
         deref_count++;
     }
@@ -730,9 +731,9 @@ public class Navigator implements NavigatorIF {
         StateMachine automaton = reg_expr_manager0.pMachine;
         printAutomata();
 
-        List_Query = automaton.Query();
-        if (List_Query.size() > 0) {
-            String new_command = optionss[0].toString() + " -p " + List_Query.get(0).toString();
+        List_Expression = automaton.Expression();
+        if (List_Expression.size() > 0) {
+            String new_command = optionss[0].toString() + " -p " + List_Expression.get(0).toString() + " -f " +optionss[optionss.length-1].toString();
             return new_command;
         }
         return null;
@@ -743,25 +744,25 @@ public class Navigator implements NavigatorIF {
     }
     private void constructNewQuery(String res) {
 
-        for (int i = 0; i < List_Query.size(); i++) {
+        for (int i = 0; i < List_Expression.size(); i++) {
 
         }
-        if (List_Query.size() == 0) {
+        if (List_Expression.size() == 0) {
             newcommand = null;
-        } else if (List_Query.size() == 1) {
-            newcommand = res + " -p " + List_Query.get(0).toString();
-        } else if (List_Query.size() == 2) {
-            newcommand = res + " -p " + List_Query.get(1).toString();
-          } else if (List_Query.size() == 3) {
-            newcommand = res + " -p " + List_Query.get(1).toString() + "/" + List_Query.get(2).toString();
-        } else if (List_Query.size() == 4) {
-            newcommand = res + " -p " + List_Query.get(1).toString() + "/" + List_Query.get(2).toString() + "/" + List_Query.get(3).toString();
-        } else if (List_Query.size() == 5) {
-            newcommand = res + " -p " + List_Query.get(1).toString() + "/" + List_Query.get(2).toString() + "/" + List_Query.get(3).toString() + "/" + List_Query.get(4).toString();
-        } else if (List_Query.size() == 6) {
-            newcommand = res + " -p " + List_Query.get(1).toString() + "/" + List_Query.get(2).toString() + "/" + List_Query.get(3).toString() + "/" + List_Query.get(4).toString() + "/" + List_Query.get(5).toString();
-        } else if (List_Query.size() == 7) {
-            newcommand = res + " -p " + List_Query.get(1).toString() + "/" + List_Query.get(2).toString() + "/" + List_Query.get(3).toString() + "/" + List_Query.get(4).toString() + "/" + List_Query.get(5).toString() + "/" + List_Query.get(6).toString();
+        } else if (List_Expression.size() == 1) {
+            newcommand = res + " -p " + List_Expression.get(0).toString();
+        } else if (List_Expression.size() == 2) {
+            newcommand = res + " -p " + List_Expression.get(1).toString();
+          } else if (List_Expression.size() == 3) {
+            newcommand = res + " -p " + List_Expression.get(1).toString() + "/" + List_Expression.get(2).toString();
+        } else if (List_Expression.size() == 4) {
+            newcommand = res + " -p " + List_Expression.get(1).toString() + "/" + List_Expression.get(2).toString() + "/" + List_Expression.get(3).toString();
+        } else if (List_Expression.size() == 5) {
+            newcommand = res + " -p " + List_Expression.get(1).toString() + "/" + List_Expression.get(2).toString() + "/" + List_Expression.get(3).toString() + "/" + List_Expression.get(4).toString();
+        } else if (List_Expression.size() == 6) {
+            newcommand = res + " -p " + List_Expression.get(1).toString() + "/" + List_Expression.get(2).toString() + "/" + List_Expression.get(3).toString() + "/" + List_Expression.get(4).toString() + "/" + List_Expression.get(5).toString();
+        } else if (List_Expression.size() == 7) {
+            newcommand = res + " -p " + List_Expression.get(1).toString() + "/" + List_Expression.get(2).toString() + "/" + List_Expression.get(3).toString() + "/" + List_Expression.get(4).toString() + "/" + List_Expression.get(5).toString() + "/" + List_Expression.get(6).toString();
         }
         try {
             if (newcommand != null) {
@@ -794,8 +795,8 @@ public class Navigator implements NavigatorIF {
             throws ParseException, TokenMgrError {
         this.scriptState = scriptState;
 
-       // String new_command = reconstructcommand(command);
-        String new_command = command;
+       String new_command = reconstructcommand(command);
+      ///  String new_command = command;
         OUTPUT_FILE="output_swget.rdf";
         if (new_command == null) {
             new_command = command;
@@ -815,20 +816,9 @@ public class Navigator implements NavigatorIF {
         this.COMMENT = comment;
         reg_expr_manager = new RegExprManager(INPUT_REGEX);
         reg_expr_manager.buildAutomaton();
-
-        /**
-         * UGLY; must be done here because the variable num_thread must be first
-         * read
-         */
-
         threadGroup = new ThreadPoolExecutor(NUM_THREAD, NUM_THREAD, 5000,
                 TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>());
         execService = threadGroup;
-
-        /**
-         * END UGLY
-         */
-
         try {
             navigate();
         } catch (Exception e) {
@@ -853,11 +843,12 @@ public class Navigator implements NavigatorIF {
         execService.shutdownNow();
         closeExecution();
         Collection<String> r = getFinalResults();
+        writeResult(r);
         if(r.size()>0){
-        //AgentDelegate.doNautiLOD(scriptState, r );
+        AgentDelegate.doNautiLOD(scriptState, r );
         }
         System.out.println(r);
-        writeResult(r);
+
 
         System.out.println("#res=" + r.size() + " #deref=" + getDerefCount());
 }

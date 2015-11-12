@@ -22,7 +22,6 @@ public class AgentDelegate {
     static public void doNautiLOD(ScriptState scriptState, AgentInstance agentInstanceS, AgentInstance agentInstanceR, String newcommand, String comment) throws AgentServerException, JSONException {
         log.info("Initialize the agent delegate for send agent message");
         ACLMessage aclMessage = new ACLMessage();
-
         aclMessage.setContent("nautilod n; return n.get('" + newcommand + "').xml;");
         aclMessage.setPerformative(Performative.REQUEST);
         aclMessage.setReceivers(agentInstanceR.aid);

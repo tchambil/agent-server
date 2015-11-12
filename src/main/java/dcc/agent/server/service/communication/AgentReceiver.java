@@ -55,7 +55,7 @@ public class AgentReceiver {
         }
         return send;
     }
-    private static String Nautilod(ScriptState scriptState, String command, String comment)  {
+    private static String ActionExec(ScriptState scriptState, String command, String comment)  {
         navigator = new Navigator();
         try {
             String[] s= navigator.runCommand(scriptState,command,comment);
@@ -79,7 +79,7 @@ public class AgentReceiver {
                     reply.setInReplyTo(content);
                     reply.setReplyBy(message.getReceivers());
                     System.out.println(content);
-                    Nautilod(scriptState,content,"");
+                    ActionExec(scriptState,content,"");
                 } else {
                     log.info("Agent " + message.getReceivers() + " - Unexpected request [" + content + "] received from " + message.getSender());
                     reply.setPerformative(Performative.REFUSE);
