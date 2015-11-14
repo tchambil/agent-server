@@ -3,14 +3,12 @@ package dcc.agent.server.service.swget.multithread;
 /**
  * Created by teo on 20/07/15.
  */
-import dcc.agent.server.service.swget.utils.URIData;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 public class EndPointData {
-    public static String getEndpoint(URIData uriData) {
+    public static String getEndpoint(String uriData) {
         {
-            String current_URI = uriData.getUrl();
+            String current_URI = uriData;
             if (current_URI.toString().contains("#")) {
                 current_URI = current_URI.substring(0, current_URI.indexOf("#"));
             }

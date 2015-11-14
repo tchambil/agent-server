@@ -38,11 +38,7 @@ public String getCommand();
 	public void addErrorUri(String link);
 
 	public boolean isErrorUri(String link);
-
-
-	
-
-
+    public boolean isValidURL(String url);
 	public Model getGraph();
 
 	public Model getExistingModel(String link);
@@ -63,7 +59,7 @@ public String getCommand();
 
 	public int getActiveThreadCount();
 
-	public void shutdown();
+	public void shutdown() ;
 
 	public void addToNavHistory(URIData current_lookup_pair);
 

@@ -66,9 +66,7 @@ public class LinkFinderThread implements Runnable {
             if (new ResourceImpl(current_URI).isResource()) {
                 try {
                     HashSet<State> hs = NautiLODManager.getRegExpManager().getEpsilonReachableStates(starting_uri.getState());
-                    //System.out.println("Handling URI_1 " + starting_uri.getUrl() + "\n");
-                    //System.out.println("> " + NautiLODManager.getToDeref() + "\n");
-                    for (State s : hs) {
+                  for (State s : hs) {
                         to_expand.add(new URIData(starting_uri.getUrl(), starting_uri.getDepth(), s, starting_uri.getProvenanceAuthority(), starting_uri.getTypeOfLink()));
                     }
                     if (NautiLODManager.getRegExpManager()
@@ -108,7 +106,7 @@ public class LinkFinderThread implements Runnable {
                 try {
                     NautiLODManager.queueLink(uri);
                     if (NautiLODManager.EnableEndPoints(uri.getUrl().toString())) {
-                        System.out.println("Resultado : " + uri.getUrl());
+                        System.out.println("Result : " + uri.getUrl());
                     }
                 } catch (Exception e) {
                     // TODO Auto-generated catch block
@@ -173,7 +171,7 @@ public class LinkFinderThread implements Runnable {
 
                 Query query = QueryFactory.create(queryString);
                 System.out.println(queryString);
-                QueryExecution qexec = QueryExecutionFactory.sparqlService(endPoints.getEndpoint(uri_to_expand), query);
+                QueryExecution qexec = QueryExecutionFactory.sparqlService(endPoints.getEndpoint(uri_to_expand.getUrl().toString()), query);
                 results = qexec.execSelect();
                 for (; results.hasNext(); ) {
                     QuerySolution soln = results.next();
@@ -219,7 +217,7 @@ public class LinkFinderThread implements Runnable {
 
                 queryString = "SELECT ?x WHERE { ?x " + pred + " <" + uri_to_expand.getUrl().toString() + "> .}";
                 query = QueryFactory.create(queryString);
-                qexec = QueryExecutionFactory.sparqlService(endPoints.getEndpoint(uri_to_expand), query);
+                qexec = QueryExecutionFactory.sparqlService(endPoints.getEndpoint(uri_to_expand.getUrl().toString()), query);
                 results = qexec.execSelect();
                 for (; results.hasNext(); ) {
                     QuerySolution soln = results.next();
@@ -265,202 +263,7 @@ public class LinkFinderThread implements Runnable {
         return links_to_expand;
     }
 
-    public ArrayList<URIData> extractLinks(URIData uri_to_expand) {
 
-        ArrayList<URIData> links_to_expand = new ArrayList<URIData>();
-
-        String current_URI = uri_to_expand.getUrl();
-
-        // TRANSFORM TO 303 URI
-        if (current_URI.toString().contains("#")) {
-            current_URI = current_URI.substring(0, current_URI.indexOf("#"));
-
-        }
-
-        // *** HANDLE ACTIONS
-
-        LinkedList<String> actions = NautiLODManager.getRegExpManager()
-                .getActions(uri_to_expand.getState());
-
-        links_to_expand.addAll(handleActions(actions, uri_to_expand));
-
-        // *** HANDLE TESTS
-
-        LinkedList<String> tests = NautiLODManager.getRegExpManager()
-                .getTriggers(uri_to_expand.getState());
-
-        links_to_expand.addAll(handleTests(tests, uri_to_expand));
-
-        // *** HANDLE STANDARD TRANSITIONS
-
-        Model current_model = NautiLODManager.getExistingModel(current_URI);
-
-        if (current_model == null) {
-
-            if (uri_to_expand.getUrl().endsWith("_BLANK")) {
-                current_model = NautiLODManager
-                        .getExistingBlankModel(current_URI);
-            } else {
-
-                current_model = NautiLODManager.getNetWorkManager().getModel(
-                        current_URI);
-
-                // if the size is zero there if no point in DEREF it another
-                // time
-                if (current_model.size() != 0) {
-                    // HERE WE ARE SURE THAT WE HAVE A NEW MODEL MEANING A NEW
-                    // DEREF
-                    // HAS BEEN DONE
-                    if (withBudget) {
-                        NautiLODManager.decBUDGET();
-                        if (NautiLODManager.getBUDGET() == 0) {
-                            System.err
-                                    .println("Stopping execution: budget of deref operations is over");
-                            NautiLODManager.shutdown();
-                        }
-
-                    }
-
-                    //
-                    if (!NautiLODManager.isNotSaveModels())
-                        NautiLODManager.addVisitedModel(current_URI,
-                                current_model);
-                    NautiLODManager.incrementDerefCOunt();
-                    handleBlanks(current_model, current_URI);
-                } else {
-                    NautiLODManager.addErrorUri(current_URI);
-                }
-            }
-        }
-
-        // //ALL the following is needed only if the model is not empty!
-
-        if (current_model != null && current_model.size() != 0) {
-
-            LinkedList<Transition> trans = NautiLODManager.getRegExpManager()
-                    .getOutgoingTransition(uri_to_expand.getState());
-
-            String pred;
-            ResultSet results = null;
-            for (Transition t : trans) {
-
-                pred = t.getSymbol().getLanguageDescription();
-
-                String queryString = "SELECT ?x WHERE " + "{ <"
-                        + uri_to_expand.getUrl().toString() + "> " + pred
-                        + "  ?x.}";
-
-                Query query = QueryFactory.create(queryString);
-
-                QueryExecution qexec = QueryExecutionFactory.create(query,
-                        current_model);
-
-                results = qexec.execSelect();
-
-                for (; results.hasNext(); ) {
-                    QuerySolution soln = results.next();
-
-                    RDFNode in_node = soln.get("x"); // "x" is a variable in the
-                    // query
-                    URIData new_pair = null;
-                    String u = null;
-
-                    // If you need to test the thing returned
-                    if (in_node.isResource()) {
-                        Resource res_node = (Resource) in_node;
-
-                        if (res_node.isAnon()) {
-
-                            u = current_URI + "_" + res_node.toString()
-                                    + "_BLANK";
-                        } else {
-                            u = res_node.getURI();
-                        }
-                        new_pair = new URIData(u, uri_to_expand.getDepth(),
-                                NautiLODManager.getRegExpManager().getNext(
-                                        uri_to_expand.getState(), pred),
-                                uri_to_expand.getProvenanceAuthority(),
-                                uri_to_expand.getTypeOfLink());
-
-                        links_to_expand.add(new_pair);
-                        NautiLODManager.addVisitedTriple(uri_to_expand.getUrl()
-                                .toString(), pred.substring(1,
-                                pred.length() - 1), u);
-                    }
-                    if (in_node.isLiteral()) {
-                        new_pair = new URIData(in_node.toString(),
-                                uri_to_expand.getDepth(),
-                                NautiLODManager.getRegExpManager().getNext(
-                                        uri_to_expand.getState(), pred),
-                                uri_to_expand.getProvenanceAuthority(),
-                                uri_to_expand.getTypeOfLink());
-
-                        links_to_expand.add(new_pair);
-                        NautiLODManager.addVisitedTriple(uri_to_expand.getUrl()
-                                .toString(), pred.substring(1,
-                                pred.length() - 1), in_node.toString());
-                    }
-
-                }
-
-                queryString = "SELECT ?x WHERE { ?x " + pred + " <"
-                        + uri_to_expand.getUrl().toString() + "> .}";
-                //  System.out.println("query:"+queryString);
-                query = QueryFactory.create(queryString);
-
-                qexec = QueryExecutionFactory.create(query, current_model);
-
-                results = qexec.execSelect();
-
-                for (; results.hasNext(); ) {
-                    QuerySolution soln = results.next();
-
-                    RDFNode out_node = soln.get("x"); // "x" is a variable in
-                    // the
-                    // query
-                    URIData new_pair = null;
-                    String u;
-
-                    // If you need to test the thing returned
-                    if (out_node.isResource()) {
-                        Resource res_node = (Resource) out_node;
-
-                        if (res_node.isAnon()) {
-
-                            u = current_URI + "_" + res_node.toString()
-                                    + "_BLANK";
-                        } else {
-                            u = res_node.getURI();
-                        }
-
-                        new_pair = new URIData(u, uri_to_expand.getDepth(),
-                                NautiLODManager.getRegExpManager().getNext(
-                                        uri_to_expand.getState(), pred),
-                                uri_to_expand.getProvenanceAuthority(),
-                                uri_to_expand.getTypeOfLink());
-
-                        links_to_expand.add(new_pair);
-                        NautiLODManager.addVisitedTriple(uri_to_expand.getUrl().toString(), pred.substring(1,
-                                pred.length() - 1), u);
-                    }
-                    if (out_node.isLiteral()) {
-                        new_pair = new URIData(out_node.toString(),
-                                uri_to_expand.getDepth(),
-                                NautiLODManager.getRegExpManager().getNext(
-                                        uri_to_expand.getState(), pred),
-                                uri_to_expand.getProvenanceAuthority(),
-                                uri_to_expand.getTypeOfLink());
-                        NautiLODManager.addVisitedTriple(uri_to_expand.getUrl().toString(), pred.substring(1,
-                                pred.length() - 1), out_node.toString());
-                    }
-
-                }
-            }
-
-        }
-
-        return links_to_expand;
-    }
 
     /**
      * Handles blank nodes
@@ -582,15 +385,18 @@ public class LinkFinderThread implements Runnable {
                 String new_q = query.substring(1, query.length() - 1);
                 boolean resq = false;
                 try {
-
+                     String uri_to=uri_to_expand.getUrl();
+                    if(uri_to.indexOf("about.rdf")>1){
+                        uri_to = uri_to.replaceAll("about.rdf", "");
+                    }
                     if (new_q.indexOf("ctx") > 1) {
-                        new_q = new_q.replaceAll("\\?ctx", "<" + uri_to_expand.getUrl() + ">");
+                        new_q = new_q.replaceAll("\\?ctx", "<" + uri_to + ">");
                     } else if (new_q.indexOf("paper") > 1) {
-                        new_q = new_q.replaceAll("\\?paper", "<" + uri_to_expand.getUrl() + ">");
+                        new_q = new_q.replaceAll("\\?paper", "<" + uri_to+ ">");
                     }
 
                     Query queryask = QueryFactory.create(new_q);
-                    QueryExecution qexec = QueryExecutionFactory.sparqlService(endPoints.getEndpoint(uri_to_expand), queryask);
+                    QueryExecution qexec = QueryExecutionFactory.sparqlService(endPoints.getEndpoint(uri_to_expand.getUrl().toString()), queryask);
                     resq = qexec.execAsk();
                     qexec.close();
                 } catch (Exception e) {

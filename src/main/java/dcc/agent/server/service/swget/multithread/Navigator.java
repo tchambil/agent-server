@@ -28,7 +28,9 @@ import dcc.agent.server.service.swget.utils.URIPair;
 import org.json.JSONException;
 
 import java.io.*;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.*;
 import java.util.concurrent.*;
@@ -65,7 +67,7 @@ public class Navigator implements NavigatorIF {
     private String jobId;
     private String email;
     private AgentServerProperties config;
-    private String newcommand=null;
+    private String newcommand = null;
     /*
      * The following variables handle the options
      */
@@ -79,12 +81,14 @@ public class Navigator implements NavigatorIF {
     private boolean NOT_SAVE_MODELS = false;
     private String OUTPUT_FILE = "output_swget.rdf";
     private String DIRECTORY = config.DEFAULT_PERSISTENT_STORE_DIR + File.separator;
+    private String File_Result = "";
     private String INPUT_REGEX = "";
     private String SEED = "";
     private String COMMENT = "";
+    private EndPointData endPoints;
 
+    private Boolean enableAgent = false;
 
-    private Boolean enableAgent=false;
     public Navigator() {
         net_manager = new NetworkManager(this);
         final_results = new HashSet<String>();
@@ -102,8 +106,8 @@ public class Navigator implements NavigatorIF {
 
     public synchronized void addResult(String res) {
 
-       // constructNewQuery(res);
-     //   writeResult(res);
+        // constructNewQuery(res);
+        //   writeResult(res);
 
         final_results.add(res);
         partial_graph.setAsEndingNode(res);
@@ -192,7 +196,7 @@ public class Navigator implements NavigatorIF {
 
     private void closeExecution() {
         /*
-		 * 
+         *
 		 */
         if (RECONSTRUCT) {
             reconstruct();
@@ -202,7 +206,7 @@ public class Navigator implements NavigatorIF {
         if (WRITE_FILE)
 
         {
-			/*
+            /*
 			 * VISITED SEMANTICS
 			 */
 			/*
@@ -220,7 +224,6 @@ public class Navigator implements NavigatorIF {
         String f_automaton = this.OUTPUT_FILE.substring(0,
                 OUTPUT_FILE.lastIndexOf("."))
                 + "_automatoninitial.txt";
-
 
 
         PrintWriter automps = null;
@@ -372,7 +375,7 @@ public class Navigator implements NavigatorIF {
                 else if (argmts[argp].equals(Constants.REG_EXPR_PREDICATE)) {
                     argp++;
                     this.INPUT_REGEX = "";
-                   while (argp < argmts.length
+                    while (argp < argmts.length
                             && argmts[argp].charAt(0) != '-') {
                         INPUT_REGEX = INPUT_REGEX + argmts[argp] + " ";
                         argp++;
@@ -486,39 +489,8 @@ public class Navigator implements NavigatorIF {
     }
 
     /**
-     * Tokenizes the input from the console
-     *
-     * @param input
-     * @return
+     * Increment the number of dereferenced URIs
      */
-
-    private LinkedList<String> getTokenQuery(String input) {
-        String[] tokens = null;
-        try {
-            tokens = input.split("<http://www.w3.org/2002/07/owl#sameAs>");
-        } catch (NullPointerException e) {
-
-        }
-        LinkedList<String> args = new LinkedList<String>();
-
-        for (int i = 0; i < tokens.length; i++) {
-            if (!tokens[i].equals("")) {
-                if (i==tokens.length-1){
-                    args.add(tokens[i]);
-                }
-               else{
-                    args.add(tokens[i]+"<http://www.w3.org/2002/07/owl#sameAs>");
-
-                }
-
-            }
-        }
-        return args;
-    }
-
-        /**
-         * Increment the number of dereferenced URIs
-         */
     public synchronized void incrementDerefCOunt() {
         deref_count++;
     }
@@ -542,6 +514,7 @@ public class Navigator implements NavigatorIF {
 
         startNewThread(new URIData(SEED, reg_expr_manager.pMachine.getInitial()));
     }
+
     @Override
     public void queueLink(URIData link) throws Exception {
         //count++;
@@ -665,25 +638,28 @@ public class Navigator implements NavigatorIF {
             result_model.add(st);
         }
     }
-    public boolean EnableEndPoints(String uri_start){
+
+    public boolean EnableEndPoints(String uri_start) {
         String current_URI = uri_start;
         if (current_URI.toString().contains("#")) {
             current_URI = current_URI.substring(0, current_URI.indexOf("#"));
         }
         try {
-            URL tempUrl = new URL(current_URI);
-            String host = tempUrl.getHost();
-            for (Endpoint endpoint : Endpoint.values()) {
-                if (endpoint.getGraph().equals(host)) {
-                    return true;
+            if (isValidURL(current_URI)) {
+                URL tempUrl = new URL(current_URI);
+                String host = tempUrl.getHost();
+                for (Endpoint endpoint : Endpoint.values()) {
+                    if (endpoint.getGraph().equals(host)) {
+                        return true;
+                    }
                 }
             }
-
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
         return false;
     }
+
     private String EnableEndPoint(String uri_start) {
         {
             String current_URI = uri_start;
@@ -706,11 +682,12 @@ public class Navigator implements NavigatorIF {
 
         }
     }
+
     private boolean EnableAgent(String uri_start) {
-        String enableEndpoint =EnableEndPoint(uri_start);
-       if (enableEndpoint != null) {
+        String enableEndpoint = EnableEndPoint(uri_start);
+        if (enableEndpoint != null) {
             String address = scriptState.agentInstance.addresses.toString();
-            if(address!=null || (!address.equals(""))|| address.length()>0){
+            if (address != null || (!address.equals("")) || address.length() > 0) {
                 if (enableEndpoint.trim().equals(address.trim())) {
                     return true;
                 }
@@ -719,68 +696,33 @@ public class Navigator implements NavigatorIF {
         }
         return false;
     }
+
     /**
      * @param command
      * @throws ParseException
      */
-    private String reconstructcommand(String command) throws ParseException {
+
+    private String prepareExpression(String command) throws ParseException {
         CommandOption[] optionss = getArguments(getTokenizedInput(command));
+        File_Result = " -f " + optionss[optionss.length - 1].toString();
         reg_expr_manager0 = new RegExprManager(INPUT_REGEX);
         reg_expr_manager0.buildAutomaton();
-
         StateMachine automaton = reg_expr_manager0.pMachine;
         printAutomata();
-
         List_Expression = automaton.Expression();
         if (List_Expression.size() > 0) {
-            String new_command = optionss[0].toString() + " -p " + List_Expression.get(0).toString() + " -f " +optionss[optionss.length-1].toString();
+            String new_command = optionss[0].toString() + " -p " + List_Expression.get(0).toString() + File_Result;
+            List_Expression.remove(0);
             return new_command;
         }
         return null;
     }
+
     @Override
-    public String getCommand(){
-    return newcommand;
+    public String getCommand() {
+        return newcommand;
     }
-    private void constructNewQuery(String res) {
 
-        for (int i = 0; i < List_Expression.size(); i++) {
-
-        }
-        if (List_Expression.size() == 0) {
-            newcommand = null;
-        } else if (List_Expression.size() == 1) {
-            newcommand = res + " -p " + List_Expression.get(0).toString();
-        } else if (List_Expression.size() == 2) {
-            newcommand = res + " -p " + List_Expression.get(1).toString();
-          } else if (List_Expression.size() == 3) {
-            newcommand = res + " -p " + List_Expression.get(1).toString() + "/" + List_Expression.get(2).toString();
-        } else if (List_Expression.size() == 4) {
-            newcommand = res + " -p " + List_Expression.get(1).toString() + "/" + List_Expression.get(2).toString() + "/" + List_Expression.get(3).toString();
-        } else if (List_Expression.size() == 5) {
-            newcommand = res + " -p " + List_Expression.get(1).toString() + "/" + List_Expression.get(2).toString() + "/" + List_Expression.get(3).toString() + "/" + List_Expression.get(4).toString();
-        } else if (List_Expression.size() == 6) {
-            newcommand = res + " -p " + List_Expression.get(1).toString() + "/" + List_Expression.get(2).toString() + "/" + List_Expression.get(3).toString() + "/" + List_Expression.get(4).toString() + "/" + List_Expression.get(5).toString();
-        } else if (List_Expression.size() == 7) {
-            newcommand = res + " -p " + List_Expression.get(1).toString() + "/" + List_Expression.get(2).toString() + "/" + List_Expression.get(3).toString() + "/" + List_Expression.get(4).toString() + "/" + List_Expression.get(5).toString() + "/" + List_Expression.get(6).toString();
-        }
-        try {
-            if (newcommand != null) {
-
-                AgentInstance agentS = scriptState.agentServer.getAgentInstanceId(scriptState.agentInstance.aid);
-                AgentInstance agentR=scriptState.agentServer.getAgentInstanceAddress(EnableEndPoint(res), "");
-                 if (agentR!=null && agentS!=null){
-                    AgentDelegate.doNautiLOD(scriptState, agentS, agentR, newcommand + " -f "+res.substring(res.lastIndexOf("/")+1, res.length())+".rdf",COMMENT);
-                }
-            }
-
-
-        } catch (AgentServerException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
     /**
      * The entry point of the program
      *
@@ -794,17 +736,14 @@ public class Navigator implements NavigatorIF {
     public String[] runCommand(ScriptState scriptState, String command, String comment)
             throws ParseException, TokenMgrError {
         this.scriptState = scriptState;
-
-       String new_command = reconstructcommand(command);
-      ///  String new_command = command;
-        OUTPUT_FILE="output_swget.rdf";
+        String new_command = prepareExpression(command);
+        OUTPUT_FILE = "output_swget.rdf";
         if (new_command == null) {
             new_command = command;
         }
         LinkFinderThread.resetTimer();
         String[] results = new String[2];
         CommandOption[] options = getArguments(getTokenizedInput(new_command));
-
         /*if(!(EnableAgent(options[0].toString()))){
                 results[0]="Endpoint or Agent not is Now Available!‏";
                     return results;
@@ -812,7 +751,7 @@ public class Navigator implements NavigatorIF {
         else{
            results [0]="nautiLOD in process";
         }*/
-
+        results[0] = "nautiLOD in process";
         this.COMMENT = comment;
         reg_expr_manager = new RegExprManager(INPUT_REGEX);
         reg_expr_manager.buildAutomaton();
@@ -824,38 +763,139 @@ public class Navigator implements NavigatorIF {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return results;
-    }
-
-    public void setGUI(String jobId, String email) {
-
-        this.jobId = jobId;
-        this.email = email;
     }
 
     /**
      * Terminates the execution of the evaluation. Only called by the last
      * thread
      */
-
     public synchronized void shutdown() {
         execService.shutdownNow();
         closeExecution();
-        Collection<String> r = getFinalResults();
-        writeResult(r);
-        if(r.size()>0){
-        AgentDelegate.doNautiLOD(scriptState, r );
+        Collection<String> res = getFinalResults();
+        writeResult(res);
+        for (String elem : res) {
+            if (isValidURL(elem)) {
+                String Endpoint = EnableEndPoint(elem);
+                String Expr = constructNewQuery(elem);
+                if (Expr != null) {
+                     if (Endpoint != null) {
+                        try {
+                            if (getHttpStatus(Endpoint) == 200) {
+
+                                System.out.println("Expr->: " + Expr+"\n");
+                                System.out.println("status->: " + Endpoint);
+
+                                AgentInstance agentS = scriptState.agentServer.getAgentInstanceId(scriptState.agentInstance.aid);
+                                AgentInstance agentR=scriptState.agentServer.getAgentInstanceAddress(EnableEndPoint(elem), "");
+                                if (agentR!=null && agentS!=null){
+                                    try {
+                                        AgentDelegate.doNautiLOD(scriptState, agentS, agentR, Expr, COMMENT);
+                                    } catch (AgentServerException e) {
+                                        e.printStackTrace();
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+
+                            }
+                            else{
+
+                            }
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+
+            }
         }
-        System.out.println(r);
+
+/*
+                String new_command = elem + " -p " + List_Expression.get(0).toString();
+             try {
+                if (new_command != null) {
+
+                }
+            } catch (AgentServerException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }*/
 
 
-        System.out.println("#res=" + r.size() + " #deref=" + getDerefCount());
-}
+        System.out.println("#res=" + res.size() + " #deref=" + getDerefCount());
+    }
+
+    public static int getHttpStatus(String url) throws IOException {
+        int StatusCode;
+        try {
+            URL siteURL = new URL(url);
+            HttpURLConnection connection = (HttpURLConnection) siteURL
+                    .openConnection();
+            connection.setRequestMethod("GET");
+            connection.connect();
+            StatusCode = connection.getResponseCode();
+        } catch (Exception e) {
+            StatusCode = 0;
+        }
+        return StatusCode;
+    }
+
+    private String constructNewQuery(String elem) {
+        if (List_Expression.size() > 0) {
+            String Expression = "";
+            if (isValidURL(elem)) {
+                String endpoint = endPoints.getEndpoint(elem);
+                if (endpoint != null) {
+                    for (Object Expr : List_Expression) {
+                        Expression = Expression + Expr;
+                    }
+
+                    return elem + " -p " + Expression + File_Result;
+                }
+
+            }
+        }
+        return null;
+/*
+        try {
+            if (newcommand != null) {
+
+                AgentInstance agentS = scriptState.agentServer.getAgentInstanceId(scriptState.agentInstance.aid);
+                AgentInstance agentR=scriptState.agentServer.getAgentInstanceAddress(EnableEndPoint(res), "");
+                if (agentR!=null && agentS!=null){
+                    //AgentDelegate.doNautiLOD(scriptState, agentS, agentR, newcommand + " -f "+res.substring(res.lastIndexOf("/")+1, res.length())+".rdf",COMMENT);
+                }
+            }
+
+
+        } catch (AgentServerException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }*/
+    }
 
     @Override
     public int size() {
         return visitedLinks.size();
+    }
+
+    public boolean isValidURL(String url) {
+        URL u = null;
+        try {
+            u = new URL(url);
+        } catch (MalformedURLException e) {
+            return false;
+        }
+        try {
+            u.toURI();
+        } catch (URISyntaxException e) {
+            return false;
+        }
+        return true;
     }
 
     /**
