@@ -5,28 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2cf9c626-ec31-4eb5-ac64-d54f63553b96" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/NautiLOD.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/NautiLODList.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/NautiLODResult.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/test.java" />
-      <change type="MOVED" beforePath="C:\AppServ\www\agent-server\src\main\java\dcc\agent\server\service\communication\ACLMessage.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/ACL/ACLMessage.java" />
-      <change type="MOVED" beforePath="C:\AppServ\www\agent-server\src\main\java\dcc\agent\server\service\communication\ACLMessageList.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/ACL/ACLMessageList.java" />
-      <change type="MOVED" beforePath="C:\AppServ\www\agent-server\src\main\java\dcc\agent\server\service\communication\AgentReceiver.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/ACL/AgentReceiver.java" />
-      <change type="MOVED" beforePath="C:\AppServ\www\agent-server\src\main\java\dcc\agent\server\service\communication\AgentSender.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/ACL/AgentSender.java" />
-      <change type="MOVED" beforePath="C:\AppServ\www\agent-server\src\main\java\dcc\agent\server\service\communication\Performative.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/ACL/Performative.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/AgentController.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/AgentController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/delegate/AgentDelegate.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/delegate/AgentDelegate.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentInstance.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentInstance.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/AgentdefinitionsController.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/AgentdefinitionsController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/runtime/value/DelegateValue.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/runtime/value/DelegateValue.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/runtime/value/MessageValue.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/runtime/value/MessageValue.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/NautilodController.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/NautilodController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/Navigator.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/Navigator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/persistence/Persistence.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/persistence/Persistence.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/runtime/ScriptRuntime.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/runtime/ScriptRuntime.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/runtime/ScriptState.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/runtime/ScriptState.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent-server.ipr" afterPath="$PROJECT_DIR$/agent-server.ipr" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent-server.iws" afterPath="$PROJECT_DIR$/agent-server.iws" />
     </list>
     <ignored path="agent-server.iws" />
@@ -1326,7 +1304,7 @@
       <workItem from="1447234797038" duration="54673000" />
       <workItem from="1447372895438" duration="3578000" />
       <workItem from="1447411268428" duration="15102000" />
-      <workItem from="1447456629210" duration="46693000" />
+      <workItem from="1447456629210" duration="46795000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1431836573263</created>
@@ -1632,11 +1610,15 @@
       <created>1447461674838</created>
       <updated>1447461674838</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="add functions for nautilod distributed, and add functions for receiver result to write file json">
+      <created>1447524897007</created>
+      <updated>1447524897007</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1268541000" />
+    <option name="totallyTimeSpent" value="1268643000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1753,7 +1735,8 @@
     <MESSAGE value="update scripting, add functions delegate, message queue." />
     <MESSAGE value="optimizing message queue." />
     <MESSAGE value="add functions for nautilod distributed" />
-    <option name="LAST_COMMIT_MESSAGE" value="add functions for nautilod distributed" />
+    <MESSAGE value="add functions for nautilod distributed, and add functions for receiver result to write file json" />
+    <option name="LAST_COMMIT_MESSAGE" value="add functions for nautilod distributed, and add functions for receiver result to write file json" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
