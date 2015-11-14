@@ -17,7 +17,7 @@
 package dcc.agent.server.service.persistence;
 
 import dcc.agent.server.service.agentserver.*;
-import dcc.agent.server.service.communication.ACLMessage;
+import dcc.agent.server.service.ACL.ACLMessage;
 import dcc.agent.server.service.groups.GroupAgentInstance;
 import dcc.agent.server.service.groups.ServerGroup;
 import dcc.agent.server.service.persistence.persistenfile.PersistentFile;
@@ -66,7 +66,7 @@ public class Persistence {
                 loadAllTables();
             } else {
                 // No, create a new persistent file for this agent server
-                List<String> tableNames = Arrays.asList("config", "users", "agentDefinitions", "agentInstances", "webaccess", "message", "group","groupagent");
+                List<String> tableNames = Arrays.asList("config", "users", "agentDefinitions", "agentInstances", "webaccess", "message", "group","groupagent","nautilod");
                 file.create(path, "Agent Server", "1.0", tableNames);
 
                 // And open it
@@ -127,7 +127,10 @@ public class Persistence {
         log.info("Init put Users:" + user.id + user.toJson().toString());
         put("users", user.id, user.toJson().toString());
     }
-
+    public void put(NautiLODResult result) throws AgentServerException {
+        log.info("Init put Nautilod:" + result.name + result.toJson().toString());
+        put("nautilod", result.name, result.toJson().toString());
+    }
     public void put(ServerGroup serverGroup) throws AgentServerException {
         log.info("persistence ServerGroup");
         put("group", serverGroup.user.id + "|"+ serverGroup.name, serverGroup.toJson().toString());
@@ -168,6 +171,7 @@ public class Persistence {
         loadAgentMessage();
         loadgroup();
         loadgroupAgent();
+        loadNautilod();
         // TODO: Status of the scheduler - is it suspended, when is it started?
         // TODO: What to do about pending activities - store/load them? Or, can they be ignored?
     }
@@ -191,7 +195,23 @@ public class Persistence {
             throw new AgentServerException("JSONException loading users from persistent store: " + e.getMessage());
         }
     }
-
+    public void loadNautilod() throws AgentServerException, ParseException, ParserException, TokenizerException {
+        try {
+            for (String id : file.iterable("nautilod")) {
+                String JsonSource = file.get("nautilod", id);
+                agentServer.recreateNautilod(JsonSource);
+            }
+        } catch (PersistentFileException e) {
+            e.printStackTrace();
+            throw new AgentServerException("PersistentFileException loading ResultNautilod: " + e.getMessage());
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new AgentServerException("IOException loading ResultNautilod from persistent store: " + e.getMessage());
+        } catch (JSONException e) {
+            e.printStackTrace();
+            throw new AgentServerException("JSONException loading ResultNautilod from persistent store: " + e.getMessage());
+        }
+    }
     public void loadAgentDefinitions() throws AgentServerException {
         try {
             // Load all agent definitions

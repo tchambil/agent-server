@@ -18,7 +18,7 @@ package dcc.agent.server.service.script.runtime;
 
 import dcc.agent.server.service.agentserver.AgentInstance;
 import dcc.agent.server.service.agentserver.AgentServerException;
-import dcc.agent.server.service.communication.ACLMessage;
+import dcc.agent.server.service.ACL.ACLMessage;
 import dcc.agent.server.service.script.intermediate.ExpressionNode;
 import dcc.agent.server.service.script.intermediate.ScriptNode;
 import dcc.agent.server.service.script.runtime.value.NullValue;
@@ -36,7 +36,7 @@ public class ScriptRuntime {
 
     public Value evaluateExpression(String scriptName, ExpressionNode expressionNode) throws AgentServerException {
         // Create new state for the script execution
-        ScriptState scriptState = new ScriptState(this, scriptName, expressionNode,null);
+        ScriptState scriptState = new ScriptState(this, scriptName, expressionNode,null,null);
         // Evaluate the expression
         Value returnValueNode = null;
         try {
@@ -55,7 +55,7 @@ public class ScriptRuntime {
     }
     public Value runScript(String scriptName, ScriptNode scriptNode, List<Value> argumentValues, ACLMessage message) throws AgentServerException {
         // Create new state for the script execution
-        ScriptState scriptState = new ScriptState(this, scriptName, scriptNode,message);
+        ScriptState scriptState = new ScriptState(this, scriptName, scriptNode,message,null);
 
         // Start execution of the script
         // TODO: Do this in a separate thread

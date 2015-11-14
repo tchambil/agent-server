@@ -6,8 +6,10 @@ import com.hp.hpl.jena.rdf.model.Statement;
 import com.hp.hpl.jena.rdf.model.impl.PropertyImpl;
 import com.hp.hpl.jena.rdf.model.impl.ResourceImpl;
 import com.hp.hpl.jena.rdf.model.impl.StatementImpl;
+import dcc.agent.server.service.ACL.ACLMessage;
 import dcc.agent.server.service.agentserver.AgentInstance;
 import dcc.agent.server.service.agentserver.AgentServerException;
+import dcc.agent.server.service.agentserver.NautiLODResult;
 import dcc.agent.server.service.config.AgentServerProperties;
 import dcc.agent.server.service.delegate.AgentDelegate;
 import dcc.agent.server.service.script.runtime.ScriptState;
@@ -58,6 +60,7 @@ public class Navigator implements NavigatorIF {
     private HashSet<String> error_uris;
     private ArrayList List_Expression;
     private NavigationHistory nav_history;
+    private NautiLODResult nautiLODResult;
     private NamedMultiPointedGraph partial_graph;
     private Model result_model;
     private ThreadPoolExecutor threadGroup;
@@ -88,7 +91,7 @@ public class Navigator implements NavigatorIF {
     private EndPointData endPoints;
 
     private Boolean enableAgent = false;
-
+    private ACLMessage messageReceiver;
     public Navigator() {
         net_manager = new NetworkManager(this);
         final_results = new HashSet<String>();
@@ -176,18 +179,38 @@ public class Navigator implements NavigatorIF {
         String f_history = this.OUTPUT_FILE.substring(0,
                 OUTPUT_FILE.lastIndexOf("."))
                 + "Final.txt";
+
+        ArrayList<String> List_file= null;
+        String readString = null;
+        String results="";
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new FileReader(f_history));
+            while ((readString = br.readLine()) != null) {
+                results=results+readString.trim()+"\n";
+
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         PrintWriter history = null;
         try {
-            history = new PrintWriter(new OutputStreamWriter(
-                    new FileOutputStream(f_history), "UTF-8"));
+            history = new PrintWriter(new OutputStreamWriter(new FileOutputStream(f_history), "UTF-8"));
+
         } catch (FileNotFoundException e1) {
             e1.printStackTrace();
 
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
+
+
+      //   history.println(results);
+
+
         for (String r : result) {
-            history.print(r + "\n");
+            history.println(r+"\n");
         }
         history.flush();
         history.close();
@@ -207,7 +230,7 @@ public class Navigator implements NavigatorIF {
 
         {
             /*
-			 * VISITED SEMANTICS
+             * VISITED SEMANTICS
 			 */
 			/*
 			 * Model result = ModelFactory.createDefaultModel(); for(Model
@@ -736,6 +759,8 @@ public class Navigator implements NavigatorIF {
     public String[] runCommand(ScriptState scriptState, String command, String comment)
             throws ParseException, TokenMgrError {
         this.scriptState = scriptState;
+        this.messageReceiver=scriptState.message;
+
         String new_command = prepareExpression(command);
         OUTPUT_FILE = "output_swget.rdf";
         if (new_command == null) {
@@ -775,21 +800,22 @@ public class Navigator implements NavigatorIF {
         closeExecution();
         Collection<String> res = getFinalResults();
         writeResult(res);
+        scriptState.agentServer.writeResult(res, messageReceiver.conversationId);
         for (String elem : res) {
             if (isValidURL(elem)) {
                 String Endpoint = EnableEndPoint(elem);
                 String Expr = constructNewQuery(elem);
                 if (Expr != null) {
-                     if (Endpoint != null) {
+                    if (Endpoint != null) {
                         try {
                             if (getHttpStatus(Endpoint) == 200) {
 
-                                System.out.println("Expr->: " + Expr+"\n");
+                                System.out.println("Expr->: " + Expr + "\n");
                                 System.out.println("status->: " + Endpoint);
 
                                 AgentInstance agentS = scriptState.agentServer.getAgentInstanceId(scriptState.agentInstance.aid);
-                                AgentInstance agentR=scriptState.agentServer.getAgentInstanceAddress(EnableEndPoint(elem), "");
-                                if (agentR!=null && agentS!=null){
+                                AgentInstance agentR = scriptState.agentServer.getAgentInstanceAddress(EnableEndPoint(elem), "");
+                                if (agentR != null && agentS != null) {
                                     try {
                                         AgentDelegate.doNautiLOD(scriptState, agentS, agentR, Expr, COMMENT);
                                     } catch (AgentServerException e) {
@@ -799,8 +825,7 @@ public class Navigator implements NavigatorIF {
                                     }
                                 }
 
-                            }
-                            else{
+                            } else {
 
                             }
                         } catch (IOException e) {

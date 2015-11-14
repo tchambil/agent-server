@@ -17,10 +17,10 @@
 package dcc.agent.server.service.agentserver;
 
 import dcc.agent.server.service.appserver.AgentAppServer;
-import dcc.agent.server.service.communication.ACLMessage;
-import dcc.agent.server.service.communication.ACLMessageList;
-import dcc.agent.server.service.communication.AgentReceiver;
-import dcc.agent.server.service.communication.AgentSender;
+import dcc.agent.server.service.ACL.ACLMessage;
+import dcc.agent.server.service.ACL.ACLMessageList;
+import dcc.agent.server.service.ACL.AgentReceiver;
+import dcc.agent.server.service.ACL.AgentSender;
 import dcc.agent.server.service.config.AgentServerConfig;
 import dcc.agent.server.service.config.AgentServerProperties;
 import dcc.agent.server.service.config.AgentServerWebAccessConfig;
@@ -46,15 +46,13 @@ import dcc.agent.server.service.webaccessmanager.WebAccessManager;
 import dcc.agent.server.service.webaccessmanager.WebPage;
 import dcc.agent.server.service.webaccessmanager.WebSiteAccessConfig;
 import org.apache.log4j.Logger;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 
 public class AgentServer {
@@ -72,6 +70,7 @@ public class AgentServer {
     public NameValueList<AgentDefinitionList> agentDefinitions;
     public NameValueList<AgentInstanceList> agentInstances;
     public NameValueList<ACLMessageList> agentMessages;
+    public NameValueList<NautiLODList> nautiLODList;
     public NameValueList<ServerGroupList> serverGroups;
     public NameValueList<GroupAgentInstanceList> groupAgents;
     public AgentServerProperties agentServerProperties;
@@ -147,6 +146,76 @@ public class AgentServer {
         // Return the new agent definition
         return agentDefinition;
     }
+    public void writeResult( Collection<String> CResult , String messageId )
+    {
+        try {
+            try {
+                NautiLODList Map = nautiLODList.get(messageId);
+                JSONArray jsonArray = new JSONArray();
+                JSONArray List=new JSONArray();
+                if(Map!=null){
+                    NautiLODResult result = Map.get(messageId);
+                    JSONObject jsonObject = result.toJson();
+                    List = (JSONArray) jsonObject.get("result");
+                    removeNautilod(messageId);
+                }
+
+                for (int i=0; i<List.length(); i++) {
+                    JSONObject item = List.getJSONObject(i);
+                    JSONObject jsonObj= new JSONObject();
+                    jsonObj.put("id", item.getString("id"));
+                    jsonObj.put("receiver", item.getString("receiver"));
+                    jsonObj.put("uri", item.getString("uri"));
+                    jsonArray.put(jsonObj);
+                }
+                int n=List.length();
+                for (String r : CResult) {
+                    JSONObject jsonObj= new JSONObject();
+                    jsonObj.put("id", n);
+                    jsonObj.put("receiver", n);
+                    jsonObj.put("uri", r);
+                    jsonArray.put(jsonObj);
+                    n++;
+                }
+                JSONObject chairJSON= new JSONObject();
+                chairJSON.put("name", messageId);
+                chairJSON.put("result",jsonArray );
+                NautiLODResult nautiLODResult = addNautilod(chairJSON);
+            } catch (AgentServerException e) {
+                e.printStackTrace();
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public synchronized NautiLODResult addNautilood(NautiLODResult nautiLODResult) throws AgentServerException, JSONException {
+        if (nautiLODResult != null) {
+            // Check if the user has any agents yet
+            if (!nautiLODList.containsKey(nautiLODResult.name)) {
+                // No, so create an empty agent table for user
+                nautiLODList.put(nautiLODResult.name, new NautiLODList());
+            }
+            // Get agent message table for the user
+
+            NautiLODList nautiLODLis = nautiLODList.get(nautiLODResult.name);
+            // Store the new agent message for the user
+            nautiLODLis.put(nautiLODResult);
+            // Persist the new agent message
+            persistence.put(nautiLODResult);
+
+        }
+        return nautiLODResult;
+    }
+     public NautiLODResult addNautilod(JSONObject agentJson) throws JSONException, AgentServerException {
+        // Parse the JSON for the agent definition
+        log.info("Parse the JSON for the agent definition");
+        NautiLODResult nautiLODResult = NautiLODResult.fromJson(this, agentJson);
+        // Add it to table of agent definitions
+        addNautilood(nautiLODResult);
+        // Return the new agent definition
+        return nautiLODResult;
+    }
 
     public ACLMessage addAgentMessage(JSONObject agenJson) throws JSONException, AgentServerException, ParseException, ParserException, TokenizerException {
         return addAgentMessage(null, agenJson);
@@ -170,6 +239,8 @@ public class AgentServer {
         }
         return agentMessage;
     }
+
+
 
     public ACLMessage getAgentMessage(User user, String agentMessageConversationId) {
         ACLMessageList agenMap = agentMessages.get(user.id);
@@ -720,6 +791,44 @@ public class AgentServer {
         recreateAgentMessage(newAgentMessage);
 
     }
+    public void removeNautilod(String name) throws AgentServerException {
+
+
+        // Check if the user has any agents yet
+        if (!nautiLODList.containsKey(name))
+            throw new AgentServerException("Attempt to delete NautiLODResult ('" + name + "')   that has no NautiLODResult");
+
+        // Get agent table for the user
+        NautiLODList nautiLODLt= nautiLODList.get(name);
+
+        // Check if that agent exists for user
+        if (!nautiLODLt.containsKey(name))
+            throw new AgentServerException("Attempt to delete NautiLODResult ('" + name + "')   that has no NautiLODResult");
+
+        // Delete the named agent definition for the user
+        nautiLODLt.remove(name);
+    }
+
+    public void recreateNautilod(String nautilod) throws AgentServerException, ParserException, ParseException, JSONException, TokenizerException {
+        NautiLODResult nautiLODResult=NautiLODResult.fromJson(this, nautilod);
+        recreateNautilod(nautiLODResult);
+
+    }
+    public NautiLODResult recreateNautilod(NautiLODResult nautiLODResult) throws AgentServerException {
+        if (nautiLODResult != null) {
+            // Check if the plataform has any agent message yet
+            if (!nautiLODList.containsKey(nautiLODResult.name)) {
+                // No, so create an empty agent message table for plataform
+                nautiLODList.put(nautiLODResult.name, new NautiLODList());
+            }
+            // Get agent message  table for the plataform
+            NautiLODList nautiLODLt = nautiLODList.get(nautiLODResult.name);
+            // Store the new agentmessage
+            nautiLODLt.put(nautiLODResult);
+        }
+        // Return the agent message  itself
+        return nautiLODResult;
+    }
 
     public ACLMessage recreateAgentMessage(ACLMessage agentMessage) throws AgentServerException {
         if (agentMessage != null) {
@@ -824,6 +933,7 @@ public class AgentServer {
         this.agentMessages = new NameValueList<ACLMessageList>();
         this.serverGroups = new NameValueList<ServerGroupList>();
         this.groupAgents = new NameValueList<GroupAgentInstanceList>();
+        this.nautiLODList=new NameValueList<NautiLODList>();
 
 
 

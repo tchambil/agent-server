@@ -3,9 +3,9 @@ package dcc.agent.server.service.delegate;
 import dcc.agent.server.service.agentserver.AgentInstance;
 import dcc.agent.server.service.agentserver.AgentServer;
 import dcc.agent.server.service.agentserver.AgentServerException;
-import dcc.agent.server.service.communication.ACLMessage;
-import dcc.agent.server.service.communication.AgentSender;
-import dcc.agent.server.service.communication.Performative;
+import dcc.agent.server.service.ACL.ACLMessage;
+import dcc.agent.server.service.ACL.AgentSender;
+import dcc.agent.server.service.ACL.Performative;
 import dcc.agent.server.service.script.runtime.ScriptState;
 import org.apache.log4j.Logger;
 import org.json.JSONException;
@@ -22,6 +22,7 @@ public class AgentDelegate {
     static public void doNautiLOD(ScriptState scriptState, AgentInstance agentInstanceS, AgentInstance agentInstanceR, String newcommand, String comment) throws AgentServerException, JSONException {
         log.info("Initialize the agent delegate for send agent message");
         ACLMessage aclMessage = new ACLMessage();
+        aclMessage.setconversationId(scriptState.message.getconversationId());
         aclMessage.setContent( newcommand);
         aclMessage.setPerformative(Performative.REQUEST);
         aclMessage.setReceivers(agentInstanceR.aid);

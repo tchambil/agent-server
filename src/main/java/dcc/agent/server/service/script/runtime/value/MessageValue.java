@@ -3,7 +3,7 @@ package dcc.agent.server.service.script.runtime.value;
 import dcc.agent.server.service.agentserver.AgentInstance;
 import dcc.agent.server.service.agentserver.AgentServer;
 import dcc.agent.server.service.agentserver.RuntimeException;
-import dcc.agent.server.service.communication.ACLMessage;
+import dcc.agent.server.service.ACL.ACLMessage;
 import dcc.agent.server.service.script.intermediate.MessageTypeNode;
 import dcc.agent.server.service.script.intermediate.StringTypeNode;
 import dcc.agent.server.service.script.intermediate.TypeNode;

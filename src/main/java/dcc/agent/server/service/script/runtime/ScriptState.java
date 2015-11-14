@@ -16,11 +16,8 @@
 
 package dcc.agent.server.service.script.runtime;
 
-import dcc.agent.server.service.agentserver.AgentDefinition;
-import dcc.agent.server.service.agentserver.AgentInstance;
-import dcc.agent.server.service.agentserver.AgentServer;
-import dcc.agent.server.service.agentserver.User;
-import dcc.agent.server.service.communication.ACLMessage;
+import dcc.agent.server.service.agentserver.*;
+import dcc.agent.server.service.ACL.ACLMessage;
 import dcc.agent.server.service.script.intermediate.*;
 import dcc.agent.server.service.script.runtime.value.NullValue;
 import dcc.agent.server.service.script.runtime.value.Value;
@@ -40,7 +37,7 @@ public class ScriptState {
     public Map<String, SymbolValues> categorySymbolValues;
     public Node node;
     public Value returnValue;
-
+    public NautiLODResult result;
     public enum controlFlowChanges {NO_CHANGE, CONTINUE, BREAK, RETURN, THROW}
 
     ;
@@ -57,11 +54,11 @@ public class ScriptState {
     public int nodeExecutionLimit;
     public int nodeExecutionCount;
 
-    public ScriptState(ScriptRuntime scriptRuntime, String scriptName, Node node,ACLMessage message) {
-        this(scriptRuntime, scriptName, node, -1,message);
+    public ScriptState(ScriptRuntime scriptRuntime, String scriptName, Node node,ACLMessage message, NautiLODResult result) {
+        this(scriptRuntime, scriptName, node, -1,message,result);
     }
 
-    public ScriptState(ScriptRuntime scriptRuntime, String scriptName, Node node, int level, ACLMessage message) {
+    public ScriptState(ScriptRuntime scriptRuntime, String scriptName, Node node, int level, ACLMessage message,NautiLODResult result) {
         this.scriptRuntime = scriptRuntime;
         this.agentInstance = scriptRuntime.agentInstance;
         this.agentServer = scriptRuntime.agentInstance.agentServer;
@@ -73,6 +70,7 @@ public class ScriptState {
         this.returnValue = NullValue.one;
         this.controlFlowChange = controlFlowChanges.NO_CHANGE;
         this.message=message;
+        this.result=result;
         initExecutionLimits(level);
     }
 

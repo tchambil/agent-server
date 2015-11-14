@@ -1,9 +1,6 @@
 package dcc.agent.server.controller;
 
-import dcc.agent.server.service.agentserver.AgentDefinition;
-import dcc.agent.server.service.agentserver.AgentDefinitionList;
-import dcc.agent.server.service.agentserver.AgentServer;
-import dcc.agent.server.service.agentserver.User;
+import dcc.agent.server.service.agentserver.*;
 import dcc.agent.server.service.appserver.AgentAppServerBadRequestException;
 import dcc.agent.server.service.appserver.AgentAppServerException;
 import dcc.agent.server.service.util.JsonListMap;
@@ -23,6 +20,7 @@ public class AgentdefinitionsController {
     protected static Logger logger = Logger.getLogger(UsersController.class);
     public AgentServer agentServer;
     public Utils util = new Utils();
+
 
 
     @RequestMapping(value = "/users/{id}/agent_definitions", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)

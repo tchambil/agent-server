@@ -925,27 +925,21 @@ public class AgentInstance {
             AgentScheduler.singleton.add(triggerActivity);
     }
 
-    public void update(AgentServer agentServer, AgentInstance updated) throws SymbolException, JSONException, AgentServerException {
+    public void update(AgentServer agentServer, AgentInstance updated) throws  JSONException, AgentServerException {
         // TODO: Only update time if there are any actual changes
         this.timeUpdated = System.currentTimeMillis();
-
         if (updated.description != null)
             this.description = updated.description;
-
         if (updated.parameterValues != null)
             this.parameterValues = updated.parameterValues;
         // TODO: Do we need to update Symbol Manager?
-
         if (updated.enabled != null)
             this.enabled = updated.enabled;
-
         if (updated.triggerIntervalExpression != null)
             this.triggerIntervalExpression = updated.triggerIntervalExpression;
-
         if (updated.reportingIntervalExpression != null)
             this.reportingIntervalExpression = updated.reportingIntervalExpression;
-
-        // Persist the changes
+        // Persist the change
         agentServer.persistence.put(this);
     }
 

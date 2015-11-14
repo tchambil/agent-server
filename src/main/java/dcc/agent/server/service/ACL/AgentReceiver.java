@@ -1,4 +1,4 @@
-package dcc.agent.server.service.communication;
+package dcc.agent.server.service.ACL;
 
 import dcc.agent.server.service.agentserver.AgentInstance;
 import dcc.agent.server.service.agentserver.AgentServer;
@@ -72,6 +72,7 @@ public class AgentReceiver {
             ACLMessage reply = message.createReply(scriptState.agentServer);
             if (message.getPerformative() == Performative.REQUEST) {
                 String content = message.getContent();
+                scriptState.message=message;
                 if (content != null) {
                     log.info("Agent " + message.getReceivers() + " - Received Request from " + message.getSender());
                     reply.setPerformative(Performative.INFORM);
@@ -79,6 +80,7 @@ public class AgentReceiver {
                     reply.setInReplyTo(content);
                     reply.setReplyBy(message.getReceivers());
                     System.out.println(content);
+
                     ActionExec(scriptState,content,"");
                 } else {
                     log.info("Agent " + message.getReceivers() + " - Unexpected request [" + content + "] received from " + message.getSender());
@@ -163,11 +165,7 @@ public class AgentReceiver {
         }
         return null;
     }
-
-
-
     private static ScriptNode parseNode(AgentServer agentServer, ACLMessage message) {
-
         try {
             AgentInstance dummyAgentInstance = getAgent(agentServer, message.getSender().toString());
             ScriptParser parser = new ScriptParser(dummyAgentInstance);
@@ -219,7 +217,6 @@ public class AgentReceiver {
         }
         return NullValue.one;
     }
-
     private static AgentInstance getAgent(AgentServer agentServer, String value) {
         return agentServer.getAgentInstanceId(value);
     }

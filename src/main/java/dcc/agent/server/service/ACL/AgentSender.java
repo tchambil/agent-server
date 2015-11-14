@@ -1,4 +1,4 @@
-package dcc.agent.server.service.communication;
+package dcc.agent.server.service.ACL;
 
 import dcc.agent.server.service.agentserver.AgentInstance;
 import dcc.agent.server.service.agentserver.AgentServer;
@@ -77,6 +77,7 @@ public class AgentSender {
             }
         }
     }
+
     public static void onMessage(AgentServer agentServer, ACLMessage message) throws Exception {
         if ((message != null)) {
             ACLMessage reply = message.createReply(agentServer);

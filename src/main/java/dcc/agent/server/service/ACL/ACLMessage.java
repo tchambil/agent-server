@@ -1,4 +1,4 @@
-package dcc.agent.server.service.communication;
+package dcc.agent.server.service.ACL;
 
 
 import dcc.agent.server.service.agentserver.AgentServer;
@@ -230,10 +230,10 @@ public class ACLMessage implements Serializable {
         String messagemessageId = agentJson.optString("conversationId", null);
         {
             if ((messagemessageId == null) || messagemessageId.trim().length() == 0) {
-
-                messagemessageId = agentServer.config.agentServerProperties.agentServerName + "-" + Integer.toString(agentServer.agentMessages.size());
+                messagemessageId = Integer.toString( (int) (System.currentTimeMillis() & 0xfffffff));
             }
         }
+
         //Parse the message content
         StringBuffer messageContent = new StringBuffer(agentJson.optString("content", null));
         {
