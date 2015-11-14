@@ -198,7 +198,6 @@ dcc\agent\server\service\swget\rdf2prefuse\graph\GraphDisplay$1.class
 dcc\agent\server\service\script\intermediate\ConditionNode.class
 dcc\agent\server\controllerclient\NautiLODControllerCliente.class
 dcc\agent\server\controllerclient\DefinitionControllerClient.class
-dcc\agent\server\service\communication\AgentSender.class
 dcc\agent\server\service\script\intermediate\CharTypeNode.class
 dcc\agent\server\service\agentserver\AgentTimer.class
 dcc\agent\server\service\agentserver\AgentInstance.class
@@ -219,11 +218,9 @@ dcc\agent\server\service\script\parser\tokenizer\token\SlashEqualOperatorToken.c
 dcc\agent\server\service\util\JsonListMap.class
 dcc\agent\server\service\webaccessmanager\WebPageCache.class
 dcc\agent\server\service\script\parser\tokenizer\token\ElseKeywordToken.class
-dcc\agent\server\service\communication\AgentReceiver.class
 dcc\agent\server\service\util\Nameable.class
 dcc\agent\server\service\appserver\AgentAppServerBadRequestException.class
 dcc\agent\server\service\swget\multithread\Endpoint.class
-dcc\agent\server\service\communication\ACLMessageList.class
 dcc\agent\server\service\script\parser\tokenizer\token\LessLessOperatorToken.class
 dcc\agent\server\service\swget\regExpression\parser\Token.class
 dcc\agent\server\service\util\TextAnalyzer.class
@@ -294,7 +291,6 @@ dcc\agent\server\service\script\parser\tokenizer\token\BooleanToken.class
 dcc\agent\server\controller\AgentdefinitionsController.class
 dcc\agent\server\service\script\intermediate\DelegateTypeNode.class
 dcc\agent\server\service\swget\regExpression\parser\PathExpression.class
-dcc\agent\server\service\communication\Performative.class
 dcc\agent\server\service\script\runtime\ScriptState$controlFlowChanges.class
 dcc\agent\server\service\persistence\Persistence.class
 dcc\agent\server\service\script\parser\tokenizer\token\StringToken.class
@@ -314,7 +310,6 @@ dcc\agent\server\service\swget\rdf2prefuse\graph\GraphPanel$PredItemListener.cla
 dcc\agent\server\service\swget\regExpression\automaton\RegExpUnion.class
 dcc\agent\server\service\script\parser\tokenizer\token\ExclusiveOrEqualOperatorToken.class
 dcc\agent\server\service\swget\regExpression\parser\PathExpressionTokenManager.class
-dcc\agent\server\service\communication\ACLMessage.class
 dcc\agent\server\service\config\AgentProperties.class
 dcc\agent\server\service\script\parser\tokenizer\token\NullToken.class
 dcc\agent\server\service\script\intermediate\NautiLODTypeNode.class
