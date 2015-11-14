@@ -22,7 +22,7 @@ public class AgentDelegate {
     static public void doNautiLOD(ScriptState scriptState, AgentInstance agentInstanceS, AgentInstance agentInstanceR, String newcommand, String comment) throws AgentServerException, JSONException {
         log.info("Initialize the agent delegate for send agent message");
         ACLMessage aclMessage = new ACLMessage();
-        aclMessage.setconversationId(scriptState.message.getconversationId());
+
         aclMessage.setContent( newcommand);
         aclMessage.setPerformative(Performative.REQUEST);
         aclMessage.setReceivers(agentInstanceR.aid);
@@ -30,6 +30,7 @@ public class AgentDelegate {
         aclMessage.setReplyTo("");
         aclMessage.agentServer = scriptState.agentServer;
         aclMessage.setOntology(comment);
+        aclMessage.setEnconding(scriptState.message.getEnconding());
         aclMessage.setDelegate(true);
         aclMessage.setStatus("new");
         AgentSender.send(scriptState.agentServer, aclMessage, true);

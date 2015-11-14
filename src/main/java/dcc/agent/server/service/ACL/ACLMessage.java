@@ -230,7 +230,8 @@ public class ACLMessage implements Serializable {
         String messagemessageId = agentJson.optString("conversationId", null);
         {
             if ((messagemessageId == null) || messagemessageId.trim().length() == 0) {
-                messagemessageId = Integer.toString( (int) (System.currentTimeMillis() & 0xfffffff));
+
+                messagemessageId = agentServer.config.agentServerProperties.agentServerName + "-" + Integer.toString( (int) (System.currentTimeMillis() & 0xfffffff));
             }
         }
 
@@ -249,11 +250,13 @@ public class ACLMessage implements Serializable {
             }
         }
         //Parse the message enconding
-        String messageEnconding = agentJson.optString("enconding", null);
+        String messageEnconding = agentJson.optString("encoding", null);
         {
             if ((messageEnconding == null) || messageEnconding.trim().length() == 0) {
-                messageEnconding = "";
+                messageEnconding = Integer.toString( (int) (System.currentTimeMillis() & 0xfffffff));
+
             }
+
         }
         //Parse the message ontology
         String messageOntology = agentJson.optString("ontology", null);

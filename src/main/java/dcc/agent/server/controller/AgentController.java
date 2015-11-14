@@ -902,8 +902,9 @@ public class AgentController {
             throw new AgentAppServerBadRequestException(
                     "Invalid agent message JSON object");
         // Parse and add the agent definition
-        ACLMessage agentMessage = agentServer.addAgentMessage(
-                null, agentMessageson);
+
+
+        ACLMessage agentMessage = agentServer.addAgentMessage(null, agentMessageson);
         response.setHeader("Access-Control-Allow-Origin", "*");
         response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
         response.setHeader("Access-Control-Max-Age", "3600");
