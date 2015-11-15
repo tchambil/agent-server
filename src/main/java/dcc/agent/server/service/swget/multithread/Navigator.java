@@ -836,24 +836,9 @@ public class Navigator implements NavigatorIF {
 
             }
         }
-
-/*
-                String new_command = elem + " -p " + List_Expression.get(0).toString();
-             try {
-                if (new_command != null) {
-
-                }
-            } catch (AgentServerException e) {
-                e.printStackTrace();
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }*/
-
-
         System.out.println("#res=" + res.size() + " #deref=" + getDerefCount());
     }
-
-    public static int getHttpStatus(String url) throws IOException {
+ public static int getHttpStatus(String url) throws IOException {
         int StatusCode;
         try {
             URL siteURL = new URL(url);

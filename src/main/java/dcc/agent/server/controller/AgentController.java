@@ -902,8 +902,6 @@ public class AgentController {
             throw new AgentAppServerBadRequestException(
                     "Invalid agent message JSON object");
         // Parse and add the agent definition
-
-
         ACLMessage agentMessage = agentServer.addAgentMessage(null, agentMessageson);
         response.setHeader("Access-Control-Allow-Origin", "*");
         response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
@@ -958,14 +956,12 @@ public class AgentController {
                 messageJson.put("performative", agentMessage.performative);
                 messageJson.put("status", agentMessage.status);
                 messageJson.put("delegate", agentMessage.delegate);
-
                 agentMessageArrayJson.put(messageJson);
             }
         }
         JSONObject agentMessageJson = new JSONObject();
         agentMessageJson.put("agent_message", agentMessageArrayJson);
         return agentMessageJson.toString();
-
     }
 
     @RequestMapping(value = "/swget", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
