@@ -39,9 +39,7 @@
 
 </head>
 <body class=" theme-blue">
-
 <!-- Demo page code -->
-
 <script type="text/javascript">
     $(function () {
         var match = document.cookie.match(new RegExp('color=([^;]+)'));
@@ -69,7 +67,6 @@
         color: #fff;
     }
 </style>
-
 <script type="text/javascript">
     $(function () {
         var uls = $('.sidebar-nav > ul > *').clone();
@@ -77,13 +74,10 @@
         $('#main-menu').append(uls.clone());
     });
 </script>
-
-
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
 <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
-
 <!--[if lt IE 7 ]>
 <body class="ie ie6"> <![endif]-->
 <!--[if IE 7 ]>
@@ -108,6 +102,14 @@
                 class="fa fa-paper-plane"></span> NautiLOD Distributed Through Agents</span></a>
     </div>
 </div>
+<div class="container">
+      <ul class="nav nav-pills">
+        <li ><a href="#">Home</a></li>
+        <li class="active"><a href="">Run Script</a></li>
+        <li><a href="#">Result</a></li>
+    </ul>
+</div>
+
 <div class="content">
     <div class="main-content">
         <div id="myTabContent" class="tab-content">
@@ -117,7 +119,13 @@
                         <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0"
                              aria-valuemax="100"></div>
                     </div>
+                    <div class="step well">
 
+                              <div class="form-bottom">
+                                <img src="/resource/images/swgetd.png" class="img-rounded" alt="Cinque Terre" width="420" height="320" >
+                            </div>
+
+                    </div>
                     <div class="step well">
                         <fieldset>
                             <div class="form-top">
@@ -251,10 +259,7 @@
         </footer>
     </div>
 </div>
-
-
 <script src="/resource/js/site/bootstrap.js"></script>
-
 <script type="text/javascript">
     $("[rel=tooltip]").tooltip();
     $(function () {

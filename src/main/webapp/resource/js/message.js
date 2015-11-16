@@ -19,43 +19,30 @@ function draw() {
     // create an array with nodes
     var nodesFA = [{
         id: 1,
-        label: 'agent_1',
+        label: 'agent1@dbpedias.cloudapp.net',
         group: 'users'
     }, {
         id: 2,
-        label: 'agent_2',
+        label: 'agent2@geonames.cloudapp.net',
         group: 'users'
     }, {
         id: 3,
-        label: 'agent_3',
+        label: 'agent3@freebases.cloudapp.net',
         group: 'users'
     }, {
         id: 4,
-        label: 'agent_4',
+        label: 'agent4@yagos.cloudapp.net',
         group: 'users'
-    }, {
-        id: 5,
-        label: 'agent_5',
-        group: 'users'
-
     }];
 
     // create an array with edges
     var edges = [{
         from: 1,
         to: 3
-    }, {
-        from: 2,
-        to: 4
-    }, {
+    },
+        {
         from: 2,
         to: 1
-    }, {
-        from: 3,
-        to: 5
-    }, {
-        from: 4,
-        to: 5
     },
          {
             from: 2,

@@ -164,7 +164,7 @@
         <li>
             <ul class="group-menu nav nav-list collapse">
                 <li>
-                    <a href="/nautilod.do"><span class="fa fa-caret-right"></span> NautiLOD</a>
+                    <a href="/nautilodindex.do"><span class="fa fa-caret-right"></span> NautiLOD</a>
                 </li>
             </ul>
         </li>
