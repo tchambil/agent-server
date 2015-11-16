@@ -3,17 +3,15 @@
  */
 
 
-function jsonadvance(data) {
 
-}
 function jsonNautilod(data)
 {
     var json =
 
-    '{"sender": "'+ $('#agentini').val()+'",'+
-    '"receiver": "'+$('#agentini').val()+'",'+
-    '"replyTo": "'+ $('#PutTo').val()+'",'+
-    '"content": "nautilod n; return n.get('+"'"+ $('#expressionNau').val()+').xml;",'+
+    '{"sender": "agent1@dbpedias.cloudapp.net",'+
+    '"receiver": "agent1@dbpedias.cloudapp.net",'+
+    '"replyTo": "'+ $('#Dropagent').val()+'",'+
+    '"content": "'+ $('#see_uri').val().trim()+" -p "+$('#expressionNau').val().trim()+'",'+
     '"language": "",'+
     '"encoding": "",'+
     '"ontology": "0",'+
@@ -23,12 +21,27 @@ function jsonNautilod(data)
     '"inReplyTo": "",'+
     '"replyBy": "",'+
     '"delegate": false }'
-    window.alert(json);
+
     return json;
 }
 
 $(document).ready(function () {
     // Random Person AJAX Request
+    $.ajax({
+        url: "../agents"
+    }).then(function (data) {
+        $('#Dropagent').empty();
+
+        $(data.agent_instances).each(function(index,item) {
+
+            $('#Dropagent').append('<option value='+item.aid+'>'+item.aid+'</option>');
+
+
+        });
+
+
+    });
+
     $("#btnclean").click(function (e) {
         $('#btnsimpleSdve').attr("disabled", false);
     });
@@ -40,10 +53,15 @@ $(document).ready(function () {
             dataType: "json",
             data: jsonNautilod(),
             success: function (data, status, jqXHR) {
+
+                var jsonString = JSON.stringify(data, null, "\t");
+                var newObject = JSON.parse(jsonString);
                 $('#idMessageAgent').empty();
-                $('#idMessageAgent').append(data.message);
+                $('#idMessageAgent').append("Script created succesfully with ID "+newObject.encoding+"Please annotate this ID to check the agent status. If you provided a valid email address you'll receive an email with the task ID");
                 $('#btnsimpleSdve').attr("disabled", true);
             },
+
+
 
             error: function (jqXHR, status) {
                 $('#idMessageAgent').empty();

@@ -203,7 +203,7 @@
                            <div class="form-bottom">
                                <div class="form-group">
                                    <label>Seed URI</label>
-                                   <input type="text"  name="simple" id="seeuri" class="form-control" value=" http://dbpedia.org/resource/Peru"/>
+                                   <input id="see_uri" type="text"  name="simple" id="seeuri" class="form-control" value=" http://dbpedia.org/resource/Peru"/>
 
                                </div>
                                <div class="form-group">
@@ -231,8 +231,10 @@
                                </div>
                                <div class="form-group">
                                    <label>PutTo</label>
-                                   <input type="text"  name="simple" id="PutTo" class="form-control" value="AgentGeo@geonames.cloudapp.net"/>
-                               </div>
+                                   <select id="Dropagent" class="form-control">
+                                       <option value="Test">Selection Item</option>
+                                   </select>
+                                 </div>
 
                            </div>
                        </fieldset>

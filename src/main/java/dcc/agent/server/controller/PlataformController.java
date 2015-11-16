@@ -6,11 +6,11 @@ import dcc.agent.server.service.appserver.AgentAppServerBadRequestException;
 import dcc.agent.server.service.appserver.AgentAppServerException;
 import dcc.agent.server.service.appserver.AgentAppServerShutdown;
 import dcc.agent.server.service.config.AgentServerProperties;
+import dcc.agent.server.service.field.Field;
 import dcc.agent.server.service.groups.GroupAgentInstance;
 import dcc.agent.server.service.groups.GroupAgentInstanceList;
 import dcc.agent.server.service.groups.ServerGroup;
 import dcc.agent.server.service.groups.ServerGroupList;
-import dcc.agent.server.service.field.Field;
 import dcc.agent.server.service.scheduler.AgentScheduler;
 import dcc.agent.server.service.script.intermediate.*;
 import dcc.agent.server.service.script.parser.ScriptParser;
@@ -235,6 +235,7 @@ public class PlataformController {
                 // Generate JSON for short summary of agent instance
                 JSONObject agentInstanceJson = new JsonListMap();
                 agentInstanceJson.put("user", agentInstance.user.id);
+                agentInstanceJson.put("aid", agentInstance.aid);
                 agentInstanceJson.put("name", agentInstance.name);
                 agentInstanceJson.put("definition",
                         agentInstance.agentDefinition.name);
