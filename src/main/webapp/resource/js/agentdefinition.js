@@ -25,7 +25,12 @@ function jsonSimple(data)
         '       }, ]}'
     return json;
 }
-
+function json(data)
+{
+    var json =$('#textjson').val()
+    alert(json)
+    return json;
+}
 
 function divSimple(data)
 {
@@ -173,6 +178,27 @@ $(document).ready(function () {
 
     });
 
+
+    $('#btnscripptSave').click(function () {
+        alert("test")
+        $.ajax({
+            type: 'POST',
+            url: '../users/test-user-1/agent_definitions',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: json(),
+            success: function (data) {
+                $('#txtadefinition').empty();
+                $('#txtadefinition').append(JSON.stringify(data, null, "\t"));
+            },
+            error: function (err) {
+                $('#txtadefinition').empty();
+                $('#txtadefinition').append(JSON.stringify(err, null, 2));
+            }
+        }); //-- END of Ajax
+
+
+    });
 
 });
 
