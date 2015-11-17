@@ -101,30 +101,11 @@
             <span class="icon-bar"></span>
         </button>
         <a class="" href="/"><span class="navbar-brand"><span
-                class="fa fa-paper-plane"></span> Agent Server v1.0</span></a>
+                class="fa fa-paper-plane"></span> Plataform Agent Server v1.0</span></a>
 
     </div>
 
-    <div class="navbar-collapse collapse" style="height: 1px;">
-        <ul id="main-menu" class="nav navbar-nav navbar-right">
-            <li class="dropdown hidden-xs">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <span class="glyphicon glyphicon-user padding-right-small"
-                          style="position:relative;top: 3px;"></span> Teo Chambil
-                    <i class="fa fa-caret-down"></i>
-                </a>
 
-                <ul class="dropdown-menu">
-                    <li><a href="">My Account</a></li>
-                    <li class="divider"></li>
-                    <li><a href="">Users</a></li>
-                    <li class="divider"></li>
-                    <li><a tabindex="-1" href="sign-in.jsp">Logout</a></li>
-                </ul>
-            </li>
-        </ul>
-
-    </div>
 </div>
 </div>
 
@@ -134,7 +115,7 @@
         <!--<Plataform]-->
         <li><a href="#"
                data-target=".dashboard-menu" class="nav-header" data-toggle="collapse"><i
-                class="fa fa-fw fa-dashboard"></i>Plataform<i class="fa fa-collapse"></i></a></li>
+                class="fa fa-fw fa-dashboard"></i>Dashboard<i class="fa fa-collapse"></i></a></li>
         <li>
             <ul class="dashboard-menu nav nav-list collapse in">
                 <li><a href="/"><span class="fa fa-caret-right"></span> Main</a></li>
@@ -182,13 +163,13 @@
         <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".group-menu"
                                                                         class="nav-header collapsed"
                                                                         data-toggle="collapse">
-            <i class="fa fa-fw fa-arrows-alt"></i> Server Group<i class="fa fa-collapse"></i><span
+            <i class="fa fa-fw fa-arrows-alt"></i> Aplications<i class="fa fa-collapse"></i><span
                 class="label label-info">+0</span></a>
         </li>
         <li>
             <ul class="group-menu nav nav-list collapse">
                 <li>
-                    <a href="/message.do"><span class="fa fa-caret-right"></span> message</a>
+                    <a href="/nautilodindex.do"><span class="fa fa-caret-right"></span> NautiLOD</a>
                 </li>
             </ul>
         </li>
@@ -205,17 +186,7 @@
                 </li>
             </ul>
         </li>
-        <!--<Account]-->
-        <li><a href="#" data-target=".accounts-menu" class="nav-header collapsed" data-toggle="collapse"><i
-                class="fa fa-fw fa-briefcase"></i> Account <i class="fa fa-collapse"></i></a>
-        </li>
-        <li>
-            <ul class="accounts-menu nav nav-list collapse">
-                <li><a href="/sign-in"><span class="fa fa-caret-right"></span> Sign In</a></li>
-                <li><a href="/sign-up"><span class="fa fa-caret-right"></span> Sign Up</a></li>
-                <li><a href="/resetpassword"><span class="fa fa-caret-right"></span> Reset Password</a></li>
-            </ul>
-        </li>
+
 
         <!--<Help]-->
         <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".group-tutorial"
@@ -238,9 +209,7 @@
                 </li>
             </ul>
         </li>
-        <!--<Faq]-->
-        <li><a href="/faq" class="nav-header"><i class="fa fa-fw fa-comment"></i> Faq</a>
-        </li>
+
 
     </ul>
 </div>

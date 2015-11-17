@@ -849,7 +849,6 @@ public class Navigator implements NavigatorIF {
                                 }
 
         }
-
         System.out.println("#res=" + res.size() + " #deref=" + getDerefCount());
     }
  public static int getHttpStatus(String url) throws IOException {
