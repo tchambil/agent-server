@@ -801,41 +801,55 @@ public class Navigator implements NavigatorIF {
         Collection<String> res = getFinalResults();
         writeResult(res);
         scriptState.agentServer.writeResult(res, messageReceiver.getEnconding());
-        for (String elem : res) {
-            if (isValidURL(elem)) {
-                String Endpoint = EnableEndPoint(elem);
-                String Expr = constructNewQuery(elem);
-                if (Expr != null) {
-                    if (Endpoint != null) {
-                        try {
-                            if (getHttpStatus(Endpoint) == 200) {
-
-                                System.out.println("Expr->: " + Expr + "\n");
-                                System.out.println("status->: " + Endpoint);
-
-                                AgentInstance agentS = scriptState.agentServer.getAgentInstanceId(scriptState.agentInstance.aid);
-                                AgentInstance agentR = scriptState.agentServer.getAgentInstanceAddress(EnableEndPoint(elem), "");
-                                if (agentR != null && agentS != null) {
-                                    try {
-                                        AgentDelegate.doNautiLOD(scriptState, agentS, agentR, Expr, COMMENT);
-                                    } catch (AgentServerException e) {
-                                        e.printStackTrace();
-                                    } catch (JSONException e) {
-                                        e.printStackTrace();
+        if (List_Expression.size() > 10){
+            for (String elem : res) {
+                if (isValidURL(elem)) {
+                    String Endpoint = EnableEndPoint(elem);
+                    String Expr = constructNewQuery(elem);
+                    if (Expr != null) {
+                        if (Endpoint != null) {
+                            try {
+                                if (getHttpStatus(Endpoint) == 200) {
+                                    AgentInstance agentS = scriptState.agentServer.getAgentInstanceId(scriptState.agentInstance.aid);
+                                    AgentInstance agentR = scriptState.agentServer.getAgentInstanceAddress(EnableEndPoint(elem), "");
+                                    if (agentR != null && agentS != null) {
+                                        try {
+                                            AgentDelegate.doNautiLOD(scriptState, agentS, agentR, Expr, COMMENT);
+                                        } catch (AgentServerException e) {
+                                            e.printStackTrace();
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
                                     }
+
+                                } else {
+
                                 }
-
-                            } else {
-
+                            } catch (IOException e) {
+                                e.printStackTrace();
                             }
-                        } catch (IOException e) {
-                            e.printStackTrace();
                         }
                     }
                 }
-
             }
         }
+        else{
+            {          AgentInstance agentS = scriptState.agentServer.getAgentInstanceId(scriptState.agentInstance.aid);
+                                    AgentInstance agentR = scriptState.agentServer.getAgentInstanceId(scriptState.message.getReplyTo());
+                                    if (agentR != null && agentS != null) {
+                                        try {
+                                            AgentDelegate.putTo(scriptState, agentS, agentR, res);
+                                        } catch (AgentServerException e) {
+                                            e.printStackTrace();
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+
+                                }
+
+        }
+
         System.out.println("#res=" + res.size() + " #deref=" + getDerefCount());
     }
  public static int getHttpStatus(String url) throws IOException {
@@ -862,30 +876,13 @@ public class Navigator implements NavigatorIF {
                     for (Object Expr : List_Expression) {
                         Expression = Expression + Expr;
                     }
-
-                    return elem + " -p " + Expression + File_Result;
+                    return "::putTo(" + this.scriptState.message.getReplyTo() +",::exec("+elem + " -p " + Expression + File_Result+"))";
                 }
 
             }
         }
         return null;
-/*
-        try {
-            if (newcommand != null) {
 
-                AgentInstance agentS = scriptState.agentServer.getAgentInstanceId(scriptState.agentInstance.aid);
-                AgentInstance agentR=scriptState.agentServer.getAgentInstanceAddress(EnableEndPoint(res), "");
-                if (agentR!=null && agentS!=null){
-                    //AgentDelegate.doNautiLOD(scriptState, agentS, agentR, newcommand + " -f "+res.substring(res.lastIndexOf("/")+1, res.length())+".rdf",COMMENT);
-                }
-            }
-
-
-        } catch (AgentServerException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }*/
     }
 
     @Override

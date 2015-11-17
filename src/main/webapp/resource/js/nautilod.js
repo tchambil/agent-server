@@ -11,7 +11,7 @@ function jsonNautilod(data)
     '{"sender": "agent1@dbpedias.cloudapp.net",'+
     '"receiver": "agent1@dbpedias.cloudapp.net",'+
     '"replyTo": "'+ $('#Dropagent').val()+'",'+
-    '"content": "'+ $('#see_uri').val().trim()+" -p "+$('#expressionNau').val().trim()+'",'+
+    '"content": "'+"::putTo("+$('#Dropagent').val()+",::exec(" + $('#see_uri').val().trim()+" -p "+$('#expressionNau').val().trim()+"))"+'",'+
     '"language": "",'+
     '"encoding": "",'+
     '"ontology": "0",'+
@@ -57,7 +57,7 @@ $(document).ready(function () {
                 var jsonString = JSON.stringify(data, null, "\t");
                 var newObject = JSON.parse(jsonString);
                 $('#idMessageAgent').empty();
-                $('#idMessageAgent').append("Script created succesfully with ID "+newObject.encoding+"Please annotate this ID to check the agent status. If you provided a valid email address you'll receive an email with the task ID");
+                $('#idMessageAgent').append("Script created succesfully with ID "+newObject.encoding+" Please annotate this ID to check the agent status. If you provided a valid email address you'll receive an email with the task ID");
                 $('#btnsimpleSdve').attr("disabled", true);
             },
 
@@ -70,8 +70,5 @@ $(document).ready(function () {
             }
         });
     });
-
-
-
 });
 

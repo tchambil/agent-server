@@ -208,8 +208,7 @@
                                </div>
                                <div class="form-group">
                                    <label>NautiLOD expression</label>
-                                   <textarea id="expressionNau" class="form-control" rows="3"><http://dbpedia.org/ontology/hometown>[ASK {?ctx <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Person>. ?ctx <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/MusicalArtist>.}]/<http://dbpedia.org/ontology/birthPlace>/<http://www.w3.org/2002/07/owl#sameAs>/<http://www.w3.org/2000/01/rdf-schema#isDefinedBy>[ASK {?ctx <http://www.geonames.org/ontology#population> ?pop. FILTER (?pop >100).}] -f files.rdf
-                                        </textarea>
+                                   <textarea id="expressionNau" class="form-control" rows="10"><http://dbpedia.org/ontology/hometown>[ASK {?ctx <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Person>. ?ctx <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/MusicalArtist>.}]/<http://dbpedia.org/ontology/birthPlace>/<http://www.w3.org/2002/07/owl#sameAs>/<http://www.w3.org/2000/01/rdf-schema#isDefinedBy>[ASK {?ctx <http://www.geonames.org/ontology#population> ?pop. FILTER (?pop >100).}] -f files.rdf</textarea>
 
                                </div>
                            </div>
@@ -244,9 +243,6 @@
                    <button class="action next btn btn-info"><i class="fa fa-forward"></i>Next</button>
                    <button id="btnsimpleSdve"  class="action submit btn btn-success"> <i class="fa fa-save"></i>Save</button>
                    <button id="btnclean"  class="action submit btn btn-success"> <i class="fa fa-stop"></i>New</button>
-
-
-
                    <div id="idMessageAgent" class="alert alert-info">
                    </div>
                </div>

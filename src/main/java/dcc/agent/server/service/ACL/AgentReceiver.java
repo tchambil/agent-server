@@ -19,6 +19,11 @@ import dcc.agent.server.service.util.NameValue;
 import org.apache.log4j.Logger;
 import org.json.JSONException;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+
 /**
  * Created by teo on 29/06/15.
  */
@@ -80,8 +85,16 @@ public class AgentReceiver {
                     reply.setInReplyTo(content);
                     reply.setReplyBy(message.getReceivers());
                     System.out.println(content);
-
-                    ActionExec(scriptState,content,"");
+                    if (content.indexOf("::exec") > 1) {
+                        String  query=content.substring(content.indexOf("::exec")+7,content.lastIndexOf(")")-1);
+                        ActionExec(scriptState,query,"");
+                    }
+                    else {
+                        String  query=content.substring(content.indexOf(",[")+1,content.lastIndexOf("])")-1);
+                        List<String> items = Arrays.asList(query.split("\\s*,\\s*"));
+                        Collection<String> collection = new ArrayList<String>(items);
+                        scriptState.agentServer.writeResult(collection,scriptState.message.getEnconding());
+                    }
                 } else {
                     log.info("Agent " + message.getReceivers() + " - Unexpected request [" + content + "] received from " + message.getSender());
                     reply.setPerformative(Performative.REFUSE);

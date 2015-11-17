@@ -1,16 +1,18 @@
 package dcc.agent.server.service.delegate;
 
-import dcc.agent.server.service.agentserver.AgentInstance;
-import dcc.agent.server.service.agentserver.AgentServer;
-import dcc.agent.server.service.agentserver.AgentServerException;
 import dcc.agent.server.service.ACL.ACLMessage;
 import dcc.agent.server.service.ACL.AgentSender;
 import dcc.agent.server.service.ACL.Performative;
+import dcc.agent.server.service.agentserver.AgentInstance;
+import dcc.agent.server.service.agentserver.AgentServer;
+import dcc.agent.server.service.agentserver.AgentServerException;
 import dcc.agent.server.service.script.runtime.ScriptState;
 import org.apache.log4j.Logger;
 import org.json.JSONException;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by teo on 28/05/15.
@@ -24,12 +26,34 @@ public class AgentDelegate {
         ACLMessage aclMessage = new ACLMessage();
 
         aclMessage.setContent( newcommand);
+        aclMessage.setReplyTo(scriptState.message.getReplyTo());
         aclMessage.setPerformative(Performative.REQUEST);
         aclMessage.setReceivers(agentInstanceR.aid);
         aclMessage.setSender(agentInstanceS.aid);
         aclMessage.setReplyTo("");
         aclMessage.agentServer = scriptState.agentServer;
         aclMessage.setOntology(comment);
+        aclMessage.setEnconding(scriptState.message.getEnconding());
+        aclMessage.setDelegate(true);
+        aclMessage.setStatus("new");
+        AgentSender.send(scriptState.agentServer, aclMessage, true);
+    }
+    static public void putTo(ScriptState scriptState, AgentInstance agentInstanceS, AgentInstance agentInstanceR, Collection<String> res ) throws JSONException, AgentServerException {
+
+        List list;
+        if (res instanceof List)
+            list = (List)res;
+        else
+            list = new ArrayList(res);
+
+        ACLMessage aclMessage = new ACLMessage();
+        aclMessage.setContent( "::putTo("+scriptState.message.getReplyTo()+","+ list+")");
+        aclMessage.setReplyTo(scriptState.message.getReplyTo());
+        aclMessage.setPerformative(Performative.REQUEST);
+        aclMessage.setReceivers(agentInstanceR.aid);
+        aclMessage.setSender(agentInstanceS.aid);
+        aclMessage.setReplyTo("");
+        aclMessage.agentServer = scriptState.agentServer;
         aclMessage.setEnconding(scriptState.message.getEnconding());
         aclMessage.setDelegate(true);
         aclMessage.setStatus("new");
