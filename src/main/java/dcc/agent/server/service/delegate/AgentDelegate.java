@@ -30,7 +30,6 @@ public class AgentDelegate {
         aclMessage.setPerformative(Performative.REQUEST);
         aclMessage.setReceivers(agentInstanceR.aid);
         aclMessage.setSender(agentInstanceS.aid);
-        aclMessage.setReplyTo("");
         aclMessage.agentServer = scriptState.agentServer;
         aclMessage.setOntology(comment);
         aclMessage.setEnconding(scriptState.message.getEnconding());
@@ -52,7 +51,6 @@ public class AgentDelegate {
         aclMessage.setPerformative(Performative.REQUEST);
         aclMessage.setReceivers(agentInstanceR.aid);
         aclMessage.setSender(agentInstanceS.aid);
-        aclMessage.setReplyTo("");
         aclMessage.agentServer = scriptState.agentServer;
         aclMessage.setEnconding(scriptState.message.getEnconding());
         aclMessage.setDelegate(true);
