@@ -39,8 +39,8 @@
       <file leaf-file-name="AgentReceiver.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/ACL/AgentReceiver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="480" max-vertical-offset="2771">
-              <caret line="89" column="0" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="327" max-vertical-offset="2771">
+              <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
               <folding>
                 <element signature="method#onMessage#0;class#AgentReceiver#0" expanded="false" />
                 <element signature="e#4777#4785#0" expanded="true" />
@@ -51,11 +51,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Navigator.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Navigator.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/Navigator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.17765814" vertical-offset="6634" max-vertical-offset="9588">
-              <caret line="803" column="38" selection-start-line="803" selection-start-column="38" selection-end-line="803" selection-end-column="38" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="6413" max-vertical-offset="9588">
+              <caret line="802" column="36" selection-start-line="802" selection-start-column="36" selection-end-line="802" selection-end-column="36" />
               <folding>
                 <element signature="method#printAutomata#0;class#Navigator#0" expanded="false" />
                 <element signature="method#closeExecution#0;class#Navigator#0" expanded="false" />
@@ -63,6 +63,16 @@
                 <element signature="method#reconstruct#0;class#Navigator#0" expanded="false" />
                 <element signature="method#EnableEndPoint#0;class#Navigator#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AgentServer.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.3369863" vertical-offset="1930" max-vertical-offset="16609">
+              <caret line="182" column="71" selection-start-line="182" selection-start-column="71" selection-end-line="182" selection-end-column="71" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -1498,7 +1508,7 @@
       <workItem from="1447550381047" duration="4671000" />
       <workItem from="1447649148924" duration="1222000" />
       <workItem from="1447676449885" duration="11585000" />
-      <workItem from="1447711018026" duration="14003000" />
+      <workItem from="1447711018026" duration="14942000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1431836573263</created>
@@ -1836,7 +1846,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1311096000" />
+    <option name="totallyTimeSpent" value="1312035000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -2027,19 +2037,19 @@
           <option name="timeStamp" value="677" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/ACL/AgentReceiver.java</url>
-          <line>80</line>
-          <properties />
-          <option name="timeStamp" value="681" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/Navigator.java</url>
           <line>801</line>
           <properties />
           <option name="timeStamp" value="682" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/Navigator.java</url>
+          <line>763</line>
+          <properties />
+          <option name="timeStamp" value="683" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="683" />
+      <option name="time" value="684" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -2397,14 +2407,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.0130596" vertical-offset="910" max-vertical-offset="16609">
-          <caret line="171" column="0" selection-start-line="171" selection-start-column="0" selection-end-line="171" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/ACL/ACLMessage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334" vertical-offset="5733" max-vertical-offset="6885">
@@ -2429,8 +2431,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/ACL/AgentReceiver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="480" max-vertical-offset="2771">
-          <caret line="89" column="0" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="327" max-vertical-offset="2771">
+          <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
           <folding>
             <element signature="method#onMessage#0;class#AgentReceiver#0" expanded="false" />
             <element signature="e#4777#4785#0" expanded="true" />
@@ -2442,8 +2444,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/Navigator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.17765814" vertical-offset="6634" max-vertical-offset="9588">
-          <caret line="803" column="38" selection-start-line="803" selection-start-column="38" selection-end-line="803" selection-end-column="38" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="6413" max-vertical-offset="9588">
+          <caret line="802" column="36" selection-start-line="802" selection-start-column="36" selection-end-line="802" selection-end-column="36" />
           <folding>
             <element signature="method#printAutomata#0;class#Navigator#0" expanded="false" />
             <element signature="method#closeExecution#0;class#Navigator#0" expanded="false" />
@@ -2451,6 +2453,14 @@
             <element signature="method#reconstruct#0;class#Navigator#0" expanded="false" />
             <element signature="method#EnableEndPoint#0;class#Navigator#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3369863" vertical-offset="1930" max-vertical-offset="16609">
+          <caret line="182" column="71" selection-start-line="182" selection-start-column="71" selection-end-line="182" selection-end-column="71" />
+          <folding />
         </state>
       </provider>
     </entry>
