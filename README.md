@@ -11,7 +11,19 @@
 # Download 
 + War distribution of AgentServer is [available for download](https://github.com/tchambil/agent-server/blob/master/target/agent-server-1.0.war)
 
-
+# Install
+```shell
+{
+    "name": "definitions1",
+     "timers": [
+        {
+            "name": "message",
+            "interval": "seconds(4)",
+            "script": "message w; return w.read('only');",
+        }
+    ]
+}
+```
 # For start agent: 
 
 http://localhost:8080/index.html 
