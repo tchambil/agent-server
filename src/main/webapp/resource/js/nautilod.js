@@ -1,8 +1,38 @@
-/**
- * Created by teo on 22/04/15.
- */
+google.load("visualization", "1.1", {packages: ["table"]});
+function drawSimpleNodeChart(data) {
+    var datax = new google.visualization.DataTable();
+    datax.addColumn('number', 'id');
+    datax.addColumn('string', 'uri');
+    datax.addRows(data.result.length);
+    for (i = 0; i < data.result.length; i++) {
+        datax.setValue(i, 0, data.result[i].id);
+        datax.setValue(i, 1, data.result[i].uri);
+    }
 
+    var options= {
+        showRowNumber: false,
+        page: 'enable',
+        pageSize: 10,
+        width: '100%',
+        height: '100%',
+        pagingSymbols: {
+            prev: 'prev',
+            next: 'next'
+        }
+    };
+    var table = new google.visualization.Table(document.getElementById('mynetworkFA'));
+    table.draw(datax, options)
 
+}
+function loadata() {
+    $.ajax({
+        url: "../result/"+ $('#idresult').val()
+    }).then(function (data) {
+       // google.setOnLoadCallback(drawSimpleNodeChart);
+       // drawSimpleNodeChart(data)
+        draw(data)
+    });
+}
 
 function jsonNautilod(data)
 {
@@ -24,6 +54,57 @@ function jsonNautilod(data)
 
     return json;
 }
+function draw(datax) {
+    var options = {
+        nodes: {
+            shape: 'dot',
+            size: 16
+        },
+        physics: {
+            forceAtlas2Based: {
+                gravitationalConstant: -26,
+                centralGravity: 0.005,
+                springLength: 230,
+                springConstant: 0.18
+            },
+            maxVelocity: 146,
+            solver: 'forceAtlas2Based',
+            timestep: 0.35,
+            stabilization: {iterations: 150}
+        }
+    };
+
+    var edges = [];
+    var nodes = [];
+    var gEdges = datax.edges;
+    var gNodes = datax.nodes;
+
+    for (var i = 0; i < gNodes.length; i++) {
+        var node = {};
+        var gNode = gNodes[i];
+        node['id'] = gNode.id;
+        node['label'] = gNode.label;
+        node['group'] = gNode.group;
+        nodes.push(node);
+    }
+    for (var i = 0; i < gEdges.length; i++) {
+        var edge = {};
+        var gEdge = gEdges[i];
+        edge['from'] = gEdge.from;
+        edge['to'] = gEdge.to;
+        edges.push(edge);
+    }
+    var data = {
+        nodes: nodes,
+        edges: edges
+    };
+
+
+    var containerFA = document.getElementById('mynetworkFA');
+
+    var networkFA = new vis.Network(containerFA, data,options);
+
+}
 
 $(document).ready(function () {
     // Random Person AJAX Request
@@ -42,6 +123,9 @@ $(document).ready(function () {
 
     });
 
+    $("#getstart").click(function (e) {
+        loadata();
+    });
     $("#btnclean").click(function (e) {
         $('#btnsimpleSdve').attr("disabled", false);
     });

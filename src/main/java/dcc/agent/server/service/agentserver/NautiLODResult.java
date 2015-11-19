@@ -58,6 +58,25 @@ public class NautiLODResult {
             throw new AgentServerException("JSON exception in Message.toJson -" + e.getMessage());
         }
     }
+    public JSONObject ReturnJson() throws AgentServerException {
+        try {
+            JSONObject resultJson = new JsonListMap();
+            resultJson.put("name", name == null ? "" : name);
+            JSONArray scriptsArrayJson = new JSONArray();
+            JSONArray scriptsArrayJson2 = new JSONArray();
+            for (NameValue<NautiLOD> scriptNameValue :result){
+                scriptsArrayJson.put(scriptNameValue.value.ReturnNodeJson());
+                scriptsArrayJson2.put(scriptNameValue.value.ReturnedgesJson());
+            }
+            resultJson.put("nodes", scriptsArrayJson);
+            resultJson.put("edges", scriptsArrayJson2);
+            return resultJson;
+        } catch (JSONException e) {
+            e.printStackTrace();
+            throw new AgentServerException("JSON exception in Message.toJson -" + e.getMessage());
+        }
+    }
+
     static public NautiLODResult fromJson(AgentServer agentServer, String agentJsonSource) throws AgentServerException, JSONException {
         return fromJson(agentServer,  new JSONObject(agentJsonSource), false);
     }

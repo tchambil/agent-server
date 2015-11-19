@@ -1,10 +1,10 @@
 package dcc.agent.server.controller;
 
+import dcc.agent.server.service.ACL.ACLMessage;
+import dcc.agent.server.service.ACL.ACLMessageList;
 import dcc.agent.server.service.agentserver.*;
 import dcc.agent.server.service.appserver.AgentAppServerBadRequestException;
 import dcc.agent.server.service.appserver.AgentAppServerException;
-import dcc.agent.server.service.ACL.ACLMessage;
-import dcc.agent.server.service.ACL.ACLMessageList;
 import dcc.agent.server.service.config.AgentServerConfig;
 import dcc.agent.server.service.config.AgentServerProperties;
 import dcc.agent.server.service.notification.NotificationInstance;
@@ -13,7 +13,6 @@ import dcc.agent.server.service.script.intermediate.SymbolValues;
 import dcc.agent.server.service.script.runtime.ExceptionInfo;
 import dcc.agent.server.service.script.runtime.value.Value;
 import dcc.agent.server.service.swget.multithread.Navigator;
-import dcc.agent.server.service.swget.regExpression.parser.ParseException;
 import dcc.agent.server.service.util.*;
 import org.apache.log4j.Logger;
 import org.json.JSONArray;
@@ -964,24 +963,29 @@ public class AgentController {
         return agentMessageJson.toString();
     }
 
-    @RequestMapping(value = "/swget", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public String sgwet () throws JSONException, ParseException {
+    @RequestMapping(value = "/users/message/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public String getAgentMessage (@PathVariable String id,HttpServletRequest request) throws JSONException {
         PlataformController plataformController = new PlataformController();
         agentServer = plataformController.getAgentServer();
-        this.navigator = new Navigator();
-         //String command ="http://dbpedia.org/resource/Italy -p dbpedia-owl:hometown[ASK {?ctx rdf:type dbpedia-owl:Person. ?ctx rdf:type dbpedia:MusicalArtist.}]/dbpedia-owl:birthPlace[ASK {?ctx dbpedia-owl:populationTotal ?pop. FILTER (?pop <15000).}]/owl:sameAs*";
-        String command = "http://dbpedia.org/resource/Italy -p <http://dbpedia.org/ontology/hometown>[ASK {?ctx <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Person>. ?ctx <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/MusicalArtist>.}]/<http://dbpedia.org/ontology/birthPlace>[ASK {?ctx <http://dbpedia.org/ontology/populationTotal> ?pop. FILTER (?pop <15000).}]/<http://www.w3.org/2002/07/owl#sameAs>";
-     // String command =  "http://dblp.l3s.de/d2r/resource/authors/Tim_Berners-Lee -p  (<foaf:maker>[ASK {?paper <http://swrc.ontoware.org/ontology#series> <http://dblp.l3s.de/d2r/resource/conferences/semweb>.}]/<foaf:maker>)<1-1>/<foaf:maker>[ASK {?paper <http://swrc.ontoware.org/ontology#journal> <http://dblp.l3s.de/d2r/resource/journals/cacm>.}]  -f TBL-cacm-iswc-coauthors3.rdf -recon -print";
-
-        String command2 ="http://dbpedia.org/resource/Tim_Berners-Lee -p (<http://dbpedia.org/property/influenced>[ASK {?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Scientist>}])* -t 5 -stream -noSaveModels";
-       // String command ="http://dbpedia.org/resource/Stanley_Kubrick -p (<http://dbpedia.org/ontology/director>/<http://dbpedia.org/ontology/director>)<6-6> -t 3";
-        //String command ="http://dblp.l3s.de/d2r/resource/authors/Giuseppe_Pirr%C3%B2 -p <http://xmlns.com/foaf/0.1/maker><2-2>/ACT[select ?n where {?x <http://xmlns.com/foaf/0.1/name> ?n}::sendEmail(antony_epis@hotmail.com)]";
-        //this.navigator.runCommand(command, "");
-
+        JSONArray agentMessageArrayJson = new JSONArray();
+        // Get all serverGroup
+        for (NameValue<ACLMessageList> messageListNameValue : agentServer.agentMessages) {
+            // Get all  serverGroup
+            for (ACLMessage agentMessage : agentServer.agentMessages
+                    .get(messageListNameValue.name)) {
+                // Generate JSON for short summary of serverGroup
+                if (agentMessage.enconding.equals(id)){
+                        JSONObject messageJson = new JsonListMap();
+                        messageJson.put("conversationId", agentMessage.conversationId);
+                        messageJson.put("sender", agentMessage.sender);
+                        messageJson.put("receiver", agentMessage.receivers);
+                        messageJson.put("encoding", agentMessage.enconding);
+                        agentMessageArrayJson.put(messageJson);
+                }
+            }
+        }
         JSONObject agentMessageJson = new JSONObject();
-        agentMessageJson.put("command", command);
+        agentMessageJson.put("agent_message", agentMessageArrayJson);
         return agentMessageJson.toString();
-
     }
-
 }

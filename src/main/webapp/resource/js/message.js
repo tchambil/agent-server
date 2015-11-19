@@ -1,7 +1,18 @@
-function draw() {
-    /*
-     * Example for FontAwesome
-     */
+$(document).ready(function () {
+    $("#search").click(function (e) {
+        loadata()
+    });
+
+});
+function loadata() {
+    $.ajax({
+        url: "../result/messages"
+    }).then(function (data) {
+        draw(data)
+    });
+}
+
+function draw(datax) {
     var optionsFA = {
         groups: {
             users: {
@@ -16,51 +27,35 @@ function draw() {
         }
     };
 
-    // create an array with nodes
-    var nodesFA = [{
-        id: 1,
-        label: 'agent1@dbpedias.cloudapp.net',
-        group: 'users'
-    }, {
-        id: 2,
-        label: 'agent2@geonames.cloudapp.net',
-        group: 'users'
-    }, {
-        id: 3,
-        label: 'agent3@freebases.cloudapp.net',
-        group: 'users'
-    }, {
-        id: 4,
-        label: 'agent4@yagos.cloudapp.net',
-        group: 'users'
-    }];
+    var edges = [];
+    var nodes = [];
+    var gEdges = datax.edges;
+    var gNodes = datax.nodes;
 
-    // create an array with edges
-    var edges = [{
-        from: 1,
-        to: 3
-    },
-        {
-        from: 2,
-        to: 1
-    },
-         {
-            from: 2,
-            to: 4
-        },
-        {
-            from: 2,
-            to: 4
-        }
-    ];
-
-    // create a network
-    var containerFA = document.getElementById('mynetworkFA');
-    var dataFA = {
-        nodes: nodesFA,
+    for (var i = 0; i < gNodes.length; i++) {
+        var node = {};
+        var gNode = gNodes[i];
+        node['id'] = gNode.id;
+        node['label'] = gNode.label;
+        node['group'] = gNode.group;
+        nodes.push(node);
+    }
+    for (var i = 0; i < gEdges.length; i++) {
+        var edge = {};
+        var gEdge = gEdges[i];
+        edge['from'] = gEdge.from;
+        edge['to'] = gEdge.to;
+        edges.push(edge);
+    }
+    var data = {
+        nodes: nodes,
         edges: edges
     };
 
-    var networkFA = new vis.Network(containerFA, dataFA, optionsFA);
+
+    var containerFA = document.getElementById('mynetworkFA');
+
+    var networkFA = new vis.Network(containerFA, data,optionsFA);
 
 }
+
