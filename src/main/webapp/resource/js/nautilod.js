@@ -9,7 +9,7 @@ function drawSimpleNodeChart(data) {
         datax.setValue(i, 1, data.result[i].uri);
     }
 
-    var options= {
+    var options = {
         showRowNumber: false,
         page: 'enable',
         pageSize: 10,
@@ -26,33 +26,58 @@ function drawSimpleNodeChart(data) {
 }
 function loadata() {
     $.ajax({
-        url: "../result/"+ $('#idresult').val()
+        url: "../result/" + $('#idresult').val()
     }).then(function (data) {
-       // google.setOnLoadCallback(drawSimpleNodeChart);
-       // drawSimpleNodeChart(data)
+        // google.setOnLoadCallback(drawSimpleNodeChart);
+        // drawSimpleNodeChart(data)
         draw(data)
     });
 }
 
-function jsonNautilod(data)
-{
+function jsonNautilod(data) {
     var json =
 
-    '{"sender": "agent1@dbpedias.cloudapp.net",'+
-    '"receiver": "agent1@dbpedias.cloudapp.net",'+
-    '"replyTo": "'+ $('#Dropagent').val()+'",'+
-    '"content": "'+"::putTo("+$('#Dropagent').val()+",::exec(" + $('#see_uri').val().trim()+" -p "+$('#expressionNau').val().trim()+"))"+'",'+
-    '"language": "",'+
-    '"encoding": "",'+
-    '"ontology": "0",'+
-    '"performative": "REQUEST",'+
-    '"protocol": "REQUEST",'+
-    '"replyWith": "",'+
-    '"inReplyTo": "",'+
-    '"replyBy": "",'+
-    '"delegate": false }'
+        '{"sender": "agent1@dbpedias.cloudapp.net",' +
+        '"receiver": "agent1@dbpedias.cloudapp.net",' +
+        '"replyTo": "' + $('#Dropagent').val() + '",' +
+        '"content": "' + "::putTo(" + $('#Dropagent').val() + ",::exec(" + $('#see_uri').val().trim() + " -p " + $('#expressionNau').val().trim() + "))" + '",' +
+        '"language": "",' +
+        '"encoding": "",' +
+        '"ontology": "0",' +
+        '"performative": "REQUEST",' +
+        '"protocol": "REQUEST",' +
+        '"replyWith": "",' +
+        '"inReplyTo": "",' +
+        '"replyBy": "",' +
+        '"delegate": false }'
 
     return json;
+}
+function valida(group, datax) {
+
+    for (x = 0; x < group.length; x++) {
+        if ((group[x].group == datax)) {
+            return true
+        }
+    }
+    return false
+}
+function getGroup(group, datax) {
+    for (x = 0; x < group.length; x++) {
+        if ((group[x].group == datax)) {
+            return group[x].id
+        }
+    }
+    return 0
+}
+function getItem(group, datax) {
+
+    for (x = 0; x < group.length; x++) {
+        if ((group[x].group == datax)) {
+            return group[x].item
+        }
+    }
+    return 0
 }
 function draw(datax) {
     var options = {
@@ -73,39 +98,70 @@ function draw(datax) {
             stabilization: {iterations: 150}
         }
     };
-
-    var edges = [];
     var nodes = [];
-    var gEdges = datax.edges;
-    var gNodes = datax.nodes;
+    var edges = [];
+    var group = [];
 
-    for (var i = 0; i < gNodes.length; i++) {
-        var node = {};
-        var gNode = gNodes[i];
-        node['id'] = gNode.id;
-        node['label'] = gNode.label;
-        node['group'] = gNode.group;
-        nodes.push(node);
+    for (i = 0; i < datax.result.length; i++) {
+        var grp = {};
+        if ((valida(group, datax.result[i].receiver))) {
+        }
+        else {
+            grp['id'] = x;
+            grp['item'] = i;
+            grp['group'] = datax.result[i].receiver;
+            group.push(grp);
+        }
     }
-    for (var i = 0; i < gEdges.length; i++) {
+
+
+    for (i = 0; i < datax.result.length; i++) {
+        var node = {};
         var edge = {};
-        var gEdge = gEdges[i];
-        edge['from'] = gEdge.from;
-        edge['to'] = gEdge.to;
+        node['id'] =  i;
+        node['label'] = datax.result[i].uri;
+        node['group'] = getGroup(group, datax.result[i].receiver);
+        nodes.push(node);
+        edge['from'] =getItem(group, datax.result[i].receiver)  ;
+        edge['to'] = i;
         edges.push(edge);
     }
+    /*
+    for (x = 0; x < group.length; x++) {
+        var node = {};
+        var edge = {};
+        node['id'] =edges.length+1;
+        node['label'] = group[x].group;
+        node['group'] = group[x].id;
+        nodes.push(node);
+        if (x==0){
+            edge['from'] = group[x].item;
+            edge['to'] = 0;
+            edges.push(edge);
+        }
+        if (x==1){
+            edge['from'] = group[x].item;
+            edge['to'] = 0;
+            edges.push(edge);
+        }
+        if (x==2){
+            edge['from'] = group[x].item;
+            edge['to'] = edges.length;
+            edges.push(edge);
+        }
+        }
+*/
+
+
+
+
     var data = {
         nodes: nodes,
         edges: edges
     };
-
-
     var containerFA = document.getElementById('mynetworkFA');
-
-    var networkFA = new vis.Network(containerFA, data,options);
-
+    var networkFA = new vis.Network(containerFA, data, options);
 }
-
 $(document).ready(function () {
     // Random Person AJAX Request
     $.ajax({
@@ -113,14 +169,10 @@ $(document).ready(function () {
     }).then(function (data) {
         $('#Dropagent').empty();
 
-        $(data.agent_instances).each(function(index,item) {
+        $(data.agent_instances).each(function (index, item) {
 
-            $('#Dropagent').append('<option value='+item.aid+'>'+item.aid+'</option>');
-
-
+            $('#Dropagent').append('<option value=' + item.aid + '>' + item.aid + '</option>');
         });
-
-
     });
 
     $("#getstart").click(function (e) {
@@ -137,16 +189,12 @@ $(document).ready(function () {
             dataType: "json",
             data: jsonNautilod(),
             success: function (data, status, jqXHR) {
-
                 var jsonString = JSON.stringify(data, null, "\t");
                 var newObject = JSON.parse(jsonString);
                 $('#idMessageAgent').empty();
-                $('#idMessageAgent').append("Script created succesfully with ID "+newObject.encoding+" Please annotate this ID to check the agent status. If you provided a valid email address you'll receive an email with the task ID");
+                $('#idMessageAgent').append("Script created succesfully with ID " + newObject.encoding + " Please annotate this ID to check the agent status. If you provided a valid email address you'll receive an email with the task ID");
                 $('#btnsimpleSdve').attr("disabled", true);
             },
-
-
-
             error: function (jqXHR, status) {
                 $('#idMessageAgent').empty();
                 $('#idMessageAgent').append(jqXHR.responseText);

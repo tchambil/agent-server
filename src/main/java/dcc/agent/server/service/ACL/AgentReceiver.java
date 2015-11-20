@@ -93,7 +93,7 @@ public class AgentReceiver {
                         String  query=content.substring(content.indexOf(",[")+1,content.lastIndexOf("])")-1);
                         List<String> items = Arrays.asList(query.split("\\s*,\\s*"));
                         Collection<String> collection = new ArrayList<String>(items);
-                        scriptState.agentServer.writeResult(collection,scriptState.message.getEnconding());
+                        scriptState.agentServer.writeResult(scriptState,collection,scriptState.message.getEnconding());
                     }
                 } else {
                     log.info("Agent " + message.getReceivers() + " - Unexpected request [" + content + "] received from " + message.getSender());

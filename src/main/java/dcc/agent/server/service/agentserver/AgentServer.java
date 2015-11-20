@@ -16,11 +16,11 @@
 
 package dcc.agent.server.service.agentserver;
 
-import dcc.agent.server.service.appserver.AgentAppServer;
 import dcc.agent.server.service.ACL.ACLMessage;
 import dcc.agent.server.service.ACL.ACLMessageList;
 import dcc.agent.server.service.ACL.AgentReceiver;
 import dcc.agent.server.service.ACL.AgentSender;
+import dcc.agent.server.service.appserver.AgentAppServer;
 import dcc.agent.server.service.config.AgentServerConfig;
 import dcc.agent.server.service.config.AgentServerProperties;
 import dcc.agent.server.service.config.AgentServerWebAccessConfig;
@@ -49,8 +49,12 @@ import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.ParseException;
 import java.util.*;
 
@@ -94,7 +98,64 @@ public class AgentServer {
         // Start the agent server
         // start(start);
     }
+     public JSONObject getResult(String idResult) throws JSONException, IOException {
+         JSONArray List=new JSONArray();
+         JSONArray jsonArray = new JSONArray();
+        for (NameValue<AgentInstanceList> userAgentInstances : this.agentInstances) {
+            for (AgentInstance agentInstance : this.agentInstances
+                    .get(userAgentInstances.name)) {
+                String webService = getAddresss(agentInstance, idResult);
+                RestTemplate restTemplate = new RestTemplate();
+                   if (getHttpStatus(webService) == 200){
+                       String result = restTemplate.getForObject(webService, String.class);
+                       JSONObject jsonObject=new JSONObject(result);
+                       List = (JSONArray) jsonObject.get("result");
+                       for (int i=0; i<List.length(); i++) {
+                           JSONObject item = List.getJSONObject(i);
+                           JSONObject jsonObj= new JSONObject();
+                           jsonObj.put("id", item.getString("id"));
+                          // jsonObj.put("receiver", item.getString("receiver"));
+                           jsonObj.put("receiver", agentInstance.aid);
+                           jsonObj.put("uri", item.getString("uri"));
+                           jsonArray.put(jsonObj);
+                       }
+                   }
+            }
+        }
+         JSONObject chairJSON= new JSONObject();
+         chairJSON.put("name", idResult);
+         chairJSON.put("result",jsonArray );
 
+         return chairJSON;
+    }
+    public static int getHttpStatus(String url) throws IOException {
+        int StatusCode;
+        try {
+            URL siteURL = new URL(url);
+            HttpURLConnection connection = (HttpURLConnection) siteURL
+                    .openConnection();
+            connection.setRequestMethod("GET");
+            connection.connect();
+            StatusCode = connection.getResponseCode();
+        } catch (Exception e) {
+            StatusCode = 0;
+        }
+        return StatusCode;
+    }
+    private static String getAddresss(AgentInstance agentInstance, String idResult) {
+        String webService = null;
+        URL tempUrl = null;
+        try {
+            tempUrl = new URL(agentInstance.addresses.toString());
+            String protocol = tempUrl.getProtocol();
+            String host = tempUrl.getHost();
+            int port = tempUrl.getPort();
+            webService = protocol + "://" + host + (port > 0 ? ":" + port : "") + "/result/"+idResult;
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        return webService;
+    }
     public static AgentServer getSingleton() throws AgentServerException, InterruptedException, IOException, PersistentFileException, ParseException, TokenizerException, ParserException {
         if (singleton == null)
             return (singleton = new AgentServer(null, false));
@@ -146,7 +207,7 @@ public class AgentServer {
         // Return the new agent definition
         return agentDefinition;
     }
-    public void writeResult( Collection<String> CResult , String messageId )
+    public void writeResult( ScriptState scriptState,Collection<String> CResult , String messageId )
     {
         try {
             try {
@@ -172,7 +233,7 @@ public class AgentServer {
                 for (String r : CResult) {
                     JSONObject jsonObj= new JSONObject();
                     jsonObj.put("id", n);
-                    jsonObj.put("receiver", n);
+                    jsonObj.put("receiver",scriptState.agentInstance.aid );
                     jsonObj.put("uri", r);
                     jsonArray.put(jsonObj);
                     n++;

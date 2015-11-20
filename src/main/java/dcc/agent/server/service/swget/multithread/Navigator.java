@@ -30,7 +30,6 @@ import dcc.agent.server.service.swget.utils.URIPair;
 import org.json.JSONException;
 
 import java.io.*;
-import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -800,7 +799,7 @@ public class Navigator implements NavigatorIF {
         closeExecution();
         Collection<String> res = getFinalResults();
         writeResult(res);
-        scriptState.agentServer.writeResult(res, messageReceiver.getEnconding());
+        scriptState.agentServer.writeResult(scriptState,res, messageReceiver.getEnconding());
         if (List_Expression.size() > 10){
             for (String elem : res) {
                 if (isValidURL(elem)) {
@@ -809,7 +808,7 @@ public class Navigator implements NavigatorIF {
                     if (Expr != null) {
                         if (Endpoint != null) {
                             try {
-                                if (getHttpStatus(Endpoint) == 200) {
+                                if (scriptState.agentServer.getHttpStatus(Endpoint) == 200) {
                                     AgentInstance agentS = scriptState.agentServer.getAgentInstanceId(scriptState.agentInstance.aid);
                                     AgentInstance agentR = scriptState.agentServer.getAgentInstanceAddress(EnableEndPoint(elem), "");
                                     if (agentR != null && agentS != null) {
@@ -851,20 +850,7 @@ public class Navigator implements NavigatorIF {
         }
         System.out.println("#res=" + res.size() + " #deref=" + getDerefCount());
     }
- public static int getHttpStatus(String url) throws IOException {
-        int StatusCode;
-        try {
-            URL siteURL = new URL(url);
-            HttpURLConnection connection = (HttpURLConnection) siteURL
-                    .openConnection();
-            connection.setRequestMethod("GET");
-            connection.connect();
-            StatusCode = connection.getResponseCode();
-        } catch (Exception e) {
-            StatusCode = 0;
-        }
-        return StatusCode;
-    }
+
 
     private String constructNewQuery(String elem) {
         if (List_Expression.size() > 0) {

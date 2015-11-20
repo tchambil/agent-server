@@ -34,17 +34,17 @@ public class NautiLOD {
             ResultJson.put("uri", uri);
             return ResultJson;
         }
-    public JSONObject ReturnNodeJson() throws JSONException {
+    public JSONObject ReturnNodeJson(int group) throws JSONException {
         JSONObject ResultJson = new JSONObject();
         ResultJson.put("id", id);
          ResultJson.put("label", uri);
-        ResultJson.put("group", 1);
+        ResultJson.put("group", group);
         return ResultJson;
     }
     public JSONObject ReturnedgesJson() throws JSONException {
         JSONObject ResultJson = new JSONObject();
         ResultJson.put("from", id);
-        ResultJson.put("to", 0);
+        ResultJson.put("to", -1);
         return ResultJson;
     }
         public String toString() {
