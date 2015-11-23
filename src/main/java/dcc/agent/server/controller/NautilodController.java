@@ -35,24 +35,9 @@ public class NautilodController {
 
         NautiLODList Map = agentServer.nautiLODList.get(name);
         NautiLODResult result = Map.get(name);
-//        agentServer.getResult("62251174");
 
-/*
-        JSONArray List=new JSONArray();
-        JSONObject jsonObject = result.toJson();
-        JSONArray jsonArray = new JSONArray();
-        List = (JSONArray) jsonObject.get("result");
-        for (int i=0; i<List.length(); i++) {
-            JSONObject item = List.getJSONObject(i);
-            JSONObject jsonObj= new JSONObject();
-            jsonObj.put("id", item.getString("id"));
-            jsonObj.put("label", item.getString("receiver"));
-            jsonObj.put("uri", item.getString("uri"));
-            jsonArray.put(jsonObj);
-        }
-*/
     //    return result.toJson().toString();
-    return agentServer.getResult("62251174").toString();
+    return agentServer.getResult(name).toString();
     }
 
     @RequestMapping(value = "/result/messages", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
