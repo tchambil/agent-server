@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java" line="996" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java" line="1011" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2cf9c626-ec31-4eb5-ac64-d54f63553b96" name="Default" comment="" />
@@ -57,8 +57,8 @@
       <file leaf-file-name="AgentServer.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.053448275" vertical-offset="717" max-vertical-offset="17578">
-              <caret line="100" column="23" selection-start-line="100" selection-start-column="23" selection-end-line="100" selection-end-column="23" />
+            <state vertical-scroll-proportion="0.22931035" vertical-offset="785" max-vertical-offset="17833">
+              <caret line="110" column="0" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -117,7 +117,6 @@
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/NautiLOD.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/ACL/AgentSender.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/ACL/AgentReceiver.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/resource/js/nautilod.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/nautilodindex.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/nautilodmessage.jsp" />
@@ -128,6 +127,7 @@
         <option value="$PROJECT_DIR$/src/main/webapp/resource/js/agent.js" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/Navigator.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/NautilodController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java" />
       </list>
     </option>
   </component>
@@ -1510,7 +1510,7 @@
       <workItem from="1447676449885" duration="11585000" />
       <workItem from="1447711018026" duration="17103000" />
       <workItem from="1447787732483" duration="106787000" />
-      <workItem from="1448298047889" duration="8121000" />
+      <workItem from="1448298047889" duration="9372000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1431836573263</created>
@@ -1888,11 +1888,15 @@
       <created>1448318221847</created>
       <updated>1448318221847</updated>
     </task>
-    <option name="localTasksCounter" value="95" />
+    <task id="LOCAL-00095" summary="modify cant to 0 Expression in class Navigator">
+      <created>1448319481404</created>
+      <updated>1448319481404</updated>
+    </task>
+    <option name="localTasksCounter" value="96" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1429104000" />
+    <option name="totallyTimeSpent" value="1430355000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -2116,8 +2120,14 @@
           <properties />
           <option name="timeStamp" value="731" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java</url>
+          <line>107</line>
+          <properties />
+          <option name="timeStamp" value="733" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="732" />
+      <option name="time" value="734" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -2521,8 +2531,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.053448275" vertical-offset="717" max-vertical-offset="17578">
-          <caret line="100" column="23" selection-start-line="100" selection-start-column="23" selection-end-line="100" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.22931035" vertical-offset="785" max-vertical-offset="17833">
+          <caret line="110" column="0" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
           <folding />
         </state>
       </provider>
