@@ -227,9 +227,10 @@
         <table id="idtablelist" class="table table-hover" >
             <thead>
             <tr>
-                <th>User</th>
+                <th>aid</th>
                 <th>Name</th>
-                <th>definition</th>
+                <th>addresses</th>
+                <th>Type</th>
                 <th>Outputs</th>
                 <th style="width: 3.5em;"></th>
             </tr>

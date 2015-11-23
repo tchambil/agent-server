@@ -234,12 +234,10 @@ public class PlataformController {
                     .get(userAgentInstances.name)) {
                 // Generate JSON for short summary of agent instance
                 JSONObject agentInstanceJson = new JsonListMap();
-                agentInstanceJson.put("user", agentInstance.user.id);
                 agentInstanceJson.put("aid", agentInstance.aid);
                 agentInstanceJson.put("name", agentInstance.name);
-                agentInstanceJson.put("definition",
-                        agentInstance.agentDefinition.name);
-                agentInstanceJson.put("description", agentInstance.description);
+                agentInstanceJson.put("Addresses", agentInstance.addresses);
+                agentInstanceJson.put("Type", agentInstance.type);
 
                 AgentInstance agent = agentServer.agentInstances.get(agentInstance.user.id).get(
                         agentInstance.name);

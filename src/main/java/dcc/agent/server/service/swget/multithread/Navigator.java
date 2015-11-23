@@ -800,7 +800,7 @@ public class Navigator implements NavigatorIF {
         Collection<String> res = getFinalResults();
         writeResult(res);
         scriptState.agentServer.writeResult(scriptState,res, messageReceiver.getEnconding());
-        if (List_Expression.size() > 10){
+        if (List_Expression.size() > 1){
             for (String elem : res) {
                 if (isValidURL(elem)) {
                     String Endpoint = EnableEndPoint(elem);
