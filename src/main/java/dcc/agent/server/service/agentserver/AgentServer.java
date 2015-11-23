@@ -104,9 +104,10 @@ public class AgentServer {
         for (NameValue<AgentInstanceList> userAgentInstances : this.agentInstances) {
             for (AgentInstance agentInstance : this.agentInstances
                     .get(userAgentInstances.name)) {
-                String webService = getAddresss(agentInstance, idResult);
-                RestTemplate restTemplate = new RestTemplate();
-                   if (getHttpStatus(webService) == 200){
+                String address = getAddress(agentInstance);
+                   if (getHttpStatus(address) == 200){
+                       String webService = getAddresss(agentInstance, idResult);
+                       RestTemplate restTemplate = new RestTemplate();
                        String result = restTemplate.getForObject(webService, String.class);
                        JSONObject jsonObject=new JSONObject(result);
                        List = (JSONArray) jsonObject.get("result");
@@ -151,6 +152,20 @@ public class AgentServer {
             String host = tempUrl.getHost();
             int port = tempUrl.getPort();
             webService = protocol + "://" + host + (port > 0 ? ":" + port : "") + "/result/"+idResult;
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        return webService;
+    }
+    private static String getAddress(AgentInstance agentInstance) {
+        String webService = null;
+        URL tempUrl = null;
+        try {
+            tempUrl = new URL(agentInstance.addresses.toString());
+            String protocol = tempUrl.getProtocol();
+            String host = tempUrl.getHost();
+            int port = tempUrl.getPort();
+            webService = protocol + "://" + host + (port > 0 ? ":" + port : "") ;
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
