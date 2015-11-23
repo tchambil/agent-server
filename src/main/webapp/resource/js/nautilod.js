@@ -113,8 +113,16 @@ function draw(datax) {
             group.push(grp);
         }
     }
+/*
+    for (x = 0; x < group.length; x++) {
+        var node = {};
+        node['id'] =x;
+        node['label'] = group[x].group;
+        node['group'] = group[x].id;
+        nodes.push(node);
+    }
 
-
+*/
     for (i = 0; i < datax.result.length; i++) {
         var node = {};
         var edge = {};
@@ -122,35 +130,13 @@ function draw(datax) {
         node['label'] = datax.result[i].uri;
         node['group'] = getGroup(group, datax.result[i].receiver);
         nodes.push(node);
-        edge['from'] =getItem(group, datax.result[i].receiver)  ;
+        edge['from'] =  getItem(group, datax.result[i].receiver);
         edge['to'] = i;
         edges.push(edge);
     }
-    /*
-    for (x = 0; x < group.length; x++) {
-        var node = {};
-        var edge = {};
-        node['id'] =edges.length+1;
-        node['label'] = group[x].group;
-        node['group'] = group[x].id;
-        nodes.push(node);
-        if (x==0){
-            edge['from'] = group[x].item;
-            edge['to'] = 0;
-            edges.push(edge);
-        }
-        if (x==1){
-            edge['from'] = group[x].item;
-            edge['to'] = 0;
-            edges.push(edge);
-        }
-        if (x==2){
-            edge['from'] = group[x].item;
-            edge['to'] = edges.length;
-            edges.push(edge);
-        }
-        }
-*/
+
+
+
 
 
 
