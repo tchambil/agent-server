@@ -223,12 +223,7 @@
 
                            </div>
                            <div class="form-bottom">
-                               <div class="form-group">
-                                   <label>name</label>
-                                   <input type="text"  name="simple" id="nameout" class="form-control" value="AgentGeo"/>
-
-                               </div>
-                               <div class="form-group">
+                                <div class="form-group">
                                    <label>PutTo</label>
                                    <select id="Dropagent" class="form-control">
                                        <option value="Test">Selection Item</option>

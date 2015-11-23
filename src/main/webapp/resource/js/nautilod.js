@@ -28,8 +28,6 @@ function loadata() {
     $.ajax({
         url: "../result/" + $('#idresult').val()
     }).then(function (data) {
-        // google.setOnLoadCallback(drawSimpleNodeChart);
-        // drawSimpleNodeChart(data)
         draw(data)
     });
 }

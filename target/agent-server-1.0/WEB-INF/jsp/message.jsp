@@ -16,7 +16,10 @@
     <script src="/resource/js/site/jquery-1.11.1.min.js" type="text/javascript"></script>
     <script src="/resource/js/system.js"></script>
     <script src="/resource/js/site/jquery.knob.js" type="text/javascript"></script>
-    <script type="text/javascript" src="/resource/js/site/vis.js"></script>
+
+
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
     <link href="/resource/css/vis.css" rel="stylesheet" type="text/css" />
 
     <script type="text/javascript">
@@ -46,7 +49,7 @@
     <script src="/resource/js/message.js"></script>
     <script src="/resource/js/site/googleAnalytics.js"></script>
 </head>
-<body class=" theme-blue" onload="draw()">
+<body class=" theme-blue">
 
 <!-- Demo page code -->
 
@@ -240,6 +243,7 @@
 </div>
 
 <div class="main-content">
+    <button id="getstart" class="btn btn-primary" onclick="myFunction()"><i class="fa fa-play"></i> Start</button>
       <div id="mynetworkFA"></div>
 
 
