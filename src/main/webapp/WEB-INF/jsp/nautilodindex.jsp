@@ -26,7 +26,7 @@
     <script src="/resource/js/system.js"></script>
     <script src="/resource/js/nautilod.js"></script>
     <script src="/resource/js/formagents.js"></script>
-
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
     <script type="text/javascript">
         $(function () {
             $(".knob").knob();

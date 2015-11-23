@@ -19,7 +19,7 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="/resource/css/bootstrap.css">
     <link rel="stylesheet" href="/resource/css/font-awesome.css">
-
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
     <script src="/resource/js/site/jquery-1.11.1.min.js" type="text/javascript"></script>
     <script src="/resource/js/site/jquery.knob.js" type="text/javascript"></script>
     <script src="/resource/js/user.js"></script>

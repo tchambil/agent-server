@@ -28,7 +28,7 @@
     <script src="/resource/js/formagents.js"></script>
     <script src="/resource/js/utils.js"></script>
     <script type="text/javascript" src="/resource/js/site/vis.js"></script>
-
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
     <script type="text/javascript">
         $(function () {
             $(".knob").knob();

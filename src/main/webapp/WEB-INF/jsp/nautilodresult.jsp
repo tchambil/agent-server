@@ -29,6 +29,7 @@
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript" src="/resource/js/site/vis.js"></script>
     <script src="/resource/js/site/googleAnalytics.js"></script>
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
     <script src="/resource/js/nautilod.js"></script>
     <script type="text/javascript">
         $(function () {
