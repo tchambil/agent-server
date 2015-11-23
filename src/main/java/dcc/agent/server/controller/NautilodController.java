@@ -27,17 +27,25 @@ public class NautilodController {
         return this.agentServer;
     }
 
+    @RequestMapping(value = "/results/{name}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    public String getResults( @PathVariable String name,HttpServletRequest request) throws Exception {
+        PlataformController plataform = new PlataformController();
+        agentServer = plataform.getAgentServer();
+
+        NautiLODList Map = agentServer.nautiLODList.get(name);
+        NautiLODResult result = Map.get(name);
+        return result.toJson().toString();
+    }
+
     @RequestMapping(value = "/result/{name}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public String getResult( @PathVariable String name,HttpServletRequest request) throws Exception {
         PlataformController plataform = new PlataformController();
         agentServer = plataform.getAgentServer();
 
-        NautiLODList Map = agentServer.nautiLODList.get(name);
-        NautiLODResult result = Map.get(name);
-
-    //    return result.toJson().toString();
-    return agentServer.getResult(name).toString();
+             //    return result.toJson().toString();
+        return agentServer.getResult(name).toString();
     }
 
     @RequestMapping(value = "/result/messages", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
