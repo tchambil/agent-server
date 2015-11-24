@@ -204,12 +204,12 @@
                            <div class="form-bottom">
                                <div class="form-group">
                                    <label>Seed URI</label>
-                                   <input id="see_uri" type="text"  name="simple" id="seeuri" class="form-control" value=" http://dbpedia.org/resource/Peru"/>
+                                   <input id="see_uri" type="text"  name="simple" id="seeuri" class="form-control" value=" http://dbpedia.org/resource/Italy"/>
 
                                </div>
                                <div class="form-group">
                                    <label>NautiLOD expression</label>
-                                   <textarea id="expressionNau" class="form-control" rows="10"><http://dbpedia.org/ontology/hometown>[ASK {?ctx <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Person>. ?ctx <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/MusicalArtist>.}]/<http://dbpedia.org/ontology/birthPlace>/<http://www.w3.org/2002/07/owl#sameAs>/<http://www.w3.org/2000/01/rdf-schema#isDefinedBy>[ASK {?ctx <http://www.geonames.org/ontology#population> ?pop. FILTER (?pop >100).}] -f files.rdf</textarea>
+                                   <textarea id="expressionNau" class="form-control" rows="10"><http://dbpedia.org/ontology/hometown>[ASK {?ctx <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Person>. ?ctx <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/MusicalArtist>.}]/<http://dbpedia.org/ontology/birthPlace>/<http://www.w3.org/2002/07/owl#sameAs>/<http://www.w3.org/2000/01/rdf-schema#isDefinedBy>[ASK {?ctx <http://www.geonames.org/ontology#population> ?pop. FILTER (?pop <15000).}] -f files.rdf</textarea>
 
                                </div>
                            </div>

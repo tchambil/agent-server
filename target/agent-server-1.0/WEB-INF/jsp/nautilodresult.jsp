@@ -152,8 +152,8 @@
                <li class="list-group-item">
 
        <div class="form-group">
-           <label>ID</label>
-           <input id="idresult" type="text" id="nameagentgeneral" class="form-control" value="62044191"/>
+           <label>Retrieve Task(ID)</label>
+           <input id="idresult" type="text" id="nameagentgeneral" class="form-control" value=""/>
 
        </div>
        <button id="getstart" class="btn btn-primary"> search</button>
