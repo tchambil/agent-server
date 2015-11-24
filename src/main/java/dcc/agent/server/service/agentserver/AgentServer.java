@@ -151,7 +151,7 @@ public class AgentServer {
             String protocol = tempUrl.getProtocol();
             String host = tempUrl.getHost();
             int port = tempUrl.getPort();
-            webService = protocol + "://" + host + (port > 0 ? ":" + port : "") + "/result/"+idResult;
+            webService = protocol + "://" + host + (port > 0 ? ":" + port : "") + "/results/"+idResult;
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
