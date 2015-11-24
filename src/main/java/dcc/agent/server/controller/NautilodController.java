@@ -10,9 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.FilterChain;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 /**
  * Created by teo on 11/11/2015.
@@ -31,7 +29,7 @@ public class NautilodController {
 
     @RequestMapping(value = "/results/{name}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public String getResults( @PathVariable String name,HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws Exception {
+    public String getResults( @PathVariable String name,HttpServletRequest request) throws Exception {
         PlataformController plataform = new PlataformController();
         agentServer = plataform.getAgentServer();
 
