@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2cf9c626-ec31-4eb5-ac64-d54f63553b96" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/ACL/AgentReceiver.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/ACL/AgentReceiver.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent-server.iws" afterPath="$PROJECT_DIR$/agent-server.iws" />
     </list>
     <ignored path="agent-server.iws" />
@@ -62,7 +61,7 @@
       <file leaf-file-name="Navigator.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/Navigator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.36576578" vertical-offset="13261" max-vertical-offset="15181">
+            <state vertical-scroll-proportion="0.34232715" vertical-offset="13261" max-vertical-offset="15181">
               <caret line="854" column="19" selection-start-line="854" selection-start-column="19" selection-end-line="854" selection-end-column="19" />
               <folding />
             </state>
@@ -1516,7 +1515,7 @@
       <workItem from="1447711018026" duration="17103000" />
       <workItem from="1447787732483" duration="106787000" />
       <workItem from="1448298047889" duration="16620000" />
-      <workItem from="1448375845473" duration="6250000" />
+      <workItem from="1448375845473" duration="6324000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1431836573263</created>
@@ -1906,11 +1905,15 @@
       <created>1448387601709</created>
       <updated>1448387601709</updated>
     </task>
-    <option name="localTasksCounter" value="98" />
+    <task id="LOCAL-00098" summary="modify write result expression nautilod">
+      <created>1448391180355</created>
+      <updated>1448391180355</updated>
+    </task>
+    <option name="localTasksCounter" value="99" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1443853000" />
+    <option name="totallyTimeSpent" value="1443927000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1937,7 +1940,7 @@
     <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3507795" sideWeight="0.24432677" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3507795" sideWeight="0.24432677" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32764506" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1950,14 +1953,14 @@
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31848553" sideWeight="0.7549168" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5044543" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2739872" sideWeight="0.80617493" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2739872" sideWeight="0.80515295" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22354949" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30846325" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30846325" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2884187" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2739872" sideWeight="0.19382504" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2739872" sideWeight="0.19323671" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38195992" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17910448" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -2033,7 +2036,8 @@
     <MESSAGE value="add functions js for designer grahp result" />
     <MESSAGE value="modify list of agents in jsp" />
     <MESSAGE value="modify cant to 0 Expression in class Navigator" />
-    <option name="LAST_COMMIT_MESSAGE" value="modify cant to 0 Expression in class Navigator" />
+    <MESSAGE value="modify write result expression nautilod" />
+    <option name="LAST_COMMIT_MESSAGE" value="modify write result expression nautilod" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2556,7 +2560,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/Navigator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36576578" vertical-offset="13261" max-vertical-offset="15181">
+        <state vertical-scroll-proportion="0.34232715" vertical-offset="13261" max-vertical-offset="15181">
           <caret line="854" column="19" selection-start-line="854" selection-start-column="19" selection-end-line="854" selection-end-column="19" />
           <folding />
         </state>
