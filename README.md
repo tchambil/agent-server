@@ -1,4 +1,4 @@
-# A Flexible and Scalable Platform for Multi-Agent Systems: 
+﻿# A Flexible and Scalable Platform for Multi-Agent Systems: 
 ---
 *Plataform Agent Server*
 ---
@@ -89,7 +89,7 @@ Example(http://agentserver.herokuapp.com/)
 
 
 # Case Studio NautiLOD Distributed:
-1. To acces [http://agentserver.herokuapp.com/nautilod.do]http://agentserver.herokuapp.com/nautilod.do
+1. To acces http://agentserver.herokuapp.com/nautilod.do
   -> Run Script Menu ->  into Expression NautiLOD
 
 ```shell
@@ -97,7 +97,11 @@ Example(http://agentserver.herokuapp.com/)
 	
 	NautiLOD expression->
 
-	<http://dbpedia.org/ontology/hometown>[ASK {?ctx <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Person>. ?ctx <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/MusicalArtist>.}]/<http://dbpedia.org/ontology/birthPlace>/<http://www.w3.org/2002/07/owl#sameAs>/<http://www.w3.org/2000/01/rdf-schema#isDefinedBy>[ASK {?ctx <http://www.geonames.org/ontology#population> ?pop. FILTER (?pop <15000).}] -f files.rdf
+<http://dbpedia.org/ontology/hometown>[ASK {?ctx <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> 
+<http://dbpedia.org/ontology/Person>. ?ctx <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> 
+<http://dbpedia.org/ontology/MusicalArtist>.}]/<http://dbpedia.org/ontology/birthPlace>/
+<http://www.w3.org/2002/07/owl#sameAs>/<http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+[ASK {?ctx <http://www.geonames.org/ontology#population> ?pop. FILTER (?pop <15000).}] -f files.rdf
 
 ```
 

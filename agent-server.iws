@@ -1483,7 +1483,7 @@
       <workItem from="1447711018026" duration="17103000" />
       <workItem from="1447787732483" duration="106787000" />
       <workItem from="1448298047889" duration="16620000" />
-      <workItem from="1448375845473" duration="33130000" />
+      <workItem from="1448375845473" duration="33213000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1431836573263</created>
@@ -1897,11 +1897,15 @@
       <created>1448579417623</created>
       <updated>1448579417623</updated>
     </task>
-    <option name="localTasksCounter" value="104" />
+    <task id="LOCAL-00104" summary="edit file readme">
+      <created>1448579452608</created>
+      <updated>1448579452608</updated>
+    </task>
+    <option name="localTasksCounter" value="105" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1470733000" />
+    <option name="totallyTimeSpent" value="1470816000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
