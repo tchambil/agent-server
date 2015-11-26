@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2cf9c626-ec31-4eb5-ac64-d54f63553b96" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\AppServ\www\agent-server\TBL3coauthors_command.rdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\AppServ\www\agent-server\swget_history.dat" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent-server.iws" afterPath="$PROJECT_DIR$/agent-server.iws" />
     </list>
     <ignored path="agent-server.iws" />
@@ -1484,7 +1483,7 @@
       <workItem from="1447711018026" duration="17103000" />
       <workItem from="1447787732483" duration="106787000" />
       <workItem from="1448298047889" duration="16620000" />
-      <workItem from="1448375845473" duration="33094000" />
+      <workItem from="1448375845473" duration="33130000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1431836573263</created>
@@ -1894,11 +1893,15 @@
       <created>1448578295263</created>
       <updated>1448578295263</updated>
     </task>
-    <option name="localTasksCounter" value="103" />
+    <task id="LOCAL-00103" summary="edit file readme">
+      <created>1448579417623</created>
+      <updated>1448579417623</updated>
+    </task>
+    <option name="localTasksCounter" value="104" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1470697000" />
+    <option name="totallyTimeSpent" value="1470733000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
