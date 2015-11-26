@@ -117,7 +117,6 @@ public class AgentReceiver {
             }
         }
     }
-
     public static Boolean onMessageDelegate(AgentServer agentServer, ACLMessage message, Boolean stringResult) throws Exception {
         Boolean send = false;
         Value resultValue = NullValue.one;
@@ -167,7 +166,6 @@ public class AgentReceiver {
         }
         return null;
     }
-
     public static String parseMessage(AgentServer agentServer, ACLMessage message) throws Exception {
           if (message != null) {
             String content = message.getContent();
@@ -197,7 +195,6 @@ public class AgentReceiver {
         }
         return null;
     }
-
     private static void delegate(AgentServer agentServer, ACLMessage message, Value value) throws JSONException, AgentServerException {
         if (message != null) {
             ACLMessage newreply = message.createReply(agentServer);
@@ -216,7 +213,6 @@ public class AgentReceiver {
             AgentSender.send(agentServer, newreply, true);
         }
     }
-
     private static Value parseScript(AgentServer agentServer, String scriptString, ACLMessage message) throws AgentServerException {
         Value value = null;
         if ((scriptString.indexOf("ping") != -1)) {
@@ -239,7 +235,6 @@ public class AgentReceiver {
     private static AgentInstance getAgent(AgentServer agentServer, String value) {
         return agentServer.getAgentInstanceId(value);
     }
-
     static public synchronized ACLMessage receive(AgentServer agentServer) {
         ACLMessage message = null;
         for (NameValue<ACLMessageList> messageListNameValue : agentServer.agentMessages) {
@@ -252,7 +247,6 @@ public class AgentReceiver {
         }
         return message;
     }
-
     static public synchronized ACLMessage receive(AgentServer agentServer, AgentInstance agent) {
 
         for (NameValue<ACLMessageList> messageListNameValue : agentServer.agentMessages) {
@@ -266,7 +260,6 @@ public class AgentReceiver {
         }
         return null;
     }
-
     static public synchronized ACLMessage receive(AgentServer agentServer, String messageId) {
         ACLMessageList messageListNameValue = agentServer.agentMessages.get(messageId);
         ACLMessage message = messageListNameValue.get(messageId);

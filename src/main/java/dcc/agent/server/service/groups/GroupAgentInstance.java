@@ -3,10 +3,9 @@ package dcc.agent.server.service.groups;
 import dcc.agent.server.service.agentserver.AgentInstance;
 import dcc.agent.server.service.agentserver.AgentServer;
 import dcc.agent.server.service.agentserver.AgentServerException;
-import dcc.agent.server.service.util.DateUtils;
-import dcc.agent.server.service.util.JsonListMap;
-import dcc.agent.server.service.util.JsonUtils;
+import dcc.agent.server.service.util.*;
 import org.apache.log4j.Logger;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -22,18 +21,18 @@ public class GroupAgentInstance {
     public AgentServer agentServer;
     public String id;
     public ServerGroup group;
-    public AgentInstance agentInstance;
+    private NameValueList<AgentInstance> agents;
     public String state;
     public long timeInstantiated;
     public long timeUpdated;
     public boolean update;
 
-    public GroupAgentInstance(AgentServer agentServer,  ServerGroup group, AgentInstance agentInstance, String state,long timeInstantiated,
+    public GroupAgentInstance(AgentServer agentServer,  ServerGroup group, NameValueList<AgentInstance> agents, String state,long timeInstantiated,
                               long timeUpdated, boolean update) {
         this.agentServer = agentServer;
-        this.id=group.name+agentInstance.aid;
+        this.id=group.name;
         this.group = group;
-        this.agentInstance = agentInstance;
+        this.agents = agents;
         this.state = state;
         this.timeInstantiated = timeInstantiated > 0 ? timeInstantiated : System.currentTimeMillis();
         this.timeUpdated = timeUpdated > 0 ? timeUpdated : 0;
@@ -52,10 +51,14 @@ public class GroupAgentInstance {
         try {
             JSONObject agentJson = new JsonListMap();
             agentJson.put("group", group.name == null ? "" : group.name);
-            agentJson.put("agentInstance", agentInstance.aid == null ? "" : agentInstance.aid);
             agentJson.put("state", state == null ? "" : state);
             agentJson.put("instantiated", DateUtils.toRfcString(timeInstantiated));
             agentJson.put("updated", timeUpdated > 0 ? DateUtils.toRfcString(timeUpdated) : "");
+            JSONArray scriptsArrayJson = new JSONArray();
+            for (NameValue<AgentInstance> NameValue :agents)
+                scriptsArrayJson.put(NameValue.value.toJson());
+            agentJson.put("agents", scriptsArrayJson);
+
             return agentJson;
         } catch (JSONException e) {
             e.printStackTrace();
@@ -64,15 +67,15 @@ public class GroupAgentInstance {
         }
     }
     static public GroupAgentInstance fromJson(AgentServer agentServer, String agentJsonSource) throws JSONException, AgentServerException {
-        return fromJson(agentServer, null, null,new JSONObject(agentJsonSource),  false);
+        return fromJson(agentServer, null,new JSONObject(agentJsonSource),  false);
     }
-    static public GroupAgentInstance fromJson(AgentServer agentServer, ServerGroup group,AgentInstance agentInstance, String agentJson) throws JSONException, AgentServerException {
-        return fromJson(agentServer, group,agentInstance, new JSONObject(agentJson), false);
+    static public GroupAgentInstance fromJson(AgentServer agentServer, ServerGroup group, String agentJson) throws JSONException, AgentServerException {
+        return fromJson(agentServer, group, new JSONObject(agentJson), false);
     }
-    static public GroupAgentInstance fromJson(AgentServer agentServer, ServerGroup group,AgentInstance agentInstance,  JSONObject agentJson) throws AgentServerException {
-        return fromJson(agentServer, group,agentInstance,agentJson, false);
+    static public GroupAgentInstance fromJson(AgentServer agentServer, ServerGroup group,  JSONObject agentJson) throws AgentServerException, JSONException {
+        return fromJson(agentServer, group,agentJson, false);
     }
-    static public GroupAgentInstance fromJson(AgentServer agentServer, ServerGroup group,AgentInstance agentInstance, JSONObject agentJson,  Boolean update) throws AgentServerException {
+    static public GroupAgentInstance fromJson(AgentServer agentServer, ServerGroup group, JSONObject agentJson,  Boolean update) throws AgentServerException,JSONException {
         log.info("If we have the group, ignore group from JSON");
         if (group == null) {
             String groupname = agentJson.optString("group");
@@ -80,13 +83,7 @@ public class GroupAgentInstance {
                 throw new AgentServerException("group name is missing");
               group = agentServer.getServerGroup(groupname);
         }
-        // If we have the agentInstance, ignore agentInstance from JSON
-        if (agentInstance == null) {
-            String agentInstancename = agentJson.optString("agentInstance");
-            if (agentInstancename == null || agentInstancename.trim().length() == 0)
-                throw new AgentServerException(" agentInstance is missing");
-            agentInstance = agentServer.getAgentInstanceId(agentInstancename);
-        }
+
         // Parse the state
         String ServerState= agentJson.optString("state", null);
         if (!update && (ServerState == null) || ServerState.trim().length() == 0) {
@@ -100,6 +97,25 @@ public class GroupAgentInstance {
         } catch (ParseException e) {
             throw new AgentServerException("Unable to parse created date ('" + created + "') - " + e.getMessage());
         }
+        NameValueList<AgentInstance> agents = null;
+        if (agentJson.has("agents")) {
+            agents = new NameValueList<AgentInstance>();
+            JSONArray aJson = agentJson.optJSONArray("agents");
+            if (aJson != null) {
+                int numScripts = aJson.length();
+                for (int i = 0; i < numScripts; i++) {
+                    JSONObject scriptJson = aJson.optJSONObject(i);
+                    if (!scriptJson.keys().hasNext())
+                        continue;
+                    AgentInstance agentInstance1 = null;
+                     String agentInstanceId = scriptJson.optString("aid");
+                    agentInstance1=agentServer.getAgentInstanceId(agentInstanceId);
+
+                    agents.put(agentInstance1.aid, agentInstance1);
+                }
+            }
+        }
+
         String modified = agentJson.optString("updated", null);
         long timeUpdated = -1;
         try {
@@ -107,8 +123,8 @@ public class GroupAgentInstance {
         } catch (ParseException e) {
             throw new AgentServerException("Unable to parse updated date ('" + modified + "') - " + e.getMessage());
         }
-        JsonUtils.validateKeys(agentJson, "Group Agent", new ArrayList<String>(Arrays.asList("id","group", "agentInstance", "state","instantiated","updated")));
-        GroupAgentInstance groupAgentInstance = new GroupAgentInstance(agentServer, group, agentInstance, ServerState, timeInstantiated, timeUpdated,false);
+        JsonUtils.validateKeys(agentJson, "Group Agent", new ArrayList<String>(Arrays.asList("id","group", "agents", "state","instantiated","updated")));
+        GroupAgentInstance groupAgentInstance = new GroupAgentInstance(agentServer, group, agents, ServerState, timeInstantiated, timeUpdated,false);
         return groupAgentInstance;
     }
     public String toString() {

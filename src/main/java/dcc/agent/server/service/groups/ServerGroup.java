@@ -25,7 +25,6 @@ public class ServerGroup {
     public User user;
     public boolean update;
     public AgentServerProperties agentServerProperties;
-
     public ServerGroup(AgentServer agentServer, User user,String name, String description, String type, boolean update) {
         this.agentServer = agentServer;
         this.name = name;
@@ -37,11 +36,9 @@ public class ServerGroup {
     public JSONObject toJson() throws AgentServerException {
         return toJson(true);
     }
-
     public JSONObject toJson(boolean includeState) throws AgentServerException {
         return toJson(includeState, -1);
     }
-
     public JSONObject toJson(boolean includeState, int StateCount) throws AgentServerException {
         try {
             JSONObject messageJson = new JsonListMap();

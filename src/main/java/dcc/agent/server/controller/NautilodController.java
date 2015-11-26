@@ -32,7 +32,6 @@ public class NautilodController {
     public String getResults( @PathVariable String name,HttpServletRequest request) throws Exception {
         PlataformController plataform = new PlataformController();
         agentServer = plataform.getAgentServer();
-
         NautiLODList Map = agentServer.nautiLODList.get(name);
         NautiLODResult result = Map.get(name);
         return result.toJson().toString();

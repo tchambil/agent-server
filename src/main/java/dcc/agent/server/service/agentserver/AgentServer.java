@@ -178,7 +178,6 @@ public class AgentServer {
         else
             return singleton;
     }
-
     public AgentDefinition addAgentDefinition(AgentDefinition agentDefinition) throws AgentServerException {
         if (agentDefinition != null) {
             // Check if the user has any agents yet
@@ -198,7 +197,6 @@ public class AgentServer {
         // Return the agent definition itself
         return agentDefinition;
     }
-
     public AgentDefinition addAgentDefinition(String agentJsonString) throws SymbolException, RuntimeException, AgentServerException {
         if (agentJsonString == null || agentJsonString.trim().length() == 0)
             agentJsonString = "{}";
@@ -208,11 +206,9 @@ public class AgentServer {
             throw new AgentServerException("JSON parsing exception: " + e.getMessage());
         }
     }
-
     public AgentDefinition addAgentDefinition(JSONObject agentJson) throws SymbolException, RuntimeException, AgentServerException {
         return addAgentDefinition(null, agentJson);
     }
-
     public AgentDefinition addAgentDefinition(User user, JSONObject agentJson) throws SymbolException, RuntimeException, AgentServerException {
         // Parse the JSON for the agent definition
         log.info("Parse the JSON for the agent definition");
@@ -222,8 +218,7 @@ public class AgentServer {
         // Return the new agent definition
         return agentDefinition;
     }
-    public void writeResult( ScriptState scriptState,Collection<String> CResult , String messageId )
-    {
+    public void writeResult( ScriptState scriptState,Collection<String> CResult , String messageId ){
         try {
             try {
                 NautiLODList Map = nautiLODList.get(messageId);
@@ -292,11 +287,9 @@ public class AgentServer {
         // Return the new agent definition
         return nautiLODResult;
     }
-
     public ACLMessage addAgentMessage(JSONObject agenJson) throws JSONException, AgentServerException, ParseException, ParserException, TokenizerException {
         return addAgentMessage(null, agenJson);
     }
-
     public synchronized ACLMessage addAgentMessage(ACLMessage agentMessage) throws AgentServerException, JSONException {
         if (agentMessage != null) {
             // Check if the user has any agents yet
@@ -315,9 +308,6 @@ public class AgentServer {
         }
         return agentMessage;
     }
-
-
-
     public ACLMessage getAgentMessage(User user, String agentMessageConversationId) {
         ACLMessageList agenMap = agentMessages.get(user.id);
         if (agenMap == null) {
@@ -326,7 +316,6 @@ public class AgentServer {
             return agenMap.get(agentMessageConversationId);
         }
     }
-
     public synchronized void processMessage(ScriptState scriptState,ACLMessage message) {
         try {
             AgentReceiver.onMessage( scriptState, message);
@@ -340,27 +329,22 @@ public class AgentServer {
         }
 
     }
-
     public synchronized ACLMessage receive() {
         ACLMessage message = AgentReceiver.receive(this);
         return message;
     }
-
     public synchronized ACLMessage receive(List<Value> newarguments) {
         ACLMessage message = AgentReceiver.receive(this);
         return message;
     }
-
     public synchronized ACLMessage receive(AgentInstance agentInstance) {
         ACLMessage message = AgentReceiver.receive(this, agentInstance);
         return message;
     }
-
     public synchronized ACLMessage receive(String messageId) {
         ACLMessage aclMessage = AgentReceiver.receive(this, messageId);
         return aclMessage;
     }
-
     public void send(ACLMessage message) {
         try {
             AgentSender.send(this, message, false);
@@ -370,7 +354,6 @@ public class AgentServer {
             e.printStackTrace();
         }
     }
-
     public synchronized ACLMessage addAgentMessage(User user, JSONObject agentJson) throws AgentServerException, JSONException {
         // Parse the JSON for the agent definition
         log.info("Parse the JSON for the message");
@@ -385,7 +368,6 @@ public class AgentServer {
         // Return the new agent definition
         return agentMessage;
     }
-
     public ServerGroup getServerGroup(String groupName) {
         ServerGroup newgroup = null;
         for (NameValue<User> userIdValue : users) {
@@ -395,7 +377,6 @@ public class AgentServer {
         }
         return newgroup;
     }
-
     public ServerGroup addServerGroup(ServerGroup serverGroup) throws AgentServerException {
         if (serverGroup != null) {
             if (!serverGroups.containsKey(serverGroup.user.id)) {
@@ -406,6 +387,24 @@ public class AgentServer {
             persistence.put(serverGroup);
         }
         return serverGroup;
+    }
+    public void removeGroupAgentInstance(String name) throws AgentServerException {
+
+
+        // Check if the user has any agents yet
+        if (!groupAgents.containsKey(name)) {
+            throw new AgentServerException("Attempt to delete NautiLODResult ('" + name + "')   that has no NautiLODResult");
+        }
+
+        // Get agent table for the user
+        GroupAgentInstanceList agentInstanceList= groupAgents.get(name);
+
+        // Check if that agent exists for user
+        if (!agentInstanceList.containsKey(name))
+            throw new AgentServerException("Attempt to delete NautiLODResult ('" + name + "')   that has no NautiLODResult");
+
+        // Delete the named agent definition for the user
+        agentInstanceList.remove(name);
     }
 
     public GroupAgentInstance addGroupAgentInstance(GroupAgentInstance GroupAgent) throws AgentServerException {
@@ -419,23 +418,18 @@ public class AgentServer {
         }
         return GroupAgent;
     }
-
     public ServerGroup addServerGroup(User user, JSONObject agentJson) throws AgentServerException {
         log.info("Parse the JSON for the ServerGroup");
         ServerGroup serverGroup = ServerGroup.fromJson(this, user, agentJson);
         addServerGroup(serverGroup);
         return serverGroup;
     }
-
-    public GroupAgentInstance addGroupAgentInstance(ServerGroup group, AgentInstance agentInstance, JSONObject agentJson) throws AgentServerException {
+    public GroupAgentInstance addGroupAgentInstance(ServerGroup group, JSONObject agentJson) throws AgentServerException, JSONException {
         log.info("Parse the JSON for the GroupAgentInstance");
-        GroupAgentInstance groupAgent = GroupAgentInstance.fromJson(this, group, agentInstance, agentJson);
+        GroupAgentInstance groupAgent = GroupAgentInstance.fromJson(this, group, agentJson);
         addGroupAgentInstance(groupAgent);
         return groupAgent;
     }
-
-
-
     public AgentDefinition getAgentDefinition(User user, String agentDefinitionName) {
         AgentDefinitionList agentMap = agentDefinitions.get(user.id);
         if (agentMap == null)
@@ -443,7 +437,6 @@ public class AgentServer {
         else
             return agentMap.get(agentDefinitionName);
     }
-
     public void clearAgentDefinitions(String userId) throws AgentServerException {
         // Check if the user has any agents yet
         if (!agentDefinitions.containsKey(userId))
@@ -456,7 +449,6 @@ public class AgentServer {
         // Clear the user's agent list
         usersAgents.clear();
     }
-
     public void removeAgentDefinition(AgentDefinition agentDefinition) throws AgentServerException {
         String userId = agentDefinition.user.id;
         String agentName = agentDefinition.name;
@@ -475,7 +467,6 @@ public class AgentServer {
         // Delete the named agent definition for the user
         usersAgents.remove(agentName);
     }
-
     public void removeAgentDefinition(String userId, String agentName) throws AgentServerException {
         // Check if the user has any agents yet
         if (!agentDefinitions.containsKey(userId))
@@ -491,7 +482,6 @@ public class AgentServer {
         // Delete the named agent definition for the user
         usersAgents.remove(agentName);
     }
-
     public AgentInstance addAgentInstance(AgentInstance agentInstance) throws AgentServerException, SymbolException, JSONException {
         // Get instance list for the user
         AgentInstanceList agentInstanceList = agentInstances.get(agentInstance.user.id);
@@ -510,7 +500,6 @@ public class AgentServer {
         // Return the agent instance
         return agentInstance;
     }
-
     public AgentInstance addAgentInstance(User user, JSONObject agentInstanceJson) throws AgentServerException, SymbolException, JSONException, TokenizerException, ParserException {
         // Get instance list for the user
         AgentInstance agentInstance = getAgentInstance(user, agentInstanceJson);
@@ -518,7 +507,6 @@ public class AgentServer {
         // Return the agent instance
         return agentInstance;
     }
-
     public AgentInstance getAgentInstanceId(String AgentId) {
         AgentInstance newagentInstance = null;
         for (NameValue<AgentInstanceList> userAgentInstances : this.agentInstances) {
@@ -545,7 +533,6 @@ public class AgentServer {
         }
         return newagentInstance;
     }
-
     public AgentInstance getAgentInstances(String AgentInstanceName) {
         AgentInstance newagentInstance = null;
         for (NameValue<User> userIdValue : users) {
@@ -555,11 +542,9 @@ public class AgentServer {
         }
         return newagentInstance;
     }
-
     public AgentInstance getAgentInstance(String userId, String agentInstanceName) {
         return getAgentInstance(getUser(userId), agentInstanceName);
     }
-
     public AgentInstance getAgentInstance(User user, String agentInstanceName) {
         AgentInstanceList agentMap = agentInstances.get(user.id);
         if (agentMap == null)
@@ -567,15 +552,12 @@ public class AgentServer {
         else
             return agentMap.get(agentInstanceName);
     }
-
     public AgentInstance getAgentInstance(User user, AgentDefinition agentDefinition) throws RuntimeException, SymbolException, AgentServerException, JSONException, TokenizerException, ParserException {
         return getAgentInstance(user, agentDefinition, null, true);
     }
-
     public AgentInstance getAgentInstance(User user, AgentDefinition agentDefinition, SymbolValues parameters) throws RuntimeException, SymbolException, AgentServerException, JSONException, TokenizerException, ParserException {
         return getAgentInstance(user, agentDefinition, parameters, true);
     }
-
     public AgentInstance getAgentInstance(User user, AgentDefinition agentDefinition, SymbolValues parameters, boolean create) throws AgentServerException {
         // Get instance list for the user
         AgentInstanceList agentInstanceList = agentInstances.get(user.id);
@@ -588,7 +570,6 @@ public class AgentServer {
         // Get the instance from the user's instance list (or add if it doesn't exist yet)
         return agentInstanceList.getAgentInstance(user, agentDefinition, parameters, create);
     }
-
     public AgentInstance getAgentInstance(String agentJsonString) throws SymbolException, RuntimeException, AgentServerException, TokenizerException, ParserException {
         if (agentJsonString == null || agentJsonString.trim().length() == 0)
             agentJsonString = "{}";
@@ -598,11 +579,9 @@ public class AgentServer {
             throw new AgentServerException("JSON parsing exception: " + e.getMessage());
         }
     }
-
     public AgentInstance getAgentInstance(JSONObject agentJson) throws SymbolException, RuntimeException, AgentServerException, JSONException, TokenizerException, ParserException {
         return getAgentInstance(null, agentJson);
     }
-
     public AgentInstance getAgentInstance(User user, JSONObject agentJson) throws SymbolException, RuntimeException, AgentServerException, JSONException, TokenizerException, ParserException {
         // Parse the JSON for the agent instance
 
@@ -834,13 +813,11 @@ public class AgentServer {
         // Return the new user
         return user;
     }
-
     public void recreateUser(String userJsonSource) throws AgentServerException, JSONException {
 
         User newUser = User.fromJson(new JSONObject(userJsonSource));
         recreateUser(newUser);
     }
-
     public AgentDefinition recreateAgentDefinition(AgentDefinition agentDefinition) throws AgentServerException {
         if (agentDefinition != null) {
             // Check if the user has any agents yet
@@ -856,12 +833,10 @@ public class AgentServer {
         // Return the agent definition itself
         return agentDefinition;
     }
-
     public void recreateAgentDefinition(String agentDefinitionJsonSource) throws AgentServerException, JSONException, SymbolException {
         AgentDefinition newAgentDefinition = AgentDefinition.fromJson(this, agentDefinitionJsonSource);
         recreateAgentDefinition(newAgentDefinition);
     }
-
     public void recreateAgentMessage(String agentMessage) throws AgentServerException, ParserException, ParseException, JSONException, TokenizerException {
         ACLMessage newAgentMessage = ACLMessage.fromJson(this, agentMessage);
         recreateAgentMessage(newAgentMessage);
@@ -884,7 +859,6 @@ public class AgentServer {
         // Delete the named agent definition for the user
         nautiLODLt.remove(name);
     }
-
     public void recreateNautilod(String nautilod) throws AgentServerException, ParserException, ParseException, JSONException, TokenizerException {
         NautiLODResult nautiLODResult=NautiLODResult.fromJson(this, nautilod);
         recreateNautilod(nautiLODResult);
@@ -905,7 +879,6 @@ public class AgentServer {
         // Return the agent message  itself
         return nautiLODResult;
     }
-
     public ACLMessage recreateAgentMessage(ACLMessage agentMessage) throws AgentServerException {
         if (agentMessage != null) {
             // Check if the plataform has any agent message yet
@@ -921,18 +894,15 @@ public class AgentServer {
         // Return the agent message  itself
         return agentMessage;
     }
-
     public void recreateServerGroup(String serverGroup) throws JSONException, AgentServerException {
         ServerGroup newServerGroup = ServerGroup.fromJson(this, serverGroup);
         recreateServerGroup(newServerGroup);
     }
-
     public void recreateGroupAgent(String GroupAgent) throws JSONException, AgentServerException {
         GroupAgentInstance newGroup = GroupAgentInstance.fromJson(this, GroupAgent);
         recreateGroupAgent(newGroup);
 
     }
-
     public GroupAgentInstance recreateGroupAgent(GroupAgentInstance GroupAgent) throws AgentServerException {
         if (GroupAgent != null) {
             // Check if the plataform has any server group yet
@@ -948,7 +918,6 @@ public class AgentServer {
         // Return the server group itself
         return GroupAgent;
     }
-
     public ServerGroup recreateServerGroup(ServerGroup serverGroup) throws AgentServerException {
         if (serverGroup != null) {
             // Check if the plataform has any server group yet
@@ -964,7 +933,6 @@ public class AgentServer {
         // Return the server group itself
         return serverGroup;
     }
-
     public AgentInstance recreateAgentInstance(AgentInstance agentInstance) throws AgentServerException, SymbolException, JSONException {
         // Get instance list for the user
         AgentInstanceList agentInstanceList = agentInstances.get(agentInstance.user.id);
@@ -979,21 +947,17 @@ public class AgentServer {
         // Return the agent instance
         return agentInstance;
     }
-
     public void recreateAgentInstance(String agentInstanceJsonSource) throws AgentServerException, JSONException, SymbolException, ParseException, TokenizerException, ParserException {
         AgentInstance newAgentInstance = AgentInstance.fromJson(this, agentInstanceJsonSource);
         recreateAgentInstance(newAgentInstance);
     }
-
     public void shutdown() throws Exception {
         stop();
         // TODO: Should this do something else in addition to stop?
     }
-
     public void start() throws AgentServerException, InterruptedException, IOException, PersistentFileException, ParseException, TokenizerException, ParserException {
         start(true);
     }
-
     public void start(boolean start) throws AgentServerException, InterruptedException, IOException, PersistentFileException, ParseException, TokenizerException, ParserException {
         // No-op if already started
 
@@ -1056,7 +1020,6 @@ public class AgentServer {
         }
 
     }
-
     public void stop() throws AgentServerException, InterruptedException, IOException {
         // First shut down the agent scheduler and wait for it to fully stop
         agentScheduler.shutdown();
@@ -1067,28 +1030,22 @@ public class AgentServer {
         // Indicate that the agent server is no longer running
         startTime = 0;
     }
-
     public String getStatus() {
         return agentScheduler.getStatus();
     }
-
     public String getDefaultReportingInterval() {
         return config.get("default_reporting_interval");
     }
-
     public String getDefaultTriggerInterval() {
         return config.get("default_trigger_interval");
     }
-
     public void addWebSiteAccessControls(User user, JSONObject accessControlsJson) throws JSONException, AgentServerException {
         webAccessManager.addWebSiteAccessControls(user.id, accessControlsJson);
 
     }
-
     public WebPage getWebPage(String userId, String url) {
         return webAccessManager.getWebPage(userId, url);
     }
-
     public WebPage getWebPage(String userId, String url, boolean useCache, long refreshInterval, boolean wait) {
         return webAccessManager.getWebPage(userId, url, useCache, refreshInterval, wait);
     }

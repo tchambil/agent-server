@@ -67,8 +67,9 @@ public class PlataformController {
         return message.toString();
 
     }
+
     @RequestMapping(value = "/users/{id}/group/{name}", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public String postServerGroup(@PathVariable String id,@PathVariable String name,HttpServletRequest request) throws Exception {
+    public String postServerGroup(@PathVariable String id, @PathVariable String name, HttpServletRequest request) throws Exception {
         User user = agentServer.users.get(id);
 
         if (name == null) {
@@ -80,111 +81,146 @@ public class PlataformController {
         if (!agentServer.serverGroups.get(user.id).containsKey(name)) {
             throw new AgentAppServerException(HttpServletResponse.SC_FOUND, "No group with that name for that user");
         }
-        ServerGroupList serverGroupL =agentServer.serverGroups.get(user.id);
+        ServerGroupList serverGroupL = agentServer.serverGroups.get(user.id);
         ServerGroup serverGroup = serverGroupL.get(name);
+
         JSONObject serverJson = util.getJsonRequest(request);
+        JSONArray ListNew = new JSONArray();
+        if (serverGroup != null) {
+            ListNew = (JSONArray) serverJson.get("agents");
+        }
+
         if (serverJson == null)
             throw new AgentAppServerBadRequestException(
                     "Invalid ServerGroup JSON object");
-        String agentInstanceName = serverJson.optString("agentInstance");
-        if (agentInstanceName == null)
-            throw new AgentAppServerBadRequestException(
-                    "Missing agent instance name path parameter");
-        if (agentInstanceName.trim().length() == 0)
-            throw new AgentAppServerBadRequestException(
-                    "Empty agent instance name path parameter");
-        if (!agentServer.agentInstances.get(user.id).containsKey(
-                agentInstanceName))
-            throw new AgentAppServerBadRequestException(
-                    "No agent instance with that name for that user");
 
-        AgentInstance agentInstance = agentServer.getAgentInstance(user,
-                agentInstanceName);
-        if (agentInstance == null)
-            throw new AgentAppServerBadRequestException(
-                    "No agent instance named '" + agentInstanceName
-                            + " for user '" + user.id + "'");
+        GroupAgentInstanceList groupMap = agentServer.groupAgents.get(name);
+        JSONArray jsonArray = new JSONArray();
+        JSONArray List = new JSONArray();
+        if (groupMap != null) {
+            GroupAgentInstance group = groupMap.get(name);
+            JSONObject jsonObject = group.toJson();
+            List = (JSONArray) jsonObject.get("agents");
+            agentServer.removeGroupAgentInstance(name);
+        }
+        for (int i = 0; i < List.length(); i++) {
+            JSONObject item = List.getJSONObject(i);
+            JSONObject jsonObj = new JSONObject();
+            jsonObj.put("aid", item.getString("aid"));
+            jsonObj.put("user", item.getString("user"));
+            jsonArray.put(jsonObj);
+        }
+        for (int i = 0; i < ListNew.length(); i++) {
+            JSONObject item = ListNew.getJSONObject(i);
+            JSONObject jsonObj = new JSONObject();
+            jsonObj.put("aid", item.getString("aid"));
+            jsonObj.put("user", item.getString("user"));
+            jsonArray.put(jsonObj);
+        }
+        JSONObject chairJSON = new JSONObject();
+        chairJSON.put("state", "active");
+        chairJSON.put("agents", jsonArray);
 
-        // Parse and add the Server Group
-        GroupAgentInstance groupAgentInstance =agentServer.addGroupAgentInstance(serverGroup,agentInstance,serverJson);
-        // Done
+        GroupAgentInstance groupAgentInstance = agentServer.addGroupAgentInstance(serverGroup, chairJSON);
         JSONObject message = new JSONObject();
         message.put("Group Agent", "Add was successful");
         return message.toString();
     }
+
     @RequestMapping(value = "/users/{id}/group/{name}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public String getAgents(@PathVariable String id, @PathVariable String name) throws Exception {
         logger.info("Getting list of all agents for a group");
-         User user = agentServer.users.get(id);
-        ServerGroupList groupMap = agentServer.serverGroups.get(user.id);
-        ServerGroup group = groupMap.get(name);
-        JSONArray GroupArrayJson = new JSONArray();
-        // Get all agents for this user
-        for (NameValue<GroupAgentInstanceList> ListNameValue : agentServer.groupAgents) {
-            for (GroupAgentInstance groupAgent : agentServer.groupAgents.get(ListNameValue.name)){
-                if(group.name.equals(groupAgent.group.name)){
-                   JSONObject groupJson = new JsonListMap();
-                   groupJson.put("group", groupAgent.group.name);
-                    groupJson.put("agentInstance", groupAgent.agentInstance.aid);
-                    groupJson.put("state", groupAgent.state);
-                   groupJson.put("instantiated", DateUtils.toRfcString(groupAgent.timeInstantiated));
-                    groupJson.put("updated", groupAgent.timeUpdated > 0 ? DateUtils.toRfcString(groupAgent.timeUpdated) : "");
-                    GroupArrayJson.put(groupJson);
-                }
-            }
-        }
-        return GroupArrayJson.toString(4);
+        GroupAgentInstanceList groupMap = agentServer.groupAgents.get(name);
+        GroupAgentInstance group = groupMap.get(name);
+        return group.toJson().toString();
+
     }
+
     @RequestMapping(value = "/users/{id}/group", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public String postServerGroup(@PathVariable String id,HttpServletRequest request) throws Exception {
+    public String postServerGroup(@PathVariable String id, HttpServletRequest request) throws Exception {
         User user = agentServer.users.get(id);
         JSONObject serverJson = util.getJsonRequest(request);
         if (serverJson == null)
             throw new AgentAppServerBadRequestException(
                     "Invalid ServerGroup JSON object");
         // Parse and add the Server Group
-        ServerGroup serverGroup =agentServer.addServerGroup(user,serverJson);
-         // Done
+        ServerGroup serverGroup = agentServer.addServerGroup(user, serverJson);
+        // Done
         JSONObject message = new JSONObject();
         message.put("message", "Add was successful");
         return message.toString();
     }
+
     @RequestMapping(value = "/group", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public String getServerGroup () throws JSONException {
-        JSONArray GroupArrayJson = new JSONArray();
+    public String getServerGroup() throws JSONException {
+        JSONObject groupJson = new JSONObject();
+        JSONArray jsonArray2 = new JSONArray();
+
         // Get all serverGroup
         for (NameValue<ServerGroupList> groupListNameValue : agentServer.serverGroups) {
             // Get all  serverGroup
+
             for (ServerGroup serverGroup : agentServer.serverGroups
                     .get(groupListNameValue.name)) {
-                // Generate JSON for short summary of serverGroup
-                JSONObject groupJson = new JsonListMap();
-                groupJson.put("name", serverGroup.name);
-                groupJson.put("description", serverGroup.description);
-                groupJson.put("type",    serverGroup.type);
-                groupJson.put("creator",serverGroup.user.id);
-                GroupArrayJson.put(groupJson);
+                JSONObject chairJSON = new JSONObject();
+                JSONArray jsonArray = new JSONArray();
+                 GroupAgentInstanceList groupMap = agentServer.groupAgents.get(serverGroup.name);
+                if (groupMap != null) {
+                    GroupAgentInstance group = groupMap.get(serverGroup.name);
+                    JSONObject jsonObject = null;
+                    try {
+                        jsonObject = group.toJson();
+                        JSONArray List = new JSONArray();
+                        List = (JSONArray) jsonObject.get("agents");
+                        for (int i = 0; i < List.length(); i++) {
+                            JSONObject item = List.getJSONObject(i);
+                            JSONObject jsonObj = new JSONObject();
+                            jsonObj.put("aid", item.getString("aid"));
+                            jsonObj.put("host", item.getString("host"));
+                            jsonArray.put(jsonObj);
+                        }
+                        chairJSON.put("group",serverGroup.name);
+                        chairJSON.put("agents", jsonArray);
+                        jsonArray2.put(chairJSON);
+                    } catch (AgentServerException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+
+
             }
+
         }
-        JSONObject groupJson = new JSONObject();
-        groupJson.put("ServerGroup", GroupArrayJson);
+
+
+
+        groupJson.put("groups", jsonArray2);
         return groupJson.toString();
     }
+
     @RequestMapping(value = "/get", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public    @ResponseBody    String getmain() throws Exception {
+    public
+    @ResponseBody
+    String getmain() throws Exception {
         JSONObject message = new JSONObject();
         message.put("message", "Welcome to Agent Server");
         return message.toString();
     }
 
     @RequestMapping(value = "/config", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public    @ResponseBody    String getConfig() throws JSONException {
+    public
+    @ResponseBody
+    String getConfig() throws JSONException {
         JSONObject configJson = agentServer.config.toJson();
         return configJson.toString();
     }
+
     @RequestMapping(value = "/about", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public   @ResponseBody   String getAbout() throws JSONException {
+    public
+    @ResponseBody
+    String getAbout() throws JSONException {
         JSONObject aboutJson = new JsonListMap();
         aboutJson.put("Plataform", agentServer.config.get("Plataform"));
         aboutJson.put("software", agentServer.config.get("software"));
@@ -194,6 +230,7 @@ public class PlataformController {
         aboutJson.put("contact", agentServer.config.get("contact"));
         return aboutJson.toString();
     }
+
     @RequestMapping(value = "/agent_definitions", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public String getAgentDefinitions() throws JSONException {
@@ -423,12 +460,12 @@ public class PlataformController {
                 logger.info("Exception reading expression text : " + e);
             }
             logger.info("Evaluating expression: " + expressionString);
-           // AgentDefinition dummyAgentDefinition = new AgentDefinition(
-          //          agentServer);
-           // AgentInstance dummyAgentInstance = new AgentInstance(
-           //         dummyAgentDefinition);
-            String agentaname="agent1";
-            AgentInstance dummyAgentInstance =getAgent(agentServer,agentaname);
+            // AgentDefinition dummyAgentDefinition = new AgentDefinition(
+            //          agentServer);
+            // AgentInstance dummyAgentInstance = new AgentInstance(
+            //         dummyAgentDefinition);
+            String agentaname = "agent1";
+            AgentInstance dummyAgentInstance = getAgent(agentServer, agentaname);
             ScriptParser parser = new ScriptParser(dummyAgentInstance);
             ScriptRuntime scriptRuntime = new ScriptRuntime(
                     dummyAgentInstance);
@@ -448,6 +485,7 @@ public class PlataformController {
     private static AgentInstance getAgent(AgentServer agentServer, String value) {
         return agentServer.getAgentInstances(value);
     }
+
     @RequestMapping(value = "/run", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public String getRun(HttpServletRequest request) throws Exception {
@@ -472,15 +510,15 @@ public class PlataformController {
                     agentServer);
             AgentInstance dummyAgentInstance = new AgentInstance(
                     dummyAgentDefinition);*/
-            String agentaname="agent1";
-            AgentInstance dummyAgentInstance =getAgent(agentServer,agentaname);
+            String agentaname = "agent1";
+            AgentInstance dummyAgentInstance = getAgent(agentServer, agentaname);
 
             ScriptParser parser = new ScriptParser(dummyAgentInstance);
             ScriptRuntime scriptRuntime = new ScriptRuntime(
                     dummyAgentInstance);
             ScriptNode scriptNode = parser.parseScriptString(scriptString);
-                 Value valueNode = scriptRuntime.runScript(scriptString,
-                    scriptNode,null);
+            Value valueNode = scriptRuntime.runScript(scriptString,
+                    scriptNode, null);
             resultString = valueNode.getStringValue();
             logger.info("Script result: " + resultString);
 
