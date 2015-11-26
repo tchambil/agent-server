@@ -8,22 +8,37 @@
 + Apache Tomcat 7+
 + Java SE Development Kit (JDK) 7
 
-# Download 
+# Download(Optional for Deploy in Tomcat) 
 + War distribution of AgentServer is [available for download](https://github.com/tchambil/agent-server/blob/master/target/agent-server-1.0.war)
 
-# Install
+# Install manual
 ```shell
-{
-    "name": "definitions1",
-     "timers": [
-        {
-            "name": "message",
-            "interval": "seconds(4)",
-            "script": "message w; return w.read('only');",
-        }
-    ]
-}
+1. Edit file /var/lib/tomcat/conf/server.xml 
+
+<Host name="localhost" >
+<value …/>
+     <Context path="" docBase="/var/lib/tomcat7/webapps/agent-server-1.0"
+      Reloable=”true”/>
+</Host>
+
+2. Create directory for data
+   
+   cd /var/lib/tomcat7
+   mkdir  persistent_store 
+   chmod 777 persistent_store 
+
+3. Download file war 
+   
+   cd /var/lib/tomcat7/webapps
+   
+   sudo service tomcat7 stop(optional)
+
+   sudo wget -O agent-server-1.0.war https://github.com/tchambil/agent-server/blob/master/target/agent-server-1.0.war?raw=true
+   
+   sudo service tomcat7 restart(optional)
+
 ```
+
 # For start agent: 
 
 http://localhost:8080/index.html 
@@ -49,4 +64,23 @@ Steps for run:
 ->For add agents with button "add agent" 
 ->For get all agents with button "get all"
 -> . . . .
+```
+# Basic Configurations: 
+
+1. Create Agent Definition (for read messages)
+   ->AgentDefinition Menu -> JSON
+
+```shell
+{
+    "name": "definitions1",
+     "timers": [
+        {
+            "name": "message",
+            "interval": "seconds(4)",
+            "script": "message w; return w.read('only');",
+        }
+    ]
+}
+2. More informations Tutorial Plataform Agent Server
+ ->Tutorial Menu 
 ```
