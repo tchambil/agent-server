@@ -13,7 +13,7 @@
 
 # Install manual
 
-1. Edit file /var/lib/tomcat/conf/server.xml 
++ Edit file /var/lib/tomcat/conf/server.xml 
 
 ```shell
 <Host name="localhost" >
@@ -23,7 +23,7 @@
 </Host>
 ```
 
-2. Create directory for data
++ Create directory for data
 
  ```shell  
    cd /var/lib/tomcat7
@@ -31,7 +31,7 @@
    chmod 777 persistent_store 
 ```
 
-3. Download file war 
++ Download file war 
  ```shell  
    cd /var/lib/tomcat7/webapps
    
