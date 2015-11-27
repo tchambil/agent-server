@@ -20,15 +20,15 @@
      <Context path="" docBase="/var/lib/tomcat7/webapps/agent-server-1.0"
       Reloable=”true”/>
 </Host>
-
+```
 2. Create directory for data
-   
+ ```shell  
    cd /var/lib/tomcat7
    mkdir  persistent_store 
    chmod 777 persistent_store 
-
+```
 3. Download file war 
-   
+ ```shell  
    cd /var/lib/tomcat7/webapps
    
    sudo service tomcat7 stop(optional)
