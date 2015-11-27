@@ -127,14 +127,7 @@ public class PlataformController {
         return message.toString();
     }
 
-    @RequestMapping(value = "/users/{id}/group/{name}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public String getAgents(@PathVariable String id, @PathVariable String name) throws Exception {
-        logger.info("Getting list of all agents for a group");
-        GroupAgentInstanceList groupMap = agentServer.groupAgents.get(name);
-        GroupAgentInstance group = groupMap.get(name);
-        return group.toJson().toString();
 
-    }
 
     @RequestMapping(value = "/users/{id}/group", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public String postServerGroup(@PathVariable String id, HttpServletRequest request) throws Exception {
@@ -150,7 +143,14 @@ public class PlataformController {
         message.put("message", "Add was successful");
         return message.toString();
     }
+    @RequestMapping(value = "/group/{name}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public String getAgents( @PathVariable String name) throws Exception {
+        logger.info("Getting list of all agents for a group");
+        GroupAgentInstanceList groupMap = agentServer.groupAgents.get(name);
+        GroupAgentInstance group = groupMap.get(name);
+        return group.toJson().toString();
 
+    }
     @RequestMapping(value = "/group", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public String getServerGroup() throws JSONException {
@@ -177,7 +177,13 @@ public class PlataformController {
                             JSONObject item = List.getJSONObject(i);
                             JSONObject jsonObj = new JSONObject();
                             jsonObj.put("aid", item.getString("aid"));
+                            jsonObj.put("name", item.getString("name"));
                             jsonObj.put("host", item.getString("host"));
+                            jsonObj.put("Addresses", item.getString("addresses"));
+                            jsonObj.put("status", item.getString("status"));
+                            jsonObj.put("type",item.getString("type"));
+                            jsonObj.put("description",item.getString("description"));
+
                             jsonArray.put(jsonObj);
                         }
                         chairJSON.put("group",serverGroup.name);

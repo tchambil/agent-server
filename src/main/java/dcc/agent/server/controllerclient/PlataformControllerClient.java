@@ -16,6 +16,17 @@ public class PlataformControllerClient {
         return "index";
 
     }
+    @RequestMapping(value = "/group.do", method = RequestMethod.GET)
+    public String postgroup(ModelMap modelMap)
+    {
+        return "group";
+    }
+
+    @RequestMapping(value = "/listgroup.do", method = RequestMethod.GET)
+    public String getgroup(ModelMap modelMap)
+    {
+        return "listgroup";
+    }
 
     @RequestMapping(value = "/resetpassword", method = RequestMethod.GET)
     public String getrestpass(ModelMap modelMap)
