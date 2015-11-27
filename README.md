@@ -73,7 +73,7 @@ Example(http://agentserver.herokuapp.com/)
 
 # Basic Configurations: 
 
-1. Create Agent Definition (for read messages)
++ Create Agent Definition (for read messages)
    ->AgentDefinition Menu -> JSON
 
 ```shell
@@ -88,12 +88,12 @@ Example(http://agentserver.herokuapp.com/)
     ]
 }
 ```
-2. More informations Tutorial Plataform Agent Server
++ More informations Tutorial Plataform Agent Server
  ->Tutorial Menu 
 
 
 # Case Studio NautiLOD Distributed:
-1. To acces http://agentserver.herokuapp.com/nautilod.do
++ To acces http://agentserver.herokuapp.com/nautilod.do
   -> Run Script Menu ->  into Expression NautiLOD
 
 ```shell
@@ -109,7 +109,7 @@ Example(http://agentserver.herokuapp.com/)
 
 ```
 
-2. For get Result -> Result Menu with Task ID 
++ For get Result -> Result Menu with Task ID 
 
 For more information contact tchambil@dcc.uchile.cl
 
