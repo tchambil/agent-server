@@ -154,15 +154,17 @@
             </ul>
         </li>
         <!--<Groups]-->
+        <!--<Groups]-->
         <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".premium-menu1"
                                                                         class="nav-header collapsed"
                                                                         data-toggle="collapse">
-            <i class="fa fa-fw fa-eye-slash"></i> Groups<i class="fa fa-collapse"></i></a>
+            <i class="fa fa-fw fa-cog"></i> Groups<i class="fa fa-collapse"></i></a>
         </li>
         <li>
             <ul class="premium-menu1 nav nav-list collapse">
-                <li><a href="/group.do"><span class="fa fa-caret-right"></span> Group</a></li>
+                <li><a href="/group.do"><span class="fa fa-caret-right"></span> Group</a> </li>
                 <li><a href="/listgroup.do"><span class="fa fa-caret-right"></span> List</a></li>
+                <li><a href="/suscribegroup.do"><span class="fa fa-caret-right"></span> Suscribe</a></li>
             </ul>
         </li>
 
@@ -241,6 +243,7 @@
         <table id="idtablelist" class="table table-hover">
             <thead>
             <div class="col-md-4">
+
                    <div class="form-group">
                                 <label>Groups</label>
                                 <select id="Dropgroup" class="form-control">

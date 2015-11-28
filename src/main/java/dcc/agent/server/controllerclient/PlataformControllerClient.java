@@ -28,10 +28,10 @@ public class PlataformControllerClient {
         return "listgroup";
     }
 
-    @RequestMapping(value = "/resetpassword", method = RequestMethod.GET)
-    public String getrestpass(ModelMap modelMap)
+    @RequestMapping(value = "/suscribegroup.do", method = RequestMethod.GET)
+    public String getsuscribegroup(ModelMap modelMap)
     {
-        return "resetpassword";
+        return "suscribegroup";
     }
 
     @RequestMapping(value = "/sign-in", method = RequestMethod.GET)
