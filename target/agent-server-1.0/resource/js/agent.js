@@ -25,11 +25,8 @@ $(document).ready(function () {
         url: "../agent_definitions"
     }).then(function (data) {
         $('#DropAgentGeneral').empty();
-
         $(data.agent_definitions).each(function(index,item) {
-
             $('#DropAgentGeneral').append('<option value='+item.name+'>'+item.name+'</option>');
-
 
         });
 
