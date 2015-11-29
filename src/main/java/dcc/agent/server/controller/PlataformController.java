@@ -24,9 +24,9 @@ import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -127,8 +127,6 @@ public class PlataformController {
         return message.toString();
     }
 
-
-
     @RequestMapping(value = "/users/{id}/group", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public String postServerGroup(@PathVariable String id, HttpServletRequest request) throws Exception {
         User user = agentServer.users.get(id);
@@ -149,6 +147,34 @@ public class PlataformController {
         GroupAgentInstanceList groupMap = agentServer.groupAgents.get(name);
         GroupAgentInstance group = groupMap.get(name);
         return group.toJson().toString();
+
+    }
+    @RequestMapping(value = "/groupsname", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+    public String getGroupsname(HttpServletRequest request) throws Exception {
+        // String url="http://dbpedias.cloudapp.net/group";
+        JSONObject configJson = util.getJsonRequest(request);
+        String uri = configJson.optString("server");
+        String group = configJson.optString("group");
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        RestTemplate restTemplate = new RestTemplate();
+        String result = restTemplate.getForObject(uri+"/group/"+group, String.class);
+        JSONObject jsonObject=new JSONObject(result);
+        return jsonObject.toString();
+
+    }
+
+    @RequestMapping(value = "/groups", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+    public String getGroups(HttpServletRequest request) throws Exception {
+       // String url="http://dbpedias.cloudapp.net/group";
+        JSONObject configJson = util.getJsonRequest(request);
+         String uri = configJson.optString("server");
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        RestTemplate restTemplate = new RestTemplate();
+        String result = restTemplate.getForObject(uri+"/group", String.class);
+        JSONObject jsonObject=new JSONObject(result);
+      return jsonObject.toString();
 
     }
     @RequestMapping(value = "/group", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
