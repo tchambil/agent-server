@@ -1,5 +1,5 @@
-<!doctype html>
-<html lang="en">
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<html>
 <head>
     <meta charset="utf-8">
     <title>Agent Server v1.0</title>
@@ -7,52 +7,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="/resource/css/bootstrap.css">
-    <link rel="stylesheet" href="/resource/css/font-awesome.css">
-
-
-    <script src="/resource/js/site/jquery-1.11.1.min.js" type="text/javascript"></script>
-    <script src="/resource/js/system.js"></script>
-    <script src="/resource/js/site/jquery.knob.js" type="text/javascript"></script>
-
-
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-
-    <link href="/resource/css/vis.css" rel="stylesheet" type="text/css" />
-
+    <link rel="stylesheet" type="text/css" href="../../resource/css/bootstrap.css">
+    <link rel="stylesheet" href="../../resource/css/font-awesome.css">
+    <script src="<c:url value="../../resource/js/site/jquery-1.11.1.min.js" />"></script>
+    <script src="<c:url value="../../resource/js/plataform.js"/>"></script>
+    <script src="<c:url value="../../resource/js/system.js"/>"></script>
+    <script src="<c:url value="../../resource/js/group.js"/>"></script>
+    <script src="<c:url value="../../resource/js/site/jquery.knob.js"/>"></script>
     <script type="text/javascript">
         $(function () {
             $(".knob").knob();
         });
     </script>
-
-
-    <link rel="stylesheet" type="text/css" href="/resource/css/theme.css">
-    <link rel="stylesheet" type="text/css" href="/resource/css/premium.css">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-
-    <style>
-        #mynetworkFA,
-        #mynetworkIO {
-            height: 500px;
-            width: 1000px;
-            border:1px solid lightgrey;
-        }
-
-        p {
-            max-width:700px;
-        }
-    </style>
-    <script src="/resource/js/message.js"></script>
-    <script src="/resource/js/site/googleAnalytics.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resource/css/theme.css">
+    <link rel="stylesheet" type="text/css" href="../../resource/css/premium.css">
 </head>
 <body class=" theme-blue">
-
 <!-- Demo page code -->
-
 <script type="text/javascript">
     $(function () {
         var match = document.cookie.match(new RegExp('color=([^;]+)'));
@@ -119,7 +91,6 @@
 
     </div>
 
-
 </div>
 </div>
 
@@ -142,9 +113,9 @@
         </li>
         <li>
             <ul class="users-menu nav nav-list collapse">
-                <li><a href="/users.do"><span class="fa fa-caret-right"></span> Add</a></li>
-                <li><a href="/listuser.do"><span class="fa fa-caret-right"></span> List</a></li>
 
+                <li><a href="/users.do"><span class="fa fa-caret-right"></span>Add</a></li>
+                <li><a href="/listuser.do"><span class="fa fa-caret-right"></span> List</a></li>
             </ul>
         </li>
 
@@ -173,6 +144,8 @@
                 <li><a href="/listagent.do"><span class="fa fa-caret-right"></span> List</a></li>
             </ul>
         </li>
+
+
         <!--<Groups]-->
         <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".premium-menu1"
                                                                         class="nav-header collapsed"
@@ -187,7 +160,8 @@
                 <li><a href="/suscribegroup.do"><span class="fa fa-caret-right"></span> Suscribe</a></li>
             </ul>
         </li>
-        <!--<Groups]-->
+
+        <!--<Aplications]-->
         <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".group-menu"
                                                                         class="nav-header collapsed"
                                                                         data-toggle="collapse">
@@ -242,28 +216,79 @@
 </div>
 
 <div class="content">
-<div class="stats">
-    <span   class="label label-danger">Status:</span> <span id="headerStatus">null</span>
-    <span>&nbsp;&nbsp;</span>
-    <span class="label label-success">Address IP:</span> <span id="headerIp">null</span>
-    <span>&nbsp;&nbsp;</span>
-    <span class="label label-info">Server:</span> <span id="headerServer">null</span>
-    <span>&nbsp;&nbsp;</span>
+    <div class="stats">
+        <span   class="label label-danger">Status:</span> <span id="headerStatus">null</span>
+        <span>&nbsp;&nbsp;</span>
+        <span class="label label-success">Address IP:</span> <span id="headerIp">null</span>
+        <span>&nbsp;&nbsp;</span>
+        <span class="label label-info">Server:</span> <span id="headerServer">null</span>
+        <span>&nbsp;&nbsp;</span>
+    </div>
+
+    <div class="header">
+        <h1 class="page-title">Group/Agents</h1>
+    </div>
+
+    <div class="main-content">
+
+        <div class="col-md-4">
+            <ul class="cards list-group">
+                <li class="list-group-item">
+            <div class="form-group">
+                <label>Groups</label>
+                <select id="Droplistgroups" class="form-control">
+                    <option value="Test">Selection Item</option>
+                </select>
+            </div>
+                    <div class="form-group">
+                        <label>Agents</label>
+                        <select id="Droplistagents" class="form-control">
+                            <option value="Test">Selection Item</option>
+                        </select>
+                        <button id="btnadd" class="btn btn-primary"><i class="fa fa-play"></i>Add</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <table id="idtablelist" class="table table-hover">
+            <thead>
+
+            <tr>
+                <th>group</th>
+                <th>aid</th>
+                <th>Name</th>
+                <th>addresses</th>
+                <th>Type</th>
+                <th>Status</th>
+                <th style="width: 3.5em;"></th>
+            </tr>
+            </thead>
+            <tbody id="listagents">
+            </tbody>
+        </table>
+        <ul class="pagination">
+            <li><a href="#">&laquo;</a></li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">&raquo;</a></li>
+        </ul>
+
+        <footer>
+            <hr>
+            <p class="pull-right">A <a href="http://www.portnine.com/bootstrap-themes" target="_blank">Free
+                Bootstrap
+                Theme</a> by <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
+
+            <p>© 2015 <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
+        </footer>
+        </div>
+
 </div>
+<script src="<c:url value="../../resource/js/site/bootstrap.js"/>"></script>
 
-<div class="header">
-    <h1 class="page-title">Message</h1>
-</div>
-
-<div class="main-content">
-    <button id="getstart" class="btn btn-primary" onclick="myFunction()"><i class="fa fa-play"></i> Start</button>
-      <div id="mynetworkFA"></div>
-
-
-</div>
-  </div>
-
-<script src="/resource/js/site/bootstrap.js"></script>
 <script type="text/javascript">
     $("[rel=tooltip]").tooltip();
     $(function () {
@@ -272,7 +297,6 @@
         });
     });
 </script>
-
 
 </body>
 </html>

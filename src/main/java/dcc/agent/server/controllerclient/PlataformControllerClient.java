@@ -34,6 +34,12 @@ public class PlataformControllerClient {
         return "suscribegroup";
     }
 
+    @RequestMapping(value = "/groupagents.do", method = RequestMethod.GET)
+    public String getgroupagent(ModelMap modelMap)
+    {
+        return "groupagents";
+    }
+
     @RequestMapping(value = "/sign-in", method = RequestMethod.GET)
     public String getsignin(ModelMap modelMap)
     {

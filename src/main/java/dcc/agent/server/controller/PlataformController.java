@@ -44,7 +44,6 @@ public class PlataformController {
     {
         return this.agentServer;
     }
-
     @RequestMapping(value = {"/status/start", "/status/start2"}, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public String Start() throws Exception {
@@ -67,10 +66,9 @@ public class PlataformController {
         return message.toString();
 
     }
-
-    @RequestMapping(value = "/users/{id}/group/{name}", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public String postServerGroup(@PathVariable String id, @PathVariable String name, HttpServletRequest request) throws Exception {
-        User user = agentServer.users.get(id);
+    @RequestMapping(value = "/groups/{name}", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public String postServerGroup(@PathVariable String name, HttpServletRequest request) throws Exception {
+        User user = agentServer.users.get("test-user-1");
 
         if (name == null) {
             throw new AgentAppServerBadRequestException("Missing group name path parameter");
@@ -126,10 +124,9 @@ public class PlataformController {
         message.put("Group Agent", "Add was successful");
         return message.toString();
     }
-
-    @RequestMapping(value = "/users/{id}/group", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public String postServerGroup(@PathVariable String id, HttpServletRequest request) throws Exception {
-        User user = agentServer.users.get(id);
+    @RequestMapping(value = "/group", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public String postServerGroup( HttpServletRequest request) throws Exception {
+        User user = agentServer.users.get("test-user-1");
         JSONObject serverJson = util.getJsonRequest(request);
         if (serverJson == null)
             throw new AgentAppServerBadRequestException(
@@ -149,6 +146,26 @@ public class PlataformController {
         return group.toJson().toString();
 
     }
+    @RequestMapping(value = "/groupgeneral", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public String getgroupgeneral() throws Exception {
+        JSONArray GroupArrayJson = new JSONArray();
+        for (NameValue<ServerGroupList> groupListNameValue : agentServer.serverGroups) {
+            // Get all  serverGroup
+            for (ServerGroup serverGroup : agentServer.serverGroups
+                    .get(groupListNameValue.name)) {
+                // Generate JSON for short summary of serverGroup
+                JSONObject groupJson = new JsonListMap();
+                groupJson.put("name", serverGroup.name);
+                groupJson.put("description", serverGroup.description);
+                groupJson.put("type", serverGroup.type);
+                groupJson.put("creator", serverGroup.user.id);
+                GroupArrayJson.put(groupJson);
+            }
+        }
+        JSONObject groupJson = new JSONObject();
+        groupJson.put("ServerGroup", GroupArrayJson);
+        return groupJson.toString();
+    }
     @RequestMapping(value = "/groupsname", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     public String getGroupsname(HttpServletRequest request) throws Exception {
         // String url="http://dbpedias.cloudapp.net/group";
@@ -163,7 +180,6 @@ public class PlataformController {
         return jsonObject.toString();
 
     }
-
     @RequestMapping(value = "/groups", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     public String getGroups(HttpServletRequest request) throws Exception {
        // String url="http://dbpedias.cloudapp.net/group";
@@ -178,10 +194,8 @@ public class PlataformController {
       return jsonObject.toString();
 
     }
-
-
     @RequestMapping(value = "/suscribe", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
-        public String suscribe(HttpServletRequest request) throws Exception {
+    public String suscribe(HttpServletRequest request) throws Exception {
         // String url="http://dbpedias.cloudapp.net/group";
         JSONObject configJson = util.getJsonRequest(request);
         String uri = configJson.optString("server");
@@ -202,7 +216,7 @@ public class PlataformController {
             jsonObj.put("host", item.getString("host"));
             jsonObj.put("addresses", item.getString("addresses"));
             jsonObj.put("status", item.getString("status"));
-            jsonObj.put("type",item.getString("type"));
+            jsonObj.put("type",item.getString("remote"));
             jsonObj.put("description",item.getString("description"));
             jsonObj.put("definition",item.getString("definition"));
             User user = agentServer.users.get("test-user-1");
@@ -213,17 +227,14 @@ public class PlataformController {
         return jsonObject.toString();
 
     }
-
     @RequestMapping(value = "/group", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public String getServerGroup() throws JSONException {
         JSONObject groupJson = new JSONObject();
         JSONArray jsonArray2 = new JSONArray();
-
         // Get all serverGroup
         for (NameValue<ServerGroupList> groupListNameValue : agentServer.serverGroups) {
             // Get all  serverGroup
-
             for (ServerGroup serverGroup : agentServer.serverGroups
                     .get(groupListNameValue.name)) {
                 JSONObject chairJSON = new JSONObject();
@@ -246,7 +257,6 @@ public class PlataformController {
                             jsonObj.put("status", item.getString("status"));
                             jsonObj.put("type",item.getString("type"));
                             jsonObj.put("description",item.getString("description"));
-
                             jsonArray.put(jsonObj);
                         }
                         chairJSON.put("group",serverGroup.name);
@@ -255,37 +265,23 @@ public class PlataformController {
                     } catch (AgentServerException e) {
                         e.printStackTrace();
                     }
-
                 }
-
-
             }
-
         }
-
-
-
         groupJson.put("groups", jsonArray2);
         return groupJson.toString();
     }
-
     @RequestMapping(value = "/get", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public
-    @ResponseBody
-    String getmain() throws Exception {
+    public  @ResponseBody    String getmain() throws Exception {
         JSONObject message = new JSONObject();
         message.put("message", "Welcome to Agent Server");
         return message.toString();
     }
-
     @RequestMapping(value = "/config", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public
-    @ResponseBody
-    String getConfig() throws JSONException {
+    public    @ResponseBody    String getConfig() throws JSONException {
         JSONObject configJson = agentServer.config.toJson();
         return configJson.toString();
     }
-
     @RequestMapping(value = "/about", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public
     @ResponseBody
@@ -299,7 +295,6 @@ public class PlataformController {
         aboutJson.put("contact", agentServer.config.get("contact"));
         return aboutJson.toString();
     }
-
     @RequestMapping(value = "/agent_definitions", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public String getAgentDefinitions() throws JSONException {
@@ -327,7 +322,6 @@ public class PlataformController {
 
         return agentDefinitionsJson.toString();
     }
-
     @RequestMapping(value = "/agents", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public String getagents() throws JSONException, SymbolException {
@@ -361,10 +355,9 @@ public class PlataformController {
 
         return agentInstancesJson.toString();
     }
-
     @RequestMapping(value = "/field_types", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public String getFieldTypes() throws JSONException, AgentServerException {
+   public String getFieldTypes() throws JSONException, AgentServerException {
 
         try {
             logger.info("Getting list of field types");
@@ -380,7 +373,6 @@ public class PlataformController {
                             + e);
         }
     }
-
     @RequestMapping(value = "/status/pause", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public String putStatusPause() throws Exception {
@@ -400,7 +392,6 @@ public class PlataformController {
         return message.toString();
 
     }
-
     @RequestMapping(value = "/status", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public String getStatus() throws JSONException, InterruptedException, AgentServerException {
