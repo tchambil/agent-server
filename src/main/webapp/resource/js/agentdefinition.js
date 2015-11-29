@@ -28,7 +28,7 @@ function jsonSimple(data)
 function json(data)
 {
     var json =$('#textjson').val()
-    alert(json)
+
     return json;
 }
 
@@ -87,42 +87,30 @@ $(document).ready(function () {
 
         $('#idlisttable').empty();
         $(data.agent_definitions).each(function(index,item) {
-
             txt="<tr><td id="+item.user+">"+item.user+
                 "</td><td id="+item.user+">"+item.name+"</td>"+
                 "</td><td id="+item.user+">"+item.description+"</td>"+
                 "</td><td id="+item.user+">"+item.enabled+"</td>"+
                 //   "<td><input type='button' value='Button 1'  id="+item.id+" /></td>"+
-
                 "<td><a href='user.jsp'><i class='fa fa-pencil'></i></a>"+
                 "<a href='#myModal' role='button' data-toggle='modal' id="+item.user+"><i class='fa fa-trash-o'></i></a></td></tr>"
             $('#idlisttable').append(txt);
-
-        });
-
-
+       });
     });
-
     $.ajax({
         url: "../users"
     }).then(function (data) {
         $('#advanceusergeneral').empty();
         $('#DropUserGeneral').empty();
-
         $(data.users).each(function(index,item) {
             {
-
               $('#advanceusergeneral').append('<option value='+item.id+'>'+item.nick_name+'</option>');
               $('#DropUserGeneral').append('<option value='+item.id+'>'+item.nick_name+'</option>');
                 $('#codejson').empty();
                 $('#codejson').append( divSimple());
              }
             });
-
-
     });
-
-
     $("#btnclean").click(function (e) {
         $('#btnsimpleSdve').attr("disabled", false);
     });
@@ -180,7 +168,7 @@ $(document).ready(function () {
 
 
     $('#btnscripptSave').click(function () {
-        alert("test")
+
         $.ajax({
             type: 'POST',
             url: '../users/test-user-1/agent_definitions',
