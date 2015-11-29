@@ -244,6 +244,7 @@
                 <select id="Dropgroups" class="form-control">
                     <option value="Test">Selection Item</option>
                 </select>
+                <button id="btnsuscribe" class="btn btn-primary"><i class="fa fa-play"></i>Suscribe</button>
             </div>
                 </li>
             </ul>

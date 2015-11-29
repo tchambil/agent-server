@@ -627,13 +627,10 @@ public class AgentServer {
         // log.info("Adding new agent instance named: " + agentInstanceName + " for agent definition '" + agentDefinitionName + "' for user: " + user.id);
         AgentInstanceList agentMap = agentInstances.get(user.id);
         //  log.info("Init Print AgentMap:- - - - - " +agentMap);
-
         if (agentMap == null) {
             agentMap = new AgentInstanceList();
             agentInstances.add(user.id, agentMap);
         }
-
-
         // Check if referenced agent definition exists
         //
         AgentDefinitionList userAgentDefinitions = agentDefinitions.get(user.id);
@@ -643,7 +640,6 @@ public class AgentServer {
         AgentDefinition agentDefinition = agentDefinitions.nameValueMap.get(user.id).value.get(agentDefinitionName);
         if (agentDefinition == null)
             throw new AgentServerException("Agent instance '" + agentInstanceName + "' references agent definition '" + agentDefinitionName + "' which does not exist for user '" + user.id + "'");
-
         // Parse the agent instance parameter values
         String invalidParameterNames = "";
         SymbolManager symbolManager = new SymbolManager();
@@ -665,12 +661,10 @@ public class AgentServer {
             if (invalidParameterNames.length() > 0)
                 throw new AgentServerException("Parameter names for agent instance " + agentInstanceName + " are not defined for referenced agent definition " + agentDefinitionName + ": " + invalidParameterNames);
         }
-
         // Check if instance of named agent definition with specified parameters exists yet
         if (agentMap.getAgentInstance(user, agentDefinition, parameterValues) != null)
             throw new AgentServerException("Agent instance name already exists: '" + agentInstanceName + "' with paramters " + parameterValues.toString());
-
-        String triggerIntervalExpression = agentJson.optString("trigger_interval", AgentDefinition.DEFAULT_TRIGGER_INTERVAL_EXPRESSION);
+       String triggerIntervalExpression = agentJson.optString("trigger_interval", AgentDefinition.DEFAULT_TRIGGER_INTERVAL_EXPRESSION);
         String reportingIntervalExpression = agentJson.optString("reporting_interval", AgentDefinition.DEFAULT_REPORTING_INTERVAL_EXPRESSION);
 
         boolean publicOutput = agentJson.optBoolean("public_output", true);
@@ -693,12 +687,9 @@ public class AgentServer {
         } catch (ParseException e) {
             throw new AgentServerException("Unable to parse modified date ('" + modified + "') - " + e.getMessage());
         }
-
         AgentInstance agentInstance = agentMap.put(user, agentDefinition, agentInstanceName, agentaddresses, agentHostName, agentType, agentDescription, parameterValues, triggerIntervalExpression, reportingIntervalExpression, publicOutput, limitInstanceStatesStored, enabled, timeCreated, timeModified);
-
         // Persist the new agent instance
         persistence.put(agentInstance);
-
         // Return the created/shared agent instance
         return agentInstance;
     }

@@ -174,9 +174,46 @@ public class PlataformController {
         RestTemplate restTemplate = new RestTemplate();
         String result = restTemplate.getForObject(uri+"/group", String.class);
         JSONObject jsonObject=new JSONObject(result);
+
       return jsonObject.toString();
 
     }
+
+
+    @RequestMapping(value = "/suscribe", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+        public String suscribe(HttpServletRequest request) throws Exception {
+        // String url="http://dbpedias.cloudapp.net/group";
+        JSONObject configJson = util.getJsonRequest(request);
+        String uri = configJson.optString("server");
+        String group = configJson.optString("group");
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        RestTemplate restTemplate = new RestTemplate();
+        String result = restTemplate.getForObject(uri+"/group/"+group, String.class);
+        JSONObject jsonObject=new JSONObject(result);
+        JSONArray List = new JSONArray();
+
+        List = (JSONArray) jsonObject.get("agents");
+        for (int i = 0; i < List.length(); i++) {
+            JSONObject item = List.getJSONObject(i);
+            JSONObject jsonObj = new JSONObject();
+            jsonObj.put("aid", item.getString("aid"));
+            jsonObj.put("name", item.getString("name"));
+            jsonObj.put("host", item.getString("host"));
+            jsonObj.put("addresses", item.getString("addresses"));
+            jsonObj.put("status", item.getString("status"));
+            jsonObj.put("type",item.getString("type"));
+            jsonObj.put("description",item.getString("description"));
+            jsonObj.put("definition",item.getString("definition"));
+            User user = agentServer.users.get("test-user-1");
+            AgentInstance agentInstance = agentServer.addAgentInstance(user,
+                    jsonObj);
+
+        }
+        return jsonObject.toString();
+
+    }
+
     @RequestMapping(value = "/group", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public String getServerGroup() throws JSONException {
