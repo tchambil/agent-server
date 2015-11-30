@@ -1,5 +1,7 @@
 package dcc.agent.server.controller;
 
+import dcc.agent.server.service.ACL.ACLMessage;
+import dcc.agent.server.service.ACL.AgentSender;
 import dcc.agent.server.service.agentserver.*;
 import dcc.agent.server.service.appserver.AgentAppServer;
 import dcc.agent.server.service.appserver.AgentAppServerBadRequestException;
@@ -197,16 +199,18 @@ public class PlataformController {
     @RequestMapping(value = "/suscribe", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     public String suscribe(HttpServletRequest request) throws Exception {
         // String url="http://dbpedias.cloudapp.net/group";
+        User user = agentServer.users.get("test-user-1");
         JSONObject configJson = util.getJsonRequest(request);
         String uri = configJson.optString("server");
         String group = configJson.optString("group");
+        String agent = configJson.optString("agent");
+        AgentInstance SuscriptorAgent= agentServer.getAgentInstanceId(agent);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         RestTemplate restTemplate = new RestTemplate();
         String result = restTemplate.getForObject(uri+"/group/"+group, String.class);
         JSONObject jsonObject=new JSONObject(result);
         JSONArray List = new JSONArray();
-
         List = (JSONArray) jsonObject.get("agents");
         for (int i = 0; i < List.length(); i++) {
             JSONObject item = List.getJSONObject(i);
@@ -216,13 +220,13 @@ public class PlataformController {
             jsonObj.put("host", item.getString("host"));
             jsonObj.put("addresses", item.getString("addresses"));
             jsonObj.put("status", item.getString("status"));
-            jsonObj.put("type",item.getString("remote"));
+            jsonObj.put("type","remote");
             jsonObj.put("description",item.getString("description"));
             jsonObj.put("definition",item.getString("definition"));
-            User user = agentServer.users.get("test-user-1");
-            AgentInstance agentInstance = agentServer.addAgentInstance(user,
-                    jsonObj);
+           AgentInstance RegisterAgent = agentServer.addAgentInstance(user,jsonObj);
+           ACLMessage aclMessage =agentServer.addSuscribeAgent(SuscriptorAgent, RegisterAgent);
 
+           AgentSender.send(agentServer, aclMessage, true);
         }
         return jsonObject.toString();
 

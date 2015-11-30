@@ -16,10 +16,7 @@
 
 package dcc.agent.server.service.agentserver;
 
-import dcc.agent.server.service.ACL.ACLMessage;
-import dcc.agent.server.service.ACL.ACLMessageList;
-import dcc.agent.server.service.ACL.AgentReceiver;
-import dcc.agent.server.service.ACL.AgentSender;
+import dcc.agent.server.service.ACL.*;
 import dcc.agent.server.service.appserver.AgentAppServer;
 import dcc.agent.server.service.config.AgentServerConfig;
 import dcc.agent.server.service.config.AgentServerProperties;
@@ -38,10 +35,7 @@ import dcc.agent.server.service.script.parser.ParserException;
 import dcc.agent.server.service.script.parser.tokenizer.TokenizerException;
 import dcc.agent.server.service.script.runtime.ScriptState;
 import dcc.agent.server.service.script.runtime.value.Value;
-import dcc.agent.server.service.util.DateUtils;
-import dcc.agent.server.service.util.ListMap;
-import dcc.agent.server.service.util.NameValue;
-import dcc.agent.server.service.util.NameValueList;
+import dcc.agent.server.service.util.*;
 import dcc.agent.server.service.webaccessmanager.WebAccessManager;
 import dcc.agent.server.service.webaccessmanager.WebPage;
 import dcc.agent.server.service.webaccessmanager.WebSiteAccessConfig;
@@ -131,9 +125,15 @@ public class AgentServer {
     }
     public static int getHttpStatus(String url) throws IOException {
         int StatusCode;
+        String webService = null;
         try {
             URL siteURL = new URL(url);
-            HttpURLConnection connection = (HttpURLConnection) siteURL
+            String protocol = siteURL.getProtocol();
+            String host = siteURL.getHost();
+            int port = siteURL.getPort();
+            webService = protocol + "://" + host + (port > 0 ? ":" + port : "");
+            URL server =new URL(webService);
+            HttpURLConnection connection = (HttpURLConnection) server
                     .openConnection();
             connection.setRequestMethod("GET");
             connection.connect();
@@ -259,7 +259,6 @@ public class AgentServer {
             e.printStackTrace();
         }
     }
-
     public synchronized NautiLODResult addNautilood(NautiLODResult nautiLODResult) throws AgentServerException, JSONException {
         if (nautiLODResult != null) {
             // Check if the user has any agents yet
@@ -278,7 +277,7 @@ public class AgentServer {
         }
         return nautiLODResult;
     }
-     public NautiLODResult addNautilod(JSONObject agentJson) throws JSONException, AgentServerException {
+    public NautiLODResult addNautilod(JSONObject agentJson) throws JSONException, AgentServerException {
         // Parse the JSON for the agent definition
         log.info("Parse the JSON for the agent definition");
         NautiLODResult nautiLODResult = NautiLODResult.fromJson(this, agentJson);
@@ -286,6 +285,32 @@ public class AgentServer {
         addNautilood(nautiLODResult);
         // Return the new agent definition
         return nautiLODResult;
+    }
+    public ACLMessage addSuscribeAgent(AgentInstance SuscriptorAgent,AgentInstance RegisterAgent){
+
+        JSONObject agentInstanceJson = new JsonListMap();
+        try {
+            agentInstanceJson.put("user", SuscriptorAgent.user.id);
+            agentInstanceJson.put("name", SuscriptorAgent.name);
+            agentInstanceJson.put("Addresses",SuscriptorAgent.addresses);
+            agentInstanceJson.put("host", SuscriptorAgent.host);
+            agentInstanceJson.put("aid", SuscriptorAgent.aid);
+            agentInstanceJson.put("type", "remote");
+            agentInstanceJson.put("definition", SuscriptorAgent.agentDefinition.name);
+            agentInstanceJson.put("description", SuscriptorAgent.description);
+            agentInstanceJson.put("status", SuscriptorAgent.getStatus());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        ACLMessage aclMessage = new ACLMessage();
+        aclMessage.setContent(agentInstanceJson.toString());
+        aclMessage.setReplyTo(SuscriptorAgent.aid);
+        aclMessage.setPerformative(Performative.SUBSCRIBE);
+        aclMessage.setReceivers(RegisterAgent.aid);
+        aclMessage.setSender(SuscriptorAgent.aid);
+        aclMessage.setDelegate(true);
+        aclMessage.setStatus("new");
+      return aclMessage;
     }
     public ACLMessage addAgentMessage(JSONObject agenJson) throws JSONException, AgentServerException, ParseException, ParserException, TokenizerException {
         return addAgentMessage(null, agenJson);
@@ -345,7 +370,7 @@ public class AgentServer {
         ACLMessage aclMessage = AgentReceiver.receive(this, messageId);
         return aclMessage;
     }
-    public void send(ACLMessage message) {
+    public void send(ACLMessage message) throws IOException {
         try {
             AgentSender.send(this, message, false);
         } catch (AgentServerException e) {
@@ -406,7 +431,6 @@ public class AgentServer {
         // Delete the named agent definition for the user
         agentInstanceList.remove(name);
     }
-
     public GroupAgentInstance addGroupAgentInstance(GroupAgentInstance GroupAgent) throws AgentServerException {
         if (GroupAgent != null) {
             if (!groupAgents.containsKey(GroupAgent.group.name)) {
@@ -1040,31 +1064,24 @@ public class AgentServer {
     public WebPage getWebPage(String userId, String url, boolean useCache, long refreshInterval, boolean wait) {
         return webAccessManager.getWebPage(userId, url, useCache, refreshInterval, wait);
     }
-
     public WebPage postUrl(String userId, String url, String data) {
         return webAccessManager.postUrl(userId, url, data);
     }
-
     public WebPage postUrl(String userId, String url, String data, long refreshInterval, boolean wait) {
         return webAccessManager.postUrl(userId, url, data, refreshInterval, wait);
     }
-
     public ListMap<String, String> getWebSiteAccessControls(User user) throws JSONException, AgentServerException {
         return webAccessManager.getWebSiteAccessControls(user);
     }
-
     public String getAdminPassword() {
         return config.agentServerProperties.adminPassword;
     }
-
     public String getPersistentStorePath() {
         return agentServerProperties.persistent_store_dir + "/" + agentServerProperties.DEFAULT_PERSISTENT_STORE_FILE_NAME;
     }
-
     public long getMinimumTriggerInterval() {
         return config.getLong("minimum_trigger_interval");
     }
-
     public long getMinimumReportingInterval() {
         return config.getLong("minimum_reporting_interval");
     }

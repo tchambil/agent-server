@@ -8,6 +8,7 @@ import org.json.JSONException;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -17,30 +18,39 @@ import java.net.URL;
 public class AgentSender {
     static final Logger log = Logger.getLogger(AgentSender.class);
 
-    static public void sendRemote(AgentServer agentServer,ACLMessage message) throws AgentServerException {
+    static public void sendRemote(AgentServer agentServer, ACLMessage message) throws AgentServerException {
         log.info("Initialize the aclmessage for send");
         // Initialize the agent send,
         AgentInstance agentInstance = agentServer.getAgentInstanceId(message.receivers);
         String webService = getAddresss(agentInstance);
-        RestTemplate restTemplate = new RestTemplate();
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        HttpEntity<String> entity = new HttpEntity<String>(message.toJson().toString(), headers);
-        if (message.performative.getMethod() == String.valueOf(HttpMethod.GET)) {
-        } else if (message.performative.getMethod() == String.valueOf(HttpMethod.POST)) {
-            ResponseEntity<String> response = restTemplate.exchange(webService, HttpMethod.POST, entity, String.class);
-            if (response.getStatusCode() == HttpStatus.OK) {
-              log.info("Send message for method POST was successfu");
-            }
-        } else if (message.performative.getMethod() == String.valueOf(HttpMethod.PUT)) {
-        } else {
-            log.info("nothing exist method HTTP");
-        }
 
+        try {
+
+            if (agentServer.getHttpStatus(webService) == 200) {
+                RestTemplate restTemplate = new RestTemplate();
+                HttpHeaders headers = new HttpHeaders();
+                headers.setContentType(MediaType.APPLICATION_JSON);
+                HttpEntity<String> entity = new HttpEntity<String>(message.toJson().toString(), headers);
+                if (message.performative.getMethod() == String.valueOf(HttpMethod.GET)) {
+                } else if (message.performative.getMethod() == String.valueOf(HttpMethod.POST)) {
+                    ResponseEntity<String> response = restTemplate.exchange(webService, HttpMethod.POST, entity, String.class);
+                    if (response.getStatusCode() == HttpStatus.OK) {
+                        log.info("Send message for method POST was successfu");
+                    }
+                } else if (message.performative.getMethod() == String.valueOf(HttpMethod.PUT)) {
+                } else {
+                    log.info("nothing exist method HTTP");
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
     static public void sendlocal(AgentServer agentServer, ACLMessage message) throws AgentServerException, JSONException {
         ACLMessage newmessage = agentServer.addAgentMessage(null, message.toJson());
     }
+
     private static String getAddresss(AgentInstance agentInstance) {
         String webService = null;
         URL tempUrl = null;
@@ -55,24 +65,24 @@ public class AgentSender {
         }
         return webService;
     }
-    static public void send(AgentServer agentServer, ACLMessage message) throws AgentServerException, JSONException {
+
+    static public void send(AgentServer agentServer, ACLMessage message) throws AgentServerException, JSONException, IOException {
         AgentInstance agentInstance = agentServer.getAgentInstanceId(message.receivers);
         if (agentInstance != null) {
             if (agentInstance.type.equals("remote")) {
-                 sendRemote(agentServer,message);
-            }
-            else{
-                 sendlocal(agentServer, message);
+                sendRemote(agentServer, message);
+            } else {
+                sendlocal(agentServer, message);
             }
         }
     }
-    static public void send(AgentServer agentServer, ACLMessage message, Boolean delegate) throws AgentServerException, JSONException {
+
+    static public void send(AgentServer agentServer, ACLMessage message, Boolean delegate) throws AgentServerException, JSONException, IOException {
         AgentInstance agentInstance = agentServer.getAgentInstanceId(message.receivers);
         if (agentInstance != null) {
             if (agentInstance.type.equals("remote")) {
-                sendRemote(agentServer,message);
-            }
-            else{
+                sendRemote(agentServer, message);
+            } else {
                 sendlocal(agentServer, message);
             }
         }
@@ -90,7 +100,7 @@ public class AgentSender {
                     reply.setInReplyTo(content);
                     reply.setReplyBy(message.getReceivers());
 
-                    if  (true){
+                    if (true) {
                         reply.setContent("Nothing Result or Unexpected request");
                     }
                 } else {

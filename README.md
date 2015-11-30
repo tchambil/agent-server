@@ -71,7 +71,9 @@ Steps for run:
 ```
 Example(http://agentserver.herokuapp.com/)
 
-# Basic Configurations: 
+# Basic Configurations: (STEPS)
+
++ Create user with id "test-user-1" This is mandatory
 
 + Create Agent Definition (for read messages)
    ->AgentDefinition Menu -> JSON
@@ -88,6 +90,14 @@ Example(http://agentserver.herokuapp.com/)
     ]
 }
 ```
++ Create agents 
+
++ Create groups
+
++ Imports agents from other serves
+
++ Suscribe to groups
+
 + More informations Tutorial Plataform Agent Server
  ->Tutorial Menu 
 

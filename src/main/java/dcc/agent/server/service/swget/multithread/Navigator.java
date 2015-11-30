@@ -836,13 +836,17 @@ public class Navigator implements NavigatorIF {
             {          AgentInstance agentS = scriptState.agentServer.getAgentInstanceId(scriptState.agentInstance.aid);
                                     AgentInstance agentR = scriptState.agentServer.getAgentInstanceId(scriptState.message.getReplyTo());
                                     if (agentR != null && agentS != null) {
+
                                         try {
                                             AgentDelegate.putTo(scriptState, agentS, agentR, res);
-                                        } catch (AgentServerException e) {
-                                            e.printStackTrace();
                                         } catch (JSONException e) {
                                             e.printStackTrace();
+                                        } catch (AgentServerException e) {
+                                            e.printStackTrace();
+                                        } catch (IOException e) {
+                                            e.printStackTrace();
                                         }
+
                                     }
 
                                 }

@@ -21,6 +21,7 @@ import org.apache.log4j.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -34,7 +35,7 @@ public class AgentReceiver {
     private static final Logger log = Logger.getLogger(AgentReceiver.class);
     public static Navigator navigator;
 
-    public static Boolean onMessage(AgentServer agentServer) throws JSONException, AgentServerException {
+    public static Boolean onMessage(AgentServer agentServer) throws JSONException, AgentServerException, IOException {
         Boolean send = false;
         ACLMessage message = receive(agentServer);
         if (message != null) {
@@ -228,7 +229,7 @@ public class AgentReceiver {
         return null;
     }
 
-    private static void delegate(AgentServer agentServer, ACLMessage message, Value value) throws JSONException, AgentServerException {
+    private static void delegate(AgentServer agentServer, ACLMessage message, Value value) throws JSONException, AgentServerException, IOException {
         if (message != null) {
             ACLMessage newreply = message.createReply(agentServer);
             if (message.getPerformative() == Performative.REQUEST) {

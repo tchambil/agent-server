@@ -252,7 +252,18 @@
                     <div class="col-md-8">
                         <pre>
 
-                                    <textarea id="textjson"  class="form-control" rows="20"></textarea>
+                                    <textarea id="textjson"  class="form-control" rows="20">
+{
+    "name": "definitions1",
+    "timers": [
+             {
+            "name": "message",
+            "interval": "seconds(4)",
+            "script": "message w; return w.read('only');",
+                }
+            ]
+}
+                                    </textarea>
 
  <button id="btnscripptSave" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
                          </pre>

@@ -359,9 +359,7 @@ public class AgentController {
         PlataformController plataform = new PlataformController();
         agentServer = plataform.getAgentServer();
         User user = agentServer.users.get(id);
-
         JSONArray agentInstancesArrayJson = new JSONArray();
-
             // Get all agents for this user
             for (AgentInstance agentInstance : agentServer.agentInstances
                     .get(user.id)) {
@@ -381,17 +379,12 @@ public class AgentController {
                         agentInstance.name);
                 SymbolValues outputValues = agent.categorySymbolValues
                         .get("outputs");
-
-
                 for (Symbol outputSymbol : outputValues) {
                     String fieldName = outputSymbol.name;
                     agentInstanceJson.put("Outputs", agent.getOutput(fieldName));
                 }
                 agentInstancesArrayJson.put(agentInstanceJson);
             }
-
-
-
         JSONObject agentInstancesJson = new JSONObject();
         agentInstancesJson.put("agent_instances", agentInstancesArrayJson);
 

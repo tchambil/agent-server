@@ -10,6 +10,7 @@ import dcc.agent.server.service.script.runtime.ScriptState;
 import org.apache.log4j.Logger;
 import org.json.JSONException;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -21,7 +22,7 @@ public class AgentDelegate {
     protected static Logger log = Logger.getLogger(AgentDelegate.class);
     public AgentServer agentServer;
 
-    static public void doNautiLOD(ScriptState scriptState, AgentInstance agentInstanceS, AgentInstance agentInstanceR, String newcommand, String comment) throws AgentServerException, JSONException {
+    static public void doNautiLOD(ScriptState scriptState, AgentInstance agentInstanceS, AgentInstance agentInstanceR, String newcommand, String comment) throws AgentServerException, JSONException, IOException {
         log.info("Initialize the agent delegate for send agent message");
         ACLMessage aclMessage = new ACLMessage();
 
@@ -37,7 +38,7 @@ public class AgentDelegate {
         aclMessage.setStatus("new");
         AgentSender.send(scriptState.agentServer, aclMessage, true);
     }
-    static public void putTo(ScriptState scriptState, AgentInstance agentInstanceS, AgentInstance agentInstanceR, Collection<String> res ) throws JSONException, AgentServerException {
+    static public void putTo(ScriptState scriptState, AgentInstance agentInstanceS, AgentInstance agentInstanceR, Collection<String> res ) throws JSONException, AgentServerException, IOException {
 
         List list;
         if (res instanceof List)
@@ -57,7 +58,7 @@ public class AgentDelegate {
         aclMessage.setStatus("new");
         AgentSender.send(scriptState.agentServer, aclMessage, true);
     }
-    static public void doNautiLOD(ScriptState scriptState, Collection<String> r) {
+    static public void doNautiLOD(ScriptState scriptState, Collection<String> r) throws IOException {
         log.info("Initialize the agent delegate for send agent message");
         ACLMessage aclMessage = new ACLMessage();
         aclMessage.setContent("result"+r);
