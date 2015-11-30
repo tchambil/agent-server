@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java" line="990" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java" line="983" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2cf9c626-ec31-4eb5-ac64-d54f63553b96" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent-server.iws" afterPath="$PROJECT_DIR$/agent-server.iws" />
     </list>
     <ignored path="agent-server.iws" />
@@ -36,10 +37,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="PlataformController.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="PlataformController.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/PlataformController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-16.214285" vertical-offset="685" max-vertical-offset="8143">
+            <state vertical-scroll-proportion="0.75415283" vertical-offset="685" max-vertical-offset="8143">
               <caret line="226" column="54" selection-start-line="226" selection-start-column="54" selection-end-line="226" selection-end-column="54" />
               <folding>
                 <element signature="method#Start#0;class#PlataformController#0" expanded="false" />
@@ -54,127 +55,6 @@
                 <element signature="method#getAgentDefinitions#0;class#PlataformController#0" expanded="false" />
                 <element signature="method#getFieldTypes#0;class#PlataformController#0" expanded="false" />
                 <element signature="method#putStatusPause#0;class#PlataformController#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AgentServer.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="884" max-vertical-offset="2618">
-              <caret line="298" column="49" selection-start-line="298" selection-start-column="49" selection-end-line="298" selection-end-column="49" />
-              <folding>
-                <element signature="method#AgentServer#1;class#AgentServer#0" expanded="false" />
-                <element signature="method#getResult#0;class#AgentServer#0" expanded="false" />
-                <element signature="method#getHttpStatus#0;class#AgentServer#0" expanded="false" />
-                <element signature="method#getAddresss#0;class#AgentServer#0" expanded="false" />
-                <element signature="method#getAddress#0;class#AgentServer#0" expanded="false" />
-                <element signature="method#getSingleton#0;class#AgentServer#0" expanded="false" />
-                <element signature="method#addAgentDefinition#0;class#AgentServer#0" expanded="false" />
-                <element signature="method#addAgentDefinition#1;class#AgentServer#0" expanded="false" />
-                <element signature="method#addAgentDefinition#3;class#AgentServer#0" expanded="false" />
-                <element signature="method#writeResult#0;class#AgentServer#0" expanded="false" />
-                <element signature="method#addNautilood#0;class#AgentServer#0" expanded="false" />
-                <element signature="method#addNautilod#0;class#AgentServer#0" expanded="false" />
-                <element signature="method#addAgentMessage#1;class#AgentServer#0" expanded="false" />
-                <element signature="method#getAgentMessage#0;class#AgentServer#0" expanded="false" />
-                <element signature="method#processMessage#0;class#AgentServer#0" expanded="false" />
-                <element signature="method#receive#0;class#AgentServer#0" expanded="false" />
-                <element signature="method#receive#1;class#AgentServer#0" expanded="false" />
-                <element signature="method#receive#2;class#AgentServer#0" expanded="false" />
-                <element signature="method#receive#3;class#AgentServer#0" expanded="false" />
-                <element signature="method#send#0;class#AgentServer#0" expanded="false" />
-                <element signature="method#addAgentMessage#2;class#AgentServer#0" expanded="false" />
-                <element signature="method#getServerGroup#0;class#AgentServer#0" expanded="false" />
-                <element signature="method#addServerGroup#0;class#AgentServer#0" expanded="false" />
-                <element signature="method#removeGroupAgentInstance#0;class#AgentServer#0" expanded="false" />
-                <element signature="method#addGroupAgentInstance#0;class#AgentServer#0" expanded="false" />
-                <element signature="method#addServerGroup#1;class#AgentServer#0" expanded="false" />
-                <element signature="method#addGroupAgentInstance#1;class#AgentServer#0" expanded="false" />
-                <element signature="method#getAgentDefinition#0;class#AgentServer#0" expanded="false" />
-                <element signature="method#clearAgentDefinitions#0;class#AgentServer#0" expanded="false" />
-                <element signature="method#removeAgentDefinition#0;class#AgentServer#0" expanded="false" />
-                <element signature="method#removeAgentDefinition#1;class#AgentServer#0" expanded="false" />
-                <element signature="method#addAgentInstance#0;class#AgentServer#0" expanded="false" />
-                <element signature="method#addAgentInstance#1;class#AgentServer#0" expanded="false" />
-                <element signature="method#getAgentInstanceId#0;class#AgentServer#0" expanded="false" />
-                <element signature="method#getAgentInstanceAddress#0;class#AgentServer#0" expanded="false" />
-                <element signature="method#getAgentInstances#0;class#AgentServer#0" expanded="false" />
-                <element signature="method#getAgentInstance#0;class#AgentServer#0" expanded="false" />
-                <element signature="method#getAgentInstance#1;class#AgentServer#0" expanded="false" />
-                <element signature="method#getAgentInstance#2;class#AgentServer#0" expanded="false" />
-                <element signature="method#getAgentInstance#3;class#AgentServer#0" expanded="false" />
-                <element signature="method#getAgentInstance#4;class#AgentServer#0" expanded="false" />
-                <element signature="method#getAgentInstance#5;class#AgentServer#0" expanded="false" />
-                <element signature="method#getAgentInstance#7;class#AgentServer#0" expanded="false" />
-                <element signature="method#getAgentInstance#8;class#AgentServer#0" expanded="false" />
-                <element signature="method#getAgentInstanceName#0;class#AgentServer#0" expanded="false" />
-                <element signature="method#getAgentInstance#9;class#AgentServer#0" expanded="false" />
-                <element signature="method#getAgentInstance#10;class#AgentServer#0" expanded="false" />
-                <element signature="method#removeAgentInstance#0;class#AgentServer#0" expanded="false" />
-                <element signature="method#addUser#1;class#AgentServer#0" expanded="false" />
-                <element signature="method#getUser#0;class#AgentServer#0" expanded="false" />
-                <element signature="method#recreateUser#0;class#AgentServer#0" expanded="false" />
-                <element signature="method#recreateUser#1;class#AgentServer#0" expanded="false" />
-                <element signature="method#recreateAgentDefinition#0;class#AgentServer#0" expanded="false" />
-                <element signature="method#recreateAgentDefinition#1;class#AgentServer#0" expanded="false" />
-                <element signature="method#recreateAgentMessage#0;class#AgentServer#0" expanded="false" />
-                <element signature="method#removeNautilod#0;class#AgentServer#0" expanded="false" />
-                <element signature="method#recreateNautilod#0;class#AgentServer#0" expanded="false" />
-                <element signature="method#recreateNautilod#1;class#AgentServer#0" expanded="false" />
-                <element signature="method#recreateAgentMessage#1;class#AgentServer#0" expanded="false" />
-                <element signature="method#recreateServerGroup#0;class#AgentServer#0" expanded="false" />
-                <element signature="method#recreateGroupAgent#0;class#AgentServer#0" expanded="false" />
-                <element signature="method#recreateGroupAgent#1;class#AgentServer#0" expanded="false" />
-                <element signature="method#recreateServerGroup#1;class#AgentServer#0" expanded="false" />
-                <element signature="method#recreateAgentInstance#0;class#AgentServer#0" expanded="false" />
-                <element signature="method#recreateAgentInstance#1;class#AgentServer#0" expanded="false" />
-                <element signature="method#shutdown#0;class#AgentServer#0" expanded="false" />
-                <element signature="method#start#1;class#AgentServer#0" expanded="false" />
-                <element signature="method#stop#0;class#AgentServer#0" expanded="false" />
-                <element signature="method#addWebSiteAccessControls#0;class#AgentServer#0" expanded="false" />
-                <element signature="method#getWebPage#1;class#AgentServer#0" expanded="false" />
-                <element signature="method#postUrl#0;class#AgentServer#0" expanded="false" />
-                <element signature="method#postUrl#1;class#AgentServer#0" expanded="false" />
-                <element signature="method#getWebSiteAccessControls#0;class#AgentServer#0" expanded="false" />
-                <element signature="method#getPersistentStorePath#0;class#AgentServer#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="definitionsjson.jsp" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/definitionsjson.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.0836121" vertical-offset="4147" max-vertical-offset="5202">
-              <caret line="263" column="12" selection-start-line="263" selection-start-column="12" selection-end-line="263" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AgentController.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/AgentController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1107" max-vertical-offset="4828">
-              <caret line="388" column="66" selection-start-line="388" selection-start-column="66" selection-end-line="388" selection-end-column="66" />
-              <folding>
-                <element signature="method#putAgents#0;class#AgentController#0" expanded="false" />
-                <element signature="method#putAgentdismiss_exceptions#0;class#AgentController#0" expanded="false" />
-                <element signature="method#putAgentsinstanceNotifications#0;class#AgentController#0" expanded="false" />
-                <element signature="method#putAgentpause_disable#0;class#AgentController#0" expanded="false" />
-                <element signature="method#putAgentresume_enable#0;class#AgentController#0" expanded="false" />
-                <element signature="method#putAgentRun_script#0;class#AgentController#0" expanded="false" />
-                <element signature="method#getAgentNameStatus#0;class#AgentController#0" expanded="false" />
-                <element signature="method#getAgentNameState#0;class#AgentController#0" expanded="false" />
-                <element signature="method#getAgentNameOutput#0;class#AgentController#0" expanded="false" />
-                <element signature="method#getAgentsinstanceNotifications#0;class#AgentController#0" expanded="false" />
-                <element signature="method#getAgentsinstanceNotificationsName#0;class#AgentController#0" expanded="false" />
-                <element signature="method#getagenttask#0;class#AgentController#0" expanded="false" />
-                <element signature="method#putAgentmessage#0;class#AgentController#0" expanded="false" />
-                <element signature="method#getAgentMessagey#0;class#AgentController#0" expanded="false" />
-                <element signature="method#getAgentMessage#0;class#AgentController#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -242,8 +122,8 @@
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/ACL/AgentSender.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/PlataformController.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/AgentController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/definitionsjson.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java" />
       </list>
     </option>
   </component>
@@ -273,10 +153,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
+    <option name="x" value="1358" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -381,36 +261,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="agent-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="agent-server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jsp" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1343,7 +1193,7 @@
       <workItem from="1448298047889" duration="16620000" />
       <workItem from="1448375845473" duration="38779000" />
       <workItem from="1448603077821" duration="25340000" />
-      <workItem from="1448760672769" duration="35428000" />
+      <workItem from="1448760672769" duration="36790000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1431836573263</created>
@@ -1813,7 +1663,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1537150000" />
+    <option name="totallyTimeSpent" value="1538512000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1836,11 +1686,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="1358" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26791808" sideWeight="0.24432677" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26726058" sideWeight="0.24432677" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32739422" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1853,10 +1703,10 @@
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31848553" sideWeight="0.7549168" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5044543" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19818456" sideWeight="0.53695655" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13965885" sideWeight="0.53695655" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22354949" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39761093" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13363029" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29692832" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -2021,18 +1871,6 @@
           <line>123</line>
           <properties />
           <option name="timeStamp" value="742" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java</url>
-          <line>292</line>
-          <properties />
-          <option name="timeStamp" value="796" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java</url>
-          <line>290</line>
-          <properties />
-          <option name="timeStamp" value="797" />
         </line-breakpoint>
       </breakpoints>
       <option name="time" value="798" />
@@ -2428,9 +2266,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/definitionsjson.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.18922652" vertical-offset="4147" max-vertical-offset="5202">
+          <caret line="252" column="25" selection-start-line="252" selection-start-column="25" selection-end-line="252" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/AgentController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1107" max-vertical-offset="4828">
+        <state vertical-scroll-proportion="0.58666664" vertical-offset="1107" max-vertical-offset="4828">
           <caret line="388" column="66" selection-start-line="388" selection-start-column="66" selection-end-line="388" selection-end-column="66" />
           <folding>
             <element signature="method#putAgents#0;class#AgentController#0" expanded="false" />
@@ -2452,31 +2298,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/PlataformController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.214285" vertical-offset="685" max-vertical-offset="8143">
-          <caret line="226" column="54" selection-start-line="226" selection-start-column="54" selection-end-line="226" selection-end-column="54" />
-          <folding>
-            <element signature="method#Start#0;class#PlataformController#0" expanded="false" />
-            <element signature="method#postServerGroup#0;class#PlataformController#0" expanded="false" />
-            <element signature="method#postServerGroup#1;class#PlataformController#0" expanded="false" />
-            <element signature="method#getAgents#0;class#PlataformController#0" expanded="false" />
-            <element signature="method#getgroupgeneral#0;class#PlataformController#0" expanded="false" />
-            <element signature="method#getGroupsname#0;class#PlataformController#0" expanded="false" />
-            <element signature="method#getmain#0;class#PlataformController#0" expanded="false" />
-            <element signature="method#getConfig#0;class#PlataformController#0" expanded="false" />
-            <element signature="method#getAbout#0;class#PlataformController#0" expanded="false" />
-            <element signature="method#getAgentDefinitions#0;class#PlataformController#0" expanded="false" />
-            <element signature="method#getFieldTypes#0;class#PlataformController#0" expanded="false" />
-            <element signature="method#putStatusPause#0;class#PlataformController#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="884" max-vertical-offset="2618">
-          <caret line="298" column="49" selection-start-line="298" selection-start-column="49" selection-end-line="298" selection-end-column="49" />
+        <state vertical-scroll-proportion="-1.6757123" vertical-offset="1371" max-vertical-offset="2108">
+          <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
           <folding>
             <element signature="method#AgentServer#1;class#AgentServer#0" expanded="false" />
             <element signature="method#getResult#0;class#AgentServer#0" expanded="false" />
@@ -2490,6 +2315,7 @@
             <element signature="method#writeResult#0;class#AgentServer#0" expanded="false" />
             <element signature="method#addNautilood#0;class#AgentServer#0" expanded="false" />
             <element signature="method#addNautilod#0;class#AgentServer#0" expanded="false" />
+            <element signature="method#addSuscribeAgent#0;class#AgentServer#0" expanded="false" />
             <element signature="method#addAgentMessage#1;class#AgentServer#0" expanded="false" />
             <element signature="method#getAgentMessage#0;class#AgentServer#0" expanded="false" />
             <element signature="method#processMessage#0;class#AgentServer#0" expanded="false" />
@@ -2556,11 +2382,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/definitionsjson.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/PlataformController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0836121" vertical-offset="4147" max-vertical-offset="5202">
-          <caret line="263" column="12" selection-start-line="263" selection-start-column="12" selection-end-line="263" selection-end-column="12" />
-          <folding />
+        <state vertical-scroll-proportion="0.75415283" vertical-offset="685" max-vertical-offset="8143">
+          <caret line="226" column="54" selection-start-line="226" selection-start-column="54" selection-end-line="226" selection-end-column="54" />
+          <folding>
+            <element signature="method#Start#0;class#PlataformController#0" expanded="false" />
+            <element signature="method#postServerGroup#0;class#PlataformController#0" expanded="false" />
+            <element signature="method#postServerGroup#1;class#PlataformController#0" expanded="false" />
+            <element signature="method#getAgents#0;class#PlataformController#0" expanded="false" />
+            <element signature="method#getgroupgeneral#0;class#PlataformController#0" expanded="false" />
+            <element signature="method#getGroupsname#0;class#PlataformController#0" expanded="false" />
+            <element signature="method#getmain#0;class#PlataformController#0" expanded="false" />
+            <element signature="method#getConfig#0;class#PlataformController#0" expanded="false" />
+            <element signature="method#getAbout#0;class#PlataformController#0" expanded="false" />
+            <element signature="method#getAgentDefinitions#0;class#PlataformController#0" expanded="false" />
+            <element signature="method#getFieldTypes#0;class#PlataformController#0" expanded="false" />
+            <element signature="method#putStatusPause#0;class#PlataformController#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

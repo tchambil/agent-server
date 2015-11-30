@@ -21,7 +21,6 @@ import dcc.agent.server.service.appserver.AgentAppServer;
 import dcc.agent.server.service.config.AgentServerConfig;
 import dcc.agent.server.service.config.AgentServerProperties;
 import dcc.agent.server.service.config.AgentServerWebAccessConfig;
-import dcc.agent.server.service.delegate.AgentDelegate;
 import dcc.agent.server.service.groups.GroupAgentInstance;
 import dcc.agent.server.service.groups.GroupAgentInstanceList;
 import dcc.agent.server.service.groups.ServerGroup;
@@ -52,10 +51,8 @@ import java.net.URL;
 import java.text.ParseException;
 import java.util.*;
 
-
-public class AgentServer {
+    public class AgentServer {
     static final Logger log = Logger.getLogger(AgentServer.class);
-    public AgentDelegate agentDelegate;
     public AgentAppServer agentAppServer;
     public static AgentServer singleton = null;
     public List<String> fieldTypes =
@@ -72,8 +69,6 @@ public class AgentServer {
     public NameValueList<ServerGroupList> serverGroups;
     public NameValueList<GroupAgentInstanceList> groupAgents;
     public AgentServerProperties agentServerProperties;
-    public AgentReceiver agentreceiver;
-    public AgentSender agentsender;
     public AgentServerWebAccessConfig webAccessConfig;
     public WebSiteAccessConfig webSiteAccessConfig;
     public WebAccessManager webAccessManager;
@@ -82,7 +77,6 @@ public class AgentServer {
     public AgentServer(AgentAppServer agentAppServer) throws RuntimeException, AgentServerException, IOException, InterruptedException, PersistentFileException, ParseException, TokenizerException, ParserException {
         this(agentAppServer, true);
     }
-
     public AgentServer(AgentAppServer agentAppServer, boolean start) throws RuntimeException, AgentServerException, IOException, InterruptedException, PersistentFileException, ParseException, TokenizerException, ParserException {
         log.info("Creation of AgentServer object");
         // Link back to app server
@@ -92,7 +86,7 @@ public class AgentServer {
         // Start the agent server
         // start(start);
     }
-     public JSONObject getResult(String idResult) throws JSONException, IOException {
+    public JSONObject getResult(String idResult) throws JSONException, IOException {
          JSONArray List=new JSONArray();
          JSONArray jsonArray = new JSONArray();
         for (NameValue<AgentInstanceList> userAgentInstances : this.agentInstances) {
@@ -287,7 +281,6 @@ public class AgentServer {
         return nautiLODResult;
     }
     public ACLMessage addSuscribeAgent(AgentInstance SuscriptorAgent,AgentInstance RegisterAgent){
-
         JSONObject agentInstanceJson = new JsonListMap();
         try {
             agentInstanceJson.put("user", SuscriptorAgent.user.id);
