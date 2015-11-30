@@ -5,18 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2cf9c626-ec31-4eb5-ac64-d54f63553b96" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/AgentController.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/AgentController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/delegate/AgentDelegate.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/delegate/AgentDelegate.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/ACL/AgentReceiver.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/ACL/AgentReceiver.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/ACL/AgentSender.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/ACL/AgentSender.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/Navigator.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/Navigator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/PlataformController.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/PlataformController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent-server.iws" afterPath="$PROJECT_DIR$/agent-server.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/definitionsjson.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/definitionsjson.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resource/js/groupsuscribe.js" afterPath="$PROJECT_DIR$/src/main/webapp/resource/js/groupsuscribe.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/suscribegroup.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/suscribegroup.jsp" />
     </list>
     <ignored path="agent-server.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -158,7 +147,7 @@
       <file leaf-file-name="definitionsjson.jsp" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/definitionsjson.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.864" vertical-offset="4147" max-vertical-offset="5202">
+            <state vertical-scroll-proportion="1.0836121" vertical-offset="4147" max-vertical-offset="5202">
               <caret line="263" column="12" selection-start-line="263" selection-start-column="12" selection-end-line="263" selection-end-column="12" />
               <folding />
             </state>
@@ -1354,7 +1343,7 @@
       <workItem from="1448298047889" duration="16620000" />
       <workItem from="1448375845473" duration="38779000" />
       <workItem from="1448603077821" duration="25340000" />
-      <workItem from="1448760672769" duration="35062000" />
+      <workItem from="1448760672769" duration="35428000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1431836573263</created>
@@ -1816,11 +1805,15 @@
       <created>1448835297679</created>
       <updated>1448835297679</updated>
     </task>
-    <option name="localTasksCounter" value="116" />
+    <task id="LOCAL-00116" summary="Refactory jsps, add functions for suscription agents to other servers and agents">
+      <created>1448852882309</created>
+      <updated>1448852882309</updated>
+    </task>
+    <option name="localTasksCounter" value="117" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1536784000" />
+    <option name="totallyTimeSpent" value="1537150000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1847,7 +1840,7 @@
     <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26791808" sideWeight="0.24432677" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26791808" sideWeight="0.24432677" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32739422" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1863,7 +1856,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19818456" sideWeight="0.53695655" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22354949" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3986637" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39761093" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29692832" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1951,7 +1944,8 @@
     <MESSAGE value="add functions for list groups name" />
     <MESSAGE value="add functions for insert groups agents" />
     <MESSAGE value="Modify Menu´s, add menu groups-agents" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modify Menu´s, add menu groups-agents" />
+    <MESSAGE value="Refactory jsps, add functions for suscription agents to other servers and agents" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactory jsps, add functions for suscription agents to other servers and agents" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2421,7 +2415,7 @@
         <state vertical-scroll-proportion="0.8940972" vertical-offset="63" max-vertical-offset="1938">
           <caret line="44" column="33" selection-start-line="44" selection-start-column="33" selection-end-line="44" selection-end-column="33" />
           <folding>
-            <element signature="e#1270#1278#0" expanded="true" />
+            <element signature="e#1270#1278#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2564,7 +2558,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/definitionsjson.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.864" vertical-offset="4147" max-vertical-offset="5202">
+        <state vertical-scroll-proportion="1.0836121" vertical-offset="4147" max-vertical-offset="5202">
           <caret line="263" column="12" selection-start-line="263" selection-start-column="12" selection-end-line="263" selection-end-column="12" />
           <folding />
         </state>

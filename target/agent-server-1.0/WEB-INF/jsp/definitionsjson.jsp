@@ -132,8 +132,8 @@
         </li>
         <li>
             <ul class="users-menu nav nav-list collapse">
-                <li><a href="/users.do"><span class="fa fa-caret-right"></span> User Profile</a></li>
-                <li><a href="/listuser.do"><span class="fa fa-caret-right"></span> User List</a></li>
+                <li><a href="/users.do"><span class="fa fa-caret-right"></span> Add</a></li>
+                <li><a href="/listuser.do"><span class="fa fa-caret-right"></span> List</a></li>
 
             </ul>
         </li>
@@ -158,7 +158,7 @@
         </li>
         <li>
             <ul class="premium-menu nav nav-list collapse">
-                <li><a href="/agent.do"><span class="fa fa-caret-right"></span> Agent</a></li>
+                <li><a href="/agent.do"><span class="fa fa-caret-right"></span> Add</a></li>
                 <li><a href="/agentscript.do"><span class="fa fa-caret-right"></span> AgentScript</a></li>
                 <li><a href="/listagent.do"><span class="fa fa-caret-right"></span> List</a></li>
             </ul>
@@ -171,7 +171,8 @@
         </li>
         <li>
             <ul class="premium-menu1 nav nav-list collapse">
-                <li><a href="/group.do"><span class="fa fa-caret-right"></span> Group</a> </li>
+                <li><a href="/group.do"><span class="fa fa-caret-right"></span> Add</a> </li>
+                <li><a href="/groupagents.do"><span class="fa fa-caret-right"></span> Group-Agents</a> </li>
                 <li><a href="/listgroup.do"><span class="fa fa-caret-right"></span> List</a></li>
                 <li><a href="/suscribegroup.do"><span class="fa fa-caret-right"></span> Suscribe</a></li>
             </ul>
@@ -251,7 +252,18 @@
                     <div class="col-md-8">
                         <pre>
 
-                                    <textarea id="textjson"  class="form-control" rows="20"></textarea>
+                                    <textarea id="textjson"  class="form-control" rows="20">
+{
+    "name": "definitions1",
+    "timers": [
+             {
+            "name": "message",
+            "interval": "seconds(4)",
+            "script": "message w; return w.read('only');",
+                }
+            ]
+}
+                                    </textarea>
 
  <button id="btnscripptSave" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
                          </pre>
