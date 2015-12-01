@@ -32,7 +32,7 @@
 ```
 
 + Download file war 
- ```shell  
+ ```shell    
    cd /var/lib/tomcat7/webapps
    
    sudo service tomcat7 stop(optional)
@@ -43,9 +43,9 @@
 
 ```
 
-# For start agent: 
+# Install manual 
 
-```shell
+ ```shell  
 
 http://localhost:8080/ 
 

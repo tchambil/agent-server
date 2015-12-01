@@ -1387,7 +1387,7 @@
       <workItem from="1448375845473" duration="38779000" />
       <workItem from="1448603077821" duration="25340000" />
       <workItem from="1448760672769" duration="37410000" />
-      <workItem from="1448897984178" duration="9920000" />
+      <workItem from="1448897984178" duration="10119000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1431836573263</created>
@@ -1865,11 +1865,15 @@
       <created>1448994556990</created>
       <updated>1448994556990</updated>
     </task>
-    <option name="localTasksCounter" value="120" />
+    <task id="LOCAL-00120" summary="refactory file readme.md">
+      <created>1448994812618</created>
+      <updated>1448994812618</updated>
+    </task>
+    <option name="localTasksCounter" value="121" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1549052000" />
+    <option name="totallyTimeSpent" value="1549251000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1979,7 +1983,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="initial commit" />
     <MESSAGE value="add functions for agent server RESTFUL" />
     <MESSAGE value="add functions for agent server RESTFUL&#10;Refactory view" />
     <MESSAGE value="Refactory view" />
@@ -2004,7 +2007,8 @@
     <MESSAGE value="update class agentserver&#10;" />
     <MESSAGE value="update functios list groups in file jsp" />
     <MESSAGE value="refactory menu, add functions for agentdefinitions" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactory menu, add functions for agentdefinitions" />
+    <MESSAGE value="refactory file readme.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactory file readme.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
