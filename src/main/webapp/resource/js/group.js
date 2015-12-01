@@ -1,6 +1,24 @@
 /**
  * Created by teo on 11/27/2015.
  */
+function listtable()
+{   $('#listagents').empty();
+    $.ajax({
+        type: 'GET',
+        url: '../group/'+ $('#Droplistgroups').val()
+    }).then(function (data) {
+        $('#listagents').empty();
+        $(data.agents).each(function(index ,item) {
+            txt="<tr><td id="+$('#Droplistgroups').val()+">"+$('#Droplistgroups').val()+
+                "</td><td id="+item.aid+">"+item.aid+
+                "</td><td id="+item.name+">"+item.name+"</td>"+
+                "</td><td id="+item.addresses+">"+item.addresses+"</td>"+
+                "</td><td id="+item.type+">"+item.type+"</td>"+
+                "</td><td id="+item.status+">"+item.status+"</td></tr>"
+            $('#listagents').append(txt);
+        });
+    });
+}
 $(document).ready(function () {
 
     $.ajax({
@@ -10,7 +28,7 @@ $(document).ready(function () {
     $(data.groups).each(function(index,item) {
       $('#Dropgroup').append('<option value='+item.group+'>'+item.group+'</option>');
         $('#idlisttable').empty();
-      /*  $(item.agents).each(function(indexs,items) {
+        $(item.agents).each(function(indexs,items) {
                 txt="<tr><td id="+item.group+">"+item.group+
                     "</td><td id="+items.aid+">"+items.aid+
                     "</td><td id="+items.name+">"+items.name+"</td>"+
@@ -18,7 +36,7 @@ $(document).ready(function () {
                     "</td><td id="+items.type+">"+items.type+"</td>"+
                     "</td><td id="+items.status+">"+items.status+"</td></tr>"
                 $('#idlisttable').append(txt);
-            });*/
+            });
        });
    });
 
@@ -54,6 +72,7 @@ $(document).ready(function () {
             success: function (data) {
                 $('#idMessagsedAgent').empty();
                 $('#idMessagsedAgent').append(JSON.stringify(data, null, "\t"));
+                listtable();
             },
             error: function (err) {
                 $('#idMessagsedAgent').empty();
@@ -80,23 +99,8 @@ $(document).ready(function () {
         }); //-- END of Ajax
     });
 
-    $('#Dropgroup').click(function () {
-        $.ajax({
-            type: 'GET',
-            url: '../group/'+ $('#Dropgroup').val()
-        }).then(function (data) {
-            $('#idtablelist').empty();
-             $(data.agents).each(function(index ,item) {
-               txt="<tr><td id="+$('#Dropgroup').val()+">"+$('#Dropgroup').val()+
-                        "</td><td id="+item.aid+">"+item.aid+
-                        "</td><td id="+item.name+">"+item.name+"</td>"+
-                        "</td><td id="+item.addresses+">"+item.addresses+"</td>"+
-                        "</td><td id="+item.type+">"+item.type+"</td>"+
-                        "</td><td id="+item.status+">"+item.status+"</td></tr>"
-                    $('#idtablelist').append(txt);
-                      });
-            });
-
+    $('#Droplistgroups').click(function () {
+        listtable();
     });
 
 });

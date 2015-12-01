@@ -192,9 +192,7 @@ public class PlataformController {
         RestTemplate restTemplate = new RestTemplate();
         String result = restTemplate.getForObject(uri+"/group", String.class);
         JSONObject jsonObject=new JSONObject(result);
-
-      return jsonObject.toString();
-
+     return jsonObject.toString();
     }
     @RequestMapping(value = "/suscribe", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     public String suscribe(HttpServletRequest request) throws Exception {
