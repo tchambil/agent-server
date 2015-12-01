@@ -1387,7 +1387,7 @@
       <workItem from="1448375845473" duration="38779000" />
       <workItem from="1448603077821" duration="25340000" />
       <workItem from="1448760672769" duration="37410000" />
-      <workItem from="1448897984178" duration="10224000" />
+      <workItem from="1448897984178" duration="10272000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1431836573263</created>
@@ -1873,11 +1873,15 @@
       <created>1448995003901</created>
       <updated>1448995003901</updated>
     </task>
-    <option name="localTasksCounter" value="122" />
+    <task id="LOCAL-00122" summary="refactory file readme.md">
+      <created>1448995108894</created>
+      <updated>1448995108894</updated>
+    </task>
+    <option name="localTasksCounter" value="123" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1549356000" />
+    <option name="totallyTimeSpent" value="1549404000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
