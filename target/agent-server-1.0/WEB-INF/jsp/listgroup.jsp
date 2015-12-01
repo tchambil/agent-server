@@ -247,7 +247,7 @@
 
                    <div class="form-group">
                                 <label>Groups</label>
-                                <select id="Dropgroup" class="form-control">
+                                <select id="Droplistgroups" class="form-control">
                                     <option value="Test">Selection Item</option>
                                 </select>
                             </div>

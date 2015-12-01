@@ -1,18 +1,10 @@
 package dcc.agent.server.controller;
 
-import dcc.agent.server.service.ACL.ACLMessage;
-import dcc.agent.server.service.ACL.AgentSender;
 import dcc.agent.server.service.agentserver.*;
 import dcc.agent.server.service.appserver.AgentAppServer;
-import dcc.agent.server.service.appserver.AgentAppServerBadRequestException;
-import dcc.agent.server.service.appserver.AgentAppServerException;
 import dcc.agent.server.service.appserver.AgentAppServerShutdown;
 import dcc.agent.server.service.config.AgentServerProperties;
 import dcc.agent.server.service.field.Field;
-import dcc.agent.server.service.groups.GroupAgentInstance;
-import dcc.agent.server.service.groups.GroupAgentInstanceList;
-import dcc.agent.server.service.groups.ServerGroup;
-import dcc.agent.server.service.groups.ServerGroupList;
 import dcc.agent.server.service.scheduler.AgentScheduler;
 import dcc.agent.server.service.script.intermediate.*;
 import dcc.agent.server.service.script.parser.ScriptParser;
@@ -26,12 +18,11 @@ import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.springframework.http.*;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedReader;
 
 @RestController
@@ -67,211 +58,6 @@ public class PlataformController {
         message.put("message", "Starting agent Server successful");
         return message.toString();
 
-    }
-    @RequestMapping(value = "/groups/{name}", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public String postServerGroup(@PathVariable String name, HttpServletRequest request) throws Exception {
-        User user = agentServer.users.get("test-user-1");
-
-        if (name == null) {
-            throw new AgentAppServerBadRequestException("Missing group name path parameter");
-        }
-        if (name.trim().length() == 0) {
-            throw new AgentAppServerBadRequestException("Empty group name path parameter");
-        }
-        if (!agentServer.serverGroups.get(user.id).containsKey(name)) {
-            throw new AgentAppServerException(HttpServletResponse.SC_FOUND, "No group with that name for that user");
-        }
-        ServerGroupList serverGroupL = agentServer.serverGroups.get(user.id);
-        ServerGroup serverGroup = serverGroupL.get(name);
-
-        JSONObject serverJson = util.getJsonRequest(request);
-        JSONArray ListNew = new JSONArray();
-        if (serverGroup != null) {
-            ListNew = (JSONArray) serverJson.get("agents");
-        }
-
-        if (serverJson == null)
-            throw new AgentAppServerBadRequestException(
-                    "Invalid ServerGroup JSON object");
-
-        GroupAgentInstanceList groupMap = agentServer.groupAgents.get(name);
-        JSONArray jsonArray = new JSONArray();
-        JSONArray List = new JSONArray();
-        if (groupMap != null) {
-            GroupAgentInstance group = groupMap.get(name);
-            JSONObject jsonObject = group.toJson();
-            List = (JSONArray) jsonObject.get("agents");
-            agentServer.removeGroupAgentInstance(name);
-        }
-        for (int i = 0; i < List.length(); i++) {
-            JSONObject item = List.getJSONObject(i);
-            JSONObject jsonObj = new JSONObject();
-            jsonObj.put("aid", item.getString("aid"));
-            jsonObj.put("user", item.getString("user"));
-            jsonArray.put(jsonObj);
-        }
-        for (int i = 0; i < ListNew.length(); i++) {
-            JSONObject item = ListNew.getJSONObject(i);
-            JSONObject jsonObj = new JSONObject();
-            jsonObj.put("aid", item.getString("aid"));
-            jsonObj.put("user", item.getString("user"));
-            jsonArray.put(jsonObj);
-        }
-        JSONObject chairJSON = new JSONObject();
-        chairJSON.put("state", "active");
-        chairJSON.put("agents", jsonArray);
-
-        GroupAgentInstance groupAgentInstance = agentServer.addGroupAgentInstance(serverGroup, chairJSON);
-        JSONObject message = new JSONObject();
-        message.put("Group Agent", "Add was successful");
-        return message.toString();
-    }
-    @RequestMapping(value = "/group", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public String postServerGroup( HttpServletRequest request) throws Exception {
-        User user = agentServer.users.get("test-user-1");
-        JSONObject serverJson = util.getJsonRequest(request);
-        if (serverJson == null)
-            throw new AgentAppServerBadRequestException(
-                    "Invalid ServerGroup JSON object");
-        // Parse and add the Server Group
-        ServerGroup serverGroup = agentServer.addServerGroup(user, serverJson);
-        // Done
-        JSONObject message = new JSONObject();
-        message.put("message", "Add was successful");
-        return message.toString();
-    }
-    @RequestMapping(value = "/group/{name}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public String getAgents( @PathVariable String name) throws Exception {
-        logger.info("Getting list of all agents for a group");
-        GroupAgentInstanceList groupMap = agentServer.groupAgents.get(name);
-        GroupAgentInstance group = groupMap.get(name);
-        return group.toJson().toString();
-
-    }
-    @RequestMapping(value = "/groupgeneral", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public String getgroupgeneral() throws Exception {
-        JSONArray GroupArrayJson = new JSONArray();
-        for (NameValue<ServerGroupList> groupListNameValue : agentServer.serverGroups) {
-            // Get all  serverGroup
-            for (ServerGroup serverGroup : agentServer.serverGroups
-                    .get(groupListNameValue.name)) {
-                // Generate JSON for short summary of serverGroup
-                JSONObject groupJson = new JsonListMap();
-                groupJson.put("name", serverGroup.name);
-                groupJson.put("description", serverGroup.description);
-                groupJson.put("type", serverGroup.type);
-                groupJson.put("creator", serverGroup.user.id);
-                GroupArrayJson.put(groupJson);
-            }
-        }
-        JSONObject groupJson = new JSONObject();
-        groupJson.put("ServerGroup", GroupArrayJson);
-        return groupJson.toString();
-    }
-    @RequestMapping(value = "/groupsname", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
-    public String getGroupsname(HttpServletRequest request) throws Exception {
-        // String url="http://dbpedias.cloudapp.net/group";
-        JSONObject configJson = util.getJsonRequest(request);
-        String uri = configJson.optString("server");
-        String group = configJson.optString("group");
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        RestTemplate restTemplate = new RestTemplate();
-        String result = restTemplate.getForObject(uri+"/group/"+group, String.class);
-        JSONObject jsonObject=new JSONObject(result);
-        return jsonObject.toString();
-
-    }
-    @RequestMapping(value = "/groups", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
-    public String getGroups(HttpServletRequest request) throws Exception {
-       // String url="http://dbpedias.cloudapp.net/group";
-        JSONObject configJson = util.getJsonRequest(request);
-         String uri = configJson.optString("server");
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        RestTemplate restTemplate = new RestTemplate();
-        String result = restTemplate.getForObject(uri+"/group", String.class);
-        JSONObject jsonObject=new JSONObject(result);
-     return jsonObject.toString();
-    }
-    @RequestMapping(value = "/suscribe", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
-    public String suscribe(HttpServletRequest request) throws Exception {
-        // String url="http://dbpedias.cloudapp.net/group";
-        User user = agentServer.users.get("test-user-1");
-        JSONObject configJson = util.getJsonRequest(request);
-        String uri = configJson.optString("server");
-        String group = configJson.optString("group");
-        String agent = configJson.optString("agent");
-        AgentInstance SuscriptorAgent= agentServer.getAgentInstanceId(agent);
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        RestTemplate restTemplate = new RestTemplate();
-        String result = restTemplate.getForObject(uri+"/group/"+group, String.class);
-        JSONObject jsonObject=new JSONObject(result);
-        JSONArray List = new JSONArray();
-        List = (JSONArray) jsonObject.get("agents");
-        for (int i = 0; i < List.length(); i++) {
-            JSONObject item = List.getJSONObject(i);
-            JSONObject jsonObj = new JSONObject();
-            jsonObj.put("aid", item.getString("aid"));
-            jsonObj.put("name", item.getString("name"));
-            jsonObj.put("host", item.getString("host"));
-            jsonObj.put("addresses", item.getString("addresses"));
-            jsonObj.put("status", item.getString("status"));
-            jsonObj.put("type","remote");
-            jsonObj.put("description",item.getString("description"));
-            jsonObj.put("definition",item.getString("definition"));
-           AgentInstance RegisterAgent = agentServer.addAgentInstance(user,jsonObj);
-           ACLMessage aclMessage =agentServer.addSuscribeAgent(SuscriptorAgent, RegisterAgent);
-
-           AgentSender.send(agentServer, aclMessage, true);
-        }
-        return jsonObject.toString();
-
-    }
-    @RequestMapping(value = "/group", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.OK)
-    public String getServerGroup() throws JSONException {
-        JSONObject groupJson = new JSONObject();
-        JSONArray jsonArray2 = new JSONArray();
-        // Get all serverGroup
-        for (NameValue<ServerGroupList> groupListNameValue : agentServer.serverGroups) {
-            // Get all  serverGroup
-            for (ServerGroup serverGroup : agentServer.serverGroups
-                    .get(groupListNameValue.name)) {
-                JSONObject chairJSON = new JSONObject();
-                JSONArray jsonArray = new JSONArray();
-                 GroupAgentInstanceList groupMap = agentServer.groupAgents.get(serverGroup.name);
-                if (groupMap != null) {
-                    GroupAgentInstance group = groupMap.get(serverGroup.name);
-                    JSONObject jsonObject = null;
-                    try {
-                        jsonObject = group.toJson();
-                        JSONArray List = new JSONArray();
-                        List = (JSONArray) jsonObject.get("agents");
-                        for (int i = 0; i < List.length(); i++) {
-                            JSONObject item = List.getJSONObject(i);
-                            JSONObject jsonObj = new JSONObject();
-                            jsonObj.put("aid", item.getString("aid"));
-                            jsonObj.put("name", item.getString("name"));
-                            jsonObj.put("host", item.getString("host"));
-                            jsonObj.put("Addresses", item.getString("addresses"));
-                            jsonObj.put("status", item.getString("status"));
-                            jsonObj.put("type",item.getString("type"));
-                            jsonObj.put("description",item.getString("description"));
-                            jsonArray.put(jsonObj);
-                        }
-                        chairJSON.put("group",serverGroup.name);
-                        chairJSON.put("agents", jsonArray);
-                        jsonArray2.put(chairJSON);
-                    } catch (AgentServerException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-        groupJson.put("groups", jsonArray2);
-        return groupJson.toString();
     }
     @RequestMapping(value = "/get", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public  @ResponseBody    String getmain() throws Exception {
@@ -441,7 +227,6 @@ public class PlataformController {
         aboutJson.put("IP", agentServerProperties.agentServerIP);
         return aboutJson.toString(4);
     }
-
     @RequestMapping(value = "/config", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public String putConfig(HttpServletRequest request) throws Exception {
@@ -455,7 +240,6 @@ public class PlataformController {
         return configJson.toString();
 
     }
-
     @RequestMapping(value = "/config/reset", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public String putConfigRest() throws Exception {
@@ -473,7 +257,6 @@ public class PlataformController {
         return message.toString();
 
     }
-
     @RequestMapping(value = "/shutdown", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
     public String putshutdown() throws Exception {
@@ -502,7 +285,6 @@ public class PlataformController {
 
 
     }
-
     @RequestMapping(value = "/evaluate", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public String getevaluate(HttpServletRequest request) throws JSONException {
@@ -543,11 +325,9 @@ public class PlataformController {
         return resultString;
 
     }
-
     private static AgentInstance getAgent(AgentServer agentServer, String value) {
         return agentServer.getAgentInstances(value);
     }
-
     @RequestMapping(value = "/run", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public String getRun(HttpServletRequest request) throws Exception {
@@ -592,8 +372,6 @@ public class PlataformController {
         return message.toString();
 
     }
-
-
     @RequestMapping(value = "/status/restart", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public String putStatusrestart() throws Exception {
@@ -622,7 +400,6 @@ public class PlataformController {
 
 
     }
-
     @RequestMapping(value = "/status/resume", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public String putStatusresume() throws Exception {
@@ -641,7 +418,6 @@ public class PlataformController {
         return message.toString();
 
     }
-
     @RequestMapping(value = "/status/shutdown", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public String putStatusShutdown() throws Exception {
@@ -660,7 +436,6 @@ public class PlataformController {
         message.put("message", "Agent server shut down");
         return message.toString();
     }
-
     @RequestMapping(value = "/status/start", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public
@@ -679,7 +454,6 @@ public class PlataformController {
         return message.toString();
 
     }
-
     @RequestMapping(value = "/status/stop", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public String putStatusStop() throws Exception {

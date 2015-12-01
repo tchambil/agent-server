@@ -4,11 +4,10 @@
     <bookmark url="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java" line="983" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2cf9c626-ec31-4eb5-ac64-d54f63553b96" name="Default" comment="update class agentserver&#10;">
+    <list default="true" id="2cf9c626-ec31-4eb5-ac64-d54f63553b96" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/Groups.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/PlataformController.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/PlataformController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent-server.iws" afterPath="$PROJECT_DIR$/agent-server.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resource/js/group.js" afterPath="$PROJECT_DIR$/src/main/webapp/resource/js/group.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/listgroup.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/listgroup.jsp" />
     </list>
     <ignored path="agent-server.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -42,16 +41,10 @@
       <file leaf-file-name="PlataformController.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/PlataformController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="156" max-vertical-offset="6222">
-              <caret line="144" column="0" selection-start-line="144" selection-start-column="0" selection-end-line="144" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1326">
+              <caret line="456" column="0" selection-start-line="456" selection-start-column="0" selection-end-line="456" selection-end-column="0" />
               <folding>
                 <element signature="method#Start#0;class#PlataformController#0" expanded="false" />
-                <element signature="method#postServerGroup#0;class#PlataformController#0" expanded="false" />
-                <element signature="method#postServerGroup#1;class#PlataformController#0" expanded="false" />
-                <element signature="method#getgroupgeneral#0;class#PlataformController#0" expanded="false" />
-                <element signature="method#getGroupsname#0;class#PlataformController#0" expanded="false" />
-                <element signature="method#getGroups#0;class#PlataformController#0" expanded="false" />
-                <element signature="method#suscribe#0;class#PlataformController#0" expanded="false" />
                 <element signature="method#getmain#0;class#PlataformController#0" expanded="false" />
                 <element signature="method#getConfig#0;class#PlataformController#0" expanded="false" />
                 <element signature="method#getAbout#0;class#PlataformController#0" expanded="false" />
@@ -60,16 +53,47 @@
                 <element signature="method#getFieldTypes#0;class#PlataformController#0" expanded="false" />
                 <element signature="method#putStatusPause#0;class#PlataformController#0" expanded="false" />
                 <element signature="method#getStatus#0;class#PlataformController#0" expanded="false" />
+                <element signature="method#putConfig#0;class#PlataformController#0" expanded="false" />
+                <element signature="method#putConfigRest#0;class#PlataformController#0" expanded="false" />
+                <element signature="method#putshutdown#0;class#PlataformController#0" expanded="false" />
+                <element signature="method#getevaluate#0;class#PlataformController#0" expanded="false" />
+                <element signature="method#getAgent#0;class#PlataformController#0" expanded="false" />
+                <element signature="method#getRun#0;class#PlataformController#0" expanded="false" />
+                <element signature="method#putStatusrestart#0;class#PlataformController#0" expanded="false" />
+                <element signature="method#putStatusresume#0;class#PlataformController#0" expanded="false" />
+                <element signature="method#putStatusShutdown#0;class#PlataformController#0" expanded="false" />
+                <element signature="method#putStatusStart#0;class#PlataformController#0" expanded="false" />
+                <element signature="method#putStatusStop#0;class#PlataformController#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="group.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Groups.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/Groups.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="1.1307946" vertical-offset="184" max-vertical-offset="1054">
+              <caret line="165" column="72" selection-start-line="165" selection-start-column="72" selection-end-line="165" selection-end-column="72" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#postServerGroup#0;class#Groups#0" expanded="false" />
+                <element signature="method#postServerGroup#1;class#Groups#0" expanded="false" />
+                <element signature="method#getAgents#0;class#Groups#0" expanded="false" />
+                <element signature="method#getgroupgeneral#0;class#Groups#0" expanded="false" />
+                <element signature="method#getGroupsname#0;class#Groups#0" expanded="false" />
+                <element signature="method#getGroups#0;class#Groups#0" expanded="false" />
+                <element signature="method#suscribe#0;class#Groups#0" expanded="false" />
+                <element signature="method#getServerGroup#0;class#Groups#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="group.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/resource/js/group.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.056478404" vertical-offset="0" max-vertical-offset="1598">
-              <caret line="4" column="29" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1598">
+              <caret line="74" column="28" selection-start-line="74" selection-start-column="28" selection-end-line="74" selection-end-column="28" />
               <folding>
                 <element signature="n#!!doc;n#listtable#0" expanded="false" />
                 <element signature="e#3008#3618#0" expanded="false" />
@@ -91,7 +115,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/resetpassword.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/nautilod.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/controllerclient/NautiLODControllerCliente.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/nautilod1.jsp" />
@@ -139,9 +162,10 @@
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/AgentController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/definitionsjson.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/PlataformController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/listgroup.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/resource/js/group.js" />
+        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/PlataformController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/Groups.java" />
       </list>
     </option>
   </component>
@@ -430,6 +454,36 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="agent-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="agent-server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1298,7 +1352,7 @@
       <workItem from="1448375845473" duration="38779000" />
       <workItem from="1448603077821" duration="25340000" />
       <workItem from="1448760672769" duration="37410000" />
-      <workItem from="1448897984178" duration="5589000" />
+      <workItem from="1448897984178" duration="7301000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1431836573263</created>
@@ -1768,11 +1822,15 @@
       <created>1448862324060</created>
       <updated>1448862324061</updated>
     </task>
-    <option name="localTasksCounter" value="118" />
+    <task id="LOCAL-00118" summary="update functios list groups in file jsp">
+      <created>1448989460301</created>
+      <updated>1448989460301</updated>
+    </task>
+    <option name="localTasksCounter" value="119" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1544721000" />
+    <option name="totallyTimeSpent" value="1546433000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1796,10 +1854,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.298441" sideWeight="0.24432677" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.298441" sideWeight="0.24432677" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32739422" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1818,7 +1876,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13363029" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2962138" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2962138" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21695095" sideWeight="0.46304348" order="2" side_tool="true" content_ui="combo" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38195992" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17910448" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -1905,7 +1963,8 @@
     <MESSAGE value="Modify Menu´s, add menu groups-agents" />
     <MESSAGE value="Refactory jsps, add functions for suscription agents to other servers and agents" />
     <MESSAGE value="update class agentserver&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="update class agentserver&#10;" />
+    <MESSAGE value="update functios list groups in file jsp" />
+    <option name="LAST_COMMIT_MESSAGE" value="update functios list groups in file jsp" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1991,14 +2050,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/agents-servlet.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="605">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
@@ -2438,30 +2489,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/PlataformController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="156" max-vertical-offset="6222">
-          <caret line="144" column="0" selection-start-line="144" selection-start-column="0" selection-end-line="144" selection-end-column="0" />
-          <folding>
-            <element signature="method#Start#0;class#PlataformController#0" expanded="false" />
-            <element signature="method#postServerGroup#0;class#PlataformController#0" expanded="false" />
-            <element signature="method#postServerGroup#1;class#PlataformController#0" expanded="false" />
-            <element signature="method#getgroupgeneral#0;class#PlataformController#0" expanded="false" />
-            <element signature="method#getGroupsname#0;class#PlataformController#0" expanded="false" />
-            <element signature="method#getGroups#0;class#PlataformController#0" expanded="false" />
-            <element signature="method#suscribe#0;class#PlataformController#0" expanded="false" />
-            <element signature="method#getmain#0;class#PlataformController#0" expanded="false" />
-            <element signature="method#getConfig#0;class#PlataformController#0" expanded="false" />
-            <element signature="method#getAbout#0;class#PlataformController#0" expanded="false" />
-            <element signature="method#getAgentDefinitions#0;class#PlataformController#0" expanded="false" />
-            <element signature="method#getagents#0;class#PlataformController#0" expanded="false" />
-            <element signature="method#getFieldTypes#0;class#PlataformController#0" expanded="false" />
-            <element signature="method#putStatusPause#0;class#PlataformController#0" expanded="false" />
-            <element signature="method#getStatus#0;class#PlataformController#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/resource/js/agentdefinition.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.05629139" vertical-offset="102" max-vertical-offset="3366">
@@ -2478,13 +2505,60 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/PlataformController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1326">
+          <caret line="456" column="0" selection-start-line="456" selection-start-column="0" selection-end-line="456" selection-end-column="0" />
+          <folding>
+            <element signature="method#Start#0;class#PlataformController#0" expanded="false" />
+            <element signature="method#getmain#0;class#PlataformController#0" expanded="false" />
+            <element signature="method#getConfig#0;class#PlataformController#0" expanded="false" />
+            <element signature="method#getAbout#0;class#PlataformController#0" expanded="false" />
+            <element signature="method#getAgentDefinitions#0;class#PlataformController#0" expanded="false" />
+            <element signature="method#getagents#0;class#PlataformController#0" expanded="false" />
+            <element signature="method#getFieldTypes#0;class#PlataformController#0" expanded="false" />
+            <element signature="method#putStatusPause#0;class#PlataformController#0" expanded="false" />
+            <element signature="method#getStatus#0;class#PlataformController#0" expanded="false" />
+            <element signature="method#putConfig#0;class#PlataformController#0" expanded="false" />
+            <element signature="method#putConfigRest#0;class#PlataformController#0" expanded="false" />
+            <element signature="method#putshutdown#0;class#PlataformController#0" expanded="false" />
+            <element signature="method#getevaluate#0;class#PlataformController#0" expanded="false" />
+            <element signature="method#getAgent#0;class#PlataformController#0" expanded="false" />
+            <element signature="method#getRun#0;class#PlataformController#0" expanded="false" />
+            <element signature="method#putStatusrestart#0;class#PlataformController#0" expanded="false" />
+            <element signature="method#putStatusresume#0;class#PlataformController#0" expanded="false" />
+            <element signature="method#putStatusShutdown#0;class#PlataformController#0" expanded="false" />
+            <element signature="method#putStatusStart#0;class#PlataformController#0" expanded="false" />
+            <element signature="method#putStatusStop#0;class#PlataformController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/resource/js/group.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.056478404" vertical-offset="0" max-vertical-offset="1598">
-          <caret line="4" column="29" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1598">
+          <caret line="74" column="28" selection-start-line="74" selection-start-column="28" selection-end-line="74" selection-end-column="28" />
           <folding>
             <element signature="n#!!doc;n#listtable#0" expanded="false" />
             <element signature="e#3008#3618#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/Groups.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.1307946" vertical-offset="184" max-vertical-offset="1054">
+          <caret line="165" column="72" selection-start-line="165" selection-start-column="72" selection-end-line="165" selection-end-column="72" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#postServerGroup#0;class#Groups#0" expanded="false" />
+            <element signature="method#postServerGroup#1;class#Groups#0" expanded="false" />
+            <element signature="method#getAgents#0;class#Groups#0" expanded="false" />
+            <element signature="method#getgroupgeneral#0;class#Groups#0" expanded="false" />
+            <element signature="method#getGroupsname#0;class#Groups#0" expanded="false" />
+            <element signature="method#getGroups#0;class#Groups#0" expanded="false" />
+            <element signature="method#suscribe#0;class#Groups#0" expanded="false" />
+            <element signature="method#getServerGroup#0;class#Groups#0" expanded="false" />
           </folding>
         </state>
       </provider>
