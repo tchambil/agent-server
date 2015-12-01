@@ -178,6 +178,8 @@ $(document).ready(function () {
             success: function (data) {
                 $('#txtadefinition').empty();
                 $('#txtadefinition').append(JSON.stringify(data, null, "\t"));
+                $('#idMessageUser').append(data.message);
+
             },
             error: function (err) {
                 $('#txtadefinition').empty();

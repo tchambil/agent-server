@@ -32,9 +32,9 @@ import javax.servlet.http.HttpServletResponse;
  * Created by teo on 12/1/2015.
  */
 @RestController
-public class Groups {
+public class GroupsController {
     public static AgentServer agentServer;
-    protected static Logger logger = Logger.getLogger(Groups.class);
+    protected static Logger logger = Logger.getLogger(GroupsController.class);
     public Utils util = new Utils();
     @RequestMapping(value = "/groups/{name}", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public String postServerGroup(@PathVariable String name, HttpServletRequest request) throws Exception {

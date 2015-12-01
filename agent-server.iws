@@ -5,9 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2cf9c626-ec31-4eb5-ac64-d54f63553b96" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/Groups.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/PlataformController.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/PlataformController.java" />
+      <change type="MOVED" beforePath="C:\AppServ\www\agent-server\src\main\java\dcc\agent\server\controller\Groups.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/GroupsController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent-server.iws" afterPath="$PROJECT_DIR$/agent-server.iws" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resource/js/agent.js" afterPath="$PROJECT_DIR$/src/main/webapp/resource/js/agent.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/agent.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/agent.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resource/js/agentdefinition.js" afterPath="$PROJECT_DIR$/src/main/webapp/resource/js/agentdefinition.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/agentscript.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/agentscript.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/definition.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/definition.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/definitionsjson.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/definitionsjson.jsp" />
     </list>
     <ignored path="agent-server.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,66 +43,102 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="PlataformController.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/PlataformController.java">
+      <file leaf-file-name="agent.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/agent.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1326">
-              <caret line="456" column="0" selection-start-line="456" selection-start-column="0" selection-end-line="456" selection-end-column="0" />
-              <folding>
-                <element signature="method#Start#0;class#PlataformController#0" expanded="false" />
-                <element signature="method#getmain#0;class#PlataformController#0" expanded="false" />
-                <element signature="method#getConfig#0;class#PlataformController#0" expanded="false" />
-                <element signature="method#getAbout#0;class#PlataformController#0" expanded="false" />
-                <element signature="method#getAgentDefinitions#0;class#PlataformController#0" expanded="false" />
-                <element signature="method#getagents#0;class#PlataformController#0" expanded="false" />
-                <element signature="method#getFieldTypes#0;class#PlataformController#0" expanded="false" />
-                <element signature="method#putStatusPause#0;class#PlataformController#0" expanded="false" />
-                <element signature="method#getStatus#0;class#PlataformController#0" expanded="false" />
-                <element signature="method#putConfig#0;class#PlataformController#0" expanded="false" />
-                <element signature="method#putConfigRest#0;class#PlataformController#0" expanded="false" />
-                <element signature="method#putshutdown#0;class#PlataformController#0" expanded="false" />
-                <element signature="method#getevaluate#0;class#PlataformController#0" expanded="false" />
-                <element signature="method#getAgent#0;class#PlataformController#0" expanded="false" />
-                <element signature="method#getRun#0;class#PlataformController#0" expanded="false" />
-                <element signature="method#putStatusrestart#0;class#PlataformController#0" expanded="false" />
-                <element signature="method#putStatusresume#0;class#PlataformController#0" expanded="false" />
-                <element signature="method#putStatusShutdown#0;class#PlataformController#0" expanded="false" />
-                <element signature="method#putStatusStart#0;class#PlataformController#0" expanded="false" />
-                <element signature="method#putStatusStop#0;class#PlataformController#0" expanded="false" />
-              </folding>
+            <state vertical-scroll-proportion="-22.884615" vertical-offset="1751" max-vertical-offset="5950">
+              <caret line="138" column="17" selection-start-line="138" selection-start-column="17" selection-end-line="138" selection-end-column="17" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Groups.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/Groups.java">
+      <file leaf-file-name="group.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/group.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.1307946" vertical-offset="184" max-vertical-offset="1054">
-              <caret line="165" column="72" selection-start-line="165" selection-start-column="72" selection-end-line="165" selection-end-column="72" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#postServerGroup#0;class#Groups#0" expanded="false" />
-                <element signature="method#postServerGroup#1;class#Groups#0" expanded="false" />
-                <element signature="method#getAgents#0;class#Groups#0" expanded="false" />
-                <element signature="method#getgroupgeneral#0;class#Groups#0" expanded="false" />
-                <element signature="method#getGroupsname#0;class#Groups#0" expanded="false" />
-                <element signature="method#getGroups#0;class#Groups#0" expanded="false" />
-                <element signature="method#suscribe#0;class#Groups#0" expanded="false" />
-                <element signature="method#getServerGroup#0;class#Groups#0" expanded="false" />
-              </folding>
+            <state vertical-scroll-proportion="-6.6538463" vertical-offset="1969" max-vertical-offset="5491">
+              <caret line="126" column="83" selection-start-line="126" selection-start-column="83" selection-end-line="126" selection-end-column="83" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="group.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/resource/js/group.js">
+      <file leaf-file-name="groupagents.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/groupagents.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1598">
-              <caret line="74" column="28" selection-start-line="74" selection-start-column="28" selection-end-line="74" selection-end-column="28" />
-              <folding>
-                <element signature="n#!!doc;n#listtable#0" expanded="false" />
-                <element signature="e#3008#3618#0" expanded="false" />
-              </folding>
+            <state vertical-scroll-proportion="-161.3077" vertical-offset="141" max-vertical-offset="5236">
+              <caret line="255" column="16" selection-start-line="255" selection-start-column="16" selection-end-line="255" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/index.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-9.153846" vertical-offset="1887" max-vertical-offset="9333">
+              <caret line="125" column="83" selection-start-line="125" selection-start-column="83" selection-end-line="125" selection-end-column="83" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="listagent.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/listagent.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-4.8461537" vertical-offset="1982" max-vertical-offset="5338">
+              <caret line="124" column="83" selection-start-line="124" selection-start-column="83" selection-end-line="124" selection-end-column="83" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="listdefinition.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/listdefinition.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-4.576923" vertical-offset="1989" max-vertical-offset="5321">
+              <caret line="124" column="83" selection-start-line="124" selection-start-column="83" selection-end-line="124" selection-end-column="83" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="listgroup.jsp" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/listgroup.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="3.1510417" vertical-offset="2248" max-vertical-offset="5253">
+              <caret line="239" column="10" selection-start-line="239" selection-start-column="10" selection-end-line="239" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="definition.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/definition.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-14.384615" vertical-offset="1989" max-vertical-offset="13600">
+              <caret line="139" column="17" selection-start-line="139" selection-start-column="17" selection-end-line="139" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="agentscript.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/agentscript.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-9.153846" vertical-offset="2244" max-vertical-offset="6001">
+              <caret line="146" column="17" selection-start-line="146" selection-start-column="17" selection-end-line="146" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="definitionsimple.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/definitionsimple.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-13.730769" vertical-offset="2091" max-vertical-offset="7548">
+              <caret line="144" column="11" selection-start-line="144" selection-start-column="11" selection-end-line="149" selection-end-column="17" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -134,12 +175,7 @@
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/groups/GroupAgentInstance.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/groups/ServerGroupList.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/resource/js/agent.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/resource/js/agentdefinition.js" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/controllerclient/PlataformControllerClient.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/agent.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/agentscript.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/definition.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/definitionsadvanced.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/definitionsimple.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/group.jsp" />
@@ -160,12 +196,17 @@
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/ACL/AgentReceiver.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/ACL/AgentSender.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/AgentController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/definitionsjson.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/listgroup.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/resource/js/group.js" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/PlataformController.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/Groups.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/definitionsjson.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/resource/js/agentdefinition.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/resource/js/agent.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/definition.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/agentscript.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/agent.jsp" />
       </list>
     </option>
   </component>
@@ -1352,7 +1393,7 @@
       <workItem from="1448375845473" duration="38779000" />
       <workItem from="1448603077821" duration="25340000" />
       <workItem from="1448760672769" duration="37410000" />
-      <workItem from="1448897984178" duration="7301000" />
+      <workItem from="1448897984178" duration="9634000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1431836573263</created>
@@ -1830,7 +1871,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1546433000" />
+    <option name="totallyTimeSpent" value="1548766000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1854,10 +1895,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.298441" sideWeight="0.24432677" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.298441" sideWeight="0.24432677" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32739422" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1870,13 +1911,13 @@
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31848553" sideWeight="0.7549168" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5044543" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13965885" sideWeight="0.53695655" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23187633" sideWeight="0.53695655" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22354949" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13363029" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2962138" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2962138" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21695095" sideWeight="0.46304348" order="2" side_tool="true" content_ui="combo" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38195992" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17910448" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -2050,14 +2091,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
-          <caret line="13" column="14" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/groups/ServerGroupList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.74710745" vertical-offset="585" max-vertical-offset="1190">
@@ -2069,6 +2102,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1139">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2109,13 +2143,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resource/js/user.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.58553386" vertical-offset="1632" max-vertical-offset="2822">
-          <caret line="126" column="8" selection-start-line="126" selection-start-column="8" selection-end-line="126" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/resource/js/plataform.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.2727275" vertical-offset="4080" max-vertical-offset="4675">
@@ -2135,6 +2162,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-18.961538" vertical-offset="3111" max-vertical-offset="4539">
           <caret line="212" column="0" selection-start-line="211" selection-start-column="33" selection-end-line="212" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2142,6 +2170,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="725" max-vertical-offset="1768">
           <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2169,27 +2198,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="43.153847" vertical-offset="1122" max-vertical-offset="4777">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/agent.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="19.615385" vertical-offset="3026" max-vertical-offset="5933">
-          <caret line="148" column="83" selection-start-line="148" selection-start-column="83" selection-end-line="148" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/agentscript.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.9230769" vertical-offset="2550" max-vertical-offset="5984">
-          <caret line="156" column="83" selection-start-line="156" selection-start-column="83" selection-end-line="156" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/definition.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.65384614" vertical-offset="2091" max-vertical-offset="13583">
-          <caret line="124" column="83" selection-start-line="124" selection-start-column="83" selection-end-line="124" selection-end-column="83" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2197,41 +2206,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.230769" vertical-offset="2142" max-vertical-offset="8466">
           <caret line="134" column="83" selection-start-line="134" selection-start-column="83" selection-end-line="134" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/definitionsimple.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.1923075" vertical-offset="2091" max-vertical-offset="7548">
-          <caret line="134" column="83" selection-start-line="134" selection-start-column="83" selection-end-line="134" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/group.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.6538463" vertical-offset="1969" max-vertical-offset="5491">
-          <caret line="126" column="83" selection-start-line="126" selection-start-column="83" selection-end-line="126" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="37.923077" vertical-offset="3111" max-vertical-offset="9333">
-          <caret line="125" column="83" selection-start-line="125" selection-start-column="83" selection-end-line="125" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/listagent.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.8461537" vertical-offset="1982" max-vertical-offset="5338">
-          <caret line="124" column="83" selection-start-line="124" selection-start-column="83" selection-end-line="124" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/listdefinition.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.576923" vertical-offset="1989" max-vertical-offset="5321">
-          <caret line="124" column="83" selection-start-line="124" selection-start-column="83" selection-end-line="124" selection-end-column="83" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2239,6 +2214,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.5384617" vertical-offset="1938" max-vertical-offset="5304">
           <caret line="124" column="83" selection-start-line="124" selection-start-column="83" selection-end-line="124" selection-end-column="83" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2246,6 +2222,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.5384617" vertical-offset="2295" max-vertical-offset="4828">
           <caret line="145" column="83" selection-start-line="145" selection-start-column="83" selection-end-line="145" selection-end-column="83" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2253,13 +2230,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.153846" vertical-offset="1938" max-vertical-offset="7769">
           <caret line="128" column="83" selection-start-line="128" selection-start-column="83" selection-end-line="128" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.016152717" vertical-offset="3083" max-vertical-offset="6001">
-          <caret line="182" column="13" selection-start-line="182" selection-start-column="13" selection-end-line="182" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2267,6 +2238,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6989721" vertical-offset="1683" max-vertical-offset="4590">
           <caret line="127" column="83" selection-start-line="127" selection-start-column="83" selection-end-line="127" selection-end-column="83" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2274,6 +2246,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.6490455" vertical-offset="2601" max-vertical-offset="7667">
           <caret line="127" column="83" selection-start-line="127" selection-start-column="83" selection-end-line="127" selection-end-column="83" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2289,14 +2262,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6753472" vertical-offset="155" max-vertical-offset="850">
           <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/AgentdefinitionsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.3940973" vertical-offset="2193" max-vertical-offset="2839">
-          <caret line="27" column="89" selection-start-line="27" selection-start-column="82" selection-end-line="27" selection-end-column="89" />
-          <folding />
+          <folding>
+            <element signature="e#445#1518#0" expanded="false" />
+            <element signature="e#1562#2311#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2334,13 +2303,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/definitionsjson.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18922652" vertical-offset="4147" max-vertical-offset="5202">
-          <caret line="252" column="25" selection-start-line="252" selection-start-column="25" selection-end-line="252" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/AgentController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.58666664" vertical-offset="1107" max-vertical-offset="4828">
@@ -2362,14 +2324,6 @@
             <element signature="method#getAgentMessagey#0;class#AgentController#0" expanded="false" />
             <element signature="method#getAgentMessage#0;class#AgentController#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/listgroup.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.316609" vertical-offset="3880" max-vertical-offset="5253">
-          <caret line="239" column="10" selection-start-line="239" selection-start-column="10" selection-end-line="239" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2481,27 +2435,56 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/groupagents.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resource/js/group.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="7.2560554" vertical-offset="141" max-vertical-offset="5236">
-          <caret line="255" column="16" selection-start-line="255" selection-start-column="16" selection-end-line="255" selection-end-column="16" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1598">
+          <caret line="74" column="28" selection-start-line="74" selection-start-column="28" selection-end-line="74" selection-end-column="28" />
+          <folding>
+            <element signature="n#!!doc;n#listtable#0" expanded="false" />
+            <element signature="e#3008#3618#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.230769" vertical-offset="4715" max-vertical-offset="6001">
+          <caret line="293" column="50" selection-start-line="293" selection-start-column="37" selection-end-line="293" selection-end-column="50" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resource/js/agentdefinition.js">
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/AgentdefinitionsController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.05629139" vertical-offset="102" max-vertical-offset="3366">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="9" selection-end-column="1" />
+        <state vertical-scroll-proportion="0.39403972" vertical-offset="0" max-vertical-offset="2839">
+          <caret line="27" column="89" selection-start-line="27" selection-start-column="82" selection-end-line="27" selection-end-column="89" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resource/js/agent.js">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/definitionsjson.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.028145695" vertical-offset="0" max-vertical-offset="4641">
-          <caret line="1" column="12" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
+        <state vertical-scroll-proportion="0.73702425" vertical-offset="4147" max-vertical-offset="5253">
+          <caret line="269" column="46" selection-start-line="269" selection-start-column="33" selection-end-line="269" selection-end-column="46" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/GroupsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.1307946" vertical-offset="184" max-vertical-offset="1054">
+          <caret line="165" column="72" selection-start-line="165" selection-start-column="72" selection-end-line="165" selection-end-column="72" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#postServerGroup#0;class#GroupsController#0" expanded="false" />
+            <element signature="method#postServerGroup#1;class#GroupsController#0" expanded="false" />
+            <element signature="method#getAgents#0;class#GroupsController#0" expanded="false" />
+            <element signature="method#getgroupgeneral#0;class#GroupsController#0" expanded="false" />
+            <element signature="method#getGroupsname#0;class#GroupsController#0" expanded="false" />
+            <element signature="method#getGroups#0;class#GroupsController#0" expanded="false" />
+            <element signature="method#suscribe#0;class#GroupsController#0" expanded="false" />
+            <element signature="method#getServerGroup#0;class#GroupsController#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2534,32 +2517,115 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resource/js/group.js">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resource/js/agentdefinition.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1598">
-          <caret line="74" column="28" selection-start-line="74" selection-start-column="28" selection-end-line="74" selection-end-column="28" />
-          <folding>
-            <element signature="n#!!doc;n#listtable#0" expanded="false" />
-            <element signature="e#3008#3618#0" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="0.0" vertical-offset="1734" max-vertical-offset="3400">
+          <caret line="126" column="8" selection-start-line="126" selection-start-column="8" selection-end-line="126" selection-end-column="59" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/Groups.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resource/js/formagents.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.1307946" vertical-offset="184" max-vertical-offset="1054">
-          <caret line="165" column="72" selection-start-line="165" selection-start-column="72" selection-end-line="165" selection-end-column="72" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#postServerGroup#0;class#Groups#0" expanded="false" />
-            <element signature="method#postServerGroup#1;class#Groups#0" expanded="false" />
-            <element signature="method#getAgents#0;class#Groups#0" expanded="false" />
-            <element signature="method#getgroupgeneral#0;class#Groups#0" expanded="false" />
-            <element signature="method#getGroupsname#0;class#Groups#0" expanded="false" />
-            <element signature="method#getGroups#0;class#Groups#0" expanded="false" />
-            <element signature="method#suscribe#0;class#Groups#0" expanded="false" />
-            <element signature="method#getServerGroup#0;class#Groups#0" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1156">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resource/js/user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.04139073" vertical-offset="2218" max-vertical-offset="2822">
+          <caret line="129" column="14" selection-start-line="129" selection-start-column="14" selection-end-line="129" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resource/js/agent.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4152" max-vertical-offset="4794">
+          <caret line="270" column="57" selection-start-line="270" selection-start-column="57" selection-end-line="270" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/definitionsimple.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.730769" vertical-offset="2091" max-vertical-offset="7548">
+          <caret line="144" column="11" selection-start-line="144" selection-start-column="11" selection-end-line="149" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/definition.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.384615" vertical-offset="1989" max-vertical-offset="13600">
+          <caret line="139" column="17" selection-start-line="139" selection-start-column="17" selection-end-line="139" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/agentscript.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.153846" vertical-offset="2244" max-vertical-offset="6001">
+          <caret line="146" column="17" selection-start-line="146" selection-start-column="17" selection-end-line="146" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/agent.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-22.884615" vertical-offset="1751" max-vertical-offset="5950">
+          <caret line="138" column="17" selection-start-line="138" selection-start-column="17" selection-end-line="138" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/group.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.6538463" vertical-offset="1969" max-vertical-offset="5491">
+          <caret line="126" column="83" selection-start-line="126" selection-start-column="83" selection-end-line="126" selection-end-column="83" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/groupagents.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-161.3077" vertical-offset="141" max-vertical-offset="5236">
+          <caret line="255" column="16" selection-start-line="255" selection-start-column="16" selection-end-line="255" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.153846" vertical-offset="1887" max-vertical-offset="9333">
+          <caret line="125" column="83" selection-start-line="125" selection-start-column="83" selection-end-line="125" selection-end-column="83" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/listagent.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.8461537" vertical-offset="1982" max-vertical-offset="5338">
+          <caret line="124" column="83" selection-start-line="124" selection-start-column="83" selection-end-line="124" selection-end-column="83" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/listdefinition.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.576923" vertical-offset="1989" max-vertical-offset="5321">
+          <caret line="124" column="83" selection-start-line="124" selection-start-column="83" selection-end-line="124" selection-end-column="83" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/listgroup.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.1510417" vertical-offset="2248" max-vertical-offset="5253">
+          <caret line="239" column="10" selection-start-line="239" selection-start-column="10" selection-end-line="239" selection-end-column="10" />
+          <folding />
         </state>
       </provider>
     </entry>
