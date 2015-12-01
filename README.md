@@ -40,12 +40,9 @@
    sudo wget -O agent-server-1.0.war https://github.com/tchambil/agent-server/blob/master/target/agent-server-1.0.war?raw=true
    
    sudo service tomcat7 restart(optional)
-
 ```
----
 
 # For start agent
-
 
 http://localhost:8080/ 
 
