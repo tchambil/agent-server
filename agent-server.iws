@@ -5,14 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2cf9c626-ec31-4eb5-ac64-d54f63553b96" name="Default" comment="">
-      <change type="MOVED" beforePath="C:\AppServ\www\agent-server\src\main\java\dcc\agent\server\controller\Groups.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/GroupsController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent-server.iws" afterPath="$PROJECT_DIR$/agent-server.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resource/js/agent.js" afterPath="$PROJECT_DIR$/src/main/webapp/resource/js/agent.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/agent.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/agent.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resource/js/agentdefinition.js" afterPath="$PROJECT_DIR$/src/main/webapp/resource/js/agentdefinition.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/agentscript.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/agentscript.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/definition.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/definition.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/definitionsjson.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/definitionsjson.jsp" />
     </list>
     <ignored path="agent-server.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -1393,7 +1387,7 @@
       <workItem from="1448375845473" duration="38779000" />
       <workItem from="1448603077821" duration="25340000" />
       <workItem from="1448760672769" duration="37410000" />
-      <workItem from="1448897984178" duration="9634000" />
+      <workItem from="1448897984178" duration="9920000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1431836573263</created>
@@ -1867,11 +1861,15 @@
       <created>1448989460301</created>
       <updated>1448989460301</updated>
     </task>
-    <option name="localTasksCounter" value="119" />
+    <task id="LOCAL-00119" summary="refactory menu, add functions for agentdefinitions">
+      <created>1448994556990</created>
+      <updated>1448994556990</updated>
+    </task>
+    <option name="localTasksCounter" value="120" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1548766000" />
+    <option name="totallyTimeSpent" value="1549052000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -2005,7 +2003,8 @@
     <MESSAGE value="Refactory jsps, add functions for suscription agents to other servers and agents" />
     <MESSAGE value="update class agentserver&#10;" />
     <MESSAGE value="update functios list groups in file jsp" />
-    <option name="LAST_COMMIT_MESSAGE" value="update functios list groups in file jsp" />
+    <MESSAGE value="refactory menu, add functions for agentdefinitions" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactory menu, add functions for agentdefinitions" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
