@@ -267,6 +267,9 @@
 
  <button id="btnscripptSave" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
                          </pre>
+                        <div id="idMessageUser" class="alert alert-info">
+
+                        </div>
                     </div>
             </div>
         </div>

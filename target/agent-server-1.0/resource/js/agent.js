@@ -1,4 +1,7 @@
 $(document).ready(function () {
+
+
+
     $.ajax({
         url: "../agents"
     }).then(function (data) {
@@ -264,4 +267,10 @@ $(document).ready(function () {
             }
         }); //-- END of Ajax
     });
+
+    $('#nameagentgeneral').val(window.location.hostname);
+    $('#addressesagent').val(window.location.origin);
+
+    $('#typeagent').attr("disabled", true);
+    $('#addressesagent').attr("disabled", false);
 });
