@@ -96,6 +96,8 @@ public class GroupsController {
     }
     @RequestMapping(value = "/group", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public String postServerGroup( HttpServletRequest request) throws Exception {
+        PlataformController plataform = new PlataformController();
+        agentServer = plataform.getAgentServer();
         User user = agentServer.users.get("test-user-1");
         JSONObject serverJson = util.getJsonRequest(request);
         if (serverJson == null)
@@ -110,6 +112,8 @@ public class GroupsController {
     }
     @RequestMapping(value = "/group/{name}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public String getAgents( @PathVariable String name) throws Exception {
+        PlataformController plataform = new PlataformController();
+        agentServer = plataform.getAgentServer();
         logger.info("Getting list of all agents for a group");
         GroupAgentInstanceList groupMap = agentServer.groupAgents.get(name);
         GroupAgentInstance group = groupMap.get(name);
@@ -118,6 +122,8 @@ public class GroupsController {
     }
     @RequestMapping(value = "/groupgeneral", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public String getgroupgeneral() throws Exception {
+        PlataformController plataform = new PlataformController();
+        agentServer = plataform.getAgentServer();
         JSONArray GroupArrayJson = new JSONArray();
         for (NameValue<ServerGroupList> groupListNameValue : agentServer.serverGroups) {
             // Get all  serverGroup
@@ -139,6 +145,8 @@ public class GroupsController {
     @RequestMapping(value = "/groupsname", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     public String getGroupsname(HttpServletRequest request) throws Exception {
         // String url="http://dbpedias.cloudapp.net/group";
+        PlataformController plataform = new PlataformController();
+        agentServer = plataform.getAgentServer();
         JSONObject configJson = util.getJsonRequest(request);
         String uri = configJson.optString("server");
         String group = configJson.optString("group");
@@ -153,6 +161,8 @@ public class GroupsController {
     @RequestMapping(value = "/groups", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     public String getGroups(HttpServletRequest request) throws Exception {
         // String url="http://dbpedias.cloudapp.net/group";
+        PlataformController plataform = new PlataformController();
+        agentServer = plataform.getAgentServer();
         JSONObject configJson = util.getJsonRequest(request);
         String uri = configJson.optString("server");
         HttpHeaders headers = new HttpHeaders();
@@ -165,6 +175,8 @@ public class GroupsController {
     @RequestMapping(value = "/suscribe", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     public String suscribe(HttpServletRequest request) throws Exception {
         // String url="http://dbpedias.cloudapp.net/group";
+        PlataformController plataform = new PlataformController();
+        agentServer = plataform.getAgentServer();
         User user = agentServer.users.get("test-user-1");
         JSONObject configJson = util.getJsonRequest(request);
         String uri = configJson.optString("server");
@@ -198,6 +210,8 @@ public class GroupsController {
     @RequestMapping(value = "/group", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public String getServerGroup() throws JSONException {
+        PlataformController plataform = new PlataformController();
+        agentServer = plataform.getAgentServer();
         JSONObject groupJson = new JSONObject();
         JSONArray jsonArray2 = new JSONArray();
         // Get all serverGroup
