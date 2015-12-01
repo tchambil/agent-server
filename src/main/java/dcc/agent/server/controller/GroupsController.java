@@ -235,7 +235,7 @@ public class GroupsController {
                             jsonObj.put("aid", item.getString("aid"));
                             jsonObj.put("name", item.getString("name"));
                             jsonObj.put("host", item.getString("host"));
-                            jsonObj.put("Addresses", item.getString("addresses"));
+                            jsonObj.put("addresses", item.getString("addresses"));
                             jsonObj.put("status", item.getString("status"));
                             jsonObj.put("type",item.getString("type"));
                             jsonObj.put("description",item.getString("description"));

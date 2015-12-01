@@ -121,5 +121,41 @@ Example(http://agentserver.herokuapp.com/)
 
 + For get Result -> Result Menu with Task ID 
 
+# Configure message for Delegate task:
+the sintaxis for delegate is:
+```shell
+Delegate(A, B, Task), where
+A=Agent delegator,
+B=Agent Contactor,
+Task= Set and sequence actions (eg, putTo, exec, join, message, result)
+Example:
+Delegate(A,B, putTo(C, exec(Q, const)))
+
+```
+In content have actions ::putTo and ::exec
+
+```shell
+{ 
+"conversationId": "geonames-123581844", 
+"sender": "agent1@dbpedias.cloudapp.net", 
+"receiver": "agent2@geonames.cloudapp.net", 
+"replyTo": "agent3@yagos.cloudapp.net", 
+"content": "::putTo(agent3@yagos.cloudapp.net, ::exec(http://sws.geonames.org/3165322/ -p 
+			<http://www.w3.org/2000/01/rdf-schema#isDefinedBy> 
+			[ASK {?ctx <http://www.geonames.org/ontology#population> 
+			?pop. FILTER (?pop >10000).}] -f files.rdf))", 
+"language": "", 
+"encoding": 
+"123525235", 
+"ontology": "2", 
+"protocol": "", 
+"replyWith": "",
+"inReplyTo": "",
+"replyBy": "", 
+"performative": "REQUEST" 
+}
+```
+
+
 For more information contact tchambil@dcc.uchile.cl
 
