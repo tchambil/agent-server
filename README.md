@@ -42,13 +42,13 @@
    sudo service tomcat7 restart(optional)
 
 ```
-+ For start agent
+# For start agent
 
- ```shell  
+ 
 
 http://localhost:8080/ 
 
-```
+```shell 
 Steps for run:
 1)Plataform (Agent Server)
 ->For running Plataform with button "start"
@@ -70,7 +70,7 @@ Steps for run:
 ->For add agents with button "add agent" 
 ->For get all agents with button "get all"
 -> . . . .
-
+```
 Example(http://agentserver.herokuapp.com/)
 
 # Basic Configurations: (STEPS)
