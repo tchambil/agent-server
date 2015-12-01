@@ -42,8 +42,7 @@
    sudo service tomcat7 restart(optional)
 
 ```
-
-# Install manual 
++ For start agent
 
  ```shell  
 
