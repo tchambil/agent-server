@@ -23,9 +23,7 @@ public class AgentSender {
         // Initialize the agent send,
         AgentInstance agentInstance = agentServer.getAgentInstanceId(message.receivers);
         String webService = getAddresss(agentInstance);
-
         try {
-
             if (agentServer.getHttpStatus(webService) == 200) {
                 RestTemplate restTemplate = new RestTemplate();
                 HttpHeaders headers = new HttpHeaders();
@@ -88,31 +86,4 @@ public class AgentSender {
         }
     }
 
-    public static void onMessage(AgentServer agentServer, ACLMessage message) throws Exception {
-        if ((message != null)) {
-            ACLMessage reply = message.createReply(agentServer);
-            if (message.getPerformative() == Performative.REQUEST) {
-                String content = message.getContent();
-                if (content != null) {
-                    log.info("Agent " + message.getReceivers() + " - Received Request from " + message.getSender());
-                    reply.setPerformative(Performative.INFORM);
-                    reply.setStatus("response");
-                    reply.setInReplyTo(content);
-                    reply.setReplyBy(message.getReceivers());
-
-                    if (true) {
-                        reply.setContent("Nothing Result or Unexpected request");
-                    }
-                } else {
-                    log.info("Agent " + message.getReceivers() + " - Unexpected request [" + content + "] received from " + message.getSender());
-                    reply.setPerformative(Performative.REFUSE);
-                    reply.setContent("( UnexpectedContent (" + content + "))");
-                }
-            } else {
-                reply.setPerformative(Performative.NOT_UNDERSTOOD);
-                reply.setContent("( (Unexpected-act " + (message.getPerformative()) + ") )");
-            }
-            AgentSender.send(agentServer, reply);
-        }
-    }
 }

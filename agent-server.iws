@@ -5,6 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2cf9c626-ec31-4eb5-ac64-d54f63553b96" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/ACL/AgentReceiver.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/ACL/AgentReceiver.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/ACL/AgentSender.java" afterPath="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/ACL/AgentSender.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent-server.iws" afterPath="$PROJECT_DIR$/agent-server.iws" />
     </list>
     <ignored path="agent-server.iws" />
@@ -35,7 +37,20 @@
     <favorites_list name="agent-server" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="AgentReceiver.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/ACL/AgentReceiver.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="5.054817" vertical-offset="0" max-vertical-offset="3281">
+              <caret line="219" column="5" selection-start-line="219" selection-start-column="5" selection-end-line="219" selection-end-column="5" />
+              <folding>
+                <element signature="method#parseMessage#0;class#AgentReceiver#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -84,8 +99,6 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/suscribegroup.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/delegate/AgentDelegate.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/Navigator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/ACL/AgentReceiver.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/ACL/AgentSender.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/AgentController.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/listgroup.jsp" />
@@ -99,6 +112,8 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/agentscript.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/agent.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/GroupsController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/ACL/AgentReceiver.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/ACL/AgentSender.java" />
       </list>
     </option>
   </component>
@@ -1350,7 +1365,7 @@
       <workItem from="1448603077821" duration="25340000" />
       <workItem from="1448760672769" duration="37410000" />
       <workItem from="1448897984178" duration="12895000" />
-      <workItem from="1449003260629" duration="1305000" />
+      <workItem from="1449003260629" duration="2875000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1431836573263</created>
@@ -1872,11 +1887,15 @@
       <created>1449015306052</created>
       <updated>1449015306052</updated>
     </task>
-    <option name="localTasksCounter" value="131" />
+    <task id="LOCAL-00131" summary="update readme add delegate">
+      <created>1449015311869</created>
+      <updated>1449015311870</updated>
+    </task>
+    <option name="localTasksCounter" value="132" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1553332000" />
+    <option name="totallyTimeSpent" value="1554902000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1900,10 +1919,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.298441" sideWeight="0.24432677" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.298441" sideWeight="0.24432677" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32739422" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -2093,12 +2112,6 @@
           <line>177</line>
           <properties />
           <option name="timeStamp" value="802" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/ACL/AgentReceiver.java</url>
-          <line>83</line>
-          <properties />
-          <option name="timeStamp" value="804" />
         </line-breakpoint>
       </breakpoints>
       <option name="time" value="805" />
@@ -2426,13 +2439,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/ACL/AgentSender.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31702128" vertical-offset="1177" max-vertical-offset="1938">
-          <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.0.0.RELEASE/spring-web-4.0.0.RELEASE-sources.jar!/org/springframework/web/method/support/InvocableHandlerMethod.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2945" max-vertical-offset="3910">
@@ -2541,12 +2547,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/ACL/AgentSender.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.48006645" vertical-offset="561" max-vertical-offset="1445">
+          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding>
+            <element signature="e#1268#1276#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/ACL/AgentReceiver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31702128" vertical-offset="1177" max-vertical-offset="4437">
-          <caret line="131" column="0" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
+        <state vertical-scroll-proportion="5.054817" vertical-offset="0" max-vertical-offset="3281">
+          <caret line="219" column="5" selection-start-line="219" selection-start-column="5" selection-end-line="219" selection-end-column="5" />
           <folding>
-            <element signature="method#onMessage#0;class#AgentReceiver#0" expanded="false" />
+            <element signature="method#parseMessage#0;class#AgentReceiver#0" expanded="false" />
           </folding>
         </state>
       </provider>
