@@ -126,11 +126,12 @@ the sintaxis for delegate is:
 ```shell
 Delegate(A, B, Task), where
 A=Agent delegator,
-B=Agent Contactor,
+B=Agent Contractor,
 Task= Set and sequence actions (eg, putTo, exec, join, message, result)
 Example:
-Delegate(A,B, putTo(C, exec(Q, const)))
-
+Delegate(A,B, putTo(C, exec(Q, const))), where
+Q=Query sql,
+const= constrains for execution actions
 ```
 In content have actions ::putTo and ::exec
 
@@ -145,10 +146,9 @@ In content have actions ::putTo and ::exec
 			[ASK {?ctx <http://www.geonames.org/ontology#population> 
 			?pop. FILTER (?pop >10000).}] -f files.rdf))", 
 "language": "", 
-"encoding": 
-"123525235", 
+"encoding": "123525235", 
 "ontology": "2", 
-"protocol": "", 
+"protocol": "REQUEST", 
 "replyWith": "",
 "inReplyTo": "",
 "replyBy": "", 

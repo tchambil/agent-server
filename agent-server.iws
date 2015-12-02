@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2cf9c626-ec31-4eb5-ac64-d54f63553b96" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/agent-server.iws" afterPath="$PROJECT_DIR$/agent-server.iws" />
     </list>
     <ignored path="agent-server.iws" />
@@ -1350,7 +1351,7 @@
       <workItem from="1448603077821" duration="25340000" />
       <workItem from="1448760672769" duration="37410000" />
       <workItem from="1448897984178" duration="12895000" />
-      <workItem from="1449003260629" duration="1241000" />
+      <workItem from="1449003260629" duration="1295000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1431836573263</created>
@@ -1864,11 +1865,15 @@
       <created>1449014350602</created>
       <updated>1449014350602</updated>
     </task>
-    <option name="localTasksCounter" value="129" />
+    <task id="LOCAL-00129" summary="update readme add delegate">
+      <created>1449015247125</created>
+      <updated>1449015247125</updated>
+    </task>
+    <option name="localTasksCounter" value="130" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1553268000" />
+    <option name="totallyTimeSpent" value="1553322000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
