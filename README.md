@@ -94,7 +94,7 @@ Example(http://agentserver.herokuapp.com/)
 
 + Create groups
 
-+ Imports agents from other serves
++ Imports agents from other servers
 
 + Suscribe to groups
 
