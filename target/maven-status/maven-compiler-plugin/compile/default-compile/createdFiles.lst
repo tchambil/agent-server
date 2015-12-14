@@ -136,8 +136,8 @@ dcc\agent\server\service\script\parser\tokenizer\token\MapKeywordToken.class
 dcc\agent\server\service\script\intermediate\SymbolTable.class
 dcc\agent\server\service\swget\rdf2prefuse\graph\GraphPanel$1.class
 dcc\agent\server\service\agentserver\OutputRecord.class
-dcc\agent\server\service\swget\rdf2prefuse\graph\LabelLayoutNode.class
 dcc\agent\server\service\webaccessmanager\InvalidUrlException.class
+dcc\agent\server\service\swget\rdf2prefuse\graph\LabelLayoutNode.class
 dcc\agent\server\service\script\parser\tokenizer\token\LessOperatorToken.class
 dcc\agent\server\service\swget\regExpression\automaton\Set.class
 dcc\agent\server\service\script\intermediate\StatementNode.class
