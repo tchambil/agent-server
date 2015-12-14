@@ -219,6 +219,26 @@
                        <fieldset>
                            <div class="form-top">
                                <div class="form-top-left">
+                                   <h1>Agent Start</h1>
+                               </div>
+
+                           </div>
+                           <div class="form-bottom">
+                               <div class="form-group">
+                                   <label>Start</label>
+                                   <select id="Dropagentstart" class="form-control">
+                                       <option value="Test">Selection Item</option>
+                                   </select>
+                               </div>
+
+                           </div>
+                       </fieldset>
+                   </div>
+
+                   <div class="step well">
+                       <fieldset>
+                           <div class="form-top">
+                               <div class="form-top-left">
                                    <h1>Output</h1>
                                </div>
 
