@@ -35,8 +35,8 @@ function loadata() {
 function jsonNautilod(data) {
     var json =
 
-        '{"sender": "agent1@dbpedias.cloudapp.net",' +
-        '"receiver": "agent1@dbpedias.cloudapp.net",' +
+        '{"sender": "' + $('#Dropagentstart').val() + '",' +
+        '"receiver": "' + $('#Dropagentstart').val() + '",' +
         '"replyTo": "' + $('#Dropagent').val() + '",' +
         '"content": "' + "::putTo(" + $('#Dropagent').val() + ",::exec(" + $('#see_uri').val().trim() + " -p " + $('#expressionNau').val().trim() + "))" + '",' +
         '"language": "",' +
@@ -152,9 +152,9 @@ $(document).ready(function () {
         url: "../agents"
     }).then(function (data) {
         $('#Dropagent').empty();
-
+        $('#Dropagentstart').empty();
         $(data.agent_instances).each(function (index, item) {
-
+            $('#Dropagentstart').append('<option value=' + item.aid + '>' + item.aid + '</option>');
             $('#Dropagent').append('<option value=' + item.aid + '>' + item.aid + '</option>');
         });
     });
