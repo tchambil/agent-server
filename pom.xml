@@ -13,6 +13,7 @@
 
     <properties>
         <springframework.version>4.0.0.RELEASE</springframework.version>
+        <jena.version>3.0.0</jena.version>
     </properties>
 
     <dependencies>
@@ -184,6 +185,8 @@
             <artifactId>java-property-utils</artifactId>
             <version>1.9.1</version>
         </dependency>
+
+
 
 
 
