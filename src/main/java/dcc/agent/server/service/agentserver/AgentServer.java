@@ -285,7 +285,7 @@ import java.util.*;
         try {
             agentInstanceJson.put("user", SuscriptorAgent.user.id);
             agentInstanceJson.put("name", SuscriptorAgent.name);
-            agentInstanceJson.put("Addresses",SuscriptorAgent.addresses);
+            agentInstanceJson.put("addresses",SuscriptorAgent.addresses);
             agentInstanceJson.put("host", SuscriptorAgent.host);
             agentInstanceJson.put("aid", SuscriptorAgent.aid);
             agentInstanceJson.put("type", "remote");
