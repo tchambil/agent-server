@@ -1,6 +1,47 @@
+google.load("visualization", "1.1", {packages: ["table"]});
+function drawtableChart(data) {
+    var datax = new google.visualization.DataTable();
+    datax.addColumn('string', 'id');
+    datax.addColumn('string', 'sender');
+    datax.addColumn('string', 'receiver');
+    datax.addColumn('string', 'content');
+    datax.addRows(data.agent_message.length);
+
+    for (i = 0; i < data.agent_message.length; i++) {
+        datax.setValue(i, 0, data.agent_message[i].conversationId);
+        datax.setValue(i, 1, data.agent_message[i].sender);
+        datax.setValue(i, 2, data.agent_message[i].receiver);
+        datax.setValue(i, 3, data.agent_message[i].content);
+    }
+
+    var options = {
+        showRowNumber: false,
+        page: 'enable',
+        pageSize: 10,
+        width: '100%',
+        height: '100%',
+        pagingSymbols: {
+            prev: 'prev',
+            next: 'next'
+        }
+    };
+    var table = new google.visualization.Table(document.getElementById('mynetworkFA'));
+    table.draw(datax, options)
+
+}
+
 $(document).ready(function () {
     $("#search").click(function (e) {
         loadata()
+    });
+
+    $('#btnlist').click(function () {
+       $.ajax({
+            type: 'GET',
+            url: '../users/message/'+'I'+ $('#idconversation').val()
+        }).then(function (data) {
+            drawtableChart(data);
+        });
     });
 
 });

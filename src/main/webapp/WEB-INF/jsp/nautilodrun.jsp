@@ -114,9 +114,17 @@
         <li><a href="/nautilodrun.do" data-target=".users-menu" class="nav-header collapsed" data-toggle="collapse"><i
                 class="glyphicon glyphicon-cog"></i> Run Script</a>
         </li>
-        <!--<Agent Definitions]-->
-        <li><a href="/nautilodmessage.do" data-target=".legal-menu" class="nav-header collapsed" data-toggle="collapse"><i
-                class="glyphicon glyphicon-map-marker"></i> Messages</a>
+        <!--<Message]-->
+        <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".premium-menu1"
+                                                                        class="nav-header collapsed"
+                                                                        data-toggle="collapse">
+            <i class="fa fa-fw fa-cog"></i> Messages<i class="fa fa-collapse"></i></a>
+        </li>
+        <li>
+            <ul class="premium-menu1 nav nav-list collapse">
+                <li><a href="/nautilodmessage.do"><span class="fa fa-caret-right"></span> Sequence</a> </li>
+                <li><a href="/listmessage.do"><span class="fa fa-caret-right"></span> List</a></li>
+            </ul>
         </li>
         <!--<Agents]-->
         <li data-popover="true" rel="popover" data-placement="right"><a href="/nautilodresult.do" data-target=".premium-menu"

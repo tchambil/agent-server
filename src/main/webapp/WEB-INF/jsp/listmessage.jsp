@@ -41,25 +41,7 @@
 
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <style>
-        #mynetworkFA,
-        #mynetworkIO {
-            height: 500px;
-            width: 1000px;
-            border:1px solid lightgrey;
-        }
-        p {
-            max-width:700px;
-        }
-    </style>
-    <style type="text/css">
-        #mynetwork {
-            width: 900px;
-            height: 900px;
-            border: 1px solid lightgray;
-        }
-    </style>
-    <script src="/resource/js/message.js"></script>
+     <script src="/resource/js/message.js"></script>
     <script src="/resource/js/site/googleAnalytics.js"></script>
 </head>
 <body class=" theme-blue">
@@ -146,7 +128,7 @@
         </li>
         <li>
             <ul class="premium-menu1 nav nav-list collapse">
-                <li><a href="/nautilodmessage.doo"><span class="fa fa-caret-right"></span> Sequence</a> </li>
+                <li><a href="/nautilodmessage.do"><span class="fa fa-caret-right"></span> Secuenque</a> </li>
                 <li><a href="/listmessage.do"><span class="fa fa-caret-right"></span> List</a></li>
             </ul>
         </li>
@@ -161,7 +143,7 @@
 </div>
 <div class="content">
     <div class="header">
-        <h1 class="page-title">Sequence Message</h1>
+        <h1 class="page-title">List Message</h1>
         <div class="col-md-4">
             <div class="widget">
                 <ul class="cards list-group">
@@ -169,9 +151,9 @@
                     <li class="list-group-item">
                         <div class="form-group">
                             <label>Retrieve Task(ID)</label>
-                            <input id="idresult" type="text" id="nameagentgeneral" class="form-control" value=""/>
+                            <input id="idconversation" type="text" id="nameagentgeneral" class="form-control" value=""/>
                         </div>
-                        <button id="search" class="btn btn-primary"> search</button>
+                        <button id="btnlist" class="btn btn-primary"> search</button>
                     </li>
                 </ul>
             </div>
