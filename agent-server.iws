@@ -36,82 +36,180 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="listmessage.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/listmessage.jsp">
+      <file leaf-file-name="ScriptNode.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/intermediate/ScriptNode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.384615" vertical-offset="2091" max-vertical-offset="3179">
-              <caret line="145" column="43" selection-start-line="145" selection-start-column="43" selection-end-line="145" selection-end-column="43" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="734" max-vertical-offset="1207">
+              <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="message.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/message.jsp">
+      <file leaf-file-name="ScriptRuntime.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/runtime/ScriptRuntime.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="154.96153" vertical-offset="4029" max-vertical-offset="4828">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="319" max-vertical-offset="986">
+              <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="nautilodmessage.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/nautilodmessage.jsp">
+      <file leaf-file-name="AgentInstance.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentInstance.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.5384617" vertical-offset="2346" max-vertical-offset="3485">
-              <caret line="148" column="99" selection-start-line="148" selection-start-column="99" selection-end-line="148" selection-end-column="99" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="11798" max-vertical-offset="22542">
+              <caret line="753" column="0" selection-start-line="753" selection-start-column="0" selection-end-line="753" selection-end-column="0" />
+              <folding>
+                <element signature="e#34610#34611#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AgentActivityTimer.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/activities/AgentActivityTimer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="428" max-vertical-offset="1173">
+              <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="nautilodresult.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/nautilodresult.jsp">
+      <file leaf-file-name="AgentActivityThread.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/activities/AgentActivityThread.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-17.0" vertical-offset="1887" max-vertical-offset="3298">
-              <caret line="137" column="98" selection-start-line="137" selection-start-column="98" selection-end-line="137" selection-end-column="98" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="43" max-vertical-offset="493">
+              <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="nautilodrun.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/nautilodrun.jsp">
+      <file leaf-file-name="AgentReceiver.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/ACL/AgentReceiver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-16.346153" vertical-offset="1683" max-vertical-offset="5015">
-              <caret line="124" column="98" selection-start-line="124" selection-start-column="98" selection-end-line="124" selection-end-column="98" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1567" max-vertical-offset="3536">
+              <caret line="126" column="0" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="nautilodindex.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/nautilodindex.jsp">
+      <file leaf-file-name="AgentServer.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-66.65385" vertical-offset="52" max-vertical-offset="2873">
-              <caret line="105" column="25" selection-start-line="105" selection-start-column="25" selection-end-line="105" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="578" max-vertical-offset="4947">
+              <caret line="295" column="32" selection-start-line="295" selection-start-column="32" selection-end-line="295" selection-end-column="32" />
+              <folding>
+                <element signature="method#AgentServer#1;class#AgentServer#0" expanded="false" />
+                <element signature="method#getResult#0;class#AgentServer#0" expanded="false" />
+                <element signature="method#getHttpStatus#0;class#AgentServer#0" expanded="false" />
+                <element signature="method#getAddresss#0;class#AgentServer#0" expanded="false" />
+                <element signature="method#getAddress#0;class#AgentServer#0" expanded="false" />
+                <element signature="method#getSingleton#0;class#AgentServer#0" expanded="false" />
+                <element signature="method#addAgentDefinition#0;class#AgentServer#0" expanded="false" />
+                <element signature="method#addAgentDefinition#1;class#AgentServer#0" expanded="false" />
+                <element signature="method#addAgentDefinition#3;class#AgentServer#0" expanded="false" />
+                <element signature="method#writeResult#0;class#AgentServer#0" expanded="false" />
+                <element signature="method#addNautilood#0;class#AgentServer#0" expanded="false" />
+                <element signature="method#addNautilod#0;class#AgentServer#0" expanded="false" />
+                <element signature="method#addAgentMessage#1;class#AgentServer#0" expanded="false" />
+                <element signature="method#getAgentMessage#0;class#AgentServer#0" expanded="false" />
+                <element signature="method#receive#0;class#AgentServer#0" expanded="false" />
+                <element signature="method#receive#1;class#AgentServer#0" expanded="false" />
+                <element signature="method#receive#3;class#AgentServer#0" expanded="false" />
+                <element signature="method#send#0;class#AgentServer#0" expanded="false" />
+                <element signature="method#addAgentMessage#2;class#AgentServer#0" expanded="false" />
+                <element signature="method#getServerGroup#0;class#AgentServer#0" expanded="false" />
+                <element signature="method#addServerGroup#0;class#AgentServer#0" expanded="false" />
+                <element signature="method#removeGroupAgentInstance#0;class#AgentServer#0" expanded="false" />
+                <element signature="method#addGroupAgentInstance#0;class#AgentServer#0" expanded="false" />
+                <element signature="method#addServerGroup#1;class#AgentServer#0" expanded="false" />
+                <element signature="method#addGroupAgentInstance#1;class#AgentServer#0" expanded="false" />
+                <element signature="method#getAgentDefinition#0;class#AgentServer#0" expanded="false" />
+                <element signature="method#clearAgentDefinitions#0;class#AgentServer#0" expanded="false" />
+                <element signature="method#removeAgentDefinition#0;class#AgentServer#0" expanded="false" />
+                <element signature="method#removeAgentDefinition#1;class#AgentServer#0" expanded="false" />
+                <element signature="method#addAgentInstance#0;class#AgentServer#0" expanded="false" />
+                <element signature="method#getAgentInstanceAddress#0;class#AgentServer#0" expanded="false" />
+                <element signature="method#getAgentInstances#0;class#AgentServer#0" expanded="false" />
+                <element signature="method#getAgentInstance#0;class#AgentServer#0" expanded="false" />
+                <element signature="method#getAgentInstance#1;class#AgentServer#0" expanded="false" />
+                <element signature="method#getAgentInstance#2;class#AgentServer#0" expanded="false" />
+                <element signature="method#getAgentInstance#3;class#AgentServer#0" expanded="false" />
+                <element signature="method#getAgentInstance#4;class#AgentServer#0" expanded="false" />
+                <element signature="method#getAgentInstance#5;class#AgentServer#0" expanded="false" />
+                <element signature="method#getAgentInstance#8;class#AgentServer#0" expanded="false" />
+                <element signature="method#getAgentInstanceName#0;class#AgentServer#0" expanded="false" />
+                <element signature="method#getAgentInstance#9;class#AgentServer#0" expanded="false" />
+                <element signature="method#getAgentInstance#10;class#AgentServer#0" expanded="false" />
+                <element signature="method#removeAgentInstance#0;class#AgentServer#0" expanded="false" />
+                <element signature="method#addUser#1;class#AgentServer#0" expanded="false" />
+                <element signature="method#getUser#0;class#AgentServer#0" expanded="false" />
+                <element signature="method#recreateUser#0;class#AgentServer#0" expanded="false" />
+                <element signature="method#recreateUser#1;class#AgentServer#0" expanded="false" />
+                <element signature="method#recreateAgentDefinition#0;class#AgentServer#0" expanded="false" />
+                <element signature="method#recreateAgentDefinition#1;class#AgentServer#0" expanded="false" />
+                <element signature="method#recreateAgentMessage#0;class#AgentServer#0" expanded="false" />
+                <element signature="method#removeNautilod#0;class#AgentServer#0" expanded="false" />
+                <element signature="method#recreateNautilod#0;class#AgentServer#0" expanded="false" />
+                <element signature="method#recreateNautilod#1;class#AgentServer#0" expanded="false" />
+                <element signature="method#recreateAgentMessage#1;class#AgentServer#0" expanded="false" />
+                <element signature="method#recreateServerGroup#0;class#AgentServer#0" expanded="false" />
+                <element signature="method#recreateGroupAgent#0;class#AgentServer#0" expanded="false" />
+                <element signature="method#recreateGroupAgent#1;class#AgentServer#0" expanded="false" />
+                <element signature="method#recreateServerGroup#1;class#AgentServer#0" expanded="false" />
+                <element signature="method#recreateAgentInstance#0;class#AgentServer#0" expanded="false" />
+                <element signature="method#recreateAgentInstance#1;class#AgentServer#0" expanded="false" />
+                <element signature="method#shutdown#0;class#AgentServer#0" expanded="false" />
+                <element signature="method#start#1;class#AgentServer#0" expanded="false" />
+                <element signature="method#stop#0;class#AgentServer#0" expanded="false" />
+                <element signature="method#addWebSiteAccessControls#0;class#AgentServer#0" expanded="false" />
+                <element signature="method#getWebPage#1;class#AgentServer#0" expanded="false" />
+                <element signature="method#postUrl#0;class#AgentServer#0" expanded="false" />
+                <element signature="method#postUrl#1;class#AgentServer#0" expanded="false" />
+                <element signature="method#getWebSiteAccessControls#0;class#AgentServer#0" expanded="false" />
+                <element signature="method#getPersistentStorePath#0;class#AgentServer#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GroupsController.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/GroupsController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.23363096" vertical-offset="1713" max-vertical-offset="3060">
+              <caret line="192" column="0" selection-start-line="192" selection-start-column="0" selection-end-line="192" selection-end-column="0" />
+              <folding>
+                <element signature="method#postServerGroup#0;class#GroupsController#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JSONObject.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/json/json2/2.0/json2-2.0.jar!/org/json/JSONObject.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.0" vertical-offset="1771" max-vertical-offset="2584">
+              <caret line="114" column="35" selection-start-line="114" selection-start-column="35" selection-end-line="114" selection-end-column="35" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="nautilod.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/resource/js/nautilod.js">
+      <file leaf-file-name="AgentController.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/AgentController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2924">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="59" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="message.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/resource/js/message.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3794643" vertical-offset="0" max-vertical-offset="1836">
-              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="14997" max-vertical-offset="17170">
+              <caret line="891" column="0" selection-start-line="891" selection-start-column="0" selection-end-line="891" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#13400#13407#0" expanded="true" />
+                <element signature="e#39805#39812#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -154,7 +252,6 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/suscribegroup.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/delegate/AgentDelegate.java" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/swget/multithread/Navigator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/listgroup.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/resource/js/group.js" />
         <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/PlataformController.java" />
@@ -180,6 +277,7 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/nautilodresult.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/nautilodrun.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/nautilodindex.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java" />
       </list>
     </option>
   </component>
@@ -1512,7 +1610,7 @@
       <workItem from="1449804811773" duration="2003000" />
       <workItem from="1449956806389" duration="634000" />
       <workItem from="1450018656293" duration="5608000" />
-      <workItem from="1450098983891" duration="17858000" />
+      <workItem from="1450098983891" duration="23373000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1431836573263</created>
@@ -2058,11 +2156,15 @@
       <created>1450138771697</created>
       <updated>1450138771697</updated>
     </task>
-    <option name="localTasksCounter" value="137" />
+    <task id="LOCAL-00137" summary="fix code for agent suscribe other server">
+      <created>1450154572072</created>
+      <updated>1450154572072</updated>
+    </task>
+    <option name="localTasksCounter" value="138" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1586405000" />
+    <option name="totallyTimeSpent" value="1591920000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -2172,7 +2274,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="add functions for nautilod distributed" />
     <MESSAGE value="add functions for nautilod distributed, and add functions for receiver result to write file json" />
     <MESSAGE value="refactory files jsp for presentation of plataform" />
     <MESSAGE value="add functions for results of nautilod, message for nautilod" />
@@ -2197,7 +2298,8 @@
     <MESSAGE value="refactory ACLMessage functions sender and receiver" />
     <MESSAGE value="add agent start for nautilod" />
     <MESSAGE value="add page for list message interaction agents" />
-    <option name="LAST_COMMIT_MESSAGE" value="add page for list message interaction agents" />
+    <MESSAGE value="fix code for agent suscribe other server" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix code for agent suscribe other server" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2275,12 +2377,6 @@
           <option name="timeStamp" value="742" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/GroupsController.java</url>
-          <line>177</line>
-          <properties />
-          <option name="timeStamp" value="802" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/AgentController.java</url>
           <line>891</line>
           <properties />
@@ -2298,8 +2394,26 @@
           <properties />
           <option name="timeStamp" value="820" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/ACL/AgentReceiver.java</url>
+          <line>116</line>
+          <properties />
+          <option name="timeStamp" value="829" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/GroupsController.java</url>
+          <line>192</line>
+          <properties />
+          <option name="timeStamp" value="830" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/ACL/AgentReceiver.java</url>
+          <line>83</line>
+          <properties />
+          <option name="timeStamp" value="831" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="828" />
+      <option name="time" value="832" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -2307,104 +2421,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/definitionsjson.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.73702425" vertical-offset="4147" max-vertical-offset="5253">
-          <caret line="269" column="46" selection-start-line="269" selection-start-column="33" selection-end-line="269" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resource/js/formagents.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1156">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resource/js/user.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.04139073" vertical-offset="2218" max-vertical-offset="2822">
-          <caret line="129" column="14" selection-start-line="129" selection-start-column="14" selection-end-line="129" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/definitionsimple.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.730769" vertical-offset="2091" max-vertical-offset="7548">
-          <caret line="144" column="11" selection-start-line="144" selection-start-column="11" selection-end-line="149" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/agentscript.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.153846" vertical-offset="2244" max-vertical-offset="6001">
-          <caret line="146" column="17" selection-start-line="146" selection-start-column="17" selection-end-line="146" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/agent.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-22.884615" vertical-offset="1751" max-vertical-offset="5950">
-          <caret line="138" column="17" selection-start-line="138" selection-start-column="17" selection-end-line="138" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/group.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.6538463" vertical-offset="1969" max-vertical-offset="5491">
-          <caret line="126" column="83" selection-start-line="126" selection-start-column="83" selection-end-line="126" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/groupagents.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-161.3077" vertical-offset="141" max-vertical-offset="5236">
-          <caret line="255" column="16" selection-start-line="255" selection-start-column="16" selection-end-line="255" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.153846" vertical-offset="1887" max-vertical-offset="9333">
-          <caret line="125" column="83" selection-start-line="125" selection-start-column="83" selection-end-line="125" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/listagent.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.8461537" vertical-offset="1982" max-vertical-offset="5338">
-          <caret line="124" column="83" selection-start-line="124" selection-start-column="83" selection-end-line="124" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/listdefinition.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.576923" vertical-offset="1989" max-vertical-offset="5321">
-          <caret line="124" column="83" selection-start-line="124" selection-start-column="83" selection-end-line="124" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/listgroup.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-75.69231" vertical-offset="2095" max-vertical-offset="5253">
-          <caret line="239" column="10" selection-start-line="239" selection-start-column="10" selection-end-line="239" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/ACL/AgentSender.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.48006645" vertical-offset="561" max-vertical-offset="1445">
-          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/jena/jena-core/2.11.0/jena-core-2.11.0-sources.jar!/com/hp/hpl/jena/graph/Node_Fluid.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/apache/jena/jena-core/2.11.0/jena-core-2.11.0-sources.jar!/com/hp/hpl/jena/graph/Node.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="5164" max-vertical-offset="6154">
@@ -2485,98 +2501,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/GroupsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22869319" vertical-offset="1964" max-vertical-offset="3060">
-          <caret line="207" column="0" selection-start-line="207" selection-start-column="0" selection-end-line="207" selection-end-column="0" />
-          <folding>
-            <element signature="method#postServerGroup#0;class#GroupsController#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22720695" vertical-offset="914" max-vertical-offset="2363">
-          <caret line="358" column="0" selection-start-line="358" selection-start-column="0" selection-end-line="358" selection-end-column="0" />
-          <folding>
-            <element signature="method#AgentServer#1;class#AgentServer#0" expanded="false" />
-            <element signature="method#getResult#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#getHttpStatus#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#getAddresss#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#getAddress#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#getSingleton#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#addAgentDefinition#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#addAgentDefinition#1;class#AgentServer#0" expanded="false" />
-            <element signature="method#addAgentDefinition#3;class#AgentServer#0" expanded="false" />
-            <element signature="method#writeResult#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#addNautilood#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#addNautilod#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#addSuscribeAgent#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#addAgentMessage#1;class#AgentServer#0" expanded="false" />
-            <element signature="method#getAgentMessage#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#receive#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#receive#1;class#AgentServer#0" expanded="false" />
-            <element signature="method#receive#3;class#AgentServer#0" expanded="false" />
-            <element signature="method#send#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#addAgentMessage#2;class#AgentServer#0" expanded="false" />
-            <element signature="method#getServerGroup#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#addServerGroup#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#removeGroupAgentInstance#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#addGroupAgentInstance#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#addServerGroup#1;class#AgentServer#0" expanded="false" />
-            <element signature="method#addGroupAgentInstance#1;class#AgentServer#0" expanded="false" />
-            <element signature="method#getAgentDefinition#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#clearAgentDefinitions#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#removeAgentDefinition#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#removeAgentDefinition#1;class#AgentServer#0" expanded="false" />
-            <element signature="method#addAgentInstance#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#addAgentInstance#1;class#AgentServer#0" expanded="false" />
-            <element signature="method#getAgentInstanceId#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#getAgentInstanceAddress#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#getAgentInstances#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#getAgentInstance#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#getAgentInstance#1;class#AgentServer#0" expanded="false" />
-            <element signature="method#getAgentInstance#2;class#AgentServer#0" expanded="false" />
-            <element signature="method#getAgentInstance#3;class#AgentServer#0" expanded="false" />
-            <element signature="method#getAgentInstance#4;class#AgentServer#0" expanded="false" />
-            <element signature="method#getAgentInstance#5;class#AgentServer#0" expanded="false" />
-            <element signature="method#getAgentInstance#7;class#AgentServer#0" expanded="false" />
-            <element signature="method#getAgentInstance#8;class#AgentServer#0" expanded="false" />
-            <element signature="method#getAgentInstanceName#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#getAgentInstance#9;class#AgentServer#0" expanded="false" />
-            <element signature="method#getAgentInstance#10;class#AgentServer#0" expanded="false" />
-            <element signature="method#removeAgentInstance#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#addUser#1;class#AgentServer#0" expanded="false" />
-            <element signature="method#getUser#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#recreateUser#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#recreateUser#1;class#AgentServer#0" expanded="false" />
-            <element signature="method#recreateAgentDefinition#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#recreateAgentDefinition#1;class#AgentServer#0" expanded="false" />
-            <element signature="method#recreateAgentMessage#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#removeNautilod#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#recreateNautilod#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#recreateNautilod#1;class#AgentServer#0" expanded="false" />
-            <element signature="method#recreateAgentMessage#1;class#AgentServer#0" expanded="false" />
-            <element signature="method#recreateServerGroup#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#recreateGroupAgent#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#recreateGroupAgent#1;class#AgentServer#0" expanded="false" />
-            <element signature="method#recreateServerGroup#1;class#AgentServer#0" expanded="false" />
-            <element signature="method#recreateAgentInstance#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#recreateAgentInstance#1;class#AgentServer#0" expanded="false" />
-            <element signature="method#shutdown#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#start#1;class#AgentServer#0" expanded="false" />
-            <element signature="method#stop#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#addWebSiteAccessControls#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#getWebPage#1;class#AgentServer#0" expanded="false" />
-            <element signature="method#postUrl#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#postUrl#1;class#AgentServer#0" expanded="false" />
-            <element signature="method#getWebSiteAccessControls#0;class#AgentServer#0" expanded="false" />
-            <element signature="method#getPersistentStorePath#0;class#AgentServer#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/ACL/ACLMessage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.22869319" vertical-offset="5262" max-vertical-offset="6817">
@@ -2607,14 +2531,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.24433658" vertical-offset="12208" max-vertical-offset="15249">
           <caret line="789" column="0" selection-start-line="789" selection-start-column="0" selection-end-line="789" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/ACL/AgentReceiver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2666" max-vertical-offset="3536">
-          <caret line="209" column="0" selection-start-line="209" selection-start-column="0" selection-end-line="209" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -2651,34 +2567,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/PlataformController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34875444" vertical-offset="2320" max-vertical-offset="7718">
-          <caret line="175" column="26" selection-start-line="175" selection-start-column="19" selection-end-line="175" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/UsersController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.10142349" vertical-offset="28" max-vertical-offset="4437">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/AgentdefinitionsController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.34875444" vertical-offset="42" max-vertical-offset="2839">
           <caret line="27" column="89" selection-start-line="27" selection-start-column="82" selection-end-line="27" selection-end-column="89" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.0.0.RELEASE/spring-web-4.0.0.RELEASE-sources.jar!/org/springframework/web/method/support/InvocableHandlerMethod.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="4.67713" vertical-offset="1144" max-vertical-offset="3910">
-          <caret line="221" column="0" selection-start-line="221" selection-start-column="0" selection-end-line="221" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -2691,70 +2583,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/NautilodController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resource/js/message.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5269461" vertical-offset="226" max-vertical-offset="969">
-          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/AgentController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="15595" max-vertical-offset="17170">
-          <caret line="931" column="0" selection-start-line="931" selection-start-column="0" selection-end-line="931" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#13400#13407#0" expanded="true" />
-            <element signature="e#39805#39812#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/listmessage.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.384615" vertical-offset="2091" max-vertical-offset="3179">
-          <caret line="145" column="43" selection-start-line="145" selection-start-column="43" selection-end-line="145" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/message.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="154.96153" vertical-offset="4029" max-vertical-offset="4828">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/nautilodmessage.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.5384617" vertical-offset="2346" max-vertical-offset="3485">
-          <caret line="148" column="99" selection-start-line="148" selection-start-column="99" selection-end-line="148" selection-end-column="99" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/nautilodresult.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.0" vertical-offset="1887" max-vertical-offset="3298">
-          <caret line="137" column="98" selection-start-line="137" selection-start-column="98" selection-end-line="137" selection-end-column="98" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/nautilodrun.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.346153" vertical-offset="1683" max-vertical-offset="5015">
-          <caret line="124" column="98" selection-start-line="124" selection-start-column="98" selection-end-line="124" selection-end-column="98" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/nautilodindex.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-66.65385" vertical-offset="52" max-vertical-offset="2873">
-          <caret line="105" column="25" selection-start-line="105" selection-start-column="25" selection-end-line="105" selection-end-column="25" />
+        <state vertical-scroll-proportion="0.73363096" vertical-offset="0" max-vertical-offset="1836">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -2767,11 +2599,309 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resource/js/message.js">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/nautilodindex.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3794643" vertical-offset="0" max-vertical-offset="1836">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        <state vertical-scroll-proportion="2.6826625" vertical-offset="52" max-vertical-offset="2873">
+          <caret line="105" column="25" selection-start-line="105" selection-start-column="25" selection-end-line="105" selection-end-column="25" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/nautilodrun.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.67140603" vertical-offset="1683" max-vertical-offset="5015">
+          <caret line="124" column="98" selection-start-line="124" selection-start-column="98" selection-end-line="124" selection-end-column="98" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/nautilodresult.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.68421054" vertical-offset="1887" max-vertical-offset="3298">
+          <caret line="137" column="98" selection-start-line="137" selection-start-column="98" selection-end-line="137" selection-end-column="98" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/nautilodmessage.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2631579" vertical-offset="2346" max-vertical-offset="3485">
+          <caret line="148" column="99" selection-start-line="148" selection-start-column="99" selection-end-line="148" selection-end-column="99" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/message.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.236842" vertical-offset="4029" max-vertical-offset="4828">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/listmessage.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.57894737" vertical-offset="2091" max-vertical-offset="3179">
+          <caret line="145" column="43" selection-start-line="145" selection-start-column="43" selection-end-line="145" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/UsersController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="28" max-vertical-offset="4437">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/PlataformController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2320" max-vertical-offset="7718">
+          <caret line="175" column="26" selection-start-line="175" selection-start-column="19" selection-end-line="175" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/NautilodController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="969">
+          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/ACL/AgentSender.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="972" max-vertical-offset="1445">
+          <caret line="86" column="0" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+          <folding>
+            <element signature="e#1268#1276#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.0.0.RELEASE/spring-web-4.0.0.RELEASE-sources.jar!/org/springframework/web/method/support/InvocableHandlerMethod.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2937" max-vertical-offset="3910">
+          <caret line="213" column="0" selection-start-line="213" selection-start-column="0" selection-end-line="213" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/intermediate/ExpressionNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="969">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/runtime/value/Value.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2567">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/runtime/value/StringValue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="81" max-vertical-offset="11033">
+          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+          <folding>
+            <element signature="e#1690#1691#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/runtime/value/MessageValue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1142" max-vertical-offset="2176">
+          <caret line="89" column="0" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/intermediate/MethodReferenceNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="247" max-vertical-offset="697">
+          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/intermediate/ReturnStatementNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
+          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/intermediate/BlockStatementNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="445" max-vertical-offset="918">
+          <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/intermediate/ScriptNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="734" max-vertical-offset="1207">
+          <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/script/runtime/ScriptRuntime.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="319" max-vertical-offset="986">
+          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentInstance.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="11798" max-vertical-offset="22542">
+          <caret line="753" column="0" selection-start-line="753" selection-start-column="0" selection-end-line="753" selection-end-column="0" />
+          <folding>
+            <element signature="e#34610#34611#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/activities/AgentActivityTimer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="428" max-vertical-offset="1173">
+          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/activities/AgentActivityThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="43" max-vertical-offset="493">
+          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/AgentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="14990" max-vertical-offset="17170">
+          <caret line="891" column="0" selection-start-line="891" selection-start-column="0" selection-end-line="891" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#13400#13407#0" expanded="true" />
+            <element signature="e#39805#39812#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/ACL/AgentReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="897" max-vertical-offset="3536">
+          <caret line="126" column="0" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/json/json2/2.0/json2-2.0.jar!/org/json/JSONObject.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.0" vertical-offset="1771" max-vertical-offset="2584">
+          <caret line="114" column="35" selection-start-line="114" selection-start-column="35" selection-end-line="114" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/service/agentserver/AgentServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="578" max-vertical-offset="4947">
+          <caret line="295" column="32" selection-start-line="295" selection-start-column="32" selection-end-line="295" selection-end-column="32" />
+          <folding>
+            <element signature="method#AgentServer#1;class#AgentServer#0" expanded="false" />
+            <element signature="method#getResult#0;class#AgentServer#0" expanded="false" />
+            <element signature="method#getHttpStatus#0;class#AgentServer#0" expanded="false" />
+            <element signature="method#getAddresss#0;class#AgentServer#0" expanded="false" />
+            <element signature="method#getAddress#0;class#AgentServer#0" expanded="false" />
+            <element signature="method#getSingleton#0;class#AgentServer#0" expanded="false" />
+            <element signature="method#addAgentDefinition#0;class#AgentServer#0" expanded="false" />
+            <element signature="method#addAgentDefinition#1;class#AgentServer#0" expanded="false" />
+            <element signature="method#addAgentDefinition#3;class#AgentServer#0" expanded="false" />
+            <element signature="method#writeResult#0;class#AgentServer#0" expanded="false" />
+            <element signature="method#addNautilood#0;class#AgentServer#0" expanded="false" />
+            <element signature="method#addNautilod#0;class#AgentServer#0" expanded="false" />
+            <element signature="method#addAgentMessage#1;class#AgentServer#0" expanded="false" />
+            <element signature="method#getAgentMessage#0;class#AgentServer#0" expanded="false" />
+            <element signature="method#receive#0;class#AgentServer#0" expanded="false" />
+            <element signature="method#receive#1;class#AgentServer#0" expanded="false" />
+            <element signature="method#receive#3;class#AgentServer#0" expanded="false" />
+            <element signature="method#send#0;class#AgentServer#0" expanded="false" />
+            <element signature="method#addAgentMessage#2;class#AgentServer#0" expanded="false" />
+            <element signature="method#getServerGroup#0;class#AgentServer#0" expanded="false" />
+            <element signature="method#addServerGroup#0;class#AgentServer#0" expanded="false" />
+            <element signature="method#removeGroupAgentInstance#0;class#AgentServer#0" expanded="false" />
+            <element signature="method#addGroupAgentInstance#0;class#AgentServer#0" expanded="false" />
+            <element signature="method#addServerGroup#1;class#AgentServer#0" expanded="false" />
+            <element signature="method#addGroupAgentInstance#1;class#AgentServer#0" expanded="false" />
+            <element signature="method#getAgentDefinition#0;class#AgentServer#0" expanded="false" />
+            <element signature="method#clearAgentDefinitions#0;class#AgentServer#0" expanded="false" />
+            <element signature="method#removeAgentDefinition#0;class#AgentServer#0" expanded="false" />
+            <element signature="method#removeAgentDefinition#1;class#AgentServer#0" expanded="false" />
+            <element signature="method#addAgentInstance#0;class#AgentServer#0" expanded="false" />
+            <element signature="method#getAgentInstanceAddress#0;class#AgentServer#0" expanded="false" />
+            <element signature="method#getAgentInstances#0;class#AgentServer#0" expanded="false" />
+            <element signature="method#getAgentInstance#0;class#AgentServer#0" expanded="false" />
+            <element signature="method#getAgentInstance#1;class#AgentServer#0" expanded="false" />
+            <element signature="method#getAgentInstance#2;class#AgentServer#0" expanded="false" />
+            <element signature="method#getAgentInstance#3;class#AgentServer#0" expanded="false" />
+            <element signature="method#getAgentInstance#4;class#AgentServer#0" expanded="false" />
+            <element signature="method#getAgentInstance#5;class#AgentServer#0" expanded="false" />
+            <element signature="method#getAgentInstance#8;class#AgentServer#0" expanded="false" />
+            <element signature="method#getAgentInstanceName#0;class#AgentServer#0" expanded="false" />
+            <element signature="method#getAgentInstance#9;class#AgentServer#0" expanded="false" />
+            <element signature="method#getAgentInstance#10;class#AgentServer#0" expanded="false" />
+            <element signature="method#removeAgentInstance#0;class#AgentServer#0" expanded="false" />
+            <element signature="method#addUser#1;class#AgentServer#0" expanded="false" />
+            <element signature="method#getUser#0;class#AgentServer#0" expanded="false" />
+            <element signature="method#recreateUser#0;class#AgentServer#0" expanded="false" />
+            <element signature="method#recreateUser#1;class#AgentServer#0" expanded="false" />
+            <element signature="method#recreateAgentDefinition#0;class#AgentServer#0" expanded="false" />
+            <element signature="method#recreateAgentDefinition#1;class#AgentServer#0" expanded="false" />
+            <element signature="method#recreateAgentMessage#0;class#AgentServer#0" expanded="false" />
+            <element signature="method#removeNautilod#0;class#AgentServer#0" expanded="false" />
+            <element signature="method#recreateNautilod#0;class#AgentServer#0" expanded="false" />
+            <element signature="method#recreateNautilod#1;class#AgentServer#0" expanded="false" />
+            <element signature="method#recreateAgentMessage#1;class#AgentServer#0" expanded="false" />
+            <element signature="method#recreateServerGroup#0;class#AgentServer#0" expanded="false" />
+            <element signature="method#recreateGroupAgent#0;class#AgentServer#0" expanded="false" />
+            <element signature="method#recreateGroupAgent#1;class#AgentServer#0" expanded="false" />
+            <element signature="method#recreateServerGroup#1;class#AgentServer#0" expanded="false" />
+            <element signature="method#recreateAgentInstance#0;class#AgentServer#0" expanded="false" />
+            <element signature="method#recreateAgentInstance#1;class#AgentServer#0" expanded="false" />
+            <element signature="method#shutdown#0;class#AgentServer#0" expanded="false" />
+            <element signature="method#start#1;class#AgentServer#0" expanded="false" />
+            <element signature="method#stop#0;class#AgentServer#0" expanded="false" />
+            <element signature="method#addWebSiteAccessControls#0;class#AgentServer#0" expanded="false" />
+            <element signature="method#getWebPage#1;class#AgentServer#0" expanded="false" />
+            <element signature="method#postUrl#0;class#AgentServer#0" expanded="false" />
+            <element signature="method#postUrl#1;class#AgentServer#0" expanded="false" />
+            <element signature="method#getWebSiteAccessControls#0;class#AgentServer#0" expanded="false" />
+            <element signature="method#getPersistentStorePath#0;class#AgentServer#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dcc/agent/server/controller/GroupsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23363096" vertical-offset="1713" max-vertical-offset="3060">
+          <caret line="192" column="0" selection-start-line="192" selection-start-column="0" selection-end-line="192" selection-end-column="0" />
+          <folding>
+            <element signature="method#postServerGroup#0;class#GroupsController#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
