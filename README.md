@@ -4,6 +4,13 @@
 ---
  Plataform Agent Server, is a Web application agents and is made with a REST API features. It includes new features such as messaging management following the Agent Communication Language (ACL) specified by FIPA, delegation of tasks between agents, new features in the scripting language for the Semantic Web support.
  Agent Server is an extension of ["Agent-Server-Stage-0"](http://basetechnology.blogspot.com/2012_03_01_archive.html)
+ 
+ # Architecture
+ 
+<p align="center">
+  <img src="https://github.com/tchambil/agent-server/blob/master/architecture.png" width="350"/> 
+</p>
+
 # Requirements
 + Apache Tomcat 7+
 + Java SE Development Kit (JDK) 7
