@@ -2,7 +2,13 @@
 ---
 *Plataform Agent Server*
 ---
- Plataform Agent Server, is a Web application agents and is made with a REST API features. It includes new features such as messaging management following the Agent Communication Language (ACL) specified by FIPA, delegation of tasks between agents, new features in the scripting language for the Semantic Web support.
+The  Agent Server  platform
+incorporates relevant information and functions for managing agents from the behavior and
+life cycle point of view. The architecture of this platform includes the Message Transport Protocol Module for reliable processing of messages, which uses the  Agent Communication
+Language  (ACL) specified by FIPA and managed by the methods GET, POST and PUT of the HTTP communication protocol. Likewise Agent Manager incorporates
+the module responsible for the management of the platform and agents. All agents in the
+ Agent Server  platform have the same actions implemented, thus allowing to develop their
+capabilities in a uniform manner.
  Agent Server is an extension of ["Agent-Server-Stage-0"](http://basetechnology.blogspot.com/2012_03_01_archive.html)
  
  # Architecture
@@ -110,7 +116,7 @@ Example(http://agentserver.herokuapp.com/)
 
 
 # Case Studio NautiLOD Distributed:
-+ To acces http://agentserver.herokuapp.com/nautilod.do
++ To acces http://agentserver.herokuapp.com/nautilodindex.do
   -> Run Script Menu ->  into Expression NautiLOD
 
 ```shell
