@@ -313,7 +313,7 @@
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cancel</button>
-                        <button id="btndefinitionDelete" class="btn btn-danger" data-dismiss="modal">Delete</button>
+                        <button  class="btn btn-info" data-dismiss="modal">Cancel</button>
                     </div>
                 </div>
             </div>

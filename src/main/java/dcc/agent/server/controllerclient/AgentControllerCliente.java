@@ -11,6 +11,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class AgentControllerCliente {
 
+    @RequestMapping(value = "/example.do",method = RequestMethod.GET)
+    public String getexample(ModelMap modelMap)
+    {
+        return "example";
+    }
+
     @RequestMapping(value = "/agent.do",method = RequestMethod.GET)
     public String getagent(ModelMap modelMap)
        {

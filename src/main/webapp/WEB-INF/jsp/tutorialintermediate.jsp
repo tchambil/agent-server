@@ -108,92 +108,54 @@
 <div class="sidebar-nav">
     <ul>
         <!--<Plataform]-->
-        <li><a href="#"
-               data-target=".dashboard-menu" class="nav-header" data-toggle="collapse"><i
-                class="fa fa-fw fa-dashboard"></i>Dashboard<i class="fa fa-collapse"></i></a></li>
-        <li>
-            <ul class="dashboard-menu nav nav-list collapse in">
-                <li><a href="/"><span class="fa fa-caret-right"></span> Main</a></li>
-
-            </ul>
-        </li>
+        <li><a href="/" data-target=".legal-menu" class="nav-header collapsed" data-toggle="collapse"><i
+                class="fa fa-fw fa-dashboard"></i> Home</a></li>
         <!--<Users]-->
-        <li><a href="#" data-target=".users-menu" class="nav-header collapsed" data-toggle="collapse"><i
-                class="fa fa-fw fa-users"></i> Users<i class="fa fa-collapse"></i></a>
+        <li><a href="/listuser.do" data-target=".legal-menu" class="nav-header collapsed" data-toggle="collapse"><i
+                class="fa fa-fw fa-users"></i> Users</a>
         </li>
         <li>
             <ul class="users-menu nav nav-list collapse">
-
-                <li><a href="/users.do"><span class="fa fa-caret-right"></span>  Add</a></li>
+                <li><a href="/users.do"><span class="fa fa-caret-right"></span> Add</a></li>
                 <li><a href="/listuser.do"><span class="fa fa-caret-right"></span> List</a></li>
             </ul>
         </li>
-
         <!--<Agent Definitions]-->
         <li><a href="#" data-target=".legal-menu" class="nav-header collapsed" data-toggle="collapse"><i
-                class="fa fa-fw fa-tasks"></i> Agent Definitions<i class="fa fa-collapse"></i></a>
+                class="fa fa-fw fa-tasks"></i> Capabilities (Actions)<i class="fa fa-collapse"></i></a>
         </li>
         <li>
             <ul class="legal-menu nav nav-list collapse">
-                <li><a href="/definitionsimple.do"><span class="fa fa-caret-right"></span> Simple</a></li>
-                <li><a href="/definitionadvanced.do"><span class="fa fa-caret-right"></span> Advanced</a></li>
-                <li><a href="/definitionsjson.do"><span class="fa fa-caret-right"></span> JSON</a></li>
-                <li><a href="/listdefinition.do"><span class="fa fa-caret-right"></span> List</a></li>
+                <li><a href="/listdefinition.do"><span class="fa fa-caret-right"></span> List Actions</a></li>
+                <li><a href="/definitionsimple.do"><span class="fa fa-caret-right"></span> Actions Simple</a></li>
+                <li><a href="/definitionsjson.do"><span class="fa fa-caret-right"></span> Actions in JSON</a></li>
             </ul>
         </li>
         <!--<Agents]-->
-        <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".premium-menu"
-                                                                        class="nav-header collapsed"
-                                                                        data-toggle="collapse">
-            <i class="fa fa-fw fa-eye-slash"></i> Agents<i class="fa fa-collapse"></i></a>
-        </li>
-        <li>
-            <ul class="premium-menu nav nav-list collapse">
-                <li><a href="/agent.do"><span class="fa fa-caret-right"></span> Add</a></li>
-                <li><a href="/agentscript.do"><span class="fa fa-caret-right"></span> AgentScript</a></li>
-                <li><a href="/listagent.do"><span class="fa fa-caret-right"></span> List</a></li>
-            </ul>
+        <li><a href="/listagent.do" data-target=".legal-menu" class="nav-header collapsed">
+            <i class="fa fa-fw fa-eye-slash"></i> Agents</a>
         </li>
         <!--<Groups]-->
-        <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".premium-menu1"
-                                                                        class="nav-header collapsed"
-                                                                        data-toggle="collapse">
-            <i class="fa fa-fw fa-cog"></i> Groups<i class="fa fa-collapse"></i></a>
+        <li><a href="/listgroup.do" data-target=".legal-menu" class="nav-header collapsed">
+            <i class="fa fa-fw fa-cog"></i> Multi-Agents(Groups)</a>
         </li>
-        <li>
-            <ul class="premium-menu1 nav nav-list collapse">
-                <li><a href="/group.do"><span class="fa fa-caret-right"></span> Add</a> </li>
-                <li><a href="/groupagents.do"><span class="fa fa-caret-right"></span> Group-Agents</a> </li>
-                <li><a href="/listgroup.do"><span class="fa fa-caret-right"></span> List</a></li>
-                <li><a href="/suscribegroup.do"><span class="fa fa-caret-right"></span> Suscribe</a></li>
-            </ul>
+
+        <!--<TEST´s]-->
+        <li><a href="/testscript.do" data-target=".legal-menu" class="nav-header collapsed">
+            <i class="fa fa-fw fa-globe"></i> Test</a>
         </li>
-        <!--<Groups]-->
+        <!--<Aplications]-->
         <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".group-menu"
                                                                         class="nav-header collapsed"
                                                                         data-toggle="collapse">
-            <i class="fa fa-fw fa-arrows-alt"></i>Aplications<i class="fa fa-collapse"></i><span
-                class="label label-info">+0</span></a>
+            <i class="fa fa-fw fa-arrows-alt"></i> Aplications<i class="fa fa-collapse"></i><span
+                class="label label-info">1</span></a>
         </li>
         <li>
             <ul class="group-menu nav nav-list collapse">
                 <li>
-                    <a href="/nautilodindex.do"><span class="fa fa-caret-right"></span> NautiLOD</a>
+                    <a href="/nautilodindex.do"><span class="fa fa-caret-right"></span> NautiLOD Distributed</a>
                 </li>
-            </ul>
-        </li>
-        <!--<TEST´s]-->
-        <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".group-test"
-                                                                        class="nav-header collapsed"
-                                                                        data-toggle="collapse">
-            <i class="fa fa-fw fa-globe"></i> Test<i class="fa fa-collapse"></i></a>
-        </li>
-        <li>
-            <ul class="group-test nav nav-list collapse">
-                <li>
-                    <a href="/testscript.do"><span class="fa fa-caret-right"></span> Scripts</a>
-                </li>
-
             </ul>
         </li>
 
@@ -211,14 +173,13 @@
                     <a href="/tutorial"><span class="fa fa-caret-right"></span> Simple</a>
                 </li>
                 <li>
-                    <a href="/resource/files/tutorial.txt"><span class="fa fa-caret-right"></span> Intermediate</a>
+                    <a target="_blank" href="/resource/files/tutorial.txt" ><span class="fa fa-caret-right"></span> Intermediate</a>
                 </li>
                 <li>
                     <a href="/tutorialintermediate"><span class="fa fa-caret-right"></span> Advanced</a>
                 </li>
             </ul>
         </li>
-
 
 
     </ul>

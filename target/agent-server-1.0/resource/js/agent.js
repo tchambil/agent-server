@@ -111,6 +111,7 @@ $(document).ready(function () {
 
                 $('#idMessagsedAgent').empty();
                 $('#idMessagsedAgent').append(JSON.stringify(data, null, "\t"));
+                window.location.href = "/listagent.do";
             },
             error: function (err) {
 

@@ -30,6 +30,11 @@ public class NautiLODControllerCliente {
         return "nautilodmessage";
 
     }
+    @RequestMapping(value = "/listTask.do", method = RequestMethod.GET)
+    public String getlisttask(ModelMap model) {
+        return "listTask";
+
+    }
     @RequestMapping(value = "/nautilodresult.do", method = RequestMethod.GET)
     public String getnautilodresult(ModelMap model) {
         return "nautilodresult";

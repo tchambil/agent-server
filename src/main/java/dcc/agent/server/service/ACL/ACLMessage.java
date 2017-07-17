@@ -98,6 +98,7 @@ public class ACLMessage implements Serializable {
         m.setReplyWith(getReplyWith() + java.lang.System.currentTimeMillis());
         m.setconversationId(getconversationId());
         m.setDelegate(false);
+        m.setPerformative(m.getPerformative());
         updateMessage(agentServer, m.conversationId);
         return m;
     }
@@ -139,8 +140,8 @@ public class ACLMessage implements Serializable {
         ACLMessageList messageListNameValue = agentServer.agentMessages.get(messageId);
         ACLMessage agentMessage = messageListNameValue.get(messageId);
         agentMessage.setStatus("read");
-        ACLMessage newagentMessage = ACLMessage.fromJson(agentServer, null, agentMessage.toJson(), true);
-        agentMessage.update(agentServer, newagentMessage);
+        //ACLMessage newagentMessage = ACLMessage.fromJson(agentServer, null, agentMessage.toJson(), true);
+        agentMessage.update(agentServer, agentMessage);
     }
 
     public void update(AgentServer agentServer, ACLMessage message) throws JSONException, AgentServerException {

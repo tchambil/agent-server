@@ -154,6 +154,7 @@ $(document).ready(function () {
                 $('#idMessageAgent').empty();
                 $('#idMessageAgent').append("Script created succesfully with ID " + newObject.encoding + " Please annotate this ID to check the agent status. If you provided a valid email address you'll receive an email with the task ID");
                 $('#btnsimpleSdve').attr("disabled", true);
+                window.location.href = "/listTask.do";
             },
             error: function (jqXHR, status) {
                 $('#idMessageAgent').empty();

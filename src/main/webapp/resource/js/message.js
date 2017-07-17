@@ -31,6 +31,24 @@ function drawtableChart(data) {
 }
 
 $(document).ready(function () {
+    $.ajax({
+        type: 'GET',
+        url: '../users/messages'
+    }).then(function (data) {
+        $('#idtablelistTask').empty();
+        $(data.agent_message).each(function(index,item) {
+
+            txt="<tr><td id="+item.id+">"+item.conversationId+"</td>"+
+                "</td><td id="+item.id+">"+item.sender+"</td>"+
+                "</td><td id="+item.id+">"+item.receiver+"</td>"+
+                "</td><td id="+item.id+">"+item.content+"</td>"+
+                "</td><td id="+item.id+">"+"Processing"+"</td>"+
+
+                "<td><a href='/nautilodresult.do?="+item.conversationId+"' id="+item.id+"><i class='fa fa-pencil'></i>View</a></td></tr>"
+            $('#idtablelistTask').append(txt);
+
+        });
+    });
     $("#search").click(function (e) {
         loadata()
     });
@@ -41,6 +59,26 @@ $(document).ready(function () {
             url: '../users/message/'+'I'+ $('#idconversation').val()
         }).then(function (data) {
             drawtableChart(data);
+        });
+    });
+    $('#btnlistTask').click(function () {
+        $.ajax({
+            type: 'GET',
+            url: '../users/messages'
+        }).then(function (data) {
+            $('#idtablelistTask').empty();
+            $(data.agent_message).each(function(index,item) {
+
+                txt="<tr><td id="+item.id+">"+item.conversationId+"</td>"+
+                    "</td><td id="+item.id+">"+item.sender+"</td>"+
+                    "</td><td id="+item.id+">"+item.receiver+"</td>"+
+                    "</td><td id="+item.id+">"+item.content+"</td>"+
+                    "</td><td id="+item.id+">"+"Processing"+"</td>"+
+                    "<td><a href='#myModal' role='button' data-toggle='modal' id="+item.id+"><i class='fa fa-pencil'></i>View</a></td></tr>"
+
+                $('#idtablelistTask').append(txt);
+
+            });
         });
     });
 

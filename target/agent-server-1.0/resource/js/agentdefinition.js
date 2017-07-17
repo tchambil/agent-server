@@ -125,7 +125,7 @@ $(document).ready(function () {
                 $('#idMessageAgent').empty();
                 $('#idMessageAgent').append(data.message);
                 $('#btnsimpleSdve').attr("disabled", true);
-
+                window.location.href = "/listdefinition.do";
 
             },
 
@@ -140,7 +140,7 @@ $(document).ready(function () {
     $('#btndefinition').click(function () {
         $.ajax({
             type: 'POST',
-            url: '../users/test-user-1/agent_definitions',
+            url: '../users/tchambil/agent_definitions',
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             data: jsonSimple(),
@@ -158,7 +158,7 @@ $(document).ready(function () {
     });
 
     $('#btngetdefinition').click(function () {
-        $.get('../users/test-user-1/agent_definitions', function (data) {
+        $.get('../users/tchambil/agent_definitions', function (data) {
             $('#txtadefinition').empty();
             $('#txtadefinition').append(JSON.stringify(data, null, "\t"));
 
@@ -171,7 +171,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: 'POST',
-            url: '../users/test-user-1/agent_definitions',
+            url: '../users/'+ $('#DropUserGeneral').val()+'/agent_definitions',
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             data: json(),
@@ -179,7 +179,7 @@ $(document).ready(function () {
                 $('#txtadefinition').empty();
                 $('#txtadefinition').append(JSON.stringify(data, null, "\t"));
                 $('#idMessageUser').append(data.message);
-
+                window.location.href = "/listdefinition.do";
             },
             error: function (err) {
                 $('#txtadefinition').empty();

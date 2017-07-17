@@ -115,11 +115,18 @@
         <li><a href="/nautilodindex.do"
                data-target=".dashboard-menu" class="nav-header" data-toggle="collapse"><i
                 class="glyphicon glyphicon-open"></i>Home</a></li>
-        <!--<Users]-->
-        <li><a href="/nautilodrun.do" data-target=".users-menu" class="nav-header collapsed" data-toggle="collapse"><i
-                class="glyphicon glyphicon-cog"></i> Run Script</a>
+        <!--<Agents]-->
+        <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".premium-menu"
+                                                                        class="nav-header collapsed"
+                                                                        data-toggle="collapse">
+            <i class="glyphicon glyphicon-cog"></i> Run Tasks<i class="fa fa-collapse"></i></a>
         </li>
-
+        <li>
+            <ul class="premium-menu nav nav-list collapse">
+                <li><a href="/nautilodrun.do"><span class="fa fa-caret-right"></span> New</a> </li>
+                <li><a href="/listTask.do"><span class="fa fa-caret-right"></span> List</a></li>
+            </ul>
+        </li>
         <!--<Message]-->
         <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".premium-menu1"
                                                                         class="nav-header collapsed"

@@ -5,7 +5,7 @@ package dcc.agent.server.service.swget.multithread;
  */
 public enum Endpoint {
 
-    DBPEDIA("http://dbpedia.org/sparql","dbpedia.org","http://dbpedias.cloudapp.net"),
+    DBPEDIA("http://dbpedia.org/sparql","dbpedia.org","http://agentserver.herokuapp.com/"),
     DBLP("http://dblp.l3s.de/d2r/sparql","dblp.l3s.de","http://dblps.cloudapp.net"),
     FREEBASE("http://freebases.cloudapp.net/sparql","rdf.freebase.com","http://freebases.cloudapp.net"),
     YAGO("http://lod2.openlinksw.com/sparql","yago-knowledge.org","http://yagos.cloudapp.net"),

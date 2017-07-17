@@ -44,8 +44,11 @@ $(document).ready(function () {
         url: "../groupgeneral"
     }).then(function (data) {
         $('#Droplistgroups').empty();
+        $('#DroplistAddgroups').empty();
+
         $(data.ServerGroup).each(function(index,item) {
             $('#Droplistgroups').append('<option value='+item.name+'>'+item.name+'</option>');
+            $('#DroplistAddgroups').append('<option value='+item.name+'>'+item.name+'</option>');
             });
         });
 
@@ -53,20 +56,23 @@ $(document).ready(function () {
         url: "../agents"
     }).then(function (data) {
         $('#Droplistagents').empty();
+        $('#DroplistAddagents').empty();
+
         $(data.agent_instances).each(function(index,item) {
             $('#Droplistagents').append('<option value='+item.aid+'>'+item.aid+'</option>');
+            $('#DroplistAddagents').append('<option value='+item.aid+'>'+item.aid+'</option>');
         });
     });
 
     $('#btnadd').click(function () {
         $.ajax({
             type: 'POST',
-            url: "../groups/"+$('#Droplistgroups').val(),
+            url: "../groups/"+$('#DroplistAddgroups').val(),
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify({
                 state: "active",
-                agents: [{aid: $('#Droplistagents').val(),
-                    user:"test-user-1" }]
+                agents: [{aid: $('#DroplistAddagents').val(),
+                    user:"tchambil" }]
                 }),
             dataType: "json",
             success: function (data) {
@@ -92,6 +98,7 @@ $(document).ready(function () {
             success: function (data) {
                 $('#idMessagsedAgent').empty();
                 $('#idMessagsedAgent').append(JSON.stringify(data, null, "\t"));
+                window.location.href = "/listgroup.do";
             },
             error: function (err) {
                 $('#idMessagsedAgent').empty();

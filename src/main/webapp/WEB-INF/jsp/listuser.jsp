@@ -13,10 +13,11 @@
     <link rel="stylesheet" href="/resource/css/font-awesome.css">
 
     <script src="/resource/js/site/jquery-1.11.1.min.js" type="text/javascript"></script>
-
     <script src="/resource/js/site/jquery.knob.js" type="text/javascript"></script>
     <script src="/resource/js/user.js"></script>
     <script src="/resource/js/system.js"></script>
+
+
     <script type="text/javascript">
         $(function () {
             $(".knob").knob();
@@ -58,6 +59,7 @@
     .navbar-default .navbar-brand, .navbar-default .navbar-brand:hover {
         color: #fff;
     }
+
 </style>
 
 <script type="text/javascript">
@@ -106,90 +108,53 @@
 <div class="sidebar-nav">
     <ul>
         <!--<Plataform]-->
-        <li><a href="#"
-               data-target=".dashboard-menu" class="nav-header" data-toggle="collapse"><i
-                class="fa fa-fw fa-dashboard"></i>Dashboard<i class="fa fa-collapse"></i></a></li>
-        <li>
-            <ul class="dashboard-menu nav nav-list collapse in">
-                <li><a href="/"><span class="fa fa-caret-right"></span> Main</a></li>
-
-            </ul>
-        </li>
+        <li><a href="/" data-target=".legal-menu" class="nav-header collapsed" data-toggle="collapse"><i
+                class="fa fa-fw fa-dashboard"></i> Home</a></li>
         <!--<Users]-->
-        <li><a href="#" data-target=".users-menu" class="nav-header collapsed" data-toggle="collapse"><i
-                class="fa fa-fw fa-users"></i> Users<i class="fa fa-collapse"></i></a>
+        <li><a href="/listuser.do" data-target=".legal-menu" class="nav-header collapsed" data-toggle="collapse"><i
+                class="fa fa-fw fa-users"></i> Users</a>
         </li>
         <li>
             <ul class="users-menu nav nav-list collapse">
                 <li><a href="/users.do"><span class="fa fa-caret-right"></span> Add</a></li>
                 <li><a href="/listuser.do"><span class="fa fa-caret-right"></span> List</a></li>
-
             </ul>
         </li>
-
         <!--<Agent Definitions]-->
         <li><a href="#" data-target=".legal-menu" class="nav-header collapsed" data-toggle="collapse"><i
-                class="fa fa-fw fa-tasks"></i> Agent Definitions<i class="fa fa-collapse"></i></a>
+                class="fa fa-fw fa-tasks"></i> Capabilities (Actions)<i class="fa fa-collapse"></i></a>
         </li>
         <li>
             <ul class="legal-menu nav nav-list collapse">
-                <li><a href="/definitionsimple.do"><span class="fa fa-caret-right"></span> Simple</a></li>
-                <li><a href="/definitionadvanced.do"><span class="fa fa-caret-right"></span> Advanced</a></li>
-                <li><a href="/definitionsjson.do"><span class="fa fa-caret-right"></span> JSON</a></li>
-                <li><a href="/listdefinition.do"><span class="fa fa-caret-right"></span> List</a></li>
+                <li><a href="/listdefinition.do"><span class="fa fa-caret-right"></span> List Actions</a></li>
+                <li><a href="/definitionsimple.do"><span class="fa fa-caret-right"></span> Actions Simple</a></li>
+                <li><a href="/definitionsjson.do"><span class="fa fa-caret-right"></span> Actions in JSON</a></li>
             </ul>
         </li>
         <!--<Agents]-->
-        <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".premium-menu"
-                                                                        class="nav-header collapsed"
-                                                                        data-toggle="collapse">
-            <i class="fa fa-fw fa-eye-slash"></i> Agents<i class="fa fa-collapse"></i></a>
-        </li>
-        <li>
-            <ul class="premium-menu nav nav-list collapse">
-                <li><a href="/agent.do"><span class="fa fa-caret-right"></span> Add</a> </li>
-                <li><a href="/agentscript.do"><span class="fa fa-caret-right"></span> AgentScript</a></li>
-                <li><a href="/listagent.do"><span class="fa fa-caret-right"></span> List</a></li>
-            </ul>
+        <li><a href="/listagent.do" data-target=".legal-menu" class="nav-header collapsed">
+            <i class="fa fa-fw fa-eye-slash"></i> Agents</a>
         </li>
         <!--<Groups]-->
-        <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".premium-menu1"
-                                                                        class="nav-header collapsed"
-                                                                        data-toggle="collapse">
-            <i class="fa fa-fw fa-cog"></i> Groups<i class="fa fa-collapse"></i></a>
+        <li><a href="/listgroup.do" data-target=".legal-menu" class="nav-header collapsed">
+            <i class="fa fa-fw fa-cog"></i> Multi-Agents(Groups)</a>
         </li>
-        <li>
-            <ul class="premium-menu1 nav nav-list collapse">
-                <li><a href="/group.do"><span class="fa fa-caret-right"></span> Add</a> </li>
-                <li><a href="/groupagents.do"><span class="fa fa-caret-right"></span> Group-Agents</a> </li>
-                <li><a href="/listgroup.do"><span class="fa fa-caret-right"></span> List</a></li>
-                <li><a href="/suscribegroup.do"><span class="fa fa-caret-right"></span> Suscribe</a></li>
-            </ul>
+
+        <!--<TEST´s]-->
+        <li><a href="/testscript.do" data-target=".legal-menu" class="nav-header collapsed">
+            <i class="fa fa-fw fa-globe"></i> Test</a>
         </li>
-        <!--<Groups]-->
+        <!--<Aplications]-->
         <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".group-menu"
                                                                         class="nav-header collapsed"
                                                                         data-toggle="collapse">
             <i class="fa fa-fw fa-arrows-alt"></i> Aplications<i class="fa fa-collapse"></i><span
-                class="label label-info">+0</span></a>
+                class="label label-info">1</span></a>
         </li>
         <li>
             <ul class="group-menu nav nav-list collapse">
                 <li>
-                    <a href="/nautilodindex.do"><span class="fa fa-caret-right"></span> NautiLOD</a>
-                </li>
-            </ul>
-        </li>
-        <!--<TEST´s]-->
-        <li data-popover="true" rel="popover" data-placement="right"><a href="#" data-target=".group-test"
-                                                                        class="nav-header collapsed"
-                                                                        data-toggle="collapse">
-            <i class="fa fa-fw fa-globe"></i> Test<i class="fa fa-collapse"></i></a>
-        </li>
-        <li>
-            <ul class="group-test nav nav-list collapse">
-                <li>
-                    <a href="/testscript.do"><span class="fa fa-caret-right"></span> Scripts</a>
+                    <a href="/nautilodindex.do"><span class="fa fa-caret-right"></span> NautiLOD Distributed</a>
                 </li>
             </ul>
         </li>
@@ -233,17 +198,74 @@
     <div class="header">
         <h1 class="page-title">Users</h1>
     </div>
+    <div class="modal fade" id="CreateUser" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Create User</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="widget">
+                                <ul class="cards list-group ">
+                                    <li class="list-group-item">
+                                        <div class="form-group">
+                                            <label>nickname</label>
+                                            <input type="text" name="nickname" id="nicknameInput" class="form-control"
+                                                   value="tchambil"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Password</label>
+                                            <input type="text" name="password" id="passwordInput" class="form-control"
+                                                   value="test-pwd-1"/>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Full Name</label>
+                                            <input type="text" name="full_name" id="full_nameInput" class="form-control"
+                                                   value="Teofilo Chambilla Aquino"/>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Email</label>
+                                            <input type="text" name="email" id="emailInput" class="form-control"
+                                                   value="antony_epis@hotmail.com"/>
+                                        </div>
+
+                                    </li>
+                                </ul>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnUserSave" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-save"></i> Save</button>
+                    <button  class="btn btn-info" data-dismiss="modal">Cancel</button>
+                    <br/>
+                    <div id="idMessageUser" class="alert alert-info">
+
+                    </div>
+                </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
     <div class="main-content">
-
-
+        <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#CreateUser"><i class="fa fa-plus"></i> Create New User</button>
+        </br>
         <table id="idtablelist" class="table table-hover" >
             <thead>
             <tr>
-                <th>id</th>
+
                 <th>Nick Name</th>
                 <th>Full Name</th>
                 <th>Email</th>
-                <th style="width: 3.5em;"></th>
+                <th style="width: 3.5em;">Options</th>
             </tr>
             </thead>
             <tbody  id="idlisttable">

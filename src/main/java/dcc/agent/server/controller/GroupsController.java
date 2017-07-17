@@ -38,7 +38,7 @@ public class GroupsController {
     public Utils util = new Utils();
     @RequestMapping(value = "/groups/{name}", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public String postServerGroup(@PathVariable String name, HttpServletRequest request) throws Exception {
-        User user = agentServer.users.get("test-user-1");
+        User user = agentServer.users.get("tchambil");
 
         if (name == null) {
             throw new AgentAppServerBadRequestException("Missing group name path parameter");
@@ -98,7 +98,7 @@ public class GroupsController {
     public String postServerGroup( HttpServletRequest request) throws Exception {
         PlataformController plataform = new PlataformController();
         agentServer = plataform.getAgentServer();
-        User user = agentServer.users.get("test-user-1");
+        User user = agentServer.users.get("tchambil");
         JSONObject serverJson = util.getJsonRequest(request);
         if (serverJson == null)
             throw new AgentAppServerBadRequestException(
@@ -177,7 +177,7 @@ public class GroupsController {
         // String url="http://dbpedias.cloudapp.net/group";
         PlataformController plataform = new PlataformController();
         agentServer = plataform.getAgentServer();
-        User user = agentServer.users.get("test-user-1");
+        User user = agentServer.users.get("tchambil");
         JSONObject configJson = util.getJsonRequest(request);
         String uri = configJson.optString("server");
         String group = configJson.optString("group");
